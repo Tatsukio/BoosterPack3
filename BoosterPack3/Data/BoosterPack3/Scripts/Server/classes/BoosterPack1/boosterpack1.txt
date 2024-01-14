@@ -1,0 +1,418 @@
+Root {
+	barbarian_corpse_01 {
+		classattribs {
+			classname = 'CGameObj'
+			gfx = 'barbarian_corpse_01'
+		}
+	}
+	barbarian_corpse_02 {
+		classattribs {
+			classname = 'CGameObj'
+			gfx = 'barbarian_corpse_02'
+		}
+	}
+	barbarian_corpse_03 {
+		classattribs {
+			classname = 'CGameObj'
+			gfx = 'barbarian_corpse_03'
+		}
+	}
+	barbarian_swimming_corpses_01 {
+		classattribs {
+			classname = 'CGameObj'
+			gfx = 'barbarian_swimming_corpses_01'
+		}
+	}
+	barbarian_swimming_corpses_01a {
+		classattribs {
+			classname = 'CGameObj'
+			gfx = 'barbarian_swimming_corpses_01a'
+		}
+	}
+	barbarian_swimming_corpses_02 {
+		classattribs {
+			classname = 'CGameObj'
+			gfx = 'barbarian_swimming_corpses_02'
+		}
+	}
+	barbarian_swimming_corpses_02a {
+		classattribs {
+			classname = 'CGameObj'
+			gfx = 'barbarian_swimming_corpses_02a'
+		}
+	}
+	barbarian_swimming_barrels_01 {
+		classattribs {
+			classname = 'CGameObj'
+			gfx = 'barbarian_swimming_barrels_01'
+		}
+	}
+	rune_gate {
+		classattribs {
+			classname = 'CGateFOWVIsible'
+			gfx = 'rune_gate'
+		}
+	}
+	seas_carrier_loop {
+		classattribs {
+			classname = 'CDecoColAnimObj'
+			gfx = 'seas_carrier_loop'
+		}
+	}
+	hu_avatar {
+		classattribs {
+			classname = 'CHu'
+			gfx = 'Avatar'
+		}
+		objectattribs {
+			gender = 'male'
+			level = '0'
+			caste = 'res'
+			tribe = 'Hu'
+		}
+	}
+	excavation_camp_01 {
+		classattribs {
+			classname = 'CDecoColObj'
+			gfx = 'excavation_camp_01'
+		}
+	}
+	excavation_camp_02 {
+		classattribs {
+			classname = 'CDecoColObj'
+			gfx = 'excavation_camp_02'
+		}
+	}
+	excavation_camp_03 {
+		classattribs {
+			classname = 'CDecoColObj'
+			gfx = 'excavation_camp_03'
+		}
+	}
+	rocket_ramp_control_pad_open {
+		classattribs {
+			classname = 'CDecoColObj'
+			gfx = 'rocket_ramp_control_pad_open'
+		}
+	}
+	horn {
+		classattribs {
+			classname = 'CDecoColObj'
+			gfx = 'horn'
+		}
+	}
+	mannidiegosidscrat {
+		classattribs {
+			classname = 'CGameObj'
+			gfx = 'mannidiegosidscrat'
+		}
+	}
+	rune_black {
+		classattribs {
+			classname = 'CGameObj'
+			gfx = 'rune_black'
+		}
+	}
+	rune_blue {
+		classattribs {
+			classname = 'CGameObj'
+			gfx = 'rune_blue'
+		}
+	}
+	rune_red {
+		classattribs {
+			classname = 'CGameObj'
+			gfx = 'rune_red'
+		}
+	}
+	rune_yellow {
+		classattribs {
+			classname = 'CGameObj'
+			gfx = 'rune_yellow'
+		}
+	}
+	rune_black_small {
+		classattribs {
+			classname = 'CGameObj'
+			gfx = 'rune_black_small'
+		}
+	}
+	rune_blue_small {
+		classattribs {
+			classname = 'CGameObj'
+			gfx = 'rune_blue_small'
+		}
+	}
+	rune_red_small {
+		classattribs {
+			classname = 'CGameObj'
+			gfx = 'rune_red_small'
+		}
+	}
+	rune_yellow_small {
+		classattribs {
+			classname = 'CGameObj'
+			gfx = 'rune_yellow_small'
+		}
+	}
+	camp_tent_01 {
+		classattribs {
+			classname = 'CGameObj'
+			gfx = 'camp_tent_01'
+		}
+	}
+	camp_tent_02 {
+		classattribs {
+			classname = 'CGameObj'
+			gfx = 'camp_tent_02'
+		}
+	}
+	rune_gate_groundplate {
+		classattribs {
+			classname = 'CDecoObj'
+			gfx = 'rune_gate_groundplate'
+		}
+	}
+	pentacle {
+		classattribs {
+			classname = 'CDecoObj'
+			gfx = 'pentacle'
+		}
+	}
+	pentacle_smoke {
+		classattribs {
+			classname = 'CDecoObj'
+			gfx = 'pentacle_smoke'
+		}
+	}
+	pentacle_rays {
+		classattribs {
+			classname = 'CDecoObj'
+			gfx = 'pentacle_rays'
+		}
+	}
+	ice_pikes {
+		classattribs {
+			classname = 'CDecoObj'
+			gfx = 'ice_pikes'
+		}
+	}
+	dead_eusmilus {
+		classattribs {
+			classname = 'CDecoObj'
+			gfx = 'dead_eusmilus'
+		}
+	}
+	seismo_armor {
+		classattribs {
+			classname = 'CGameObj'
+			gfx = 'seismo_armor'
+		}
+	}
+	Nest_Anurognathus_Fruit_Bush {
+		classattribs {
+			classname = 'CFruit_Food'
+			gfx = 'all_anurognathus_nest'
+		}
+	}
+	Gigantosaurus {
+		classattribs {
+			classname = 'CAnimal'
+			gfx = 'Gigantosaurus'
+		}
+		objectattribs {
+			hitpoints = '500'
+			maxhitpoints = '500'
+			tribe = 'World'
+		}
+	}
+	Gigantosaurus_food {
+		classattribs {
+			classname = 'CDino_Food'
+			gfx = 'Gigantosaurus'
+		}
+		objectattribs {
+			tribe = 'World'
+		}
+	}
+	Tarbosaurus {
+		classattribs {
+			classname = 'CAnimal'
+			gfx = 'Tarbosaurus'
+		}
+		objectattribs {
+			hitpoints = '500'
+			maxhitpoints = '500'
+			tribe = 'World'
+		}
+	}	
+	Tarbosaurus_food {
+		classattribs {
+			classname = 'CDino_Food'
+			gfx = 'Tarbosaurus'
+		}
+		objectattribs {
+			tribe = 'World'
+		}
+	}
+	Edmontosaurus {
+		classattribs {
+			classname = 'CAnimal'
+			gfx = 'Edmontosaurus'
+		}
+		objectattribs {
+			hitpoints = '250'
+			maxhitpoints = '250'
+			tribe = 'World'
+		}
+	}	
+	Edmontosaurus_food {
+		classattribs {
+			classname = 'CDino_Food'
+			gfx = 'Edmontosaurus'
+		}
+		objectattribs {
+			tribe = 'World'
+		}
+	}
+	Heterodontosaurus {
+		classattribs {
+			classname = 'CAnimal'
+			gfx = 'Heterodontosaurus'
+		}
+		objectattribs {
+			hitpoints = '200'
+			maxhitpoints = '200'
+			tribe = 'World'
+		}
+	}	
+	Heterodontosaurus_food {
+		classattribs {
+			classname = 'CDino_Food'
+			gfx = 'Heterodontosaurus'
+		}
+		objectattribs {
+			tribe = 'World'
+		}
+	}
+	Lemur {
+		classattribs {
+			classname = 'CAnimal'
+			gfx = 'Lemur'
+		}
+		objectattribs {
+			hitpoints = '200'
+			maxhitpoints = '200'
+			tribe = 'World'
+		}
+	}
+	Lemur_food {
+		classattribs {
+			classname = 'CDino_Food'
+			gfx = 'Lemur'
+		}
+		objectattribs {
+			tribe = 'World'
+		}
+	}
+	Sloth {
+		classattribs {
+			classname = 'CAnimal'
+			gfx = 'Sloth'
+		}
+		objectattribs {
+			hitpoints = '200'
+			maxhitpoints = '200'
+			tribe = 'World'
+		}
+	}
+	Sloth_food {
+		classattribs {
+			classname = 'CDino_Food'
+			gfx = 'Sloth'
+		}
+		objectattribs {
+			tribe = 'World'
+		}
+	}
+	Amargasaurus {
+		classattribs {
+			classname = 'CAnimal'
+			gfx = 'Amargasaurus'
+		}
+		objectattribs {
+			hitpoints = '200'
+			maxhitpoints = '200'
+			tribe = 'World'
+		}
+	}
+	Amargasaurus_food {
+		classattribs {
+			classname = 'CDino_Food'
+			gfx = 'Amargasaurus'
+		}
+		objectattribs {
+			tribe = 'World'
+		}
+	}
+	Liopleurodon {
+		classattribs {
+			classname = 'CAnimal'
+			gfx = 'Liopleurodon'
+		}
+		objectattribs {
+			hitpoints = '250'
+			maxhitpoints = '250'
+			tribe = 'World'
+		}
+	}	
+	Liopleurodon_food {
+		classattribs {
+			classname = 'CDino_Food'
+			gfx = 'Liopleurodon'
+		}
+		objectattribs {
+			tribe = 'World'
+		}
+	}
+	Mosasaurus {
+		classattribs {
+			classname = 'CAnimal'
+			gfx = 'Mosasaurus'
+		}
+		objectattribs {
+			hitpoints = '250'
+			maxhitpoints = '250'
+			tribe = 'World'
+		}
+	}	
+	Mosasaurus_food {
+		classattribs {
+			classname = 'CDino_Food'
+			gfx = 'Mosasaurus'
+		}
+		objectattribs {
+			tribe = 'World'
+		}
+	}
+	Euoplocephalus {
+		classattribs {
+			classname = 'CAnimal'
+			gfx = 'Euoplocephalus'
+		}
+		objectattribs {
+			hitpoints = '250'
+			maxhitpoints = '250'
+			tribe = 'World'
+		}
+	}	
+	Euoplocephalus_food {
+		classattribs {
+			classname = 'CDino_Food'
+			gfx = 'Euoplocephalus'
+		}
+		objectattribs {
+			tribe = 'World'
+		}
+	}
+}

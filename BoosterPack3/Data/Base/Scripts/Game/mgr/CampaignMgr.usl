@@ -1,0 +1,213 @@
+
+//CSrvWrap.GetUrsRelPath()+"/Data/Base/Scripts/Server/settings/Campaigns.txt")
+
+
+/*
+var ^CPropDB pxUserProfile;
+pxUserProfile=^(CClientWrap.GetUserProfile());
+var ^CPropDB.CNode pxRoot=^(pxUserProfile^.GetRoot());
+var ^CPropDB.CNode pxCampaign=^(pxRoot^.Get("Campaign"));
+*/
+
+class CCampaignMgr
+	static var ^CCampaignMgr ms_pxInstance;
+		
+	export const int DIFFICULTY_EASY	=0;
+	export const int DIFFICULTY_MEDIUM	=1;
+	export const int DIFFICULTY_HARD	=2;
+	
+	var CLevelInfo		m_xCurLevelInfo;
+	var string			m_sCurLevel;
+	
+	export static proc ref CCampaignMgr Get()
+		if(ms_pxInstance==null)then
+			ms_pxInstance=new CCampaignMgr;
+		endif;
+		return ms_pxInstance^;
+	endproc;
+	
+	export static proc void ShutStatic()
+		delete ms_pxInstance;
+	endproc;
+	
+	constructor()
+		//Init();
+	endconstructor;
+	
+	destructor()
+	enddestructor;
+	
+	export proc void CheckUserProfile()
+		var CPropDB xCampaignsDB;
+		var string sFilePath=CClientWrap.GetUrsRelPath()+"/Data/Base/Scripts/Server/settings/Campaigns.txt";
+		if(!xCampaignsDB.Load(sFilePath))then
+			KLog.LogError("CampaignMgr","can't open file '"+sFilePath+"'");
+			return;
+		endif;
+		var ^CPropDB.CNode pxMainLevels=^(xCampaignsDB["Campaign"]);
+		var ^CPropDB.CNode pxProfileLevels=^GetLevels();
+		
+		var int iMLIdx=0;
+		var int iPLIdx=0;
+		var int iC=pxMainLevels^.NumSubs();
+		for()cond(iMLIdx<iC)iter(iMLIdx++)do
+			var ^CPropDB.CNode pxWalk=^(pxMainLevels^.Get(iMLIdx));
+			System.Assert(pxWalk!=null);		
+			var int iIdx=pxProfileLevels^.Find(pxWalk^.Name(),iPLIdx);
+			if(iIdx==-1)then
+				var ^CPropDB.CNode pxNew=pxProfileLevels^.Insert(iPLIdx);;
+				(pxNew^)=(pxWalk^);				
+				iPLIdx++;
+			else
+			
+				iPLIdx=iIdx+1;
+			endif;		
+		endfor;
+		/*
+		var ^CPropDB.CNode pxCampaignDB=^(xCampaignsDB["Campaign"]);
+		var ^CPropDB.CNode pxLevelsNode=^GetLevels();
+		pxLevelsNode^.Join(pxCampaignDB);
+				
+		var int i,iC=pxLevelsNode^.NumSubs();
+		for(i=0)cond(i<iC)iter(i++)do
+			var ^CPropDB.CNode pxWalk=^((pxLevelsNode^)[i]);
+			var ^CPropDB.CNode pxOrgLevel=pxCampaignDB^.Get(pxWalk^.Name());
+			if(pxOrgLevel==null)then//level ist nicht definiert (in Campaigns.txt)
+				pxLevelsNode^.Remove(i);
+				i--;iC--;
+			else
+				pxWalk^.Value()=pxOrgLevel^.Value();//level file aus Campaigns.txt übernehmen (update)
+			endif;			
+		endfor;
+		*/
+		CClientWrap.UpdateUserProfile();		
+	endproc;
+	
+	export proc void SetCurLevelInfo(^CLevelInfo p_pxLevelInfo)		
+		if(p_pxLevelInfo==null)then
+			m_xCurLevelInfo.Reset();
+		else
+			m_xCurLevelInfo=(p_pxLevelInfo^);
+		endif;		
+	endproc;
+	
+	export proc ref CLevelInfo GetCurLevelInfo()
+		return m_xCurLevelInfo;
+	endproc;
+	
+	export proc ref CPropDB.CNode GetLevels()
+		var ^CPropDB pxUserProfile=^(CClientWrap.GetUserProfile());
+		return (pxUserProfile^)["Campaign/Levels"];		
+	endproc;
+	
+	export proc string GetCurLevel()
+		return m_sCurLevel;
+	endproc;
+	
+	export proc void SetCurLevel(string p_sLevelKey)
+		m_sCurLevel=p_sLevelKey;
+	endproc;
+	
+	export proc void LoadCurrentLevel()
+		var ^CPropDB.CNode pxCampaignLevels=^(GetLevels());
+		var string sLevelFile;
+		var string sCurLevel=GetCurLevel();
+		pxCampaignLevels^.GetValue(sCurLevel,sLevelFile);
+		var string sFilePath=CClientWrap.GetUrsRelPath()+"/Data/Base/Maps/Cpn_single_001/"+sLevelFile;
+		if(!Filesystem.FileExists(sFilePath))then 
+			KLog.LogError("CampaignMgr","invalid campaign file '"+sFilePath+"'");
+			return; 
+		endif;
+		
+		var ^CPropDB pxGenericDB=^(m_xCurLevelInfo.GetGenericData());
+		
+		var CPlayerSlotID xSlotID;
+		for(xSlotID=CPlayerSlotID.First())cond(xSlotID<=CPlayerSlotID.Last())iter(xSlotID.Incr())do
+			var ^CLevelInfo.CPlayerSlot pxPlayerSlot=^(m_xCurLevelInfo.GetPlayerSlot(xSlotID));
+			if(pxPlayerSlot==null)then continue; endif;
+			if(!pxPlayerSlot^.IsAIPlayer())then continue; endif;
+			
+			
+			var ^CPropDB.CNode pxPlayerBaseNode=^((pxGenericDB^)["PlayerSettings/Player_"+pxPlayerSlot^.GetOwner().ToString()+"/Restrictions/Base"]);
+			var int iAIDifficulty=pxPlayerBaseNode^.GetValueI("AI_Difficulty_Easy",1);
+			var int iCurDifficulty=GetDifficulty();
+			if(iCurDifficulty==DIFFICULTY_MEDIUM)then
+				iAIDifficulty=pxPlayerBaseNode^.GetValueI("AI_Difficulty_Medium",4);
+			elseif(iCurDifficulty==DIFFICULTY_HARD)then
+				iAIDifficulty=pxPlayerBaseNode^.GetValueI("AI_Difficulty_Hard",8);
+			endif;
+			pxPlayerSlot^.SetValue("Difficulty",iAIDifficulty);
+		endfor;		
+		//m_xCurLevelInfo.GetGenericData().Save("c:/LevelInfo.txt");		
+		CEvt_StartGame.Send(sFilePath,m_xCurLevelInfo);
+	endproc;	
+	
+	export proc bool OnLevelWin()
+		var ^CLevelInfo pxLevelInfo=^(CGameWrap.GetClient().GetLevelInfo());
+		var ^CPropDB pxGenericData=^(pxLevelInfo^.GetGenericData());
+		var string sCurLevel=(pxGenericData^)["Base/LevelName"].Value();		
+		sCurLevel.Replace(" ","_");
+		sCurLevel.MakeLower();
+		var ^CPropDB.CNode pxAllLevels=^(GetLevels());		
+		var int iCurLevelIdx=pxAllLevels^.Find(sCurLevel);		
+		var int iNumLevels=pxAllLevels^.NumSubs();
+		
+//		KLog.LogWarn("CampaignMgr","OnLevelWin iCurLevelIdx " + iCurLevelIdx.ToString() + " sCurLevel " + sCurLevel);
+		
+		if(iNumLevels>0 && iCurLevelIdx<(iNumLevels-1))then
+			
+
+//			[MarkusO 5.2.07] Aktiviert Level "single_05" nach Beendigung von "single_04" ( auch wenn
+//			bereits einmal mit Boosterpack gestartet wurde, daher das UserProfile modifiziert wurde,
+//			und single_05 nicht unmittelbar hinter single_04 liegt )
+			
+			var int iNextLevel = iCurLevelIdx+1;
+			if (sCurLevel == "single_04") then
+//				KLog.LogWarn("CampaignMgr","single_04 won. Enable single_05");
+				iNextLevel = pxAllLevels^.Find("single_05");
+			endif;
+			
+			var ^CPropDB.CNode pxNextLevel=^((pxAllLevels^)[iNextLevel]);
+			pxNextLevel^.SetValue("enabled",1);
+			var int iCurCredits=pxNextLevel^.GetValueI("Credits",0);
+			var ^CGameAttribs pxAttribs=^(pxLevelInfo^.GetAttribs());
+			var int iLevelBoni=pxAttribs^.GetValueInt("BoniTotal");
+			if(iLevelBoni>iCurCredits)then
+				pxNextLevel^.SetValue("Credits",iLevelBoni);
+			endif;
+			SetCurLevel(pxNextLevel^.Name());
+			CClientWrap.UpdateUserProfile();			
+			return true;
+		endif;
+		return false;		
+	endproc;
+	
+	export proc int GetDifficulty()
+		var ^CPropDB pxUserProfile=^(CClientWrap.GetUserProfile());
+		return (pxUserProfile^)["Campaign/Difficulty"].ValueI();
+	endproc;
+	
+	export proc void SetDifficulty(int p_iDifficulty)
+		var ^CPropDB pxUserProfile=^(CClientWrap.GetUserProfile());
+		(pxUserProfile^)["Campaign"].SetValue("Difficulty",p_iDifficulty);		
+		CClientWrap.UpdateUserProfile();		
+	endproc;
+	
+	export proc string GetLastEnabledCampaignLevel()
+		CheckUserProfile();
+		var string sLevelName = "single_00";
+		var ^CPropDB.CNode pxAllLevels=^(GetLevels());		
+		var int iNumLevels=pxAllLevels^.NumSubs();
+		var int i;
+		var int iLastLevel = 0;
+		for(i=0)cond(i<iNumLevels)iter(i++)do
+			var ^CPropDB.CNode pxLevel=^((pxAllLevels^)[i]);
+			var int iIsEnabled = pxLevel^.GetValueI("enabled",0);
+			if(iIsEnabled>0)then
+				sLevelName = pxLevel^.Name();
+			endif;
+		endfor;
+		return sLevelName;		
+	endproc;
+
+endclass;

@@ -1,0 +1,12 @@
+# Add on info file
+id BoosterPack3
+requires BaseData
+type add-on
+info Booster Pack 3
+version 1.0 RC1
+priority 30
+tryfilereplace */data/base/* data/base/ data/BoosterPack3/
+joindirscan */data/base/maps/cpn_single_001* /data/base/maps/cpn_single_001 /data/BoosterPack3/maps/cpn_single_001
+joindirscan */data/base/maps/multiplayer* /base/maps/multiplayer /BoosterPack3/maps/multiplayer
+joindirscan */data/base/dialogScenes/cpn_single_001* /base/dialogscenes/cpn_single_001 /BoosterPack3/dialogScenes/cpn_single_001
+joindirscan */data/base/sequences/cpn_single_001* /base/sequences/cpn_single_001 /BoosterPack3/sequences/cpn_single_001

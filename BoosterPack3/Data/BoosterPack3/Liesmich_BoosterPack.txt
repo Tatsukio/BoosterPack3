@@ -1,0 +1,484 @@
+ParaWorld Readme Boosterpack
+============================
+
+
+==========================================================================
+SUNFLOWERS Copyright
+==========================================================================
+
+ParaWorld (c) 2006 by SUNFLOWERS Interactive Entertainment Software 
+GmbH. SUNFLOWERS und ParaWorld sind eingetragene Warenzeichen der 
+SUNFLOWERS Interactive Entertainment Software GmbH. Alle verwendeten 
+Logos oder Marken sind eingetragene Warenzeichen oder Warenzeichen 
+der jeweiligen Inhaber. Änderungen vorbehalten (c) SUNFLOWERS 2006.
+
+
+
+==========================================================================
+Systemanforderungen
+==========================================================================
+
+Minimale Konfiguration:
+* Intel Pentium(r) mit 1.6 GHz o. entsprechender AMD(tm) Athlon-
+Prozessor 
+* 512 MB RAM
+* DirectX(r) 9-kompatible Grafikkarte mit 128 MB RAM 
+* DirectX(r) 9-kompatible Soundkarte 
+* Windows XP(r) oder Windows 2000(r)
+
+Empfohlene Konfiguration:
+* Intel Pentium(r) mit 3 GHz oder entsprechender AMD(tm) Athlon-
+Prozessor
+* 1 GB RAM
+* DirectX(r) 9-kompatible Grafikkarte mit mind. 128 MB RAM 
+* DirectX(r) 9-kompatible Soundkarte 
+* Windows XP(r) oder Windows 2000(r) 
+
+Stellen Sie sicher, dass immer die aktuellsten Treiber installiert sind.
+Die Internet-Adressen zu den wichtigsten Hardware-Lieferanten finden 
+Sie unter "Wichtige Links“.
+
+Hinweis: ParaWorld kann mit der oben genannten minimalen Konfiguration
+ausgeführt werden. Allerdings ist die Spielerfahrung auf einem System 
+mit der empfohlenen Konfiguration besser. 
+
+
+
+==========================================================================
+DirectX(r)
+==========================================================================
+
+Um ein fehlerfreies Funktionieren von PARAWORLD zu gewährleisten,
+muss auf Ihrem PC die neueste DirectX(r)-Version oder zumindest
+DirectX(r) 9.0c, installiert sein. Weitere Informationen zu DirectX(r)
+finden Sie auf der offiziellen Webseite http://www.microsoft.com.
+
+Installation von DirectX(r) 9.0c
+Während der Installation von PARAWORLD überprüft das Installations-
+programm automatisch, ob Sie eine neue Version von DirectX(r) 
+benötigen, oder ob die Version von DirectX(r) auf Ihrem PC auf
+dem aktuellen Stand ist. Um DirectX(r) separat (unabhängig von der
+Installation des Spiels) zu installieren, gehen Sie bitte wie folgt 
+vor: Legen Sie die PARAWORLD-DVD in Ihr DVD-ROM-Laufwerk ein, und
+klicken Sie dann links unten auf die Schaltfläche START in der
+Windows(r)-Taskleiste. Wählen Sie „Ausführen“ und geben Sie in der
+Dialogbox „D:\DirextX\dxsetup“ ein und klicken Sie auf okay.
+(Sollte Ihr DVD-ROM-Laufwerk einen anderen Laufwerksbuchstaben als
+„D“ haben, so ändern Sie Ihre Eingabe in der Dialogbox bitte
+entsprechend.) Folgen Sie den Installationshinweisen.
+
+
+
+==========================================================================
+Installation & Deinstallation
+==========================================================================
+
+Spiel installieren
+Um PARAWORLD auf Ihrem PC zu installieren, führen Sie bitte die
+folgenden Anweisungen nacheinander aus.
+
+1. Starten Sie Ihren PC und das Windows(r)-Betriebssystem.
+2. Beenden Sie alle Programme und Tasks, die im Vorder- und
+Hintergrund laufen. Um eine reibungslose Installation zu gewährleisten,
+sollten Sie auch aktive Virenscanner beenden.
+
+3. Legen Sie die PARAWORLD-DVD in Ihr DVD-Laufwerk ein. Nach
+wenigen Sekunden erscheint das Autostart-Menü von PARAWORLD auf
+Ihrem Bildschirm.
+
+4. Sollte das Autostart-Menü von PARAWORLD nicht von selbst
+erscheinen, so ist die Autostart-Funktion auf Ihrem PC deaktiviert. 
+In diesem Fall klicken Sie die „START“-Schaltfläche in der Windows(r)-
+Taskleiste und wählen Sie „AUSFÜHREN“. Geben Sie nun in der
+Dialogbox „D:\autorun.exe“ ein und klicken Sie auf „OK“. (Sollte Ihr
+DVD-Laufwerk einen anderen Laufwerksbuchstaben als „D“ haben, so
+ändern Sie Ihre Eingabe in der Dialogbox entsprechend.)
+
+5. Klicken Sie auf die Schaltfläche „INSTALLIEREN“. Das
+Installationsprogramm „InstallShield Wizard“ wird nun gestartet. Folgen
+Sie den Installationshinweisen.
+
+
+Spiel deinstallieren
+Um PARAWORLD wieder von Ihrem PC zu entfernen gehen Sie bitte wie
+folgt vor:
+
+1. Klicken Sie auf die Schaltfläche START in der Windows(r)-Taskleiste,
+und wählen Sie Programme > Sunflowers >
+PARAWORLD > PARAWORLD deinstallieren.
+
+2. Folgen Sie den Anweisungen auf dem Bildschirm, um die
+Deinstallation von PARAWORLD durchzuführen.
+
+
+
+==========================================================================
+Unterstützte Betriebssysteme
+==========================================================================
+
+ParaWorld unterstützt nur die Betriebsysteme Windows XP(r) und 
+Windows 2000(r). Weitere Betriebssysteme werden nicht unterstützt. 
+
+
+
+==========================================================================
+Fehlerbehebung 
+==========================================================================
+
+Sollte es zu Problemen mit dem Spiel kommen, kann das Löschen des
+sogenannten Caches helfen. Dazu müssen Sie lediglich die Datei
+Clearcache.exe ausführen. Diese befindet sich im Verzeichnis 
+"Tools", das Sie im Installationsverzeichnis von ParaWorld finden.
+
+
+
+==========================================================================
+Steuerung
+==========================================================================
+
+NEUE HOTKEYS:
+
+H = nächstes Haupthaus anwählen und dorthin springen
+T = nächstes Haupthaus anwählen - durchschalten
+Z = nächste Kaserne anwählen - durchschalten
+U = nächste Tierfarm anwählen - durchschalten
+I = nächsten Maschinenbauen anwählen - durchschalten
+O = nächsten Hafen anwählen - durchschalten
+P = nächsten Tempel anwählen - durchschalten
+L = nächsten Waffenmacher anwählen - durchschalten
+K = nächste Taverne anwählen – durchschalten
++ & - auf dem Nummernfeld = Spielgeschwindigkeit regeln
+
+Alt+1 - Alt+8 = Schaltet die einzelnen Spieler in einem 
+aufgezeichneten Spiel durch (nur Replay)
+
+FALSCH: Shift + Linksklick auf ein Objekt, das einer Auswahl 
+zugehört >> Ein Objekt aus einer Auswahl entfernen
+RICHTIG: Strg + Linksklick auf ein Objekt, das einer Auswahl 
+zugehört >> Ein Objekt aus einer Auswahl entfernen
+
+FALSCH: Z, A, Q >> für die verschiedenen Ebenen des Produktions-
+menüs (setzt selektiertes Produktionsgebäude voraus)
+RICHTIG: Y, A, Q 
+
+Rechtsklick auf den Chat-Button = Öffnet das Chat-Journal
+
+
+
+==========================================================================
+Replay
+==========================================================================
+
+Diese Funktion ermöglicht Ihnen ein komplettes Spiel aufzuzeichnen
+und es zu einem späteren Zeitpunkt abzuspielen. Die Funktion steht
+nur Multiplayer-Spielen und Spielen gegen die KI (Gefecht) zur
+Verfügung. Am Enden eines solchen Spiels können Sie eine so genannte
+Wiederholung speichern (während des Spiels ist das nur möglich wenn
+Sie das Spiel über „Spiel aufgeben“ verlassen). Die Wiederholung
+können Sie danach über den Menüpunkte „Spiel laden“ laden. Replays
+können Sie auch an andere Spieler weitergeben, z. B. um Taktiken zu 
+vergleichen.
+
+Wichtig: Leider ist es nicht möglich ein Replay zu laden, während
+Sie sich ein anderes Replay ansehen. In dem Fall müssen Sie das
+aktuelle Replay beenden und zum Hauptmenü zurückkehren. Von dort
+aus können Sie wie oben beschrieben ein neues Replay laden. 
+
+Ein zu Ende gelaufenes Replay wird nicht automatisch beendet. In 
+diesem Fall müssen Sie das Replay manuell beenden. Drücken Sie
+dafür ESC und klicken dann auf "Spiel aufgeben". Danach befinden
+Sie sich wieder im Hauptmenü von ParaWorld.
+
+
+
+==========================================================================
+AI-Assist
+==========================================================================
+
+AI-Assist ist ein Feature, das dem Spieler erlaubt die KI
+(Künstliche Intelligenz) des Programms zur Unterstützung beim Auf-
+bau der Wirtschaft oder der Verteidigung seines Lagers zu nutzen.
+Das Feature war zum Zeitpunkt der Fertigstellung des Spiels schon
+sehr weit fortgeschritten, jedoch konnte die Umsetzung nicht ganz 
+abgeschlossen werden. Daher haben wir uns entschlossen es nicht im
+Spiel frei zuschalten. Dennoch möchten wir interessierten Spielern
+die Möglichkeit geben dieses Feature zu nutzen. Bitte haben Sie 
+Verständnis dafür, dass wir oder unsere Partner hierfür keinen 
+Support anbieten können.
+
+Sie können die Funktion frei schalten, in dem Sie die Einträge in
+der Datei settings.cfg von:
+Root/AI/AssisEnableEco = '0'
+Root/AI/AssisEnableDefense = '0'
+ auf
+Root/AI/AssisEnableEco = '1'
+Root/AI/AssisEnableDefense = '1'
+ändern
+
+==========================================================================
+TCP/IP und UDP Ports
+==========================================================================
+
+Fall sie einen Router nutzen, sollten die folgenden Ports in den
+Firewall-Einstellungen freigeschaltet sein (ein- und ausgehend):
+
+UDP 27900
+TCP 28910
+UDP 27900
+UDP 27901
+UDP 29910
+UDP 45000
+UDP 45010
+UDP 56000-65000
+
+
+
+==========================================================================
+Technischer Kundendienst
+==========================================================================
+
+Sollten Sie Fragen zum Spiel oder technische Probleme haben, so 
+können Sie natürlich auch telefonisch mit unserer Hotline Kontakt 
+aufnehmen und sich beraten lassen.
+
+Bevor Sie sich an den Technischen Kundendienst wenden, halten Sie 
+bitte folgende Angaben bereit und schildern Sie das auftretende 
+Problem bitte so genau wie möglich:		
+- Hersteller des Computer Systems
+- Prozessorhersteller und –geschwindigkeit
+- Größe des Arbeitsspeichers
+- Betriebssystem 
+- Hersteller und Typ der Grafik- und 3D Beschleunigerkarte
+- Hersteller und Typ der Soundkarte
+- Hersteller und Typ des CD-ROM - oder DVD-Laufwerkes
+- Hersteller und Typ des Modems
+
+
+Technik Hotline Koch Media / Deep Silver
+0900 1 807 207
+
+Preise aus dem Festnetz:
+Deutschland: 0,62 Euro/Min.
+Schweiz: 1,19 Fr./Min
+Österreich: 0,53 Euro/Min.
+
+Erreichbar:
+Mo-Fr 10-21 Uhr
+Sa+So 10-16 Uhr
+
+
+Natürlich können Sie uns auch über das Internet bzw. per E-Mail 
+erreichen: support@paraworld.com
+
+
+
+==========================================================================
+Wichtige Links
+==========================================================================
+
+Website:
+http://www.paraworld.com
+
+Forum
+http://forum.sunflowers.de
+
+Support
+http://support.sunflowers.de
+
+Treiber:
+ATI: http://www.ati.com
+NVIDIA: http://www.nvidia.com
+Matrox: http://www.matrox.com
+Creative Labs: http://www.creative.com
+Hercules: http://www.hercules.com
+DirectX: http://www.microsoft.com/directx
+
+==========================================================================
+Infos zu Patch 1.01 (im Boosterpack enthalten)
+==========================================================================
+
+- Der Schlingfallen-Crash im Kampagnen-Level 5 ist behoben.
+- Die ProxyServer-Addresse, die lokal auf Port 2222 lief, wurde aufgrund von
+  Kompatibilitätsprobleme mit Anti-Viren-Programmen geändert.
+- Epochenfortschritt ist jetzt in Replays und für den Spectator sichtbar.
+- Zugang von Einheiten zu den Bunkern wurde verbessert.
+- Tooltips für Level 2-Einheiten im Army-Controller funktionieren nach dem
+  Sortieren wieder.
+- Giftmischer führt nun die Vergiftungs-Animation durch, wenn er sich selbst
+  tötet.
+- Der Bug, das nach dem Entfernen von Toren manchmal zur Entfernung des linken
+  Mauerstücks führte, wurde behoben.
+- Das Wiederbeleben der Wüstenreiter konnte mit Hilfe alliierter Spieler
+  ausgenutzt werden; dies wurde behoben.
+- Das Problem, dass bei Infanterie-Einheiten der Wüstenreiter das Baumenü bei
+  einer Systemmeldung zuklappte, wurde korrigiert.
+- Die Berechnung der Flugbahn von Projektilen wurde korrigiert.
+- Falling Stones werden  nur dann ausgelöst, wenn die jeweilige Mauer auch
+  fertig gebaut wurde.
+- Ein Bug, bei dem es möglich war, dass produzierte Einheiten durch eine Mauer
+  laufen konnte, sofern diese direkt vor dem Ausgang platziert wurde, wurde
+   behoben.
+- Ein Bug, bei dem bestimmte Zeichen aus Quotes.txt falsch dargestellt wurden,
+  wurde behoben.
+- Einfrieren hat nun einen sichtbaren Effekt.
+- Die Rotationsgeschwindigkeit der Gebäude wurde verdoppelt.
+- Die Gatlings des Parasaurolophus und Seismosaurus visieren nun automatisch
+  Feinde an und feuern auf diese, falls kein manueller Angriffsbefehl gegeben
+  wurde.
+- Die Sterbeanimation von Tieren wird nun korrekt dargestellt.
+- Wald abholzen nach Wiederholen/laden aus einem laufendem Spiel funktioniert
+  nun wieder.
+- Jungle Faketrees wurden vergrößert und ignorieren die Sichtentfernung nicht
+  mehr.
+- Anwählen eines Titans is nun genauer.
+- Gifteffekte sind nun visuell erkennbar.
+- Charaktere in der Nähe von Gebäuden können nun per Doppelklick angewählt
+  werden.
+- Aufbaugeschwindigkeitserhöhung ist nun nicht mehr auf 10 Arbeiter begrenzt.
+- Ein Fehler wurde behoben, der dazu führte, dass die Panzerung des Allosaurus
+  verschwand, sobald "Allosaurus-Stampfer" erforscht wurde.
+- Werte der Bäume wurden korrigiert, welche bei Sammlern dazu führten, dass sie
+  kein Holz mehr abbauen konnten.
+- Der Ladebildschirm wird jetzt korrekt gelöscht, wenn die Verbindung zum
+  Server verloren geht.
+- Spectator sind nun nicht mehr in der Lage, Gruppenzuordnungen für Spieler zu
+  ändern.
+- Spectator können nicht mehr mit anderen Spielern chatten.
+- Spectator können nun ein Spiel verlassen, indem sie "Spiel aufgeben" benutzen.
+- Ein Spiel kann nicht mehr durch einen Spectator pausiert werden.
+- Eine Einheit kann nur noch von einem einzigen Schamanen wiederbelebt werden,
+  da mehrere Wiederbelebungen zur Erschaffung von "virtuellen" Einheiten
+  führten, die zwar keine Funktion hatten, aber einen Platz im Army-Controller
+  verbrauchten.
+- Gebäude können nicht mehr eingefroren werden, da dies auch das Bauen von
+  Einheiten verhinderte.
+- Die bei der Schamanen-Fähigkeit "Tarnung" benutzten Tiere können jetzt
+  individuell für jede Karte angegeben werden, da einige Karten nicht die
+  Standard-Tiere benutzten.
+- Die Tarnung eines Schamanen fliegt jetzt immer dann auf, sobald er
+  "Wiederbelebung", "Termiten" oder "Tornado" zaubert.
+- Berserker können jetzt nicht mehr durch die Stats "Defensiv", "Aggressiv"
+  und "Position halten" kontrolliert werden.
+- Fluss-Shader für Eiswüsten und Dschungelflüsse wurden hinzugefügt.
+- Der Erzdruide versucht nun nicht mehr, seinen nicht vorhandenen Finishing Move
+  durchzuführen, da dies zu fehlerhaften Animationen bei gegnerischen Einheiten
+  führten.
+- Wählt der Spieler im Multiplayer-Modus nun ein zufälliges Volk, wird in der
+  Anzeige der anderen Spieler "vordefiniertes Deck"  angezeigt.
+- Die Drachenclan-Einheit "Mörser" verursacht nur noch 15%  Schaden gegen
+  Infanterie und Tiereinheiten.
+- Stinas Rüstung gegen Tierangriffe wurde von 50 auf 75 erhöht, um somit besser
+  feindliche Tiereinheiten zu blocken.
+- Der Specialmove des Stadthalters benötigt nun 10 Sekunden länger, um sich
+  aufzuladen und verursacht nur noch in 6 statt 7 Metern Schaden, da er zuvor
+  zu viele Einheiten in zu kurzer Zeit vernichten konnte.
+- Der Jetpack-Axtkrieger-Specialmove benötigt nur noch 17 Sekunden, um sich
+  aufzuladen; Störtaktiken sind nun möglich.
+- Die Drachenclan-Einheit "Saltasaurus-Transporter" hat nun eine Schlagfrequenz
+  30 statt 35 pro Minute, da sein Schadensausstoß zu hoch war.
+- Die Wirkdauer des Dopings der Drachenclan-Einheit "Saltasaurus-Transporter"
+  wurde von 10 auf 7 Sekunden gesenkt.
+- Die Bauzeit des Wüstenreiter Tempels wurde von 30 auf 45 Sekunden erhöht.
+- Die Arbeiter verursachen generell weniger Schaden.
+- Der Rhino-Transporter hat nun eine Bauzeit von 40 statt 35 Sekunden und
+  kostet 50 Nahrung und 20 Holz mehr.
+- Trigger-Update für Einzelspieler Level 15.
+- Die Steinvorkommen auf der Karte "Herbstschlachtfeld" sind nun gleichmäßig
+  verteilt.
+- Die Steinvorkommen auf der Karte "Eisfluss" sind nun gleichmäßig verteilt.
+- Die Steinvorkommen auf der Karte "Ajuba Stadt" sind nun gleichmäßig verteilt.
+- Die Fluss-Shader wurden gefixt.
+- Alle Völker: Die Eusmilus-Reiter-Rüstung wurde von 0 auf 20 im Fernkampf
+  angehoben und von 30 auf 0 im Nahkampf gesenkt.
+- Nordvolk: Rhino-Transporte wurde von 100% auf 50% Schaden gegen Gebäude
+  gesenkt.
+- Nordvolk: Rhino-Transporter verursacht nicht mehr einen rüstungsbrechenden
+  Schaden.
+- Nordvolk: Die Lanzenträger-Fernkampfrüstung wurde von 0 auf 20 angehoben.
+- Nordvolk-Chariot: Skulls auf Level 2 von 23 auf 17 gesenkt.
+- Nordvolk: Bauzeit der Ramme von 35 auf 25 Sekunden verkürzt.
+- Nordvolk: Kennel-Eusmilus: Skulls auf 10 gesenkt.
+- Wüstenreiter: Der Brachio-Transporter wurde von 100% auf 50% Schaden gegen
+  Gebäude gesenkt.
+- Wüstenreiter: Velo-Händler-Kosten von 60 auf 50 Nahrung gesenkt.
+- Wüstenreiter: Taslow-Turm-Reichweite von 65 auf 60 gesenkt.
+- Drachen Clan: Der Salta-Transporter wurde von 100% auf  50% Schaden gegen
+  Gebäude gesenkt.
+- Drachen Clan: Gatlingrider kann nun laufen und gleichzeitig schießen
+- Drachen Clan: Gift-Falle: Skulls wurden von 30 auf 20 gesenkt.
+- Drachen Clan: Dilophosaurus auf dem Nest: Skulls von 10 auf 7 gesenkt.
+- Crash beim Umbau eines im Kampf befindlichen Transporters gefixt.
+- Icons in der Pyramide blinken wieder, wenn die Einheit angegriffen wird.
+- Transporter können wieder unabhängig von der Ladung befördert werden.
+- Die Captain-Initialisierung des Brachio-Transporters wurde gefixt, um einen
+  Crash zu vermeiden.
+- "GameSpy shared socket" an 0.0.0.0 gebunden, anstatt an die erste lokale IP.
+- Einheiten, die eine sichtbare Falle angreifen, erhalten von dieser keinen
+  Schaden mehr.
+- Nordvolk: Rhino-Transporter konnten nicht gekontert werden, daher wurde die
+  Geschwindigkeit von 3 auf 2 gesenkt.
+- Definiert man im LE ein Slot als "Blocked", kann man die Karte hochleveln
+  und nicht mehr runterleveln. 
+- Die gerade Nordland-Fluss-Plane hatte einen verschobenen Mittelpunkt und
+  wurde daher aus einer Blickrichtung zu früh ausblendet. Dies wurde korrigiert.
+- Taslow's Stufe 2 Baubonus war zu stark, daher wurde dieser abgeschwächt.
+- Man konnte auf Cold Blood eine gegnerische Mauer durch einen nicht blockenden
+  Fels umgehen, dies wurde gefixt.
+- Diverse Rechtschreibfehler wurden korrigiert.
+- Das Tauschverhältnis des Warenhauses für Skulls in Stein war fehlerhaft. Dies
+  wurde korrigiert.
+- Drachen Clan-Wasserminen explodierten nicht, wenn der Feind seine Haltung auf
+  "neutral" stellte. Dies wurde korrigiert.
+- Man kann nun keine Buttons im Menü mittels der Leertaste aufhängen.
+- Wüstenreiter: Die Termiten des Shamanen erbringen nun beim Zerstören
+  feindlicher Gebäude Skulls.
+- Nordvolk: Der Bug, dass die Mammut-Trompete dauerhaft wirkt, wurde behoben.
+- Der Bug beim Save/Load im Singleplayer, bei dem der Quest-Trigger nach dem
+  Laden nicht mehr funktionierte, wurde behoben.
+
+==========================================================================
+BoosterPack Infos
+==========================================================================
+
+Vier neue Mehrspieler Karten (Deathmatch & Domination):
+
+Spießroutenlauf (2)
+Kristallsee (2)
+Tal der Leichen (4)
+Blutcamp (4)
+
+Drei zusätzliche Einzelspieler Missionen:
+D
+es Teufels Advokat (4.1)
+Ein kalter Tag in der Hölle (4.2)
+Operation Neptune (4.3)
+
+
+Zwei neue spielbare Helden:
+Leighton
+Kleemann
+
+Zwei neue Einheiten:
+Flammenwerfer
+Untoter Axtkrieger
+
+Ein neues Gebäude:
+Skull Protector
+
+Balancingänderungen:
+
+Giftwerfer: 
+Aktion: Der Wurfschaden wurde von 20 auf 4 vermindert. Der Giftschaden 
+bleibt weiterhin bei 20!
+Begründung: Der Kombinierte Schaden (Gift und Körper) war zu hoch.
+ 
+
+Taslow Turm: 
+Aktion: Die Lebenspunkte  wurden von 6000 auf 5000 gesenkt
+Begründung: Der Taslow Turm war im Vergleich zu den anderen Türmen zu stark
+
+Um das BoosterPack zu starten, muss ParaWorld wie folgt aufgerufen werden:
+
+ParaWorld.exe -enable boosterpack1
+
+Die Desktop- und Programmgruppenverknüpfung beinhaltet diese Befehlszeile bereits.

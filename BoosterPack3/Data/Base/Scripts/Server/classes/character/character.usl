@@ -1,0 +1,3301 @@
+class CCharacter inherit CFightingObj
+
+	//========================================================================================
+	//=== START MEMBER CLASSES ===============================================================
+	//========================================================================================
+
+	class CWeaponGfx
+		export var CFourCC	m_xLink;
+		export var string	m_sGfx;
+
+		export constructor()
+		endconstructor;
+
+		export destructor()
+		enddestructor;
+
+		export proc bool IsValid()
+			return (m_xLink!="" && !m_sGfx.IsEmpty());
+		endproc;
+
+		export proc void DoKArc(ref CArc p_rxArc)
+			var string sLink=m_xLink.AsString();
+			p_rxArc << sLink;
+			m_xLink=sLink;
+			p_rxArc << m_sGfx;
+		endproc;
+	endclass;
+
+	//========================================================================================
+	//=== END MEMBER CLASSES =================================================================
+	//========================================================================================
+
+	const int			TIMER_ILLUSION_DEATH	=1244;
+
+	export var bool		m_bIntendedDive;
+
+	var int				m_iIdleTimer;
+
+	var real			m_fSeachDelay;
+	var bool			m_bTraps;
+	var bool			m_bTraces;
+
+	var real 			m_fSchwanzlaenge;		//very important measurement
+
+	var bool			m_bDoNotDefend;
+	var bool			m_bIllusion;
+
+	var real			m_fHealingValue;
+
+	var string			m_sCaste;				// caste of character ("non", "res", "nat", "tec")
+
+	var array real		m_afResInv;				// character Resource inventory 0-6 -> resources
+	var array string	m_asResTable;
+
+	var real			m_fResInvSpace;
+	var array real		m_afResInvSpace;
+
+	var string			m_sLastTask;
+
+	var string			m_sDisguisePath;
+
+	var bool			m_bSelfKill;
+
+	var bitset			m_dwOldVis;
+
+	var CGameTime		m_xIdleStartTime;
+
+	var string			m_sIdleAnim;
+	export var bool		m_bTecInFightPos;
+	var real			m_fWeaponDurationOvertime;
+	var string			m_sAnimalWeapon;
+
+	var CObjList		m_xWarcry3Entries;
+	var CObjList		m_xWarcry4Entries;
+	var CObjList		m_xWarcry5Entries;
+
+	var array CCharacter.CWeaponGfx		m_axWeaponsGfx;
+
+	export static var int  ms_iRepairNoCost;	//HACK: 2-9 == Owner0-Owner7
+
+	export proc void Save(^CUOFWriterNode p_pxWriterNode)
+		super.Save(p_pxWriterNode);
+		var CFourCC xBase="ChrS";
+		var ^CUOFWriterNode pxWalk=p_pxWriterNode^.AddSubChunk(xBase,4);
+		var ^CArc pxArc=^(pxWalk^.GetArc());
+		var int i, iC = m_afResInv.NumEntries();
+		pxArc^ << iC;
+		for(i=0)cond(i<iC)iter(i++)do
+			pxArc^ << m_afResInv[i];
+		endfor;
+		pxArc^ << m_iIdleTimer;
+		pxArc^ << m_fSeachDelay;
+		pxArc^ << m_bTraps;
+		pxArc^ << m_bTraces;
+		pxArc^ << m_fSchwanzlaenge;
+		pxArc^ << m_bDoNotDefend;
+		pxArc^ << m_fHealingValue;
+		pxArc^ << m_sLastTask;
+		pxArc^ << m_sDisguisePath;
+		pxArc^ << m_bSelfKill;
+		pxArc^ << m_dwOldVis;
+		m_xIdleStartTime.DoKArc(pxArc^);
+		pxArc^ << m_bTecInFightPos;
+		pxArc^ << m_fWeaponDurationOvertime;
+		pxArc^ << m_bSelfKill;
+		pxArc^ << m_bSelfKill;
+		m_xWarcry3Entries.DoKArc(pxArc^);
+		m_xWarcry4Entries.DoKArc(pxArc^);
+		m_xWarcry5Entries.DoKArc(pxArc^);
+
+		iC=m_axWeaponsGfx.NumEntries();
+		pxArc^ << iC;
+		for(i=0)cond(i<iC)iter(i++)do
+			m_axWeaponsGfx[i].DoKArc(pxArc^);
+		endfor;
+
+		pxArc^ << m_bIntendedDive;
+		pxArc^ << m_sAnimalWeapon;
+
+		pxArc^ << m_bIllusion;
+		pxWalk^.Close();
+	endproc;
+
+
+	export proc void Load(^CUOFReaderNode p_pxReaderNode)
+		if(p_pxReaderNode^.GetType()=="ChrS")then
+			var ^CArc pxArc=^(p_pxReaderNode^.GetArc());
+			var int iVersion=p_pxReaderNode^.GetVersion();
+			if(iVersion>=1)then
+				var int i,iC;
+				pxArc^ << iC;
+				m_afResInv=iC;
+				for(i=0)cond(i<iC)iter(i++)do
+					pxArc^ << m_afResInv[i];
+				endfor;
+				pxArc^ << m_iIdleTimer;
+				pxArc^ << m_fSeachDelay;
+				pxArc^ << m_bTraps;
+				pxArc^ << m_bTraces;
+				pxArc^ << m_fSchwanzlaenge;
+				pxArc^ << m_bDoNotDefend;
+				pxArc^ << m_fHealingValue;
+				pxArc^ << m_sLastTask;
+				pxArc^ << m_sDisguisePath;
+				pxArc^ << m_bSelfKill;
+				pxArc^ << m_dwOldVis;
+				m_xIdleStartTime.DoKArc(pxArc^);
+				pxArc^ << m_bTecInFightPos;
+				pxArc^ << m_fWeaponDurationOvertime;
+				pxArc^ << m_bSelfKill;
+				pxArc^ << m_bSelfKill;
+				m_xWarcry3Entries.DoKArc(pxArc^);
+				m_xWarcry4Entries.DoKArc(pxArc^);
+				m_xWarcry5Entries.DoKArc(pxArc^);
+
+				pxArc^ << iC;
+				for(i=0)cond(i<iC)iter(i++)do
+					var ^CCharacter.CWeaponGfx pxGfx=^(m_axWeaponsGfx.NewEntryRef());
+					pxGfx^.DoKArc(pxArc^);
+				endfor;
+			endif;
+			if(iVersion>=2)then
+				pxArc^ << m_bIntendedDive;
+			endif;
+			if(iVersion>=3)then
+				pxArc^ << m_sAnimalWeapon;
+			endif;
+			if(iVersion>=4)then
+				pxArc^ << m_bIllusion;
+			endif;
+		elseif(p_pxReaderNode^.GetType()=="CReI")then	//obsolete
+			var ^CArc pxArc=^(p_pxReaderNode^.GetArc());
+			var int i,iC;
+			pxArc^ << iC;
+			m_afResInv=iC;
+			for(i=0)cond(i<iC)iter(i++)do
+				pxArc^ << m_afResInv[i];
+			endfor;
+		elseif(p_pxReaderNode^.GetType()=="CHri")then	//obsolete
+		else
+			super.Load(p_pxReaderNode);
+		endif;
+	endproc;
+
+	export proc void OnPostLoad()
+		super.OnPostLoad();
+		if(GetCurTaskName()=="Fight" && IsOnOpenTransporter() && GetFSM()!=null)then
+			GetFSM()^.Enable(true);
+		endif;
+	endproc;
+
+	export constructor()
+   		m_fHealingValue = 1.0;
+
+		m_bTecInFightPos = false;
+
+		SetDefaultSpeed(2);
+		SetMaxSpeed(2);
+
+		var int iIndex;
+
+		iIndex = AddAutoSpecialMove("Actions/Aje/Moves/CHTR/Matrix");
+		m_axAutoSpecialMoves[iIndex].m_xOnCheckConditions = CheckMatrix;
+		m_axAutoSpecialMoves[iIndex].m_xOnStartAction = StartMatrix;
+
+		iIndex = AddAutoSpecialMove("Actions/Hu/Moves/CHTR/Quake");
+		m_axAutoSpecialMoves[iIndex].m_xOnCheckConditions = CheckQuake;
+		m_axAutoSpecialMoves[iIndex].m_xOnStartAction = StartQuake;
+
+		iIndex = AddAutoSpecialMove("Actions/Hu/Moves/CHTR/Roar");
+		m_axAutoSpecialMoves[iIndex].m_xOnCheckConditions = CheckRoar;
+		m_axAutoSpecialMoves[iIndex].m_xOnStartAction = StartRoar;
+
+		iIndex = AddAutoSpecialMove("Actions/Aje/Moves/CHTR/Twister");
+		m_axAutoSpecialMoves[iIndex].m_xOnCheckConditions = CheckTwister;
+		m_axAutoSpecialMoves[iIndex].m_xOnStartAction = StartTwister;
+
+		iIndex = AddAutoSpecialMove("Actions/Hu/Moves/CHTR/Kick");
+		m_axAutoSpecialMoves[iIndex].m_xOnCheckConditions = CheckKick;
+		m_axAutoSpecialMoves[iIndex].m_xOnStartAction = StartKick;
+
+		iIndex = AddAutoSpecialMove("Actions/Ninigi/Moves/CHTR/burst_arrow");
+		m_axAutoSpecialMoves[iIndex].m_xOnCheckConditions = CheckBurstArrow;
+		m_axAutoSpecialMoves[iIndex].m_xOnStartAction = StartBurstArrow;
+
+		iIndex = AddAutoSpecialMove("Actions/Ninigi/Moves/CHTR/multishot");
+		m_axAutoSpecialMoves[iIndex].m_xOnCheckConditions = CheckMultiArrow;
+		m_axAutoSpecialMoves[iIndex].m_xOnStartAction = StartMultiArrow;
+	endconstructor;
+
+	proc bool CheckMultiArrow(string p_sTTPath)
+		if(GetClassName()!="ninigi_archer")then return false; endif;
+		if(!CRequirementsMgr.Get().CheckInvention(this, GetOwner(), "multishot", GetTribeName()))then return false; endif;
+		if(!CheckSpecialActionTimer(p_sTTPath))then return false; endif;
+		return true;
+	endproc;
+
+	proc void StartMultiArrow(string p_sTTPath)
+		AddSpecialActionTimer(p_sTTPath);
+		MemorizeCurrentFightState(CObjHndl.Invalid(),false,false);
+
+    	var ^CShootMultiShot pxTask=cast<CShootMultiShot>(CSrvWrap.GetUSLFactoryMgr().CreateState(GetFSM(),"MultiS"));
+
+    	pxTask^.Init(GetHandle(), m_xCurEnemy);
+    	pxTask^.SetUserCommand(true);
+    	AddTask(pxTask,false);
+    	return;
+	endproc;
+
+	proc bool CheckBurstArrow(string p_sTTPath)
+		if(GetClassName()!="ninigi_archer")then return false; endif;
+		if(!CRequirementsMgr.Get().CheckInvention(this, GetOwner(), "burst_arrow", GetTribeName()))then return false; endif;
+		if(!CheckSpecialActionTimer(p_sTTPath))then return false; endif;
+
+		var ^CGameObj pxObj = m_xCurEnemy.GetObj();
+		if(pxObj==null)then return false; endif;
+
+		var ^CObjList pxEnemies=CSrvWrap.GetObjMgr()^.GetOwnerEnemyList(GetOwner());
+		if(pxEnemies==null)then return false; endif;
+		var CObjList xList;
+		pxEnemies^.CopySorted(xList,pxObj^.GetPos(),pxObj^.GetCollisionRadius()+5.0);
+		if(xList.NumEntries()<3)then return false; endif;
+		return true;
+	endproc;
+
+	proc void StartBurstArrow(string p_sTTPath)
+		//AddSpecialActionTimer(p_sTTPath);
+		MemorizeCurrentFightState(CObjHndl.Invalid(),false,false);
+
+    	var ^CShootBurstArrow pxTask=cast<CShootBurstArrow>(CSrvWrap.GetUSLFactoryMgr().CreateState(GetFSM(),"BurstA"));
+    	if(pxTask==null)then
+			//L KLog.LogWarn("USL","pxTask == null");
+			return;
+    	endif;
+
+    	pxTask^.Init(GetHandle(), m_xCurEnemy, p_sTTPath);
+    	pxTask^.SetUserCommand(true);
+    	AddTask(pxTask,false);
+    	return;
+	endproc;
+
+	proc bool CheckKick(string p_sTTPath)
+		if(GetClassName()!="hu_warrior")then return false; endif;
+		if(!CheckSpecialActionTimer(p_sTTPath))then return false; endif;
+		if(!CRequirementsMgr.Get().CheckInvention(this, GetOwner(), "kick", GetTribeName()))then return false; endif;
+		if(!m_xCurEnemy.IsValid())then return false; endif;
+		if(GetAngleToR(m_xCurEnemy.GetObj())>0.39)then return false; endif;
+		var ^CFightingObj pxEnemy=cast<CFightingObj>(m_xCurEnemy.GetObj());
+		if(pxEnemy==null)then return false; endif;
+		return IsInCombatRange(pxEnemy,false);
+	endproc;
+
+	proc void StartKick(string p_sTTPath)
+		AddSpecialActionTimer(p_sTTPath);
+		MemorizeCurrentFightState(CObjHndl.Invalid(),false,false);
+
+    	var ^CResKick pxTask=cast<CResKick>(CSrvWrap.GetUSLFactoryMgr().CreateState(GetFSM(),"ResKick"));
+
+    	pxTask^.Init(GetHandle(), m_xCurEnemy);
+    	pxTask^.SetUserCommand(true);
+    	AddTask(pxTask,false);
+    	return;
+	endproc;
+
+	proc bool CheckTwister(string p_sTTPath)
+		if(GetClassName()!="aje_spearman")then return false; endif;
+		if(!CheckSpecialActionTimer(p_sTTPath))then return false; endif;
+		if(!CRequirementsMgr.Get().CheckInvention(this, GetOwner(), "twister", GetTribeName()))then return false; endif;
+		var ^CObjList pxEnemies=CSrvWrap.GetObjMgr()^.GetOwnerEnemyList(GetOwner());
+		if(pxEnemies==null)then return false; endif;
+		var CObjList xList; pxEnemies^.CopySorted(xList,GetPos(),GetCollisionRadius()+4.0);
+		if(xList.NumEntries()<3)then return false; endif;
+		return true;
+	endproc;
+
+	proc void StartTwister(string p_sTTPath)
+		AddSpecialActionTimer(p_sTTPath);
+		MemorizeCurrentFightState(CObjHndl.Invalid(),false,false);
+
+    	var ^CCharacterBash pxTask=cast<CCharacterBash>(CSrvWrap.GetUSLFactoryMgr().CreateState(GetFSM(),"ChtrBash"));
+
+    	pxTask^.Init(GetHandle(),"nat_sm_twister",GetCollisionRadius()+4.0, 0.6, 0.2);
+    	pxTask^.SetUserCommand(true);
+    	AddTask(pxTask,false);
+    	return;
+	endproc;
+
+	proc bool CheckQuake(string p_sTTPath)
+		if(GetClassName()!="hu_warrior")then return false; endif;
+		if(!CheckSpecialActionTimer(p_sTTPath))then return false; endif;
+		if(!CRequirementsMgr.Get().CheckInvention(this, GetOwner(), "quake", GetTribeName()))then return false; endif;
+		var ^CObjList pxEnemies=CSrvWrap.GetObjMgr()^.GetOwnerEnemyList(GetOwner());
+		if(pxEnemies==null)then return false; endif;
+		var CObjList xList; pxEnemies^.CopySorted(xList,GetPos(),GetCollisionRadius()+5.0);
+		if(xList.NumEntries()<3)then return false; endif;
+		return true;
+	endproc;
+
+	proc void StartQuake(string p_sTTPath)
+		AddSpecialActionTimer(p_sTTPath);
+		MemorizeCurrentFightState(CObjHndl.Invalid(),false,false);
+
+    	var ^CCharacterBash pxTask=cast<CCharacterBash>(CSrvWrap.GetUSLFactoryMgr().CreateState(GetFSM(),"ChtrBash"));
+
+    	pxTask^.Init(GetHandle(),"res_sm_jump", GetCollisionRadius()+5.0, 1.2, 0.1);
+    	pxTask^.SetUserCommand(true);
+    	AddTask(pxTask,false);
+    	return;
+	endproc;
+
+	export proc void BoardTransport(^CTransportObj p_pxTransport, vec3 p_vPos, bool p_bUserCommand, string p_sParams)
+		var ^CBrachiosaurus pxB = cast<CBrachiosaurus>(p_pxTransport);
+		if(pxB!=null && pxB^.IsDocked()) then
+			StartBrachioClimb(pxB^.GetHandle(), true ,false);
+		else
+			super.BoardTransport(p_pxTransport, p_vPos, p_bUserCommand, p_sParams);
+		endif;
+	endproc;
+
+	proc bool CheckMatrix(string p_sTTPath)
+		if(GetClassName()!="aje_spearman")then return false; endif;
+		if(!CheckSpecialActionTimer(p_sTTPath))then return false; endif;
+		if(!CRequirementsMgr.Get().CheckInvention(this, GetOwner(), "matrix", GetTribeName()))then return false; endif;
+		var ^CObjList pxEnemies=CSrvWrap.GetObjMgr()^.GetOwnerEnemyList(GetOwner());
+		if(pxEnemies==null)then return false; endif;
+		var CObjList xList; pxEnemies^.CopySorted(xList,GetPos(),GetCollisionRadius()+6.0);
+		if(xList.NumEntries()<3)then return false; endif;
+		return true;
+	endproc;
+
+	proc void StartMatrix(string p_sTTPath)
+		AddSpecialActionTimer(p_sTTPath);
+		MemorizeCurrentFightState(CObjHndl.Invalid(),false,false);
+
+    	var ^CCharacterBash pxTask=cast<CCharacterBash>(CSrvWrap.GetUSLFactoryMgr().CreateState(GetFSM(),"ChtrBash"));
+
+    	pxTask^.Init(GetHandle(),"nat_sm_matrix",GetCollisionRadius()+6.0, 1.0, 0.6);
+    	pxTask^.SetUserCommand(true);
+    	AddTask(pxTask,false);
+    	return;
+	endproc;
+
+	proc bool StartDestroyVHCL(string p_sTTPath, ^CGameObj p_pxObject)
+		if (GetClassName()!="tesla_s0") then return false; endif;
+		if (p_pxObject!=null && p_pxObject^.GetType()=="VHCL") then
+			MemorizeCurrentFightState(p_pxObject^.GetHandle(),true,false);
+			//AddSpecialActionTimer(p_sTTPath);
+			var ^CDestroyVHCL pxT = cast<CDestroyVHCL>(CSrvWrap.GetUSLFactoryMgr().CreateState(GetFSM(),"DstrVhcl"));
+			pxT^.Init(GetHandle(), p_pxObject^.GetHandle(), p_sTTPath);
+			pxT^.SetUserCommand(true);
+			AddTask(pxT,false);
+			return true;
+		endif;
+		return false;
+	endproc;
+
+	proc bool StartHealANML(string p_sTTPath)
+		if (GetClassName()!="hermit_s0") then return(false); endif;
+		if (!CheckSpecialActionTimer(p_sTTPath)) then return false; endif;
+		var ^CObjList pxEnemies=CSrvWrap.GetObjMgr()^.GetOwnerEnemyList(GetOwner());
+		MemorizeCurrentFightState(CObjHndl.Invalid(),false,false);
+		var ^CHealANML pxT = cast<CHealANML>(CSrvWrap.GetUSLFactoryMgr().CreateState(GetFSM(),"HealAnml"));
+		pxT^.Init(GetHandle(), p_sTTPath);
+		pxT^.SetUserCommand(true);
+		AddTask(pxT,false);
+		return true;
+	endproc;
+
+	proc bool CheckRoar(string p_sTTPath)
+		if(GetClassName()!="hu_warrior")then return false; endif;
+		if(!CheckSpecialActionTimer(p_sTTPath))then return false; endif;
+		if(!CRequirementsMgr.Get().CheckInvention(this, GetOwner(), "roar", GetTribeName()))then return false; endif;
+		var ^CObjList pxEnemies=CSrvWrap.GetObjMgr()^.GetOwnerEnemyList(GetOwner());
+		if(pxEnemies==null)then return false; endif;
+		var CObjList xList; pxEnemies^.CopySorted(xList,GetPos(),GetCollisionRadius()+4.0);
+		if(xList.NumEntries()<3)then return false; endif;
+		return true;
+	endproc;
+
+	proc void StartRoar(string p_sTTPath)
+		AddSpecialActionTimer(p_sTTPath);
+		MemorizeCurrentFightState(CObjHndl.Invalid(),false,false);
+
+    	var ^CCharacterBash pxTask=cast<CCharacterBash>(CSrvWrap.GetUSLFactoryMgr().CreateState(GetFSM(),"ChtrBash"));
+
+    	pxTask^.Init(GetHandle(),"res_sm_jump", GetCollisionRadius()+4.0, 1.2, 0.1);
+    	pxTask^.SetUserCommand(true);
+    	AddTask(pxTask,false);
+    	return;
+	endproc;
+
+	export destructor()
+	enddestructor;
+
+	export proc real StartLadderClimb(CObjHndl p_xLadder,bool p_bClimbUp,bool p_bJumpOff)
+		var ^CClimbLadder pxCL=cast<CClimbLadder>(CSrvWrap.GetUSLFactoryMgr().CreateState(GetFSM(),"ClmbLddr"));
+		if(pxCL==null)then return -1.0f; endif;
+		pxCL^.Init(GetHandle(),p_xLadder,p_bClimbUp,p_bJumpOff);
+		m_pxTaskMgr^.SetSubTask(pxCL);
+		return 1.0f;
+	endproc;
+
+	export proc real StartBrachioClimb(CObjHndl p_xBrachio,bool p_bClimbUp,bool p_bJumpOff)
+		var ^CClimbBrachio pxCB=cast<CClimbBrachio>(CSrvWrap.GetUSLFactoryMgr().CreateState(GetFSM(),"ClmbBrch"));
+		if(pxCB==null)then return -1.0f; endif;
+		pxCB^.Init(GetHandle(),p_xBrachio,p_bClimbUp,p_bJumpOff);
+		m_pxTaskMgr^.SetSubTask(pxCB);
+		return 1.0f;
+	endproc;
+
+	export proc real StartSiegeClimb(CObjHndl p_xSiege)
+		var ^CClimbSiegeTower pxCB=cast<CClimbSiegeTower>(CSrvWrap.GetUSLFactoryMgr().CreateState(GetFSM(),"ClmbSiTo"));
+		if(pxCB==null)then return -1.0f; endif;
+		pxCB^.Init(GetHandle(),p_xSiege);
+		m_pxTaskMgr^.SetSubTask(pxCB);
+		return 1.0f;
+	endproc;
+
+	export proc void StartSiegeLeave(CObjHndl p_xSiege)
+		var ^CLeaveSiegeTower pxCB=cast<CLeaveSiegeTower>(CSrvWrap.GetUSLFactoryMgr().CreateState(GetFSM(),"LeaveSiT"));
+		if(pxCB==null)then return; endif;
+		pxCB^.Init(GetHandle(),p_xSiege);
+		m_pxTaskMgr^.SetTask(pxCB);
+		return;
+	endproc;
+
+	proc bool DoStartSiegeClimb(^CGameObj p_pxSiege)
+		if(cast<CLadder>(p_pxSiege)!=null) then
+			return StartLadderClimb(p_pxSiege^.GetHandle(),true,true)>0.0;
+		elseif(cast<CBrachiosaurus>(p_pxSiege)!=null) then
+			return StartBrachioClimb(p_pxSiege^.GetHandle(),true,true)>0.0;
+		elseif(cast<CSiegeTower>(p_pxSiege)!=null) then
+			return StartSiegeClimb(p_pxSiege^.GetHandle())>0.0;
+		endif;
+		return false;
+	endproc;
+
+	export proc int GetRepairNoCost()
+		return ms_iRepairNoCost;
+	endproc;
+
+	export proc void MakeIllusion()
+		DeleteTimer(TIMER_ILLUSION_DEATH);
+		CreateTimer(TIMER_ILLUSION_DEATH,CGameTimeSpan.OneSecond()*60.0, false);
+		RemoveUnit();
+		var ^CAttribs pxAttr=GetAttribs();
+		if(pxAttr!=null)then
+			pxAttr^.SetValue("unit_count",false);
+			pxAttr^.SetValue("illusion",true);
+		endif;
+		m_bIllusion=true;
+	endproc;
+
+	export proc bool SetLevel(int p_iLevel)
+		if(m_bIllusion)then
+			return false;
+		endif;
+		return super.SetLevel(p_iLevel);
+	endproc;
+
+	export proc bool DoesCountInUnitLimit()
+		return !m_bIllusion;
+	endproc;
+
+	export proc real GetHealingAmount(^CFightingObj p_pxTarget)
+		if(m_bIllusion)then
+			return 0.0;
+		endif;
+		return super.GetHealingAmount(p_pxTarget);
+	endproc;
+
+	// starts the board task
+	export proc CFourCC GetProjectileLink()
+		var CFourCC xL="HndR";
+		if(GetClassName()=="ninigi_ninja")then
+			xL="HndL";
+		endif;
+		return xL;
+	endproc;
+
+	export proc vec3 GetProjectileStartPos()
+		var vec3 vPos;
+		var CFourCC xLink = "Proj";
+		if(!GetLinkPosWorld(xLink, vPos))then
+			vPos = GetPos();
+			vPos.SetZ(vPos.GetZ()+GetSize().GetZ()*0.75);
+		endif;
+		return vPos;
+	endproc;
+
+	export proc void EnableAjeCamouflage(string p_sTTPath)
+		if (GetClassName()!="aje_shaman") then return; endif;
+		if (!CheckSpecialActionTimer(p_sTTPath)) then return; endif;
+		SetEffectFlag(CFightingObj.EFFECT_AJE_CAMOUFLAGE, true);
+	endproc;
+
+	export proc void SetFeignDeath(bool p_bDeath)
+		if (m_bFeignDeath == p_bDeath) then return; endif;
+		m_bFeignDeath = p_bDeath;
+		if (m_bFeignDeath) then
+			m_dwOldVis = GetVisibleMask();
+			SetVisibleMask(0b);
+		else
+			SetVisibleMask(m_dwOldVis);
+		endif;
+	endproc;
+
+	export proc string GetFirstStrikeAnim()
+		var string sFSAnim="first_strike_0";
+		if(HasAnim(sFSAnim)) then return sFSAnim; endif;
+		return "";
+	endproc;
+
+	proc void OnActionStart()
+		//L CSrvWrap.LogInfo("Character","Action start " + GetName());
+		GetFSM()^.Enable(false);
+	endproc;
+
+
+	export proc void OnActionEnd(bool p_bBroken)
+		super.OnActionEnd(p_bBroken);
+
+		if(m_bRotateSLEAction)then
+			m_bRotateSLEAction = false;
+			return;
+		endif;
+
+		if (!IsDead() && m_fHitpoints>0.0f) then
+			var bool bSetIdleAnim=true;
+			var ^CTask pxCurTask=m_pxTaskMgr^.GetCurTask();
+			if(pxCurTask!=null) then
+				bSetIdleAnim=pxCurTask^.OnActionEnd(p_bBroken);
+			endif;
+			if(bSetIdleAnim) then
+				AnnounceState("idle");
+				var ^CTransportObj pxObj = cast<CTransportObj>(m_xTransportObj.GetObj());
+				if(pxObj!=null)then
+					var string sA = pxObj^.GetPassengerLoopAnim();
+					if (HasAnim(sA)) then
+						SetAnim(sA, 3);
+					endif;
+				else
+					//new walk will be invoked immediately -> don't break current anim -> new walk anim can be connected smoothly
+					if(!IsGroupWalkPending()) then
+						if(HasAnim(m_sIdleAnim)) then
+							SetAnim(m_sIdleAnim, 3);
+						endif;
+					endif;
+				endif;
+			endif;
+		endif;
+	endproc;
+
+	export proc void OnInit(bool p_bLoad)
+		//L CSrvWrap.LogSpam("Character","Character.OnInit("+p_bLoad.ToString()+")");
+		super.OnInit(p_bLoad);
+		SetCanWalk(true);
+		RegisterFlockingBoid();
+
+        if(!p_bLoad) then
+    		SetType("CHTR");
+         	SetSelectable(true);
+        	SetHitable(true);
+			InitAttribs();
+        	if(CanDisguise())then
+				SetAggressionState(1);
+				AddCamouflageEffect("disg");
+			endif;
+			if(GetClassName().Find("worker")>=0) then
+				SetAggressionState(1);
+			else
+				SetAggressionState(2);
+			endif;
+			if(GetClassName()=="aje_rammer" || GetClassName()=="ninigi_mortar")then
+				SetAttackType(1);
+			endif;
+    	endif;
+    	UpdateAttribs(p_bLoad);
+
+		AddUnit();
+
+       	//resource inventory
+       	m_afResInv=7;
+
+		var ^CFSM pxFSM=GetFSM();
+
+
+       	//item inventory -> all levels can now have one item
+       	if(GetInventory()==null) then
+       		InitInventory(1);
+       	endif;
+
+		OnTechTreeChange();
+
+        if(!p_bLoad)then
+			StartTT();
+			SetCanFightAttrib(true);
+		endif;
+
+		SetCanUseSiege(true);
+
+//		if(GetType()=="CHTR")then
+//			// variables for statistics
+//			var ^CLevel pxLevel=CSrvWrap.GetCurLevel();
+//			var ^CStatisticMgr pxStatisticMgr=^(pxLevel^.GetStatisticMgr());
+//			var CGameTime xTime=CTimeMgr.Get().GetTime();
+//
+//			var string sCN=GetClassName();
+//			KLog.LogWarn("StatisticScreen","sCN"+sCN+" Owner:"+GetOwner().ToString());
+//			CSrvWrap.GetGameLogger().Log("UnitCreate",GetOwner().ToString(),sCN);
+//			if(sCN=="hu_worker"||sCN=="aje_worker"||sCN=="ninigi_worker"||sCN=="seas_worker")then
+//				pxStatisticMgr^.AddSample( CStatisticSample.Worker.ToInt(), GetOwner(), 1 );
+//			endif;
+//		endif;
+		//used for healer staffs
+		SetRndInvMaskSingleFlagInv(VIS_FLAG_CHTR_ACTIVATED,false);
+	endproc;
+
+	export proc void UpdateAttribs(bool p_bLoad)
+		super.UpdateAttribs(p_bLoad);
+		var ^CAttribs pxAttribs=GetAttribs();
+		if(pxAttribs==null)then return; endif;
+		if(!p_bLoad)then
+			pxAttribs^.SetValue("caste",m_sCaste);
+			pxAttribs^.SetValue("level",m_iLevel);
+		else
+			m_sCaste=pxAttribs^.GetValue("caste");
+			m_iLevel = pxAttribs^.GetValueInt("level");
+		endif;
+	endproc;
+
+	proc void InitResourceInventory()
+		m_asResTable = 0;
+		var string sTribe=GetPlayerTribeName();
+		if(sTribe.IsEmpty())then return; endif;
+		var int i,iC = m_xTechTree.NumSubs("Resources/"+sTribe);
+		for(i=0)cond(i<iC)iter(i++)do
+			m_asResTable.AddEntry(m_xTechTree.GetValueS("Resources/"+sTribe+"/"+i.ToString(),""));
+		endfor;
+	endproc;
+
+	export proc real OnGetFormationInfoArmor()
+		return (GetLevel().ToReal()/100.0) * GetProtection();
+	endproc;
+
+	/*?
+		?item SetCaste(string)
+		?desc set caste of character
+		?param string new caste
+		?return true if changed
+	?*/
+	export proc bool SetCaste(string p_sCaste)
+		if((p_sCaste!="non")&&(p_sCaste!="res")&&(p_sCaste!="nat")&&(p_sCaste!="tec"))then return false; endif;
+		if(m_sCaste=="tec")then
+			SetFormationPriorityFront2Back(-0.5);
+		elseif(m_sCaste=="nat")then
+			SetFormationPriorityFront2Back(0.0);
+		elseif(m_sCaste=="res")then
+			SetFormationPriorityFront2Back(0.5);
+		endif;
+		m_sCaste=p_sCaste;
+		GetAttribs()^.SetValue("caste",m_sCaste);
+		return true;
+	endproc;
+
+	export proc string GetCaste()
+		return(m_sCaste);
+	endproc;
+
+	export proc void SetEntrenched(int p_iEntrenched)
+
+		if(m_iEntrenchState!=p_iEntrenched)then
+
+			m_iEntrenchState = p_iEntrenched;
+
+			var ^CTechTreeDef pxDef = GetTechTreeDef();
+			if(pxDef!=null)then
+
+				//needed for AI
+				var ^CAttribs pxAttr = GetAttribs();
+				if(pxAttr!=null)then
+					pxAttr^.SetValue("active_entrench",m_iEntrenchState);
+				endif;
+
+				if(m_iEntrenchState==1)then
+					AddCamouflageEffect("entr");
+					SetDynamicBBox(true);
+					WaitAction(9999999.0f);
+					SetDisableShadowCast(true);
+				else
+					SetDynamicBBox(false);
+					RemoveCamouflageEffect("entr");
+					SetDisableShadowCast(false);
+				endif;
+			endif;
+
+		endif;
+	endproc;
+
+	export proc void SetThreatTask(CObjHndl p_xHndl)
+		if(IsOnOpenTransporter())then
+			return;
+		endif;
+		super.SetThreatTask(p_xHndl);
+	endproc;
+
+	export proc string GetThreatAnim()
+		return "jans_anim_"+(Random.GetInt()%3).ToString();
+	endproc;
+
+	export proc int GetEntrenched()
+		return m_iEntrenchState;
+	endproc;
+
+	export proc void HandleHealing()
+	endproc;
+
+	export proc void ExamineFlags()
+		if(IsMarkedForDelete())then return; endif;
+		var ^CFightingObj.CSpecialAbility pxSA = m_xAbilities.GetAbility("heal");
+		if(pxSA!=null) then
+			m_fHealingValue = m_xTechTree.GetValueR("Objects/"+GetPlayerTribeName()+"/InventObjects/Healing/value",1.0);
+		endif;
+
+		if(GetClassName()=="hu_warrior")then
+			//fx_defensive_mode
+		endif;
+
+		if(GetClassName()=="hu_warrior" && m_xTechTree.GetValueI("Objects/"+GetTribeName()+"/InventObjects/warcry/invented",0)!=0)then
+
+			m_xSink.m_xOnObjAdd = OnObjAddWarcry;
+			m_xSink.m_xOnObjRem = OnObjRemWarcry;
+
+			if(HasPersonalRegion())then
+				DeletePersonalRegion();
+			endif;
+
+			var real fRadius;
+			if(GetLevel()==2)then
+				fRadius = 10.0;
+			elseif(GetLevel()==3)then
+				fRadius = 15.0;
+			elseif(GetLevel()==4)then
+				fRadius = 20.0;
+			endif;
+
+			var vec3 vD; vD.SetXYZ(fRadius, fRadius, 0.0);
+			CreatePersonalRegion("Warrior_Warcry_"+GetName()+"_"+Random.GetInt().ToString(), vD, 010b);
+			if(fRadius>0.0)then
+				AddRangedBuff("owner_more_damage");
+			else
+				RemoveRangedBuff("owner_more_damage");
+			endif;
+		endif;
+
+
+		if(GetClassName()=="mayor_s0" || (GetClassName()=="aje_warrior" && m_xTechTree.GetValueI("Objects/"+GetTribeName()+"/InventObjects/warpaint/invented",0)!=0))then
+
+
+			m_xSink.m_xOnObjAdd = OnObjAddWarpaint;
+			m_xSink.m_xOnObjRem = OnObjRemWarpaint;
+
+			if(HasPersonalRegion())then
+				DeletePersonalRegion();
+			endif;
+
+			var real fRadius;
+			if(GetClassName()=="mayor_s0" && GetLevel()>=1)then
+				fRadius = 20.0;
+			elseif(GetLevel()==2)then
+				fRadius = 10.0;
+			elseif(GetLevel()==3)then
+				fRadius = 15.0;
+			elseif(GetLevel()==4)then
+				fRadius = 20.0;
+			endif;
+
+			var vec3 vD; vD.SetXYZ(fRadius, fRadius, 0.0);
+			CreatePersonalRegion("Warrior_Warpaint_"+GetName()+"_"+Random.GetInt().ToString(), vD, 010b);
+			if(fRadius>0.0)then
+				AddRangedBuff("owner_less_damage");
+			else
+				RemoveRangedBuff("owner_less_damage");
+			endif;
+		endif;
+
+		super.ExamineFlags();
+
+	endproc;
+
+	proc bool OnObjAddWarcry(CObjHndl p_xHndl)
+		if(m_xRegionObjects.FindEntry(p_xHndl)!=-1)then
+			OnObjRemWarcry(p_xHndl);
+		endif;
+		var ^CFightingObj pxO = cast<CFightingObj>(p_xHndl.GetObj());
+		if(pxO==null)then return false; endif;
+		if(pxO^.GetType()=="BLDG")then return false; endif;
+		if(!CSrvWrap.GetDiplomacyMgr().GetIsFriend(GetOwner(), pxO^.GetOwner()))then return false; endif;
+
+		if (!(p_xHndl==GetHandle())) then
+			var bitset dwEffect;
+			if(GetLevel()==2)then
+				m_xWarcry3Entries.AddEntry(p_xHndl);
+				dwEffect = EFFECT_CHTR_WARCRY_3;
+			elseif(GetLevel()==3)then
+				m_xWarcry4Entries.AddEntry(p_xHndl);
+				dwEffect = EFFECT_CHTR_WARCRY_4;
+			elseif(GetLevel()==4)then
+				m_xWarcry5Entries.AddEntry(p_xHndl);
+				dwEffect = EFFECT_CHTR_WARCRY_5;
+			endif;
+			pxO^.SetEffectFlag(dwEffect, true);
+			m_xRegionObjects.AddEntry(p_xHndl);
+		endif;
+		return true;
+	endproc;
+
+	proc bool OnObjRemWarcry(CObjHndl p_xHndl)
+		if(m_xRegionObjects.FindEntry(p_xHndl)!=-1)then
+			var ^CFightingObj pxO = cast<CFightingObj>(p_xHndl.GetObj());
+			if (pxO!=null) then
+				var bitset dwEffect;
+				if(m_xWarcry3Entries.FindEntry(p_xHndl)!=-1)then
+					dwEffect = EFFECT_CHTR_WARCRY_3;
+				elseif(m_xWarcry4Entries.FindEntry(p_xHndl)!=-1)then
+					dwEffect = EFFECT_CHTR_WARCRY_4;
+				elseif(m_xWarcry5Entries.FindEntry(p_xHndl)!=-1)then
+					dwEffect = EFFECT_CHTR_WARCRY_5;
+				endif;
+				pxO^.SetEffectFlag(dwEffect, false);
+			endif;
+		endif;
+		m_xRegionObjects.RemEntry(p_xHndl);
+		m_xWarcry3Entries.RemEntry(p_xHndl);
+		m_xWarcry4Entries.RemEntry(p_xHndl);
+		m_xWarcry5Entries.RemEntry(p_xHndl);
+		return true;
+	endproc;
+
+	proc bool OnObjAddWarpaint(CObjHndl p_xHndl)
+		if(m_xRegionObjects.FindEntry(p_xHndl)!=-1)then
+			OnObjRemWarpaint(p_xHndl);
+		endif;
+		var ^CFightingObj pxO = cast<CFightingObj>(p_xHndl.GetObj());
+		if(pxO==null)then return false; endif;
+		if(pxO^.GetType()=="BLDG")then return false; endif;
+		if(!CSrvWrap.GetDiplomacyMgr().GetIsEnemy(GetOwner(), pxO^.GetOwner()))then return false; endif;
+
+		if (!(p_xHndl==GetHandle())) then
+			var bitset dwEffect;
+			if(GetClassName()=="mayor_s0" && GetLevel()>=1)then
+				m_xWarcry5Entries.AddEntry(p_xHndl);
+				dwEffect = EFFECT_AJE_WARPAINT_5;
+			elseif(GetLevel()==2)then
+				m_xWarcry3Entries.AddEntry(p_xHndl);
+				dwEffect = EFFECT_AJE_WARPAINT_3;
+			elseif(GetLevel()==3)then
+				m_xWarcry4Entries.AddEntry(p_xHndl);
+				dwEffect = EFFECT_AJE_WARPAINT_4;
+			elseif(GetLevel()==4)then
+				m_xWarcry5Entries.AddEntry(p_xHndl);
+				dwEffect = EFFECT_AJE_WARPAINT_5;
+			endif;
+			pxO^.SetEffectFlag(dwEffect, true);
+			m_xRegionObjects.AddEntry(p_xHndl);
+		endif;
+		return true;
+	endproc;
+
+	proc bool OnObjRemWarpaint(CObjHndl p_xHndl)
+		if(m_xRegionObjects.FindEntry(p_xHndl)!=-1)then
+			var ^CFightingObj pxO = cast<CFightingObj>(p_xHndl.GetObj());
+			if (pxO!=null) then
+				var bitset dwEffect;
+				if(m_xWarcry3Entries.FindEntry(p_xHndl)!=-1)then
+					dwEffect = EFFECT_AJE_WARPAINT_3;
+				elseif(m_xWarcry4Entries.FindEntry(p_xHndl)!=-1)then
+					dwEffect = EFFECT_AJE_WARPAINT_4;
+				elseif(m_xWarcry5Entries.FindEntry(p_xHndl)!=-1)then
+					dwEffect = EFFECT_AJE_WARPAINT_5;
+				endif;
+				pxO^.SetEffectFlag(dwEffect, false);
+			endif;
+		endif;
+		m_xRegionObjects.RemEntry(p_xHndl);
+		m_xWarcry3Entries.RemEntry(p_xHndl);
+		m_xWarcry4Entries.RemEntry(p_xHndl);
+		m_xWarcry5Entries.RemEntry(p_xHndl);
+		return true;
+	endproc;
+
+
+	proc bool CompareCaste(string p_sCastes)
+		return (p_sCastes.Find(GetCaste())!=-1);
+	endproc;
+
+	proc bool MustHaveUser()
+		return false;
+	endproc;
+
+	proc bool HealSelf(real p_fAmount, real p_fSpeed)
+		if(IsInFight())then return(false);endif;
+		m_fHealingValue=p_fAmount*p_fSpeed;
+		HealMe(m_fHealingValue);
+		return(true);
+	endproc;
+
+	export proc void DoLevelUpAnim()
+		var string sAnim = "level_up";
+		if (!GetTransportObj().IsValid() && !GetOnWall() && !IsTrapped()) then
+			if(HasAnim(sAnim))then
+				if(HasTimer(TIMER_LEVELUP_INV))then
+					DeleteTimer(TIMER_LEVELUP_INV);
+				endif;
+				AnimAction(sAnim);
+				m_bLevelUpInvulnerable=true;
+				CreateTimer(CFightingObj.TIMER_LEVELUP_INV, CGameTimeSpan.OneSecond()*2.5, false);
+			endif;
+		elseif(IsOnOpenTransporter())then
+			if(HasAnim(sAnim))then
+				SetAnim(sAnim, 1);
+			endif;
+		endif;
+	endproc;
+
+
+	export proc real GetSchwanzlaenge()
+		return(m_fSchwanzlaenge);
+	endproc;
+
+	export proc void SetSchwanzlaenge(real p_fSchwanzlaenge)
+		m_fSchwanzlaenge = p_fSchwanzlaenge;
+	endproc;
+
+	export proc void SetAttrib(string p_sName, string p_sValue)
+		if(p_sName=="caste")then
+			m_sCaste=p_sValue;
+		else
+			super.SetAttrib(p_sName,p_sValue);
+		endif;
+	endproc;
+
+
+	proc bool CheckCanFindTraps()
+		return false;
+	endproc;
+	proc void FindTrapsInit()
+	endproc;
+	export proc void FindTraps()
+	endproc;
+	proc bool CheckCanFindTraces()
+	return false;
+	endproc;
+	proc void FindTracesInit()
+	endproc;
+	proc void FindTraces()
+	endproc;
+
+	export proc void FindTracesAndTraps(string p_sPath, vec3 p_vPos, real p_fRadius)
+
+		if(m_xAbilities.GetAbility("find_traces", true)==null)then return; endif;
+		if(m_xAbilities.GetAbility("find_traps", true)==null)then return; endif;
+		if(m_bIllusion)then return; endif;
+		if(!CheckSpecialActionTimer(p_sPath))then return; endif;
+
+		AddSpecialActionTimer(p_sPath);
+
+		if(HasAnim("res_guarding"))then
+			AnimAction("res_guarding");
+		endif;
+
+		var CObjQuery xSearch;
+		xSearch.Clear();
+		xSearch.SetType("CHTR");
+		xSearch.SetType("BLDG",true);
+		xSearch.RegionCircle(p_vPos, p_fRadius);
+		CSrvWrap.GetDiplomacyMgr().AddMyEnemiesToSearch(GetOwner(), xSearch, false);
+
+		var CObjList xList;
+		if(!xSearch.Execute(xList))then return; endif;
+		var int i,iC=xList.NumEntries();;
+		for (i=0) cond (i<xList.NumEntries()) iter (++i) do
+			var ^CFightingObj pxObj=cast<CFightingObj>(xList[i].GetObj());
+			if(pxObj==null)then continue; endif;
+			if(pxObj^.GetCamouflage())then
+				pxObj^.Reveal();
+			endif;
+			var ^CTrap pxTrap = cast<CTrap>(pxObj);
+			if(pxTrap!=null)then
+				pxTrap^.TrapFound(GetOwner());
+			endif;
+		endfor;
+	endproc;
+
+//////////////////////// IDLE STATE ////////////////////////////////
+	proc void OnIdleEnter(^CState p_pxFrom, ^CState p_pxTo)
+		m_bIsHelpShout=false;
+		m_xIdleStartTime = CTimeMgr.Get().GetTime();
+		m_iIdleTimer = -1; //init state
+		super.OnIdleEnter(p_pxFrom,p_pxTo);
+	endproc;
+
+	proc void OnChangeToIdleState(string p_sTaskName)
+		m_sLastTask = p_sTaskName;
+	endproc;
+
+	proc void PlayRandomVictoryAnim()
+
+		// dont play victory anims for worker RT#13750
+		if(GetClassName().Find("worker")!=-1)then
+			return;
+		endif;
+
+		var bool bWait = false;
+		if(Random.GetInt()%4!=0)then
+			bWait = true;
+		endif;
+
+		var string sAnim = "victory_"+(Random.GetInt()%3).ToString();
+		if(!HasAnim(sAnim))then
+			bWait = true;
+		endif;
+		if(!bWait)then
+			AnimAction(sAnim, (Random.GetInt()%2)+1, true, true);
+		else
+			WaitAction(1.0);
+		endif;
+	endproc;
+
+	proc void OnIdleTick(int p_iTime)
+		if(m_iIdleTimer==-1)then
+			//init state
+	        if (!IsGroupWalkPending() && !HasAction() && !GetTransportObj().IsValid() && HasAnim(m_sIdleAnim) && GetCurrentAnimName()!=m_sIdleAnim) then
+	        	SetAnim(m_sIdleAnim,3);
+			endif;
+			if(m_sLastTask == "Fight")then
+				m_iIdleTimer = 0;
+			elseif(m_sLastTask == "Walk2Pos")then
+				m_bDoNotDefend = !m_bIsBerserker;
+				m_iIdleTimer = 100;
+			else
+				m_iIdleTimer = 100;
+			endif;
+			ShowWeapons();
+
+		endif;
+
+		if (GetEffectFlag(CFightingObj.EFFECT_AJE_CAMOUFLAGE)) then return; endif;
+
+		var CGameTime xNow = CTimeMgr.Get().GetTime();
+		var real fDuration = (xNow-m_xIdleStartTime).GetSecondsF();
+		if(fDuration > 2.0)then
+			var ^CAttribs pxAttr = GetAttribs();
+			if(pxAttr!=null)then
+				if(pxAttr^.GetValue("CurTask")!="Idle")then
+					pxAttr^.SetValue("CurTask","Idle");
+				endif;
+				SetTaskDescription("idle");
+			endif;
+			m_bDoNotDefend = false;
+		elseif(fDuration>0.3)then
+			SetTaskDescription("");
+		endif;
+		if(m_iIdleTimer==0)then
+			var int iRandom = Random.GetInt()%4;
+			// random event, not all units examine at the same time
+			if(iRandom!=0)then
+				if(fDuration > 4.0)then
+					m_iIdleTimer=100;
+				endif;
+			elseif(ExamineEnemies(false,GetAggressionState()!=1 && GetAggressionState()!=-1))then
+				return;
+			else
+				//victory state...
+				if(fDuration < 4.0)then
+					if(!IsOnOpenTransporter()&&!GetTransportObj().IsValid())then
+						PlayRandomVictoryAnim();
+					endif;
+					return;
+				else
+					m_iIdleTimer=100;
+				endif;
+			endif;
+		elseif(m_iIdleTimer==1)then
+			//check special abilities..
+			m_bTraps = false;
+			m_bTraces = false;
+			var ^CFightingObj.CSpecialAbility pxA = m_xAbilities.GetAbility("find_traps", true);
+			if(pxA!=null)then
+				m_fSeachDelay = pxA^.GetValueF("search_delay");
+				m_bTraps = true;
+				m_iIdleTimer = 2;
+			endif;
+			pxA = m_xAbilities.GetAbility("find_traces", true);
+			if(pxA!=null)then
+				m_fSeachDelay = pxA^.GetValueF("search_delay");
+				m_iIdleTimer = 2;
+				m_bTraces = true;
+			endif;
+			if(!m_bTraps && !m_bTraces)then
+				m_iIdleTimer = 100;
+			endif;
+		elseif(m_iIdleTimer==2)then
+			//start special abilities...
+			if(fDuration<m_fSeachDelay)then return; endif;
+			if(m_bTraps)then
+				FindTrapsInit();
+			elseif(m_bTraces)then
+				FindTracesInit();
+			endif;
+			m_iIdleTimer = 3;
+		elseif(m_iIdleTimer==3)then
+			//execute special abilities...
+			if(m_bTraps)then
+				FindTraps();
+			endif;
+			if(m_bTraces)then
+				FindTraces();
+			endif;
+			m_iIdleTimer = 100;
+		elseif(m_iIdleTimer==100)then
+			m_sLastTask = "";
+			if(GetHealingRadius()>0.0f && SomeoneToHeal(true)) then
+				if(HealUnits(false)) then return; endif;
+			endif;
+		endif;
+		super.OnIdleTick(p_iTime);
+	endproc;
+
+	export proc bool AttackTransportersTarget()
+		if(!IsOnOpenTransporter())then return false; endif;
+		if(!IsAbleToFight())then return false; endif;
+		if(GetProjectile()=="")then return false; endif;
+		var ^CFightingObj pxTransporter = cast<CFightingObj>(GetTransportObj().GetObj());
+		if(pxTransporter==null)then return false; endif;
+		if(!pxTransporter^.IsInFight())then return false; endif;
+		OnAttack(pxTransporter^.GetCurEnemy().GetObj());
+		return true;
+	endproc;
+
+///////////////////////////////////////////////////////////////////
+	export proc bool IsIdle()
+		var ^CFSM pxFSM = GetFSM();
+		if(pxFSM!=null)then
+			return (pxFSM^.GetCurState()==m_pxIdleState);
+		endif;
+		return true;
+	endproc;
+
+	export proc void UpdateRageUnit()
+		if(!GetRageUnit())then
+			if(CRequirementsMgr.Get().CheckInvention(this, GetOwner(), "infantry_rage", GetTribeName()))then
+				SetRageUnit(true);
+			endif;
+		else
+			if(!CRequirementsMgr.Get().CheckInvention(this, GetOwner(), "infantry_rage", GetTribeName()))then
+				SetRageUnit(false);
+			endif;
+		endif;
+	endproc;
+
+	export proc void AddTask(^CTask p_pxTask,bool p_bQueue)
+		if(p_pxTask^.IsUserCommand())then
+			StopPatrol();
+		endif;
+    	if(p_bQueue)then
+    		m_pxTaskMgr^.AddTask(p_pxTask);
+    	else
+    		m_pxTaskMgr^.SetTask(p_pxTask);
+    	endif;
+	endproc;
+
+	export proc void SetTaskImmediate(^CTask p_pxTask)
+   		super.SetTaskImmediate(p_pxTask);
+	endproc;
+
+	export proc bool SearchStone();
+		var CObjQuery	xStoneSearch;
+		xStoneSearch.SetType("STON");
+		xStoneSearch.SetVisibility(GetOwner(),true);
+		var CObjList xStones;
+		xStoneSearch.RegionCircle(GetPos(),100.0);
+		if(xStoneSearch.Execute(xStones))then
+			xStones.SortDistance(GetPos());
+			while(xStones.NumEntries()>0&&!CheckMaxAutoprodDist(xStones[0])) do xStones.DeleteEntry(0); endwhile;
+			if(xStones.NumEntries()>0) then
+				var CObjHndl	xStone=xStones[0];
+				Mine(xStone,true);
+			endif;
+		endif;
+		return(true);
+	endproc;
+
+	export proc bool NextJob(CObjHndl p_xTarget, CObjList p_xIgnoreBuildUps)
+		if(m_pxTaskMgr==null)then return false; endif;
+		if(!p_xTarget.IsValid())then return false; endif;
+		var int i,iC=m_pxTaskMgr^.NumSubs();
+		for(i=1)cond(i<iC)iter(i++)do
+			if(m_pxTaskMgr^.GetSubState(i)^.GetName()=="BuildUp")then
+				return false;
+			endif;
+		endfor;
+		var ^CBuilding pxBuilding=cast<CBuilding>(p_xTarget.GetObj());
+		if(pxBuilding!=null && CSrvWrap.GetDiplomacyMgr().GetIsFriend(GetOwner(), pxBuilding^.GetOwner()))then
+			if(!pxBuilding^.IsReady())then
+				Build(p_xTarget,true);
+			else
+				var string sClassName=pxBuilding^.GetClassName();
+				if(sClassName=="hu_corn_field")then
+					GetCorn(pxBuilding,true);
+				elseif(sClassName=="hu_stone_quarry")then
+					SearchStone();
+				elseif(sClassName=="hu_lumberjack_cottage")then
+					SearchForest();
+				elseif(sClassName=="aje_slaughterhouse")then
+					GetUnlimited(pxBuilding,true);
+				elseif(sClassName=="ninigi_lumbermill")then
+					SearchForest();
+				elseif(sClassName=="ninigi_paddy")then
+					GetCorn(pxBuilding,true);
+				elseif(sClassName=="ninigi_bamboofarm")then
+					GetCorn(pxBuilding,true);
+				elseif(sClassName=="seas_greenhouse")then
+					GetCorn(pxBuilding,true);
+				elseif(sClassName=="ninigi_stone_quarry")then
+					SearchStone();
+				elseif(sClassName=="ninigi_hunting_lodge")then
+					SearchFood();
+				else
+					if(pxBuilding^.GetHitpoints()<pxBuilding^.GetMaxHitpoints())then
+						Repair(p_xTarget,true,p_xIgnoreBuildUps);
+					elseif(cast<CWall>(pxBuilding)==null)then
+						SearchBuildingToBuildUp(pxBuilding, p_xIgnoreBuildUps);
+					endif;
+				endif;
+			endif;
+			return true;
+		endif;
+		var ^CResource pxResource=cast<CResource>(p_xTarget.GetObj());
+		if(pxResource!=null)then
+			if(pxResource^.GetType()=="STON")then
+				Mine(p_xTarget,true);
+			elseif(pxResource^.GetType()=="FOOD")then
+				GetFood(p_xTarget,true,1);
+			elseif(pxResource^.GetType()=="FRUI")then
+				GetFood(p_xTarget,true,1);
+			elseif(pxResource^.GetType()=="WOOD")then
+				Harvest(pxResource,pxResource^.GetPos(),true);
+			else
+				return false;
+			endif;
+			return true;
+		endif;
+		return false;
+	endproc;
+
+
+	//Searches building within fRange to build up
+	export proc bool SearchBuildingToBuildUp(^CBuilding p_pxBuilding, CObjList p_xIgnoreTargets);
+		var real fRange=50.0f;
+		var CObjQuery	xBuildingSearch;
+		xBuildingSearch.SetType("BLDG");
+		xBuildingSearch.SetOwner(GetOwner(),true);
+		var CObjList xBuildings;
+		xBuildingSearch.RegionCircle(GetPos(),fRange);
+		xBuildingSearch.Exclude(p_xIgnoreTargets);
+		if(xBuildingSearch.Execute(xBuildings))then
+			xBuildings.SortDistance(GetPos());
+			var int i;
+			for(i=0)cond(i<xBuildings.NumEntries())iter(i++)do
+				var CObjHndl	xBuilding=xBuildings[i];
+				var ^CBuilding	pxBuilding=cast<CBuilding>(xBuilding.GetObj());
+				if(pxBuilding!=null)then
+					var bitset dwVis=pxBuilding^.GetVisibleMask();
+					var bitset dwPlayer=01b;
+					dwPlayer<<GetOwner();
+					if((dwVis&dwPlayer)!=0b)then
+						if(!pxBuilding^.IsReady()&&pxBuilding!=p_pxBuilding&&pxBuilding^.GetOwner()==GetOwner())then
+							if(CheckMaxAutoprodDist(xBuilding)) then
+								Build(xBuilding,true,p_xIgnoreTargets);
+							endif;
+							return(true);
+						endif;
+					endif;
+				endif;
+			endfor;
+		endif;
+		return(true);
+	endproc;
+
+	//Searches building within fRange to build up
+	export proc bool SearchBuildingToRepair(^CBuilding p_pxBuilding, CObjList p_xIgnoreTargets);
+		var real fRange=50.0f;
+		var CObjQuery	xBuildingSearch;
+		xBuildingSearch.SetType("BLDG");
+		xBuildingSearch.SetOwner(GetOwner());
+		var CObjList xBuildings;
+		xBuildingSearch.RegionCircle(GetPos(),fRange);
+		xBuildingSearch.Exclude(p_xIgnoreTargets);
+		if(xBuildingSearch.Execute(xBuildings))then
+			xBuildings.SortDistance(GetPos());
+			var int i;
+			for(i=0)cond(i<xBuildings.NumEntries())iter(i++)do
+				var CObjHndl	xBuilding=xBuildings[i];
+				var ^CBuilding	pxBuilding=cast<CBuilding>(xBuilding.GetObj());
+				if(pxBuilding!=null)then
+					var bitset dwVis=pxBuilding^.GetVisibleMask();
+					var bitset dwPlayer=01b;
+					dwPlayer<<GetOwner();
+					if((dwVis&dwPlayer)!=0b)then
+						if(pxBuilding^.GetHitpoints()<pxBuilding^.GetMaxHitpoints() && pxBuilding!=p_pxBuilding && pxBuilding^.GetOwner()==GetOwner())then
+							if(CheckMaxAutoprodDist(xBuilding)) then
+								Repair(xBuilding,true,p_xIgnoreTargets);
+							endif;
+							return(true);
+						endif;
+					endif;
+				endif;
+			endfor;
+		endif;
+		return(true);
+	endproc;
+
+	export proc void Mine(CObjHndl p_xTarget,bool p_bQueue)
+    	if(!CanHarvest())then return();endif;
+    	var ^CMine pxTask=cast<CMine>(CSrvWrap.GetUSLFactoryMgr().CreateState(GetFSM(),"Mine"));
+    	pxTask^.Init(GetHandle(),p_xTarget);
+   		pxTask^.SetUserCommand(true);
+		AddTask(pxTask,p_bQueue);
+	endproc;
+
+
+	export proc bool SearchForest();
+		Harvest(null,GetPos(),true);
+		return(true);
+	endproc;
+
+
+    export proc void Harvest(^CGameObj p_pxObj, vec3 p_vPos,bool p_bQueue)
+    	//Check if unit may harvest
+		if(!CanHarvest())then return();endif;
+
+    	var ^CHarvest pxTask=cast<CHarvest>(CSrvWrap.GetUSLFactoryMgr().CreateState(GetFSM(),"Harvest"));
+    	if(p_pxObj!=null)then
+    		pxTask^.Init(GetHandle(),p_pxObj^.GetHandle());
+    	else
+    		pxTask^.Init(GetHandle(),p_vPos);
+    	endif;
+   		pxTask^.SetUserCommand(true);
+		AddTask(pxTask,p_bQueue);
+    endproc;
+
+	export proc void EnterBunker(^CGameObj p_pxBunker, bool p_bQ)
+		var ^CEnterBunker pxTask = cast<CEnterBunker>(CSrvWrap.GetUSLFactoryMgr().CreateState(GetFSM(),"EntrBnkr"));
+		pxTask^.Init(GetHandle(), p_pxBunker^.GetHandle());
+		pxTask^.SetUserCommand(true);
+		AddTask(pxTask, p_bQ);
+	endproc;
+
+	export proc bool SomeoneToHeal(bool p_bRandom)
+
+		if(p_bRandom)then
+			var int iRandom = Random.GetInt()%7;
+			if(iRandom!=0)then return false; endif;
+		endif;
+
+		m_bIsHelpShout=false;
+
+		begin CheckOwnTask;
+			var ^CAttribs pxAttr=GetAttribs();
+			if(pxAttr==null || pxAttr^.GetValue("CurTask")=="HealUnit")then
+				return false;
+			endif;
+		end CheckOwnTask;
+
+		// handle own units and allied ones
+		var CObjQuery xQ;
+		xQ.SetType("CHTR");
+		xQ.SetType("ANML", true);
+		xQ.SetType("VHCL", true);
+		xQ.SetType("SHIP", true);
+		xQ.SetOwner(GetOwner());
+		CSrvWrap.GetDiplomacyMgr().AddMyFriendsToSearch(GetOwner(), xQ); //allies
+		xQ.RegionCircle(GetPos(), GetHealingRadius()*1.5);
+		xQ.Exclude(GetHandle());
+		var CObjList xL;
+		xQ.Execute(xL);
+
+		var int i, iC = xL.NumEntries();
+		for(i=0) cond(i<iC) iter(++i) do
+			if(!xL[i].IsValid())then continue; endif;
+			var ^CFightingObj pxFO = cast<CFightingObj>(xL[i].GetObj());
+			if(pxFO==null)then continue; endif;
+			if(pxFO^.GetClassName()=="hu_druid" || pxFO^.GetClassName()=="aje_shaman" || pxFO^.GetClassName()=="ninigi_monk")then
+				var ^CAttribs pxAttr = pxFO^.GetAttribs();
+				if(pxAttr==null || pxAttr^.GetValue("CurTask")=="HealUnit")then
+					continue;
+				endif;
+			endif;
+			if(pxFO^.GetHitpoints() < pxFO^.GetMaxHitpoints()) then return true; endif;
+		endfor;
+
+		return false;
+	endproc;
+
+	export proc bool HealUnits(bool p_bQ)
+		if(IsOnOpenTransporter())then
+			return false;
+		endif;
+		var ^CHealUnits pxTask = cast<CHealUnits>(CSrvWrap.GetUSLFactoryMgr().CreateState(GetFSM(),"HealUnit"));
+		pxTask^.Init(GetHandle());
+		pxTask^.SetUserCommand(false);
+		AddTask(pxTask, p_bQ);
+		return true;
+	endproc;
+
+	export proc bool HealUnits(CObjHndl p_xTarget, bool p_bQ)
+		if(IsOnOpenTransporter())then
+			return false;
+		endif;
+		var ^CHealUnits pxTask = cast<CHealUnits>(CSrvWrap.GetUSLFactoryMgr().CreateState(GetFSM(),"HealUnit"));
+		pxTask^.Init(GetHandle(),p_xTarget);
+		pxTask^.SetUserCommand(true);
+		AddTask(pxTask, p_bQ);
+		return true;
+	endproc;
+
+	export proc void GetFood(CObjHndl p_xTarget,bool p_bQueue,int p_iUserCmd)
+    	if(!CanHarvest())then
+    		if(p_xTarget.IsValid())then
+    			WalkToPos(p_xTarget.GetObj()^.GetPos(),p_bQueue);
+    		endif;
+    		return();
+    	endif;
+    	var ^CGetFood pxTask=cast<CGetFood>(CSrvWrap.GetUSLFactoryMgr().CreateState(GetFSM(),"GetFood"));
+    	pxTask^.Init(GetHandle(),p_xTarget);
+		pxTask^.SetUserCommand(true);
+    	AddTask(pxTask,p_bQueue);
+    endproc;
+
+	export proc bool SearchFood();
+		var CObjQuery	xFoodSearch;
+		xFoodSearch.SetType("FOOD");
+		xFoodSearch.SetType("FRUI",true);
+		xFoodSearch.SetVisibility(GetOwner(),true);
+		var CObjList xFoods;
+		xFoodSearch.RegionCircle(GetPos(),100.0);
+		if(xFoodSearch.Execute(xFoods))then
+			xFoods.SortDistance(GetPos());
+			while(xFoods.NumEntries()>0&&!CheckMaxAutoprodDist(xFoods[0])) do xFoods.DeleteEntry(0); endwhile;
+			if(xFoods.NumEntries()>0) then
+				var CObjHndl	xFood=xFoods[0];
+				GetFood(xFood,true,1);
+			endif;
+		endif;
+		return(true);
+	endproc;
+
+
+    proc void GetFoodSearch(string p_sFood, vec3 p_vPos)
+		var CObjQuery xFoodSearch;
+		var CObjList xFoods;
+		xFoodSearch.SetClass(p_sFood+"_food");
+		xFoodSearch.RegionCircle(p_vPos,50.0);
+		if(xFoodSearch.Execute(xFoods))then
+			xFoods.SortDistance(p_vPos);
+			GetFood(xFoods[0],true,0);
+		endif;
+    endproc;
+
+	export proc void DeliverResources(^CGameObj p_pxObject,bool p_bQueue)
+    	var ^CDeliverResources pxTask=cast<CDeliverResources>(CSrvWrap.GetUSLFactoryMgr().CreateState(GetFSM(),"DelRes"));
+    	pxTask^.Init(GetHandle(),p_pxObject^.GetHandle());
+		pxTask^.SetUserCommand(true);
+    	AddTask(pxTask,p_bQueue);
+	endproc;
+
+
+	export proc void GetUnlimited(^CGameObj p_pxObject,bool p_bQueue)
+    	if(!CanHarvest())then
+    		if(p_pxObject!=null)then
+    			WalkToPos(p_pxObject^.GetPos(),p_bQueue);
+    		endif;
+    		return();
+    	endif;
+    	var ^CGetUnlimited pxTask=cast<CGetUnlimited>(CSrvWrap.GetUSLFactoryMgr().CreateState(GetFSM(),"GetUlmtd"));
+    	pxTask^.Init(GetHandle(),p_pxObject^.GetHandle());
+		pxTask^.SetUserCommand(false);
+    	AddTask(pxTask,p_bQueue);
+    endproc;
+
+
+    export proc void GetCorn(^CGameObj p_pxObject,bool p_bQueue)
+    	if(!CanHarvest())then
+    		if(p_pxObject!=null)then
+    			WalkToPos(p_pxObject^.GetPos(),p_bQueue);
+    		endif;
+    		return();
+    	endif;
+    	var ^CGetCorn pxTask=cast<CGetCorn>(CSrvWrap.GetUSLFactoryMgr().CreateState(GetFSM(),"GetCorn"));
+    	pxTask^.Init(GetHandle(),p_pxObject^.GetHandle());
+		pxTask^.SetUserCommand(true);
+    	AddTask(pxTask,p_bQueue);
+    endproc;
+
+	export proc void WalkToPos(vec3 p_vPos,bool p_bQueue)
+		GoTo(p_vPos,true,GetDefaultSpeed(),true, true, false, p_bQueue);
+	endproc;
+
+
+	export proc void WalkToPos(vec3 p_vPos,int p_iSpeed,bool p_bQueue)
+		GoTo(p_vPos,true,p_iSpeed,true, true, false, p_bQueue);
+	endproc;
+
+
+	export proc void WalkToPos(vec3 p_vPos,int p_iSpeed,bool p_bUsePathfinder,bool p_bQueue)
+		GoTo(p_vPos,true,p_iSpeed,p_bUsePathfinder, true, false, p_bQueue);
+	endproc;
+
+
+	export proc void WalkToPos(vec3 p_vPos,int p_iSpeed,bool p_bUsePathfinder,bool p_bHeightAdaption,bool p_bQueue)
+		GoTo(p_vPos,true,p_iSpeed,p_bUsePathfinder, p_bHeightAdaption, false, p_bQueue);
+	endproc;
+
+	export proc void Build(CObjHndl p_xObj,bool p_bQueue)
+		var CObjList xInvalid;
+		Build(p_xObj,p_bQueue,xInvalid);
+	endproc;
+
+
+	export proc void Build(CObjHndl p_xObj,bool p_bQueue, CObjList p_xIgnoreTargets)
+    	if(!CanBuild())then
+    		if(p_xObj.IsValid())then
+				GoTo(p_xObj.GetObj()^.GetPos(), true, GetDefaultSpeed(), true, true);
+			endif;
+			return;
+    	endif;
+    	var ^CBuildUp pxTask=cast<CBuildUp>(CSrvWrap.GetUSLFactoryMgr().CreateState(GetFSM(),"BuildUp"));
+    	pxTask^.Init(GetHandle(),p_xObj, p_xIgnoreTargets);
+    	pxTask^.SetUserCommand(true);
+    	AddTask(pxTask,p_bQueue);
+	endproc;
+
+	export proc void Repair(CObjHndl p_xObj,bool p_bQueue)
+		var CObjList xInvalid;
+		Repair(p_xObj,p_bQueue,xInvalid);
+	endproc;
+
+	proc void Repair(CObjHndl p_xObj,bool p_bQueue, CObjList p_xIgnoreTargets)
+    	if(!CanBuild())then
+    		if(p_xObj.IsValid())then
+				GoTo(p_xObj.GetObj()^.GetPos(), true, GetDefaultSpeed(), true, true);
+			endif;
+			return;
+    	endif;
+    	var ^CRepair pxTask=cast<CRepair>(CSrvWrap.GetUSLFactoryMgr().CreateState(GetFSM(),"Repair"));
+    	pxTask^.Init(GetHandle(),p_xObj,p_xIgnoreTargets);
+    	pxTask^.SetUserCommand(true);
+    	AddTask(pxTask,p_bQueue);
+	endproc;
+
+
+	export proc bool Shotgun(^CGameObj p_pxTarget, vec3 p_vPos, string p_sTTPath)
+		if(!CheckSpecialActionTimer(p_sTTPath))then return false; endif;
+		//L KLog.LogWarn("Manni","CheckSpecialActionTimer: "+p_sTTPath);
+		var ^CShotgun pxTask= cast<CShotgun>(CSrvWrap.GetUSLFactoryMgr().CreateState(GetFSM(), "Shotgun"));
+    	var CObjHndl	xTarget;
+    	if(p_pxTarget!=null)then
+    		xTarget=p_pxTarget^.GetHandle();
+			MemorizeCurrentFightState(p_pxTarget^.GetHandle(),true,false);
+	    endif;
+	    var bool bReturn=pxTask^.Init(GetHandle(),xTarget,p_vPos,p_sTTPath);
+	    pxTask^.SetUserCommand(true);
+    	AddTask(pxTask,false);
+    	return(bReturn);
+    endproc;
+
+
+    export proc bool Jetpack(vec3 p_vPos, string p_sTTPath)
+		if(!CheckSpecialActionTimer(p_sTTPath))then return false; endif;
+		if(p_vPos!={0.0,0.0,0.0})then
+    		var ^CJetpack pxTask= cast<CJetpack>(CSrvWrap.GetUSLFactoryMgr().CreateState(GetFSM(), "Jetpack"));
+    		pxTask^.Init(GetHandle(), p_vPos,p_sTTPath);
+	    	pxTask^.SetUserCommand(true);
+    		AddTask(pxTask,false);
+	    	return(true);
+	    endif;
+	    return(false);
+    endproc;
+
+    export proc bool Throwdownshot(^CGameObj p_pxTarget, string p_sTTPath)
+		if(p_pxTarget!=null)then
+			MemorizeCurrentFightState(p_pxTarget^.GetHandle(),true,false);
+    		var ^CThrowdownshot pxTask= cast<CThrowdownshot>(CSrvWrap.GetUSLFactoryMgr().CreateState(GetFSM(), "Throwdwn"));
+    		pxTask^.Init(GetHandle(), p_pxTarget^.GetHandle(), p_sTTPath);
+	    	pxTask^.SetUserCommand(true);
+    		AddTask(pxTask,false);
+	    	return(true);
+	    else
+	    	return(false);
+	    endif;
+    endproc;
+
+    export proc void BuildLadder(^CGameObj p_pxTarget)
+		if(p_pxTarget!=null)then
+    		var ^CBuildLadder pxTask= cast<CBuildLadder>(CSrvWrap.GetUSLFactoryMgr().CreateState(GetFSM(), "BldLddr"));
+    		pxTask^.Init(GetHandle(), p_pxTarget^.GetHandle());
+	    	pxTask^.SetUserCommand(true);
+    		AddTask(pxTask,false);
+	    endif;
+    endproc;
+
+    export proc void JumpOffWall(vec3 p_vPos)
+		if((p_vPos!={0.0,0.0,0.0}) && GetOnWall())then
+    		var ^CJumpOffWall pxTask= cast<CJumpOffWall>(CSrvWrap.GetUSLFactoryMgr().CreateState(GetFSM(), "JumpWall"));
+    		pxTask^.Init(GetHandle(),p_vPos);
+	    	pxTask^.SetUserCommand(true);
+    		AddTask(pxTask,false);
+		endif;
+	endproc;
+
+
+    export proc void AddCTheLiteTask(^CGameObj p_pxObj, vec3 p_vPos, string p_sTaskName)
+		var CObjHndl xInvalid;
+    	if(p_sTaskName=="Harvest")then
+			Harvest(null,p_vPos,true);
+    	elseif(p_sTaskName=="Mine")then
+			var CObjQuery xQuery;
+			xQuery.SetType("STON");
+			var CObjList xList;
+			if(xQuery.Execute(xList))then
+				var int iIndex = xList.FindNearest(GetPos(),100.0);
+				if(iIndex != -1)then
+					Mine(xList[iIndex],true);
+				endif;
+			endif;
+    	endif;
+	endproc;
+
+	export proc void StartDisguise(string p_sPath)
+		if(GetClassName()=="ninigi_ninja")then
+			//L KLog.LogWarn("Character.Disguise","Disguise started!");
+			m_sDisguisePath=p_sPath;
+			AddSpecialActionTimer(m_sDisguisePath);
+			SetDisguised(true);
+			SetCamouflage(true);
+		endif;
+	endproc;
+
+	proc void CreateIllusions()
+		var int i;
+		//DoLevelUpAnim();
+ 		if(!GetTransportObj().IsValid()) then
+ 			AnimAction("heal_0");
+ 		endif;
+		var ^CAttribs pxAttr = GetAttribs();
+		if(pxAttr!=null)then
+			for(i=0)cond(i<3)iter(i++)do
+
+				var vec3 vPos = {4.0,0.0,0.0};
+				vPos.RotZ((Random.GetInt()%314).ToReal() / 100.0);
+
+				var ^CCharacter pxCharacter = cast<CCharacter>(CSrvWrap.GetObjMgr()^.CreateObj(GetClassName(),GetOwner(),GetPos()+vPos,GetRotation()));
+				if(pxCharacter!=null)then
+					pxCharacter^.SetLevelClean(GetLevel());
+					pxCharacter^.MakeIllusion();
+				endif;
+			endfor;
+		endif;
+	endproc;
+
+
+	proc void Entrench(string p_sParams)
+
+		if(GetEntrenched()==0)then
+			if(!CheckSpecialActionTimer(p_sParams)) then return; endif;
+			//vergrad dich!
+			TerminateAction();
+
+	    	var ^CEntrench pxTask=cast<CEntrench>(CSrvWrap.GetUSLFactoryMgr().CreateState(GetFSM(),"Entrench"));
+
+	    	pxTask^.Init(GetHandle(),p_sParams);
+	    	pxTask^.SetUserCommand(true);
+	    	AddTask(pxTask,false);
+
+	    else
+			//grab dich aus!
+	    	var ^CEntrench pxTask=cast<CEntrench>(m_pxTaskMgr^.GetCurTask());
+	    	if(pxTask!=null)then
+	    		pxTask^.Break();
+	    	else
+	    		SetEntrenched(0);
+	    	endif;
+		endif;
+	endproc;
+
+	proc bool DeliverInsects(^CGameObj p_pxObject,string p_sPath)
+		if(p_pxObject==null)then return false; endif;
+
+		if(GetClassName()!="hu_druid")then return false; endif;
+    	var ^CInsects pxTask=cast<CInsects>(CSrvWrap.GetUSLFactoryMgr().CreateState(GetFSM(),"Insects"));
+
+    	var bool bReturn = pxTask^.Init(GetHandle(),p_pxObject^.GetHandle(),p_sPath);
+    	pxTask^.SetUserCommand(true);
+    	AddTask(pxTask,false);
+    	return bReturn;
+	endproc;
+
+	proc bool DeliverTermites(^CGameObj p_pxObject, string p_sPath)
+		if(p_pxObject==null)then return false; endif;
+		if(GetClassName()!="aje_shaman")then return false; endif;
+
+    	var ^CTermites pxTask=cast<CTermites>(CSrvWrap.GetUSLFactoryMgr().CreateState(GetFSM(),"Termites"));
+
+    	var bool bReturn = pxTask^.Init(GetHandle(),p_pxObject^.GetHandle(), p_sPath);
+    	pxTask^.SetUserCommand(true);
+    	AddTask(pxTask,false);
+    	return bReturn;
+	endproc;
+
+	proc bool ShootBurningArrow(^CGameObj p_pxObject)
+		if(p_pxObject==null)then return false; endif;
+		if(GetCaste()!="tec")then return false; endif;
+
+    	var ^CShootBurningArrow pxTask=cast<CShootBurningArrow>(CSrvWrap.GetUSLFactoryMgr().CreateState(GetFSM(),"BArrow"));
+
+    	var bool bReturn = pxTask^.Init(GetHandle(),p_pxObject^.GetHandle());
+    	pxTask^.SetUserCommand(true);
+    	AddTask(pxTask, false);
+    	return bReturn;
+	endproc;
+
+
+	proc bool DeliverTornado(vec3 p_vPos, string p_sPath)
+		if(p_vPos=={0.0,0.0,0.0})then return false; endif;
+		if(GetClassName()!="aje_shaman")then return false; endif;
+
+    	var ^CTornado pxTask=cast<CTornado>(CSrvWrap.GetUSLFactoryMgr().CreateState(GetFSM(),"Tornado"));
+
+    	var bool bReturn = pxTask^.Init(GetHandle(),p_vPos, p_sPath);
+    	pxTask^.SetUserCommand(true);
+    	AddTask(pxTask,false);
+    	return bReturn;
+	endproc;
+
+	proc bool DeliverQuicksand(vec3 p_vPos, string p_sPath)
+		if(p_vPos=={0.0,0.0,0.0})then return false; endif;
+		if(GetClassName()!="aje_shaman")then return false; endif;
+
+    	var ^CQuicksandTask pxTask=cast<CQuicksandTask>(CSrvWrap.GetUSLFactoryMgr().CreateState(GetFSM(),"QuickS"));
+
+    	var bool bReturn = pxTask^.Init(GetHandle(),p_vPos,p_sPath);
+    	pxTask^.SetUserCommand(true);
+    	AddTask(pxTask,false);
+    	return bReturn;
+	endproc;
+
+
+	export proc bool PickSomeLocks(^CGameObj p_pxObject)
+		if(p_pxObject==null)then return false; endif;
+		if(GetClassName()!="ninigi_ninja")then return false; endif;
+    	var ^CLockPicking pxTask=cast<CLockPicking>(CSrvWrap.GetUSLFactoryMgr().CreateState(GetFSM(),"LockPick"));
+    	var bool bReturn = false;
+    	var CGameTimeSpan xDuration;
+    	//TUNING: Duration of Lockpicking Action
+    	xDuration = 15.0;
+
+    	if(pxTask^.Init(GetHandle(),p_pxObject^.GetHandle(),xDuration))then
+    		bReturn = true;
+		endif;
+    	pxTask^.SetUserCommand(true);
+    	AddTask(pxTask,false);
+    	return bReturn;
+	endproc;
+
+
+
+	proc void RaiseBuilding(vec3 p_vPos, string p_sParam,bool p_bQueue)
+		var array string asParams;
+		p_sParam.Split(asParams,"!",true);
+		if(asParams.NumEntries()==2)then
+			var vec3 vPos = vec3.CreateFromString(asParams[0]);
+			//L CSrvWrap.LogSpam("Character","Raise a building: "+asParams[0]+"!"+asParams[1]);
+			var string sClass = "";
+			var bool bWall = false;
+			if (asParams[1].Left(11) == "hu_palisade" ) then
+				sClass = asParams[1].Left(11);
+				bWall = true;
+			elseif ( asParams[1].Left(19) == "hu_re_enforced_wall" ) then
+				sClass = asParams[1].Left(19);
+				bWall = true;
+			elseif ( asParams[1].Left(13) == "hu_small_wall" ) then
+				sClass = asParams[1].Left(13);
+				bWall = true;
+			else
+				sClass = asParams[1];
+			endif;
+
+			var CObjList xW;
+			xW.Include(GetHandle());
+//			if(bWall==true)then
+//				KLog.LogSpam("PaHa","Placing a wall at "+p_vPos.ToString()+".");
+//			endif;
+			var CObjHndl xNewObj=CPlaceMgr.Get().PlaceObj(GetOwner(),sClass,p_vPos,vPos,xW,p_bQueue,bWall);
+		else
+			CSrvWrap.LogWarning("Character","String contains no vector or no class");
+		endif;
+	endproc;
+
+
+
+    /*
+        called when a gameplay command for this character is received
+    */
+	export proc void HandleGamePlayCommand(string p_sCommand,^CGameObj p_pxObject,vec3 p_vPos,string p_sMiscParams)
+
+		if(GiveCommandsToTransportObj(p_sCommand, p_sMiscParams))then
+			var ^CGameObj pxTransporter = GetTransportObj().GetObj();
+			if(pxTransporter != null)then
+				pxTransporter^.HandleGamePlayCommand(p_sCommand, p_pxObject, p_vPos, p_sMiscParams);
+				return;
+			endif;
+		endif;
+
+		if(m_bIllusion)then
+			return super.HandleGamePlayCommand(p_sCommand, p_pxObject, p_vPos, p_sMiscParams);
+		endif;
+
+		if(	IsBerserking() &&
+			!(p_sMiscParams.Find("/Kill")!=-1 || p_sCommand=="Kill") &&
+			!(p_sCommand=="setlevel" || p_sMiscParams.Find("/LevelUp")!=-1)
+			)then return; endif;
+
+		if (GetEffectFlag(CFightingObj.EFFECT_AJE_CAMOUFLAGE)) then
+			if (p_sMiscParams.Find("/Walk")<0 && p_sMiscParams.Find("/camouflage")<0) then
+				SetEffectFlag(CFightingObj.EFFECT_AJE_CAMOUFLAGE, false);
+			endif;
+		endif;
+		if(	IsTrapped() &&
+			!(p_sMiscParams.Find("/Kill")!=-1 || p_sCommand=="Kill") &&
+			!(p_sCommand=="setlevel" || p_sMiscParams.Find("/LevelUp")!=-1)
+			)then return; endif;
+
+		if (GetEntrenched()==2) then return; endif;
+
+
+		var bool bQueued=false;
+		if(p_sCommand.Left(2)=="Q_")then
+			bQueued=true;
+			p_sCommand.Delete(0,2);
+		endif;
+		if(p_sCommand=="Raise")then
+			if(m_pxTaskMgr^.GetCurTaskName()=="BuildUp")then
+				RaiseBuilding(p_vPos,p_sMiscParams,true);
+			else
+				RaiseBuilding(p_vPos,p_sMiscParams,false);
+			endif;
+		elseif(p_sCommand=="Build")then
+        	if(p_pxObject!=null)then
+				Build(p_pxObject^.GetHandle(),bQueued);
+			endif;
+		elseif(p_sCommand=="Repair")then
+			if(p_pxObject!=null)then
+				var ^CBuilding pxBuilding = cast<CBuilding>(p_pxObject);
+				if(pxBuilding!=null)then
+					if(pxBuilding^.GetTaskMgr()^.GetCurTaskName()=="BuildUpB")then
+						Build(p_pxObject^.GetHandle(),bQueued);
+					else
+						Repair(p_pxObject^.GetHandle(),bQueued);
+					endif;
+				else
+					Repair(p_pxObject^.GetHandle(),bQueued);
+				endif;
+			endif;
+		elseif(p_sCommand=="Harvest")then
+			if(!CanHarvest())then
+				GoTo(p_vPos, true, GetDefaultSpeed(), true, true);
+			else
+				Harvest(p_pxObject,p_vPos,bQueued);
+			endif;
+		elseif(p_sCommand=="Mine")then
+			if(!CanHarvest())then
+				GoTo(p_vPos, true, GetDefaultSpeed(), true, true);
+			elseif(p_pxObject!=null)then
+				Mine(p_pxObject^.GetHandle(),bQueued);
+			endif;
+		elseif(p_sCommand=="GetFood")then
+        	if(p_pxObject!=null)then
+				GetFood(p_pxObject^.GetHandle(),bQueued,1);
+			endif;
+		elseif (p_sCommand=="DropItem")then
+			var CGuid xGuid;
+			if (p_pxObject==null) then
+				xGuid.FromString(p_sMiscParams);
+			else
+				xGuid = p_pxObject^.GetGuid();
+			endif;
+			DropItem(xGuid, p_vPos,bQueued);
+		elseif(p_sCommand=="EnterBunker") then
+			if(p_pxObject!=null) then
+				EnterBunker(p_pxObject, bQueued);
+			endif;
+		elseif (p_sCommand=="UseItem") then
+			UseItem(p_pxObject);
+		elseif (p_sCommand=="Use") then
+			begin Walls;
+				var ^CWall pxW=cast<CWall>(p_pxObject);
+				if((pxW!=null)&&pxW^.GetOwner()==GetOwner())then
+					GoTo(p_pxObject^.GetPos(),true,GetDefaultSpeed(),true,true,true, bQueued);
+					return;
+				endif;
+			end Walls;
+			if (p_pxObject != null) then
+				//L KLog.LogSpam("TechTree","Use - "+p_pxObject^.GetClassName());
+				var ^CGrowingField pxGrow = cast<CGrowingField>(p_pxObject);
+				if (pxGrow!=null)then
+					GetCorn(p_pxObject,bQueued);
+					return;
+				elseif (p_pxObject^.GetClassName()=="Ninigi_Resin_Field")then
+					ShootBurningArrow(p_pxObject);
+					return;
+				elseif (p_pxObject^.GetAttribs()!=null && p_pxObject^.GetAttribs()^.GetValueInt("UnlimitedBuilding")==1)then
+					GetUnlimited(p_pxObject,bQueued);
+					return;
+				else
+					//L CSrvWrap.LogSpam("DeliverResources", "Use - "+p_pxObject^.GetClassName());
+					if(p_pxObject^.GetType()=="BLDG")then
+						var ^CAttribs pxAttribs = p_pxObject^.GetAttribs();
+						if (pxAttribs!=null) then
+							var int i;
+							for(i=0)cond(i<m_afResInv.NumEntries())iter(i++)do
+								if (m_afResInv[i]>0.0) then
+									//we have some stuff to deliver.
+									var string sResAttrib = m_asResTable[i]+"Delivery";
+									//L CSrvWrap.LogSpam("DeliverResources", "Looking for: "+sResAttrib );
+									if (pxAttribs^.GetValueBool(sResAttrib)) then
+										//L CSrvWrap.LogSpam("DeliverResources", "Found!!!" );
+										DeliverResources(p_pxObject,bQueued);
+										return;
+									endif;
+								endif;
+							endfor;
+						endif;
+					endif;
+				endif;
+			endif;
+
+			if(p_pxObject!=null)then
+				GoToObj(p_pxObject^.GetHandle(),true, bQueued);
+			endif;
+			//HandleWalkCommand(p_vPos, p_sMiscParams);
+
+        elseif(p_sCommand == "setcaste")then
+        	SetCaste(p_sMiscParams);
+
+		elseif(p_sCommand=="CTheLiteTask") then
+			AddCTheLiteTask(p_pxObject,p_vPos,p_sMiscParams);
+		elseif(p_sCommand=="AddToInventory") then
+			/*var ^CInventory pxInv = GetInventory();*/
+		elseif(p_sCommand=="LoseFromInventory") then
+			/*var ^CInventory pxInv = GetInventory();*/
+		elseif(p_sCommand=="LoseAllInventory") then
+			var ^CInventory pxInv = GetInventory();
+			if(pxInv!=null)then
+				pxInv^.Clear();
+			endif;
+		elseif(p_sCommand=="ClimbLadder") then
+			StartLadderClimb(p_pxObject^.GetHandle(),true,false);
+		elseif(p_sCommand=="Action") then
+			if(p_sMiscParams.Find("/Resurrect")!=-1)then
+				var array string asTokens;
+				p_sMiscParams.Split(asTokens," ",true);
+				if(asTokens.NumEntries()==2)then
+					Resurrect(asTokens[0],asTokens[1].ToInt(), bQueued);
+				endif;
+
+
+			elseif(p_sMiscParams.Find("/AttackSrv")!=-1)then
+				if(m_pxTaskMgr==null || m_pxTaskMgr^.GetCurTaskName()=="HealUnit")then
+					return;
+				else
+					super.HandleGamePlayCommand(p_sCommand, p_pxObject, p_vPos, p_sMiscParams);
+				endif;
+			elseif(p_sMiscParams.Find("Repair")!=(-1))then
+				if(p_pxObject!=null)then
+					var ^CBuilding pxBuilding = cast<CBuilding>(p_pxObject);
+					if(pxBuilding!=null)then
+						if(pxBuilding^.GetTaskMgr()^.GetCurTaskName()=="BuildUpB")then
+							Build(p_pxObject^.GetHandle(),bQueued);
+						else
+							Repair(p_pxObject^.GetHandle(),bQueued);
+						endif;
+					else
+						Repair(p_pxObject^.GetHandle(),bQueued);
+					endif;
+				endif;
+			elseif(p_sMiscParams.Find("/AggressiveTarget")!=-1)then
+				super.HandleGamePlayCommand(p_sCommand, p_pxObject, p_vPos, p_sMiscParams);
+				m_bDoNotDefend = false;
+			elseif(p_sMiscParams.Find("/hu_ladder")>=0) then
+				var ^CWall pxW=cast<CWall>(p_pxObject);
+				if(pxW!=null)then
+					BuildLadder(pxW);
+				endif;
+			elseif(p_sMiscParams.Find("/GoHeal")>=0) then
+				if(p_pxObject!=null)then
+					HealUnits(p_pxObject^.GetHandle(), bQueued);
+				endif;
+			elseif(p_sMiscParams.Find("/reveal")>=0) then
+				var ^CFightingObj.CSpecialAbility pxA = m_xAbilities.GetAbility("find_traces", true);
+				if(pxA!=null)then
+					var real fSearchRadius = pxA^.GetValueF("radius");
+					FindTracesAndTraps(p_sMiscParams, GetPos(), fSearchRadius);
+				endif;
+			elseif(p_sMiscParams.Find("/illusion")!=(-1))then
+				if(CheckSpecialActionTimer(p_sMiscParams)) then
+					AddSpecialActionTimer(p_sMiscParams);
+					CreateIllusions();
+				endif;
+			elseif(p_sMiscParams.Find("/entrench")!=(-1))then
+				Entrench(p_sMiscParams);
+			elseif(p_sMiscParams.Find("/insects")!=(-1))then
+				if(CheckSpecialActionTimer(p_sMiscParams)) then
+					DeliverInsects(p_pxObject,p_sMiscParams);
+				endif;
+			elseif(p_sMiscParams.Find("/fireworks")!=(-1))then
+				if(CheckSpecialActionTimer(p_sMiscParams)) then
+					if(StartFireworks(p_sMiscParams))then
+						AddSpecialActionTimer(p_sMiscParams);
+					endif;
+				endif;
+			elseif(p_sMiscParams.Find("Tesla_DstrVhcl_0")!=(-1))then
+				if(p_pxObject!=null)then
+					StartDestroyVHCL(p_sMiscParams, p_pxObject);
+				endif;
+			elseif(p_sMiscParams.Find("Druid_HealAnml_0")!=(-1))then
+				StartHealANML(p_sMiscParams);
+			elseif(p_sMiscParams.Find("/termites")!=(-1))then
+				if(CheckSpecialActionTimer(p_sMiscParams)) then
+					DeliverTermites(p_pxObject, p_sMiscParams);
+				endif;
+			elseif(p_sMiscParams.Find("/tornado")!=(-1))then
+				if(CheckSpecialActionTimer(p_sMiscParams)) then
+					var vec3 vPos = p_vPos;
+					if(p_pxObject!=null)then
+						vPos = p_pxObject^.GetPos();
+					endif;
+					DeliverTornado(vPos, p_sMiscParams);
+				endif;
+			elseif(p_sMiscParams.Find("/quicksand")!=(-1))then
+				if(CheckSpecialActionTimer(p_sMiscParams)) then
+					var vec3 vPos = p_vPos;
+					if(p_pxObject!=null)then
+						vPos = p_pxObject^.GetPos();
+					endif;
+					DeliverQuicksand(vPos,p_sMiscParams);
+				endif;
+			elseif(p_sMiscParams.Find("/lockpicking")!=(-1))then
+				if(PickSomeLocks(p_pxObject))then
+					//AddSpecialActionTimer(p_sMiscParams);
+				endif;
+			elseif(p_sMiscParams.Find("Repair")!=(-1))then
+				if(p_pxObject!=null)then
+					var ^CBuilding pxBuilding = cast<CBuilding>(p_pxObject);
+					if(pxBuilding!=null)then
+						if(pxBuilding^.GetTaskMgr()^.GetCurTaskName()=="BuildUpB")then
+							Build(p_pxObject^.GetHandle(),bQueued);
+						else
+							Repair(p_pxObject^.GetHandle(),bQueued);
+						endif;
+					else
+						Repair(p_pxObject^.GetHandle(),bQueued);
+					endif;
+				endif;
+			elseif(p_sMiscParams.Find("Shotgun")!=(-1))then
+				if(CheckSpecialActionTimer(p_sMiscParams) && !GetTransportObj().IsValid()) then
+					Shotgun(p_pxObject,p_vPos,p_sMiscParams);
+				endif;
+ 			elseif(p_sMiscParams.Find("Snipershot")!=(-1))then
+				if(CheckSpecialActionTimer(p_sMiscParams) && !GetTransportObj().IsValid()) then
+					Throwdownshot(p_pxObject,p_sMiscParams);
+				endif;
+			elseif(p_sMiscParams.Find("jetpack")!=(-1))then
+				if(CheckSpecialActionTimer(p_sMiscParams) && !GetTransportObj().IsValid()) then
+					Jetpack(p_vPos,p_sMiscParams);
+				endif;
+			elseif(p_sMiscParams.Find("/UseAttack")!=(-1))then
+				var ^CWall pxW=cast<CWall>(p_pxObject);
+				if(pxW!=null)then
+					GoTo(p_pxObject^.GetPos(),true,GetMaxSpeed(),true,true,true);
+				else
+					var string sMiscCommand=p_sMiscParams;
+					sMiscCommand.Replace("/UseAttack","/Attack");
+					super.HandleGamePlayCommand(p_sCommand, p_pxObject, p_vPos, sMiscCommand);
+				endif;
+			elseif(p_sMiscParams.Find("JumpOffWall")!=(-1))then
+				JumpOffWall(p_vPos);
+ 			elseif(p_sMiscParams.Find("disguise")!=(-1))then
+				StartDisguise(p_sMiscParams);
+			elseif(p_sMiscParams.Find("camouflage")>=0) then
+				if(CheckSpecialActionTimer(p_sMiscParams))then
+					if(GetEffectFlag(CFightingObj.EFFECT_AJE_CAMOUFLAGE))then
+						SetEffectFlag(CFightingObj.EFFECT_AJE_CAMOUFLAGE, false);
+					else
+						EnableAjeCamouflage(p_sMiscParams);
+					endif;
+				endif;
+			elseif(p_sMiscParams.Find("oracle")!=-1) then
+				if(CheckSpecialActionTimer(p_sMiscParams) && !GetTransportObj().IsValid()) then
+					FindTracesAndTraps(p_sMiscParams,p_vPos,20.0);
+					var ^CShowFOWObj pxO = cast<CShowFOWObj>(CSrvWrap.GetObjMgr()^.CreateObj("ShowFOW_Obj",GetOwner(),p_vPos));
+					if (pxO!=null) then
+						pxO^.SetFOWRange(20.0);
+						pxO^.SetKillTimer(10.0);
+					endif;
+				endif;
+			else
+				super.HandleGamePlayCommand(p_sCommand, p_pxObject, p_vPos, p_sMiscParams);
+ 			endif;
+ 		else
+			super.HandleGamePlayCommand(p_sCommand, p_pxObject, p_vPos, p_sMiscParams);
+        endif;
+	endproc;
+
+	export proc void HandleEvent(ref CGameEvtPtr p_rxEvtPtr)
+		if(p_rxEvtPtr.GetClass()==CWallMapSrv.ms_xWallEventClass)then
+			if(p_rxEvtPtr.GetInt(0)==CWallMapSrv.WCT_Destroyed.ToInt())then
+				// ToDo: make here fall task, so it isn't breakable and take damage on ground not in the air
+				m_pxTaskMgr^.Break();
+				var vec3 vDest=GetPos();
+				var real fH=CSrvWrap.GetScapeMgr().GetHeight(vDest.GetX(),vDest.GetY());
+				FallAction({0.0,0.0,-0.35},"hit_front","getting_up");
+				TakeDirectMeleeDmg((GetPos().GetZ()-fH)*5.0f);
+			endif;
+		elseif(p_rxEvtPtr.GetClass()=="Add2Inv")then
+			var CObjHndl xItem;
+			xItem.FromInt(p_rxEvtPtr.GetInt(0));
+			var ^CInventory pxInv=GetInventory();
+			pxInv^.AddItem(xItem);
+
+			if(GetTransportObj().IsValid()) then
+				var ^CInventory pxI = GetTransportObj().GetObj()^.GetInventory();
+				if(pxI!=null) then
+					pxInv^.AddItem(CObjHndl.Invalid());
+				endif;
+			endif;
+		elseif(p_rxEvtPtr.GetClass()=="DelFrInv")then
+			var CObjHndl xItem;
+			xItem.FromInt(p_rxEvtPtr.GetInt(0));
+			var ^CInventory pxInv=GetInventory();
+			pxInv^.RemItem(xItem);
+		elseif(p_rxEvtPtr.GetClass()=="GetFood")then
+        	var string sFood = p_rxEvtPtr.GetString();
+        	var array string asSubs;
+        	sFood.Split(asSubs,"/",true);
+        	if(asSubs.NumEntries()==2)then
+				var vec3 vPos; vPos.FromString(asSubs[1]);
+	        	if(sFood!="")then
+					GetFoodSearch(asSubs[0],vPos);
+				endif;
+			endif;
+		elseif(p_rxEvtPtr.GetClass()==ms_xTimerClass)then
+			var int iTimerID = p_rxEvtPtr.GetInt(0);
+			if(iTimerID==TIMER_ILLUSION_DEATH)then
+				Die();
+				return;
+			else
+				super.HandleEvent(p_rxEvtPtr);
+			endif;
+		else
+			super.HandleEvent(p_rxEvtPtr);
+		endif;
+	endproc;
+
+	proc void Resurrect(string p_sTTPath, int p_iSpiritHandle, bool p_bQueued)
+		var ^CSpirit pxSpirit=CSrvWrap.GetSpiritMgr().GetSpirit(p_iSpiritHandle);
+		if(pxSpirit!=null && CheckSpecialActionTimer(p_sTTPath))then
+	    	var ^CResurrect pxTask=cast<CResurrect>(CSrvWrap.GetUSLFactoryMgr().CreateState(GetFSM(),"Resrct"));
+		    pxTask^.Init(GetHandle(),p_iSpiritHandle, p_sTTPath);
+		    pxTask^.SetUserCommand(true);
+		    AddTask(pxTask,p_bQueued);
+		endif;
+	endproc;
+
+	export proc void SetOnWall(bool p_bEnable)
+		super.SetOnWall(p_bEnable);
+		AddTemporaryDefenseBoni(GetProtection());
+	endproc;
+
+	export proc real GetTimeFactor(CObjHndl p_xTarget)
+		//Safety
+		var real fAllOverFactor = GetSelfTimeFactor();
+
+		if(p_xTarget.IsValid())then
+			var real fSelfFactor  = GetSelfTimeFactor();
+			var real fOtherFactor;
+			var ^CFightingObj pxFight = cast<CFightingObj>(p_xTarget.GetObj());
+			if(pxFight!=null)then
+				//GetTechTreeTimeFactor
+				fOtherFactor = pxFight^.GetSelfTimeFactor();
+			else
+				fOtherFactor = m_xTechTree.GetValueR("TimeFactor/"+p_xTarget.GetObj()^.GetType().AsString(),2.0);
+				if(fOtherFactor<=0.0)then
+					fOtherFactor = 2.0;
+				endif;
+			endif;
+			fAllOverFactor = fOtherFactor * fSelfFactor;
+		endif;
+		return fAllOverFactor;
+	endproc;
+
+	export proc bool DiePerHeadOff(^CCharacter p_pxEnemy, ^CCharacterCorpse p_pxCorpse)
+
+		var array string asHeadOffAnims;
+		asHeadOffAnims.AddEntry("res_strike_13");
+		asHeadOffAnims.AddEntry("res_strike_15");
+		asHeadOffAnims.AddEntry("res_strike_1");
+		asHeadOffAnims.AddEntry("res_strike_7");
+		asHeadOffAnims.AddEntry("res_strike_12");
+
+		if((Random.GetInt()%3==0) && (asHeadOffAnims.FindEntry(p_pxEnemy^.GetFightAnim())!=-1) && (GetCaste()=="res"))then
+			var ^CGameObj pxHeadObj = CSrvWrap.GetObjMgr()^.CreateObj(GetClassName()+"_head",GetOwner(),GetPos(),GetRotation());
+			if(pxHeadObj!=null)then
+				p_pxCorpse^.SetHead(pxHeadObj^.GetHandle());
+				return true;
+			endif;
+		endif;
+		return false;
+
+	endproc;
+
+	export proc void CreateCorpse()
+		//InvokeAreaThrow(GetPos(),50.0f); //this is fun !!!
+		var string sCurAnim=GetCurrentAnimName();
+		var bool bNoDieAnim = sCurAnim.Find("hit_")==0;
+		var ^CCharacterCorpse pxCorpse = cast<CCharacterCorpse>(CSrvWrap.GetObjMgr()^.CreateObj("CharacterCorpse",GetOwner(),GetPos(),GetRotation()));
+		if(pxCorpse!=null)then
+			pxCorpse^.SetSource(this);
+			pxCorpse^.SetCaste(GetCaste());
+			pxCorpse^.SetOwner(GetOwner());
+			pxCorpse^.InvokeGenericSCEvent(16,4.0f);
+		endif;
+
+		var bool bGotAnim=false;
+
+		var ^CCharacter pxChar = cast<CCharacter>(m_xLastEnemy.GetObj());
+		if(pxCorpse!=null)then
+			if(sCurAnim=="aje_poisoner_sm_0") then
+				pxCorpse^.SetAnim(sCurAnim,1);
+				bGotAnim=true;
+			elseif(bNoDieAnim) then
+				pxCorpse^.SetStillAnim(sCurAnim,-1);
+				bGotAnim=true;
+			elseif(m_bSelfKill)then
+				pxCorpse^.SetDieAnim("harakiri",true);
+				bGotAnim=true;
+			elseif(pxChar!=null && GetClassName().Find("statue")<0 && DiePerHeadOff(pxChar, pxCorpse))then
+				pxCorpse^.SetDieAnim("chop_1",true);
+				bGotAnim=true;
+			elseif(m_xTrap.IsValid())then
+					var ^CTrap pxTrap = cast<CTrap>(m_xTrap.GetObj());
+					if (pxTrap != null) then
+						pxCorpse^.SetDieAnim(pxTrap^.GetDieInTrapAnim(),true);
+						bGotAnim=true;
+					endif;
+			endif;
+		endif;
+
+		if(pxCorpse!=null)then
+			if(GetOnWall() && !m_bSelfKill && !bNoDieAnim)then
+				pxCorpse^.SetDieAnim("hit_rotate_s",true);
+			elseif(!bGotAnim)then
+/*
+				if(m_dwLastHitDirection==DIR_FRONT) 		then KLog.LogSpam("JaNe","1");endif;
+				if(m_dwLastHitDirection==DIR_BACK) 		then KLog.LogSpam("JaNe","2");endif;
+				if(m_dwLastHitDirection==DIR_LEFT) 		then KLog.LogSpam("JaNe","3");endif;
+				if(m_dwLastHitDirection==DIR_RIGHT) 		then KLog.LogSpam("JaNe","4");endif;
+				if(m_dwLastHitDirection==DIR_BACK_LEFT) 	then KLog.LogSpam("JaNe","5");endif;
+				if(m_dwLastHitDirection==DIR_BACK_RIGHT) 	then KLog.LogSpam("JaNe","6");endif;
+				if(m_dwLastHitDirection==DIR_FRONT_LEFT) 	then KLog.LogSpam("JaNe","7");endif;
+				if(m_dwLastHitDirection==DIR_FRONT_RIGHT)	then KLog.LogSpam("JaNe","8");endif;
+*/
+				if(	m_dwLastHitDirection==CFightingObj.DIR_FRONT ||
+					m_dwLastHitDirection==CFightingObj.DIR_FRONT_LEFT ||
+					m_dwLastHitDirection==CFightingObj.DIR_FRONT_RIGHT)then
+					pxCorpse^.SetDieAnim("hit_fw",true);
+				elseif(m_dwLastHitDirection==CFightingObj.DIR_BACK ||
+					m_dwLastHitDirection==CFightingObj.DIR_BACK_LEFT ||
+					m_dwLastHitDirection==CFightingObj.DIR_BACK_RIGHT)then
+					pxCorpse^.SetDieAnim("dying",true);
+				elseif(m_dwLastHitDirection==CFightingObj.DIR_LEFT)then
+					pxCorpse^.SetDieAnim("die_simple",true);
+				elseif(m_dwLastHitDirection==CFightingObj.DIR_RIGHT)then
+					pxCorpse^.SetDieAnim("die_simple",true);
+				else
+					pxCorpse^.SetDieAnim("die_simple",true);
+				endif;
+			endif;
+			pxCorpse^.Init(GetGfxName(), GetName(),8.0f);
+		endif;
+	endproc;
+
+	export proc void Die()
+		//InvokeAreaThrow(GetPos(),50.0f); //this is fun !!!
+		if(!IsDead())then
+			CreateCorpse();
+		endif;
+		super.Die();
+	endproc;
+
+	export proc void Delete()
+		if(GetClassName()=="hu_warrior")then
+			if(HasPersonalRegion())then
+				while(m_xRegionObjects.NumEntries()>0)do
+					OnObjRemWarcry(m_xRegionObjects[0]);
+				endwhile;
+			endif;
+		endif;
+
+		super.Delete();
+	endproc;
+
+
+	export proc real GetResourceInventorySize()
+		return m_fResInvSpace;
+	endproc;
+
+	export proc real GetResourceInventorySize(string p_sResource)
+		var int iIdx = m_asResTable.FindEntry(p_sResource);
+		if(iIdx<0 || iIdx>=m_afResInvSpace.NumEntries())then return 0.0; endif;
+		return m_afResInvSpace[iIdx]+GetBonusSum(CFightingObj.BONUS_MAXRESINV);
+	endproc;
+
+	export proc real GetResourceInventorySize(int p_iIdx)
+		if(p_iIdx<0 || p_iIdx>=m_afResInvSpace.NumEntries())then return 0.0; endif;
+		return m_afResInvSpace[p_iIdx]+GetBonusSum(CFightingObj.BONUS_MAXRESINV);
+	endproc;
+
+	export proc bool IsOnOpenTransporter()
+		if(!GetTransportObj().IsValid())then return false; endif;
+		var ^CTransportObj pxTransporter = cast<CTransportObj>(GetTransportObj().GetObj());
+		if(pxTransporter==null)then return false; endif;
+		if(pxTransporter^.GetTransportObj().IsValid())then return false; endif;
+		return pxTransporter^.HasBuildUp(CBuildUpBase.TYPE_TRANSPORTER_OPEN);
+	endproc;
+
+//=========FIGHT======================================================================================================
+
+	export proc bool AttackEnemy(^CFightingObj p_pxEnemy, vec3 p_vTarget, ref bool p_rbRotated)
+		if (GetTransportObj().IsValid() && GetTransportObj().GetObj()^.GetType()=="SHIP") then
+			return false;
+		endif;
+
+		RemoveCamouflageEffect("disg");
+
+		var string sProj = GetProjectile();
+		var bool bProj = !sProj.IsEmpty();
+		//wenn irgendwas schon so anfõngt, kann es ja nur ein p÷ser hack sein....
+		if(IsAnimLoopUnit(GetClassName()))then
+			var bool bPrimary = GetCurrentWeapon()==GetRightHandWeapon();
+			if(bPrimary)then
+				var string sFAnim = GetNextFightAnim();
+				if(HasAnim(sFAnim))then
+
+					m_fWeaponDurationOvertime = 0.0;
+					if(!m_bTecInFightPos)then
+						if(GetClassName()=="Bela_s0")then
+							m_fWeaponDurationOvertime = 0.6;
+						else
+							m_fWeaponDurationOvertime = 0.4;
+						endif;
+					endif;
+
+					if(GetTransportObj().IsValid())then
+						if(!IsOnOpenTransporter())then
+							return false;
+						endif;
+
+						var Quat qAddRot = GetAdditionalRot();
+						var vec3 vEnemyPos;
+						if(p_pxEnemy!=null)then vEnemyPos=p_pxEnemy^.GetPos(); else vEnemyPos=p_vTarget; endif;
+
+						var vec3 vEnemyDirection=(vEnemyPos-GetPos()).GetNormalized();
+						vEnemyDirection.SetZ(0.0f);
+						vEnemyDirection.Normalize();
+
+						var vec3 vSelfDirection={0.0f,1.0f,0.0};
+						var Quat qRot=GetRot();
+						begin RFix;var vec3 vRot;qRot.ToVec3(vRot);vRot.SetX(0.0);vRot.SetY(0.0);qRot.FromVec3(vRot);end RFix;
+						qRot.VecRotateU(vSelfDirection);
+						qAddRot.VecRotateU(vSelfDirection);
+
+						vSelfDirection.SetZ(0.0f);
+						vSelfDirection.Normalize();
+
+						var real fDifference=(vEnemyDirection-vSelfDirection).Abs2();
+
+						if(fDifference>0.1f)then
+							if(GetSecActionDesc()=="CAct")then
+								var Quat qR;qR.FromXYDir(vEnemyDirection.GetX(),vEnemyDirection.GetY());
+								qR/=qRot;
+								SecRotAction(qR, fDifference*0.5);
+							endif;
+						endif;
+						ShowWeapons("weapon_on");
+						SetSLEAnim(sFAnim, 1 , !m_bTecInFightPos, false);
+					else
+						var real fAngle;
+						if(p_pxEnemy!=null)then
+							fAngle = GetAngleToR(p_pxEnemy);
+						else
+							fAngle = GetAngleToR(p_vTarget);
+						endif;
+						if(fAngle>Math.Pi()/8.0) then
+							var Quat qRot;
+							if(p_pxEnemy!=null)then
+								qRot = GetAngleToQ(p_pxEnemy);
+							else
+								qRot = GetAngleToQ(p_vTarget);
+							endif;
+							m_bRotateSLEAction = true;
+							ShowWeapons("weapon_on");
+							RotateActionSLE(qRot,sFAnim, 0.4, 1, !m_bTecInFightPos,false);
+							p_rbRotated = false;
+						else
+							ShowWeapons("weapon_on");
+							SetSLEAnim(sFAnim, 1 , !m_bTecInFightPos, false);
+						endif;
+					endif;
+
+					m_bTecInFightPos = true;
+				else
+					m_fWeaponDurationOvertime = 0.0;
+					SetSLEAnim(sFAnim, 1 ,false, false);
+				endif;
+
+				if(GetPenetration())then
+					Penetrate(p_pxEnemy,p_vTarget);
+					return false;
+				elseif(bProj)then
+					CreateProjectileAndShoot(p_pxEnemy, p_vTarget);
+					return false;
+				else
+					return true;
+				endif;
+			endif;
+		else
+			if(bProj && GetTransportObj().IsValid())then
+				var string sFAnim = GetNextFightAnim();
+				if(!IsOnOpenTransporter())then
+					return false;
+				endif;
+				var Quat qAddRot = GetAdditionalRot();
+				var vec3 vEnemyPos;
+				if(p_pxEnemy!=null)then vEnemyPos=p_pxEnemy^.GetPos(); else vEnemyPos=p_vTarget; endif;
+
+				var vec3 vEnemyDirection=(vEnemyPos-GetPos()).GetNormalized();
+				vEnemyDirection.SetZ(0.0f);
+				vEnemyDirection.Normalize();
+
+				var vec3 vSelfDirection={0.0f,1.0f,0.0};
+				var Quat qRot=GetRot();
+				begin RFix;var vec3 vRot;qRot.ToVec3(vRot);vRot.SetX(0.0);vRot.SetY(0.0);qRot.FromVec3(vRot);end RFix;
+				qRot.VecRotateU(vSelfDirection);
+				qAddRot.VecRotateU(vSelfDirection);
+
+				vSelfDirection.SetZ(0.0f);
+				vSelfDirection.Normalize();
+
+				var real fDifference=(vEnemyDirection-vSelfDirection).Abs2();
+
+				if(fDifference>0.1f)then
+					if(GetSecActionDesc()=="CAct")then
+						var Quat qR; qR.FromXYDir(vEnemyDirection.GetX(),vEnemyDirection.GetY());
+						qR/=qRot;
+						SecRotAction(qR, fDifference*0.5);
+					endif;
+				endif;
+				SetSLEAnim(sFAnim, 1 , !m_bTecInFightPos, false);
+				CreateProjectileAndShoot(p_pxEnemy, p_vTarget);
+				return false;
+			endif;
+
+		endif;
+		return super.AttackEnemy(p_pxEnemy,p_vTarget, p_rbRotated);
+
+	endproc;
+
+	proc bool IsAnimLoopUnit(string p_sClass)
+		if(p_sClass=="hu_archer")then
+			return true;
+		elseif(p_sClass=="hu_marksman")then
+			return true;
+		elseif(p_sClass=="hu_worker" && !m_sAnimalWeapon.IsEmpty())then
+			return true;
+		elseif(p_sClass=="aje_worker" && !m_sAnimalWeapon.IsEmpty())then
+			return true;
+		elseif(p_sClass=="ninigi_worker" && !m_sAnimalWeapon.IsEmpty())then
+			return true;
+		elseif(p_sClass=="aje_archer")then
+			return true;
+		elseif(p_sClass=="aje_rammer")then
+			return true;
+		elseif(p_sClass=="aje_thrower")then
+			return true;
+		elseif(p_sClass=="ninigi_archer")then
+			return true;
+		elseif(p_sClass=="ninigi_marksman")then
+			return true;
+		elseif(p_sClass=="ninigi_ninja")then
+			return true;
+		elseif(p_sClass=="ninigi_mortar")then
+			return true;
+		elseif(p_sClass=="seas_marksman")then
+			return true;
+		elseif(p_sClass=="seas_gunner")then
+			return true;
+		elseif(p_sClass=="seas_rocketman")then
+			return true;
+		elseif(p_sClass=="seas_flamethrower")then
+			return true;
+		elseif(p_sClass=="Bela_s0")then
+			return true;
+		elseif(p_sClass=="tesla_s0")then
+			return true;
+		elseif(p_sClass=="babbage_s0")then
+			return true;
+		elseif(p_sClass=="lovelace_s0")then
+			return true;
+		elseif(p_sClass=="schliemann_s0")then
+			return true;
+		elseif(p_sClass=="hermit_s0")then
+			return true;
+		elseif(p_sClass=="hu_flamethrower")then
+			return true;
+		elseif(p_sClass=="aje_flamethrower")then
+			return true;
+		elseif(p_sClass=="ninigi_flamethrower")then
+			return true;
+		endif;
+		return false;
+	endproc;
+
+	export proc real GetWeaponDuration()
+		return super.GetWeaponDuration()+m_fWeaponDurationOvertime;
+	endproc;
+
+	export proc real GetProjectileDelay()
+		return m_xCurrentFightAnim.m_fShootDelay+m_fWeaponDurationOvertime;
+	endproc;
+
+	export proc bool FollowEnemy(^CFightingObj p_pxEnemy, bool p_bAttackScape)
+		EndFight();
+		if(GetTransportObj().IsValid())then
+			return false;
+		endif;
+		return super.FollowEnemy(p_pxEnemy, p_bAttackScape);
+	endproc;
+
+	export proc void OnStartFight()
+		super.OnStartFight();
+	endproc;
+
+	export proc void EndFight()
+		super.EndFight();
+		ShowWeapons("weapon_off");
+		if(!IsAnimLoopUnit(GetClassName()))then return; endif;
+		if(m_bTecInFightPos && HasAnim(GetFightAnim()))then
+			m_bTecInFightPos = false;
+			if(GetTransportObj().IsValid())then
+				SetSLEAnim(GetFightAnim(),0,false,true);
+			else
+				AnimAction(GetFightAnim(),0,false,true);
+			endif;
+		endif;
+	endproc;
+
+	export proc real TakeDmg(^CFightingObj p_pxEnemy)
+		return super.TakeDmg(p_pxEnemy);
+	endproc;
+
+	export proc real TakeDmg(^CFightingObj p_pxEnemy, real p_fFactor)
+		return super.TakeDmg(p_pxEnemy, p_fFactor);
+	endproc;
+
+	export proc real TakeDmg(^CFightingObj p_pxEnemy, real p_fFactor, real p_fHitDelay)
+		if(p_pxEnemy==null)then	return 0.0;	endif;
+		if(GetEntrenched()==1)then
+			Entrench("");
+		endif;
+		//KLog.LogSpam("Fight","TakeDmg("+p_pxEnemy^.GetName()+")");
+		return super.TakeDmg(p_pxEnemy,p_fFactor,p_fHitDelay);
+	endproc;
+
+	proc void OnDefend(^CGameObj p_pxEnemy)
+		if(m_bDoNotDefend && !m_bAggressionWalk && !IsBerserkTarget(p_pxEnemy))then return; endif;
+		return super.OnDefend(p_pxEnemy);
+	endproc;
+
+	export proc real GetTechTreeModifier(string p_sType, bool p_bRelative)
+		var string sPath = "/Modifications/";
+		sPath += GetTribeName()+"/";
+		sPath += GetType().AsString()+"/";
+		sPath += p_sType+"/";
+		sPath += GetCaste()+"_";
+
+		var real fValue;
+		if(p_bRelative)then
+			sPath += "rel";
+			fValue = 1.0;
+		else
+			sPath += "abs";
+			fValue = 0.0;
+		endif;
+
+		return(m_xTechTree.GetValueR(sPath,fValue));
+
+	endproc;
+
+	export proc void UpdateWeaponsGfx()
+		m_axWeaponsGfx = 0;
+
+		var string sCurWeapon 	= GetCurrentWeapon();
+		var string sLeftH		= GetLeftHandWeapon();
+		var string sArmor		= GetArmor();
+
+		var array string asWeapons;
+		asWeapons = 3;
+		asWeapons[0] = sCurWeapon+"/Parts";
+		asWeapons[1] = sLeftH+"/Parts";
+		asWeapons[2] = sArmor+"/Parts";
+
+		var array string asVariation;
+		asVariation=3;
+		asVariation[0] = GetWeaponMgr()^.GetRightHVariationPostfix();
+		asVariation[1] = GetWeaponMgr()^.GetLeftHVariationPostfix();
+		asVariation[2] = "";
+
+		var int iWeaponID, iNumWeapons = asWeapons.NumEntries();
+		for(iWeaponID=0) cond(iWeaponID<iNumWeapons) iter(iWeaponID++) do
+			var ^CTechTree.CNode pxNode = m_xTechTree.FindNode(asWeapons[iWeaponID]);
+			if (pxNode!=null) then
+				var int i, iC = pxNode^.NumSubs();
+				var ^CTechTree.CNode pxPart = null;
+				var CFourCC xLink;
+
+				for(i=0) cond(i<iC) iter(++i) do
+					pxPart = pxNode^.GetSub(i);
+					if (pxPart!=null) then
+						xLink = pxPart^.GetSubValue("Links");
+						//Default Value in TTEditor is HndR, so assume this as default (RT#12601)
+						//We could also fix this in TTEditor, but this would expand TT unnecessary
+						if(xLink=="") then xLink="HndR"; endif;
+						RemLinkGFX(xLink);
+						var ^CTechTree.CNode pxN = pxPart^.GetSub("Gfx");
+						var string sGFX;
+						if (pxN!=null) then sGFX = pxN^.GetSubValue(0); endif;
+						if (!sGFX.IsEmpty()) then
+							var ^CCharacter.CWeaponGfx pxGfx = ^(m_axWeaponsGfx.NewEntryRef());
+							var string sGFXName=CSrvWrap.GetObjMgr()^.GetClassGFXName(sGFX+asVariation[iWeaponID]);
+							pxGfx^.m_xLink = xLink;
+							pxGfx^.m_sGfx = sGFXName;
+						endif;
+					endif;
+				endfor;
+			endif;
+		endfor;
+		ShowWeapons();
+	endproc;
+
+	export proc void ShowWeapons()
+		RemAllLinkGFX();
+		ShowWeapons("weapon_off");
+	endproc;
+
+	export proc void ShowWeapons(string p_sAnim)
+
+		if(GetEffectFlag(CFightingObj.EFFECT_AJE_CAMOUFLAGE)) then return; endif;
+
+		var int i, iC = m_axWeaponsGfx.NumEntries();
+		for(i=0)cond(i<iC)iter(i++)do
+			var ^CCharacter.CWeaponGfx pxGfx = ^(m_axWeaponsGfx[i]);
+			if(pxGfx^.IsValid())then
+				if(p_sAnim.IsEmpty())then
+					SetLinkGFX(pxGfx^.m_xLink,pxGfx^.m_sGfx);
+				else
+					SetLinkGFX(pxGfx^.m_xLink,pxGfx^.m_sGfx,p_sAnim);
+				endif;
+			endif;
+		endfor;
+
+	endproc;
+
+	export proc void UpdateResourceInventoryCaps()
+
+		var ^CTechTree.CNode pxResNode = m_xTechTree.FindNode(GetObjPath()+"/ResInvCaps");
+		if(pxResNode==null)then return; endif;
+
+		m_afResInvSpace = 0;
+
+		var int i, iC = m_asResTable.NumEntries();
+		for(i=0)cond(i<iC)iter(i++)do
+			var real fValue = pxResNode^.GetSubValueF(m_asResTable[i],5.0);
+			m_afResInvSpace.AddEntry( ( fValue * GetTechTreeModifier("ResInv",true) ) + GetTechTreeModifier("ResInv",false) );
+		endfor;
+
+		m_fResInvSpace = (m_xTechTree.GetValueR(GetObjPath()+"/ResInvCaps/food",5.0) * GetTechTreeModifier("ResInv",true)) + GetTechTreeModifier("ResInv",false);
+	endproc;
+
+	export proc void OnTechTreeChange()
+		super.OnTechTreeChange();
+	endproc;
+
+	export proc void OnTechTreeChange(ref CStringArray p_rasChanges)
+		super.OnTechTreeChange(p_rasChanges);
+		var int i;
+		var string sObjPath="/"+GetObjPath();
+		for(i=0) cond(i<p_rasChanges.NumEntries()) iter(i++) do
+			var string sVal=p_rasChanges[i];
+			if((sVal.Find(sObjPath)!=-1)||(sObjPath.Find(sVal)!=-1)) then
+				var ^CFightingObj pxTO = cast<CFightingObj>(GetTransportObj().GetObj());
+				var string sIAOld=m_sIdleAnim;
+				if(pxTO!=null)then
+					m_sIdleAnim = pxTO^.GetTechTree().GetValueS(pxTO^.GetObjPath()+"/standanim","idle_0");
+				else
+					m_sIdleAnim = m_xTechTree.GetValueS(sObjPath+"/standanim","idle_0");
+				endif;
+				if(sIAOld!=m_sIdleAnim&&IsIdle()&&HasAnim(m_sIdleAnim)) then
+					SetAnim(m_sIdleAnim,3);
+				endif;
+			elseif(sVal.Find("/disguise")!=-1)then
+				if(CanDisguise())then
+					SetAggressionState(1);
+					AddCamouflageEffect("disg");
+				endif;
+			endif;
+		endfor;
+		if (IsIdle())then
+			ShowWeapons();
+		endif;
+		InitResourceInventory();
+		UpdateResourceInventoryCaps();
+	endproc;
+
+	export proc void SetCurEnemy(CObjHndl p_xHndl)
+		super.SetCurEnemy(p_xHndl);
+		UpdateEquipment();
+	endproc;
+
+	export proc string GetRightHandWeapon()
+		if(GetClassName().Find("_worker")!=-1)then
+			if(m_xCurEnemy.IsValid())then
+				var ^CGameObj pxObj=m_xCurEnemy.GetObj();
+				if(pxObj!=null && pxObj^.GetOwner()==-1 && pxObj^.GetType()=="ANML")then
+					return m_sAnimalWeapon;
+				endif;
+			endif;
+		endif;
+		return m_pxWeaponMgr^.GetRightHandWeapon();
+	endproc;
+
+	export proc void UpdateEquipment()
+
+		var bool bChanged=false;
+		if(GetClassName().Find("_worker")!=-1)then
+			if(m_xCurEnemy.IsValid())then
+				var ^CGameObj pxObj=m_xCurEnemy.GetObj();
+				if(pxObj!=null && pxObj^.GetOwner()==-1 && pxObj^.GetType()=="ANML")then
+					var string sTribe=GetTribeName();
+					m_sAnimalWeapon="/Objects/"+sTribe+"/Weapons/";
+					sTribe.MakeLower();
+					m_sAnimalWeapon+=sTribe+"_slingshot_";
+					if(GetLevel()==0)then
+						m_sAnimalWeapon+="a";
+					elseif(GetLevel()==1)then
+						m_sAnimalWeapon+="b";
+					elseif(GetLevel()==2)then
+						m_sAnimalWeapon+="c";
+					elseif(GetLevel()==3)then
+						m_sAnimalWeapon+="d";
+					elseif(GetLevel()==4)then
+						m_sAnimalWeapon+="e";
+					endif;
+					if(GetCurrentWeapon()!=m_sAnimalWeapon)then
+						ClearWeaponCache();
+						UpdateWeapons(m_sAnimalWeapon);
+
+						var ^CAttribs pxAttr = GetAttribs();
+						if(pxAttr!=null && pxAttr^.GetValue("Equip_Slot_0")!=m_sAnimalWeapon)then
+							pxAttr^.SetValue("Equip_Slot_0",m_sAnimalWeapon);
+						endif;
+						m_bWeaponHasChanged = true;
+						m_bOwnWeaponHasChanged = true;
+						ShowWeapons();
+					endif;
+					return;
+				endif;
+			endif;
+		endif;
+		if(!m_sAnimalWeapon.IsEmpty())then
+			ClearWeaponCache();
+			m_sAnimalWeapon="";
+			bChanged=true;
+		endif;
+		super.UpdateEquipment();
+		if(bChanged)then
+			ShowWeapons();
+		endif;
+
+	endproc;
+
+	export proc bool UpdateGfx()
+		var string sGFXOld=GetGfxName();
+		var bool bRes=super.UpdateGfx();
+
+		if(bRes&&IsIdle()&&HasAnim(m_sIdleAnim)&&GetCurrentAnimName().IsEmpty()) then
+			SetAnim(m_sIdleAnim,3);
+		endif;
+
+		return bRes;
+	endproc;
+
+	export proc void HideWeapons()
+		if(GetCamouflage()) then return; endif;
+		RemAllLinkGFX();
+		var ^CPlayer pxPlayer = CSrvWrap.GetCurLevel()^.GetPlayer(GetOwner());
+		if(pxPlayer==null)then return; endif;
+
+		var int i = 0;
+		var string sPartName = m_xTechTree.GetValueS(GetArmor()+"/Parts/"+i.ToString(),"");
+		while(sPartName!="")do
+			//L KLog.LogSpam("TechTree","sPartName = "+sPartName);
+			var CFourCC xLink = m_xTechTree.GetValueS(GetArmor()+"/Parts/"+i.ToString()+"/Links","HndR");
+			RemLinkGFX(xLink);
+			SetLinkGFX(xLink,m_xTechTree.GetValueS(GetArmor()+"/Parts/"+i.ToString()+"/Gfx/0",""));
+			i++;
+			sPartName = m_xTechTree.GetValueS(GetArmor()+"/Parts/"+i.ToString(),"");
+		endwhile;
+	endproc;
+
+
+	export proc real ResInvCount(int p_iType)
+		return  m_afResInv[p_iType];
+	endproc;
+
+
+	export proc void ResInvEmpty(int p_iType)
+		m_afResInv[p_iType] = 0.0;
+	endproc;
+
+
+	export proc bool ResInvIsFull(int p_iType)
+		if(ResInvCount(p_iType) < GetResourceInventorySize(p_iType))then
+			return false;
+		else
+			return true;
+		endif;
+	endproc;
+
+	export proc real GetPlainMaxResInv()
+		return m_fResInvSpace;
+	endproc;
+
+	export proc real GetMaxResInv()
+		return m_fResInvSpace + GetBonusSum(CFightingObj.BONUS_MAXRESINV);
+	endproc;
+
+	export proc bool ResInvIsFull(string p_sType)
+		var int iIndex = m_asResTable.FindEntry(p_sType);
+		if(iIndex!=-1)then
+			if(ResInvCount(iIndex) < GetResourceInventorySize(iIndex))then
+				return false;
+			else
+				return true;
+			endif;
+		endif;
+		KLog.LogError("Character","ResInvIsFull() invalid type: "+p_sType+" ("+GetName()+")");
+		return false;
+	endproc;
+
+
+	export proc bool ResInvIsEmpty(int p_iType)
+		if(ResInvCount(p_iType)==0.0)then
+			return true;
+		else
+			return false;
+		endif;
+	endproc;
+
+
+	export proc bool ResInvIsEmpty(string p_sType)
+		var int iIndex = m_asResTable.FindEntry(p_sType);
+		if(iIndex!=-1)then
+			if(ResInvCount(iIndex)==0.0)then
+				return true;
+			else
+				return false;
+			endif;
+		endif;
+		KLog.LogError("Character","ResInvIsEmpty() invalid type: "+p_sType+" ("+GetName()+")");
+		return false;
+	endproc;
+
+
+	export proc real GetResInvSpace(int p_iType)
+		return (GetResourceInventorySize(p_iType) - m_afResInv[p_iType]);
+	endproc;
+
+
+	export proc real GetResInvSpace(string p_sType)
+		var int iIndex = m_asResTable.FindEntry(p_sType);
+		if(iIndex!=-1)then
+			return (GetResourceInventorySize(iIndex) - m_afResInv[iIndex]);
+		endif;
+		return 0.0;
+	endproc;
+
+
+	export proc bool ResInvAdd(int p_iType, real p_fCount)
+		if(!ResInvIsFull(p_iType))then
+			m_afResInv[p_iType]+=p_fCount;
+			return(true);
+		else
+			//L CSrvWrap.LogWarning("Character","Resource inventory full!");
+			return(false);
+		endif;
+	endproc;
+
+
+	export proc bool ResInvAdd(string p_sType, real p_fCount)
+		var int iIndex = m_asResTable.FindEntry(p_sType);
+		if(iIndex!=-1)then
+			if(!ResInvIsFull(iIndex))then
+				m_afResInv[iIndex]+=p_fCount;
+				return(true);
+			else
+				//L CSrvWrap.LogWarning("Character","Resource inventory full!");
+				return(false);
+			endif;
+		else
+			//L CSrvWrap.LogError("Character","try to pick up '"+p_sType+"' but not found amongst available resources.");
+		endif;
+		KLog.LogError("Character","ResInvAdd() invalid type: "+p_sType);
+		return false;
+	endproc;
+
+
+	export proc void DropAllInResInv()
+		var int i;
+		for(i=0)cond(i<m_afResInv.NumEntries())iter(i++)do
+			m_afResInv[i]=0.0;
+		endfor;
+	endproc;
+
+	export proc bool CheckInResInvAllPossible(^CGameObj p_pxDelivery)
+		if (p_pxDelivery==null) then return false; endif;
+		var bool bCheckedIn = false;
+		var ^CAttribs pxAttribs = p_pxDelivery^.GetAttribs();
+		if (pxAttribs!=null) then
+			var int i;
+			for(i=0)cond(i<m_afResInv.NumEntries())iter(i++)do
+				if (m_afResInv[i]>0.0) then
+					//we have some stuff to deliver.
+					var string sResAttrib = m_asResTable[i]+"Delivery";
+					if (pxAttribs^.GetValueBool(sResAttrib)) then
+						if (CheckInResInv(m_asResTable[i])) then
+							bCheckedIn = true;
+						endif;
+					endif;
+				endif;
+			endfor;
+		endif;
+		return bCheckedIn;
+	endproc;
+
+
+	export proc bool CheckInResInv(string p_sType)
+		var ^CLevel pxLevel=CSrvWrap.GetCurLevel();
+		var ^CBasePlayer pxPlayer=cast<CBasePlayer>(pxLevel^.GetPlayer(GetOwner()));
+		if(pxPlayer==null)then return false; endif;
+		var int iIndex = m_asResTable.FindEntry(p_sType);
+		if(iIndex==-1)then return false; endif;
+		if(m_afResInv[iIndex]==0.0)then return false; endif;
+
+		var real fOriginalValue=m_afResInv[iIndex];
+		var real fReturnValue=pxPlayer^.AddResource(p_sType,m_afResInv[iIndex]);;
+
+		var real fStatisticValue=fOriginalValue;
+		if(fReturnValue!=0.0)then fStatisticValue-=fReturnValue; endif;
+
+		m_afResInv[iIndex]=fReturnValue;
+
+		// collect checked in ressource for statistics
+//		var ^CStatisticMgr pxStatisticMgr=^(pxLevel^.GetStatisticMgr());
+//		var CGameTime xTime=CTimeMgr.Get().GetTime();
+//		if(fStatisticValue>0.0f)then
+//			if(p_sType=="wood")then
+//				pxStatisticMgr^.AddSample( CStatisticSample.Collected_Wood.ToInt(), GetOwner(), fStatisticValue.ToInt() );
+//			elseif(p_sType=="stone")then
+//				pxStatisticMgr^.AddSample( CStatisticSample.Collected_Stone.ToInt(), GetOwner(), fStatisticValue.ToInt() );
+//			elseif(p_sType=="food")then
+//				pxStatisticMgr^.AddSample( CStatisticSample.Collected_Food.ToInt(), GetOwner(), fStatisticValue.ToInt() );
+//			endif;
+//		endif;
+		return fReturnValue!=fOriginalValue;
+	endproc;
+
+	export proc void DiePerHarakiri()
+		m_bSelfKill = true;
+		super.DiePerHarakiri();
+	endproc;
+
+	/**
+	 *	overriden method
+	 *	declaration in CFightingObj
+	 *	redirects the damage of a riding character to the animal
+	 **/
+	export proc void SetReaction(real p_fDmg)
+		if(p_fDmg>0.0)then
+			if (GetTransportObj().IsValid()) then
+				var ^CTransportObj pxO= cast<CTransportObj>(GetTransportObj().GetObj());
+				if(pxO!=null) then
+					pxO^.SetReaction(p_fDmg);
+				endif;
+			else
+				Damage(p_fDmg);
+			endif;
+		endif;
+	endproc;
+
+endclass;
+
+
+
+class CIllusion inherit CFightingObj
+
+	const int			TIMER_DEATH	= 274;
+
+
+	export constructor()
+		SetSelectable(true);
+		SetHitable(true);
+	endconstructor;
+
+
+	export proc void OnInit(bool p_bLoad)
+		if(!p_bLoad)then
+			SetType("FGHT");
+		endif;
+		super.OnInit(p_bLoad);
+		InitEvents();
+		if(!p_bLoad)then
+			CreateTimer(TIMER_DEATH,CGameTimeSpan.OneSecond() * (50.0+Random.MTRandF(20.0)), false);
+		endif;
+	endproc;
+
+	export proc real TakeDmg(^CFightingObj p_pxEnemy)
+		return super.TakeDmg(p_pxEnemy);
+	endproc;
+
+	export proc real TakeDmg(^CFightingObj p_pxEnemy, real p_fFactor)
+		return super.TakeDmg(p_pxEnemy, p_fFactor);
+	endproc;
+
+	export proc real TakeDmg(^CFightingObj p_pxEnemy, real p_fFactor,real p_fHitDelay)
+		m_fHitpoints = 0.0f;
+		var ^CGameObj pxGameObj = CSrvWrap.GetObjMgr()^.CreateObj("Illusion_Corpse",GetOwner(),GetPos(),GetRotation());
+		if(pxGameObj!=null)then
+			pxGameObj^.SetGFX(GetGfxName());
+			pxGameObj^.SetName(GetName());
+		endif;
+		DeleteTimer(TIMER_DEATH);
+		Delete();
+		return 0.0;
+	endproc;
+
+	export proc bool DoesCountInUnitLimit()
+		return false;
+	endproc;
+
+
+	proc void HandleEvent(ref CGameEvtPtr p_rxEvtPtr)
+		if(p_rxEvtPtr.GetInt(0)==TIMER_DEATH)then
+			TakeDmg(null);
+		endif;
+	endproc;
+
+
+
+	export proc void SetWeapons(string p_sObjPath, string p_sRight, string p_sLeft, string p_sArmor)
+		var ^CAttribs pxAttr = GetAttribs();
+		if(pxAttr!=null)then
+			pxAttr^.SetValue("ObjPath",p_sObjPath);
+		endif;
+		m_sObjPath = p_sObjPath;
+		m_xTechTree = GetTechTree();
+
+		GetWeaponMgr()^.SetWeapons(p_sRight, p_sLeft, p_sArmor);
+		/*m_sRightHandWeapon = p_sRight;
+		m_sLeftHandWeapon = p_sLeft;
+		m_sArmor = p_sArmor;*/
+		UpdateEquipment();
+	endproc;
+
+
+	export proc void Set(int p_iDmg, int p_iProtection, int p_iRange, int p_iTmpAttackBoni, int p_iTmpDefenseBoni)
+		var ^CAttribs pxAttr = GetAttribs();
+		if(pxAttr==null)then
+			pxAttr = InitAttribs();
+		endif;
+		pxAttr^.SetValue("damage",p_iDmg);
+		pxAttr^.SetValue("defense",p_iProtection);
+		pxAttr^.SetValue("range",p_iRange);
+		pxAttr^.SetValue("TmpAttackBoni",p_iTmpAttackBoni);
+		pxAttr^.SetValue("TmpDefenseBoni",p_iTmpDefenseBoni);
+
+		SetDefaultSpeed(3);
+		SetMaxSpeed(3);
+	endproc;
+
+
+	export proc void UpdateObjPath()
+	endproc;
+
+
+	/*export proc void GetBestWeapon()
+	endproc;
+*/
+
+	export proc void OnTechTreeChange()
+	endproc;
+
+
+	export proc void OnTechTreeChange(ref CStringArray p_rasChanges)
+	endproc;
+
+	proc void AddTask(^CTask p_pxTask,bool p_bQueue)
+    	if(p_bQueue)then
+    		m_pxTaskMgr^.AddTask(p_pxTask);
+    	else
+    		m_pxTaskMgr^.SetTask(p_pxTask);
+    	endif;
+	endproc;
+
+
+	export proc void HandleGamePlayCommand(string p_sCommand, ^CGameObj p_pxObject, vec3 p_vPos, string p_sMiscParams)
+		super.HandleGamePlayCommand(p_sCommand, p_pxObject, p_vPos, p_sMiscParams);
+	endproc;
+
+endclass;
+
+class CUndeadWarrior inherit CCharacter
+	
+	proc void ProvidePoison(real p_fDmg, int p_iMaxCount)
+		return;
+	endproc;
+	
+endclass;
+
+
+class CIllusionCorpse inherit CGameObj
+
+	export constructor()
+		SetHitable(false);
+		SetSelectable(false);
+	endconstructor;
+
+
+	proc void OnActionEnd(bool p_bBroken)
+		TerminateAction();
+		Delete();
+	endproc;
+
+
+	export proc void OnInit(bool p_bLoad)
+		if(!p_bLoad)then
+			SetType("OTHR");
+		endif;
+		super.OnInit(p_bLoad);
+		InitEvents();
+		InitAttribs();
+		AnimAction("die_simple");
+	endproc;
+
+endclass;
+
+
+
+
+class CCharacterCorpse inherit CUniversalCorpse
+
+	var string m_sCaste;
+	var CObjHndl m_xHeadObj;
+	var bool m_bStillAnim;
+	var int m_iStillAnimFrame;
+
+	export constructor()
+		m_sAnim = "";
+		m_sCaste = "res";
+	endconstructor;
+
+	export destructor()
+		if(m_xHeadObj.IsValid())then
+			m_xHeadObj.GetObj()^.Delete();
+		endif;
+	enddestructor;
+
+	export proc void OnInit(bool p_bLoad)
+		super.OnInit(p_bLoad);
+		var vec3 vPos = GetPos();
+		var real fHeight=CSrvWrap.GetScapeMgr().GetHeight(vPos.GetX(),vPos.GetY());
+		if(Math.Abs(vPos.GetZ()-fHeight)>1.0)then
+			vPos.SetZ(fHeight);
+			SetPos(vPos);
+		endif;
+	endproc;
+
+	export proc void SetCaste(string p_sCaste)
+		m_sCaste = p_sCaste;
+	endproc;
+
+	export proc void SetHead(CObjHndl p_xHndl)
+		m_xHeadObj = p_xHndl;
+	endproc;
+
+	export proc void SetStillAnim(string p_sAnim, int p_iFrame)
+		m_sAnim = p_sAnim;
+		m_iStillAnimFrame = p_iFrame;
+		m_bStillAnim = true;
+	endproc;
+
+	proc void PlayAnim(int p_iMode)
+		if(m_bStillAnim) then
+			SetAnim(m_sAnim, 0, m_iStillAnimFrame);
+		else
+			var string sA="dying";
+			if(m_sAnim=="" && HasAnim(sA))then
+				SetAnim(sA,p_iMode);
+			elseif(HasAnim(m_sAnim)) then
+				SetAnim(m_sAnim,p_iMode);
+			endif;
+		endif;
+	endproc;
+
+endclass;
+
+class CDecoChar inherit CCharacter
+	export constructor()
+	endconstructor;
+
+	export destructor()
+	enddestructor;
+
+	export proc void OnInit(bool p_bLoad)
+        super.OnInit(p_bLoad);
+        SetSelectable(false);
+        SetHitable(false);
+        SetAggressionState(-1);
+    endproc;
+endclass;
+

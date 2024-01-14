@@ -1,0 +1,698 @@
+class CHero inherit CCharacter
+	
+	const int		TIMERID_HERMIT_RANGEDHEAL = 28378;
+	const real		BUILDING_DAMAGE_BONUS = 20.0f; // in percent
+	export const string	KLEEMANN_AURA_PATH = "/Filters/Special/Upgrades/schliemann_s0/RangeEffect";
+	const int		LIVINGSTONE_TIMER = 28377;
+	const int 		LIVINGSTONE_VANISH_TIMER = 28376;
+
+	//BadGun Tuning: Livingstone Aura
+	const real		LIVINGSTONE_TICK_TIME = 3.0;
+	const real		LIVINGSTONE_TICK_DAMAGE = 10.0;
+	
+	//BadGun Tuning: Livingstone Vanish
+	const real		LIVINGSTONE_VANISH_TIME = 10.0;
+	
+	//BadGun Tuning: Kleeman Sacrifice
+	const int		TIMERID_KLEEMAN_DAMAGEBOOST = 18317;
+	const real		KLEEMAN_DAMAGEBOOST_TIME = 10.0;
+	export const string KLEEMAN_DAMAGEBOOST_EFFECT_PATH	="/Filters/Special/Upgrades/schliemann_s0/Sacrifice_Bonus";	
+	
+	var real		m_fHermitSelfHealVal;
+	
+	var real		m_fHermitRangedHealAmount;
+	var real		m_fHermitRangedHealMod;
+
+	var string		m_sRangedEffectPath;
+	var bool		m_bRangedEffectOnEnemy;
+
+	export constructor()
+		m_fHermitSelfHealVal = -1.0f;
+		m_xSink.m_xOnObjAdd = OnObjEnterRangedEffect;
+		m_xSink.m_xOnObjRem = OnObjLeaveRangedEffect;
+	endconstructor;
+
+	export destructor()
+		CNPCMgr.Get().RemoveNPC(GetOwner(),GetHandle());
+	enddestructor;
+
+	export proc void OnInit(bool p_bLoad)
+		super.OnInit(p_bLoad);
+		if(!p_bLoad)then
+			UpdateGfx();
+			SetUnique(true);
+			var string sClassName = GetClassName();
+
+			var string	sBitmapName="";
+			var ^CAttribs pxAttribs=GetAttribs();
+			if(pxAttribs!=null)then
+				if(sClassName.Find("Cole_s")!=(-1))then
+					sBitmapName="cole";
+				elseif(sClassName.Find("Stina_s")!=(-1))then
+						sBitmapName="stina";
+				elseif(sClassName.Find("Bela_s")!=(-1))then
+					sBitmapName="bela";
+				else					
+					sBitmapName = sClassName.Left(sClassName.FindRev('_'));
+				endif;
+				pxAttribs^.SetValue("unique_name",sBitmapName);
+			endif;
+			if(GetClassName()=="darwin_s0")then
+				AddRangedBuff("no_animal_aggro");
+			endif;
+		endif;
+		if(!CNPCMgr.Get().AddNPC(GetOwner(),GetHandle()))then
+			Delete();
+		endif;
+		if(GetClassName()=="livingstone_s0")then
+			SetIgnoreSlope(true);
+			DeleteTimer(LIVINGSTONE_TIMER);
+			CreateTimer(LIVINGSTONE_TIMER,CGameTimeSpan.OneSecond()*LIVINGSTONE_TICK_TIME, true);
+		endif;
+		SetCanWalk(true);
+				
+		var ^CFightingObj.CSpecialAbility pxAb = m_xAbilities.GetAbility("ranged_heal", true);
+		if(pxAb!=null) then				
+			DeleteTimer(TIMERID_HERMIT_RANGEDHEAL);
+			CreateTimer(TIMERID_HERMIT_RANGEDHEAL, CGameTimeSpan.OneSecond() * 2.0, true);
+			m_xFunctionUnits.SetType("CHTR");
+			m_xFunctionUnits.SetType("ANML",true);
+			m_xFunctionUnits.SetType("VHCL",true);
+			m_xFunctionUnits.SetType("SHIP",true);
+		endif;
+		
+	endproc;
+	
+	export proc void SetOwner(int p_iNewOwner)
+		CNPCMgr.Get().RemoveNPC(GetOwner(),GetHandle());
+		super.SetOwner(p_iNewOwner);
+		if(!CNPCMgr.Get().AddNPC(GetOwner(),GetHandle()))then
+			Delete();
+		endif;
+	endproc;
+
+	export proc real GetRangedHealingAmount(^CFightingObj p_pxTarget)
+		var ^CFightingObj.CSpecialAbility pxA = m_xAbilities.GetAbility("ranged_heal", true);
+		if(pxA==null) then return -1.0; endif;
+		var real fMod = p_pxTarget^.GetMaxHitpoints() * pxA^.GetValueF("mod") * 0.01;
+		var real fAmount =  (pxA^.GetValueF("amount") * GetTechTreeModifier("Healing",true)) + GetTechTreeModifier("Healing",false);
+		return fAmount+fMod;
+	endproc;
+
+
+	export proc real GetRangedHealingRadius()
+		var ^CFightingObj.CSpecialAbility pxA = m_xAbilities.GetAbility("ranged_heal", true);
+		if(pxA!=null) then
+			return pxA^.GetValueF("radius");
+		endif;
+		return -1.0f;
+	endproc;
+
+
+	export proc void Load(^CUOFReaderNode p_pxNode)
+		if(p_pxNode^.GetType()=="Hero")then
+			var int iVersion=p_pxNode^.GetVersion();
+			var ^CArc pxArc=^(p_pxNode^.GetArc());
+			(pxArc^) << m_sRangedEffectPath;
+			(pxArc^) << m_bRangedEffectOnEnemy;			
+		else
+			super.Load(p_pxNode);
+		endif;
+	endproc;
+
+	export proc void Save(^CUOFWriterNode p_pxNode)
+		super.Save(p_pxNode);
+		var CFourCC xF="Hero";
+		var ^CUOFWriterNode pxN=p_pxNode^.AddSubChunk(xF,1);
+		var ^CArc pxArc=^(pxN^.GetArc());
+		(pxArc^) << m_sRangedEffectPath;
+		(pxArc^) << m_bRangedEffectOnEnemy;
+		pxN^.Close();
+	endproc;
+
+
+	proc bool OnObjEnterRangedEffect(CObjHndl p_xHndl)
+		var ^CFightingObj pxO = cast<CFightingObj>(p_xHndl.GetObj());
+		if(pxO==null)then return false; endif;
+		if(pxO^.GetType()=="BLDG")then return false; endif;
+		if(m_sRangedEffectPath.IsEmpty())then return false; endif;
+		
+		var bool bFriend = CSrvWrap.GetDiplomacyMgr().GetIsFriend(GetOwner(), pxO^.GetOwner());
+		var bool bEnemy = CSrvWrap.GetDiplomacyMgr().GetIsEnemy(GetOwner(), pxO^.GetOwner());
+		if(pxO^.GetOwner()==-1)then
+			if(m_sRangedEffectPath.Find("schliemann_s0")>=0)then
+				bEnemy=true;
+			elseif(pxO^.GetAggressive()==1)then
+				bEnemy=true;
+			endif;
+		endif;
+		if(bFriend && m_bRangedEffectOnEnemy)then
+			return false;
+		elseif(bEnemy && !m_bRangedEffectOnEnemy)then
+			return false;
+		elseif(!bFriend && !bEnemy)then
+			return false;
+		endif;
+		
+//		if(m_xRegionObjects.FindEntry(p_xHndl)!=-1)then
+//			KLog.LogSpam("JaNe", "OnObjAdd wurde aufgerufen, obwohl das Object bereits in der Region war ("+pxO^.GetName()+").");
+//		endif;
+		m_xRegionObjects.Include(p_xHndl);
+
+		if(m_sRangedEffectPath.Find("darwin_s0")>=0) then
+			pxO^.SetEffectFlag(CFightingObj.EFFECT_NO_ANIMAL_AGGRO, true);
+		elseif(m_sRangedEffectPath.Find("babbage_s0")>=0) then
+			var ^CBoniBucket pxBB = pxO^.GetBoniBucket(CFightingObj.BONUS_DAMAGE_BLDG);
+			if(pxBB!=null) then
+				pxBB^.AddEntry("babbage_dmg", BUILDING_DAMAGE_BONUS);
+			endif;
+			pxO^.AddRangedBuff("more_bldg_damage");
+			pxO^.UpdateWeaponBoni();
+		elseif(m_sRangedEffectPath.Find("livingstone_s0")>=0) then
+			if(!HasTimer(LIVINGSTONE_VANISH_TIMER))then
+				pxO^.AddRangedBuff("drain_life");
+			endif;
+		elseif(m_sRangedEffectPath.Find("schliemann_s0")>=0) then
+			pxO^.SetEffectFlag(CFightingObj.EFFECT_KLEEMANN_AURA, true);
+		else
+			var ^CTechTreeDef pxTTDef = pxO^.GetTechTreeDef();
+			if(pxTTDef!=null) then
+				pxTTDef^.EnableFilter(m_sRangedEffectPath);
+			endif;
+		endif;
+		
+		if(m_sRangedEffectPath.Find("lovelace_s0")!=-1)then
+			pxO^.SetEffectFlag(EFFECT_ADA_SLOWHAND,true);
+		endif;
+		
+		return true;
+	endproc;
+
+	proc bool OnObjLeaveRangedEffect(CObjHndl p_xHndl)
+		if(m_xRegionObjects.FindEntry(p_xHndl)==-1)then return false; endif;
+		m_xRegionObjects.RemEntry(p_xHndl);
+		var ^CFightingObj pxO = cast<CFightingObj>(p_xHndl.GetObj());
+		if(pxO==null)then return false; endif;
+
+		if(m_sRangedEffectPath.Find("darwin_s0")>=0) then
+			pxO^.SetEffectFlag(CFightingObj.EFFECT_NO_ANIMAL_AGGRO, false);
+		elseif(m_sRangedEffectPath.Find("babbage_s0")>=0) then
+			var ^CBoniBucket pxBB = pxO^.GetBoniBucket(CFightingObj.BONUS_DAMAGE_BLDG);
+			if(pxBB!=null) then
+				pxBB^.RemEntry("babbage_dmg");
+			endif;
+			pxO^.RemoveRangedBuff("more_bldg_damage");
+			pxO^.UpdateWeaponBoni();
+		elseif(m_sRangedEffectPath.Find("livingstone_s0")>=0) then
+			pxO^.RemoveRangedBuff("drain_life");
+		elseif(m_sRangedEffectPath.Find("schliemann_s0")>=0) then
+			pxO^.SetEffectFlag(CFightingObj.EFFECT_KLEEMANN_AURA, false);
+		else
+			var ^CTechTreeDef pxTTDef = pxO^.GetTechTreeDef();
+			if(pxTTDef!=null) then
+				pxTTDef^.DisableFilter(m_sRangedEffectPath);
+			endif;
+		endif;
+
+		if(m_sRangedEffectPath.Find("lovelace_s0")!=-1)then
+			pxO^.SetEffectFlag(EFFECT_ADA_SLOWHAND,false);
+		endif;
+		
+		return true;
+	endproc;
+
+
+	export proc CFourCC GetProjectileLink()
+		var CFourCC xL;
+		if(GetClassName().Find("schliemann")>=0 || GetClassName().Find("tesla")>=0) then
+			xL="Proj";
+		endif;
+		return xL;
+	endproc;
+	
+	export proc void OnTechTreeChange()
+		super.OnTechTreeChange();
+		var CStringArray asArray;
+		asArray.AddEntry("/Objects/"+GetPlayerTribeName()+"/Weapons");
+		OnTechTreeChange(asArray);
+	endproc;
+
+	export proc bool SetLevelClean(int p_iLevel)
+		if(super.SetLevelClean(p_iLevel)) then
+			if(GetClassName()=="Stina_s0") then
+				SetAnim("ride_idle_0", 1);
+				return true;
+			endif;
+			return true;
+		endif;
+		return false;
+	endproc;
+	
+	export proc void UpdateHitpoints()
+		super.UpdateHitpoints();
+		
+		if(GetClassName()=="Stina_s0") then
+			var CObjHndl xAnml = GetTransportObj();
+			if(xAnml.IsValid()) then
+				var ^CFightingObj pxFO = cast<CFightingObj>(xAnml.GetObj());
+				if(pxFO!=null) then
+					pxFO^.UpdateHitpoints();
+				endif;
+			endif;
+		endif;
+	endproc;
+
+	export proc void OnTechTreeChange(ref CStringArray p_rasChanges)
+		super.OnTechTreeChange(p_rasChanges);
+
+		// check player weapons, maybe there is something for us
+		var string sPlayerTribe = GetPlayerTribeName();
+		if(sPlayerTribe.IsEmpty())then return;endif;
+
+		var string sAllWeaponPath = "/Objects/"+sPlayerTribe+"/Weapons";
+		
+		var bool bSARangeEffect = false;
+		var bool bSASelfHeal = false;
+		var bool bSARangedHeal = false;
+		var bool bSpecialAbilities = false;
+		
+		var int i,iC;
+		for(i=0) cond(i<p_rasChanges.NumEntries()) iter(i++) do
+			var string sVal=p_rasChanges[i];
+			if(sVal.Find(sAllWeaponPath)!=-1) then
+				GetBestWeapon(null, true);
+				UpdateWeaponBoni();
+				AddTemporaryAttackBoni(GetDmg());
+				AddTemporaryDefenseBoni(GetProtection());
+			elseif(sVal.Find("special_abilities")>=0) then
+				if(sVal.Find("RangeEffect")>=0) then
+					bSARangeEffect = true;
+				elseif(sVal.Find("self_heal")>=0) then
+					bSASelfHeal = true;
+				elseif(sVal.Find("ranged_heal")>=0) then
+					bSARangedHeal = true;
+				endif;
+				bSpecialAbilities=true;
+			endif;
+		endfor;
+		
+		if(bSpecialAbilities)then
+			var string sClassName=GetClassName();
+			if(sClassName=="Cole_s0")then
+				AddRangedBuff("owner_cole");
+			elseif(sClassName=="Bela_s0")then
+				AddRangedBuff("owner_bela");
+			elseif(sClassName=="tesla_s0")then
+				AddRangedBuff("owner_faster_buildup");
+			elseif(sClassName=="darwin_s0")then
+				AddRangedBuff("owner_no_animal_aggro");
+			elseif(sClassName=="hermit_s0")then
+				AddRangedBuff("owner_healing");
+			elseif(sClassName=="lovelace_s0")then
+				AddRangedBuff("owner_less_attack_speed");
+			elseif(sClassName=="babbage_s0")then
+				AddRangedBuff("owner_more_bldg_damage");
+			elseif(sClassName=="Stina_s0")then
+				AddRangedBuff("owner_stina");
+			elseif(sClassName=="schliemann_s0")then				
+				AddRangedBuff("owner_schliemann");
+			elseif(sClassName=="livingstone_s0")then
+				AddRangedBuff("owner_livingstone");				
+			endif;
+		endif;
+		
+		if(bSARangeEffect)then
+			var ^CFightingObj.CSpecialAbility pxAb = m_xAbilities.GetAbility("RangeEffect", true);
+			if(pxAb!=null && !HasPersonalRegion())then
+
+				m_sRangedEffectPath		= "/Filters/Special/Upgrades/"+GetClassName()+"/RangeEffect";
+				m_bRangedEffectOnEnemy	= pxAb^.GetValueB("OnEnemy");
+
+				var real fRange = pxAb^.GetValueF("radius");
+				var vec3 vDimension; vDimension.SetXYZ(fRange, fRange, 0.0);
+				CreatePersonalRegion("RangedEffect_"+GetName()+"_"+Random.GetInt().ToString(), vDimension, 010b);
+								
+			endif;
+			if(pxAb==null && HasPersonalRegion())then
+				DeletePersonalRegion();
+			endif;
+		endif;
+/*			if(m_pxEffect!=null) then
+				delete m_pxEffect;
+			endif;
+				var string sClass = ;
+				m_pxEffect = new CHeroRangedEffect(GetHandle(), , sClass, );
+			endif;
+*/		if(bSARangedHeal)then
+			var ^CFightingObj.CSpecialAbility pxAb = m_xAbilities.GetAbility("ranged_heal", true);
+			if(pxAb!=null) then				
+				DeleteTimer(TIMERID_HERMIT_RANGEDHEAL);
+				CreateTimer(TIMERID_HERMIT_RANGEDHEAL, CGameTimeSpan.OneSecond() * 2.0, true);
+				m_xFunctionUnits.SetType("CHTR");
+				m_xFunctionUnits.SetType("ANML",true);
+				m_xFunctionUnits.SetType("VHCL",true);
+				m_xFunctionUnits.SetType("SHIP",true);
+			else
+				DeleteTimer(TIMERID_HERMIT_RANGEDHEAL);
+			endif;
+		endif;
+	endproc;
+	
+	export proc void HandleEvent(ref CGameEvtPtr p_rxEvtPtr)
+		if (p_rxEvtPtr.GetClass() == ms_xTimerClass) then
+			var int iTimerID = p_rxEvtPtr.GetInt(0);
+			if(iTimerID == TIMERID_HERMIT_RANGEDHEAL) then
+				DoRangedHeal();
+			elseif(iTimerID == TIMERID_KLEEMAN_DAMAGEBOOST)then
+				KleemanDamageBoostStop();
+			elseif(iTimerID == LIVINGSTONE_TIMER)then
+				DoLivingstoneDamage();
+			elseif(iTimerID == LIVINGSTONE_VANISH_TIMER)then
+				EndVanish();
+			else
+				super.HandleEvent(p_rxEvtPtr);
+			endif;
+		else
+			super.HandleEvent(p_rxEvtPtr);
+		endif;
+	endproc;
+
+	proc bool StartVanish(string p_sPath)
+		if(HasTimer(LIVINGSTONE_VANISH_TIMER))then return false; endif;
+		CreateTimer(LIVINGSTONE_VANISH_TIMER, CGameTimeSpan.OneSecond()*LIVINGSTONE_VANISH_TIME, false);
+		if(!HasValidCamouflageEffect("hero"))then
+			AddCamouflageEffect("hero");
+		endif;
+		AddSpecialActionTimer(p_sPath);
+		SetIsVanished(true);
+		
+		var CObjHndl xHndl = AddFX("fx_ninja_disguise",-1.0);
+		if(xHndl.IsValid())then
+			var CFourCC xLink = "";
+			xHndl.GetObj()^.LinkAction(GetHandle(),xLink);
+		endif;
+		InvokeGenericSCEvent(32,0.1f);
+
+		if(m_sRangedEffectPath.Find("livingstone_s0")>=0) then
+			//remove DOT
+			iterloop(m_xRegionObjects,i) do
+				var ^CFightingObj pxFO=cast<CFightingObj>(m_xRegionObjects[i].GetObj());
+				if(pxFO!=null) then
+					pxFO^.RemoveRangedBuff("drain_life");
+				endif;
+			enditerloop;
+		endif;
+
+		return true;
+	endproc;
+	
+	proc void EndVanish()
+		DeleteTimer(LIVINGSTONE_VANISH_TIMER);
+		RemoveCamouflageEffect("hero");
+		SetIsVanished(false);
+		
+		RemoveFX("fx_ninja_disguise");
+		
+		if(m_sRangedEffectPath.Find("livingstone_s0")>=0) then
+			//reapply DOT
+			iterloop(m_xRegionObjects,i) do
+				var ^CFightingObj pxFO=cast<CFightingObj>(m_xRegionObjects[i].GetObj());
+				if(pxFO!=null) then
+					pxFO^.AddRangedBuff("drain_life");
+				endif;
+			enditerloop;
+		endif;
+	endproc;
+
+	proc void DoLivingstoneDamage()
+		if(HasTimer(LIVINGSTONE_VANISH_TIMER))then
+			return;
+		endif;
+		var real fDamageFactor = LIVINGSTONE_TICK_DAMAGE / GetDmg();
+		var int i,iC=m_xRegionObjects.NumEntries();
+		for(i=0)cond(i<iC)iter(i++)do
+			var ^CFightingObj pxObj = cast<CFightingObj>(m_xRegionObjects[i].GetObj());
+			if(pxObj==null)then continue; endif;
+			if(pxObj^.GetType()=="BLDG" || pxObj^.GetType()=="NEST")then continue; endif;
+			if(GetOwner()>-1 && (pxObj^.GetVisibleMask()&(01b<<GetOwner()))==00b)then continue; endif;
+			pxObj^.TakeDmg(this, fDamageFactor);
+		endfor;
+	endproc;
+
+	proc void DoRangedHeal()
+		var CGameTime xNow=CTimeMgr.Get().GetTime();
+		var CGameTimeSpan xDT=xNow-m_xLastFunctionTime;
+		var real fTime = xDT.GetSecondsF();
+		if (fTime==0.0) then return; endif;
+		m_xLastFunctionTime=xNow;
+		var CObjList xUnits;
+
+		CSrvWrap.GetDiplomacyMgr().AddMyFriendsToSearch(GetOwner(), m_xFunctionUnits);
+		m_xFunctionUnits.RegionCircle(GetPos(),GetRangedHealingRadius());					// ... this is the Function Radius ...
+
+		if(!m_xFunctionUnits.Execute(xUnits))then return; endif;				// Process the Execute-Methode and return on fail.
+		var int i,iC=xUnits.NumEntries();
+		for(i=0)cond(i<iC)iter(i++)do										// Loop through all units in radius ...
+			if(xUnits[i]==GetHandle())then continue; endif;
+	    	var ^CFightingObj pxFWalk=cast<CFightingObj>(xUnits[i].GetObj());
+	    	if(pxFWalk!=null)then
+	    		var real fValue = fTime*GetRangedHealingAmount(pxFWalk);
+				pxFWalk^.HealMe(fValue);//		... change the hitpoints.
+			endif;
+		endfor;
+	endproc;
+
+	export proc void SetPos(vec3 p_vP)
+		if(GetClassName()=="Stina_s0") then
+			var CObjHndl xH = GetTransportObj();
+			if(xH.IsValid()) then
+				xH.GetObj()^.SetPos(p_vP);
+				return;
+			endif;
+		endif;
+		super.SetPos(p_vP);
+	endproc;
+	
+	export proc void Delete()
+		if(GetClassName()=="Stina_s0") then
+			var CObjHndl xH = GetTransportObj();
+			if(xH.IsValid()) then
+				xH.GetObj()^.Delete();
+			endif;
+		endif;
+		super.Delete();
+	endproc;
+	
+	proc bool StartMayorSpecialMove(string p_sPath)
+	
+		if(GetClassName()!="mayor_s0")then return false; endif;
+	
+		MemorizeCurrentFightState(CObjHndl.Invalid(),false,false);
+	
+    	var ^CMayorSpecialMove pxTask=cast<CMayorSpecialMove>(CSrvWrap.GetUSLFactoryMgr().CreateState(GetFSM(),"MayorSM"));
+    	var bool bReturn = false;
+    	
+    	if(pxTask!=null)then
+    		bReturn = pxTask^.Init(GetHandle(),"res_sm_jump",p_sPath);
+	   		pxTask^.SetUserCommand(true);
+			AddTask(pxTask,false);
+    	endif;
+
+		return bReturn;
+
+	endproc;
+	
+	proc bool StartWardenSpecialMove(string p_sPath)
+		
+		if(GetClassName()!="darwin_s0")then return false; endif;
+	
+		MemorizeCurrentFightState(CObjHndl.Invalid(),false,false);
+	
+    	var ^CWardenSpecialMove pxTask=cast<CWardenSpecialMove>(CSrvWrap.GetUSLFactoryMgr().CreateState(GetFSM(),"WardenSM"));
+    	var bool bReturn = false;
+    	if(pxTask!=null)then
+    		
+    		bReturn = pxTask^.Init(GetHandle(),"warden_spec",p_sPath);
+	   		pxTask^.SetUserCommand(true);
+			AddTask(pxTask,false);
+    	endif;
+
+		return bReturn;
+
+	endproc;
+	
+	export proc void HandleGamePlayCommand(string p_sCommand,^CGameObj p_pxObject,vec3 p_vPos,string p_sMiscParams)
+
+		if (GetEffectFlag(CFightingObj.EFFECT_AJE_CAMOUFLAGE)) then
+			if (p_sMiscParams.Find("/Walk")<0) then
+				SetEffectFlag(CFightingObj.EFFECT_AJE_CAMOUFLAGE, false);
+			endif;
+		endif;
+
+		if(	IsTrapped() &&
+			!(p_sMiscParams.Find("/Kill")!=-1 || p_sCommand=="Kill") &&
+			!(p_sCommand=="setlevel" || p_sMiscParams.Find("/LevelUp")!=-1)
+			)then return; endif;
+
+		if(GetEntrenched()==2)then return; endif;
+
+		if(p_sCommand=="Action") then
+			if(p_sMiscParams.Find("/Babbage_Minigun_0")!=(-1))then
+				if(CheckSpecialActionTimer(p_sMiscParams) && !GetTransportObj().IsValid()) then
+					StartBabbageMinigun(p_sMiscParams, p_pxObject, p_vPos);
+				endif;
+			elseif(p_sMiscParams.Find("/TeslaLvl16Task")!=(-1))then
+				var ^CTeslaTask pxTask=cast<CTeslaTask>(CSrvWrap.GetUSLFactoryMgr().CreateState(GetFSM(),"TeslaT"));
+			   	var bool bReturn=pxTask^.Init(GetHandle());
+			   	pxTask^.SetUserCommand(true);
+			   	AddTask(pxTask,false);
+			elseif(p_sMiscParams.Find("/Mayor_Specialmove_0")!=(-1))then
+				if(CheckSpecialActionTimer(p_sMiscParams) && !GetTransportObj().IsValid()) then
+					StartMayorSpecialMove(p_sMiscParams);
+				endif;
+			elseif(p_sMiscParams.Find("/warden_spec")!=(-1))then
+				if(CheckSpecialActionTimer(p_sMiscParams) && !GetTransportObj().IsValid())then
+					StartWardenSpecialMove(p_sMiscParams);
+				endif;
+			elseif(p_sMiscParams.Find("/Ada_DeathShoot")>=0) then
+				if(CheckSpecialActionTimer(p_sMiscParams) && p_pxObject!=null && !GetTransportObj().IsValid())then
+					StartDeathShoot(p_pxObject^.GetHandle(), p_sMiscParams);
+				endif;
+			elseif(p_sMiscParams.Find("/schliemann_deathshoot")>=0) then
+				if(CheckSpecialActionTimer(p_sMiscParams) && p_pxObject!=null && !GetTransportObj().IsValid())then
+					StartDeathShoot(p_pxObject^.GetHandle(), p_sMiscParams);
+				endif;
+			elseif(p_sMiscParams.Find("/schliemann_special_move_1")>=0) then
+				if(CheckSpecialActionTimer(p_sMiscParams) && p_pxObject!=null && !GetTransportObj().IsValid())then
+					StartSacrifice(p_pxObject^.GetHandle(), p_sMiscParams);
+				endif;
+			elseif(p_sMiscParams.Find("/livingstone_special_move_1")>=0) then
+				if(CheckSpecialActionTimer(p_sMiscParams) && !GetTransportObj().IsValid())then
+					StartVanish(p_sMiscParams);
+				endif;
+			elseif(p_sMiscParams.Find("/SetPos")>=0) then
+				if(GetClassName()=="Stina_s0")then
+					var CObjHndl xAnml = GetTransportObj();
+					if(xAnml.IsValid()) then
+						xAnml.GetObj()^.SetPos(p_vPos);
+					endif;
+				else
+					super.HandleGamePlayCommand(p_sCommand, p_pxObject, p_vPos, p_sMiscParams);
+				endif;
+			else
+				super.HandleGamePlayCommand(p_sCommand, p_pxObject, p_vPos, p_sMiscParams);
+			endif;
+		else
+			super.HandleGamePlayCommand(p_sCommand, p_pxObject, p_vPos, p_sMiscParams);
+		endif;
+	endproc;
+
+	proc bool StartBabbageMinigun(string p_sTTPath, ^CGameObj p_pxEnemy, vec3 p_vPos)
+		var CObjHndl xEnemy;
+		if(p_pxEnemy!=null)then
+			xEnemy=p_pxEnemy^.GetHandle();
+		endif;
+		MemorizeCurrentFightState(xEnemy,true,false);
+		var ^CBabbageMinigun pxTask=cast<CBabbageMinigun>(CSrvWrap.GetUSLFactoryMgr().CreateState(GetFSM(),"BabbageM"));
+	   	var bool bReturn=pxTask^.Init(GetHandle(), xEnemy,p_vPos,p_sTTPath);
+	   	pxTask^.SetUserCommand(true);
+	   	AddTask(pxTask,false);
+	    return bReturn;
+	endproc;
+	
+	proc bool StartDeathShoot(CObjHndl p_xEnemy, string p_sTTPath)
+		MemorizeCurrentFightState(p_xEnemy,true,false);
+		var ^CAdaDeathShot pxTask=cast<CAdaDeathShot>(CSrvWrap.GetUSLFactoryMgr().CreateState(GetFSM(),"AdaDeath"));
+	   	var bool bReturn=pxTask^.Init(GetHandle(), p_xEnemy, p_sTTPath);
+	   	pxTask^.SetUserCommand(true);
+	   	AddTask(pxTask,false);
+	    return bReturn;
+	endproc;
+
+	proc void StartSacrifice(CObjHndl p_xEnemy, string p_sTTPath)
+		var ^CSacrifice pxTask=cast<CSacrifice>(CSrvWrap.GetUSLFactoryMgr().CreateState(GetFSM(),"Sacrific"));
+	   	var bool bReturn=pxTask^.Init(GetHandle(), p_xEnemy, p_sTTPath);
+	   	pxTask^.SetUserCommand(true);
+	   	AddTask(pxTask,false);	   	 
+	endproc;
+	
+	export proc void KleemanDamageBoostStart()		
+		SetEffectFlag(CFightingObj.EFFECT_KLEEMANN_DAMAGEBOOST, true);
+		DeleteTimer(TIMERID_KLEEMAN_DAMAGEBOOST);
+	   	CreateTimer(TIMERID_KLEEMAN_DAMAGEBOOST, CGameTimeSpan.OneSecond() * KLEEMAN_DAMAGEBOOST_TIME, false);
+	   	var ^CTechTreeDef pxDef=GetTechTreeDef();	   	
+	   	if(pxDef!=null)then	   		
+			pxDef^.EnableFilter(KLEEMAN_DAMAGEBOOST_EFFECT_PATH);
+		else
+			KLog.LogSpam("AnTr","ERROR Techtree NULL");
+		endif;
+	   	
+	endproc;
+	
+	proc void KleemanDamageBoostStop()		
+		SetEffectFlag(CFightingObj.EFFECT_KLEEMANN_DAMAGEBOOST, false);
+		DeleteTimer(TIMERID_KLEEMAN_DAMAGEBOOST);
+		var ^CTechTreeDef pxDef=GetTechTreeDef();		
+		if(pxDef!=null)then
+			pxDef^.DisableFilter(KLEEMAN_DAMAGEBOOST_EFFECT_PATH);
+		endif;		
+	endproc;
+	
+endclass;
+
+class CSpecialActionTask inherit CTargetTask
+
+	var string	m_sActionPath;
+	var bool	m_bUnStoppable;
+	
+	export constructor()
+		m_sActionPath = "";
+		m_bUnStoppable = false;
+	endconstructor;
+
+
+	export proc void Save(^CUOFWriterNode p_pxWriterNode)
+		super.Save(p_pxWriterNode);
+		var CFourCC xType="SpAc";
+		var ^CUOFWriterNode pxWalk=p_pxWriterNode^.AddSubChunk(xType,1);
+		var ^CArc pxArc=^(pxWalk^.GetArc());		
+		(pxArc^) << m_sActionPath;
+		(pxArc^) << m_bUnStoppable;
+		pxWalk^.Close();
+	endproc;
+
+	export proc void Load(^CUOFReaderNode p_pxReaderNode)
+		if(p_pxReaderNode^.GetType()=="SpAc")then
+			var ^CArc pxArc=^(p_pxReaderNode^.GetArc());
+			(pxArc^) << m_sActionPath;
+			(pxArc^) << m_bUnStoppable;
+		else
+			super.Load(p_pxReaderNode);
+		endif;
+	endproc;	
+
+
+	export proc void SetSpecialActionPath(string p_sPath)
+		m_sActionPath = p_sPath;
+	endproc;
+	
+	export proc string GetSpecialActionPath()
+		return m_sActionPath;
+	endproc;
+	
+	export proc bool StartSpecialActionTimer(^CFightingObj p_pxObj)
+		if(p_pxObj==null)then return false; endif;
+		if(!p_pxObj^.CheckSpecialActionTimer(m_sActionPath))then return false; endif;
+		p_pxObj^.AddSpecialActionTimer(m_sActionPath);
+		return true;
+	endproc;
+
+	export proc bool GetUnStoppable()
+		return m_bUnStoppable;
+	endproc;
+	
+	export proc void SetUnStoppable(bool p_bValue)
+		m_bUnStoppable = p_bValue;
+	endproc;
+
+endclass;

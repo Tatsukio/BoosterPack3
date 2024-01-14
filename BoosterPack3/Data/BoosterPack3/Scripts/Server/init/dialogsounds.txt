@@ -1,0 +1,6176 @@
+Root {
+	ds_0101_Ada_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/0_Tut_Level/0101_Ada_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_0107_Ada_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/0_Tut_Level/0107_Ada_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_0107_Bela_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/0_Tut_Level/0107_Bela_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_0111_Ada_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/0_Tut_Level/0111_Ada_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_0111_Stina_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/0_Tut_Level/0111_Stina_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_0111_Stina_02 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/0_Tut_Level/0111_Stina_02.mp3'
+			volume = '100'
+		}
+	}
+	ds_0201_Ada_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/0_Tut_Level/0201_Ada_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_0201_Ada_02 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/0_Tut_Level/0201_Ada_02.mp3'
+			volume = '100'
+		}
+	}
+	ds_0201_Cole_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/0_Tut_Level/0201_Cole_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_0204_Bela_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/0_Tut_Level/0204_Bela_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_0204_Cole_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/0_Tut_Level/0204_Cole_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_0204_Cole_02 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/0_Tut_Level/0204_Cole_02.mp3'
+			volume = '100'
+		}
+	}
+	ds_0207_Bela_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/0_Tut_Level/0207_Bela_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_0207_Stina_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/0_Tut_Level/0207_Stina_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_0209_Bela_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/0_Tut_Level/0209_Bela_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_0209_Stina_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/0_Tut_Level/0209_Stina_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_0212_Ada_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/0_Tut_Level/0212_Ada_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_0212_Cole_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/0_Tut_Level/0212_Cole_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_0216_Bela_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/0_Tut_Level/0216_Bela_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_0301_Ada_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/0_Tut_Level/0301_Ada_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_0301_Bela_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/0_Tut_Level/0301_Bela_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_0301_Cole_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/0_Tut_Level/0301_Cole_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_0313_Bela_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/0_Tut_Level/0313_Bela_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_0313_Cole_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/0_Tut_Level/0313_Cole_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_0313_Stina_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/0_Tut_Level/0313_Stina_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_0317_cole_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/0_Tut_Level/0317_cole_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_0317_Stina_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/0_Tut_Level/0317_Stina_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_0323_Ada_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/0_Tut_Level/0323_Ada_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_0323_Cole_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/0_Tut_Level/0323_Cole_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_0401_Ada_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/0_Tut_Level/0401_Ada_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_0401_cole_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/0_Tut_Level/0401_cole_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_0401_Stina_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/0_Tut_Level/0401_Stina_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_0410_Bela_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/0_Tut_Level/0410_Bela_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_0410_Cole_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/0_Tut_Level/0410_Cole_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_0410_Stina_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/0_Tut_Level/0410_Stina_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_0412_Ada_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/0_Tut_Level/0412_Ada_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_0412_Cole_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/0_Tut_Level/0412_Cole_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_0412_Stina_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/0_Tut_Level/0412_Stina_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_0417_Ada_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/0_Tut_Level/0417_Ada_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_0417_Ada_02 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/0_Tut_Level/0417_Ada_02.mp3'
+			volume = '100'
+		}
+	}
+	ds_0417_Cole_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/0_Tut_Level/0417_Cole_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_1070_JOURNAL_ENTRY_(COLE)_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Journal_Entry/1070_JOURNAL_ENTRY_(COLE)_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_1100_JOURNAL_ENTRY_(BELA)_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Journal_Entry/1100_JOURNAL_ENTRY_(BELA)_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_1120_JOURNAL_ENTRY_(ADA)_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Journal_Entry/1120_JOURNAL_ENTRY_(ADA)_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_2010_JOURNAL_ENTRY_(STINA)_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Journal_Entry/2010_JOURNAL_ENTRY_(STINA)_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_2047_JOURNAL_ENTRY_(COLE)_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Journal_Entry/2047_JOURNAL_ENTRY_(COLE)_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_2090_JOURNAL_ENTRY_(BABBIT)_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Journal_Entry/2090_JOURNAL_ENTRY_(BABBIT)_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_2567_JOURNAL_ENTRY_(BELA)_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Journal_Entry/2567_JOURNAL_ENTRY_(BELA)_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_3010_JOURNAL_ENTRY_(COLE)_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Journal_Entry/3010_JOURNAL_ENTRY_(COLE)_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_3040_JOURNAL_ENTRY_(BELA)_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Journal_Entry/3040_JOURNAL_ENTRY_(BELA)_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_3090_JOURNAL_ENTRY_(STINA)_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Journal_Entry/3090_JOURNAL_ENTRY_(STINA)_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_4020_JOURNAL_(ENTRY_BELA)_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Journal_Entry/4020_JOURNAL_(ENTRY_BELA)_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_4038_JOURNAL_ENTRY_(COLE)_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Journal_Entry/4038_JOURNAL_ENTRY_(COLE)_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_6020_JOURNAL_ENTRY_(STINA)_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Journal_Entry/6020_JOURNAL_ENTRY_(STINA)_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_7020_JOURNAL_ENTRY_(TASLOV)_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Journal_Entry/7020_JOURNAL_ENTRY_(TASLOV)_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_7040_JOURNAL_ENTRY_(COLE)_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Journal_Entry/7040_JOURNAL_ENTRY_(COLE)_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_8090_JOURNAL_ENTRY_(STINA)_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Journal_Entry/8090_JOURNAL_ENTRY_(STINA)_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_1020_Cole_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_1/1020_Cole_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_1020_Norsemen_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_1/1020_Norsemen_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_1021_Cole_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_1/1021_Cole_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_1021_Norsemen_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_1/1021_Norsemen_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_1023_Cole_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_1/1023_Cole_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_1023_Cole_02 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_1/1023_Cole_02.mp3'
+			volume = '100'
+		}
+	}
+	ds_1023_Norsemen_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_1/1023_Norsemen_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_1023_Norsemen_02 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_1/1023_Norsemen_02.mp3'
+			volume = '100'
+		}
+	}
+	ds_1026_Cole_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_1/1026_Cole_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_1026_Norsemenchief_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_1/1026_Norsemenchief_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_1028_Cole_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_1/1028_Cole_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_1028_Cole_02 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_1/1028_Cole_02.mp3'
+			volume = '100'
+		}
+	}
+	ds_1028_Norsemenchief_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_1/1028_Norsemenchief_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_1029_Cole_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_1/1029_Cole_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_1029_Cole_02 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_1/1029_Cole_02.mp3'
+			volume = '100'
+		}
+	}
+	ds_1029_Norsemen_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_1/1029_Norsemen_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_1030_Cole_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_1/1030_Cole_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_1030_Cole_02 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_1/1030_Cole_02.mp3'
+			volume = '100'
+		}
+	}
+	ds_1030_Norsemenchief_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_1/1030_Norsemenchief_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_1030_Norsemenchief_02 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_1/1030_Norsemenchief_02.mp3'
+			volume = '100'
+		}
+	}
+	ds_1031_Cole_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_1/1031_Cole_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_1032_Cole_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_1/1032_Cole_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_1032_Norsemen_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_1/1032_Norsemen_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_1033_Blood_Norsemen_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_1/1033_Blood_Norsemen_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_1033_Cole_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_1/1033_Cole_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_1034_Cole_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_1/1034_Cole_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_1035_Spearman_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_1/1035_Spearman_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_1037_Cole_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_1/1037_Cole_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_1037_Spearman_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_1/1037_Spearman_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_1039_Cole_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_1/1039_Cole_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_1039_Cole_02 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_1/1039_Cole_02.mp3'
+			volume = '100'
+		}
+	}
+	ds_1039_Cole_03 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_1/1039_Cole_03.mp3'
+			volume = '100'
+		}
+	}
+	ds_1039_Stina_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_1/1039_Stina_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_1039_Stina_02 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_1/1039_Stina_02.mp3'
+			volume = '100'
+		}
+	}
+	ds_1040_Cole_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_1/1040_Cole_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_1040_Stina_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_1/1040_Stina_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_1041_Cole_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_1/1041_Cole_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_1041_Stina_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_1/1041_Stina_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_1042_Archer_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_1/1042_Archer_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_1042_Bela_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_1/1042_Bela_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_1043_Blood_Norsemen_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_1/1043_Blood_Norsemen_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_1044_Blood_Norsemen_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_1/1044_Blood_Norsemen_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_1045_Blood_Norsemen_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_1/1045_Blood_Norsemen_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_1046_Blood_Norsemen_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_1/1046_Blood_Norsemen_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_1047_Bela_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_1/1047_Bela_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_1048_Bela_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_1/1048_Bela_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_1049_Bela_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_1/1049_Bela_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_1051_Bela_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_1/1051_Bela_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_1053_Cole_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_1/1053_Cole_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_1054_Cole_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_1/1054_Cole_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_1055_Cole_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_1/1055_Cole_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_1057_Bela_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_1/1057_Bela_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_1057_Cole_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_1/1057_Cole_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_1059_BELA_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_1/1059_BELA_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_1059_Cole_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_1/1059_Cole_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_1059_STINA_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_1/1059_STINA_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_3045_Bela_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_10/3045_Bela_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_3045_Stina_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_10/3045_Stina_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_3075_Bela_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_10/3075_Bela_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_3075_Cole_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_10/3075_Cole_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_3075_Cole_02 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_10/3075_Cole_02.mp3'
+			volume = '100'
+		}
+	}
+	ds_3075_Stina_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_10/3075_Stina_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_3076_SEAS_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_10/3076_SEAS_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_3077_SEAS_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_10/3077_SEAS_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_3078_SEAS_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_10/3078_SEAS_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_3079_SEAS_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_10/3079_SEAS_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_3083_Warden_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_10/3083_Warden_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_3085_Bela_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_10/3085_Bela_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_3085_Cole_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_10/3085_Cole_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_3085_Stina_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_10/3085_Stina_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_3086_Bela_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_10/3086_Bela_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_3086_Cole_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_10/3086_Cole_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_3086_Cole_02 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_10/3086_Cole_02.mp3'
+			volume = '100'
+		}
+	}
+	ds_3086_Stina_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_10/3086_Stina_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_3086_Warden_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_10/3086_Warden_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_3086_Warden_02 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_10/3086_Warden_02.mp3'
+			volume = '100'
+		}
+	}
+	ds_3086_Warden_03 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_10/3086_Warden_03.mp3'
+			volume = '100'
+		}
+	}
+	ds_4011_Bela_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_11/4011_Bela_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_4011_Cole_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_11/4011_Cole_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_4011_Stina_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_11/4011_Stina_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_4012_Bela_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_11/4012_Bela_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_4012_Cole_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_11/4012_Cole_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_4013_Bela_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_11/4013_Bela_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_4013_Cole_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_11/4013_Cole_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_4013_Stina_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_11/4013_Stina_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_4014_Bela_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_11/4014_Bela_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_4014_Stina_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_11/4014_Stina_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_4016_Bela_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_11/4016_Bela_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_4016_Cole_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_11/4016_Cole_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_4016_Cole_02 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_11/4016_Cole_02.mp3'
+			volume = '100'
+		}
+	}
+	ds_4026_Bela_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_12/4026_Bela_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_4026_Cole_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_12/4026_Cole_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_4026_Stina_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_12/4026_Stina_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_4028_Cole_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_12/4028_Cole_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_4028_Norsemen_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_12/4028_Norsemen_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_4029_Bela_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_12/4029_Bela_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_4029_Stina_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_12/4029_Stina_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_4031_Bela_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_12/4031_Bela_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_4031_Cole_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_12/4031_Cole_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_4031_Norsemen_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_12/4031_Norsemen_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_4031_Stina_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_12/4031_Stina_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_4032_Dustrider_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_12/4032_Dustrider_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_4033_Dustrider_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_12/4033_Dustrider_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_4033_Stina_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_12/4033_Stina_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_4034_Bela_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_12/4034_Bela_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_4034_Cole_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_12/4034_Cole_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_4036_Cole_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_12/4036_Cole_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_4036_Stina_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_12/4036_Stina_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_4037_Bela_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_12/4037_Bela_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_4037_Stina_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_12/4037_Stina_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_4045_Bela_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_12/4045_Bela_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_4046_Bela_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_12/4046_Bela_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_4071_Cole_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_13/4071_Cole_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_4071_Stina_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_13/4071_Stina_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_4072_Cole_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_13/4072_Cole_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_4072_Norsemen_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_13/4072_Norsemen_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_4073_Bela_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_13/4073_Bela_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_4073_Cole_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_13/4073_Cole_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_4073_Stina_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_13/4073_Stina_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_4074_Bela_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_13/4074_Bela_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_4074_Bela_02 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_13/4074_Bela_02.mp3'
+			volume = '100'
+		}
+	}
+	ds_4074_Cole_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_13/4074_Cole_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_4074_Stina_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_13/4074_Stina_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_4075_Bela_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_13/4075_Bela_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_4075_Bela_02 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_13/4075_Bela_02.mp3'
+			volume = '100'
+		}
+	}
+	ds_4075_Bela_03 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_13/4075_Bela_03.mp3'
+			volume = '100'
+		}
+	}
+	ds_4075_Flying_Trader_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_13/4075_Flying_Trader_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_4075_Flying_Trader_02 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_13/4075_Flying_Trader_02.mp3'
+			volume = '100'
+		}
+	}
+	ds_4075_Flying_Trader_03 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_13/4075_Flying_Trader_03.mp3'
+			volume = '100'
+		}
+	}
+	ds_4075_Flying_Trader_04 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_13/4075_Flying_Trader_04.mp3'
+			volume = '100'
+		}
+	}
+	ds_4076_Bela_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_13/4076_Bela_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_4076_Flying_Trader_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_13/4076_Flying_Trader_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_4077_Bela_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_13/4077_Bela_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_4077_Stina_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_13/4077_Stina_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_4078_Bela_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_13/4078_Bela_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_4078_Bela_02 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_13/4078_Bela_02.mp3'
+			volume = '100'
+		}
+	}
+	ds_4078_Flying_Trader_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_13/4078_Flying_Trader_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_4078_Flying_Trader_02 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_13/4078_Flying_Trader_02.mp3'
+			volume = '100'
+		}
+	}
+	ds_4079_Bela_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_13/4079_Bela_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_4079_Flying_Trader_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_13/4079_Flying_Trader_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_4083_Bela_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_13/4083_Bela_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_4083_Stina_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_13/4083_Stina_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_4084_Cole_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_13/4084_Cole_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_4084_Norsemen_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_13/4084_Norsemen_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_4085_Bela_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_13/4085_Bela_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_4085_Bela_02 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_13/4085_Bela_02.mp3'
+			volume = '100'
+		}
+	}
+	ds_4085_Cole_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_13/4085_Cole_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_4085_Cole_02 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_13/4085_Cole_02.mp3'
+			volume = '100'
+		}
+	}
+	ds_4086_Bela_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_13/4086_Bela_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_4086_Cole_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_13/4086_Cole_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_4086_Cole_02 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_13/4086_Cole_02.mp3'
+			volume = '100'
+		}
+	}
+	ds_4087_Bela_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_13/4087_Bela_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_4087_Cole_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_13/4087_Cole_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_4088_Bela_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_13/4088_Bela_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_4088_Bela_02 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_13/4088_Bela_02.mp3'
+			volume = '100'
+		}
+	}
+	ds_4088_Cole_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_13/4088_Cole_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_4088_Cole_02 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_13/4088_Cole_02.mp3'
+			volume = '100'
+		}
+	}
+	ds_4088_Stina_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_13/4088_Stina_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_4088_Stina_02 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_13/4088_Stina_02.mp3'
+			volume = '100'
+		}
+	}
+	ds_4089_Bela_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_13/4089_Bela_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_4089_Cole_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_13/4089_Cole_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_4090_Bela_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_13/4090_Bela_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_4090_Cole_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_13/4090_Cole_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_4092_Cole_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_13/4092_Cole_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_4092_Stina_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_13/4092_Stina_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_4093_Cole_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_13/4093_Cole_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_4094_Bela_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_13/4094_Bela_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_4094_Cole_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_13/4094_Cole_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_4094_Stina_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_13/4094_Stina_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_4095_Bela_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_13/4095_Bela_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_4095_Stina_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_13/4095_Stina_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_4096_Stina_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_13/4096_Stina_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_4096_Stina_02 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_13/4096_Stina_02.mp3'
+			volume = '100'
+		}
+	}
+	ds_4096_Warden_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_13/4096_Warden_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_4097_Warden_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_13/4097_Warden_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_6100_Loudspeakers_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_14/6100_Loudspeakers_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_6101_Bela_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_14/6101_Bela_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_6101_Cole_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_14/6101_Cole_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_6102_Bela_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_14/6102_Bela_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_6102_Stina_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_14/6102_Stina_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_6103_Bela_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_14/6103_Bela_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_6103_Cole_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_14/6103_Cole_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_6104_Bela_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_14/6104_Bela_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_6104_Cole_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_14/6104_Cole_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_6106_Bela_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_14/6106_Bela_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_6106_Cole_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_14/6106_Cole_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_6106_Stina_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_14/6106_Stina_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_6107_Bela_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_14/6107_Bela_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_6108_Bela_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_14/6108_Bela_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_6108_Stina_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_14/6108_Stina_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_6108_Stina_02 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_14/6108_Stina_02.mp3'
+			volume = '100'
+		}
+	}
+	ds_6109_Cole_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_14/6109_Cole_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_6109_Stina_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_14/6109_Stina_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_7011_Cole_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_15/7011_Cole_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_7011_Stina_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_15/7011_Stina_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_7012_Bela_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_15/7012_Bela_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_7012_Cole_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_15/7012_Cole_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_7013_Bela_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_15/7013_Bela_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_7013_Cole_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_15/7013_Cole_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_7013_Stina_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_15/7013_Stina_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_7014_Bela_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_15/7014_Bela_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_7014_Stina_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_15/7014_Stina_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_7015_Bela_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_15/7015_Bela_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_7016_Bela_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_15/7016_Bela_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_7017_Bela_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_15/7017_Bela_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_7017_Cole_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_15/7017_Cole_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_1075_Bela_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_2/1075_Bela_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_1076_Bela_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_2/1076_Bela_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_1083_Druid_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_2/1083_Druid_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_1084_Druid_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_2/1084_Druid_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_1091_Druid_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_2/1091_Druid_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_1092_Bela_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_2/1092_Bela_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_1093_Bela_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_2/1093_Bela_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_1093_Druid_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_2/1093_Druid_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_1094_Bela_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_2/1094_Bela_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_1095_Druid_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_2/1095_Druid_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_1096_Druid_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_2/1096_Druid_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_1097_Druid_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_2/1097_Druid_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_1099_Druid_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_2/1099_Druid_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_1100_Druid_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_2/1100_Druid_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_1100_Druid_02 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_2/1100_Druid_02.mp3'
+			volume = '100'
+		}
+	}
+	ds_1100_Stina_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_2/1100_Stina_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_2001_Druid_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_2/2001_Druid_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_2002_Cole_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_2/2002_Cole_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_2006_Flying_Trader_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_3/2006_Flying_Trader_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_2007_Flying_Trader_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_3/2007_Flying_Trader_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_2008_Flying_Trader_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_3/2008_Flying_Trader_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_2008_Flying_Trader_02 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_3/2008_Flying_Trader_02.mp3'
+			volume = '100'
+		}
+	}
+	ds_2008_Stina_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_3/2008_Stina_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_2011_Flying_Trader_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_3/2011_Flying_Trader_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_2012_Flying_Trader_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_3/2012_Flying_Trader_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_2013_Flying_Trader_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_3/2013_Flying_Trader_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_2013_Stina_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_3/2013_Stina_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_2015_Bela_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_3/2015_Bela_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_2015_Cole_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_3/2015_Cole_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_2016_Bela_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_3/2016_Bela_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_2016_Stina_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_3/2016_Stina_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_2017_Bela_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_3/2017_Bela_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_2017_Cole_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_3/2017_Cole_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_2018_Bela_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_3/2018_Bela_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_2018_Cole_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_3/2018_Cole_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_2022_Bela_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_4/2022_Bela_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_2022_Bela_02 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_4/2022_Bela_02.mp3'
+			volume = '100'
+		}
+	}
+	ds_2022_Bela_03 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_4/2022_Bela_03.mp3'
+			volume = '100'
+		}
+	}
+	ds_2022_Cole_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_4/2022_Cole_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_2022_Stina_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_4/2022_Stina_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_2022_Stina_02 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_4/2022_Stina_02.mp3'
+			volume = '100'
+		}
+	}
+	ds_2023_Bela_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_4/2023_Bela_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_2023_Stina_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_4/2023_Stina_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_2024_Cole_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_4/2024_Cole_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_2024_Stina_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_4/2024_Stina_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_2026_Bela_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_4/2026_Bela_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_2026_Cole_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_4/2026_Cole_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_2026_Stina_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_4/2026_Stina_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_2026_Trader_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_4/2026_Trader_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_2026_Trader_02 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_4/2026_Trader_02.mp3'
+			volume = '100'
+		}
+	}
+	ds_2027_Bela_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_4/2027_Bela_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_2027_Flying_Trader_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_4/2027_Flying_Trader_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_2027_Stina_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_4/2027_Stina_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_2027_Trader_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_4/2027_Trader_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_2028_Bela_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_4/2028_Bela_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_2028_Bela_02 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_4/2028_Bela_02.mp3'
+			volume = '100'
+		}
+	}
+	ds_2028_Cole_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_4/2028_Cole_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_2028_Cole_02 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_4/2028_Cole_02.mp3'
+			volume = '100'
+		}
+	}
+	ds_2028_Stina_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_4/2028_Stina_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_2029_Bela_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_4/2029_Bela_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_2029_Cole_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_4/2029_Cole_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_2029_Stina_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_4/2029_Stina_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_2029_Stina_02 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_4/2029_Stina_02.mp3'
+			volume = '100'
+		}
+	}
+	ds_2030_Bela_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_4/2030_Bela_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_2030_Cole_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_4/2030_Cole_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_2030_Dustrider_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_4/2030_Dustrider_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_2030_Stina_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_4/2030_Stina_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_2030_Stina_02 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_4/2030_Stina_02.mp3'
+			volume = '100'
+		}
+	}
+	ds_2031_Bela_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_4/2031_Bela_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_2031_Cole_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_4/2031_Cole_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_2031_Stina_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_4/2031_Stina_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_2047_inhabitant_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_5/2047_inhabitant_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_2048_Stina_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_5/2048_Stina_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_2052_Inhabitant_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_5/2052_Inhabitant_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_2054_CityGuard_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_5/2054_CityGuard_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_2054_Stadtwache_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_5/2054_Stadtwache_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_2054_Stina_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_5/2054_Stina_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_2055_Bela_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_5/2055_Bela_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_2055_Cole_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_5/2055_Cole_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_2055_Stina_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_5/2055_Stina_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_2055_Templeguard_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_5/2055_Templeguard_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_2055_Templeguard_02 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_5/2055_Templeguard_02.mp3'
+			volume = '100'
+		}
+	}
+	ds_2055_Templeguard_03 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_5/2055_Templeguard_03.mp3'
+			volume = '100'
+		}
+	}
+	ds_2056_Templeguard_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_5/2056_Templeguard_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_2058_CityGuard_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_5/2058_CityGuard_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_2059_Stallmeister_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_5/2059_Stallmeister_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_2059_Stallmeister_02 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_5/2059_Stallmeister_02.mp3'
+			volume = '100'
+		}
+	}
+	ds_2059_Stina_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_5/2059_Stina_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_2059_Stina_02 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_5/2059_Stina_02.mp3'
+			volume = '100'
+		}
+	}
+	ds_2060_Bela_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_5/2060_Bela_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_2060_Cole_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_5/2060_Cole_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_2060_Flying_Trader_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_5/2060_Flying_Trader_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_2060_Flying_Trader_02 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_5/2060_Flying_Trader_02.mp3'
+			volume = '100'
+		}
+	}
+	ds_2060_Flying_Trader_03 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_5/2060_Flying_Trader_03.mp3'
+			volume = '100'
+		}
+	}
+	ds_2060_Stina_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_5/2060_Stina_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_2061_Bela_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_5/2061_Bela_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_2061_Cole_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_5/2061_Cole_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_2061_Stina_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_5/2061_Stina_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_2062_Flying_Trader_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_5/2062_Flying_Trader_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_2062_Flying_Trader_02 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_5/2062_Flying_Trader_02.mp3'
+			volume = '100'
+		}
+	}
+	ds_2062_Stina_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_5/2062_Stina_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_2063_Bela_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_5/2063_Bela_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_2063_Cole_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_5/2063_Cole_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_2075_Bela_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_5/2075_Bela_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_2076_Bela_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_5/2076_Bela_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_8010_Bela_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_6/8010_Bela_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_8010_Bela_02 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_6/8010_Bela_02.mp3'
+			volume = '100'
+		}
+	}
+	ds_8010_Cole_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_6/8010_Cole_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_8010_Cole_02 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_6/8010_Cole_02.mp3'
+			volume = '100'
+		}
+	}
+	ds_8010_Stina_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_6/8010_Stina_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_8012_Stina_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_6/8012_Stina_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_8014_Prisoner_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_6/8014_Prisoner_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_8015_Bela_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_6/8015_Bela_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_8015_Stina_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_6/8015_Stina_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_8016_Bela_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_6/8016_Bela_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_8016_Cole_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_6/8016_Cole_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_8018_Bela_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_6/8018_Bela_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_8018_Cole_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_6/8018_Cole_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_8018_Stina_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_6/8018_Stina_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_8020_Bela_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_6/8020_Bela_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_8020_Bela_02 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_6/8020_Bela_02.mp3'
+			volume = '100'
+		}
+	}
+	ds_8020_Pirate_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_6/8020_Pirate_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_8020_Pirate_02 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_6/8020_Pirate_02.mp3'
+			volume = '100'
+		}
+	}
+	ds_8030_Bela_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_6/8030_Bela_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_8030_Bela_02 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_6/8030_Bela_02.mp3'
+			volume = '100'
+		}
+	}
+	ds_8030_Cole_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_6/8030_Cole_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_8030_Pirate_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_6/8030_Pirate_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_8030_Pirate_02 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_6/8030_Pirate_02.mp3'
+			volume = '100'
+		}
+	}
+	ds_8030_Pirate_03 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_6/8030_Pirate_03.mp3'
+			volume = '100'
+		}
+	}
+	ds_8030_Stina_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_6/8030_Stina_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_8030_Stina_02 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_6/8030_Stina_02.mp3'
+			volume = '100'
+		}
+	}
+	ds_8040_BELA_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_6/8040_BELA_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_8040_Cole_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_6/8040_Cole_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_8040_Cole_02 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_6/8040_Cole_02.mp3'
+			volume = '100'
+		}
+	}
+	ds_8040_Pirate_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_6/8040_Pirate_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_8040_Pirate_02 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_6/8040_Pirate_02.mp3'
+			volume = '100'
+		}
+	}
+	ds_8040_Stina_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_6/8040_Stina_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_8042_Bela_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_6/8042_Bela_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_8042_Cole_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_6/8042_Cole_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_8042_Pirate_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_6/8042_Pirate_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_8042_Pirate_02 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_6/8042_Pirate_02.mp3'
+			volume = '100'
+		}
+	}
+	ds_8045_Pirate_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_6/8045_Pirate_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_2551_Bela_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_7/2551_Bela_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_2552_Bela_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_7/2552_Bela_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_2552_Cole_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_7/2552_Cole_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_2552_Cole_02 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_7/2552_Cole_02.mp3'
+			volume = '100'
+		}
+	}
+	ds_2552_Stina_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_7/2552_Stina_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_2553_Dustridersentry_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_7/2553_Dustridersentry_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_2557_Bela_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_7/2557_Bela_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_2557_Stina_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_7/2557_Stina_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_2561_Bela_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_7/2561_Bela_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_2561_Cole_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_7/2561_Cole_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_2562_Dustriderworker_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_7/2562_Dustriderworker_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_2562_Stina_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_7/2562_Stina_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_2563_Cole_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_7/2563_Cole_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_2564_Cole_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_7/2564_Cole_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_2564_Stina_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_7/2564_Stina_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_2565_Bela_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_7/2565_Bela_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_2565_Cole_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_7/2565_Cole_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_2565_Stina_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_7/2565_Stina_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_2566_Bela_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_7/2566_Bela_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_2566_Cole_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_7/2566_Cole_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_2566_Cole_02 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_7/2566_Cole_02.mp3'
+			volume = '100'
+		}
+	}
+	ds_2566_Stina_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_7/2566_Stina_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_2568_Stina_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_7/2568_Stina_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_2572_Taslov_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_7/2572_Taslov_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_2573_Bela_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_7/2573_Bela_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_2573_Cole_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_7/2573_Cole_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_2573_Cole_02 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_7/2573_Cole_02.mp3'
+			volume = '100'
+		}
+	}
+	ds_2575_Bela_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_7/2575_Bela_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_2581_Cole_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_8/2581_Cole_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_2582_Bela_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_8/2582_Bela_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_2582_Cole_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_8/2582_Cole_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_2584_Kleemann_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_8/2584_Kleemann_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_2584_Kleemann_02 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_8/2584_Kleemann_02.mp3'
+			volume = '100'
+		}
+	}
+	ds_2584_Stina_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_8/2584_Stina_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_2586_Bela_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_8/2586_Bela_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_2586_Cole_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_8/2586_Cole_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_2586_Stina_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_8/2586_Stina_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_2592_Bela_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_8/2592_Bela_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_2592_Cole_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_8/2592_Cole_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_2592_Kleemann_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_8/2592_Kleemann_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_2592_Stina_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_8/2592_Stina_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_2595_Bela_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_8/2595_Bela_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_2595_Bela_02 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_8/2595_Bela_02.mp3'
+			volume = '100'
+		}
+	}
+	ds_2595_Kleemann_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_8/2595_Kleemann_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_2595_Kleemann_02 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_8/2595_Kleemann_02.mp3'
+			volume = '100'
+		}
+	}
+	ds_2599_Cole_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_8/2599_Cole_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_2599_Kleemann_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_8/2599_Kleemann_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_2599_Stina_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_8/2599_Stina_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_3006_Cole_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_8/3006_Cole_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_3006_Kleemann_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_8/3006_Kleemann_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_3006_Kleemann_02 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_8/3006_Kleemann_02.mp3'
+			volume = '100'
+		}
+	}
+	ds_3007_Cole_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_8/3007_Cole_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_3007_Kleemann_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_8/3007_Kleemann_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_3008_Bela_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_8/3008_Bela_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_3008_Cole_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_8/3008_Cole_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_3008_Kleemann_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_8/3008_Kleemann_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_3008_Kleemann_02 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_8/3008_Kleemann_02.mp3'
+			volume = '100'
+		}
+	}
+	ds_3011_Kleemann_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_8/3011_Kleemann_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_3011_Stina_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_8/3011_Stina_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_3020_Bela_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_9/3020_Bela_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_3021_Bela_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_9/3021_Bela_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_3021_Stina_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_9/3021_Stina_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_3023_Bela_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_9/3023_Bela_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_3023_Dragon_Clan_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_9/3023_Dragon_Clan_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_3023_Stina_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_9/3023_Stina_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_3024_Bela_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_9/3024_Bela_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_3024_Stina_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_9/3024_Stina_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_3024_Stina_02 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_9/3024_Stina_02.mp3'
+			volume = '100'
+		}
+	}
+	ds_3026_Bela_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_9/3026_Bela_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_3026_Cole_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_9/3026_Cole_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_3026_Stina_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_9/3026_Stina_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_3029_Bela_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_9/3029_Bela_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_3029_Cole_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_9/3029_Cole_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_3031_Bela_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_9/3031_Bela_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_3031_Cole_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_9/3031_Cole_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_3032_Bela_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_9/3032_Bela_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_3032_Cole_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_9/3032_Cole_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_3032_Stina_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_9/3032_Stina_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_3034_Bela_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_9/3034_Bela_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_3034_Stina_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_9/3034_Stina_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_3035_Bela_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_9/3035_Bela_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_3035_Cole_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_9/3035_Cole_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_3035_Stina_01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Level_9/3035_Stina_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_Counselor_001 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/Counselor_001.mp3'
+			volume = '100'
+		}
+	}
+	ds_Counselor_002 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/Counselor_002.mp3'
+			volume = '100'
+		}
+	}
+	ds_Counselor_003 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/Counselor_003.mp3'
+			volume = '100'
+		}
+	}
+	ds_Counselor_004 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/Counselor_004.mp3'
+			volume = '100'
+		}
+	}
+	ds_Counselor_005 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/Counselor_005.mp3'
+			volume = '100'
+		}
+	}
+	ds_Counselor_006 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/Counselor_006.mp3'
+			volume = '100'
+		}
+	}
+	ds_Counselor_007 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/Counselor_007.mp3'
+			volume = '100'
+		}
+	}
+	ds_Counselor_008 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/Counselor_008.mp3'
+			volume = '100'
+		}
+	}
+	ds_Counselor_009 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/Counselor_009.mp3'
+			volume = '100'
+		}
+	}
+	ds_Counselor_010 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/Counselor_010.mp3'
+			volume = '100'
+		}
+	}
+	ds_Counselor_011 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/Counselor_011.mp3'
+			volume = '100'
+		}
+	}
+	ds_Counselor_012 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/Counselor_012.mp3'
+			volume = '100'
+		}
+	}
+	ds_Counselor_013 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/Counselor_013.mp3'
+			volume = '100'
+		}
+	}
+	ds_Counselor_014 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/Counselor_014.mp3'
+			volume = '100'
+		}
+	}
+	ds_Counselor_015 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/Counselor_015.mp3'
+			volume = '100'
+		}
+	}
+	ds_Counselor_016 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/Counselor_016.mp3'
+			volume = '100'
+		}
+	}
+	ds_Counselor_017 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/Counselor_017.mp3'
+			volume = '100'
+		}
+	}
+	ds_Counselor_018 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/Counselor_018.mp3'
+			volume = '100'
+		}
+	}
+	ds_Counselor_019 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/Counselor_019.mp3'
+			volume = '100'
+		}
+	}
+	ds_Counselor_020 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/Counselor_020.mp3'
+			volume = '100'
+		}
+	}
+	ds_Counselor_021 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/Counselor_021.mp3'
+			volume = '100'
+		}
+	}
+	ds_Counselor_022 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/Counselor_022.mp3'
+			volume = '100'
+		}
+	}
+	ds_Counselor_023 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/Counselor_023.mp3'
+			volume = '100'
+		}
+	}
+	ds_Counselor_024 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/Counselor_024.mp3'
+			volume = '100'
+		}
+	}
+	ds_Counselor_025 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/Counselor_025.mp3'
+			volume = '100'
+		}
+	}
+	ds_Counselor_026 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/Counselor_026.mp3'
+			volume = '100'
+		}
+	}
+	ds_Counselor_027 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/Counselor_027.mp3'
+			volume = '100'
+		}
+	}
+	ds_Counselor_028 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/Counselor_028.mp3'
+			volume = '100'
+		}
+	}
+	ds_Counselor_029 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/Counselor_029.mp3'
+			volume = '100'
+		}
+	}
+	ds_Counselor_030 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/Counselor_030.mp3'
+			volume = '100'
+		}
+	}
+	ds_Counselor_031 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/Counselor_031.mp3'
+			volume = '100'
+		}
+	}
+	ds_Counselor_032 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/Counselor_032.mp3'
+			volume = '100'
+		}
+	}
+	ds_Counselor_033 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/Counselor_033.mp3'
+			volume = '100'
+		}
+	}
+	ds_Counselor_034 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/Counselor_034.mp3'
+			volume = '100'
+		}
+	}
+	ds_Counselor_035 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/Counselor_035.mp3'
+			volume = '100'
+		}
+	}
+	ds_Counselor_036 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/Counselor_036.mp3'
+			volume = '100'
+		}
+	}
+	ds_Counselor_037 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/Counselor_037.mp3'
+			volume = '100'
+		}
+	}
+	ds_Counselor_038 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/Counselor_038.mp3'
+			volume = '100'
+		}
+	}
+	ds_Counselor_039 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/Counselor_039.mp3'
+			volume = '100'
+		}
+	}
+	ds_Counselor_040 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/Counselor_040.mp3'
+			volume = '100'
+		}
+	}
+	ds_Counselor_041 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/Counselor_041.mp3'
+			volume = '100'
+		}
+	}
+	ds_Counselor_042 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/Counselor_042.mp3'
+			volume = '100'
+		}
+	}
+	ds_Counselor_043 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/Counselor_043.mp3'
+			volume = '100'
+		}
+	}
+	ds_Counselor_044 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/Counselor_044.mp3'
+			volume = '100'
+		}
+	}
+	ds_Counselor_045 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/Counselor_045.mp3'
+			volume = '100'
+		}
+	}
+	ds_Counselor_046 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/Counselor_046.mp3'
+			volume = '100'
+		}
+	}
+	ds_Counselor_047 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/Counselor_047.mp3'
+			volume = '100'
+		}
+	}
+	ds_Counselor_048 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/Counselor_048.mp3'
+			volume = '100'
+		}
+	}
+	ds_Counselor_049 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/Counselor_049.mp3'
+			volume = '100'
+		}
+	}
+	ds_Counselor_050 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/Counselor_050.mp3'
+			volume = '100'
+		}
+	}
+	ds_Counselor_051 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/Counselor_051.mp3'
+			volume = '100'
+		}
+	}
+	ds_Counselor_052 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/Counselor_052.mp3'
+			volume = '100'
+		}
+	}
+	ds_Counselor_053 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/Counselor_053.mp3'
+			volume = '100'
+		}
+	}
+	ds_Counselor_054 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/Counselor_054.mp3'
+			volume = '100'
+		}
+	}
+	ds_Counselor_055 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/Counselor_055.mp3'
+			volume = '100'
+		}
+	}
+	ds_Counselor_056 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/Counselor_056.mp3'
+			volume = '100'
+		}
+	}
+	ds_Counselor_057 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/Counselor_057.mp3'
+			volume = '100'
+		}
+	}
+	ds_Counselor_058 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/Counselor_058.mp3'
+			volume = '100'
+		}
+	}
+	ds_Counselor_059 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/Counselor_059.mp3'
+			volume = '100'
+		}
+	}
+	ds_Counselor_060 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/Counselor_060.mp3'
+			volume = '100'
+		}
+	}
+	ds_Counselor_061 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/Counselor_061.mp3'
+			volume = '100'
+		}
+	}
+	ds_Counselor_062 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/Counselor_062.mp3'
+			volume = '100'
+		}
+	}
+	ds_Counselor_063 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/Counselor_063.mp3'
+			volume = '100'
+		}
+	}
+	ds_Counselor_064 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/Counselor_064.mp3'
+			volume = '100'
+		}
+	}
+	ds_Counselor_065 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/Counselor_065.mp3'
+			volume = '100'
+		}
+	}
+	ds_Counselor_066 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/Counselor_066.mp3'
+			volume = '100'
+		}
+	}
+	ds_Counselor_067 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/Counselor_067.mp3'
+			volume = '100'
+		}
+	}
+	ds_Counselor_068 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/Counselor_068.mp3'
+			volume = '100'
+		}
+	}
+	ds_Counselor_069 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/Counselor_069.mp3'
+			volume = '100'
+		}
+	}
+	ds_Counselor_070 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/Counselor_070.mp3'
+			volume = '100'
+		}
+	}
+	ds_Counselor_071 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/Counselor_071.mp3'
+			volume = '100'
+		}
+	}
+	ds_Counselor_072 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/Counselor_072.mp3'
+			volume = '100'
+		}
+	}
+	ds_Counselor_073 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/Counselor_073.mp3'
+			volume = '100'
+		}
+	}
+	ds_Counselor_074 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/Counselor_074.mp3'
+			volume = '100'
+		}
+	}
+	ds_Counselor_075 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/Counselor_075.mp3'
+			volume = '100'
+		}
+	}
+	ds_Counselor_076 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/Counselor_076.mp3'
+			volume = '100'
+		}
+	}
+	ds_Counselor_077 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/Counselor_077.mp3'
+			volume = '100'
+		}
+	}
+	ds_Counselor_078 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/Counselor_078.mp3'
+			volume = '100'
+		}
+	}
+	ds_Counselor_079 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/Counselor_079.mp3'
+			volume = '100'
+		}
+	}
+	ds_Counselor_080 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/Counselor_080.mp3'
+			volume = '100'
+		}
+	}
+	ds_Counselor_081 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/Counselor_081.mp3'
+			volume = '100'
+		}
+	}
+	ds_Counselor_082 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/Counselor_082.mp3'
+			volume = '100'
+		}
+	}
+	ds_Counselor_083 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/Counselor_083.mp3'
+			volume = '100'
+		}
+	}
+	ds_Counselor_084 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/Counselor_084.mp3'
+			volume = '100'
+		}
+	}
+	ds_Counselor_085 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/Counselor_085.mp3'
+			volume = '100'
+		}
+	}
+	ds_Counselor_086 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/Counselor_086.mp3'
+			volume = '100'
+		}
+	}
+	ds_Counselor_087 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/Counselor_087.mp3'
+			volume = '100'
+		}
+	}
+	ds_Counselor_088 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/Counselor_088.mp3'
+			volume = '100'
+		}
+	}
+	ds_Counselor_089 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/Counselor_089.mp3'
+			volume = '100'
+		}
+	}
+	ds_Counselor_090 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/Counselor_090.mp3'
+			volume = '100'
+		}
+	}
+	ds_Counselor_091 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/Counselor_091.mp3'
+			volume = '100'
+		}
+	}
+	ds_Counselor_092 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/Counselor_092.mp3'
+			volume = '100'
+		}
+	}
+	ds_Counselor_093 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/Counselor_093.mp3'
+			volume = '100'
+		}
+	}
+	ds_Counselor_094 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/Counselor_094.mp3'
+			volume = '100'
+		}
+	}
+	ds_Counselor_095 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/Counselor_095.mp3'
+			volume = '100'
+		}
+	}
+	ds_Counselor_096 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/Counselor_096.mp3'
+			volume = '100'
+		}
+	}
+	ds_Counselor_097 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/Counselor_097.mp3'
+			volume = '100'
+		}
+	}
+	ds_Counselor_098 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/Counselor_098.mp3'
+			volume = '100'
+		}
+	}
+	ds_Counselor_099 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/Counselor_099.mp3'
+			volume = '100'
+		}
+	}
+	ds_Counselor_100 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/Counselor_100.mp3'
+			volume = '100'
+		}
+	}
+	ds_Counselor_101 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/Counselor_101.mp3'
+			volume = '100'
+		}
+	}
+	ds_Counselor_102 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/Counselor_102.mp3'
+			volume = '100'
+		}
+	}
+	ds_Counselor_103 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/Counselor_103.mp3'
+			volume = '100'
+		}
+	}
+	ds_Counselor_104 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/Counselor_104.mp3'
+			volume = '100'
+		}
+	}
+	ds_Counselor_105 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/Counselor_105.mp3'
+			volume = '100'
+		}
+	}
+	ds_Counselor_106 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/Counselor_106.mp3'
+			volume = '100'
+		}
+	}
+	ds_Counselor_107 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/Counselor_107.mp3'
+			volume = '100'
+		}
+	}
+	ds_Counselor_108 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/Counselor_108.mp3'
+			volume = '100'
+		}
+	}
+	ds_Counselor_109 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/Counselor_109.mp3'
+			volume = '100'
+		}
+	}
+	ds_Counselor_110 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/Counselor_110.mp3'
+			volume = '100'
+		}
+	}
+	ds_Counselor_111 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/Counselor_111.mp3'
+			volume = '100'
+		}
+	}
+	ds_Counselor_112 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/Counselor_112.mp3'
+			volume = '100'
+		}
+	}
+	ds_Counselor_113 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/Counselor_113.mp3'
+			volume = '100'
+		}
+	}
+	ds_Counselor_114 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/Counselor_114.mp3'
+			volume = '100'
+		}
+	}
+	ds_Counselor_115 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/Counselor_115.mp3'
+			volume = '100'
+		}
+	}
+	ds_L00B01a {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/L00B01a.mp3'
+			volume = '100'
+		}
+	}
+	ds_L00B01b {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/L00B01b.mp3'
+			volume = '100'
+		}
+	}
+	ds_L00B02 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/L00B02.mp3'
+			volume = '100'
+		}
+	}
+	ds_L00B03 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/L00B03.mp3'
+			volume = '100'
+		}
+	}
+	ds_L00B04 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/L00B04.mp3'
+			volume = '100'
+		}
+	}
+	ds_L00B05 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/L00B05.mp3'
+			volume = '100'
+		}
+	}
+	ds_L00B06 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/L00B06.mp3'
+			volume = '100'
+		}
+	}
+	ds_L00B07 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/L00B07.mp3'
+			volume = '100'
+		}
+	}
+	ds_L00B08 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/L00B08.mp3'
+			volume = '100'
+		}
+	}
+	ds_L00B09 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/L00B09.mp3'
+			volume = '100'
+		}
+	}
+	ds_L00B10 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/L00B10.mp3'
+			volume = '100'
+		}
+	}
+	ds_L00B11 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/L00B11.mp3'
+			volume = '100'
+		}
+	}
+	ds_L00B12 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/L00B12.mp3'
+			volume = '100'
+		}
+	}
+	ds_L00B13 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/L00B13.mp3'
+			volume = '100'
+		}
+	}
+	ds_L00B14 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/L00B14.mp3'
+			volume = '100'
+		}
+	}
+	ds_L00B15 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/L00B15.mp3'
+			volume = '100'
+		}
+	}
+	ds_L00B16 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/L00B16.mp3'
+			volume = '100'
+		}
+	}
+	ds_L00B17 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/L00B17.mp3'
+			volume = '100'
+		}
+	}
+	ds_L00B18 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/L00B18.mp3'
+			volume = '100'
+		}
+	}
+	ds_L00B19 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/L00B19.mp3'
+			volume = '100'
+		}
+	}
+	ds_L00B20 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/L00B20.mp3'
+			volume = '100'
+		}
+	}
+	ds_L00B21 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/L00B21.mp3'
+			volume = '100'
+		}
+	}
+	ds_L00B22 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/L00B22.mp3'
+			volume = '100'
+		}
+	}
+	ds_L00B23 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/L00B23.mp3'
+			volume = '100'
+		}
+	}
+	ds_L00B24 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/L00B24.mp3'
+			volume = '100'
+		}
+	}
+	ds_L00B25 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/L00B25.mp3'
+			volume = '100'
+		}
+	}
+	ds_L00B26 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/L00B26.mp3'
+			volume = '100'
+		}
+	}
+	ds_L00B27 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/L00B27.mp3'
+			volume = '100'
+		}
+	}
+	ds_L00B28 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/L00B28.mp3'
+			volume = '100'
+		}
+	}
+	ds_L00B29 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/L00B29.mp3'
+			volume = '100'
+		}
+	}
+	ds_L00B30 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/L00B30.mp3'
+			volume = '100'
+		}
+	}
+	ds_L00B31 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/L00B31.mp3'
+			volume = '100'
+		}
+	}
+	ds_L00B32 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/L00B32.mp3'
+			volume = '100'
+		}
+	}
+	ds_L00B33 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/L00B33.mp3'
+			volume = '100'
+		}
+	}
+	ds_L00B34 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/L00B34.mp3'
+			volume = '100'
+		}
+	}
+	ds_L00B35 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/L00B35.mp3'
+			volume = '100'
+		}
+	}
+	ds_L00B36 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/L00B36.mp3'
+			volume = '100'
+		}
+	}
+	ds_L00B37 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/L00B37.mp3'
+			volume = '100'
+		}
+	}
+	ds_L00B38 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/L00B38.mp3'
+			volume = '100'
+		}
+	}
+	ds_L00B39 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/L00B39.mp3'
+			volume = '100'
+		}
+	}
+	ds_L00B40 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/L00B40.mp3'
+			volume = '100'
+		}
+	}
+	ds_L00B41 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/L00B41.mp3'
+			volume = '100'
+		}
+	}
+	ds_L00B42 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/L00B42.mp3'
+			volume = '100'
+		}
+	}
+	ds_L00B43 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/L00B43.mp3'
+			volume = '100'
+		}
+	}
+	ds_L00B44 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/L00B44.mp3'
+			volume = '100'
+		}
+	}
+	ds_L00B45 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/L00B45.mp3'
+			volume = '100'
+		}
+	}
+	ds_L00B46 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/L00B46.mp3'
+			volume = '100'
+		}
+	}
+	ds_L00B47 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/L00B47.mp3'
+			volume = '100'
+		}
+	}
+	ds_L00B48 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/L00B48.mp3'
+			volume = '100'
+		}
+	}
+	ds_L00B49 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/L00B49.mp3'
+			volume = '100'
+		}
+	}
+	ds_L00B50 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/L00B50.mp3'
+			volume = '100'
+		}
+	}
+	ds_L00B51 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/L00B51.mp3'
+			volume = '100'
+		}
+	}
+	ds_L00B52 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/L00B52.mp3'
+			volume = '100'
+		}
+	}
+	ds_L00B53 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/L00B53.mp3'
+			volume = '100'
+		}
+	}
+	ds_L00B54 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/L00B54.mp3'
+			volume = '100'
+		}
+	}
+	ds_L00B55 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/L00B55.mp3'
+			volume = '100'
+		}
+	}
+	ds_L00B56 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/L00B56.mp3'
+			volume = '100'
+		}
+	}
+	ds_L00B57 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/L00B57.mp3'
+			volume = '100'
+		}
+	}
+	ds_L00B58 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/L00B58.mp3'
+			volume = '100'
+		}
+	}
+	ds_L00B59 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/L00B59.mp3'
+			volume = '100'
+		}
+	}
+	ds_L00B60 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/L00B60.mp3'
+			volume = '100'
+		}
+	}
+	ds_L00B61 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/L00B61.mp3'
+			volume = '100'
+		}
+	}
+	ds_L00B62 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/L00B62.mp3'
+			volume = '100'
+		}
+	}
+	ds_L00B63 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/L00B63.mp3'
+			volume = '100'
+		}
+	}
+	ds_L00B64 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/L00B64.mp3'
+			volume = '100'
+		}
+	}
+	ds_L00B65 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/L00B65.mp3'
+			volume = '100'
+		}
+	}
+	ds_L00B66 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/L00B66.mp3'
+			volume = '100'
+		}
+	}
+	ds_L00B67 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/L00B67.mp3'
+			volume = '100'
+		}
+	}
+	ds_L01B01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/L01B01.mp3'
+			volume = '100'
+		}
+	}
+	ds_L01B02 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/L01B02.mp3'
+			volume = '100'
+		}
+	}
+	ds_L01B03 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/L01B03.mp3'
+			volume = '100'
+		}
+	}
+	ds_L01B04 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/L01B04.mp3'
+			volume = '100'
+		}
+	}
+	ds_L01B05 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/L01B05.mp3'
+			volume = '100'
+		}
+	}
+	ds_L01B06 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/L01B06.mp3'
+			volume = '100'
+		}
+	}
+	ds_L01B07 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/L01B07.mp3'
+			volume = '100'
+		}
+	}
+	ds_L01B08 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/L01B08.mp3'
+			volume = '100'
+		}
+	}
+	ds_L01B09 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/L01B09.mp3'
+			volume = '100'
+		}
+	}
+	ds_L01B10 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/L01B10.mp3'
+			volume = '100'
+		}
+	}
+	ds_L01B11 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/L01B11.mp3'
+			volume = '100'
+		}
+	}
+	ds_L01B12 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/L01B12.mp3'
+			volume = '100'
+		}
+	}
+	ds_L01B13 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/L01B13.mp3'
+			volume = '100'
+		}
+	}
+	ds_L01B14 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/L01B14.mp3'
+			volume = '100'
+		}
+	}
+	ds_L01B15 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/L01B15.mp3'
+			volume = '100'
+		}
+	}
+	ds_L01B16 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/L01B16.mp3'
+			volume = '100'
+		}
+	}
+	ds_L01B17 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/L01B17.mp3'
+			volume = '100'
+		}
+	}
+	ds_L01B18 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/L01B18.mp3'
+			volume = '100'
+		}
+	}
+	ds_L01B19 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/L01B19.mp3'
+			volume = '100'
+		}
+	}
+	ds_L01B20 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/L01B20.mp3'
+			volume = '100'
+		}
+	}
+	ds_L01B21 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/L01B21.mp3'
+			volume = '100'
+		}
+	}
+	ds_L01B22 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/L01B22.mp3'
+			volume = '100'
+		}
+	}
+	ds_L01B23 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/L01B23.mp3'
+			volume = '100'
+		}
+	}
+	ds_L01B24 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/L01B24.mp3'
+			volume = '100'
+		}
+	}
+	ds_L01B25 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/L01B25.mp3'
+			volume = '100'
+		}
+	}
+	ds_L01B26 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/L01B26.mp3'
+			volume = '100'
+		}
+	}
+	ds_L01B27 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/L01B27.mp3'
+			volume = '100'
+		}
+	}
+	ds_L01B28 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/L01B28.mp3'
+			volume = '100'
+		}
+	}
+	ds_L01B29 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/L01B29.mp3'
+			volume = '100'
+		}
+	}
+	ds_L02B01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/L02B01.mp3'
+			volume = '100'
+		}
+	}
+	ds_L02B02 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/L02B02.mp3'
+			volume = '100'
+		}
+	}
+	ds_L02B03 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/L02B03.mp3'
+			volume = '100'
+		}
+	}
+	ds_L02B04 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/L02B04.mp3'
+			volume = '100'
+		}
+	}
+	ds_L02B05 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/L02B05.mp3'
+			volume = '100'
+		}
+	}
+	ds_L02B06 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/L02B06.mp3'
+			volume = '100'
+		}
+	}
+	ds_L02B07 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/L02B07.mp3'
+			volume = '100'
+		}
+	}
+	ds_L02B08 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/L02B08.mp3'
+			volume = '100'
+		}
+	}
+	ds_L02B09 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/L02B09.mp3'
+			volume = '100'
+		}
+	}
+	ds_L02B10 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/L02B10.mp3'
+			volume = '100'
+		}
+	}
+	ds_L03B01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/L03B01.mp3'
+			volume = '100'
+		}
+	}
+	ds_L03B02 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/L03B02.mp3'
+			volume = '100'
+		}
+	}
+	ds_L03B03 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/L03B03.mp3'
+			volume = '100'
+		}
+	}
+	ds_L03B03b {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/L03B03b.mp3'
+			volume = '100'
+		}
+	}
+	ds_L03B04 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/L03B04.mp3'
+			volume = '100'
+		}
+	}
+	ds_L04B01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/L04B01.mp3'
+			volume = '100'
+		}
+	}
+	ds_L04B02 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/L04B02.mp3'
+			volume = '100'
+		}
+	}
+	ds_L04B03 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/L04B03.mp3'
+			volume = '100'
+		}
+	}
+	ds_L04B04 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/L04B04.mp3'
+			volume = '100'
+		}
+	}
+	ds_L04B05 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/L04B05.mp3'
+			volume = '100'
+		}
+	}
+	ds_L04B06 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/L04B06.mp3'
+			volume = '100'
+		}
+	}
+	ds_L04B07 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/L04B07.mp3'
+			volume = '100'
+		}
+	}
+	ds_L04B08 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/L04B08.mp3'
+			volume = '100'
+		}
+	}
+	ds_L04B09 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/L04B09.mp3'
+			volume = '100'
+		}
+	}
+	ds_L04B10 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/L04B10.mp3'
+			volume = '100'
+		}
+	}
+	ds_L04B11 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/L04B11.mp3'
+			volume = '100'
+		}
+	}
+	ds_L04B12 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/L04B12.mp3'
+			volume = '100'
+		}
+	}
+	ds_L04B13 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/L04B13.mp3'
+			volume = '100'
+		}
+	}
+	ds_L05B01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/L05B01.mp3'
+			volume = '100'
+		}
+	}
+	ds_L05B02 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/L05B02.mp3'
+			volume = '100'
+		}
+	}
+	ds_L05B03 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/L05B03.mp3'
+			volume = '100'
+		}
+	}
+	ds_L05B04 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/L05B04.mp3'
+			volume = '100'
+		}
+	}
+	ds_L05B05 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/L05B05.mp3'
+			volume = '100'
+		}
+	}
+	ds_L05B06 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/L05B06.mp3'
+			volume = '100'
+		}
+	}
+	ds_L05B07 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/L05B07.mp3'
+			volume = '100'
+		}
+	}
+	ds_L06B01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/L06B01.mp3'
+			volume = '100'
+		}
+	}
+	ds_L06B02 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/L06B02.mp3'
+			volume = '100'
+		}
+	}
+	ds_L06B03 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/L06B03.mp3'
+			volume = '100'
+		}
+	}
+	ds_L06B04 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/L06B04.mp3'
+			volume = '100'
+		}
+	}
+	ds_L06B05 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/L06B05.mp3'
+			volume = '100'
+		}
+	}
+	ds_L06B06 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/L06B06.mp3'
+			volume = '100'
+		}
+	}
+	ds_L06B07 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/L06B07.mp3'
+			volume = '100'
+		}
+	}
+	ds_L06B08 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/L06B08.mp3'
+			volume = '100'
+		}
+	}
+	ds_L06B09 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/L06B09.mp3'
+			volume = '100'
+		}
+	}
+	ds_L06B10 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/L06B10.mp3'
+			volume = '100'
+		}
+	}
+	ds_L07B01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/L07B01.mp3'
+			volume = '100'
+		}
+	}
+	ds_L07B02 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/L07B02.mp3'
+			volume = '100'
+		}
+	}
+	ds_L07B03 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/L07B03.mp3'
+			volume = '100'
+		}
+	}
+	ds_L07B04 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/L07B04.mp3'
+			volume = '100'
+		}
+	}
+	ds_L07B05 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/L07B05.mp3'
+			volume = '100'
+		}
+	}
+	ds_L07B06 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/L07B06.mp3'
+			volume = '100'
+		}
+	}
+	ds_L07B07 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/L07B07.mp3'
+			volume = '100'
+		}
+	}
+	ds_L07B08 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/L07B08.mp3'
+			volume = '100'
+		}
+	}
+	ds_L07B09 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/L07B09.mp3'
+			volume = '100'
+		}
+	}
+	ds_L07B10 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/L07B10.mp3'
+			volume = '100'
+		}
+	}
+	ds_L07B11 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/L07B11.mp3'
+			volume = '100'
+		}
+	}
+	ds_L07B12 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/L07B12.mp3'
+			volume = '100'
+		}
+	}
+	ds_L07B13 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/L07B13.mp3'
+			volume = '100'
+		}
+	}
+	ds_L09B01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/L09B01.mp3'
+			volume = '100'
+		}
+	}
+	ds_L09B02 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/L09B02.mp3'
+			volume = '100'
+		}
+	}
+	ds_L09B03 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/L09B03.mp3'
+			volume = '100'
+		}
+	}
+	ds_L09B04 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/L09B04.mp3'
+			volume = '100'
+		}
+	}
+	ds_L09B05 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/L09B05.mp3'
+			volume = '100'
+		}
+	}
+	ds_L09B06 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/L09B06.mp3'
+			volume = '100'
+		}
+	}
+	ds_L09B07 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/L09B07.mp3'
+			volume = '100'
+		}
+	}
+	ds_L09B08 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/L09B08.mp3'
+			volume = '100'
+		}
+	}
+	ds_L09B09 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/L09B09.mp3'
+			volume = '100'
+		}
+	}
+	ds_L09B10 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/L09B10.mp3'
+			volume = '100'
+		}
+	}
+	ds_L10B01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/L10B01.mp3'
+			volume = '100'
+		}
+	}
+	ds_L10B02 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/L10B02.mp3'
+			volume = '100'
+		}
+	}
+	ds_L10B03 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/L10B03.mp3'
+			volume = '100'
+		}
+	}
+	ds_L10B04 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/L10B04.mp3'
+			volume = '100'
+		}
+	}
+	ds_L10B05 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/L10B05.mp3'
+			volume = '100'
+		}
+	}
+	ds_L10B06 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/L10B06.mp3'
+			volume = '100'
+		}
+	}
+	ds_L10B07 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/L10B07.mp3'
+			volume = '100'
+		}
+	}
+	ds_L12B01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/L12B01.mp3'
+			volume = '100'
+		}
+	}
+	ds_L12B02 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/L12B02.mp3'
+			volume = '100'
+		}
+	}
+	ds_L13B01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/L13B01.mp3'
+			volume = '100'
+		}
+	}
+	ds_L13B02 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/L13B02.mp3'
+			volume = '100'
+		}
+	}
+	ds_L13B03 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/L13B03.mp3'
+			volume = '100'
+		}
+	}
+	ds_L13B04 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/L13B04.mp3'
+			volume = '100'
+		}
+	}
+	ds_L13B05 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/L13B05.mp3'
+			volume = '100'
+		}
+	}
+	ds_L13B06 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/L13B06.mp3'
+			volume = '100'
+		}
+	}
+	ds_L13B08 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/L13B08.mp3'
+			volume = '100'
+		}
+	}
+	ds_L13B09 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/L13B09.mp3'
+			volume = '100'
+		}
+	}
+	ds_L13B10 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/L13B10.mp3'
+			volume = '100'
+		}
+	}
+	ds_L13B11 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/L13B11.mp3'
+			volume = '100'
+		}
+	}
+	ds_L13B12 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/L13B12.mp3'
+			volume = '100'
+		}
+	}
+	ds_L13B13 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/L13B13.mp3'
+			volume = '100'
+		}
+	}
+	ds_L13B14 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/L13B14.mp3'
+			volume = '100'
+		}
+	}
+	ds_L13B15 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/L13B15.mp3'
+			volume = '100'
+		}
+	}
+	ds_L13B16 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/L13B16.mp3'
+			volume = '100'
+		}
+	}
+	ds_L13B17 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/L13B17.mp3'
+			volume = '100'
+		}
+	}
+	ds_L14B01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/L14B01.mp3'
+			volume = '100'
+		}
+	}
+	ds_L14B02 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/L14B02.mp3'
+			volume = '100'
+		}
+	}
+	ds_L14B03 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/L14B03.mp3'
+			volume = '100'
+		}
+	}
+	ds_L14B04 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/L14B04.mp3'
+			volume = '100'
+		}
+	}
+	ds_L14B05 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/L14B05.mp3'
+			volume = '100'
+		}
+	}
+	ds_L14B06 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/L14B06.mp3'
+			volume = '100'
+		}
+	}
+	ds_L14B07 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/L14B07.mp3'
+			volume = '100'
+		}
+	}
+	ds_L15B01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/L15B01.mp3'
+			volume = '100'
+		}
+	}
+	ds_L15B02 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/L15B02.mp3'
+			volume = '100'
+		}
+	}
+	ds_L15B03 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/L15B03.mp3'
+			volume = '100'
+		}
+	}
+	ds_L16B01 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/L16B01.mp3'
+			volume = '100'
+		}
+	}
+	ds_L16B02 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/L16B02.mp3'
+			volume = '100'
+		}
+	}
+	ds_L16B03 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/L16B03.mp3'
+			volume = '100'
+		}
+	}
+	ds_L16B04 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/L16B04.mp3'
+			volume = '100'
+		}
+	}
+	ds_L16B05 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/L16B05.mp3'
+			volume = '100'
+		}
+	}
+	ds_L16B06 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/L16B06.mp3'
+			volume = '100'
+		}
+	}
+	ds_L16B07 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/L16B07.mp3'
+			volume = '100'
+		}
+	}
+	ds_L16B08 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/Mentor/L16B08.mp3'
+			volume = '100'
+		}
+	}
+	ds_NS_0103 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/music/NS_0103.mp3'
+			volume = '100'
+		}
+	}
+	ds_NS_0112 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/music/NS_0112.mp3'
+			volume = '100'
+		}
+	}
+	ds_NS_0215 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/music/NS_0215.mp3'
+			volume = '100'
+		}
+	}
+	ds_NS_0217 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/music/NS_0217.mp3'
+			volume = '100'
+		}
+	}
+	ds_NS_0300 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/music/NS_0300.mp3'
+			volume = '100'
+		}
+	}
+	ds_NS_0326 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/music/NS_0326.mp3'
+			volume = '100'
+		}
+	}
+	ds_NS_0409 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/music/NS_0409.mp3'
+			volume = '100'
+		}
+	}
+	ds_NS_0412a {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/music/NS_0412a.mp3'
+			volume = '100'
+		}
+	}
+	ds_NS_0412b {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/music/NS_0412b.mp3'
+			volume = '100'
+		}
+	}
+	ds_NS_0416 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/music/NS_0416.mp3'
+			volume = '100'
+		}
+	}
+	ds_NS_0418 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/music/NS_0418.mp3'
+			volume = '100'
+		}
+	}
+	ds_NS_1040 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/music/NS_1040.mp3'
+			volume = '100'
+		}
+	}
+	ds_NS_1050 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/music/NS_1050.mp3'
+			volume = '100'
+		}
+	}
+	ds_NS_1058 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/music/NS_1058.mp3'
+			volume = '100'
+		}
+	}
+	ds_NS_1060 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/music/NS_1060.mp3'
+			volume = '100'
+		}
+	}
+	ds_NS_1071 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/music/NS_1071.mp3'
+			volume = '100'
+		}
+	}
+	ds_NS_1072 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/music/NS_1072.mp3'
+			volume = '100'
+		}
+	}
+	ds_NS_1082 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/music/NS_1082.mp3'
+			volume = '100'
+		}
+	}
+	ds_NS_1089 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/music/NS_1089.mp3'
+			volume = '100'
+		}
+	}
+	ds_NS_1098 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/music/NS_1098.mp3'
+			volume = '100'
+		}
+	}
+	ds_NS_2009 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/music/NS_2009.mp3'
+			volume = '100'
+		}
+	}
+	ds_NS_2010 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/music/NS_2010.mp3'
+			volume = '100'
+		}
+	}
+	ds_NS_2014 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/music/NS_2014.mp3'
+			volume = '100'
+		}
+	}
+	ds_NS_2040 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/music/NS_2040.mp3'
+			volume = '100'
+		}
+	}
+	ds_NS_2049 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/music/NS_2049.mp3'
+			volume = '100'
+		}
+	}
+	ds_NS_2051 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/music/NS_2051.mp3'
+			volume = '100'
+		}
+	}
+	ds_NS_2053 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/music/NS_2053.mp3'
+			volume = '100'
+		}
+	}
+	ds_NS_2055 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/music/NS_2055.mp3'
+			volume = '100'
+		}
+	}
+	ds_NS_2057 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/music/NS_2057.mp3'
+			volume = '100'
+		}
+	}
+	ds_NS_2558 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/music/NS_2558.mp3'
+			volume = '100'
+		}
+	}
+	ds_NS_2567 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/music/NS_2567.mp3'
+			volume = '100'
+		}
+	}
+	ds_NS_2583 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/music/NS_2583.mp3'
+			volume = '100'
+		}
+	}
+	ds_NS_2585 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/music/NS_2585.mp3'
+			volume = '100'
+		}
+	}
+	ds_NS_2590 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/music/NS_2590.mp3'
+			volume = '100'
+		}
+	}
+	ds_NS_3004 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/music/NS_3004.mp3'
+			volume = '100'
+		}
+	}
+	ds_NS_3005 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/music/NS_3005.mp3'
+			volume = '100'
+		}
+	}
+	ds_NS_3009 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/music/NS_3009.mp3'
+			volume = '100'
+		}
+	}
+	ds_NS_3012 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/music/NS_3012.mp3'
+			volume = '100'
+		}
+	}
+	ds_NS_3025 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/music/NS_3025.mp3'
+			volume = '100'
+		}
+	}
+	ds_NS_3030 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/music/NS_3030.mp3'
+			volume = '100'
+		}
+	}
+	ds_NS_3033 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/music/NS_3033.mp3'
+			volume = '100'
+		}
+	}
+	ds_NS_3070 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/music/NS_3070.mp3'
+			volume = '100'
+		}
+	}
+	ds_NS_3080 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/music/NS_3080.mp3'
+			volume = '100'
+		}
+	}
+	ds_NS_3080a {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/music/NS_3080a.mp3'
+			volume = '100'
+		}
+	}
+	ds_NS_3090 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/music/NS_3090.mp3'
+			volume = '100'
+		}
+	}
+	ds_NS_4009 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/music/NS_4009.mp3'
+			volume = '100'
+		}
+	}
+	ds_NS_4025 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/music/NS_4025.mp3'
+			volume = '100'
+		}
+	}
+	ds_NS_4027 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/music/NS_4027.mp3'
+			volume = '100'
+		}
+	}
+	ds_NS_4030 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/music/NS_4030.mp3'
+			volume = '100'
+		}
+	}
+	ds_NS_4038 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/music/NS_4038.mp3'
+			volume = '100'
+		}
+	}
+	ds_NS_4070 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/music/NS_4070.mp3'
+			volume = '100'
+		}
+	}
+	ds_NS_4080 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/music/NS_4080.mp3'
+			volume = '100'
+		}
+	}
+	ds_NS_4081 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/music/NS_4081.mp3'
+			volume = '100'
+		}
+	}
+	ds_NS_6050 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/music/NS_6050.mp3'
+			volume = '100'
+		}
+	}
+	ds_NS_6105 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/music/NS_6105.mp3'
+			volume = '100'
+		}
+	}
+	ds_NS_7010 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/music/NS_7010.mp3'
+			volume = '100'
+		}
+	}
+	ds_NS_7030 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/music/NS_7030.mp3'
+			volume = '100'
+		}
+	}
+	ds_NS_7038 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/music/NS_7038.mp3'
+			volume = '100'
+		}
+	}
+	ds_NS_7040 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/music/NS_7040.mp3'
+			volume = '100'
+		}
+	}
+	ds_NS_7041 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/music/NS_7041.mp3'
+			volume = '100'
+		}
+	}
+	ds_NS_7042 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/music/NS_7042.mp3'
+			volume = '100'
+		}
+	}
+	ds_NS_7050 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/music/NS_7050.mp3'
+			volume = '100'
+		}
+	}
+	ds_NS_7052 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/music/NS_7052.mp3'
+			volume = '100'
+		}
+	}
+	ds_NS_7054 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/music/NS_7054.mp3'
+			volume = '100'
+		}
+	}
+	ds_NS_8005 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/music/NS_8005.mp3'
+			volume = '100'
+		}
+	}
+	ds_NS_8011 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/music/NS_8011.mp3'
+			volume = '100'
+		}
+	}
+	ds_NS_8013 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/music/NS_8013.mp3'
+			volume = '100'
+		}
+	}
+	ds_NS_8017 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/music/NS_8017.mp3'
+			volume = '100'
+		}
+	}
+	ds_NS_8043 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/music/NS_8043.mp3'
+			volume = '100'
+		}
+	}
+	ds_NS_8080 {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/music/NS_8080.mp3'
+			volume = '100'
+		}
+	}
+	ds_dummy {
+		global = '1'
+		sound_1 {
+			wav = '../SeqSounds/dummy.mp3'
+			volume = '100'
+		}
+	}
+}

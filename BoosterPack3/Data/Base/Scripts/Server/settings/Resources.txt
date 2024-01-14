@@ -1,0 +1,625 @@
+Root {
+	WOOD {
+		Ashvalley_Tree_01_Timber {
+			value = '400'
+		}
+		Ashvalley_Tree_02_Timber {
+			value = '400'
+		}
+		Ashvalley_Tree_03_Timber {
+			value = '400'
+		}
+		Ashvalley_Tree_04_Timber {
+			value = '400'
+		}
+		Ashvalley_Tree_05_Timber {
+			value = '400'
+		}
+		Ashvalley_Tree_06_Timber {
+			value = '400'
+		}
+		Ashvalley_Tree_07_Timber {
+			value = '400'
+		}
+		Ashvalley_Tree_08_Timber {
+			value = '400'
+		}
+		Ashvalley_Tree_09_Timber {
+			value = '400'
+		}
+		Ashvalley_Tree_10_Timber {
+			value = '400'
+		}
+		Ashvalley_Tree_11_Timber {
+			value = '400'
+		}
+		Ashvalley_Tree_12_Timber {
+			value = '400'
+		}
+		Ashvalley_Tree_13_Timber {
+			value = '400'
+		}
+		Ash_Joshua_Tree_01_Timber {
+			value = '400'
+		}
+		Ash_Joshua_Tree_02_Timber {
+			value = '400'
+		}
+		Ash_Dragontree_01_Timber {
+			value = '400'
+		}
+		Ash_Dragontree_02_Timber {
+			value = '400'
+		}
+		Ash_Dragontree_03_Timber {
+			value = '400'
+		}
+		Icewaste_Tree_01_Timber {
+			value = '300'
+		}
+		Icewaste_Tree_02_Timber {
+			value = '300'
+		}
+		Icewaste_Tree_03_Timber {
+			value = '300'
+		}
+		Icewaste_Tree_04_Timber {
+			value = '300'
+		}
+		Icewaste_Tree_05_Timber {
+			value = '300'
+		}
+		Icewaste_Birch_01_Timber {
+			value = '300'
+		}
+		Icewaste_Birch_02_Timber {
+			value = '300'
+		}
+		Icewaste_Birch_03_Timber {
+			value = '300'
+		}
+		Icewaste_Dead_Tree_01_Timber {
+			value = '300'
+		}
+		Icewaste_Oak_01_Timber {
+			value = '300'
+		}
+		Icewaste_Oak_02_Timber {
+			value = '300'
+		}
+		Icewaste_Oak_03_Timber {
+			value = '300'
+		}
+		Jungle_Tree_01_Timber {
+			value = '300'
+		}
+		Jungle_Tree_02_Timber {
+			value = '300'
+		}
+		Jungle_Tree_03_Timber {
+			value = '300'
+		}
+		Jungle_Tree_04_Timber {
+			value = '300'
+		}
+		Jungle_Tree_05_Timber {
+			value = '300'
+		}
+		Jungle_Tree_Med_01_Timber {
+			value = '150'
+		}
+		Jungle_Tree_Med_02_Timber {
+			value = '150'
+		}
+		Jungle_Tree_Med_03_Timber {
+			value = '150'
+		}
+		Jungle_Tree_Med_04_Timber {
+			value = '150'
+		}
+		Jungle_Tree_Med_05_Timber {
+			value = '150'
+		}
+		Jungle_Tree_Med_06_Timber {
+			value = '150'
+		}
+		Jungle_Tree_Med_07_Timber {
+			value = '150'
+		}
+		Jungle_Beachpalm_01_Timber {
+			value = '250'
+		}
+		Jungle_Beachpalm_02_Timber {
+			value = '250'
+		}
+		Jungle_Beachpalm_03_Timber {
+			value = '250'
+		}
+		Jungle_Dead_Tree_01_Timber {
+			value = '100'
+		}
+		Jungle_Bamboo_01_Timber {
+			value = '100'
+		}
+		Jungle_Bamboo_02_Timber {
+			value = '100'
+		}
+		Jungle_Bamboo_03_Timber {
+			value = '100'
+		}
+		Northland_Tree_01_Timber {
+			value = '300'
+		}
+		Northland_Tree_02_Timber {
+			value = '300'
+		}
+		Northland_Tree_03_Timber {
+			value = '300'
+		}
+		Northland_Tree_04_Timber {
+			value = '300'
+		}
+		Northland_Tree_05_Timber {
+			value = '300'
+		}
+		Northland_Birch_01_Timber {
+			value = '300'
+		}
+		Northland_Birch_02_Timber {
+			value = '300'
+		}
+		Northland_Maple_02_Timber {
+			value = '300'
+		}
+		Northland_Maple_03_Timber {
+			value = '300'
+		}
+		Northland_Oak_02_Timber {
+			value = '300'
+		}
+		Northland_Oak_03_Timber {
+			value = '300'
+		}
+		Northland_Poplar_01_Timber {
+			value = '300'
+		}
+		Northland_Poplar_02_Timber {
+			value = '300'
+		}
+		Northland_Larch_01_Timber {
+			value = '150'
+		}
+		Northland_Larch_02_Timber {
+			value = '150'
+		}
+		Northland_Beech_01_Timber {
+			value = '500'
+		}
+		Savanna_Tree_01_Timber {
+			value = '300'
+		}
+		Savanna_Tree_02_Timber {
+			value = '300'
+		}
+		Savanna_Tree_03_Timber {
+			value = '300'
+		}
+		Savanna_Tree_04_Timber {
+			value = '300'
+		}
+		Savanna_Tree_05_Timber {
+			value = '300'
+		}
+		Savanna_Umbrella_Acacia_01_Timber {
+			value = '300'
+		}
+		Savanna_Umbrella_Acacia_02_Timber {
+			value = '300'
+		}
+		Savanna_Umbrella_Acacia_03_Timber {
+			value = '300'
+		}
+		Savanna_Umbrella_Acacia_04_Timber {
+			value = '300'
+		}
+		Savanna_Cocos_Palm_01_Timber {
+			value = '300'
+		}
+		Savanna_Cocos_Palm_02_Timber {
+			value = '300'
+		}
+		Savanna_Cocos_Palm_03_Timber {
+			value = '300'
+		}
+		Savanna_Cocos_Palm_04_Timber {
+			value = '300'
+		}
+		Savanna_Cocos_Palm_05_Timber {
+			value = '300'
+		}
+		Savanna_Cocos_Palm_06_Timber {
+			value = '300'
+		}
+		Savanna_Baobab_01_Timber {
+			value = '300'
+		}
+		Savanna_Baobab_02_Timber {
+			value = '300'
+		}
+		Savanna_Baobab_03_Timber {
+			value = '300'
+		}
+		Savanna_Koekerboom_01_Timber {
+			value = '300'
+		}
+		Savanna_FanPalm_01_Timber {
+			value = '300'
+		}
+		Savanna_FanPalm_02_Timber {
+			value = '300'
+		}
+		Savanna_FanPalm_03_Timber {
+			value = '300'
+		}
+		Savanna_FanPalm_04_Timber {
+			value = '300'
+		}
+	}
+	STON {
+		Resource_Stone {
+			value = '2000'
+		}
+		Resource_Stone_Ash {
+			value = '2000'
+		}
+		Resource_Stone_Ice {
+			value = '2000'
+		}
+		Resource_Stone_Jun {
+			value = '2000'
+		}
+		Resource_Stone_Nor {
+			value = '2000'
+		}
+		Resource_Stone_Sav {
+			value = '2000'
+		}
+		Resource_Stone_Cave1 {
+			value = '2000'
+		}
+		Resource_Stone_Cave2 {
+			value = '2000'
+		}
+		Resource_Stone_Cave3 {
+			value = '2000'
+		}
+	}
+	FRUI {
+		ashvalley_fruit_bush {
+			value = '150'
+		}
+		Icewaste_Fruit_Bush {
+			value = '150'
+		}
+		Jungle_Fruit_Bush {
+			value = '150'
+		}
+		Northland_Fruit_Bush {
+			value = '150'
+		}
+		Savanna_Fruit_Bush {
+			value = '150'
+		}
+		Nest_Anurognathus_Fruit_Bush {
+			value = '150'
+		}
+		FishShoal_Tristychius {
+			value = '2500'
+		}
+	}
+	FOOD {
+		Allosaurus_food {
+			value = '700'
+		}
+		Tarbosaurus_food {
+			value = '700'
+		}
+		Ankylosaurus_food {
+			value = '500'
+		}
+		Atroxosaurus_food {
+			value = '1000'
+		}
+		Gigantosaurus_food {
+			value = '1000'
+		}
+		Baryonyx_food {
+			value = '450'
+		}
+		Brachiosaurus_food {
+			value = '1800'
+		}
+		Dilophosaurus_food {
+			value = '450'
+		}
+		Gallimimus_food {
+			value = '400'
+		}
+		Iguanodon_food {
+			value = '600'
+		}
+		Edmontosaurus_food {
+			value = '600'
+		}
+		Macrolemys_food {
+			value = '600'
+		}
+		Mammoth_food {
+			value = '800'
+		}
+		Megaloceros_food {
+			value = '450'
+		}
+		Muraenosaurus_food {
+			value = '600'
+		}
+		Parasaurolophus_food {
+			value = '600'
+		}
+		Smilodon_food {
+			value = '440'
+		}
+		Stegosaurus_food {
+			value = '900'
+		}
+		Triceratops_food {
+			value = '2000'
+		}
+		Wild_Boar_food {
+			value = '450'
+		}
+		Woolly_Rhino_food {
+			value = '700'
+		}
+		Carnotaurus_food {
+			value = '600'
+		}
+		Kentrosaurus_food {
+			value = '800'
+		}
+		Lemur_food {
+			value = '5'
+		}
+		Panoplosaurus_food {
+			value = '650'
+		}
+		Polakanthus_food {
+			value = '800'
+		}
+		Stygimoloch_food {
+			value = '420'
+		}
+		Sloth_food {
+			value = '5'
+		}
+		Apatosaurus_food {
+			value = '1800'
+		}
+		Amargasaurus_food {
+			value = '1800'
+		}
+		Corythosaurus_food {
+			value = '600'
+		}
+		Deinonychus_food {
+			value = '150'
+		}
+		Heterodontosaurus {
+			value = '150'
+		}
+		Oviraptor_food {
+			value = '150'
+		}
+		Psittacosaurus_food {
+			value = '50'
+		}
+		Velociraptor_food {
+			value = '100'
+		}
+		Dunkleosteus_food {
+			value = '800'
+		}
+		Kronosaurus_food {
+			value = '700'
+		}
+		Placohelys_food {
+			value = '200'
+		}
+		Eusmilus_food {
+			value = '450'
+		}
+		Tsintaosaurus_food {
+			value = '550'
+		}
+		Achelousaurus_food {
+			value = '800'
+		}
+		Carcharodontosaurus_food {
+			value = '650'
+		}
+		Diplodocus_food {
+			value = '1800'
+		}
+		Lambeosaurus_food {
+			value = '600'
+		}
+		Maiasauria_food {
+			value = '600'
+		}
+		Pentaceratops_food {
+			value = '800'
+		}
+		Saltasaurus_food {
+			value = '1600'
+		}
+		Styracosaurus_food {
+			value = '800'
+		}
+		Spinosaurus_food {
+			value = '1500'
+		}
+		hu_triceratops_food {
+			value = '2000'
+		}
+		hu_mammoth_food {
+			value = '500'
+		}
+		hu_mammoth_lumber_upgrade_food {
+			value = '500'
+		}
+		hu_mammoth_log_cannon_food {
+			value = '500'
+		}
+		hu_scout_food {
+			value = '50'
+		}
+		hu_chariot_food {
+			value = '50'
+		}
+		hu_rhino_food {
+			value = '300'
+		}
+		hu_rhino_transporter_food {
+			value = '300'
+		}
+		hu_rhino_ballista_food {
+			value = '300'
+		}
+		hu_wild_boar_food {
+			value = '80'
+		}
+		hu_kentrosaurus_food {
+			value = '100'
+		}
+		hu_eusmilus_food {
+			value = '110'
+		}
+		aje_velociraptor_food {
+			value = '50'
+		}
+		aje_tracker_dino_food {
+			value = '50'
+		}
+		aje_velociraptor_handler_food {
+			value = '50'
+		}
+		aje_resource_collector_food {
+			value = '100'
+		}
+		aje_dilophosaurus_food {
+			value = '100'
+		}
+		aje_ankylosaurus_food {
+			value = '200'
+		}
+		aje_stegosaurus_food {
+			value = '300'
+		}
+		aje_eusmilus_food {
+			value = '150'
+		}
+		aje_brachiosaurus_food {
+			value = '1000'
+		}
+		aje_allosaurus_food {
+			value = '400'
+		}
+		aje_atroxosaurus_food {
+			value = '500'
+		}
+		aje_triceratops_archer_food {
+			value = '2000'
+		}
+		aje_trade_dino_food {
+			value = '100'
+		}
+		aje_transport_turtle_food {
+			value = '300'
+		}
+		arena_gallimimus_food {
+			value = '100'
+		}
+		arena_dilophosaurus_food {
+			value = '100'
+		}
+		arena_baryonyx_food {
+			value = '100'
+		}
+		arena_smilodon_food {
+			value = '100'
+		}
+		arena_triceratops_food {
+			value = '100'
+		}
+		arena_ankylosaurus_food {
+			value = '100'
+		}
+		arena_allosaurus_food {
+			value = '100'
+		}
+		arena_carcharodontosaurus_food {
+			value = '100'
+		}
+		Gigantopithecus_food {
+			value = '5000'
+		}
+		ninigi_baryonyx_food {
+			value = '50'
+		}
+		Ninigi_Gallimimus_food {
+			value = '50'
+		}
+		ninigi_eusmilus_food {
+			value = '50'
+		}
+		Ninigi_Stinas_Baryonyx_food {
+			value = '80'
+		}
+		ninigi_scout_food {
+			value = '50'
+		}
+		ninigi_cart_food {
+			value = '50'
+		}
+		ninigi_seismosaurus_food {
+			value = '1800'
+		}
+		ninigi_saltasaurus_archer_food {
+			value = '1800'
+		}
+		Ninigi_Parasaurolophus_food {
+			value = '70'
+		}
+		ninigi_parasaurolophus_gatling_food {
+			value = '70'
+		}
+		ninigi_parasaurolophus_drums_food {
+			value = '70'
+		}
+		Ninigi_Triceratops_food {
+			value = '2000'
+		}
+		seas_triceratops_food {
+			value = '2000'
+		}
+		seas_triceratops_resource_collector_food {
+			value = '2000'
+		}
+		seas_triceratops_transporter_food {
+			value = '2000'
+		}
+		special_eusmilus_food {
+			value = '150'
+		}
+	}
+}

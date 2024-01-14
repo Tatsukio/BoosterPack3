@@ -1,0 +1,481 @@
+class CPyramidDialog inherit CStaticCtrlEx
+	export var ^CNewPyramid			m_pxTribeView;
+	var ^CStaticCtrl				m_pxPyramidLeft;
+	var array ^CIDButton			m_apxArrowButton;
+	var array ^CStaticCtrl			m_apxArrowCost;
+	var array ^CStaticCtrl			m_apxRes;
+	var array ^CIDButton			m_apxBuyRes;	
+	var ^CButton					m_pxDefaultButton;
+	var ^CButton					m_pxCustomizeButton;
+	var ^CPointBuyMenu				m_pxOwner;
+	var array int					m_aiMinRessources;
+
+	var ^CShoppingTab.CShoppingInfo m_pxCurShoppingInfo;
+
+
+
+	var int							m_iResourceTimer;
+	var int							m_iResourceTmp;
+	var bool						m_bPreviewMode;
+
+	export var procref<bool>		m_xOnCustomize;
+	export var procref<bool>		m_xOnDone;
+	export var procref<bool>		m_xOnLeave;
+	
+	export constructor()
+		m_aiMinRessources=3;	
+	endconstructor;
+
+	export destructor()
+	enddestructor;
+	
+	export proc void Init(^CPointBuyMenu p_pxOwner)
+		m_pxOwner=p_pxOwner;
+		m_pxTribeView = new CNewPyramid;
+		m_pxTribeView^.Init(m_pxOwner^.GetCurTribe());
+		m_pxTribeView^.SetPointBuyMode(true);
+		m_pxTribeView^.SetPos(41,0);
+		m_pxTribeView^.SmallView();
+		m_pxTribeView^.SetVisible(true);
+		m_pxTribeView^.m_pxPBOwner =p_pxOwner;
+		AddChild(m_pxTribeView);
+		
+		var int i;
+		m_pxPyramidLeft=new CStaticCtrl;
+		m_pxPyramidLeft^.SetTransparent(true);
+		m_pxPyramidLeft^.SetAlwaysOnTop(true);
+		m_pxPyramidLeft^.SetVisible(true);
+		m_pxPyramidLeft^.SetPos(9,2);
+		m_pxPyramidLeft^.SetBackground(true);
+		m_pxPyramidLeft^.SetSuitAlpha(true);
+		m_pxPyramidLeft^.SetSize(26,540);
+		m_pxPyramidLeft^.SetBitmap(CGameInst.GetBitmapMgr().GetBlendBitmap("16, layer pyramid_bg_avail, vslice pyramid_bg_noavail 65, layer pyramid_ovl_levelupable")^.GetBitmap());
+		AddChild(m_pxPyramidLeft);
+
+		m_apxBuyRes = 6;		
+		var int iXPos=17;
+		for(i=0)cond(i<6)iter(i++)do
+			var ^CIDButton pxButton=new CIDButton;
+			pxButton^.m_iID = i;
+			pxButton^.m_xOnClickID = OnBuyRes;
+			pxButton^.SetMouseAutoRepeat(true);
+			pxButton^.SetIgnoreDoubleClick(true);
+			AddChild(pxButton);
+			
+			var ^CCardBitmap pxBmpNormal=CGameInst.GetBitmapMgr().GetBlendBitmap("-1, layer pointbuy_res"+i.ToString());
+			var ^CCardBitmap pxBmpDown=CGameInst.GetBitmapMgr().GetBlendBitmap("-1, layer pointbuy_res"+i.ToString()+"_down");
+			var ^CCardBitmap pxBmpDisable=CGameInst.GetBitmapMgr().GetBlendBitmap("-1, layer pointbuy_res"+i.ToString()+"_disable");
+			System.Assert(pxBmpNormal!=null);
+			pxButton^.SetBitmap(pxBmpNormal^.GetBitmap(),pxBmpDown^.GetBitmap(),pxBmpNormal^.GetBitmap(),pxBmpDisable^.GetBitmap());			
+			var int iW=pxBmpNormal^.GetBitmap().GetBitmap()^.GetWidth();
+			var int iH=pxBmpNormal^.GetBitmap().GetBitmap()^.GetHeight();
+			pxButton^.SetSize(iW,iH);
+			pxButton^.SetPos(iXPos,547);
+			pxButton^.SetToolTipText(CLocalizer.Get().Translate("_UI_AC_PointBuy_Resource_Buy_"+i.ToString()));
+			
+			m_apxBuyRes[i]=pxButton;
+			
+			if((i%2)==0)then
+				var ^CStaticCtrl pxRes=new CStaticCtrl;
+				//var int iXPos = 27+(i*62);
+				pxRes^.SetTransparent(true);
+				pxRes^.SetAlwaysOnTop(true);
+				pxRes^.SetVisible(true);
+				pxRes^.SetPos(iXPos+4,547);
+				pxRes^.SetBackground(false);
+				pxRes^.SetSuitAlpha(false);
+				pxRes^.SetSize(60,22);
+				pxRes^.SetAlwaysOnTop(true);
+				pxRes^.EnableMsgHitTest(false);
+				AddChild(pxRes);
+				m_apxRes.AddEntry(pxRes);
+			endif;
+			iXPos+=iW;
+		endfor;
+		
+		m_apxArrowButton = 5;
+		m_apxArrowCost = 5;
+		for(i=0)cond(i<5)iter(i++)do
+			var int iYPos = 25;
+			if (i==3) then iYPos=99;
+			elseif (i==2) then iYPos=177;
+			elseif (i==1) then iYPos=281;
+			elseif (i==0) then iYPos=431;
+			endif;
+
+			m_apxArrowButton[i] = new CIDButton;
+			m_apxArrowButton[i]^.SetPos(220,iYPos);
+			m_apxArrowButton[i]^.SetSize(54,35);
+			m_apxArrowButton[i]^.SetBackground(false);
+			m_apxArrowButton[i]^.m_iID = i;
+			m_apxArrowButton[i]^.m_xOnClickID = OnClickArrowButton;
+			m_apxArrowButton[i]^.SetBitmap("menue/controls/pointbuy_addarrow.tga","menue/controls/pointbuy_addarrow_down.tga","menue/controls/pointbuy_addarrow_hover.tga","menue/controls/pointbuy_addarrow_disabled.tga");
+			m_apxArrowButton[i]^.SetFrame(false);
+			m_apxArrowButton[i]^.SetIgnoreDoubleClick(true);
+			m_apxArrowButton[i]^.SetToolTipText(CLocalizer.Get().Translate("_UI_AC_PointBuy_Arrow_"+i.ToString()+"_TT"));
+			AddChild(m_apxArrowButton[i]);
+
+			m_apxArrowCost[i] = new CStaticCtrl;
+			m_apxArrowCost[i]^.SetPos(228,iYPos);
+			m_apxArrowCost[i]^.SetSize(46,35);
+			m_apxArrowCost[i]^.SetAlwaysOnTop(true);
+			m_apxArrowCost[i]^.EnableMsgHitTest(false);
+			AddChild(m_apxArrowCost[i]);
+		endfor;
+		m_pxDefaultButton=new CButton;
+		m_pxDefaultButton^.SetPos(120,587);
+		m_pxDefaultButton^.SetSize(100,18);
+		m_pxDefaultButton^.SetTextAlign(1);
+		AddChild(m_pxDefaultButton);
+		var ^CGameInfoWindow pxGameInfoWindow=p_pxOwner^.GetGameInfoWindow();
+		System.Assert(pxGameInfoWindow!=null);
+		if(pxGameInfoWindow^.GetType()==CGameInfoWindow.GIWT_SINGLEPLAYER)then
+			m_pxDefaultButton^.SetText(CLocalizer.Get().Translate("_UI_PBMenu_Button_Default"));
+			m_pxDefaultButton^.SetToolTipText(CLocalizer.Get().Translate("_UI_AC_PointBuy_Default_TT"));
+			m_pxDefaultButton^.m_xOnClick = OnDefault;
+		else
+			m_pxDefaultButton^.SetText(CLocalizer.Get().Translate("_PointBuyMenu_Clear"));
+			m_pxDefaultButton^.SetToolTipText(CLocalizer.Get().Translate("_UI_AC_PointBuy_Clear"));
+			m_pxDefaultButton^.m_xOnClick = OnClear;
+		endif;
+		
+		m_iResourceTimer=(-1);
+	endproc;
+
+	export proc void LoadPreset(int p_iCredits,string p_sTribe,^CPropDB.CNode p_pxPreset,^CPropDB.CNode p_pxResourcePreset,bool p_bSetFixed,bool p_bIncludeBuildings)				
+		//KLog.LogSpam("AnTr","CPyramidDialog::LoadPreset() p_bSetFixed: "+p_bSetFixed.ToString());
+		var int iCreditsLeft=p_iCredits;
+		m_pxTribeView^.Clear();
+		begin Reset_Slots;
+			var ^CTribeViewLayoutMgr pxTVLM=m_pxTribeView^.GetTribeViewPtr();
+			System.Assert(pxTVLM!=null);
+			var int i,iC=pxTVLM^.TotalSlotCount();
+			for(i=0)cond(i<iC)iter(i++)do
+				var ^CTribeViewLayoutMgr.CSlotInfo pxSlotInfo=pxTVLM^.GetSlotInfo(i);
+				pxSlotInfo^.m_bUsed=false;
+    			pxSlotInfo^.m_bBlocked=false;
+    			pxSlotInfo^.m_bBlockedPerm=false;
+			endfor;			
+		end Reset_Slots;
+		if(p_pxPreset==null)then return; endif;
+		var int i,iC=p_pxPreset^.NumSubs();
+		for(i=0)cond(i<iC)iter(i++)do
+			var ^CPropDB.CNode pxWalk=^((p_pxPreset^)[i]);
+			if(pxWalk^.Name().IsEmpty())then continue; endif;
+			var int iSlotID=pxWalk^.Name().ToInt();
+			var string sClass=pxWalk^.Value();
+			var int iFixedLevel=-1;
+			if(p_bSetFixed)then
+				iFixedLevel=m_pxTribeView^.GetTribeViewPtr()^.SlotIndex2Level(iSlotID);		
+			endif;
+			var int iCost=CPointBuyMgr.GetCostForUnit(sClass,iSlotID,p_sTribe);
+			if(iCost<=iCreditsLeft || p_iCredits==-1)then
+				//KLog.LogSpam("AnTr","CreateCard: Slot: "+iSlotID.ToString()+", Class: '"+sClass+"', FixedLevel: "+iFixedLevel.ToString());
+				m_pxTribeView^.CreateCardInSlot(iSlotID, sClass,iFixedLevel);
+				if(sClass=="Blocked")then
+					var ^CPyramidCard pxCard = m_pxTribeView^.GetCard(iSlotID);
+					if(pxCard!=null)then
+						pxCard^.SetDraggable(false);
+					endif;
+				endif;
+				iCreditsLeft-=iCost;
+			endif;						
+			
+		endfor;
+		if(p_sTribe=="Aje")then			
+			//var int iCost=CPointBuyMgr.GetCostForUnit(sClass,iSlotID,p_sTribe);			
+			if(p_bIncludeBuildings)then
+				var int iFixedLevel=m_pxTribeView^.GetTribeViewPtr()^.SlotIndex2Level(24);
+				m_pxTribeView^.CreateCardInSlot(24,"aje_resource_collector",iFixedLevel);
+				var ^CPyramidCard pxCard = m_pxTribeView^.GetCard(24);
+				if(pxCard!=null)then
+					pxCard^.SetDraggable(false);
+				endif;
+			endif;
+		endif;
+		
+		var array string asRes;
+		asRes.AddEntry("food");
+		asRes.AddEntry("wood");
+		asRes.AddEntry("stone");
+		
+		iC=asRes.NumEntries();
+		m_aiMinRessources=iC; // MinValues for ressources
+		for(i=0)cond(i<iC)iter(i++)do
+			var int iResAmount=0;
+			if(p_pxResourcePreset!=null)then
+				var string sResource=asRes[i];
+				iResAmount=p_pxResourcePreset^.GetValueI(sResource,0);
+				m_apxBuyRes[i*2]^.SetDisabled(iResAmount==-1); 
+				var int iUslBug=(i*2)+1;
+				m_apxBuyRes[iUslBug]^.SetDisabled(iResAmount==-1); 
+				if(iResAmount==-1)then
+					iResAmount=0;
+				endif;
+				if(p_iCredits!=-1)then
+					var int iMaxAmount=CPointBuyMgr.GetNumResourceUnitsForPoints(sResource,iCreditsLeft,p_sTribe);
+					if(iResAmount>iMaxAmount)then
+						iResAmount=iMaxAmount;
+					endif;
+	//				if(iResAmount<m_aiMinRessources[i])then
+	//					iResAmount = m_aiMinRessources[i];
+	//				endif;	
+					iCreditsLeft-=CPointBuyMgr.GetCostForResource(sResource,iResAmount,p_sTribe);
+				endif;
+			endif;
+			m_apxRes[i]^.SetText(iResAmount.ToString());
+			m_aiMinRessources[i]=iResAmount;
+			if(m_pxOwner^.GetGameInfoWindow()^.GetType()==CGameInfoWindow.GIWT_MULTIPLAYER)then
+				m_aiMinRessources[0]=CGameInfoWindow.GIW_MP_GIFTED_FOOD;
+				m_aiMinRessources[1]=CGameInfoWindow.GIW_MP_GIFTED_WOOD;
+				m_aiMinRessources[2]=CGameInfoWindow.GIW_MP_GIFTED_STONE;
+			endif;
+//			if(iResAmount<=m_aiMinRessources[i])then
+//				m_apxBuyRes[i*2]^.SetDisabled(true); // disable subtraction button; be carful if you change button array
+//			else
+//				m_apxBuyRes[i*2]^.SetDisabled(false); // enable subtraction button
+//			endif;
+		endfor;
+	endproc;
+	
+	export proc void Clear()
+		m_pxTribeView^.Clear();
+	endproc;
+
+	export proc int FindFreeSlot(int p_iLevel)
+		return m_pxTribeView^.GetTribeViewPtr()^.FindFreeSlot(p_iLevel);
+	endproc;
+
+	export proc void CreateCard(int p_iLevel, string p_sClassName)
+		m_pxTribeView^.CreateCard(p_iLevel,p_sClassName);
+	endproc;
+	
+	
+	export proc void RemoveCard(^CPyramidCard p_pxCard)		
+		m_pxTribeView^.KillCard(p_pxCard);
+		InvalidateContent();		
+	endproc;
+
+
+	export proc void SetCurShoppingInfo(^CShoppingTab.CShoppingInfo p_pxShoppingInfo)
+		m_pxCurShoppingInfo=p_pxShoppingInfo;
+		InvalidateContent();
+	endproc;
+
+	proc void OnUpdateContent()
+		super.OnUpdateContent();
+		//update tribe
+		m_pxTribeView^.Init(m_pxOwner^.GetCurTribe());
+		
+		//update Points
+		var int iPointsLeft = m_pxOwner^.GetCredits();
+		var int iPointsTotal = m_pxOwner^.GetCreditsTotal();
+		
+		//Update Arrow Buttons
+		var int i;
+		if(m_pxOwner==null)then
+			for(i=0)cond(i<5)iter(i++)do
+				m_apxArrowButton[i]^.SetVisible(false);
+				m_apxArrowCost[i]^.SetVisible(false);
+			endfor;
+			return;
+		endif;
+
+		if(m_pxCurShoppingInfo == null) then
+			for(i=0)cond(i<5)iter(i++)do
+				m_apxArrowButton[i]^.SetVisible(false);
+				m_apxArrowCost[i]^.SetVisible(false);
+			endfor;
+			return;
+		endif;
+
+		for(i=0)cond(i<5)iter(i++)do
+			var int iCost = m_pxCurShoppingInfo^.m_aiCostAtLevel[i];
+			if (iCost > 0) then
+				m_apxArrowButton[i]^.SetVisible(true);
+				m_apxArrowCost[i]^.SetVisible(true);
+				m_apxArrowCost[i]^.SetText(iCost.ToString());
+				var bool bValid = (iCost <= iPointsLeft);
+				if (m_pxTribeView^.GetTribeViewPtr()^.FindFreeSlot(i)==-1) then bValid=false; endif;
+				if (!m_pxOwner^.CheckRestrictions(m_pxCurShoppingInfo^.m_sClassName, i)) then bValid=false; endif;
+				m_apxArrowButton[i]^.SetDisabled(!bValid || m_bPreviewMode);
+				if (bValid && !m_bPreviewMode) then
+					m_apxArrowCost[i]^.SetTextColor({{255,255,255,255}});
+				else
+					m_apxArrowCost[i]^.SetTextColor({{128,128,128,255}});
+				endif;
+			else
+				m_apxArrowButton[i]^.SetVisible(false);
+				m_apxArrowCost[i]^.SetVisible(false);
+			endif;
+		endfor;
+		
+		for(i=0)cond(i<m_aiMinRessources.NumEntries())iter(i++)do			
+			m_apxBuyRes[i*2]^.SetDisabled(GetResource(i)<=m_aiMinRessources[i]);			
+		endfor;
+		
+	endproc;
+
+	export proc int FindCard(string p_sClass)
+		var int i,iC=m_pxTribeView^.TotalSlotCount();
+		for(i=0)cond(i<iC)iter(i++)do
+			var ^CPyramidCard pxCard=m_pxTribeView^.GetCard(i);
+			if(pxCard==null)then continue; endif;
+			if(pxCard^.GetClass()==p_sClass)then
+				return i;
+			endif;
+		endfor;
+		return -1;
+	endproc;
+
+
+	proc bool OnDefault()
+		m_pxOwner^.LoadDefaults();
+		return(true);
+	endproc;
+	
+	proc bool OnClear()
+		m_pxOwner^.Clear();
+		SetResource(0,CGameInfoWindow.GIW_MP_GIFTED_FOOD);
+		SetResource(1,CGameInfoWindow.GIW_MP_GIFTED_WOOD);
+		SetResource(2,CGameInfoWindow.GIW_MP_GIFTED_STONE);
+				
+		if(m_pxOwner^.GetCurTribe()=="Aje")then
+			var bool bIncludeBuildings=true;
+			var ^CLevelInfo pxLevelInfo=null;
+			if(m_pxOwner^.GetGameInfoWindow()^.GetType()==CGameInfoWindow.GIWT_SINGLEPLAYER)then
+				pxLevelInfo=^(CCampaignMgr.Get().GetCurLevelInfo());
+			else
+				pxLevelInfo=^(CGameWrap.GetClient().GetLevelInfo());
+			endif;
+			if(pxLevelInfo!=null)then
+				var ^CLevelInfo.CPlayerSlot pxPlayerSlot=^(pxLevelInfo^.GetPlayerSlot(m_pxOwner^.GetGameInfoWindow()^.GetPlayerSlotID()));
+				if(pxPlayerSlot!=null)then
+					var ^CPropDB pxGenericData=^(pxLevelInfo^.GetGenericData());
+					var ^CPropDB.CNode pxPlayerSettingsNode=pxGenericData^.FindNode("PlayerSettings/Player_"+pxPlayerSlot^.GetOwner().ToString(),false);
+					if(pxPlayerSettingsNode!=null)then						
+						if(pxPlayerSettingsNode^.GetValueI("IncludeBuildings",1)!=1)then
+							bIncludeBuildings=false;
+						endif;
+					endif;
+				endif;
+			endif;			
+			if(bIncludeBuildings)then
+				var int iFixedLevel=m_pxTribeView^.GetTribeViewPtr()^.SlotIndex2Level(24);
+				m_pxTribeView^.CreateCardInSlot(24,"aje_resource_collector",iFixedLevel);
+				var ^CPyramidCard pxCard = m_pxTribeView^.GetCard(24);
+				if(pxCard!=null)then
+					pxCard^.SetDraggable(false);
+				endif;
+			endif;
+		endif;
+//		SetResource(0,m_aiMinRessources[0]);
+//		SetResource(1,m_aiMinRessources[1]);
+//		SetResource(2,m_aiMinRessources[2]);
+//		m_apxBuyRes[0]^.SetDisabled(true);
+//		m_apxBuyRes[2]^.SetDisabled(true);
+//		m_apxBuyRes[4]^.SetDisabled(true);
+		return(true);
+	endproc;
+
+	export proc void GeneratePointBuyResult(ref CPointBuyResult po_rxPointBuyResult)
+		var int i,iC=m_pxTribeView^.TotalSlotCount();
+		for(i=0)cond(i<iC)iter(i++)do
+			var ^CPyramidCard pxCard=m_pxTribeView^.GetCard(i);
+			if(pxCard==null)then continue; endif;
+			po_rxPointBuyResult.AddChar(pxCard^.GetClass(),i);
+		endfor;
+		po_rxPointBuyResult.AddResource("food",GetResource(0));
+		po_rxPointBuyResult.AddResource("wood",GetResource(1));
+		po_rxPointBuyResult.AddResource("stone",GetResource(2));		
+		po_rxPointBuyResult.AddResource("iron",0);		
+	endproc;	
+	
+	export proc int CalcCardCosts(string p_sTribe)
+		var int iResult=0;
+		var int i,iC=m_pxTribeView^.TotalSlotCount();
+		for(i=0)cond(i<iC)iter(i++)do
+			var ^CPyramidCard pxCard=m_pxTribeView^.GetCard(i);
+			if(pxCard==null)then continue; endif;
+			iResult+=CPointBuyMgr.GetCostForUnit(pxCard^.GetClass(),i,p_sTribe);			
+		endfor;
+		return iResult;
+	endproc;
+	
+	export proc int CalcResourceCosts(string p_sTribe)
+		var int iCosts=0;
+		iCosts+=CPointBuyMgr.GetCostForResource("food",GetResource(0),p_sTribe);
+		iCosts+=CPointBuyMgr.GetCostForResource("wood",GetResource(1),p_sTribe);
+		iCosts+=CPointBuyMgr.GetCostForResource("stone",GetResource(2),p_sTribe);		
+		return iCosts;
+	endproc;
+	
+	proc bool OnClickArrowButton(int p_iButtonID)
+		var int iLevel = p_iButtonID;
+		var ^CShoppingTab.CShoppingInfo pxShoppingInfo = m_pxOwner^.GetShoppingList().GetSelection();
+		//var int iValue = pxShoppingInfo^.m_aiCostAtLevel[iLevel];
+		m_pxOwner^.OnBuyUnit(pxShoppingInfo,iLevel);		
+		return true;
+	endproc;
+	
+	proc int GetResource(int p_iResourseID)
+		return m_apxRes[p_iResourseID]^.GetText().ToInt();
+	endproc;
+	
+	proc void SetResource(int p_iResourseID,int p_iValue)		
+		m_apxRes[p_iResourseID]^.SetText(p_iValue.ToString());
+		m_pxOwner^.InvalidateContent();
+	endproc;
+	
+	proc bool OnBuyRes(int p_iID)
+		var int iResType = p_iID / 2;
+		var int iAmount = 1;
+		if (iResType==0) then iAmount=1; endif;
+
+		// Modify according to keystate
+		var CEvtPointer xEvt = CWindowMgr.Get().GetCurrentMessage();
+	   	if(xEvt.IsNotNull())then
+			if(Msg.EventKeyModShift(xEvt)&&Msg.EventKeyModControl(xEvt))then
+				iAmount *= 1000;
+			elseif(Msg.EventKeyModShift(xEvt))then
+				iAmount *= 10;
+			elseif(Msg.EventKeyModControl(xEvt))then
+				iAmount *= 100;
+			endif;
+		endif;
+			
+		
+		var string sResource="food";		
+		if(iResType==1)then
+			sResource="wood";
+		elseif(iResType==2)then
+			sResource="stone";
+		endif;
+		var int iCosts=CPointBuyMgr.GetCostForResource(sResource,1,m_pxOwner^.GetCurTribe());
+		var int iMinValue = m_aiMinRessources[iResType]; // MinValue for current ressource
+		
+		if ((p_iID.ToBitset() & 01b) == 0b) then//-
+			//iAmount = -iAmount;
+			var int iMaxAmount=GetResource(iResType);
+			if(iAmount>iMaxAmount)then
+				iAmount=iMaxAmount;
+			endif;
+			if(GetResource(iResType) - iAmount <= iMinValue)then
+				iAmount=GetResource(iResType) - iMinValue;
+//				m_apxBuyRes[p_iID]^.SetDisabled(true); // disable subtraction button
+			endif;
+			iAmount=-iAmount;
+		else //+
+			var int iMaxAmount=CPointBuyMgr.GetNumResourceUnitsForPoints(sResource,m_pxOwner^.GetCredits(),m_pxOwner^.GetCurTribe());
+			if(iMaxAmount<0)then iMaxAmount=0; endif;
+			if(iAmount>iMaxAmount)then
+				iAmount=iMaxAmount;
+			endif;
+			if(iAmount>0)then
+//				m_apxBuyRes[p_iID-1]^.SetDisabled(false); // enable subtraction button
+			endif;
+		endif;
+		SetResource(iResType, GetResource(iResType)+iAmount);
+		return true;
+	endproc;
+endclass;

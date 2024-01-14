@@ -1,0 +1,38 @@
+Root {
+	Actors {
+		Leighton {
+			generate_name = 'false'
+			owner = '0'
+			class = 'livingstone_s0'
+			def_icon = 'livingstone'
+		}
+		Kleemann {
+			def_icon = 'schliemann'
+			class = 'schliemann_s0'
+			owner = '0'
+			generate_name = 'false'
+		}
+	}
+	Frames {
+		Frame_0 {
+			actor = 'Kleemann'
+			audio = 'ds_dummy'
+		}
+		Frame_1 {
+			actor = 'Leighton'
+			audio = ''
+		}
+		Frame_2 {
+			actor = 'Kleemann'
+			audio = ''
+		}
+		Frame_3 {
+			actor = 'Leighton'
+			audio = ''
+		}
+		Frame_4 {
+			actor = 'Kleemann'
+			audio = ''
+		}
+	}
+}

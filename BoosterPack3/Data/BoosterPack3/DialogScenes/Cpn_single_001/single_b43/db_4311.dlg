@@ -1,0 +1,30 @@
+Root {
+	Actors {
+		Kleemann {
+			generate_name = 'false'
+			owner = '0'
+			class = 'schliemann_s0'
+			def_icon = 'schliemann'
+		}
+		Pirate {
+			owner = '0'
+			class = 'ninigi_ninja'
+			def_icon = 'ninigi_ninja'
+			generate_name = 'false'
+		}
+	}
+	Frames {
+		Frame_0 {
+			actor = 'Kleemann'
+			audio = 'ds_dummy'
+		}
+		Frame_1 {
+			actor = 'Pirate'
+			audio = ''
+		}
+		Frame_2 {
+			actor = 'Kleemann'
+			audio = ''
+		}
+	}
+}

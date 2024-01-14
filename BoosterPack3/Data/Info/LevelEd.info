@@ -1,0 +1,9 @@
+# Add on info file
+id LevelEd
+requires BaseData
+type utility
+info Level Editor Scripts
+version 1.0 RC1
+priority 110
+tryfilereplace */data/base/scripts/leveled* data/base/scripts/leveled data/leveled/scripts
+tryfilereplace */data/base/ui/leveleditor* data/base/ui/leveleditor data/leveled/ui

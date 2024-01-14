@@ -1,0 +1,689 @@
+Root {
+	Scouting {
+		Group0 {
+			Priority = '1.0'
+			Units0 = '1-1' {
+				ninigi_scout = ''
+			}
+		}
+	}
+	Quick {
+		Group0 {
+			Priority = '1.0'
+			Units0 = '1-2' {
+				ninigi_archer = ''
+			}
+		}
+	}
+	FindItem_1 {
+		Group0 {
+			Priority = '1.0'
+			Units0 = '1-1' {
+				ninigi_archer = ''
+			}
+		}
+	}
+	SuicideAttack_1 {
+		Group0 {
+			Priority = '1.0'
+			Units0 = '1-6' {
+				ninigi_warrior = ''
+			}
+		}
+	}
+	SuicideAttack_2 {
+		Group0 {
+			Priority = '1.0'
+			Units0 = '1-6' {
+				ninigi_warrior = ''
+			}
+			Units1 = '1-3' {
+				ninigi_spearman = ''
+			}
+			Units2 = '0-3' {
+				ninigi_flamethrower_trike = ''
+			}
+		}
+	}
+	SuicideAttack_3 {
+		Group0 {
+			Priority = '1.0'
+			Units0 = '1-8' {
+				ninigi_warrior = ''
+			}
+			Units1 = '1-4' {
+				ninigi_spearman = ''
+			}
+			Units2 = '1-2' {
+				ninigi_monk {
+					level = '2'
+				}
+			}
+			Units3 = '1-3' {
+				ninigi_ninja = ''
+			}
+			Units4 = '1-3' {
+				ninigi_flamethrower_trike = ''
+			}
+			Units5 = '0-4' {
+				ninigi_baryonyx = ''
+			}
+			Units6 = '0-1' {
+				ninigi_smokebomb_thrower = ''
+			}
+		}
+	}
+	SuicideAttack_4 {
+		Group0 {
+			Priority = '1.0'
+			Units0 = '0-8' {
+				ninigi_warrior = ''
+			}
+			Units1 = '1-6' {
+				ninigi_spearman = ''
+			}
+			Units2 = '1-3' {
+				ninigi_monk {
+					level = '2'
+				}
+			}
+			Units3 = '1-4' {
+				ninigi_ninja = ''
+			}
+			Units4 = '1-4' {
+				ninigi_flamethrower_trike = ''
+			}
+			Units5 = '0-4' {
+				ninigi_baryonyx = ''
+			}
+			Units6 = '0-2' {
+				ninigi_smokebomb_thrower = ''
+			}
+			Units8 = '0-4' {
+				ninigi_icespearman = '' 
+			}
+			Units11 = '0-1' {
+				special_eusmilus = '' 
+			}
+		}
+	}
+	SuicideAttack_5 {
+		Group0 {
+			Priority = '1.0'
+			Units0 = '0-5' {
+				ninigi_warrior = ''
+			}
+			Units1 = '1-4' {
+				ninigi_spearman = ''
+			}
+			Units2 = '1-4' {
+				ninigi_monk {
+					level = '2'
+				}
+			}
+			Units3 = '1-6' {
+				ninigi_ninja = ''
+			}
+			Units4 = '1-6' {
+				ninigi_flamethrower_trike = ''
+			}
+			Units5 = '0-4' {
+				ninigi_baryonyx = ''
+			}
+			Units6 = '0-2' {
+				ninigi_smokebomb_thrower = ''
+			}
+			Units9 = '0-6' {
+				ninigi_eusmilus = '' 
+			}
+			Units13 = '0-1' {
+				livingstone_s0 = '' 
+			}
+		}
+	}
+	BlitzAttack_1 {
+		Group0 {
+			Priority = '1.0'
+			Units0 = '1-5' {
+				ninigi_archer = ''
+			}
+		}
+	}
+	BlitzAttack_2 {
+		Group0 {
+			Priority = '1.0'
+			Units0 = '1-6' {
+				ninigi_archer = ''
+			}
+			Units1 = '1-4' {
+				ninigi_warrior = ''
+			}
+		}
+	}
+	BlitzAttack_3 {
+		Group0 {
+			Priority = '1.0'
+			Units0 = '1-6' {
+				ninigi_archer = ''
+			}
+			Units1 = '1-6' {
+				ninigi_warrior = ''
+			}
+			Units2 = '0-6' {
+				ninigi_spearman {
+					level = '1'
+				}
+			}
+		}
+	}
+	BlitzAttack_4 {
+		Group0 {
+			Priority = '1.0'
+			Units0 = '1-4' {
+				ninigi_archer = ''
+			}
+			Units1 = '1-4' {
+				ninigi_warrior = ''
+			}
+			Units2 = '0-4' {
+				ninigi_spearman {
+					level = '1'
+				}
+			}
+		}
+	}
+	BlitzAttack_5 {
+		Group0 {
+			Priority = '1.0'
+			Units0 = '1-4' {
+				ninigi_archer = ''
+			}
+			Units1 = '1-4' {
+				ninigi_warrior = ''
+			}
+			Units2 = '0-4' {
+				ninigi_spearman {
+					level = '1'
+				}
+			}
+		}
+	}
+	SiegeAttack_2 {
+		Group0 {
+			Priority = '1.0'
+			Units0 = '1-8' {
+				ninigi_warrior = ''
+			}
+			Units1 = '1-6' {
+				ninigi_flamethrower_trike = ''
+			}
+			Units2 = '0-2' {
+				ninigi_smokebomb_thrower = ''
+			}
+		}
+	}
+	SiegeAttack_3 {
+		Group0 {
+			Priority = '1.0'
+			Units0 = '1-8' {
+				ninigi_warrior = ''
+			}
+			Units1 = '1-4' {
+				ninigi_flamethrower_trike = ''
+			}
+			Units2 = '1-2' {
+				ninigi_smokebomb_thrower = ''
+			}
+			Units3 = '1-2' {
+				ninigi_monk {
+					level = '2'
+				}
+			}
+		}
+	}
+	SiegeAttack_4 {
+		Group0 {
+			Priority = '1.0'
+			Units0 = '0-5' {
+				ninigi_warrior = ''
+			}
+			Units1 = '2-6' {
+				ninigi_flamethrower_trike = ''
+			}
+			Units2 = '1-2' {
+				ninigi_smokebomb_thrower = ''
+			}
+			Units3 = '1-4' {
+				ninigi_monk {
+					level = '2'
+				}
+			}
+			Units4 = '1-4' {
+				ninigi_firecannon = ''
+			}
+			Units5 = '0-4' {
+				ninigi_sumo = ''
+			}
+			Units6 = '0-1' {
+				babbage_s0 = ''
+			}
+		}
+	}
+	SiegeAttack_5 {
+		Group0 {
+			Priority = '1.0'
+			Units0 = '0-5' {
+				ninigi_warrior = ''
+			}
+			Units1 = '1-6' {
+				ninigi_flamethrower_trike = ''
+			}
+			Units2 = '1-3' {
+				ninigi_smokebomb_thrower = ''
+			}
+			Units3 = '1-4' {
+				ninigi_monk {
+					level = '2'
+				}
+			}
+			Units4 = '1-4' {
+				ninigi_firecannon = ''
+			}
+			Units5 = '0-6' {
+				ninigi_sumo = ''
+			}
+			Units6 = '0-1' {
+				babbage_s0 = ''
+			}
+		}
+	}
+	StealthAttack_2 {
+		Group0 {
+			Priority = '1.0'
+			Units0 = '1-2' {
+				ninigi_smokebomb_thrower = ''
+			}
+			Units1 = '1-6' {
+				ninigi_archer = ''
+			}
+		}
+	}
+	StealthAttack_3 {
+		Group0 {
+			Priority = '1.0'
+			Units0 = '1-2' {
+				ninigi_smokebomb_thrower = ''
+			}
+			Units1 = '1-8' {
+				ninigi_archer = ''
+			}
+		}
+	}
+	StealthAttack_4 {
+		Group0 {
+			Priority = '1.0'
+			Units0 = '1-2' {
+				ninigi_smokebomb_thrower = ''
+			}
+			Units1 = '1-6' {
+				ninigi_archer = ''
+			}
+			Units2 = '1-6' {
+				ninigi_mortar = ''
+			}
+		}
+	}
+	StealthAttack_5 {
+		Group0 {
+			Priority = '1.0'
+			Units0 = '1-2' {
+				ninigi_smokebomb_thrower = ''
+			}
+			Units1 = '1-8' {
+				ninigi_archer {
+					level = '2'
+				}
+			}
+			Units2 = '1-8' {
+				ninigi_mortar = ''
+			}
+		}
+	}
+	PureViolenceAttack_1 {
+		Group0 {
+			Priority = '1.0'
+			Units0 = '1-8' {
+				ninigi_archer = ''
+			}
+		}
+	}
+	PureViolenceAttack_2 {
+		Group0 {
+			Priority = '1.0'
+			Units0 = '1-6' {
+				ninigi_archer {
+					level = '1'
+				}
+			}
+			Units1 = '1-3' {
+				ninigi_flamethrower_trike = ''
+			}
+			Units2 = '0-3' {
+				ninigi_ninja = ''
+			}
+		}
+	}
+	PureViolenceAttack_3 {
+		Group0 {
+			Priority = '1.0'
+			Units0 = '1-8' {
+				ninigi_archer = ''
+			}
+			Units1 = '2-4' {
+				ninigi_flamethrower_trike = ''
+			}
+			Units3 = '0-4' {
+				ninigi_parasaurolophus_gatling = ''
+			}
+			Units4 = '0-4' {
+				ninigi_ninja = ''
+			}
+			Units5 = '1-3' {
+				ninigi_saltasaurus_archer = ''
+			}			
+		}
+	}
+	PureViolenceAttack_4 {
+		Group0 {
+			Priority = '1.0'
+			Units0 = '1-4' {
+				ninigi_parasaurolophus_gatling = ''
+			}
+			Units1 = '1-2' {
+				ninigi_parasaurolophus_drums = ''
+			}
+			Units2 = '1-3' {
+				ninigi_firecannon = ''
+			}
+			Units3 = '1-2' {
+				ninigi_scout = ''
+			}
+			Units4 = '1-8' {
+				ninigi_archer = ''
+			}
+			Units5 = '0-4' {
+				ninigi_flamethrower_trike = ''
+			}
+			Units6 = '1-3' {
+				ninigi_saltasaurus_archer = ''
+			}
+			Units7 = '0-6' {
+				ninigi_mortar = ''
+			}
+			Units9 = '0-1' {
+				Bela_s0 = ''
+			}
+		}
+	}
+	PureViolenceAttack_5 {
+		Group0 {
+			Priority = '1.0'
+			Units0 = '1-6' {
+				ninigi_parasaurolophus_gatling = ''
+			}
+			Units1 = '1-2' {
+				ninigi_parasaurolophus_drums = ''
+			}
+			Units2 = '1-4' {
+				ninigi_firecannon = ''
+			}
+			Units3 = '1-2' {
+				ninigi_scout = ''
+			}
+			Units4 = '1-8' {
+				ninigi_archer = ''
+			}
+			Units5 = '1-4' {
+				ninigi_flamethrower_trike = ''
+			}
+			Units6 = '1-3' {
+				ninigi_saltasaurus_archer = ''
+			}
+			Units7 = '1-1' {
+				ninigi_seismosaurus = ''
+			}
+			Units9 = '0-8' {
+				ninigi_marksman = ''
+			}
+			Units13 = '0-1' {
+				schliemann_s0 = ''
+			}								
+		}
+	}
+	GuardVillage_1 {
+		Group0 {
+			Priority = '1.0'
+			Units0 = '2-8' {
+				ninigi_archer = ''
+			}
+		}
+	}
+	DetectTraps_1 {
+		Group0 {
+			Priority = '1.0'
+			Units0 = '1-6' {
+				ninigi_archer {
+					level = '1'
+				}
+			}
+			Units2 = '1-1' {
+				ninigi_monk {
+					level = '2'
+				}
+			}
+		}
+	}
+	OP_ResAll {
+		Group0 {
+			Priority = '1.0'
+			Units0 = '1-2' {
+				ninigi_worker {
+					level = '0'
+				}
+			}
+			Units1 = '1-1' {
+				ninigi_archer {
+					level = '1'
+				}
+			}
+		}
+	}
+	OP_AttackAll {
+		Group0 {
+			Priority = '1.0'
+			Units0 = '1-3' {
+				ninigi_worker {
+					level = '0'
+				}
+			}
+			Units1 = '1-3' {
+				ninigi_archer {
+					level = '1'
+				}
+			}
+		}
+	}
+	GuerillaAttack_1 {
+		Group0 {
+			Priority = '1.0'
+			Units0 = '1-4' {
+				ninigi_ninja {
+					level = '1'
+				}
+			}
+			Units1 = '1-4' {
+				ninigi_archer = ''
+			}
+			Units2 = '1-3' {
+				ninigi_monk = ''
+			}
+			Units3 = '0-1' {
+				lovelace_s0 = ''
+			}
+		}
+	}
+	ShipAttack_2 {
+		Group0 {
+			Priority = '1.0'
+			Units0 = '1-3' {
+				ninigi_fire_boat = ''
+			}
+		}
+	}
+	ShipAttack_3 {
+		Group0 {
+			Priority = '1.0'
+			Units0 = '1-3' {
+				ninigi_fire_boat = ''
+			}
+			Units1 = '0-3' {
+				ninigi_muraeno_submarine = ''
+			}
+		}
+	}
+	ShipAttack_4 {
+		Group0 {
+			Priority = '1.0'
+			Units0 = '1-3' {
+				ninigi_fire_boat = ''
+			}
+			Units1 = '0-3' {
+				ninigi_muraeno_submarine = ''
+			}
+			Units2 = '0-2' {
+				ninigi_rocket_boat = ''
+			}
+		}
+	}
+	ShipAttack_5 {
+		Group0 {
+			Priority = '1.0'
+			Units0 = '1-4' {
+				ninigi_fire_boat = ''
+			}
+			Units1 = '0-4' {
+				ninigi_muraeno_submarine = ''
+			}
+			Units2 = '0-4' {
+				ninigi_rocket_boat = ''
+			}
+		}
+	}
+	RessourceOutpost {
+		Group0 {
+			Priority = '1.0'
+			Units0 = '2-4' {
+				ninigi_worker {
+					level = '0'
+				}
+			}
+			Units1 = '2-4' {
+				ninigi_archer {
+					level = '0'
+				}
+			}
+		}
+	}
+	AttackOutpost {
+		Group0 {
+			Priority = '1.0'
+			Units0 = '1-3' {
+				ninigi_worker {
+					level = '0'
+				}
+			}
+			Units1 = '2-6' {
+				ninigi_archer {
+					level = '0'
+				}
+			}
+		}
+	}
+	EmptyOutpost {
+		Group0 {
+			Priority = '1.0'
+			Units0 = '1-3' {
+				ninigi_worker {
+					level = '0'
+				}
+			}
+		}
+	}
+	Item_Attack {
+		Group0 {
+			Priority = '1.0'
+			Units1 = '2-4' {
+				ninigi_archer {
+					level = '0'
+				}
+			}
+		}
+	}
+	Attack_Neutral {
+		Group0 {
+			Priority = '1.0'
+			Units0 = '1-2' {
+				ninigi_archer = ''
+			}
+			Units1 = '1-2' {
+				ninigi_warrior = ''
+			}
+		}
+	}
+	SeaMineLayer {
+		Group0 {
+			Priority = '1.0'
+			Units0 = '1-1' {
+				ninigi_minelayer = ''
+			}
+		}
+	}
+	b43_titanattack_easy {
+		Group0 {
+			Priority = '1.0'
+			Units0 = '1-1' {
+				ninigi_seismosaurus = ''
+			}
+		}
+	}
+	b43_titanattack_med {
+		Group0 {
+			Priority = '1.0'
+			Units0 = '1-1' {
+				ninigi_seismosaurus = ''
+			}
+			Units1 = '3-3' {
+				ninigi_ninja = ''
+			}
+		}
+	}
+	b43_titanattack_hard {
+		Group0 {
+			Priority = '1.0'
+			Units0 = '1-1' {
+				ninigi_seismosaurus = ''
+			}
+			Units1 = '6-6' {
+				ninigi_ninja = ''
+			}
+		}
+	}
+	b43_ninjaattack {
+		Group0 {
+			Priority = '1.0'
+			Units0 = '3-3' {
+				ninigi_ninja = ''
+			}
+		}
+	}
+}

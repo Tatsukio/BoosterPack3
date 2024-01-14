@@ -1,0 +1,2744 @@
+// Valid Categories are
+//
+// --> PROD		= Produce/Invent
+// --> TRAD 	= Trade
+// --> SLOT		= Slots
+// --> BUIL		= Build
+// --> STNC		= Stances
+// --> SPEC		= Special
+// --> ACTN		= ActionButton ( appearance and action is defined through command )
+
+// MenuBtn : 53 x 59
+// ActBtn  : 45 x 59
+// InfoWnd : 209 x 197
+// Flyout  : XXX x 138
+// Flyout  : Abstand der Karten :  3px ... nach oben 9px .... nach links: 8px
+// Flyout  : KartenSize: 37 x 36
+
+class CInvoke
+	export const int OBJCHG = 0;
+	export const int PLYRCHG = 1;
+	export const int PYRAMIDCHG = 2;
+endclass;
+
+class CProgressButton inherit CCmdBarButton
+
+	var ^CStaticCtrl	m_pxQueueCnt;
+	var ^CProgressBar	m_pxProgress;
+
+	var CClntHndl		m_xSelObj;
+	var string			m_sResultTT;
+	var bool 			m_bSpecial;
+
+	var int				m_iSpecialTimer;
+	var real			m_fDuration;
+	//var real			m_fPassed; //that doesn't work, SUIT timers are not that exact
+	var CGameTime		m_xStartTime;
+	var ^CCardBitmap	m_pxFlashBitmap;
+	var string			m_sBitmap;
+	var int				m_iLevel;
+
+/*	export var procref<bool>	m_xOnDoAction;
+	export var procref<bool>	m_xOnCancelAction;
+*/
+	export constructor(CClntHndl p_xSelObj, string p_sTTPath)
+		//L KLog.LogInfo( "DaHo", "CProgressButton::ctor()");
+		m_xSelObj = p_xSelObj;
+		m_sResultTT = p_sTTPath;
+		m_bSpecial = false;
+		if(m_sResultTT.Find("/Moves/")>=0) then
+			m_bSpecial=true;
+		endif;
+
+		m_pxQueueCnt = new CStaticCtrl();
+		m_pxProgress = new CProgressBar();
+
+		m_pxProgress^.SetVertical(true);
+		AddChild(m_pxProgress);
+		m_pxQueueCnt^.SetVisible(true);
+		m_pxQueueCnt^.SetTextColor({{255, 255, 255, 255}});
+		m_pxProgress^.AddChild(m_pxQueueCnt);
+		m_pxProgress^.SetAlwaysOnTop(false);
+		m_pxProgress^.SetTransparent(true);
+		m_pxProgress^.SetPos(0,0);
+		m_pxProgress^.SetVisible(false);
+		SetIgnoreDoubleClick(true);
+
+/*		m_xOnClick = OnClick;
+		m_xOnRightClick = OnRightClick;
+		m_xOnDoubleClick = OnClick;
+*/		m_iSpecialTimer=-1;
+		m_pxFlashBitmap=null;
+	endconstructor;
+
+	destructor()
+		if(m_pxQueueCnt!=null) then m_pxQueueCnt^.Destroy(); endif;
+		if(m_pxProgress!=null) then m_pxProgress^.Destroy(); endif;
+		CGameWrap.GetSubscriptionMgr().UnsubscribeObjChanges(this);
+		m_pxFlashBitmap=null;
+		UnsetTimer(m_iSpecialTimer);
+	enddestructor;
+
+	export proc void SetBitmaps(^CCardBitmap p_pxIdle,^CCardBitmap p_pxDown,^CCardBitmap p_pxHovered,^CCardBitmap p_pxDisabled, ^CCardBitmap p_pxFlash )
+		super.SetBitmap(p_pxIdle^.GetBitmap(), p_pxDown^.GetBitmap(), p_pxHovered^.GetBitmap(),p_pxDisabled^.GetBitmap());
+		SetFlashBitmap(p_pxFlash);
+	endproc;
+
+	export proc void SetFlashBitmap(^CCardBitmap p_pxFlashBmp)
+		m_pxFlashBitmap=p_pxFlashBmp;
+	endproc;
+
+	export proc void Initialize(string p_sIcon, int p_iLvl)
+		if(m_iSpecialTimer!=-1) then
+			UnsetTimer(m_iSpecialTimer);
+		endif;
+		m_iSpecialTimer=-1;
+
+		m_sBitmap = p_sIcon;
+		m_iLevel = p_iLvl;
+		if(p_sIcon.IsEmpty()) then
+			m_sBitmap = "_dummy";
+		endif;
+
+		var string sLevelLayerA = "";
+		var string sLevelLayerB = "";
+		if(p_iLvl > 0) then
+			sLevelLayerA = ", layer menucmd_lvl"+p_iLvl.ToString()+"_ovl";
+			sLevelLayerB = ", blend menucmd_lvl"+p_iLvl.ToString()+"_ovl 30";
+		endif;
+		m_pxProgress^.SetBitmaps(CGameInst.GetBitmapMgr().GetBlendBitmap("2, layer menucmd_back, layer "+m_sBitmap+sLevelLayerA)^.GetBitmap(),
+								 CGameInst.GetBitmapMgr().GetBlendBitmap("2, layer menucmd_back, gamma 2.0, blend "+m_sBitmap+" 30"+sLevelLayerB)^.GetBitmap());
+
+		CGameWrap.GetSubscriptionMgr().UnsubscribeObjChanges(this);
+
+		var CTechTree xTT;
+		var ^CPlayer pxPlayer = ^(CGameWrap.GetClient().GetPlayer());
+		if(pxPlayer!=null) then
+			xTT = pxPlayer^.GetPlayerTechTree();
+		endif;
+
+
+		var array string asLocationClasses;
+		var ^CTechTree.CNode pxLocNode = xTT.FindNode(m_sResultTT+"/locations");
+		if(pxLocNode!=null) then
+			asLocationClasses = pxLocNode^.NumSubs();
+			var int i, iC = pxLocNode^.NumSubs();
+			for(i=0) cond(i<iC) iter(++i) do
+				var ^CTechTree.CNode pxLocation = pxLocNode^.GetSub(i);
+				if(pxLocation!=null) then
+					var array string asToks;
+					pxLocation^.GetValue().Split(asToks, "/", true);
+
+					var int iIdx = asToks.NumEntries()-1;
+					if(iIdx>=0) then
+						asLocationClasses[i] = asToks[iIdx];
+					endif;
+				endif;
+			endfor;
+		endif;
+
+		var CObjList xL = CGameWrap.GetSelection();
+		var int i, iC = xL.NumEntries();
+		for(i=0) cond(i<iC) iter(++i) do
+			var ^CObj pxO = xL[i].GetObj();
+
+			if(pxO==null) then continue; endif;
+
+			var bool bClassMatch=false;
+			var int j,jC = asLocationClasses.NumEntries();
+			for(j=0) cond(j<jC) iter(++j) do
+				bClassMatch=(pxO^.GetClassName()==asLocationClasses[j]);
+				if(!bClassMatch)then
+					bClassMatch=(pxO^.GetType()==asLocationClasses[j]);
+				endif;
+				if(bClassMatch)then
+					break;
+				endif;
+			endfor;
+
+			if(!bClassMatch)then continue; endif;
+
+			var ^CAttribs pxAttr = pxO^.GetAttribs();
+			if(pxAttr!=null)then
+				var int iNodeUID = 0;
+				var ^CPlayer pxPlayer = ^(CGameWrap.GetClient().GetPlayer());
+				if(pxPlayer!=null) then
+					var ^CTechTree.CNode pxNode = pxPlayer^.GetPlayerTechTree().FindNode(m_sResultTT);
+					if(pxNode!=null) then
+						iNodeUID = pxNode^.GetHashValue();
+					endif;
+				endif;
+
+				var string sSpecial = pxAttr^.GetValue("SpecialActionCounters");
+				if(!sSpecial.IsEmpty() && m_bSpecial) then
+					var array string asActions, asToks;
+					sSpecial.Split(asActions, "\n", true);
+
+					var int i, iC = asActions.NumEntries();
+					for(i=0) cond(i<iC) iter(++i) do
+						asToks=0;
+						asActions[i].Split(asToks, "|", true);
+						if(asToks.NumEntries()!=3) then continue; endif;
+						if(asToks[0].ToInt()==iNodeUID) then
+							if(m_iSpecialTimer==-1) then
+								m_xStartTime.FromString(asToks[1]);
+								m_iSpecialTimer = SetTimer(1000, true);
+								m_pxProgress^.SetVisible(true);
+								m_pxQueueCnt^.SetText("");
+
+								var real fPassed=(CTimeMgr.Get().GetTime()-m_xStartTime).GetSecondsF();
+								m_fDuration = asToks[2].ToReal();
+								SetProgress(fPassed/(m_fDuration*0.01f));
+
+								var string sLevelLayerA = "";
+								var string sLevelLayerB = "";
+
+								var real fProgress = 0.0f;
+								if(m_fDuration>0.0f) then
+									fProgress = fPassed/(m_fDuration*0.01f);
+								endif;
+								var int iBase=45;
+								var int iBase2=10;
+								iBase+=((100.0-fProgress)*0.55).ToInt();
+								iBase2+=((100.0-fProgress)*0.2).ToInt();
+
+								if(m_iLevel > 0) then
+									sLevelLayerA = ", layer menucmd_lvl"+m_iLevel.ToString()+"_ovl "+iBase.ToString();
+									sLevelLayerB = ", blend menucmd_lvl"+m_iLevel.ToString()+"_ovl "+iBase2.ToString();
+								endif;
+
+								m_pxProgress^.SetBitmaps(CGameInst.GetBitmapMgr().GetBlendBitmap("2, layer menucmd_back, gamma 2.0, blend "+m_sBitmap+" "+iBase.ToString()+sLevelLayerA)^.GetBitmap(),
+														 CGameInst.GetBitmapMgr().GetBlendBitmap("2, layer menucmd_back, gamma 2.0, blend "+m_sBitmap+" "+iBase2.ToString()+sLevelLayerB)^.GetBitmap());
+							endif;
+						endif;
+					endfor;
+				else
+					var string sProdQueue = pxAttr^.GetValue("ProdQueue");
+					var array string asToks;
+					sProdQueue.Split(asToks, ":", true);
+
+					var int iCnt=0;
+					var int i, iC = asToks.NumEntries();
+					for(i=0) cond(i<iC) iter(++i) do
+						if(asToks[i].ToInt()==iNodeUID) then
+							++iCnt;
+						endif;
+					endfor;
+
+					if(pxAttr^.GetValue("CurProcessObj")==m_sResultTT && iCnt==0) then
+						++iCnt;
+					endif;
+
+					if(iCnt>1) then
+						m_pxQueueCnt^.SetText(iCnt.ToString());
+					else
+						m_pxQueueCnt^.SetText("");
+					endif;
+
+					if(m_sResultTT == pxAttr^.GetValue("CurProcessObj")) then
+						m_pxProgress^.SetVisible(true);
+						SetProgress(pxAttr^.GetValueInt("CurProcess").ToReal());
+					elseif(iCnt>0) then
+						m_pxProgress^.SetVisible(true);
+						SetProgress(0.0f);
+					else
+						m_pxProgress^.SetVisible(false);
+						SetProgress(0.0f);
+					endif;
+				endif;
+			endif;
+		endfor;
+
+		if(m_xSelObj.IsValid()) then
+			CGameWrap.GetSubscriptionMgr().SubscribeObjChanges(this,m_xSelObj,CSubscriptionMgr.CT_ObjAttribs, "ActionMenuProgress");
+
+			var ^CObj pxO = m_xSelObj.GetObj();
+		endif;
+	endproc;
+
+	export proc bool IsProcessing()
+		var ^CObj pxO = m_xSelObj.GetObj();
+		if(pxO!=null) then
+			var ^CAttribs pxA = pxO^.GetAttribs();
+			if(pxA!=null) then
+				var string sProcObj = pxA^.GetValue("CurProcessObj");
+				var string sProdQueue = pxA^.GetValue("ProdQueue");
+				var real fProc = pxA^.GetValueInt("CurProcess").ToReal();
+
+				if(sProcObj == m_sResultTT && fProc>0.0f) then  return true; endif;
+
+				var array string asToks;
+				sProdQueue.Split(asToks, ":", true);
+
+				var int iIdx = 0;
+				var ^CPlayer pxPlayer = ^(CGameWrap.GetClient().GetPlayer());
+				if(pxPlayer!=null) then
+					var ^CTechTree.CNode pxNode = pxPlayer^.GetPlayerTechTree().FindNode(m_sResultTT);
+					if(pxNode!=null) then
+						iIdx = pxNode^.GetHashValue();
+					endif;
+				endif;
+				var int iCnt=0;
+				var int i, iC = asToks.NumEntries();
+				for(i=0) cond(i<iC) iter(++i) do
+					if(asToks[i].ToInt()==iIdx) then ++iCnt; endif;
+				endfor;
+				return iCnt>0;
+			endif;
+		endif;
+		return false;
+	endproc;
+
+	export proc void SetSize(int p_iW, int p_iH)
+		super.SetSize(p_iW, p_iH);
+		m_pxProgress^.SetSize(p_iW, p_iH);
+		m_pxQueueCnt^.SetSize(p_iW, p_iH);
+	endproc;
+
+	export proc void SetProgress(real p_fP)
+		m_pxProgress^.SetProgress(p_fP);
+	endproc;
+
+	proc bool OnTimer(int p_iID)
+		if(m_iSpecialTimer==p_iID)then
+			var real fPassed=(CTimeMgr.Get().GetTime()-m_xStartTime).GetSecondsF();
+			var real fProgress = fPassed/(m_fDuration*0.01f);
+			if(fProgress>=100.0f) then
+				SetProgress(0.0f);
+				m_pxProgress^.SetVisible(false);
+				UnsetTimer(m_iSpecialTimer);
+				m_iSpecialTimer=-1;
+				return true;
+			else
+				var string sLevelLayerA = "";
+				var string sLevelLayerB = "";
+				var int iBase=45;
+				var int iBase2=10;
+
+				iBase+=((100.0-fProgress)*0.55).ToInt();
+				iBase2+=((100.0-fProgress)*0.2).ToInt();
+
+				if(m_iLevel > 0) then
+					sLevelLayerA = ", layer menucmd_lvl"+m_iLevel.ToString()+"_ovl "+iBase.ToString();
+					sLevelLayerB = ", blend menucmd_lvl"+m_iLevel.ToString()+"_ovl "+iBase2.ToString();
+				endif;
+
+
+				m_pxProgress^.SetBitmaps(CGameInst.GetBitmapMgr().GetBlendBitmap("2, layer menucmd_back, gamma 2.0, blend "+m_sBitmap+" "+iBase.ToString()+sLevelLayerA)^.GetBitmap(),
+										 CGameInst.GetBitmapMgr().GetBlendBitmap("2, layer menucmd_back, gamma 2.0, blend "+m_sBitmap+" "+iBase2.ToString()+sLevelLayerB)^.GetBitmap());
+				SetProgress(fProgress);
+				return false;
+			endif;
+		endif;
+		return false;
+	endproc;
+
+	export proc bool HandleMessage(ref CEvtPointer p_rxEvt)
+		if(p_rxEvt.GetClass()==CSubscriptionMgr.GetEvtClass_ObjChange())then
+			var CClntHndl xObjHandle;
+			var bitset dwTypes, dwAttribGroups;
+
+
+			if(CSubscriptionMgr.EvtGetData_ObjChange(p_rxEvt,xObjHandle,dwTypes,dwAttribGroups))then
+				if((dwTypes & CSubscriptionMgr.CT_ObjAttribs) != 0d) then
+					if(!xObjHandle.IsValid())then return false; endif;
+					if(!(xObjHandle==m_xSelObj)) then return false; endif;
+					var ^CObj pxO = xObjHandle.GetObj();
+					var ^CAttribs pxAttr = pxO^.GetAttribs();
+					if(pxAttr!=null)then
+						var int iNodeUID = 0;
+						var ^CPlayer pxPlayer = ^(CGameWrap.GetClient().GetPlayer());
+						if(pxPlayer!=null) then
+							var ^CTechTree.CNode pxNode = pxPlayer^.GetPlayerTechTree().FindNode(m_sResultTT);
+							if(pxNode!=null) then
+								iNodeUID = pxNode^.GetHashValue();
+							endif;
+						endif;
+
+						var string sSpecial = pxAttr^.GetValue("SpecialActionCounters");
+						if(!sSpecial.IsEmpty() && m_bSpecial) then
+							var array string asActions, asToks;
+							sSpecial.Split(asActions, "\n", true);
+
+							var int i, iC = asActions.NumEntries();
+							for(i=0) cond(i<iC) iter(++i) do
+								asToks=0;
+								asActions[i].Split(asToks, "|", true);
+								if(asToks.NumEntries()!=3) then continue; endif;
+								if(asToks[0].ToInt()==iNodeUID) then
+									if(m_iSpecialTimer==-1) then
+										m_xStartTime.FromString(asToks[1]);
+										m_iSpecialTimer = SetTimer(1000, true);
+										m_pxProgress^.SetVisible(true);
+										m_pxQueueCnt^.SetText("");
+
+										var real fPassed=(CTimeMgr.Get().GetTime()-m_xStartTime).GetSecondsF();
+										m_fDuration = asToks[2].ToReal();
+										SetProgress(fPassed/(m_fDuration*0.01f));
+									endif;
+								endif;
+							endfor;
+						else
+							var string sProdQueue = pxAttr^.GetValue("ProdQueue");
+							var array string asToks;
+							sProdQueue.Split(asToks, ":", true);
+
+							var int iCnt=0;
+							var int i, iC = asToks.NumEntries();
+							for(i=0) cond(i<iC) iter(++i) do
+								if(asToks[i].ToInt()==iNodeUID) then ++iCnt; endif;
+							endfor;
+
+							if(pxAttr^.GetValue("CurProcessObj")==m_sResultTT && iCnt==0) then
+								++iCnt;
+							endif;
+
+							if(iCnt>1) then
+								m_pxQueueCnt^.SetText(iCnt.ToString());
+							else
+								m_pxQueueCnt^.SetText("");
+							endif;
+
+							if(m_sResultTT == pxAttr^.GetValue("CurProcessObj")) then
+								m_pxProgress^.SetVisible(true);
+								SetProgress(pxAttr^.GetValueInt("CurProcess").ToReal());
+							elseif(iCnt>0) then
+								m_pxProgress^.SetVisible(true);
+								SetProgress(0.0f);
+							else
+								m_pxProgress^.SetVisible(false);
+								SetProgress(0.0f);
+							endif;
+						endif;
+					endif;
+				endif;
+			endif;
+			return true;
+		endif;
+		return false;
+	endproc;
+endclass;
+
+class CActionMenu
+	const int POS_X			= 209;
+
+	const int MENUBTN_WIDTH = 53;
+	const int ACTBTN_WIDTH	= 45;
+
+	export const int MENU_NONE		= 0;
+	export const int MENU_BUILDING 	= 1;
+	export const int MENU_UNIT		= 2;
+
+
+	const bitset FLAG_CAN_FIGHT 		= 000001h;
+	const bitset FLAG_CAN_MOVE			= 000002h;
+	const bitset FLAG_HOLD_UNITS		= 000004h;
+	const bitset FLAG_DISMOUNT_NO_SEC	= 000008h;
+	const bitset FLAG_GATE				= 000010h;
+	const bitset FLAG_SHOW_STANCES		= 000020h;
+	const bitset FLAG_SHOW_TRADE		= 000040h;
+	const bitset FLAG_SHOW_RALLY		= 000080h;
+	const bitset FLAG_SHOW_LEVEL_UP		= 000100h;
+	const bitset FLAG_CAN_LEVEL_UP		= 000200h;
+	const bitset FLAG_CAN_PRODUCE		= 000400h;
+	const bitset FLAG_CAN_BUILD			= 000800h;
+	const bitset FLAG_HAS_SPECIAL_ACT	= 001000h;
+	const bitset FLAG_SHOW_KILLBTN		= 002000h;
+
+	const bitset FLAG_HIDE_RALLY		= 010000h;
+	const bitset FLAG_HIDE_WALK			= 020000h;
+	const bitset FLAG_HIDE_REPAIR		= 040000h;
+	const bitset FLAG_HIDE_TRANSPORT	= 080000h;
+
+
+	var int					m_iType;
+	var ^CCommandBar		m_pxParent;
+	var array CCmdButton	m_axButtons;
+
+	var array CCmdButton	m_axCmdButtons;
+	var CFourCC				m_xLastFlyout;
+	var bitset				m_dwFlags;
+	var CClntHndl			m_xSelObj;
+
+
+	export constructor(^CCommandBar p_pxParent)
+		m_pxParent = p_pxParent;
+		m_dwFlags = 0b;
+	endconstructor;
+
+	export destructor()
+		m_axCmdButtons=0;
+		m_axButtons=0;
+	enddestructor;
+
+	export proc void SetSelObj()
+		var CObjList xSel = m_pxParent^.m_xCurSelection;
+		m_xSelObj.Invalidate();
+		if(xSel.NumEntries()>0) then
+			m_xSelObj=xSel[0];
+		endif;
+	endproc;
+
+	export proc ^CCmdButton FindMatchingMenuBtn(string p_sCat)
+		var int i, iC = m_axButtons.NumEntries();
+		for(i=0) cond(i<iC) iter(++i) do
+			if(m_axButtons[i].GetCategory()==p_sCat) then
+				return ^m_axButtons[i];
+			endif;
+		endfor;
+		return null;
+	endproc;
+
+	export proc ^CCmdButton FindActionButton( string p_sAction )
+		var int	i, iC = m_axButtons.NumEntries();
+		for(i=0) cond(i<iC) iter(++i) do
+			if ( m_axButtons[i].GetType () == CCmdButton.TYPE_ACTION && m_axButtons[i].GetCommand() == p_sAction ) then
+				return( ^m_axButtons[i] );
+			endif;
+		endfor;
+		return( null );
+	endproc;
+
+	export proc ^CCmdButton GetMenuButton(CFourCC p_xCat)
+		var int i,iC = m_axButtons.NumEntries();
+		for(i=0) cond(i<iC) iter(++i) do
+			if(m_axButtons[i].GetCategory()==p_xCat.AsString()) then
+				return ^(m_axButtons[i]);
+			endif;
+		endfor;
+		return null;
+	endproc;
+
+	proc bool CanLevelUp(^CObj p_pxObj)
+		if(p_pxObj==null) then return false; endif;
+		var int iNumScalps = 0;
+		var ^CPlayer pxPlayer = ^(CGameWrap.GetClient().GetPlayer());
+		if(pxPlayer!=null) then
+			var ^CAttribs pxPlA = pxPlayer^.GetAttribs();
+			var ^CAttribs pxObjA = p_pxObj^.GetAttribs();
+			if(pxPlA!=null && pxObjA!=null) then
+				if(!pxObjA^.GetValue("passenger_guids").IsEmpty()) then
+					var array string asToks;
+					pxObjA^.GetValue("passenger_guids").Split(asToks, "\n", true);
+					var int iCpt = pxObjA^.GetValueInt("captain");					
+					if(iCpt>=0 && iCpt < asToks.NumEntries()) then
+						//var CGuid xG; xG.FromString(asToks[iCpt]);
+						//p_pxObj = CGameWrap.GetObjMgr().GetObj(xG);
+						if(p_pxObj!=null)  then
+							pxObjA = p_pxObj^.GetAttribs();
+						endif;
+					endif;
+				endif;
+				iNumScalps = pxPlA^.GetValueInt("iron");				
+				var int iNextLevel = (pxObjA^.GetValueInt("level")+1);				
+				var int iCost = pxPlA^.GetValueInt("foodcost_lvl_"+iNextLevel.ToString());				
+				if(iNextLevel>=5) then return false; endif;				
+				var bool bPyr = m_pxParent^.CheckCharacterConditions(iNextLevel, false);				
+				return (iCost<=iNumScalps)&&bPyr;
+			endif;
+		endif;
+		return false;
+	endproc;
+
+
+	export proc void ValidateLevelUpBtn()
+		if((m_dwFlags&FLAG_SHOW_LEVEL_UP)!=0b) then
+			var CObjList xSel = CClientWrap.GetSelection();
+
+			var int iNumScalps = 0;
+			var ^CPlayer pxPlayer = ^(CGameWrap.GetClient().GetPlayer());
+			if(pxPlayer!=null) then
+				var ^CAttribs pxPlA = pxPlayer^.GetAttribs();
+				if(pxPlA!=null) then
+					iNumScalps = pxPlA^.GetValueInt("iron");
+				endif;
+			endif;
+
+			if(iNumScalps<10) then return; endif;
+			var bool bOn=false;
+			var int i, iC = xSel.NumEntries();			
+			for(i=0) cond(i<iC) iter(++i) do
+				if(CanLevelUp(xSel[i].GetObj())) then
+					if((m_dwFlags&FLAG_CAN_LEVEL_UP)!=0b) then return; endif;
+					m_dwFlags|=FLAG_CAN_LEVEL_UP;
+					bOn=true;
+					break;
+				endif;
+			endfor;
+			
+			if(!bOn)then
+				if((m_dwFlags&FLAG_CAN_LEVEL_UP)==0b) then return; endif;
+				m_dwFlags&=~FLAG_CAN_LEVEL_UP;
+			endif;
+
+			i = m_axButtons.NumEntries()-1;
+			for(i=i) cond(i>=0) iter(--i) do
+				if(m_axButtons[i].GetType()==CCmdButton.TYPE_ACTION) then
+					if(m_axButtons[i].GetCommand()=="levelup") then
+						m_axButtons[i].SetDisabled((m_dwFlags&FLAG_CAN_LEVEL_UP)==0b);
+						if((m_dwFlags&FLAG_CAN_LEVEL_UP)==0b) then
+							m_axButtons[i].SetToolTipText("Level up \nNot enough Skulls or no free Slot.");
+						endif;
+					endif;
+				endif;
+			endfor;
+		endif;
+	endproc;
+
+	export proc void InvalidateFlags()
+		m_dwFlags = 0b;
+	endproc;
+
+	proc ^CCmdButton GetButton(int p_iID)
+		if(m_axButtons.NumEntries()>p_iID) then
+			return ^m_axButtons[p_iID];
+		else
+			return ^(m_axButtons.NewEntryRef());
+		endif;
+	endproc;
+
+	export proc void UpdateMenu(bool p_bSelChg)
+		var CObjList xSel 	= m_pxParent^.m_xCurSelection;
+		var CObjList xSelEx	= m_pxParent^.m_xOldSelection;
+		if((xSel.NumEntries()==0)&&(xSelEx.NumEntries()==0)) then
+			m_axButtons=0;
+			return;
+		endif;
+
+// special debug infos for testing department, no fuctionality
+//		if(p_bSelChg)then
+//			var ^CTechTreeDef pxDef=^(CGameWrap.GetClient().GetPlayer().GetPlayerTechTreeDef());
+//			if(pxDef!=null)then
+//				KLog.LogSpam("SFBug","Client->Owner "+CGameWrap.GetClient().GetPlayerID().ToString()+"->CProgressButton->Initialize->Object Filters:");
+//				var int i,iC=pxDef^.NumEntries();
+//				for(i=0)cond(i<iC)iter(i++)do
+//					KLog.LogSpam("SFBug","\t\t- "+pxDef^.GetFilter(i));
+//				endfor;
+//			endif;
+//		endif;
+
+
+
+		var CObjList	xTemp;
+		var bool bIsCurrentlyBuild = true; //m_pxParent^.IsBuildingBuild();
+		m_pxParent^.PreprocessObjects( xSelEx, xTemp, bIsCurrentlyBuild );
+
+		var CFourCC xSelected="none";
+		if(!p_bSelChg) then
+			var int i, iC = m_axButtons.NumEntries();
+			for(i=0) cond(i<iC) iter(++i)do
+				if(m_axButtons[i].GetSelected()) then
+					xSelected = m_axButtons[i].GetCategory();
+					break;
+				endif;
+			endfor;
+		endif;
+
+		var string		sClass		= "";
+		var bool		bMultiSel	= xSel.NumEntries()>1;
+		//var	CObjList	xSelEx		= CClientWrap.GetSelection();
+		var	bool		bMultiSelEx = xSelEx.NumEntries() > 1;
+		var int			iPlayerID	= CGameWrap.GetClient().GetPlayerID();
+
+//L		KLog.LogInfo( "DaHo", "  bMultiSelEx = " + bMultiSelEx.ToString() );
+
+		if(m_dwFlags==0b) then
+			var int i, iC = xSel.NumEntries();
+			for(i=0) cond(i<iC) iter(++i) do
+				if(!xSel[i].IsValid()) then xSel.DeleteEntry(i--); --iC; continue; endif;
+				var ^CObj pxO = xSel[i].GetObj();
+				if(pxO^.GetOwner()!=iPlayerID) then xSel.DeleteEntry(i--); --iC; continue; endif;
+
+				if(pxO^.GetClassName()=="aje_torpedo_turtle") then continue; endif;
+
+				//RT#14694 deactivation of command buttons for ninigi water mines
+				if(pxO^.GetClassName()=="ninigi_mineship_mine") then continue; endif;
+
+				var ^CAttribs pxA = pxO^.GetAttribs();
+				if(pxA==null) then xSel.DeleteEntry(i--); --iC; continue; endif;
+
+				if(!pxA^.GetValue("transporter_guid").IsEmpty()) then continue; endif;
+
+				if(sClass.IsEmpty()) then
+					sClass = pxO^.GetClassName();
+				elseif(sClass!=pxO^.GetClassName()) then
+					sClass="diff";
+				endif;
+
+				if((m_dwFlags&FLAG_CAN_MOVE)==0b) then
+					if(pxO^.GetType()!="BLDG"|| (pxA^.GetValueInt("MovingBuilding")>0)) then
+						m_dwFlags |= FLAG_CAN_MOVE;
+					endif;
+				endif;
+
+				if((m_dwFlags&FLAG_HOLD_UNITS)==0b) then
+					var array string	asToks;
+					var int				iMaxPassengers = 0;
+
+					if ( pxO^.GetClassName().Find( "bunker" ) != -1 ) then
+						iMaxPassengers = 4;
+					else
+						iMaxPassengers = pxA^.GetValueInt( "max_passengers" );
+					endif;
+
+					pxA^.GetValue("passenger_guids").Split(asToks, "\n", true);
+					if( (asToks.NumEntries()>0 && pxO^.GetClassName().Find("harbour")<0) || ( iMaxPassengers > 0 ) ) then
+						m_dwFlags |= FLAG_HOLD_UNITS;
+					endif;
+					if(pxO^.GetType()=="BLDG") then
+						m_dwFlags |= FLAG_DISMOUNT_NO_SEC;
+					endif;
+				endif;
+
+				var bool bFight=pxA^.GetValueBool("can_attack");
+
+				if((m_dwFlags&FLAG_CAN_FIGHT)==0b) then
+					var bool bAttckBldg = pxA^.GetValueBool("AttackBuilding");
+					if(pxA^.GetValueInt("damage")>0 && (pxO^.GetType()!="BLDG" || bAttckBldg) && !bIsCurrentlyBuild && bFight) then
+						if(bAttckBldg && pxO^.GetClassName().Find("bunker")>=0) then
+							if((m_dwFlags&FLAG_HOLD_UNITS)!=0b) then
+								m_dwFlags |= FLAG_CAN_FIGHT;
+							endif;
+						else
+							m_dwFlags |= FLAG_CAN_FIGHT;
+						endif;
+					endif;
+				endif;
+
+				if((m_dwFlags&FLAG_SHOW_STANCES)==0b) then					
+					if(bFight && pxO^.GetType()!="BLDG" && pxO^.GetClassName()!="aje_poisoner" && pxO^.GetClassName()!="aje_resource_collector" && pxO^.GetClassName()!="hu_berserker") then
+						m_dwFlags |= FLAG_SHOW_STANCES;
+					endif;
+				endif;
+
+				if((m_dwFlags&FLAG_SHOW_LEVEL_UP)==0b) then
+					if((pxO^.GetType()!="BLDG" || pxO^.GetClassName()=="aje_floating_harbour") && pxO^.GetClassName()!="ninigi_water_turret") then						
+						m_dwFlags |= FLAG_SHOW_LEVEL_UP;
+					endif;
+				endif;
+
+				if((m_dwFlags&FLAG_SHOW_LEVEL_UP)!=0b && (m_dwFlags&FLAG_CAN_LEVEL_UP)==0b) then
+					if(CanLevelUp(pxO)) then
+						m_dwFlags |= FLAG_CAN_LEVEL_UP;
+					endif;
+				endif;
+
+				if((m_dwFlags&FLAG_GATE)==0b) then
+					var CTechTree xTT = pxO^.GetTechTree();
+					var ^CTechTree.CNode pxTTNode = xTT.FindNode(m_pxParent^.GetObjPath(pxO));
+					if(pxTTNode!=null && pxTTNode^.GetSubValueI("gate",0)==1) then
+						m_dwFlags |= FLAG_GATE;
+					endif;
+				endif;
+
+				/* Deprecated ... det jibbet nich mehr
+				if((m_dwFlags&FLAG_SHOW_TRADE)==0b) then
+					if(pxA^.GetValueInt("TradeBuilding")>0) then
+						m_dwFlags |= FLAG_SHOW_TRADE;
+					endif;
+				endif;*/
+
+				if((m_dwFlags&FLAG_SHOW_RALLY)==0b) then
+					if(pxA^.GetValueInt("IsRallySite")>0) then
+						m_dwFlags |= FLAG_SHOW_RALLY;
+					endif;
+				endif;
+
+				if((m_dwFlags&FLAG_SHOW_KILLBTN)==0b) then
+					if(pxO^.GetType()=="BLDG") then
+						m_dwFlags |= FLAG_SHOW_KILLBTN;
+					endif;
+				endif;
+			endfor;
+
+			var bool bCanProduce, bCanBuild, bHasSpecialAct;
+			m_pxParent^.AvailableMenuButtons(xSel, bCanProduce, bCanBuild, bHasSpecialAct);
+
+			if(bCanProduce) then m_dwFlags |= FLAG_CAN_PRODUCE; endif;
+			if(bCanBuild && !bIsCurrentlyBuild) then m_dwFlags |= FLAG_CAN_BUILD; endif;
+			if(bHasSpecialAct && !bIsCurrentlyBuild) then m_dwFlags |= FLAG_HAS_SPECIAL_ACT; endif;
+
+			m_axButtons=0;
+		endif;
+
+		// hide rarely used buttons on multiselection
+		if(bMultiSel) then
+			var bitset dwFlag = m_dwFlags;
+			var int iCnt = 0;
+			for(iCnt=0) cond(dwFlag!=0b) iter(++iCnt) do
+				dwFlag &= (dwFlag.ToInt()-1).ToBitset();
+			endfor;
+			//L KLog.LogInfo( "DaHo", "iCnt = " + iCnt.ToString() );
+			if(sClass=="diff" && iCnt >= 9 ) then
+				// m_dwFlags |= FLAG_HIDE_RALLY|FLAG_HIDE_WALK|FLAG_HIDE_REPAIR;
+				while ( iCnt >= 9 ) do
+					if ( ( m_dwFlags & FLAG_SHOW_RALLY ) == FLAG_SHOW_RALLY ) then
+						m_dwFlags &= ~FLAG_SHOW_RALLY;
+						--iCnt;
+					elseif( ( m_dwFlags & FLAG_CAN_BUILD ) == FLAG_CAN_BUILD ) then
+						m_dwFlags &= ~FLAG_CAN_BUILD;
+						--iCnt;
+					elseif( ( m_dwFlags & FLAG_SHOW_STANCES ) == FLAG_SHOW_STANCES ) then
+						m_dwFlags &= ~FLAG_SHOW_STANCES;
+						--iCnt;
+					else
+						m_dwFlags |= FLAG_HIDE_WALK | FLAG_HIDE_REPAIR;
+						iCnt -= 2;
+					endif;
+				endwhile;
+			endif;
+		endif;
+
+		//	Wenn wir mehrere Einheiten (nicht nur verschiedene Einheitstypen wie bMultiSel nur unterscheidet) haben, dann werden
+		//	die Slots nicht mehr angezeigt, wohl aber der Dismount all button
+		if ( bMultiSelEx ) then
+			m_dwFlags |= FLAG_HIDE_TRANSPORT;
+		endif;
+
+
+		var int iYPos = CClientWrap.GetDesktop()^.GetHeight()-59;
+
+		if(xSel.NumEntries()==0) then
+			m_axButtons=0;
+			m_iType = MENU_NONE;
+			var ^CCmdButton pxBtn = ^(m_axButtons.NewEntryRef());
+			pxBtn^.Initialize("NONE", CCmdButton.TYPE_END_PIECE, m_pxParent, "", "");
+			pxBtn^.SetPos(POS_X, iYPos);
+			return;
+		endif;
+
+
+		var string sTribe = "Invalid";
+		var ^CPlayer pxPlayer = ^(CGameWrap.GetClient().GetPlayer());
+		if(pxPlayer!=null) then
+			sTribe = pxPlayer^.GetPlayerSlot()^.GetTribe();
+		endif;
+
+		m_iType = MENU_UNIT;
+		var ^CCmdButton pxBtn;
+
+		var int iXPos = POS_X;
+
+		var int iNumMenuBtns = 0;
+
+		// >> Menu Buttons <<
+		pxBtn = GetButton(iNumMenuBtns++);
+		pxBtn^.Initialize("NONE", CCmdButton.TYPE_LEFT_SPACER, m_pxParent, "", "");
+		pxBtn^.SetPos(iXPos, iYPos);
+		iXPos += 7;
+
+		if ( ( ( m_dwFlags&FLAG_CAN_PRODUCE ) != 0b ) && ( ( m_dwFlags&FLAG_CAN_BUILD ) == 0b ) )  then
+			pxBtn = GetButton(iNumMenuBtns++);
+			pxBtn^.Initialize("PROD", CCmdButton.TYPE_MENU, m_pxParent, "produce", "");
+			pxBtn^.SetPos(iXPos, iYPos);
+			iXPos += MENUBTN_WIDTH;
+
+			var string sTTTitle;
+			var string sTTText=CClientWrap.GetUIMgr().GetToopTipText("cb_produce",sTTTitle);
+			pxBtn^.SetToolTipText(sTTTitle+" \n"+sTTText);
+		endif;
+
+		if((m_dwFlags&FLAG_CAN_BUILD)!=0b) then
+			pxBtn = GetButton(iNumMenuBtns++);
+			pxBtn^.Initialize("BUIL", CCmdButton.TYPE_MENU, m_pxParent, "build", "");
+			pxBtn^.SetPos(iXPos, iYPos);
+			iXPos += MENUBTN_WIDTH;
+
+			var string sTTTitle;
+			var string sTTText=CClientWrap.GetUIMgr().GetToopTipText("cb_build",sTTTitle);
+			pxBtn^.SetToolTipText(sTTTitle+" \n"+sTTText);
+		endif;
+
+
+		if((m_dwFlags&FLAG_SHOW_STANCES)!=0b) then
+			pxBtn = GetButton(iNumMenuBtns++);
+			pxBtn^.Initialize("STNC", CCmdButton.TYPE_MENU, m_pxParent, "stance", "");
+			pxBtn^.SetPos(iXPos, iYPos);
+			iXPos += MENUBTN_WIDTH;
+
+			var string sTTTitle;
+			var string sTTText=CClientWrap.GetUIMgr().GetToopTipText("cb_set_stance",sTTTitle);
+			pxBtn^.SetToolTipText(sTTTitle+" \n"+sTTText);
+		endif;
+
+		if((m_dwFlags&FLAG_HAS_SPECIAL_ACT)!=0b) then
+			pxBtn = GetButton(iNumMenuBtns++);
+			pxBtn^.Initialize("SPEC", CCmdButton.TYPE_MENU, m_pxParent, "special", "");
+			pxBtn^.SetPos(iXPos, iYPos);
+			iXPos += MENUBTN_WIDTH;
+
+			var string sTTTitle;
+			var string sTTText=CClientWrap.GetUIMgr().GetToopTipText("cb_specials",sTTTitle);
+			pxBtn^.SetToolTipText(sTTTitle+" \n"+sTTText);
+		endif;
+
+		if( ( ( m_dwFlags&FLAG_HOLD_UNITS ) != 0b ) && ( ( m_dwFlags&FLAG_HIDE_TRANSPORT ) == 0b ) ) then
+			pxBtn = GetButton(iNumMenuBtns++);
+			pxBtn^.Initialize("SLOT", CCmdButton.TYPE_MENU, m_pxParent, "slots", "");
+			pxBtn^.SetPos(iXPos, iYPos);
+			iXPos += MENUBTN_WIDTH;
+
+			var string sTTTitle;
+			var string sTTText=CClientWrap.GetUIMgr().GetToopTipText("cb_unload",sTTTitle);
+			pxBtn^.SetToolTipText(sTTTitle+" \n"+sTTText);
+		endif;
+
+		if((m_dwFlags&FLAG_SHOW_TRADE)!=0b) then
+			pxBtn = GetButton(iNumMenuBtns++);
+			pxBtn^.Initialize("TRAD", CCmdButton.TYPE_MENU, m_pxParent, "trade", "");
+			pxBtn^.SetPos(iXPos, iYPos);
+			iXPos += MENUBTN_WIDTH;
+
+			var string sTTTitle;
+			var string sTTText=CClientWrap.GetUIMgr().GetToopTipText("cb_trade",sTTTitle);
+			pxBtn^.SetToolTipText(sTTTitle+" \n"+sTTText);
+		endif;
+
+		if(iNumMenuBtns>=2) then
+			pxBtn = GetButton(iNumMenuBtns++);
+			pxBtn^.Initialize("NONE", CCmdButton.TYPE_MENU, m_pxParent, "", "");
+			pxBtn^.SetPos(iXPos, iYPos);
+			pxBtn^.SetDisabled(true);
+			iXPos += MENUBTN_WIDTH;
+		endif;
+
+		// >> Action Buttons <<
+		var int iAddActButtons = 0;
+
+		if((m_dwFlags&FLAG_SHOW_RALLY)!=0b && (m_dwFlags&FLAG_HIDE_RALLY)==0b) then
+			pxBtn = GetButton(iNumMenuBtns+(iAddActButtons++));
+			pxBtn^.Initialize("ACTN", CCmdButton.TYPE_ACTION, m_pxParent, "rallye", "/RallyPoint");
+			pxBtn^.SetPos(iXPos, iYPos);
+			iXPos += ACTBTN_WIDTH;
+
+			var string sTTTitle;
+			var string sTTText=CClientWrap.GetUIMgr().GetToopTipText("cb_set_rallypoint",sTTTitle);
+			pxBtn^.SetToolTipText(sTTTitle+" \n"+sTTText);
+		endif;
+
+
+		if((m_dwFlags&FLAG_CAN_FIGHT)!=0b) then
+			pxBtn = GetButton(iNumMenuBtns+(iAddActButtons++));
+			pxBtn^.Initialize("ACTN", CCmdButton.TYPE_ACTION, m_pxParent, "attack",
+							  "/Actions/"+sTribe+"/Moves/CHTR/Attack");
+			pxBtn^.SetPos(iXPos, iYPos);
+			iXPos += ACTBTN_WIDTH;
+
+			var string sTTTitle;
+			var string sTTText=CClientWrap.GetUIMgr().GetToopTipText("cb_attack",sTTTitle);
+			pxBtn^.SetToolTipText(sTTTitle+" \n"+sTTText);
+		endif;
+
+		if((m_dwFlags&FLAG_CAN_FIGHT)!=0b && (m_dwFlags&FLAG_CAN_MOVE)!=0b) then
+			pxBtn = GetButton(iNumMenuBtns+(iAddActButtons++));
+			pxBtn^.Initialize("ACTN", CCmdButton.TYPE_ACTION, m_pxParent, "agrwalk",
+							  "/Actions/"+sTribe+"/Moves/CHTR/AggressiveTarget");
+			pxBtn^.SetPos(iXPos, iYPos);
+			iXPos += ACTBTN_WIDTH;
+
+			var string sTTTitle;
+			var string sTTText=CClientWrap.GetUIMgr().GetToopTipText("cb_agressive_walk",sTTTitle);
+			pxBtn^.SetToolTipText(sTTTitle+" \n"+sTTText);
+		endif;
+
+		if((m_dwFlags&FLAG_CAN_MOVE)!=0b && (m_dwFlags&FLAG_HIDE_WALK)==0b) then
+			pxBtn = GetButton(iNumMenuBtns+(iAddActButtons++));
+			pxBtn^.Initialize("ACTN", CCmdButton.TYPE_ACTION, m_pxParent, "walkto",
+								  "/Actions/"+sTribe+"/Moves/CHTR/Walk");
+			pxBtn^.SetPos(iXPos, iYPos);
+			iXPos += ACTBTN_WIDTH;
+
+			var string sTTTitle;
+			var string sTTText=CClientWrap.GetUIMgr().GetToopTipText("cb_walk",sTTTitle);
+			pxBtn^.SetToolTipText(sTTTitle+" \n"+sTTText);
+		endif;
+
+
+		if((m_dwFlags&FLAG_HOLD_UNITS)!=0b) then
+			pxBtn = GetButton(iNumMenuBtns+(iAddActButtons++));
+
+			var string sCmd = "/DismountAll";
+			if((m_dwFlags&FLAG_DISMOUNT_NO_SEC)!=0b) then
+				sCmd += " /NoSecInp";
+			endif;
+
+			pxBtn^.Initialize("ACTN", CCmdButton.TYPE_ACTION, m_pxParent, "disemb", sCmd);
+			pxBtn^.SetPos(iXPos, iYPos);
+			iXPos += ACTBTN_WIDTH;
+
+			var string sTTTitle;
+			var string sTTText=CClientWrap.GetUIMgr().GetToopTipText("cb_dismount_all",sTTTitle);
+			pxBtn^.SetToolTipText(sTTTitle+" \n"+sTTText);
+		endif;
+
+		if((m_dwFlags&FLAG_CAN_BUILD)!=0b && (m_dwFlags&FLAG_HIDE_REPAIR)==0b) then
+			pxBtn = GetButton(iNumMenuBtns+(iAddActButtons++));
+			pxBtn^.Initialize("ACTN", CCmdButton.TYPE_ACTION, m_pxParent, "repair", "/Repair");
+			pxBtn^.SetPos(iXPos, iYPos);
+			iXPos += ACTBTN_WIDTH;
+
+			var string sTTTitle;
+			var string sTTText=CClientWrap.GetUIMgr().GetToopTipText("cb_repair",sTTTitle);
+			pxBtn^.SetToolTipText(sTTTitle+" \n"+sTTText);
+		endif;
+
+		if((m_dwFlags&FLAG_CAN_MOVE)!=0b || (m_dwFlags&FLAG_CAN_FIGHT)!=0b) then
+			pxBtn = GetButton(iNumMenuBtns+(iAddActButtons++));
+			pxBtn^.Initialize("ACTN", CCmdButton.TYPE_ACTION, m_pxParent, "stop",
+							  "/Actions/"+sTribe+"/Moves/CHTR/Stop");
+			pxBtn^.SetPos(iXPos, iYPos);
+			iXPos += ACTBTN_WIDTH;
+
+			var string sTTTitle;
+			var string sTTText=CClientWrap.GetUIMgr().GetToopTipText("cb_stop",sTTTitle);
+			pxBtn^.SetToolTipText(sTTTitle+" \n"+sTTText);
+		endif;
+
+		if((m_dwFlags&FLAG_GATE)!=0b) then
+			pxBtn = GetButton(iNumMenuBtns+(iAddActButtons++));
+			pxBtn^.Initialize("ACTN", CCmdButton.TYPE_ACTION, m_pxParent, "gtopen", "/Actions/"+sTribe+"/Moves/BLDG/Open");
+			pxBtn^.SetPos(iXPos, iYPos);
+			iXPos += ACTBTN_WIDTH;
+			var string sTTTitle;
+			var string sTTText=CClientWrap.GetUIMgr().GetToopTipText("cb_gate_open",sTTTitle);
+			pxBtn^.SetToolTipText(sTTTitle+" \n"+sTTText);
+
+			pxBtn = GetButton(iNumMenuBtns+(iAddActButtons++));
+			pxBtn^.Initialize("ACTN", CCmdButton.TYPE_ACTION, m_pxParent, "gtclose", "/Actions/"+sTribe+"/Moves/BLDG/Close");
+			pxBtn^.SetPos(iXPos, iYPos);
+			iXPos += ACTBTN_WIDTH;
+			sTTTitle.Empty();
+			sTTText=CClientWrap.GetUIMgr().GetToopTipText("cb_gate_close",sTTTitle);
+			pxBtn^.SetToolTipText(sTTTitle+" \n"+sTTText);
+
+			pxBtn = GetButton(iNumMenuBtns+(iAddActButtons++));
+			pxBtn^.Initialize("ACTN", CCmdButton.TYPE_ACTION, m_pxParent, "gtauto", "/Actions/"+sTribe+"/Moves/BLDG/Auto");
+			pxBtn^.SetPos(iXPos, iYPos);
+			iXPos += ACTBTN_WIDTH;
+			sTTTitle.Empty();
+			sTTText=CClientWrap.GetUIMgr().GetToopTipText("cb_gate_auto",sTTTitle);
+			pxBtn^.SetToolTipText(sTTTitle+" \n"+sTTText);
+		endif;
+
+		if((m_dwFlags&FLAG_SHOW_LEVEL_UP)!=0b) then			
+			pxBtn = GetButton(iNumMenuBtns+(iAddActButtons++));
+			pxBtn^.Initialize("ACTN", CCmdButton.TYPE_ACTION, m_pxParent, "levelup", "/LevelUp");
+			pxBtn^.SetPos(iXPos, iYPos);
+			iXPos += ACTBTN_WIDTH;
+			pxBtn^.SetDisabled((m_dwFlags&FLAG_CAN_LEVEL_UP)==0b);
+
+			var string sTTTitle;
+			var string sTTText=CClientWrap.GetUIMgr().GetToopTipText("cb_level_up",sTTTitle);
+			if((m_dwFlags&FLAG_CAN_LEVEL_UP)==0b) then
+				sTTText+=" \n"+CLocalizer.Get().Translate("_ObjCommandBar_NoLevelUp");
+			endif;
+			var string sToolTipAdd;
+			var ^CObj pxObj=m_xSelObj.GetObj();
+			if(pxObj!=null)then
+				var int iCurLevel=-1;
+				var ^CAttribs pxAttribs = pxObj^.GetAttribs();
+				if(pxAttribs!=null)then
+					iCurLevel=pxAttribs^.GetValueInt("level");
+				endif;
+				if(iCurLevel>=0 && iCurLevel<4)then
+					var ^CAttribs pxPlayerAttr=CGameWrap.GetClient().GetPlayer().GetAttribs();
+					if(pxPlayerAttr!=null)then
+						var int iScalpsAvailable=pxPlayerAttr^.GetValueInt("iron");
+						var int iScalpsNeeded=pxPlayerAttr^.GetValueInt("foodcost_lvl_"+(iCurLevel+1).ToString());
+						sToolTipAdd="%/food:0/stone:0/wood:0/skulls:"+iScalpsNeeded.ToString();
+						if(iScalpsNeeded>iScalpsAvailable)then
+							sToolTipAdd+=":NA";
+						endif;
+						sToolTipAdd+="%";
+					endif;
+				endif;
+			endif;
+			sTTText+=sToolTipAdd;
+			pxBtn^.SetToolTipText(sTTTitle+" \n"+sTTText);
+		endif;
+
+		if((m_dwFlags&FLAG_SHOW_KILLBTN)!=0b) then
+			pxBtn = GetButton(iNumMenuBtns+(iAddActButtons++));
+			pxBtn^.Initialize("ACTN", CCmdButton.TYPE_ACTION, m_pxParent, "kill", "/Kill");
+			pxBtn^.SetPos(iXPos, iYPos);
+			iXPos += ACTBTN_WIDTH;
+			var string sTTTitle;
+			var string sTTText=CClientWrap.GetUIMgr().GetToopTipText("cb_kill",sTTTitle);
+			pxBtn^.SetToolTipText(sTTTitle+" \n"+sTTText);
+		endif;
+
+		if(iAddActButtons==0 && iNumMenuBtns>=2) then
+			if(m_axButtons.NumEntries()>1) then
+				//m_axButtons=0;
+				pxBtn = ^(m_axButtons[m_axButtons.NumEntries()-1]);
+				//iXPos = 212;
+				pxBtn^.Initialize("NONE", CCmdButton.TYPE_END_PIECE, m_pxParent, "", "");
+				pxBtn^.SetPos(iXPos-MENUBTN_WIDTH, iYPos);
+				return;
+			endif;
+		endif;
+
+		pxBtn = GetButton(iNumMenuBtns+(iAddActButtons++));
+		pxBtn^.Initialize("NONE", CCmdButton.TYPE_END_PIECE, m_pxParent, "", "");
+		pxBtn^.SetPos(iXPos, iYPos);
+		iXPos += ACTBTN_WIDTH;
+
+		var int i, iC = m_axButtons.NumEntries();
+		for(i=0) cond(i<iC) iter(++i)do
+			var	string	sCommand = m_axButtons[i].GetCommand();
+
+			if ( sCommand != "gtopen" && sCommand != "gtclose" && sCommand != "gtauto" ) then
+				m_axButtons[i].SetButtonSelected(xSelected.AsString()==m_axButtons[i].GetCategory());
+			endif;
+		endfor;
+	endproc;
+
+	export proc void ValidateCommands()
+		var int i, iC = m_axCmdButtons.NumEntries();
+		for(i=0) cond(i<iC) iter(++i) do
+			m_axCmdButtons[i].Validate();
+		endfor;
+	endproc;
+
+	export proc CClntHndl GetSelObj()
+		return m_xSelObj;
+	endproc;
+
+//	proc	int	GetSubPassengerCount( ^CObj p_pxPassenger )
+//		KLog.LogInfo( "DaHo", "GetSubPassengerCount()" );
+//		if ( p_pxPassenger == null ) then return(0); endif;
+//
+//		var	^CAttribs		pxAttribs 		= p_pxPassenger^.GetAttribs();
+//		if ( pxAttribs ==  null ) then return(0); endif;
+//
+//		var	string			sPassengerGuids	= pxAttribs^.GetValue( "passenger_guids" );
+//		if ( sPassengerGuids.IsEmpty() ) then return(0); endif;
+//
+//		var	array string	asPassengerGuid;
+//		sPassengerGuids.Split( asPassengerGuid, "\n", true );
+//
+//		var	int				i, iC = asPassengerGuid.NumEntries();
+//		var	int				iCount	= 0;
+//
+//		for(i=0)cond(i<iC)iter(++i)do
+//			var	CGuid	xGuid;
+//
+//			xGuid.FromString( asPassengerGuid[i] );
+//			var	^CObj	pxObj = CGameWrap.GetObjMgr().GetObj( xGuid );
+//			if ( pxObj == null ) then continue; endif;
+//			iCount += 1;
+//			iCount += GetSubPassengerCount( pxObj );
+//		endfor;
+//		return( iCount );
+//	endproc;
+
+	proc	int	AddSubPassenger( ^CObj p_pxPassenger, string p_sSubCat, CFourCC p_xCurFlyout, ref int p_riPasIdx )
+//L		KLog.LogInfo( "DaHo", "GetSubPassengerCount()" );
+		if ( p_pxPassenger == null ) then return(0); endif;
+
+		var	^CAttribs		pxAttribs 		= p_pxPassenger^.GetAttribs();
+		if ( pxAttribs == null ) then return(0); endif;
+
+		var	string			sPassengerGuids	= pxAttribs^.GetValue( "passenger_guids" );
+		if ( sPassengerGuids.IsEmpty() ) then return(0); endif;
+
+		var	array string	asPassengerGuid;
+		sPassengerGuids.Split( asPassengerGuid, "\n", true );
+
+		var	int				i, iC = asPassengerGuid.NumEntries();
+		var	int				iCount	= 0;
+
+		if ( iC == 0 ) then return( 0 ); endif;
+
+		for(i=0)cond(i<iC)iter(++i)do
+			var	CGuid	xGuid;
+			xGuid.FromString( asPassengerGuid[i] );
+			var	^CObj	pxObj = CGameWrap.GetObjMgr().GetObj( xGuid );
+			if ( pxObj == null ) then continue; endif;
+			var	^CCmdButton pxBtn	= ^(m_axCmdButtons.NewEntryRef());
+			var	string		sCmd	= "/Unboard|" + p_sSubCat + "|" + pxObj^.GetGuid().ToString();
+			pxBtn^.Initialize( p_xCurFlyout.AsString(), CCmdButton.TYPE_MENUCMD, m_pxParent, sCmd, m_pxParent^.GetObjPath( pxObj ), p_riPasIdx++ );
+
+			var string sTTTitle, sTTText, sTTID = CHelpMenu.GetObjHelpitemKey(pxObj);;
+			sTTText = CClientWrap.GetUIMgr().GetToopTipText(sTTID, sTTTitle);
+			var	string	sTooltip = sTTTitle;
+			if ( pxObj^.GetType() == "CHTR" || pxObj^.GetType() == "ANML" || pxObj^.GetType() == "VHCL" ) then
+				var ^CAttribs pxAttr = pxObj^.GetAttribs();
+				if(pxAttr!=null) then
+					sTooltip += " \n"+CUIMgr.GetLocalizedNewstickerMsg("_UI_CommandBar_Level\t"+(pxAttr^.GetValueInt("level")+1).ToString());
+				endif;
+			endif;
+			pxBtn^.SetToolTipText(sTooltip);
+			pxBtn^.SetDisabled( true );
+			iCount++;
+		endfor;
+		return( iCount );
+	endproc;
+
+	export proc void InitMenuCommands(CObjList p_xSelection, CFourCC p_xCurFlyout)
+		m_axCmdButtons=0;
+		m_pxParent^.GetFlyoutWindow()^.Clear();
+
+		var array int aiMapNextID;
+		var array string asMapSubCat;
+
+		aiMapNextID = 4;
+		asMapSubCat = 4;
+		asMapSubCat[0]="ATR";
+		asMapSubCat[1]="VTR";
+		asMapSubCat[2]="STR";
+		asMapSubCat[3]="BTR";
+		var int iTrspCnt=0;
+
+		//var int iCurTrspID = -1;
+		if(p_xSelection.NumEntries()<=0) then return; endif;
+		if(p_xCurFlyout=="SLOT") then
+			var int iObjID, iNumObjs = p_xSelection.NumEntries();
+			for(iObjID=0) cond(iObjID<iNumObjs) iter(++iObjID) do
+				var ^CObj pxObj = p_xSelection[iObjID].GetObj();
+				if(pxObj!=null) then
+					var CFourCC xType = pxObj^.GetType();
+					if(xType=="CHTR" || xType=="FGHT")then continue; endif;
+
+					var string sSubCat = xType.AsString().GetAt(0)+"TR";
+					var int iMapIdx = asMapSubCat.FindEntry(sSubCat);
+					var int iID = -1;
+					if(iMapIdx>=0) then
+						iID = aiMapNextID[iMapIdx]++;
+					else
+						continue;
+					endif;
+
+					sSubCat += iID.ToString();
+
+					var int iPasIdx=0;
+					var ^CAttribs pxA = pxObj^.GetAttribs();
+					if(pxA==null) then continue; endif;
+
+					var string sPasGuids = pxA^.GetValue("passenger_guids");
+					//----< DaHo - Leere Plätze anzeigen >--- Die untere Zeile wieder einkommentieren
+//					if(sPasGuids.IsEmpty())then continue; endif;
+					//----------------------------------------
+					var array string asToks;
+					sPasGuids.Split(asToks, "\n", true);
+					if(++iTrspCnt>=CFlyout.MAX_CATEGORIES) then return; endif;
+
+					//----< DaHo - Leere Plätze anzeigen >---
+
+					var CTechTree			xTT = pxObj^.GetTechTree();
+					var	string				sTT	= pxA^.GetValue( "ObjPath" );
+					var	^CTechTree.CNode	pxN	= xTT.FindNode( sTT + "/max_passengers" );
+					var	int					iCM	= 0;
+
+					if ( pxN != null ) then
+						iCM = pxN^.GetValueI();
+					endif;
+
+					if ( pxObj^.GetClassName().Find( "bunker" ) != -1 ) then
+						iCM = 4;
+					endif;
+
+					//----------------------------------------
+
+					var int i, iC = asToks.NumEntries();
+					var	int	iAdditional = 0;	//	Einheiten in Einheiten in Einheiten
+					//----< DaHo - Leere Plätze anzeigen >---
+
+					//----------------------------------------
+
+					for(i=0) cond(i<iC) iter(++i) do
+						var CGuid xG; xG.FromString(asToks[i]);
+						var ^CObj pxPas = CGameWrap.GetObjMgr().GetObj(xG);
+						if(pxPas==null) then continue; endif;
+						var ^CCmdButton pxBtn = ^(m_axCmdButtons.NewEntryRef());
+						var string sCmd = "/Unboard|"+sSubCat+"|"+pxPas^.GetGuid().ToString();
+
+						pxBtn^.Initialize(p_xCurFlyout.AsString(), CCmdButton.TYPE_MENUCMD, m_pxParent, sCmd, m_pxParent^.GetObjPath(pxPas), iPasIdx++);
+						var string sTTTitle, sTTText, sTTID = CHelpMenu.GetObjHelpitemKey(pxPas);;
+						sTTText = CClientWrap.GetUIMgr().GetToopTipText(sTTID, sTTTitle);
+						var string sTooltip = sTTTitle;
+						if (pxPas^.GetType()=="CHTR" || pxPas^.GetType() == "ANML" || pxPas^.GetType() == "VHCL" ) then
+							var ^CAttribs pxAttr = pxPas^.GetAttribs();
+							if(pxAttr!=null) then
+								sTooltip += "  \n"+CUIMgr.GetLocalizedNewstickerMsg("_UI_CommandBar_Level\t"+(pxAttr^.GetValueInt("level")+1).ToString());
+							endif;
+						endif;
+						pxBtn^.SetToolTipText(sTooltip);
+						iAdditional += AddSubPassenger( pxPas, sSubCat, p_xCurFlyout, iPasIdx );
+					endfor;
+
+//L					KLog.LogInfo( "DaHo", "Additonal = " + iAdditional.ToString() );
+
+					if ( iCM > 0 ) then
+						iCM = iCM - ( iC + iAdditional );
+					endif;
+
+					//----< DaHo - Leere Plätze anzeigen >---
+
+					for(i=0)cond(i<iCM)iter(++i) do
+						var ^CCmdButton	pxBtn	= ^(m_axCmdButtons.NewEntryRef());
+						var string		sCmd	= "/Unboard|" + sSubCat + "|none";
+						pxBtn^.Initialize( p_xCurFlyout.AsString(), CCmdButton.TYPE_MENUCMD, m_pxParent, sCmd, "/", iPasIdx++);
+						pxBtn^.SetDisabled( true );
+					endfor;
+
+					//----------------------------------------
+				endif;
+			endfor;
+		elseif( p_xCurFlyout == "BUIL" ) then
+			m_pxParent^.GetFlyoutWindow()^.SetCategory( 0, "ECON" );
+			m_pxParent^.GetFlyoutWindow()^.SetCategory( 1, "COMB" );
+			m_pxParent^.GetFlyoutWindow()^.SetCategory( 2, "DEFE" );
+		elseif( p_xCurFlyout == "PROD" ) then
+			if ( m_pxParent^.m_sTribe == "Aje" ) then
+				m_pxParent^.GetFlyoutWindow()^.SetCategory( 0, "UMGR" );
+				m_pxParent^.GetFlyoutWindow()^.SetCategory( 1, "UPGR" );
+				m_pxParent^.GetFlyoutWindow()^.SetCategory( 2, "UNIT" );
+			else
+				m_pxParent^.GetFlyoutWindow()^.SetCategory( 0, "UPGR" );
+				m_pxParent^.GetFlyoutWindow()^.SetCategory( 1, "UNIT" );
+			endif;
+		elseif( p_xCurFlyout == "SPEC" ) then
+//L			KLog.LogInfo( "DaHo", "Special Moves" );
+			m_pxParent^.GetFlyoutWindow()^.SetCategory( 0, "UNIT" );
+			m_pxParent^.GetFlyoutWindow()^.SetCategory( 1, "" );
+		endif;
+
+		var array string asCats;
+		asCats=1;
+		asCats[0] = p_xCurFlyout.AsString();
+
+		var CObjList xSel = m_pxParent^.m_xCurSelection;
+		/*if(p_xCurFlyout=="PROD" && xSel.NumEntries()>0) then
+			var CClntHndl xObj = xSel[0];
+		//	xSel.Clear();
+			//xSel.Include(xObj);
+			m_xSelObj = xSel[0];
+		else
+			m_xSelObj.Invalidate();
+		endif;
+		*/
+		/*m_xSelObj.Invalidate();
+		if(xSel.NumEntries()>0) then
+			m_xSelObj=xSel[0];
+		endif;*/
+
+
+		var ^CObj pxO;
+		if(xSel.NumEntries()>0) then pxO=xSel[0].GetObj(); endif;
+		if(pxO==null) then return; endif;
+		var CTechTree xTT = pxO^.GetTechTree();
+
+		var string sLocalUpgrade;
+		var ^CAttribs pxA = pxO^.GetAttribs();
+		if(pxA!=null) then
+			sLocalUpgrade = pxA^.GetValue("LocalUpgrade");
+		endif;
+
+		m_pxParent^.GetFlyoutWindow()^.SetLocalUpgrade(sLocalUpgrade);
+
+		var array string	asNodes;
+		var array int 		aiLocIdx;
+		if(m_pxParent^.GetAvailableActions(xSel, ^asNodes, ^aiLocIdx, asCats)) then
+			var int i,iC = asNodes.NumEntries();
+			for(i=0) cond(i<iC) iter(++i) do
+				var ^CTechTree.CNode pxAction = xTT.FindNode(asNodes[i]);
+				if(pxAction==null) then continue; endif;
+				var ^CTechTree.CNode pxLocs = pxAction^.GetSub("locations");
+				if(pxLocs==null) then
+					continue;
+				endif;
+				var ^CTechTree.CNode pxLocation = pxLocs^.GetSub(aiLocIdx[i]);
+				if(pxLocation!=null) then
+					var ^CTechTree.CNode pxUI = pxLocation^.GetSub("uiposition");
+					if(pxUI==null) then continue; endif;
+					var string sSubCat = pxUI^.GetSubValue("subcat", "");
+					var ^CCmdButton pxBtn = ^(m_axCmdButtons.NewEntryRef());
+					pxBtn^.Initialize(p_xCurFlyout.AsString(), CCmdButton.TYPE_MENUCMD, m_pxParent, sSubCat, asNodes[i], aiLocIdx[i]);
+				endif;
+			endfor;
+		endif;
+		m_pxParent^.GetFlyoutWindow()^.Sort();
+	endproc;
+
+endclass;
+
+class CCommandBar inherit CWindow
+
+	const 		int				X_POS = 209;
+
+	const 		bitset			UPDATE_ACTIONMENU_SEL			=     01b;
+	const 		bitset			UPDATE_ACTIONMENU_NONSEL		=    010b;
+	const 		bitset			UPDATE_LEVELUPBUTTONS			=   0100b;
+	const 		bitset			UPDATE_FLYOUT					=  01000b;
+	const 		bitset			UPDATE_ACTIONMENU_BUILDINGBUILD	= 010000b;
+
+	var 		bitset			m_dwUpdateFlags;
+
+	var			bool			m_bCmdBarAccelActive;
+	var			int				m_iRow;
+	var			int				m_iCol;
+
+	var			^CInGameScreen	m_pxIScreen;
+	var			^CDesktop		m_pxDesktop;
+	var			^CObjMgr		m_pxObjMgr;
+	export var	string			m_sTribe;
+	export var	CObjList		m_xCurSelection;
+	export var 	CObjList		m_xOldSelection;
+	export var	CTechTree		m_xCurTechTree;
+	var 		CFourCC			m_xCurMode;
+	var 		CFourCC			m_xCurFlyout;
+
+	var 		^CActionMenu	m_pxActionMenu;
+	var 		^CFlyout		m_pxFlyout;
+	var 		^CPlayer		m_pxPlayer;
+
+	var array 	string			m_asResName;
+	var array 	int				m_aiResValue;
+
+	export constructor()
+		SetVisible(false);
+	endconstructor;
+
+	export destructor()
+		delete m_pxActionMenu;
+		if(m_pxFlyout!=null) then m_pxFlyout^.Destroy(); endif;
+	enddestructor;
+
+	export proc bool IsAccelActive( )
+		return( m_bCmdBarAccelActive );
+	endproc;
+
+	export proc int GetAccelRow( )
+		return( m_iRow );
+	endproc;
+
+	export proc void Init( ^CDesktop p_pxDesktop, ^CInGameScreen p_pxScreen, string p_sTribe )
+		delete m_pxActionMenu;
+
+		if( m_pxFlyout != null ) then
+			m_pxFlyout^.Destroy();
+		endif;
+
+		m_pxIScreen	= p_pxScreen;
+		m_pxDesktop	= p_pxDesktop;
+		m_sTribe	= p_sTribe;
+		m_xCurMode	= "NONE";
+
+		m_xCurSelection.Clear();
+		m_xOldSelection.Clear();
+		m_pxActionMenu 	= new CActionMenu(this);
+		m_pxFlyout 		= new CFlyout();
+
+		m_pxFlyout^.m_pxCommandBar=this;
+
+		m_pxIScreen^.AddChild(m_pxFlyout);
+
+		m_pxFlyout^.SetTransparent(true);
+		m_pxFlyout^.SetVisible(false);
+		m_pxFlyout^.SetActiveFlyout(false);
+		m_pxFlyout^.SetBackground(true);
+		m_pxFlyout^.SetSuitAlpha(true);
+		m_pxFlyout^.SetSize(600, 138);
+		m_pxFlyout^.SetPos(X_POS, CClientWrap.GetDesktop()^.GetHeight()-197);
+
+		m_xCurFlyout	= "none";
+
+		var ^CPlayer pxPlayer = ^(CGameWrap.GetClient().GetPlayer());
+		if(pxPlayer!=null) then
+			m_xCurTechTree = pxPlayer^.GetPlayerTechTree();
+		endif;
+
+		m_asResName = 4;
+		m_asResName[0] = "food";
+		m_asResName[1] = "wood";
+		m_asResName[2] = "stone";
+		m_asResName[3] = "iron";
+		m_aiResValue = 4;
+
+		InitCommandBarAccelerators();
+
+		//L KLog.LogInfo("CaOr","CmdBar init");
+
+		m_pxPlayer = ^(CGameWrap.GetClient().GetPlayer());
+	endproc;
+
+	proc void InitCommandBarAccelerators( )
+		//L KLog.LogInfo( "DaHo", "InitCommandBarAccelerators()" );
+		m_bCmdBarAccelActive	= false;
+		m_iRow					= -1;
+		m_iCol					= -1;
+
+		m_pxDesktop^.SetCmd( "CmdBar_Accel_R02",	Accel_R02 );	//	Q	\
+		m_pxDesktop^.SetCmd( "CmdBar_Accel_R01",	Accel_R01 );	//	A	 >	Build / Produce
+		m_pxDesktop^.SetCmd( "CmdBar_Accel_R00",	Accel_R00 );	//	Y	/
+
+		m_pxDesktop^.SetCmd( "CmdBar_Accel_R12",	Accel_R12 );	//	W	\
+		m_pxDesktop^.SetCmd( "CmdBar_Accel_R11",	Accel_R11 );	//	S	 >	Stances, nur X wird verwendet
+		m_pxDesktop^.SetCmd( "CmdBar_Accel_R10",	Accel_R10 );	//	X	/
+
+		m_pxDesktop^.SetCmd( "CmdBar_Accel_R22",	Accel_R22 );	//	E	\
+		m_pxDesktop^.SetCmd( "CmdBar_Accel_R21",	Accel_R21 );	//	D	 >	Specials, C für normale, D und E für Heros
+		m_pxDesktop^.SetCmd( "CmdBar_Accel_R20",	Accel_R20 );	//	C	/
+
+		m_pxDesktop^.SetCmd( "CmdBar_Accel_R30",	Accel_R30 );	//	V
+		m_pxDesktop^.SetCmd( "CmdBar_Accel_R40",	Accel_R40 );	//	B
+		m_pxDesktop^.SetCmd( "CmdBar_Accel_R50",	Accel_R50 );	//	N
+		m_pxDesktop^.SetCmd( "CmdBar_Accel_R60",	Accel_R60 );	//	M
+
+		m_pxDesktop^.SetCmd( "CmdBar_Accel_1",		Accel_K1 );		//	1
+		m_pxDesktop^.SetCmd( "CmdBar_Accel_2",		Accel_K2 );		//	2
+		m_pxDesktop^.SetCmd( "CmdBar_Accel_3",		Accel_K3 );		//	3
+		m_pxDesktop^.SetCmd( "CmdBar_Accel_4",		Accel_K4 );		//	4
+		m_pxDesktop^.SetCmd( "CmdBar_Accel_5",		Accel_K5 );		//	5
+		m_pxDesktop^.SetCmd( "CmdBar_Accel_6",		Accel_K6 );		//	6
+		m_pxDesktop^.SetCmd( "CmdBar_Accel_7",		Accel_K7 );		//	7
+		m_pxDesktop^.SetCmd( "CmdBar_Accel_8",		Accel_K8 );		//	8
+		m_pxDesktop^.SetCmd( "CmdBar_Accel_9",		Accel_K9 );		//	9
+		m_pxDesktop^.SetCmd( "CmdBar_Accel_0",		Accel_K0 );		//	0
+		//m_pxDesktop^.SetCmd( "CmdBar_Accel_0",		Accel_KA );		//	ß	Diese beiden Tasten sind etwas tricky
+		//m_pxDesktop^.SetCmd( "CmdBar_Accel_0",		Accel_KB );		//	´	Diese beiden Tasten sind etwas tricky
+
+		m_pxDesktop^.SetCmd( "CmdBar_Accel_Abort",	Accel_Abort );	//	Escape
+
+		m_pxDesktop^.EnableAccelerator( "CmdBar_Accel_Abort",	false );
+		m_pxDesktop^.EnableAccelerator( "CmdBar_Accel_1", 		false );
+		m_pxDesktop^.EnableAccelerator( "CmdBar_Accel_2", 		false );
+		m_pxDesktop^.EnableAccelerator( "CmdBar_Accel_3", 		false );
+		m_pxDesktop^.EnableAccelerator( "CmdBar_Accel_4", 		false );
+		m_pxDesktop^.EnableAccelerator( "CmdBar_Accel_5", 		false );
+		m_pxDesktop^.EnableAccelerator( "CmdBar_Accel_6", 		false );
+		m_pxDesktop^.EnableAccelerator( "CmdBar_Accel_7", 		false );
+		m_pxDesktop^.EnableAccelerator( "CmdBar_Accel_8", 		false );
+		m_pxDesktop^.EnableAccelerator( "CmdBar_Accel_9", 		false );
+		m_pxDesktop^.EnableAccelerator( "CmdBar_Accel_0",		false );
+	endproc;
+
+	proc void Update(bitset p_dwFlag)
+		InvalidateContent();
+		m_dwUpdateFlags |= p_dwFlag;
+	endproc;
+
+	export proc void OnUpdateContent()
+		var bool	bSelChangeDone	= false,
+					bCBAActive		= m_bCmdBarAccelActive;
+
+		var int		iRow			= m_iRow,
+					iCol			= m_iCol;
+
+		m_pxActionMenu^.SetSelObj();
+		
+		if((m_dwUpdateFlags&UPDATE_ACTIONMENU_SEL) != 0b)then
+			m_pxActionMenu^.UpdateMenu(true);
+			OpenFlyout();
+			bSelChangeDone = true;
+		endif;
+		if(!bSelChangeDone && (m_dwUpdateFlags&UPDATE_ACTIONMENU_NONSEL) != 0b)then
+			m_pxActionMenu^.UpdateMenu(false);
+		endif;
+		if((m_dwUpdateFlags&UPDATE_LEVELUPBUTTONS) != 0b)then
+			m_pxActionMenu^.ValidateLevelUpBtn();
+		endif;
+		if((m_dwUpdateFlags&UPDATE_FLYOUT) != 0b)then
+			m_pxActionMenu^.InitMenuCommands(m_xCurSelection, m_xCurFlyout);
+			// m_pxFlyout^.UpdateCommands();
+		endif;
+
+		m_iRow = iRow;
+		m_iCol = iCol;
+
+		EnableCommandShortCuts( bCBAActive );
+
+		m_dwUpdateFlags = 0b;
+		CWindowMgr.Get().BringWindowToTop(CClientWrap.GetDesktop(),true);
+	endproc;
+
+	export proc bool	IsBuildingBuild()
+		return( ( m_dwUpdateFlags & UPDATE_ACTIONMENU_BUILDINGBUILD ) == UPDATE_ACTIONMENU_BUILDINGBUILD );
+	endproc;
+
+	export proc bool CmdBarAccel( int p_iCol, int p_iRow, int p_iBtn )
+//L		KLog.LogInfo( "DaHo", "CCommandBar::CmdBarAccel( " + p_iCol.ToString() + ", " + p_iRow.ToString() + ", " + p_iBtn.ToString() + " )" );
+
+		if ( m_xCurSelection.NumEntries() == 0 ) then
+			return( false );
+		endif;
+
+		if ( p_iCol != -1 && p_iRow != -1 && p_iBtn == -1 ) then
+			var	CFourCC	xFlyout 	= "NONE";
+			var	bool	bActivate	= false;
+
+			if ( p_iCol == 0 ) then														//	Build oder Production Flyout
+				if ( m_pxActionMenu^.FindMatchingMenuBtn( "BUIL" ) != null ) then		//	BUILD hat Priorität über PRODUCTION
+					if ( m_xCurFlyout != "BUIL" ) then
+						xFlyout = "BUIL";
+					endif;
+					bActivate = true;
+				elseif ( m_pxActionMenu^.FindMatchingMenuBtn( "PROD" ) != null ) then	//	Production öffen
+					if ( m_xCurFlyout != "PROD" ) then
+						xFlyout = "PROD";
+					endif;
+					bActivate = true;
+				endif;
+			elseif( p_iCol == 1 && p_iRow == 0 ) then
+				if ( m_pxActionMenu^.FindMatchingMenuBtn( "STNC" ) != null ) then
+					if ( m_xCurFlyout != "STNC" ) then
+						xFlyout = "STNC";
+					endif;
+					bActivate = true;
+				endif;
+			elseif( p_iCol == 2 ) then
+				if ( m_pxActionMenu^.FindMatchingMenuBtn( "SPEC" ) != null ) then
+					if ( m_xCurFlyout != "SPEC" ) then
+						xFlyout = "SPEC";
+					endif;
+					bActivate = true;
+				endif;
+			endif;
+
+			if ( xFlyout != "NONE" ) then
+				ToggleFlyoutWnd( xFlyout );
+				m_pxActionMenu^.InitMenuCommands(m_xCurSelection, m_xCurFlyout);
+			endif;
+
+			if ( m_pxFlyout^.GetCommandButtonCount( p_iRow ) <= 0 ) then
+				bActivate = false;
+			endif;
+
+			m_iRow = p_iRow;
+			m_iCol = p_iCol;
+			EnableCommandShortCuts( bActivate );
+
+		else
+			if ( ( p_iRow == m_iRow ) && ( p_iCol == m_iCol ) && ( p_iBtn != -1 ) )then
+				var	bool	bValid = false;
+
+				if ( ( m_iCol == 0 ) && ( m_xCurFlyout == "BUIL" || m_xCurFlyout == "PROD" ) ) then
+					bValid = true;
+				elseif( ( m_iCol == 1 ) && ( m_iRow == 0 ) && ( m_xCurFlyout == "STNC" ) ) then
+					bValid = true;
+				elseif( ( m_iCol == 2 ) && ( m_xCurFlyout == "SPEC" ) ) then
+					bValid = true;
+				endif;
+
+				if ( bValid ) then
+					var ^CCmdButton	pxButton = m_pxFlyout^.GetCommandButton( p_iRow, p_iBtn );
+					if ( pxButton != null && pxButton^.IsDisabled() == false ) then
+						//L KLog.LogInfo( "DaHo", "Pressing Button - " + pxButton^.GetCommand() );
+						pxButton^.OnClick();
+					else
+						//L KLog.LogInfo( "DaHo", "No Button found or Disabled" );
+					endif;
+				endif;
+			elseif ( p_iCol == 3 && p_iRow == 0 && p_iBtn == 0 ) then
+				var	^CCmdButton pxButton = m_pxActionMenu^.FindActionButton( "attack" );
+				if ( pxButton != null ) then
+//L					KLog.LogInfo( "DaHo", "Attack..." );
+					pxButton^.OnClick();
+				endif;
+			elseif ( p_iCol == 4 && p_iRow == 0 && p_iBtn == 0 ) then
+				var	^CCmdButton pxButton = m_pxActionMenu^.FindActionButton( "walkto" );
+				if ( pxButton != null ) then
+//L					KLog.LogInfo( "DaHo", "Walk To..." );
+					pxButton^.OnClick();
+				endif;
+			endif;
+			EnableCommandShortCuts( false );
+		endif;
+		//L KLog.LogInfo( "DaHo", "CommandBarAccel = " + m_bCmdBarAccelActive.ToString() );
+		//L KLog.LogInfo( "DaHo", "CurFlyOut = " + m_xCurFlyout.AsString() );
+		//L KLog.LogInfo( "DaHo", "------------------------------------------------" );
+		return( true );
+	endproc;
+
+	export proc bool Accel_R00(); return CmdBarAccel( 0, 0, -1 ); endproc;
+	export proc bool Accel_R01(); return CmdBarAccel( 0, 1, -1 ); endproc;
+	export proc bool Accel_R02(); return CmdBarAccel( 0, 2, -1 ); endproc;
+
+	export proc bool Accel_R10(); return CmdBarAccel( 1, 0, -1 ); endproc;
+	export proc bool Accel_R11(); return CmdBarAccel( 1, 1, -1 ); endproc;
+	export proc bool Accel_R12(); return CmdBarAccel( 1, 2, -1 ); endproc;
+
+	export proc bool Accel_R20(); return CmdBarAccel( 2, 0, -1 ); endproc;
+	export proc bool Accel_R21(); return CmdBarAccel( 2, 1, -1 ); endproc;
+	export proc bool Accel_R22(); return CmdBarAccel( 2, 2, -1 ); endproc;
+
+	export proc bool Accel_R30(); return CmdBarAccel( 3, 0, 0 ); endproc;
+	export proc bool Accel_R40(); return CmdBarAccel( 4, 0, 0 ); endproc;
+	export proc bool Accel_R50(); return CmdBarAccel( 5, 0, 0 ); endproc;
+	export proc bool Accel_R60(); return CmdBarAccel( 6, 0, 0 ); endproc;
+
+	export proc bool Accel_K1(); return CmdBarAccel( m_iCol, m_iRow, 0 ); endproc;
+	export proc bool Accel_K2(); return CmdBarAccel( m_iCol, m_iRow, 1 ); endproc;
+	export proc bool Accel_K3(); return CmdBarAccel( m_iCol, m_iRow, 2 ); endproc;
+	export proc bool Accel_K4(); return CmdBarAccel( m_iCol, m_iRow, 3 ); endproc;
+	export proc bool Accel_K5(); return CmdBarAccel( m_iCol, m_iRow, 4 ); endproc;
+	export proc bool Accel_K6(); return CmdBarAccel( m_iCol, m_iRow, 5 ); endproc;
+	export proc bool Accel_K7(); return CmdBarAccel( m_iCol, m_iRow, 6 ); endproc;
+	export proc bool Accel_K8(); return CmdBarAccel( m_iCol, m_iRow, 7 ); endproc;
+	export proc bool Accel_K9(); return CmdBarAccel( m_iCol, m_iRow, 8 ); endproc;
+	export proc bool Accel_K0(); return CmdBarAccel( m_iCol, m_iRow, 9 ); endproc;
+	export proc bool Accel_KA(); return CmdBarAccel( m_iCol, m_iRow, 10 ); endproc;
+	export proc bool Accel_KB(); return CmdBarAccel( m_iCol, m_iRow, 11 ); endproc;
+
+	export proc	bool Accel_Abort()	EnableCommandShortCuts( false ); return( true ); endproc;
+
+	export proc void EnableCommandShortCuts(bool p_bEnable)
+		m_bCmdBarAccelActive = p_bEnable;
+		m_pxDesktop^.EnableAccelerator( "CmdBar_Accel_Abort",	p_bEnable );
+		m_pxDesktop^.EnableAccelerator( "CmdBar_Accel_1", 		p_bEnable );
+		m_pxDesktop^.EnableAccelerator( "CmdBar_Accel_2", 		p_bEnable );
+		m_pxDesktop^.EnableAccelerator( "CmdBar_Accel_3", 		p_bEnable );
+		m_pxDesktop^.EnableAccelerator( "CmdBar_Accel_4", 		p_bEnable );
+		m_pxDesktop^.EnableAccelerator( "CmdBar_Accel_5", 		p_bEnable );
+		m_pxDesktop^.EnableAccelerator( "CmdBar_Accel_6", 		p_bEnable );
+		m_pxDesktop^.EnableAccelerator( "CmdBar_Accel_7", 		p_bEnable );
+		m_pxDesktop^.EnableAccelerator( "CmdBar_Accel_8", 		p_bEnable );
+		m_pxDesktop^.EnableAccelerator( "CmdBar_Accel_9", 		p_bEnable );
+		m_pxDesktop^.EnableAccelerator( "CmdBar_Accel_0", 		p_bEnable );
+
+		if ( p_bEnable == false ) then
+			m_iCol = -1;
+			m_iRow = -1;
+		endif;
+
+		if ( m_pxFlyout != null ) then
+			//L KLog.LogInfo( "DaHo", "m_pxFlyout is NOT null " );
+			m_pxFlyout^.UpdateCommands();
+		else
+			//L KLog.LogInfo( "DaHo", "m_pxFlyout IS null " );
+		endif;
+	endproc;
+
+	class CQueueSelectionSorter
+
+		export var int m_iQueueEntries;
+		export var CClntHndl m_xHndl;
+		export var bool m_bReady;
+
+		export proc bool op_Greater(ref CCommandBar.CQueueSelectionSorter p_rxOther)
+			if(m_bReady!=p_rxOther.m_bReady)then
+				return p_rxOther.m_bReady;
+			else
+				return m_iQueueEntries>p_rxOther.m_iQueueEntries;
+			endif;
+		endproc;
+
+	endclass;
+
+	export static proc CObjList SortByQueue(CObjList p_xList)
+		var array CCommandBar.CQueueSelectionSorter axList;
+		var int i,iC=p_xList.NumEntries();
+		for(i=0)cond(i<iC)iter(i++)do
+			if(!p_xList[i].IsValid())then continue; endif;
+			var ^CAttribs pxAttr=p_xList[i].GetObj()^.GetAttribs();
+			if(pxAttr==null)then continue; endif;
+			var ^CCommandBar.CQueueSelectionSorter pxEntry=^(axList.NewEntryRef());
+			pxEntry^.m_xHndl=p_xList[i];
+			var string sQueue=pxAttr^.GetValue("ProdQueue");
+			pxEntry^.m_bReady=(pxAttr^.GetValue("CurTask")!="BuildUpB");
+			if(!sQueue.IsEmpty())then
+				var array string asToks;
+				sQueue.Split(asToks, ":", true);
+				pxEntry^.m_iQueueEntries=asToks.NumEntries();
+			endif;
+		endfor;
+		axList.QSort();
+		var CObjList xSortedList;
+		iC=axList.NumEntries();
+		for(i=0)cond(i<iC)iter(i++)do
+			xSortedList.Include(axList[i].m_xHndl);
+		endfor;
+		return xSortedList;
+	endproc;
+
+	export static proc bool IsGlobalUpgrade(string p_sPath, CClntHndl p_xHndl)
+		var ^CObj pxObj=p_xHndl.GetObj();
+		if(pxObj==null)then return false; endif;
+		var CTechTree xTechTree=pxObj^.GetTechTree();
+		var ^CTechTree.CNode pxNode=xTechTree.FindNode(p_sPath);
+		if(pxNode==null)then return false; endif;
+		pxNode=pxNode^.GetSub("results");
+		if(pxNode==null)then return false; endif;
+		var int i,iC=pxNode^.NumSubs();
+		for(i=0)cond(i<iC)iter(i++)do
+			var string sPath=pxNode^.GetSubValue(i);
+			if(sPath.Left(9)!="/Filters/")then continue; endif;
+			var ^CTechTree.CNode pxFlags=pxNode^.GetSub(i)^.GetSub("class");
+			if(pxFlags==null)then continue; endif;
+			if(pxFlags^.GetValue()=="player")then return true; endif;
+		endfor;
+		return false;
+	endproc;
+
+	export proc void ToggleFlyoutWnd(CFourCC p_xCat)
+		if(m_xCurFlyout!=p_xCat) then
+			var ^CCmdButton pxBtn = m_pxActionMenu^.GetMenuButton(m_xCurFlyout);
+			if(pxBtn!=null) then
+				pxBtn^.SetButtonSelected(false);
+//				m_pxFlyout^.SetVisible(false);
+				m_pxFlyout^.SetActiveFlyout(false);
+			endif;
+			//L KLog.LogWarn("CaOr","Category: "+p_xCat.AsString());
+			m_xCurFlyout=p_xCat;
+		endif;
+
+		if(m_pxFlyout^.IsActiveFlyout()) then
+			EnableCommandShortCuts(false);
+			m_pxFlyout^.SetVisible(false);
+			m_pxFlyout^.SetActiveFlyout(false);
+			m_xCurFlyout = "none";
+			m_pxFlyout^.SetFlyoutCategory( m_xCurFlyout );
+		else
+			//m_xCurSelection = CClientWrap.GetSelection();
+			if(m_xCurSelection.NumEntries()>0) then
+				m_pxFlyout^.SetActiveFlyout(true);
+				m_pxFlyout^.SetVisible(true);
+				m_pxFlyout^.SetFlyoutCategory( m_xCurFlyout );
+				Update(UPDATE_FLYOUT);
+			endif;
+		endif;
+		CWindowMgr.Get().BringWindowToTop(CClientWrap.GetDesktop(),true);
+	endproc;
+
+	export proc bool HandleMessage(ref CEvtPointer p_rxEvt)
+		if(p_rxEvt.GetClass()==CSubscriptionMgr.GetEvtClass_ObjChange())then
+			var CClntHndl xObjHandle;
+			var bitset dwTypes, dwAttribGroups;
+			if(CSubscriptionMgr.EvtGetData_ObjChange(p_rxEvt,xObjHandle,dwTypes,dwAttribGroups))then
+
+				var bool bRelevantTTChange=false;
+				if((dwTypes & CSubscriptionMgr.CT_TechTree) != 0d) then
+					var ^CTechTreeDef.TFilterChangeDesc pxTTFD=CSubscriptionMgr.EvtGetData_ObjChangeTTFilterChanges(p_rxEvt);
+					if(pxTTFD!=null) then
+						var int i,iC=pxTTFD^.GetNumFilters();
+						for(i=0) cond(i<iC) iter(i++) do
+							var ^CTechTreeDef.TFilterChangeDesc.TFilter pxFilter=^(pxTTFD^.GetFilter(i));
+							var string sFilterListName=pxFilter^.GetName();
+							if(sFilterListName.Find("RangeEffect")!=-1) then continue; endif;
+							bRelevantTTChange=true;
+						endfor;
+					endif;
+				endif;
+				var bool bRelevantAttribChange=((dwTypes & CSubscriptionMgr.CT_ObjAttribs) != 0d);
+
+				if(bRelevantTTChange||bRelevantAttribChange) then
+					m_pxActionMenu^.InvalidateFlags();
+					OnChangeValues(CInvoke.OBJCHG);
+					return true;
+				endif;
+
+			endif;
+		endif;
+		return false;
+	endproc;
+
+	export proc ^CInGameScreen GetIngameScreen()
+		return m_pxIScreen;
+	endproc;
+
+	export proc ^CFlyout GetFlyoutWindow()
+		return m_pxFlyout;
+	endproc;
+
+	export proc ^CActionMenu GetActionMenu()
+		return m_pxActionMenu;
+	endproc;
+
+	export proc void OnChangeSelection()
+		var CObjList	xNewSel;
+		var bool		bIsBuildingBuild = true;
+		xNewSel=CClientWrap.GetSelection();
+
+		if((!xNewSel.IsEqual(m_xCurSelection))||(!xNewSel.IsEqualEx(m_xOldSelection)))then
+			CGameWrap.GetSubscriptionMgr().UnsubscribeObjChanges(this);
+
+			m_xOldSelection = xNewSel;
+			PreprocessObjects(xNewSel, m_xCurSelection, bIsBuildingBuild );
+
+			var int i, iC = xNewSel.NumEntries();
+			for(i=0) cond(i<iC) iter(++i) do
+				CGameWrap.GetSubscriptionMgr().SubscribeObjChanges(this,xNewSel[i],CSubscriptionMgr.CT_ObjAttribs|CSubscriptionMgr.CT_TechTree, "ActionMenu ActionMenuProgress");
+			endfor;
+
+			if(m_xCurSelection.NumEntries()>0) then
+				var ^CObj pxO = m_xCurSelection[0].GetObj();
+				if(pxO!=null) then
+					m_xCurTechTree = pxO^.GetTechTree();
+				endif;
+			endif;
+
+			m_pxFlyout^.SetVisible(false);
+			m_pxFlyout^.SetActiveFlyout(false);
+			m_xCurFlyout="none";
+			m_pxActionMenu^.InvalidateFlags();
+
+			if ( bIsBuildingBuild == true ) then
+				Update(UPDATE_ACTIONMENU_SEL|UPDATE_ACTIONMENU_BUILDINGBUILD);
+			else
+				Update(UPDATE_ACTIONMENU_SEL);
+			endif;
+
+			// RT#16363 - Wir setzen den Placer erst auf Inactive wenn wir keinen Worker mehr haben
+			if ( m_xCurSelection.NumEntries() <= 0 || !CGameInst.ms_xSelectionInfo.Has( CSelectionInfo.WORKER ) ) then
+				CMainController.Get().GetPlacer().SetActive(false);
+			endif;
+		endif;
+	endproc;
+
+	proc void OpenFlyout()
+
+		var bool bOnlyWorker=true;
+		var bool bBuildings=false;
+
+		var int i, iC = m_xCurSelection.NumEntries();
+		if(iC==0) then return; endif;
+		for(i=0) cond(i<iC) iter(++i) do
+			var ^CObj pxO = m_xCurSelection[i].GetObj();
+			if(pxO==null) then continue; endif;
+
+			if(pxO^.GetClassName().Find("worker")<0) then
+				bOnlyWorker = false;
+			endif;
+			if(pxO^.GetType()=="BLDG") then
+				bOnlyWorker=false;
+				bBuildings=true;
+				break;
+			endif;
+		endfor;
+
+		var ^CCmdButton pxBtn = null;
+
+		if(bOnlyWorker) then
+			m_xCurFlyout= "BUIL";
+			pxBtn = m_pxActionMenu^.FindMatchingMenuBtn("BUIL");
+		elseif(bBuildings) then
+			m_xCurFlyout= "SLOT";
+			pxBtn = m_pxActionMenu^.FindMatchingMenuBtn("SLOT");
+			if(pxBtn==null)then
+				m_xCurFlyout= "PROD";
+				pxBtn = m_pxActionMenu^.FindMatchingMenuBtn("PROD");
+			endif;
+		else
+			m_xCurFlyout= "SPEC";
+			pxBtn = m_pxActionMenu^.FindMatchingMenuBtn("SPEC");
+			if(pxBtn==null)then
+				m_xCurFlyout= "PROD";
+				pxBtn = m_pxActionMenu^.FindMatchingMenuBtn("PROD");
+			endif;
+			if(pxBtn==null) then
+				m_xCurFlyout= "SLOT";
+				pxBtn = m_pxActionMenu^.FindMatchingMenuBtn("SLOT");
+			endif;
+		endif;
+		if(pxBtn!=null) then
+			m_pxFlyout^.SetVisible(false);
+			m_pxFlyout^.SetActiveFlyout(false);
+			pxBtn^.OnClick();
+		endif;
+		CWindowMgr.Get().BringWindowToTop(CClientWrap.GetDesktop(),true);
+	endproc;
+
+	export proc void OnChangeTechTree()
+		Update(UPDATE_ACTIONMENU_NONSEL);
+		Update(UPDATE_FLYOUT);
+	endproc;
+
+	export proc void OnChangeValues(int p_iInvokerID)
+		if(m_xCurSelection.NumEntries()>0) then
+			var bool bResChg = false;
+			if(p_iInvokerID==CInvoke.PLYRCHG) then
+				var array int aiChg;
+				if(m_pxPlayer==null)then return; endif;
+				var ^CAttribs pxA = m_pxPlayer^.GetAttribs();
+				if(pxA!=null) then
+					var int i, iC = m_asResName.NumEntries();
+					var int iVal = 0;
+					for(i=0) cond(i<iC) iter(++i) do
+						iVal = pxA^.GetValueInt(m_asResName[i]);
+						if(m_aiResValue[i]!=iVal)then
+							aiChg.AddEntry(i);
+							m_aiResValue[i]=iVal;
+						endif;
+					endfor;
+				endif;
+
+				var int i,iC=aiChg.NumEntries();
+				for(i=0) cond(i<iC) iter(++i) do
+					if(iC==1&&m_asResName[aiChg[i]]=="iron") then
+						Update(UPDATE_LEVELUPBUTTONS);
+					else
+						bResChg=true;
+					endif;
+				endfor;
+				if(bResChg&&m_xCurFlyout!="BUIL"&&m_xCurFlyout!="PROD") then
+					bResChg=false;
+				endif;
+			elseif(p_iInvokerID==CInvoke.PYRAMIDCHG) then
+				Update(UPDATE_LEVELUPBUTTONS);
+				if(m_pxFlyout^.IsActiveFlyout()) then
+					m_pxActionMenu^.ValidateCommands();
+				endif;
+			else
+				bResChg = true;
+			endif;
+
+			//L KLog.LogWarn("CHP",m_xCurFlyout.AsString()+" "+p_iInvokerID.ToString()+" "+bResChg.ToString());
+
+			if(m_xCurFlyout=="none") then return; endif;
+			if(bResChg) then
+				Update(UPDATE_ACTIONMENU_NONSEL);
+				Update(UPDATE_FLYOUT);
+			endif;
+
+			if(m_pxActionMenu^.FindMatchingMenuBtn(m_xCurFlyout.AsString()) == null)then
+				if(m_pxFlyout^.IsActiveFlyout())then
+					ToggleFlyoutWnd(m_xCurFlyout);
+				endif;
+			endif;
+
+			//OpenFlyout();
+			//m_pxActionMenu^.ValidateCommands();
+		endif;
+	endproc;
+
+	export proc void OnScreenTick()
+	endproc;
+
+	export proc void AvailableMenuButtons(CObjList p_xSelection, ref bool po_rbProd, ref bool po_rbBuild, ref bool po_rbSpecials)
+		po_rbBuild=false;
+		var int i, iC = p_xSelection.NumEntries();
+		for(i=0) cond(i<iC) iter(++i) do
+			var ^CObj pxO = p_xSelection[i].GetObj();
+			if(pxO!=null) then
+				if(pxO^.GetTechTree().GetValueI(GetObjPath(pxO)+"/can_build", 0)==1) then
+					po_rbBuild=true;
+					break;
+				endif;
+			endif;
+		endfor;
+
+		var array string asCat;
+		asCat=1;
+
+		asCat[0]="PROD";
+		po_rbProd = GetAvailableActions(p_xSelection, null, null, asCat);
+
+		asCat[0]="SPEC";
+		po_rbSpecials = GetAvailableActions(p_xSelection, null, null, asCat);
+
+	endproc;
+
+	export proc void PreprocessObjects(ref CObjList p_rxOrgList, ref CObjList po_rxSignigicantList, ref bool po_rbIsBuildingBuild )
+		var array string	asClasses;
+		var bool			bAlreadyBuilding = false;
+		var int				iPlayerID	= CGameWrap.GetClient().GetPlayerID();
+		po_rxSignigicantList.Clear();
+
+		var int i, iC = p_rxOrgList.NumEntries();
+		for(i=0) cond(i<iC) iter(++i) do
+			var ^CObj pxO = p_rxOrgList[i].GetObj();
+			if(pxO!=null) then
+				var string sClass = pxO^.GetClassName();
+				var ^CAttribs pxAttribs = pxO^.GetAttribs();
+				if(pxAttribs!=null)then
+					sClass += ":"+pxAttribs^.GetValue("ObjFlag");
+				endif;
+				var int iIdx = asClasses.FindEntry(sClass);
+				var bool bOwnUnit = pxO^.GetOwner() == iPlayerID;
+				var bool bIsBuilding = pxO^.GetType() == "BLDG";
+				if ( bOwnUnit ) then
+					if(iIdx<0) then
+						if ( bIsBuilding && !bAlreadyBuilding ) then
+							asClasses.AddEntry(sClass);
+							po_rxSignigicantList.Include(p_rxOrgList[i]);
+							bAlreadyBuilding = true;
+						else
+							asClasses.AddEntry(sClass);
+							po_rxSignigicantList.Include(p_rxOrgList[i]);
+						endif;
+					else
+						if(po_rxSignigicantList[iIdx].IsValid())then
+							var ^CObj pxStored = po_rxSignigicantList[iIdx].GetObj();
+							var ^CAttribs pxStoredAttribs = pxStored^.GetAttribs();
+							if(pxStored!=null && pxStoredAttribs!=null && pxAttribs!=null && pxStoredAttribs^.GetValueInt("level") < pxAttribs^.GetValueInt("level")) then
+								po_rxSignigicantList[iIdx] = p_rxOrgList[i];
+							endif;
+						endif;
+					endif;
+
+					if ( ( pxAttribs != null ) && ( pxAttribs^.GetValue( "CurTask" ) != "BuildUpB" ) ) then
+						po_rbIsBuildingBuild = false;
+					endif;
+				endif;
+			endif;
+		endfor;
+	endproc;
+
+	export proc bool GetAvailableActions(ref CObjList p_rxObjects, ^array string p_pasNodes, ^array int p_paiLocIdx, ref array string p_rasCategory)
+		if(p_rasCategory.NumEntries()==1 && p_rasCategory[0] == "none") then return false; endif;
+		var CTechTree xTT;
+
+		var string sTribe = "";
+		var ^CPlayer pxPlayer = ^(CGameWrap.GetClient().GetPlayer());
+		if(pxPlayer!=null) then
+			var ^CLevelInfo.CPlayerSlot	pxPlayerSlot = pxPlayer^.GetPlayerSlot();
+			if ( pxPlayerSlot != null ) then
+				sTribe = pxPlayerSlot^.GetTribe();
+			endif;
+		endif;
+
+		var bool bStances = p_rasCategory.FindEntry("STNC")>=0;
+		var	bool bBuilding = false;
+
+		var int i, iC = p_rxObjects.NumEntries();
+		for(i=0) cond(i<iC) iter(++i) do
+			if(!p_rxObjects[i].IsValid()) then continue; endif;
+
+			var ^CObj pxO = p_rxObjects[i].GetObj();
+			xTT = pxO^.GetTechTree();
+
+			if ( pxO^.GetType() == "BLDG" && bBuilding ) then
+				continue;
+			else
+				bBuilding = true;
+			endif;
+
+			// HACK for TorpedoTurtle ( RT#12583 )
+			if(pxO^.GetClassName()=="aje_torpedo_turtle") then continue; endif;
+			// ENDHACK
+
+			var string sType 	= pxO^.GetType().AsString();
+			var string sClass	= pxO^.GetClassName();
+
+			// HACK!!! tesla can build stuff too ...
+			if(sClass=="tesla_s0"&&(p_rasCategory.FindEntry("BUIL")>=0)) then
+				sClass = sTribe;
+				sClass+="_worker";
+				sClass.MakeLower();
+			endif;
+			// ENDHACK ...
+
+			//HACK!!! illusion does not have any special moves
+			var ^CAttribs pxAttr=pxO^.GetAttribs();
+			if(p_rasCategory.FindEntry("SPEC")>=0 && pxAttr!=null && pxAttr^.GetValueBool("illusion")) then
+				continue;
+			endif;
+			// ENDHACK ...
+
+			var array string asJupp;
+			asJupp.AddEntry(sClass);
+			asJupp.AddEntry(sType);
+			var int iA, iAC = 2;
+			for(iA=0) cond(iA<iAC) iter(++iA) do
+				var ^CTTHelper.CLocation pxLocation = CTTHelper.Get()[asJupp[iA]];
+				if(pxLocation==null) then continue; endif;
+
+				var bool bHasActionCat=false;
+				var int iCatIdx, iNumCatIndices = p_rasCategory.NumEntries();
+				for(iCatIdx=0) cond(iCatIdx<iNumCatIndices) iter(++iCatIdx) do
+					if(pxLocation^.ContainsCategory(p_rasCategory[iCatIdx])) then
+						bHasActionCat=true;
+						break;
+					endif;
+				endfor;
+
+				if(!bHasActionCat) then
+					continue;
+				endif;
+
+				var string sTribe 	= GetObjTribe(pxO);
+
+				var int iAction, iNumActions = pxLocation^.m_axActions.NumEntries();
+				for(iAction=0) cond(iAction<iNumActions) iter(++iAction) do
+					var ^CTTHelper.CActionPath pxActionInfo = ^(pxLocation^.m_axActions[iAction]);
+					if(p_pasNodes!=null && p_pasNodes^.FindEntry(pxActionInfo^.m_sPath)>=0) then continue; endif;
+					if(p_rasCategory.FindEntry(pxActionInfo^.m_sCategory)<0) then continue; endif;
+
+					var ^CTechTree.CNode pxAction = xTT.FindNode(pxActionInfo^.m_sPath);
+					if(pxAction==null) then continue; endif;
+					var int	   iLevel	= 0;
+					var ^CAttribs pxA = pxO^.GetAttribs();
+					if(pxA!=null) then iLevel = pxA^.GetValueInt("level"); endif;
+
+					/*if((bSkipMovesNode && pxActionInfo^.m_sPath.Find("Moves")>=0) ||
+					   (bSkipBuildAndUpgrades && (pxActionInfo^.m_sPath.Find("Build")>=0 || pxActionInfo^.m_sPath.Find("Upgrades")>=0))) then
+						continue;
+					endif;*/
+
+					if(bStances) then
+						var bool bIgnore=false;
+						var string sP = pxActionInfo^.m_sPath;
+
+						if(p_pasNodes!=null) then
+							var int j, iJC=p_pasNodes^.NumEntries();
+							for(j=0) cond(j<iJC) iter(++j) do
+								if(p_pasNodes^[j].Find(sP.Mid(sP.FindRev('/')))>=0) then
+									bIgnore=true;
+									break;
+								endif;
+							endfor;
+							if(bIgnore) then
+								if(p_pasNodes^.NumEntries()==3) then return true; endif;
+								continue;
+							endif;
+						else
+							return true;
+						endif;
+					endif;
+
+					if(pxAction^.GetSubValueI("visibility", 1)!=1) then continue; endif;
+
+					var ^CTechTree.CNode pxLocations = pxAction^.GetSub("locations");
+					if(pxLocations==null) then continue; endif;
+
+					var int iLocIdx = pxActionInfo^.m_iLocationIdx;
+					var ^CTechTree.CNode pxLocNode = pxLocations^.GetSub(iLocIdx);
+
+					var ^CTechTree.CNode pxUIPos = pxLocNode^.GetSub("uiposition");
+					if(pxUIPos!=null) then
+						var string sCat = pxUIPos^.GetSubValue("cat","");
+						if(p_rasCategory.FindEntry(sCat)<0) then
+							continue;
+						endif;
+					endif;
+
+					var ^CTechTree.CNode pxLocalFlags = pxLocNode^.GetSub("localflags");
+					if(pxLocalFlags!=null) then
+						var ^CTechTree.CNode pxObjFlag = xTT.FindNode("/Objects/"+sTribe+"/"+sType+"/"+sClass+"/flags");
+						if(pxObjFlag==null) then continue; endif;
+
+						var bool bValidFlag = false;
+						var int iFlag, iNumFlags = pxLocalFlags^.NumSubs();
+						for(iFlag=0) cond(iFlag<iNumFlags) iter(++iFlag) do
+							var string sFlag = pxLocalFlags^.GetSub(iFlag)^.GetName();
+							if(pxObjFlag^.GetSub(sFlag)!=null) then
+								bValidFlag=true;
+								break;
+							endif;
+						endfor;
+						if(!bValidFlag) then continue; endif;
+					endif;
+					if(p_pasNodes==null) then return true; endif;
+					p_pasNodes^.AddEntry(pxActionInfo^.m_sPath);
+					if(p_paiLocIdx!=null) then
+						p_paiLocIdx^.AddEntry(iLocIdx);
+					endif;
+				endfor;
+			endfor;
+		endfor;
+
+		if(p_pasNodes!=null) then return p_pasNodes^.NumEntries()>0; endif;
+		return false;
+	endproc;
+
+	export proc bool GetAvailableActions(^CObj p_pxO, ^array string p_pasNodes, ^array int p_paiLocIdx, ref array string p_rasActTypes, string p_sCategory)
+		var bool bCanProduce=false;
+
+		if(p_pxO!=null) then
+			var CTechTree xTT = p_pxO^.GetTechTree();
+			var ^CTechTree.CNode pxObjNode = xTT.FindNode(GetObjPath(p_pxO));
+			var ^CAttribs pxA = p_pxO^.GetAttribs();
+			var string sClass = p_pxO^.GetClassName();
+			var string sType  = p_pxO^.GetType().AsString();
+
+			if(pxA==null) then return false; endif;
+
+			var array ^CTechTree.CNode apxNodes;
+
+			var bool bIsHero = false;
+			begin;
+				var string sTribe = GetObjTribe(p_pxO);
+
+				// HACK: Let the Heroes build stuff ...
+				if(p_sCategory!="SPEC" && sTribe=="Special") then
+					var ^CPlayer pxPlayer = ^(CGameWrap.GetClient().GetPlayer());
+					if(pxPlayer!=null) then
+						sTribe = pxPlayer^.GetPlayerSlot()^.GetTribe();
+						bIsHero = true;
+					endif;
+				endif;
+				// ENDHACK
+				var int i, iC = p_rasActTypes.NumEntries();
+				for(i=0) cond(i<iC) iter(++i) do
+					apxNodes.AddEntry(xTT.FindNode("/Actions/"+sTribe+p_rasActTypes[i]));
+				endfor;
+			end;
+
+			var int i, iC = apxNodes.NumEntries();
+			for(i=0) cond(i<iC) iter(++i) do
+				var ^CTechTree.CNode pxNode = apxNodes[i];
+				if(pxNode!=null) then
+					var int iResType, iNumResTypes = pxNode^.NumSubs();
+					for(iResType=0) cond(iResType<iNumResTypes) iter(++iResType) do
+						var ^CTechTree.CNode pxTypeNode = pxNode^.GetSub(iResType);
+
+						var int iAct, iNumAct = pxTypeNode^.NumSubs();
+						for(iAct=0) cond(iAct<iNumAct) iter(++iAct) do
+							var ^CTechTree.CNode pxAction = pxTypeNode^.GetSub(iAct);
+							if(pxAction^.GetSubValueI("visibility")==0) then continue; endif;
+							var ^CTechTree.CNode pxLocations = pxAction^.GetSub("locations");
+							if(pxLocations!=null) then
+								var int iLoc, iNumLocs=pxLocations^.NumSubs();
+								for(iLoc=0) cond(iLoc<iNumLocs) iter(++iLoc) do
+									var ^CTechTree.CNode pxLocNode = pxLocations^.GetSub(iLoc);
+
+									var ^CTechTree.CNode pxUIPos = pxLocNode^.GetSub("uiposition");
+									if(pxUIPos!=null) then
+										if(pxUIPos^.GetSubValue("cat")!=p_sCategory) then continue; endif;
+									endif;
+									var string sVal = pxLocNode^.GetValue();
+									var int iP=sVal.FindRev('/');
+									if(iP>=0) then
+										var string sL = sVal.Mid(iP+1);
+										// HACK: Here comes another hack to let the heroes build something ....
+										if(sL==sType || sL==sClass || (sL=="CHTR" && bIsHero)) then
+											var ^CTechTree.CNode pxLocalFlags = pxLocNode^.GetSub("localflags");
+											if(pxLocalFlags!=null) then
+												var bool bValidFlag = false;
+												var int iFlag, iNumFlags = pxLocalFlags^.NumSubs();
+												for(iFlag=0) cond(iFlag<iNumFlags) iter(++iFlag) do
+													var string sFlag = pxLocalFlags^.GetSub(iFlag)^.GetName();
+													if(sFlag==pxA^.GetValue("ObjFlag")) then
+														bValidFlag=true;
+														break;
+													endif;
+												endfor;
+												if(!bValidFlag) then continue; endif;
+											endif;
+											bCanProduce=true;
+											if(p_pasNodes!=null) then
+												p_pasNodes^.AddEntry(pxAction^.GetAbsPath());
+												if(p_paiLocIdx!=null) then
+													p_paiLocIdx^.AddEntry(iLoc);
+												endif;
+											else
+												return bCanProduce;
+											endif;
+										endif;
+									endif;
+								endfor;
+							endif;
+						endfor;
+					endfor;
+				endif;
+			endfor;
+		endif;
+		if(p_pasNodes!=null) then
+			return p_pasNodes^.NumEntries()>0;
+		endif;
+		return false;
+	endproc;
+
+	export proc bool CheckCharacterConditions(int p_iLevel)
+		return CheckCharacterConditions(p_iLevel,true);
+	endproc;
+
+	export proc bool CheckCharacterConditions(int p_iLevel, bool p_bCheckMaxChars)
+		if(m_pxIScreen!=null)then
+			var ^CNewPyramid pxPyramid = m_pxIScreen^.GetPyramid();
+			if(pxPyramid!=null)then
+				var bool bFree = pxPyramid^.HasFreeSlots(p_iLevel);
+				var bool bMax= pxPyramid^.MaximumReached();				
+				return (bFree&&(!bMax||!p_bCheckMaxChars));
+			endif;
+		endif;
+		return false;
+	endproc;
+
+	export proc bool CheckInventConditions(string p_sPath, ref string p_rsToolTip)
+		var string sToolTip;
+		var string sConditionPath = p_sPath+"/conditions";
+		var bool bCheckInventObjects = true;
+		var int i = 0;
+
+		if(m_xCurSelection.NumEntries()>0) then
+			var ^CObj pxObj = m_xCurSelection[i].GetObj();
+			if(pxObj!=null) then
+				m_xCurTechTree = pxObj^.GetTechTree();
+			endif;
+		endif;
+
+		var string sInventObj = m_xCurTechTree.GetValueS(sConditionPath+"/inventobjects/"+i.ToString(),"");
+		while(sInventObj!="")do
+			if(m_xCurTechTree.GetValueI("Objects/"+m_sTribe+"/InventObjects/"+sInventObj+"/invented",0)==1)then
+			else
+				bCheckInventObjects = false;
+				sToolTip += sInventObj+" ";
+			endif;
+			i++;
+			sInventObj = m_xCurTechTree.GetValueS(sConditionPath+"/inventobjects/"+i.ToString(),"");
+		endwhile;
+		if(i==0 || bCheckInventObjects)then
+			return true;
+		else
+			p_rsToolTip+=CLocalizer.Get().Translate("_ObjCommandBar_InventionsNeeded")+"\n"+sToolTip+"\n";
+		endif;
+		return false;
+	endproc;
+
+	export proc bool CheckBuildConditions(string p_sPath, ref string p_rsToolTip)
+		var string sToolTip;
+		var string sConditionPath = p_sPath+"/conditions";
+		var bool bCheckInventObjects = true;
+		var int i = 0;
+		var string sInventObj = m_xCurTechTree.GetValueS(sConditionPath+"/buildobjects/"+i.ToString(),"");
+		while(sInventObj!="")do
+			if(m_xCurTechTree.GetValueI("Objects/"+m_sTribe+"/BuildObjects/"+sInventObj+"/build",0)==1)then
+			else
+				bCheckInventObjects = false;
+				var string sTranslatedObj = "unknown ("+sInventObj+")";
+				var ^CTechTree.CNode pxTribeObjects = m_xCurTechTree.FindNode("Objects/"+m_sTribe);
+				if(pxTribeObjects!=null)then
+					var ^CTechTree.CNode pxObject = pxTribeObjects^.FindNodeRecursiveByName(sInventObj);
+					if(pxObject!=null)then
+						CClientWrap.GetUIMgr().GetToopTipText(pxObject^.GetSubValue("description"),sTranslatedObj);
+					endif;
+				endif;
+				sToolTip += sTranslatedObj+" ";
+			endif;
+			i++;
+			sInventObj = m_xCurTechTree.GetValueS(sConditionPath+"/buildobjects/"+i.ToString(),"");
+		endwhile;
+		if(i==0 || bCheckInventObjects)then
+			return true;
+		else
+			p_rsToolTip+=CLocalizer.Get().Translate("_ObjCommandBar_BuildingsNeeded")+"\n"+sToolTip+"\n";
+		endif;
+		return false;
+	endproc;
+
+	export proc int CheckConditions(string p_sPath, ref string p_rsToolTip)
+		var ^CLevelInfoClient pxLevelInfo = ^(CGameWrap.GetClient().GetLevelInfo());
+		if(pxLevelInfo==null)then KLog.LogError("TechTree","CheckConditions: LevelInfo invalid!"); return 0; endif;
+		var ^CPlayer pxPlayer = ^(CGameWrap.GetClient().GetPlayer());
+		if(pxPlayer==null)then KLog.LogError("TechTree","CheckConditions: Player invalid!"); return 0; endif;
+		var ^CAttribs pxPlAttr = pxPlayer^.GetAttribs();
+		if(pxPlAttr==null)then KLog.LogError("TechTree","CheckConditions: Attribs invalid!"); return 0; endif;
+		//var ^CLevelInfo.CPlayerSlot pxPlSlot = ^(pxLevelInfo^.GetOwnerPlayerSlot(p_pxObj^.GetOwner()));
+		//if(pxPlSlot==null)then KLog.LogError("TechTree","CheckConditions: PlayerSlot invalid!");return false; endif;
+		var ^CTechTree.CNode pxConditionNode = m_xCurTechTree.FindNode(p_sPath+"/conditions");
+		if(pxConditionNode == null)then return 1; endif;
+		//var string sConditionPath = ;
+		//HACK: Tribe Abfrage ausgeschaltet
+		var bool bCheckTribe = true;
+		var bool bCheckChars = false;
+		var bool bCheckResources = false;
+		var bool bCheckAction = false;
+		var int i = 0;
+		var array int aiLevels;
+		var int iMinLevel = pxConditionNode^.GetSubValueI("level",0);
+		i = 0;
+		bCheckChars = true;
+
+		i = 0;
+		bCheckResources = true;
+		var int iResNumPossible=1000;
+
+		var string sResStr;
+		var ^CTechTree.CNode pxResourceNode = m_xCurTechTree.FindNode("Resources/"+m_sTribe);
+		var ^CTechTree.CNode pxResourceCostsNode = pxConditionNode^.GetSub("rescosts");
+		if(pxResourceCostsNode!=null && pxResourceNode!=null)then
+			var string sRes = pxResourceNode^.GetSubValue(i.ToString());
+			while(sRes!="")do
+
+				var int iResCost = pxResourceCostsNode^.GetSubValueI(sRes,0);
+
+				//special handling for 'iron' what is 'skulls' now
+				if ( sRes!="iron" ) then
+					sResStr += "/"+sRes+":"+iResCost.ToString();
+				else
+					sResStr += "/skulls:"+iResCost.ToString();
+				endif;
+
+				var int iResCur=pxPlAttr^.GetValueInt(sRes);
+				if(iResCur<iResCost)then
+					sResStr += ":NA";
+					bCheckResources = false;
+					iResNumPossible=0;
+				elseif(iResCost>0) then
+					var int iNum=iResCur/iResCost;
+					if(iNum<iResNumPossible) then iResNumPossible=iNum; endif;
+				endif;
+				//p_rsToolTip += "   ";
+				//if(i==1)then
+					//p_rsToolTip += "\n";
+				//endif;
+				i++;
+				sRes = pxResourceNode^.GetSubValue(i.ToString());
+			endwhile;
+		endif;
+		if(p_sPath.Find("floating_harbour")>=0) then
+			if(m_pxIScreen!=null)then
+				var ^CNewPyramid pxPyramid = m_pxIScreen^.GetPyramid();
+				if(pxPyramid!=null)then
+					var bool bFree = pxPyramid^.HasFreeSlots(0);
+					var ^CPlayer pxPlayer = ^(CGameWrap.GetClient().GetPlayer());
+
+					if(pxPlayer!=null) then
+						var ^CAttribs pxAttr = pxPlayer^.GetAttribs();
+						var int iMax,iCount = 0;
+						if(pxAttr!=null)then
+							iMax = pxAttr^.GetValueInt("max_units");
+							iCount = pxAttr^.GetValueInt("units")+pxAttr^.GetValueInt("virtual_units");
+						endif;
+						var bool bMax=iCount>=iMax;
+						if(!bFree || bMax) then
+							return 0;
+						endif;
+					endif;
+				endif;
+			endif;
+		endif;
+
+		var ^CTechTree.CNode pxNode = m_xCurTechTree.FindNode(p_sPath);
+		if(pxNode!=null)then
+			bCheckAction=!(pxNode^.GetSubValueB("disabled",false));
+		endif;
+
+		//KLog.LogWarn("CHP","ChRes: "+p_sPath+" "+sResStr+" "+iResNumPossible.ToString());
+
+		if(sResStr.GetLength()>0)then
+			p_rsToolTip += "%"+sResStr+"%";
+		endif;
+		if(bCheckTribe && bCheckChars && bCheckResources && bCheckAction)then
+			return iResNumPossible;
+		endif;
+		return 0;
+	endproc;
+
+	proc bool CheckPersonalConditions(^CObj p_pxObj, string p_sPath)
+		//check environment
+		var ^CLevelInfoClient pxLevelInfo = ^(CGameWrap.GetClient().GetLevelInfo());
+		if(pxLevelInfo==null)then KLog.LogError("TechTree","CheckPersonalConditions: LevelInfo invalid!"); return false; endif;
+		var ^CPlayer pxPlayer = ^(CGameWrap.GetClient().GetPlayer());
+		if(pxPlayer==null)then KLog.LogError("TechTree","CheckPersonalConditions: Player invalid!"); return false; endif;
+		var ^CAttribs pxPlAttr = pxPlayer^.GetAttribs();
+		if(pxPlAttr==null)then KLog.LogError("TechTree","CheckPersonalConditions: Attribs invalid!"); return false; endif;
+		var ^CLevelInfo.CPlayerSlot pxPlSlot = ^(pxLevelInfo^.GetOwnerPlayerSlot(p_pxObj^.GetOwner()));
+		if(pxPlSlot==null)then KLog.LogError("TechTree","CheckPersonalConditions: PlayerSlot invalid!");return false; endif;
+		var ^CAttribs pxAttr = p_pxObj^.GetAttribs();
+		if(pxAttr==null)then KLog.LogError("TechTree","CheckPersonalConditions: Obj Attribs invalid!"); return false; endif;
+		var string sConditionPath = p_sPath+"/conditions";
+		var bool bCheckCaste = true;
+		var bool bCheckLevel = true;
+		var int i;
+		//level & caste checks, quite weird
+		if(p_pxObj^.GetType()=="CHTR")then
+			bCheckCaste = false;
+			bCheckLevel = false;
+			i = 0;
+			var string sCharCaste = pxAttr^.GetValue("caste");
+			var int iCharLevel = pxAttr^.GetValueInt("level");
+			while(m_xCurTechTree.GetValueS(sConditionPath+"/caste/"+i.ToString(),"")!="")do
+				var string sCaste = m_xCurTechTree.GetValueS(sConditionPath+"/caste/"+i.ToString(),"");
+				if(sCaste==sCharCaste)then
+					bCheckCaste = true;
+				endif;
+				i++;
+			endwhile;
+
+			if(i==0)then
+				bCheckCaste = true;
+			endif;
+			i = 0;
+			var int iMinLevel = m_xCurTechTree.GetValueI(sConditionPath+"/level",0);
+			if((iMinLevel-1) <= iCharLevel)then
+				bCheckLevel = true;
+			endif;
+		endif;
+
+		if(bCheckCaste && bCheckLevel)then
+		else
+			return false;
+		endif;
+		return true;
+	endproc;
+
+	export proc string GetObjPath(^CObj p_pxObj)
+		var ^CAttribs pxAttr = p_pxObj^.GetAttribs();
+		if(pxAttr!=null)then
+			return pxAttr^.GetValue("ObjPath");
+		endif;
+		return "";
+	endproc;
+
+	export proc string GetPlayerObjPath(^CObj p_pxObj)
+		var ^CAttribs pxAttr=p_pxObj^.GetAttribs();
+		if(pxAttr!=null)then
+			var string sObjPath=pxAttr^.GetValue("ObjPath");
+			var int iIdx=sObjPath.Find("Objects/");
+			if(iIdx!=-1)then
+				sObjPath=sObjPath.Mid(iIdx+8);
+				iIdx=sObjPath.Find("/");
+				if(iIdx!=-1)then
+					return "Objects/"+m_sTribe+sObjPath.Mid(iIdx);
+				endif;
+			endif;
+			return sObjPath;
+		endif;
+		return "";
+	endproc;
+
+	export proc string GetObjTribe(^CObj p_pxObj)
+		var ^CAttribs pxAttr=p_pxObj^.GetAttribs();
+		if(pxAttr!=null)then
+			return pxAttr^.GetValue("tribe");
+		endif;
+		return "";
+	endproc;
+
+
+	export proc ^CObj GetSelObjPtr(int p_iIndex)
+		if((p_iIndex<0)||(p_iIndex>=m_xCurSelection.NumEntries()))then return null;endif;
+		return m_xCurSelection[p_iIndex].GetObj();
+	endproc
+endclass;
+
+class CTTHelper
+	static var ^CTTHelper ms_pxInst;
+
+	export static proc ref CTTHelper Get()
+		if(ms_pxInst==null) then
+			ms_pxInst = new CTTHelper();
+		endif;
+		return ms_pxInst^;
+	endproc;
+
+	export static proc void StaticShut()
+		delete ms_pxInst;
+		ms_pxInst=null;
+	endproc;
+
+	class CActionPath
+		export var int m_iLocationIdx;
+		export var string m_sPath;
+		export var string m_sCategory;
+
+		export proc bool op_Equal(ref CTTHelper.CActionPath p_rxRhs)
+			return m_sPath == p_rxRhs.m_sPath;
+		endproc;
+	endclass;
+
+	class CLocation
+		export var string m_sClass;
+		export var array CActionPath m_axActions;
+
+		var array string m_asCategories;
+
+		export proc bool op_Equal(ref CTTHelper.CLocation p_rxRhs)
+			return m_sClass == p_rxRhs.m_sClass;
+		endproc;
+
+		export proc bool GetActionInfo(int p_iIdx, ^string p_psPath, ^string p_psCat, ^int p_piLocationIdx)
+			if(p_iIdx<0 || p_iIdx>=m_axActions.NumEntries()) then return false; endif;
+			var ^CActionPath pxP = ^(m_axActions[p_iIdx]);
+
+			if(p_psPath!=null) then p_psPath^ = pxP^.m_sPath; endif;
+			if(p_psCat!=null) then p_psCat^ = pxP^.m_sCategory; endif;
+			if(p_piLocationIdx!=null) then p_piLocationIdx^ = pxP^.m_iLocationIdx; endif;
+			return true;
+		endproc;
+
+		export proc int NumActions()
+			return m_axActions.NumEntries();
+		endproc;
+
+		export proc bool ContainsAction(string p_sPath)
+			var CActionPath xP; xP.m_sPath;
+			return m_axActions.FindEntry(xP)>=0;
+		endproc;
+
+		export proc bool ContainsCategory(string p_sCat)
+			return m_asCategories.FindEntry(p_sCat)>=0;
+		endproc;
+
+		export proc bool AddActionPath(string p_sPath, string p_sCategory, int p_iLocIdx)
+			if(ContainsAction(p_sPath)) then return false; endif;
+			var ^CActionPath pxActInfo = ^(m_axActions.NewEntryRef());
+			pxActInfo^.m_sPath = p_sPath;
+			pxActInfo^.m_sCategory = p_sCategory;
+			pxActInfo^.m_iLocationIdx = p_iLocIdx;
+
+			if(m_asCategories.FindEntry(p_sCategory)<0) then
+				m_asCategories.AddEntry(p_sCategory);
+			endif;
+			return true;
+		endproc;
+	endclass;
+
+	var array CTTHelper.CLocation m_axList;
+
+	export proc ^CTTHelper.CLocation op_Index(string p_sLocation)
+		var CLocation xL;xL.m_sClass = p_sLocation;
+		var int iIdx = m_axList.FindEntry(xL);
+		if(iIdx<0) then return null; endif;
+		return ^m_axList[iIdx];
+	endproc;
+
+
+	export proc void InitFromTT()
+		m_axList=0;
+		var CTechTree xTT;
+		var string sTribe;
+		var ^CPlayer pxPlayer = ^(CGameWrap.GetClient().GetPlayer());
+		if(pxPlayer!=null) then
+			//xTT = pxPlayer^.GetPlayerTechTree();
+			if(pxPlayer^.GetPlayerSlot()!=null) then
+				sTribe = pxPlayer^.GetPlayerSlot()^.GetTribe();
+			endif;
+		endif;
+		var CTechTreeDef xTTDef;
+		xTT = CTechTreeMgr.Get().GetTechTree(xTTDef);
+
+		var array string asTribes;
+		asTribes.AddEntry(sTribe);
+		asTribes.AddEntry("Special");
+
+		var int iCurTribe, iNumTribes = asTribes.NumEntries();
+		for(iCurTribe=0) cond(iCurTribe<iNumTribes) iter(++iCurTribe) do
+			var ^CTechTree.CNode pxActions = xTT.FindNode("/Actions/"+asTribes[iCurTribe]);
+			if(pxActions==null) then continue; endif;
+			var int iCurActCategory, iNumActCategories = pxActions^.NumSubs();
+			for(iCurActCategory=0) cond(iCurActCategory<iNumActCategories) iter(++iCurActCategory) do
+				var ^CTechTree.CNode pxActionCategories = pxActions^.GetSub(iCurActCategory);
+
+				var int iCurActType, iNumActTypes = pxActionCategories^.NumSubs();
+				for(iCurActType=0) cond(iCurActType<iNumActTypes) iter(++iCurActType) do
+					var ^CTechTree.CNode pxActType = pxActionCategories^.GetSub(iCurActType);
+
+					var int iAct, iNumActs = pxActType^.NumSubs();
+					for(iAct=0) cond(iAct<iNumActs) iter(++iAct) do
+						var ^CTechTree.CNode pxA = pxActType^.GetSub(iAct);
+						var string sActionPath = pxA^.GetAbsPath();
+
+						var ^CTechTree.CNode pxLocations = pxA^.GetSub("locations");
+						if(pxLocations==null) then continue; endif;
+
+						var int iLocIdx, iNumLocs = pxLocations^.NumSubs();
+						for(iLocIdx=0) cond(iLocIdx<iNumLocs) iter(++iLocIdx) do
+							var ^CTechTree.CNode pxLocNode = pxLocations^.GetSub(iLocIdx);
+
+							var string sLocation = pxLocNode^.GetValue();
+							var string sL = sLocation.Mid(sLocation.FindRev('/')+1);
+
+
+							var ^CTTHelper.CLocation pxLocData = CTTHelper.Get()[sL];
+							if(pxLocData==null) then
+								pxLocData = ^(m_axList.NewEntryRef());
+								pxLocData^.m_sClass = sL;
+							endif;
+							if(pxLocData!=null) then
+								var ^CTechTree.CNode pxUIPos = pxLocNode^.GetSub("uiposition");
+								if(pxUIPos!=null) then
+									pxLocData^.AddActionPath(sActionPath, pxUIPos^.GetSubValue("cat",""), iLocIdx);
+								endif;
+							endif;
+						endfor;
+					endfor;
+				endfor;
+			endfor;
+		endfor;
+	endproc;
+
+endclass;

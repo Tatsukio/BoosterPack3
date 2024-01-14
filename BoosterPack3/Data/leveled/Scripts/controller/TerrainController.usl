@@ -1,0 +1,410 @@
+class CTerrainController inherit CInputController
+
+	var ^CDesktop				m_pxDesktop;
+
+	var ^CScapeHeightBrush		m_pxPlateauBrush;
+	var ^CScapeHeightBrush		m_pxHeightUpBrush;
+	var ^CScapeHeightBrush 		m_pxHeightDownBrush;
+	var ^CScapeMaterialBrush 	m_pxMatBrush;
+	var CBrush					m_xBrush;
+	var int						m_iState;
+	var int						m_iMaterial;
+	var bool					m_bLBtnDown;
+	var bool					m_bRBtnDown;
+	var real					m_fHeight;
+	var int						m_iDetailLevel;
+	var int						m_iMatRes;
+
+	var bool					m_bBegin;
+	var ^CViewScapeEdit			m_pxViewScapeEdit;
+
+	export constructor()
+		m_iState = -1;	// -1 	-> off
+						// 0 	-> Altitude up/down
+						// 1 	-> Blur
+						// 2 	-> Detail up/down
+						// 3 	-> set/pick Plateau
+						// 4 	-> paint Material
+						// 5	-> Detail Abs/pick
+						// 6	-> MatRes
+						// 7	-> MatRes Abs/pick
+						// 8	-> FullForest set/del
+						// 9	-> Noise
+						// 10	-> Cliff
+
+		m_bLBtnDown = false;
+		m_bRBtnDown = false;
+
+		m_pxPlateauBrush=new CScapeHeightBrush(30,30);
+		m_pxHeightUpBrush=new CScapeHeightBrush(30,30);
+		m_pxHeightDownBrush=new CScapeHeightBrush(30,30);
+		m_pxMatBrush=new CScapeMaterialBrush(3,1,1);
+
+		m_pxDesktop=CClientWrap.GetDesktop();
+		var procref<void> xProcRefRender=OnRender;
+		CClientWrap.SetProcRefRender(xProcRefRender);
+		m_bBegin=true;
+	endconstructor;
+
+	export destructor()
+		delete m_pxPlateauBrush;
+		delete m_pxHeightUpBrush;
+		delete m_pxHeightDownBrush;
+		delete m_pxMatBrush;
+	enddestructor;
+
+	export proc bool SetState(int p_iState);
+		m_iState=p_iState;
+		var procref<void> xProcRefRender=OnRender;
+		CClientWrap.SetProcRefRender(xProcRefRender);
+		return(true);
+	endproc;
+
+	export proc bool HandleMsg(bitset p_dwType, bitset p_dwFlags, int p_iKey, int p_iX, int p_iY)
+		CLevelEditorWrap.LogSpam("Controller.Terrain","HandleMsg"+p_dwType.ToString()+" | "+p_iKey.ToString());
+		if(p_dwType==CInputController.MT_MouseLBtnDown)then
+			if(!m_bLBtnDown)then
+				CLevelEditorWrap.GetScapeMgr().GetUndoBuffer().StartHistoryItem();
+				CLevelEditorWrap.GetUndoBuffer().BeginStep();
+				CLevelEditorWrap.GetUndoBuffer().Add2Step(new CScapeUndoEntry());
+			endif;
+			m_bLBtnDown = true;
+		elseif(p_dwType==CInputController.MT_MouseLBtnUp)then
+			if(m_bLBtnDown)then
+				CLevelEditorWrap.GetScapeMgr().GetUndoBuffer().EndHistoryItem();
+				CLevelEditorWrap.GetUndoBuffer().AcceptStep("Terrain Edit");
+			endif;
+			m_bLBtnDown = false;
+			m_bBegin=true;
+		elseif(p_dwType==CInputController.MT_MouseRBtnDown)then
+			if(!m_bRBtnDown)then
+				CLevelEditorWrap.GetScapeMgr().GetUndoBuffer().StartHistoryItem();
+				CLevelEditorWrap.GetUndoBuffer().BeginStep();
+				CLevelEditorWrap.GetUndoBuffer().Add2Step(new CScapeUndoEntry());
+			endif;
+			m_bRBtnDown = true;
+		elseif(p_dwType==CInputController.MT_MouseRBtnUp)then
+			if(m_bRBtnDown)then
+				CLevelEditorWrap.GetScapeMgr().GetUndoBuffer().EndHistoryItem();
+				CLevelEditorWrap.GetUndoBuffer().AcceptStep("Terrain Edit");
+			endif;
+			m_bRBtnDown = false;
+			m_bBegin=true;
+		endif;
+
+		if(m_bLBtnDown)then
+			switch(m_iState)
+				case (0) do
+					TerrainUp();
+				endcase;
+				case (1) do
+					Blur();
+				endcase;
+				case (2) do
+					if(m_bBegin)then
+						//DetailUp();
+						m_bBegin=false;
+					endif;
+				endcase;
+				case (3) do
+					SetPlateau();
+				endcase;
+				case (4) do
+					PaintMaterial();
+				endcase;
+				case (5) do
+					//DetailUpAbs();
+				endcase;
+				case (6) do
+					//MatResUp();
+				endcase;
+				case (7) do
+					//MatResAbs();
+				endcase;
+				case (8) do
+					SetFullForest();
+				endcase;
+				case (9) do
+					Noise();
+				endcase;
+				case (10) do
+					CliffUp();
+				endcase;
+				case (11) do
+					FeatureUp();
+				endcase;
+				case default do
+				endcase;
+			endswitch;
+		endif;
+
+		if(m_bRBtnDown)then
+			switch(m_iState)
+				case (0) do
+					TerrainDown();
+				endcase;
+				case (1) do
+
+				endcase;
+				case (2) do
+					if(m_bBegin)then
+						//DetailDown();
+						m_bBegin=false;
+					endif;
+				endcase;
+				case (3) do
+					PickPlateau();
+				endcase;
+				case (4) do
+					PickMaterial();
+				endcase;
+				case (5) do
+					//DetailPickAbs();
+				endcase;
+				case (6) do
+					//MatResDown();
+				endcase;
+				case (7) do
+					//MatResPickAbs();
+				endcase;
+				case (8) do
+					DelForrest();
+				endcase;
+				case (9) do
+
+				endcase;
+				case (10) do
+					CliffDown();
+				endcase;
+				case (11) do
+					FeatureDown();
+				endcase;
+				case default do
+				endcase;
+			endswitch;
+		endif;
+		return(true);
+	endproc;
+
+	
+	proc bool IsInScape(vec3 p_vPos)
+		var real fWidth = CLevelEditorWrap.GetScapeMgr().GetMapWidth().ToReal(); 
+		var real fHeight = CLevelEditorWrap.GetScapeMgr().GetMapHeight().ToReal(); 
+		if(p_vPos.GetX()<0.0 || p_vPos.GetX()>fWidth)then
+			return false;
+		endif;
+		if(p_vPos.GetY()<0.0 || p_vPos.GetY()>fHeight)then
+			return false;
+		endif;
+			return true;
+	endproc;
+
+
+	export proc bool SetBrush(ref CBrush p_rxBrush);
+		m_xBrush=p_rxBrush;
+		CLevelEditorWrap.LogSpam("Controller.Terrain","Neuer Brush gesetzt: "+p_rxBrush.GetName());
+		delete m_pxPlateauBrush;
+		delete m_pxHeightUpBrush;
+		delete m_pxHeightDownBrush;
+		delete m_pxMatBrush;
+		m_pxPlateauBrush=new CScapeHeightBrush(p_rxBrush.GetSizeX(),p_rxBrush.GetSizeY());
+		m_pxHeightUpBrush=new CScapeHeightBrush(p_rxBrush.GetSizeX(),p_rxBrush.GetSizeY());
+		m_pxHeightDownBrush=new CScapeHeightBrush(p_rxBrush.GetSizeX(),p_rxBrush.GetSizeY());
+		m_pxMatBrush=new CScapeMaterialBrush(3,p_rxBrush.GetSizeX()/2,p_rxBrush.GetSizeY()/2);
+
+		m_pxPlateauBrush^.SetBrushType(p_rxBrush.GetForm());
+		m_pxPlateauBrush^.SetHeightValue(m_fHeight);
+		m_pxPlateauBrush^.SetFalloffWidth(0);
+		m_pxPlateauBrush^.SetFalloffType(p_rxBrush.GetFalloffType());
+
+		m_pxHeightUpBrush^.SetBrushType(p_rxBrush.GetForm());
+		m_pxHeightUpBrush^.SetHeightValue(p_rxBrush.GetHeight());
+		m_pxHeightUpBrush^.SetFalloffWidth(p_rxBrush.GetFalloff());
+		m_pxHeightUpBrush^.SetFalloffType(p_rxBrush.GetFalloffType());
+
+		m_pxHeightDownBrush^.SetBrushType(p_rxBrush.GetForm());
+		m_pxHeightDownBrush^.SetHeightValue(-p_rxBrush.GetHeight());
+		m_pxHeightDownBrush^.SetFalloffWidth(p_rxBrush.GetFalloff());
+		m_pxHeightDownBrush^.SetFalloffType(p_rxBrush.GetFalloffType());
+
+		CLevelEditorWrap.LogSpam("Controller.Terrain","MatBrush Scale: "+m_pxMatBrush^.GetScale().ToString());
+		SetMaterial(m_iMaterial);
+		return(true);
+	endproc;
+
+	export proc bool ChangeBrushSize(int p_iDelta)
+		var CBrush xTemp;
+		xTemp=m_xBrush;
+		xTemp.SetSizeX(Math.Clamp(xTemp.GetSizeX()+p_iDelta,2,30));
+		xTemp.SetSizeY(Math.Clamp(xTemp.GetSizeY()+p_iDelta,2,30));
+		CLevelEditorWrap.LogSpam("Controller.Terrain","ChangeBrushSize: "+xTemp.GetSizeX().ToString()+"x"+xTemp.GetSizeY().ToString());				
+		SetBrush(xTemp);
+		return(true);
+	endproc;
+	
+	
+	export proc void SetMaterial(int p_iMaterial);
+		m_iMaterial=p_iMaterial;
+		var int iY,iX;
+		for(iY=0)cond(iY<m_pxMatBrush^.GetHeight())iter(iY++)do
+			for(iX=0)cond(iX<m_pxMatBrush^.GetWidth())iter(iX++)do
+				m_pxMatBrush^.SetValue(iX+(iY*m_pxMatBrush^.GetWidth()),m_iMaterial);
+			endfor;
+		endfor;
+	endproc;
+
+	export proc bool SetPlateauHeight(real p_fHeight);
+		m_fHeight = p_fHeight;
+		m_pxPlateauBrush^.SetHeightValue(m_fHeight);
+		return(true);
+	endproc;
+
+	proc bool TerrainUp();
+		var vec3 vPPoint = CLevelEditorWrap.GetScapeMgr().GetPickPoint();
+		if(IsInScape(vPPoint))then
+			CLevelEditorWrap.GetScapeMgr().SetHeightBrush( 00b, vPPoint.GetX(), vPPoint.GetY(), m_pxHeightUpBrush^);
+		endif;
+		return(true);
+	endproc;
+
+	proc bool TerrainDown();
+		var vec3 vPPoint = CLevelEditorWrap.GetScapeMgr().GetPickPoint();
+		if(IsInScape(vPPoint))then
+			CLevelEditorWrap.GetScapeMgr().SetHeightBrush( 00b, vPPoint.GetX(), vPPoint.GetY(), m_pxHeightDownBrush^);
+		endif;
+		return(true);
+	endproc;
+
+	export proc bool SetDetailLevel(int p_iDetailLevel)
+		m_iDetailLevel = p_iDetailLevel;
+		return(true);
+	endproc;
+
+	proc bool Blur();
+		var vec3 vPPoint = CLevelEditorWrap.GetScapeMgr().GetPickPoint();
+		if(IsInScape(vPPoint))then
+			CLevelEditorWrap.GetScapeMgr().SetHeightBrush( 010b, vPPoint.GetX(), vPPoint.GetY(), m_pxHeightUpBrush^);
+		endif;
+		return(true);
+	endproc;
+
+	proc bool Noise();
+		var vec3 vPPoint = CLevelEditorWrap.GetScapeMgr().GetPickPoint();
+		if(IsInScape(vPPoint))then
+			CLevelEditorWrap.GetScapeMgr().SetHeightBrush( 011b, vPPoint.GetX(), vPPoint.GetY(), m_pxHeightUpBrush^);
+		endif;
+		return(true);
+	endproc;
+	
+	proc bool CliffUp();
+		KLog.LogWarn("TerrainController","Cliff LMB");
+		return(true);
+	endproc;
+	
+	proc bool CliffDown();
+		KLog.LogWarn("TerrainController","Cliff RMB");
+		return(true);
+	endproc;
+
+	proc bool FeatureUp();
+		KLog.LogWarn("TerrainController","Feature LMB");
+		return(true);
+	endproc;
+	
+	proc bool FeatureDown();
+		KLog.LogWarn("TerrainController","Feature RMB");
+		return(true);
+	endproc;
+
+	proc bool PickMaterial()
+		var vec3 vPPoint = CLevelEditorWrap.GetScapeMgr().GetPickPoint();
+		if(IsInScape(vPPoint))then
+			var int iPickedMaterial=CLevelEditorWrap.GetScapeMgr().GetMaterial(vPPoint.GetX(),vPPoint.GetY());
+			SetMaterial(iPickedMaterial);
+			CEnhancedMenu.Get().GetScapeEdit()^.PushMaterialButton(iPickedMaterial);
+		endif;
+		return(true);
+	endproc;
+
+	proc bool PaintMaterial();
+		var vec3 vPPoint = CLevelEditorWrap.GetScapeMgr().GetPickPoint();
+		vPPoint.SetX(vPPoint.GetX()+3.5);
+		vPPoint.SetY(vPPoint.GetY()+3.5);
+		if(IsInScape(vPPoint))then
+			CLevelEditorWrap.GetScapeMgr().SetMaterialBrush(vPPoint.GetX(), vPPoint.GetY(), m_pxMatBrush^);
+		endif;
+		return(true);
+	endproc;
+
+	proc bool SetPlateau();
+		var vec3 vPPoint = CLevelEditorWrap.GetScapeMgr().GetPickPoint();
+		if(IsInScape(vPPoint))then
+			CLevelEditorWrap.GetScapeMgr().SetHeightBrush( 01b, vPPoint.GetX(), vPPoint.GetY(), m_pxPlateauBrush^);
+		endif;
+		return(true);
+	endproc;
+
+
+	proc bool PickPlateau();
+		var vec3 vPPoint = CLevelEditorWrap.GetScapeMgr().GetPickPoint();
+		m_pxViewScapeEdit^.SetPlateauHight(vPPoint.GetZ());
+		return(true);
+	endproc;
+
+	export proc bool SetCViewScapeEdit ( ^CViewScapeEdit p_pxCViewScapeEdit)
+		m_pxViewScapeEdit = p_pxCViewScapeEdit;
+		return(true);
+	endproc;
+
+	proc bool USLGetBlockCoords( vec3 p_vPoint, ref point p_rxPoint );
+		p_rxPoint.SetX((p_vPoint.GetX()/32.0).ToInt());
+		p_rxPoint.SetY((p_vPoint.GetY()/32.0).ToInt());
+		return(true);
+	endproc;
+
+	export proc void OnRender()
+		if(CWindowMgr.Get().GetHoveredWindow()!=m_pxDesktop)then return; endif;
+		if(m_iState == -1)then return; endif;
+		
+		var vec3 vPickPoint = CLevelEditorWrap.GetScapeMgr().GetPickPoint();
+		
+		if(m_iState==0 || m_iState==1 || m_iState==3 || m_iState==9)then
+			var real fX = m_pxHeightUpBrush^.GetWidth().ToReal() * 0.5 - 1.0;
+			var real fY = m_pxHeightUpBrush^.GetHeight().ToReal() * 0.5 - 1.0;
+			vPickPoint.SetX(vPickPoint.GetX()-fX);
+			vPickPoint.SetY(vPickPoint.GetY()-fY);
+			if(IsInScape(vPickPoint))then
+				CLevelEditorWrap.GetScapeMgr().DrawHeightBrush(vPickPoint,m_pxHeightUpBrush,{{90,80,60,128}});
+			endif;
+		elseif(m_iState==4)then
+			if(IsInScape(vPickPoint))then
+				CLevelEditorWrap.GetScapeMgr().DrawMaterialBrush(vPickPoint,m_pxMatBrush,192);
+			endif;
+		endif;
+	endproc;
+
+	export proc bool SetFullForest()
+		//Set forest on block
+		var vec3 vPPoint = CLevelEditorWrap.GetScapeMgr().GetPickPoint();
+		if(IsInScape(vPPoint))then
+			var int iBX=(vPPoint.GetX()/32.0).ToInt();
+			var int iBY=(vPPoint.GetY()/32.0).ToInt();
+			CEvt_ForestBlock.Send(iBX,iBY,true,0);
+			CLevelEditorWrap.LogSpam("Controller.Terrain","Set Full Forest ---->"+(vPPoint.GetX()/32.0).ToInt().ToString()+" , "+(vPPoint.GetY()/32.0).ToInt().ToString());
+		endif;
+		return(true);
+	endproc;
+
+	export proc bool DelForrest()
+		//del Forrest on Block
+		var vec3 vPPoint = CLevelEditorWrap.GetScapeMgr().GetPickPoint();
+		if(IsInScape(vPPoint))then
+			var int iBX=(vPPoint.GetX()/32.0).ToInt();
+			var int iBY=(vPPoint.GetY()/32.0).ToInt();
+			CEvt_ForestBlock.Send(iBX,iBY,false,0);
+			CLevelEditorWrap.LogSpam("Controller.Terrain","Delete Forrest ---->"+(vPPoint.GetX()/32.0).ToInt().ToString()+" , "+(vPPoint.GetY()/32.0).ToInt().ToString());
+		endif;
+		return(true);
+	endproc;
+
+endclass;

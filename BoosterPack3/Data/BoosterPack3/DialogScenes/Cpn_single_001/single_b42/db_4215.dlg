@@ -1,0 +1,16 @@
+Root {
+	Actors {
+		Leighton {
+			generate_name = 'false'
+			owner = '0'
+			class = 'livingstone_s0'
+			def_icon = 'livingstone'
+		}
+	}
+	Frames {
+		Frame_0 {
+			actor = 'Leighton'
+			audio = 'ds_dummy'
+		}
+	}
+}

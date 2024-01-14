@@ -1,0 +1,299 @@
+Root {
+	Groups {
+		Infantry_res = 'Cole_s0,trader_s0,livingstone_s0,mayor_s0,hu_warrior,hu_jetpack_warrior,hu_berserker,aje_warrior,aje_rammer,aje_assassin,ninigi_warrior,ninigi_sumo,seas_warrior'
+		Infantry_nat = 'Stina_s0,darwin_s0,hu_spearman,hu_druid,aje_spearman,aje_shaman,ninigi_spearman,ninigi_monk'
+		Infantry_tec = 'Bela_s0,tesla_s0,babbage_s0,lovelace_s0,schliemann_s0,hu_archer,hu_marksman,aje_archer,aje_thrower,ninigi_archer,ninigi_mortar,ninigi_marksman,ninigi_archer,seas_marksman'
+		Workers = 'hu_worker,aje_worker,ninigi_worker'
+	}
+	Infantry_vs_Saltasaurus {
+		Fighters = 'Bela_s0,tesla_s0,lovelace_s0,hu_archer,hu_marksman,aje_archer,aje_thrower,ninigi_archer,ninigi_mortar,ninigi_marksman'
+		Enemies = 'Saltasaurus,ninigi_saltasaurus_launcher,ninigi_saltasaurus_transporter'
+		FighterAnims = 'tec_fm_1'
+		EnemyAnims = 'saltasaurus_react_tec_fm_1'
+		LinkDelay = '0.4'
+		Link = 'Fm01'
+	}
+	Infantry_vs_Gallimimus {
+		Fighters = 'Bela_s0,tesla_s0,lovelace_s0,hu_archer,hu_marksman,aje_archer,aje_thrower,ninigi_archer,ninigi_mortar,ninigi_marksman'
+		Enemies = 'Gallimimus'
+		FighterAnims = 'tec_fm_2'
+		EnemyAnims = 'gallimimus_react_tec_fm_2'
+		LinkDelay = '0.4'
+		Link = 'Fm02'
+	}
+	Stegosaurus_vs_Infantry {
+		Fighters = 'Stegosaurus,aje_stegosaurus'
+		Enemies = 'Cole_s0,livingstone_s0,trader_s0,babbage_s0,schliemann_s0,hu_warrior,hu_berserker,hu_killer,aje_warrior,aje_assassin,ninigi_warrior,ninigi_ninja'
+		FighterAnims = 'stego_fm_0'
+		EnemyAnims = 'react_stego_fm_0'
+		LinkDelay = '0.4'
+		Link = 'Fm01'
+	}
+	Stegosaurus_vs_Rhino {
+		Fighters 	= 'Stegosaurus,aje_stegosaurus'
+		Enemies		= 'Woolly_Rhino,hu_rhino'
+		FighterAnims = 'stego_fm_1'
+		EnemyAnims	= 'rhino_react_stego_fm_1'
+		LinkDelay	= '0.4'
+		Link	= 'Fm02'
+	}
+	WildBoar_vs_Infantry_nat {
+		Fighters = 'hu_wild_boar,Wild_Boar'
+		Enemies = 'Stina_s0,hu_spearman,hu_pikeman,aje_spearman,ninigi_spearman,ninigi_monk,darwin_s0,hermit_s0'
+		FighterAnims = 'wild_boar_fm_0'
+		EnemyAnims = 'react_wild_boar_fm_0'
+		LinkDelay = '0.4'
+		Link = 'Fm01'
+	}
+	WildBoar_vs_Infantry_res {
+		Fighters = 'hu_wild_boar,Wild_Boar'
+		Enemies = 'Cole_s0,livingstone_s0,trader_s0,hu_warrior,hu_berserker,hu_killer,aje_warrior,aje_assassin,ninigi_warrior,ninigi_ninja,mayor_s0'
+		FighterAnims = 'wild_boar_fm_0'
+		EnemyAnims = 'react_wild_boar_fm_0'
+		LinkDelay = '0.4'
+		Link = 'Fm01'
+	}
+	Infantry_vs_WildBoar {
+		Fighters = 'Stina_s0,hu_spearman,hu_pikeman,aje_spearman,ninigi_spearman,ninigi_monk,darwin_s0,hermit_s0,mayor_s0'
+		Enemies = 'Wild_Boar,hu_wild_boar'
+		FighterAnims = 'nat_fm_3'
+		EnemyAnims = 'wild_boar_react_nat_fm_3'
+		LinkDelay = '0.4'
+		Link = 'Fm03'
+	}
+	Brachio_vs_WildBoar {
+		Fighters = 'Brachiosaurus,aje_brachiosaurus,aje_brachiosaurus_mobile_camp,aje_brachiosaurus_transporter,aje_brachiosaurus_siege'
+		Enemies = 'Wild_Boar,hu_wild_boar'
+		FighterAnims = 'brachio_fm_0'
+		EnemyAnims = 'wild_boar_react_brachio_fm_0'
+		LinkDelay = '0.4'
+		Link = 'Fm01'
+	}
+	Brachio_vs_Infantry {
+		Fighters = 'Brachiosaurus,aje_brachiosaurus,aje_brachiosaurus_catapult,aje_brachiosaurus_mobile_camp,aje_brachiosaurus_transporter,aje_brachiosaurus_siege'
+		Enemies = '$Infantry_nat,$Infantry_res'
+		FighterAnims = 'brachio_fm_0,brachio_fm_1,brachio_fm_2'
+		EnemyAnims	= 'react_brachio_fm_0,react_brachio_fm_1,react_brachio_fm_2'
+		LinkDelay = '0.4'
+		Link = 'Fm01'
+	}
+	Mammoth_vs_Infantry {
+		Fighters 	= 'Mammoth,hu_mammoth'
+		Enemies		= '$Infantry_res'
+		FighterAnims = 'mammoth_fm_0'
+		EnemyAnims	= 'react_mammoth_fm_0'
+		LinkDelay	= '0.4'
+		Link	= 'Fm01'
+	}
+	Infantry_vs_Mammoth {
+		Fighters 	= 'Cole_s0,livingstone_s0,trader_s0,babbage_s0,schliemann_s0'
+		Enemies		= 'Mammoth,hu_mammoth'
+		FighterAnims = 'res_fm_5'
+		EnemyAnims	= 'mammoth_react_res_fm_5'
+		LinkDelay	= '0.4'
+		Link	= 'Fm01'
+	}
+	Infantry_vs_Triceratops {
+		Fighters 	= '$Infantry_res'
+		Enemies		= 'Triceratops,aje_triceratops_archer'
+		FighterAnims = 'res_fm_8'
+		EnemyAnims	= 'triceratops_react_res_fm_8'
+		LinkDelay	= '0.4'
+		Link	= 'Fm01'
+	}
+	Triceratops_vs_Infantry {
+		Fighters 	= 'Triceratops,hu_triceratops,aje_triceratops_archer'
+		Enemies		= '$Infantry_res'
+		FighterAnims = 'triceratops_fm_0'
+		EnemyAnims	= 'react_triceratops_fm_0'
+		LinkDelay	= '0.4'
+		Link	= 'Fm01'
+	}
+	Allosaurus_vs_Triceratops {
+		Fighters 	= 'Allosaurus,aje_allosaurus'
+		Enemies 	= 'Triceratops,hu_triceratops,aje_triceratops_archer'
+		FighterAnims = 'allo_fm_2'
+		EnemyAnims	= 'triceratops_react_allo_fm_2'
+		LinkDelay	= '0.4'
+		Link	= 'Fm01'
+	}
+	Eusmilus_vs_Infantry {
+		Fighters 	= 'Eusmilus,hu_eusmilus,aje_eusmilus,ninigi_eusmilus,special_eusmilus'
+		Enemies		= '$Infantry_res,$Infantry_nat'
+		FighterAnims = 'eusmilus_fm_0'
+		EnemyAnims	= 'react_eusmilus_fm_0'
+		LinkDelay	= '0.4'
+		Link	= 'Fm01'
+	}
+	Infantry_vs_Eusmilus {
+		Fighters 	= '$Infantry_nat'
+		Enemies		= 'hu_eusmilus,aje_eusmilus,ninigi_eusmilus,special_eusmilus,hu_kennel_eusmilus'
+		FighterAnims = 'nat_fm_0'
+		EnemyAnims 	= 'eusmilus_react_nat_fm_4'
+		LinkDelay	= '0.4'
+		Link		= 'Fm01'
+	}
+	Infantry_vs_Atroxosaurus {
+		Fighters 	= '$Infantry_res'
+		Enemies		= 'Atroxosaurus,aje_atroxosaurus'
+		FighterAnims = 'res_fm_7'
+		EnemyAnims	= 'atroxosaurus_fm_react_res_7'
+		LinkDelay	= '0.4'
+		Link	= 'Fm01'
+	}
+	Atroxosaurus_vs_Infantry {
+		Fighters 	= 'Atroxosaurus'
+		Enemies		= '$Infantry_res,$Infantry_nat'
+		FighterAnims = 'atroxo_fm_0'
+		EnemyAnims 	= 'react_atroxo_fm_0'
+		LinkDelay	= '0.4'
+		Link	= 'Fm02'
+	}
+	Atroxosaurus_vs_Brachiosaurus {
+		Fighters = 'Atroxosaurus'
+		Enemies = 'Brachiosaurus,aje_brachiosaurus,aje_brachiosaurus_mobile_camp,aje_brachiosaurus_transporter,aje_brachiosaurus_siege'
+		FighterAnims = 'atroxo_fm_1'
+		EnemyAnims	= 'brachio_react_atroxo_fm_1'
+		LinkDelay	= '0.4'
+		Link	= 'Fm02'
+	}
+	TRex_vs_Infantry {
+		Fighters 	= 'aje_atroxosaurus'
+		Enemies		= '$Infantry_res,$Infantry_nat,$Infantry_tec,$Workers'
+		FighterAnims = 'trex_fm_1,trex_fm_2'
+		EnemyAnims 	= 'react_trex_fm_1,react_trex_fm_2'
+		LinkDelay	= '0.4'
+		Link	= 'Fm01'
+	}
+	TRex_vs_Brachiosaurus {
+		Fighters = 'aje_atroxosaurus'
+		Enemies = 'Brachiosaurus,aje_brachiosaurus,aje_brachiosaurus_mobile_camp,aje_brachiosaurus_transporter,aje_brachiosaurus_siege'
+		FighterAnims = 'trex_fm_2'
+		EnemyAnims	= 'brachio_react_atroxo_fm_1'
+		LinkDelay	= '0.4'
+		Link	= 'Fm02'
+	}
+	Dilophosaurus_vs_Infantry {
+		Fighters = 'Dilophosaurus,arena_dilophosaurus,ninigi_dilophosaurus,aje_dilophosaurus'
+		Enemies = '$Infantry_nat'
+		FighterAnims = 'dilo_fm_0'
+		EnemyAnims	= 'react_dilo_fm_0'
+		LinkDelay	= '0.4'
+		Link	= 'Fm01'
+	}
+	Dilophosaurus_vs_Infantry {
+		Fighters = 'Dilophosaurus,arena_dilophosaurus,ninigi_dilophosaurus,aje_dilophosaurus'
+		Enemies = '$Infantry_res'
+		FighterAnims = 'dilo_fm_0'
+		EnemyAnims	= 'react_dilo_fm_0'
+		LinkDelay	= '0.4'
+		Link	= 'Fm01'
+	}
+	Infantry_vs_Brachiosaurus {
+		Fighters = '$Infantry_res'
+		Enemies = 'Brachiosaurus,aje_brachiosaurus,aje_brachiosaurus_mobile_camp,aje_brachiosaurus_transporter,aje_brachiosaurus_siege'
+		FighterAnims = 'res_fm_3'
+		EnemyAnims	= 'brachio_react_res_fm_3'
+		LinkDelay	= '0.4'
+		Link	= 'Fm03'
+	}
+	Infantry_vs_Woolly_Rhino {
+		Fighters 	= '$Infantry_nat,$Infantry_res'
+		Enemies 	= 'Woolly_Rhino,hu_rhino,hu_rhino_transporter,hu_rhino_ballista'
+		FighterAnims = 'nat_fm_6'
+		EnemyAnims	= 'rhino_react_res_fm_6'
+		LinkDelay	= '0.4'
+		Link	= 'Fm01'
+	}
+	Rhino_vs_Infantry {
+		Fighters 	= 'Woolly_Rhino,hu_rhino'
+		Enemies		= '$Infantry_res'
+		FighterAnims = 'rhino_fm_0'
+		EnemyAnims	= 'react_rhino_fm_0'
+		LinkDelay	= '0.4'
+		Link	= 'Fm01'
+	}		
+	Res_Res {
+		Fighters 	= '$Infantry_res'
+		Enemies		= '$Infantry_tec,$Infantry_res,$Infantry_nat,$Workers'
+		FighterAnims = 'res_fm_0'
+		EnemyAnims 	= 'react_res_fm_0'
+		LinkDelay	= '0.4'
+		Link		= 'Fm01'
+		InstantDel	= '0'
+		BodyParts {
+			Blar	= 'arm,0.6'
+			Blal	= 'arm,1.2'
+		}
+	}
+	Nat_Res {
+		Fighters 	= '$Infantry_nat'
+		Enemies		= '$Infantry_res'
+		FighterAnims = 'nat_fm_0'
+		EnemyAnims 	= 'react_nat_fm_0'
+		LinkDelay	= '0.4'
+		Link		= 'Fm01'
+	}
+	Nat_Baryonyx {
+		Fighters	= '$Infantry_nat'
+		Enemies 	= 'Baryonyx,ninigi_baryonyx,arena_baryonyx'
+		FighterAnims = 'nat_fm_7'
+		EnemyAnims	= 'baryonyx_react_nat_fm_7'
+		LinkDelay	= '0.4'
+		Link		= 'Fm01'
+	}
+	Allosaurus_vs_Infantry {
+		Fighters 		= 'Allosaurus,aje_allosaurus'
+		Enemies			= '$Infantry_res,$Infantry_nat,$Infantry_tec'
+		FighterAnims 	= 'allo_fm_0'
+		EnemyAnims		= 'react_allo_fm_0'
+		LinkDelay		= '0.4'
+		Link		= 'Fm01'
+		DeleteCorpse	= '1'
+	}
+	Saltasaurus_Tec {
+		Fighters 	= 'Saltasaurus,ninigi_saltasaurus_launcher,ninigi_saltasaurus_transporter'
+		Enemies		= '$Infantry_tec'
+		FighterAnims = 'saltasaurus_fm_0'
+		EnemyAnims	= 'react_saltasaurus_fm_0'
+		LinkDelay	= '0.4'
+		Link	= 'Fm01'
+	}
+	Baryonyx_Res {
+		Fighters 	= 'Baryonyx,ninigi_baryonyx,arena_baryonyx'
+		Enemies		= '$Infantry_res'
+		FighterAnims = 'baryonyx_fm_0'
+		EnemyAnims	= 'react_baryonyx_fm_0'
+		LinkDelay	= '0.4'
+		Link	= 'Fm01'
+	}
+	Gallimimus_Tec {
+		Fighters 	= 'Gallimimus'
+		Enemies		= '$Infantry_tec'
+		FighterAnims = 'gallimimus_fm_0'
+		EnemyAnims	= 'react_gallimimus_fm_0'
+		LinkDelay	= '0.4'
+		Link	= 'Fm01'
+	}
+	SeasMobileSuit_Tec {
+		Fighters 	= 'seas_mobile_suit'
+		Enemies		= '$Infantry_tec'
+		FighterAnims = 'seas_mobile_suit_fm_0 '
+		EnemyAnims	= 'react_mobile_suit_fm_0'
+		LinkDelay	= '0.4'
+		Link	= 'Fm01'
+	}
+	Cole_vs_Infantry {
+		Fighters 	= 'Cole_s0'
+		Enemies		= '$Infantry_tec,$Infantry_res,$Infantry_nat,$Workers'
+		FighterAnims = 'cole_fm_0'
+		EnemyAnims	= 'react_cole_fm_0'
+		LinkDelay	= '0.4'
+		Link	= 'Fm01'
+		BodyParts {
+			Blfa	= 'head,0.6'
+		}
+	}
+}
+
+

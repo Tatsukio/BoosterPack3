@@ -1,0 +1,116 @@
+Root {
+	Colored_Box {
+		classattribs {
+			classname = 'CColoredBox'
+			gfx = 'colored_box'
+		}
+	}
+	ForestLumberMill {
+		classattribs {
+			classname = 'CForestLumberMill'
+			gfx = 'Dummy'
+		}
+	}
+	fx_ice_freeze {
+		classattribs {
+			classname = 'CFX'
+			gfx = 'fx_ice_freeze'
+		}
+	}
+	add_dummy_01 {
+		classattribs {
+			classname = 'CFX'
+			gfx = 'fx_ice_freeze'
+		}
+	}
+	add_dummy_02 {
+		classattribs {
+			classname = 'CFX'
+			gfx = 'fx_ice_freeze'
+		}
+	}
+	add_dummy_03 {
+		classattribs {
+			classname = 'CFX'
+			gfx = 'fx_ice_freeze'
+		}
+	}
+	add_dummy_04 {
+		classattribs {
+			classname = 'CFX'
+			gfx = 'fx_ice_freeze'
+		}
+	}
+	add_dummy_05 {
+		classattribs {
+			classname = 'CFX'
+			gfx = 'fx_ice_freeze'
+		}
+	}
+	add_dummy_06 {
+		classattribs {
+			classname = 'CFX'
+			gfx = 'fx_ice_freeze'
+		}
+	}
+	add_dummy_07 {
+		classattribs {
+			classname = 'CFX'
+			gfx = 'fx_ice_freeze'
+		}
+	}
+	add_dummy_08 {
+		classattribs {
+			classname = 'CFX'
+			gfx = 'fx_ice_freeze'
+		}
+	}
+	add_dummy_09 {
+		classattribs {
+			classname = 'CFX'
+			gfx = 'fx_ice_freeze'
+		}
+	}
+	add_dummy_10 {
+		classattribs {
+			classname = 'CFX'
+			gfx = 'fx_ice_freeze'
+		}
+	}	
+	add_dummy_11 {
+		classattribs {
+			classname = 'CFX'
+			gfx = 'fx_ice_freeze'
+		}
+	}	
+	add_dummy_12 {
+		classattribs {
+			classname = 'CFX'
+			gfx = 'fx_ice_freeze'
+		}
+	}	
+	add_dummy_13 {
+		classattribs {
+			classname = 'CFX'
+			gfx = 'fx_ice_freeze'
+		}
+	}	
+	add_dummy_14 {
+		classattribs {
+			classname = 'CFX'
+			gfx = 'fx_ice_freeze'
+		}
+	}	
+	add_dummy_15 {
+		classattribs {
+			classname = 'CFX'
+			gfx = 'fx_ice_freeze'
+		}
+	}	
+	add_dummy_16 {
+		classattribs {
+			classname = 'CFX'
+			gfx = 'fx_ice_freeze'
+		}
+	}	
+}

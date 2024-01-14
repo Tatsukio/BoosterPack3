@@ -1,0 +1,892 @@
+Root {
+	Animset_res_warriors {
+		users {
+			hu_warrior
+			aje_warrior
+			ninigi_warrior
+			hu_jetpack_warrior
+			hu_berserker
+			hu_killer
+			seas_warrior
+			Cole_s0
+			livingstone_s0
+			mayor_s0
+			trader_s0
+		}
+		standanim = 'res_fight_standanim' {
+			min_loops = '1'
+			max_loops = '4'
+			chance = '10'
+		}
+		0 = 'res_idle_0' {
+			min_loops = '1'
+			max_loops = '1'
+			chance = '1'
+		}
+		1 = 'res_idle_1' {
+			min_loops = '2'
+			max_loops = '4'
+			chance = '3'
+		}
+		2 = 'res_idle_2' {
+			min_loops = '1'
+			max_loops = '1'
+			chance = '1'
+		}
+		3 = 'res_idle_3' {
+			min_loops = '1'
+			max_loops = '3'
+			chance = '3'
+		}
+		4 = 'res_idle_4' {
+			min_loops = '1'
+			max_loops = '2'
+			chance = '1'
+		}
+		5 = 'res_idle_5' {
+			min_loops = '1'
+			max_loops = '2'
+			chance = '3'
+		}
+		6 = 'res_idle_6' {
+			min_loops = '1'
+			max_loops = '2'
+			chance = '1'
+		}
+	}
+	
+	Animset_aje_rammer {
+		users {
+			aje_rammer
+		}
+		standanim = 'res_fight_standanim' {
+			min_loops = '1'
+			max_loops = '4'
+			chance = '10'
+		}
+		1 = 'res_idle_1' {
+			min_loops = '2'
+			max_loops = '4'
+			chance = '3'
+		}
+		2 = 'res_idle_2' {
+			min_loops = '1'
+			max_loops = '1'
+			chance = '1'
+		}
+		3 = 'res_idle_3' {
+			min_loops = '1'
+			max_loops = '3'
+			chance = '3'
+		}
+		4 = 'res_idle_4' {
+			min_loops = '1'
+			max_loops = '2'
+			chance = '1'
+		}
+	}
+	
+	Animset_aje_rammer {
+		users {
+			lovelace_s0
+		}
+		standanim = 'tec_fightpos_standanim' {
+			min_loops = '1'
+			max_loops = '4'
+			chance = '15'
+		}
+		1 = 'ada_idle_01' {
+			min_loops = '1'
+			max_loops = '1'
+			chance = '2'
+		}
+		2 = 'ada_idle_02' {
+			min_loops = '1'
+			max_loops = '1'
+			chance = '2'
+		}
+	}
+	Animset_res_druids {
+		users {
+			hu_druid
+			aje_shaman
+			ninigi_monk
+		}
+		standanim = 'res_fight_standanim' {
+			min_loops = '1'
+			max_loops = '4'
+			chance = '10'
+		}
+		0 = 'res_idle_0' {
+			min_loops = '1'
+			max_loops = '1'
+			chance = '1'
+		}
+		1 = 'res_idle_1' {
+			min_loops = '2'
+			max_loops = '4'
+			chance = '3'
+		}
+		3 = 'res_idle_3' {
+			min_loops = '1'
+			max_loops = '3'
+			chance = '3'
+		}
+		4 = 'res_idle_4' {
+			min_loops = '1'
+			max_loops = '2'
+			chance = '1'
+		}
+		6 = 'res_idle_6' {
+			min_loops = '1'
+			max_loops = '2'
+			chance = '1'
+		}
+	}
+	Animset_workers {
+		users {
+			hu_worker
+			aje_worker
+			ninigi_worker
+			seas_worker
+		}
+		standanim = 'idle_0' {
+			min_loops = '2'
+			max_loops = '3'
+			chance = '10'
+		}
+		0 = 'idle_1' {
+			min_loops = '1'
+			max_loops = '2'
+			chance = '2'
+		}
+		1 = 'idle_2' {
+			min_loops = '2'
+			max_loops = '3'
+			chance = '3'
+		}
+		2 = 'idle_3' {
+			min_loops = '1'
+			max_loops = '4'
+			chance = '1'
+		}
+		3 = 'idle_4' {
+			min_loops = '2'
+			max_loops = '2'
+			chance = '3'
+		}
+		4 = 'idle_5' {
+			min_loops = '1'
+			max_loops = '1'
+			chance = '1'
+		}
+		5 = 'idle_6' {
+			min_loops = '1'
+			max_loops = '2'
+			chance = '3'
+		}
+	}
+	Animset_nat {
+		users {
+			hu_spearman
+			aje_spearman
+			ninigi_spearman
+		}
+		standanim = 'nat_fight_standanim' {
+			min_loops = '2'
+			max_loops = '3'
+			chance = '10'
+		}
+		0 = 'nat_idle_0' {
+			min_loops = '1'
+			max_loops = '4'
+			chance = '2'
+		}
+		1 = 'nat_idle_1' {
+			min_loops = '1'
+			max_loops = '1'
+			chance = '2'
+		}
+		2 = 'nat_idle_2' {
+			min_loops = '1'
+			max_loops = '4'
+			chance = '2'
+		}
+		3 = 'nat_idle_3' {
+			min_loops = '1'
+			max_loops = '3'
+			chance = '3'
+		}
+		4 = 'nat_idle_4' {
+			min_loops = '1'
+			max_loops = '2'
+			chance = '1'
+		}
+	}
+	Animset_pikeman {
+		users {
+			hu_pikeman
+			ninigi_icespearman
+		}
+		standanim = 'nat_fight_standanim' {
+			min_loops = '2'
+			max_loops = '4'
+			chance = '10'
+		}
+		1 = 'hu_pikeman_idle_0' {
+			min_loops = '1'
+			max_loops = '3'
+			chance = '4'
+		}
+		2 = 'hu_pikeman_idle_1' {
+			min_loops = '1'
+			max_loops = '4'
+			chance = '2'
+		}
+	}
+	Animset_tec {
+		users {
+			hu_archer
+			hu_marksman
+			hu_rhino_transporter
+			hu_chariot
+			aje_assassin
+			aje_archer
+			aje_thrower
+			aje_velociraptor_handler_char
+			ninigi_sumo
+			ninigi_archer
+			ninigi_mortar
+			ninigi_marksman
+			ninigi_ninja
+			Stina_s0
+			darwin_s0
+			Bela_s0
+			tesla_s0
+			babbage_s0
+			schliemann_s0
+			hermit_s0
+			seas_marksman
+			seas_gunner
+			seas_rocketman
+			seas_flamethrower
+			seas_medic
+		}
+		standanim = 'tec_fightpos_standanim' {
+			min_loops = '2'
+			max_loops = '3'
+			chance = '10'
+		}
+		0 = 'tec_idle_0' {
+			min_loops = '1'
+			max_loops = '3'
+			chance = '3'
+		}
+		1 = 'tec_idle_1' {
+			min_loops = '1'
+			max_loops = '1'
+			chance = '2'
+		}
+		2 = 'tec_idle_2' {
+			min_loops = '2'
+			max_loops = '4'
+			chance = '3'
+		}
+		3 = 'idle_4' {
+			min_loops = '2'
+			max_loops = '4'
+			chance = '3'
+		}
+		4 = 'idle_6' {
+			min_loops = '1'
+			max_loops = '2'
+			chance = '2'
+		}
+	}
+	Animset_poisoner {
+		users {
+			aje_poisoner
+		}
+		standanim = 'aje_poisoner_idle_1' {
+			min_loops = '20'
+			max_loops = '30'
+			chance = '50'
+		}
+		0 = 'aje_poisoner_idle_0' {
+			min_loops = '20'
+			max_loops = '30'
+			chance = '1'
+		}
+	}
+	Animset_special_eusmilus {
+		users {
+			special_eusmilus
+		}
+		standanim = 'standanim' {
+			min_loops = '10'
+			max_loops = '20'
+			chance = '50'
+		}
+		0 = 'idle_01' {
+			min_loops = '1'
+			max_loops = '1'
+			chance = '5'
+		}
+		1 = 'idle_02' {
+			min_loops = '1'
+			max_loops = '1'
+			chance = '4'
+		}
+		2 = 'idle_03' {
+			min_loops = '1'
+			max_loops = '1'
+			chance = '1'
+		}
+	}
+	Animset_riders {
+		users {
+			hu_scout
+			hu_rhino
+			hu_wild_boar
+			hu_mammoth
+			hu_mammoth_lumber_upgrade
+			hu_eusmilus
+			seas_triceratops
+			aje_resource_collectors
+			aje_dilophosaurus
+			aje_eusmilus
+			aje_allosaurus
+			aje_brachiosaurus
+			aje_triceratops_archer
+			aje_stegosaurus
+			aje_cronosaurus
+			ninigi_scout
+			ninigi_baryonyx
+			ninigi_parasaurolophus_drums
+			ninigi_saltasaurus_archer
+			ninigi_eusmilus
+			ninigi_dilophosaurus
+		}
+		standanim = 'ride_idle_0' {
+			min_loops = '2'
+			max_loops = '3'
+			chance = '20'
+		}
+		0 = 'ride_idle_1' {
+			min_loops = '1'
+			max_loops = '1'
+			chance = '3'
+		}
+		1 = 'ride_idle_2' {
+			min_loops = '1'
+			max_loops = '1'
+			chance = '2'
+		}
+	}
+	Animset_ballista_riders {
+		users {
+			hu_kentrosaurus
+			hu_rhino_ballista
+			hu_mammoth_log_cannon
+			hu_triceratops
+			hu_steam_tank
+			hu_steam_ram
+			seas_mechanical_walker
+			ninigi_flamethrower_trike
+		}
+		standanim = 'rhino_ballista_loop' {
+			min_loops = '2'
+			max_loops = '3'
+			chance = '20'
+		}
+	}
+	Animset_Trex {
+		users {
+			aje_atroxosaurus
+		}
+		standanim = 'idle_0' {
+			min_loops = '2'
+			max_loops = '2'
+			chance = '20'
+		}
+		0 = 'idle_1' {
+			min_loops = '2'
+			max_loops = '2'
+			chance = '5'
+		}
+		1 = 'idle_2' {
+			min_loops = '2'
+			max_loops = '2'
+			chance = '5'
+		}
+		2 = 'idle_3' {
+			min_loops = '2'
+			max_loops = '2'
+			chance = '5'
+		}
+		3 = 'idle_4' {
+			min_loops = '2'
+			max_loops = '2'
+			chance = '5'
+		}
+	}
+	Animset_Triceratops {
+		users {
+			titan_triceratops
+			hu_triceratops
+			Gigantopithecus
+		}
+		standanim = 'standanim' {
+			min_loops = '2'
+			max_loops = '2'
+			chance = '20'
+		}
+		0 = 'idle_1' {
+			min_loops = '2'
+			max_loops = '2'
+			chance = '5'
+		}
+		1 = 'idle_2' {
+			min_loops = '2'
+			max_loops = '2'
+			chance = '5'
+		}
+		2 = 'idle_3' {
+			min_loops = '2'
+			max_loops = '2'
+			chance = '5'
+		}
+	}
+	Animset_Animal_Set1 {
+		users {
+			Ankylosaurus
+			Apatosaurus
+			Amargasaurus
+			Deinonychus
+			Heterodontosaurus
+			Gallimimus
+			Megaloceros
+			Stegosaurus
+			Wild_Boar			
+		}
+		standanim = 'standanim' {
+			min_loops = '2'
+			max_loops = '2'
+			chance = '20'
+		}
+		0 = 'menace' {
+			min_loops = '2'
+			max_loops = '2'
+			chance = '5'
+		}
+		1 = 'rest' {
+			min_loops = '3'
+			max_loops = '5'
+			chance = '3'
+		}
+		2 = 'feeding' {
+			min_loops = '2'
+			max_loops = '2'
+			chance = '5'
+		}
+	}
+	Animset_Animal_Set2 {
+		users {
+			Kentrosaurus			
+			Saltasaurus
+		}
+		standanim = 'standanim' {
+			min_loops = '2'
+			max_loops = '2'
+			chance = '20'
+		}
+		0 = 'rest' {
+			min_loops = '3'
+			max_loops = '5'
+			chance = '3'
+		}
+		1 = 'feeding' {
+			min_loops = '2'
+			max_loops = '2'
+			chance = '5'
+		}		
+	}
+	Animset_Animal_Set3 {
+		users {
+			Dilophosaurus
+			Triceratops
+			Woolly_Rhino
+			Mammoth		
+		}
+		standanim = 'standanim' {
+			min_loops = '2'
+			max_loops = '2'
+			chance = '20'
+		}
+		0 = 'rest' {
+			min_loops = '3'
+			max_loops = '5'
+			chance = '3'
+		}
+		1 = 'feeding' {
+			min_loops = '2'
+			max_loops = '2'
+			chance = '5'
+		}
+		2 = 'menace' {
+			min_loops = '2'
+			max_loops = '2'
+			chance = '5'
+		}		
+	}
+	Animset_Atroxosaurus {
+		users {
+			Atroxosaurus
+			Gigantosaurus
+		}
+		standanim = 'standanim' {
+			min_loops = '2'
+			max_loops = '2'
+			chance = '20'
+		}
+		0 = 'shake' {
+			min_loops = '2'
+			max_loops = '2'
+			chance = '5'
+		}
+		1 = 'rest' {
+			min_loops = '3'
+			max_loops = '5'
+			chance = '3'
+		}
+		2 = 'feeding' {
+			min_loops = '2'
+			max_loops = '2'
+			chance = '5'
+		}
+		3 = 'roaring' {
+			min_loops = '2'
+			max_loops = '2'
+			chance = '5'
+		}
+		4 = 'sniff' {
+			min_loops = '2'
+			max_loops = '2'
+			chance = '5'
+		}
+	}
+	Animset_Brachiosaurus {
+		users {
+			Brachiosaurus			
+		}
+		standanim = 'standanim' {
+			min_loops = '2'
+			max_loops = '2'
+			chance = '20'
+		}
+		0 = 'shuffle' {
+			min_loops = '2'
+			max_loops = '2'
+			chance = '5'
+		}
+		1 = 'rest' {
+			min_loops = '3'
+			max_loops = '5'
+			chance = '3'
+		}
+		2 = 'feeding' {
+			min_loops = '2'
+			max_loops = '2'
+			chance = '5'
+		}
+		3 = 'standup' {
+			min_loops = '2'
+			max_loops = '2'
+			chance = '5'
+		}
+		4 = 'neck_down' {
+			min_loops = '2'
+			max_loops = '2'
+			chance = '5'
+		}
+		5 = 'menace' {
+			min_loops = '2'
+			max_loops = '2'
+			chance = '5'
+		}
+	}
+	Animset_Carnotaurus {
+		users {
+			Carnotaurus			
+		}
+		standanim = 'standanim' {
+			min_loops = '2'
+			max_loops = '2'
+			chance = '20'
+		}
+		0 = 'scratch' {
+			min_loops = '2'
+			max_loops = '2'
+			chance = '5'
+		}
+		1 = 'rest' {
+			min_loops = '3'
+			max_loops = '5'
+			chance = '3'
+		}
+		2 = 'feeding' {
+			min_loops = '2'
+			max_loops = '2'
+			chance = '5'
+		}
+		3 = 'shake' {
+			min_loops = '2'
+			max_loops = '2'
+			chance = '5'
+		}
+		4 = 'menace' {
+			min_loops = '2'
+			max_loops = '2'
+			chance = '5'
+		}		
+	}
+	Animset_Allosaurus {
+		users {
+			Allosaurus
+			Tarbosaurus
+		}
+		standanim = 'standanim' {
+			min_loops = '2'
+			max_loops = '2'
+			chance = '20'
+		}
+		0 = 'roaring' {
+			min_loops = '2'
+			max_loops = '2'
+			chance = '5'
+		}
+		1 = 'rest' {
+			min_loops = '3'
+			max_loops = '5'
+			chance = '3'
+		}
+		2 = 'feeding' {
+			min_loops = '2'
+			max_loops = '2'
+			chance = '5'
+		}
+		3 = 'menace' {
+			min_loops = '2'
+			max_loops = '2'
+			chance = '5'
+		}		
+	}
+	Animset_Eusmilus {
+		users {
+			Eusmilus
+			Smilodon		
+		}
+		standanim = 'standanim' {
+			min_loops = '2'
+			max_loops = '2'
+			chance = '20'
+		}
+		0 = 'shake' {
+			min_loops = '2'
+			max_loops = '2'
+			chance = '5'
+		}
+		1 = 'rest' {
+			min_loops = '3'
+			max_loops = '5'
+			chance = '3'
+		}
+		2 = 'feeding' {
+			min_loops = '2'
+			max_loops = '2'
+			chance = '5'
+		}
+		3 = 'menace' {
+			min_loops = '2'
+			max_loops = '2'
+			chance = '5'
+		}
+		4 = 'sit' {
+			min_loops = '3'
+			max_loops = '8'
+			chance = '5'
+		}	
+	}
+	Animset_Iguanodon {
+		users {
+			Iguanodon
+			Edmontosaurus
+		}
+		standanim = 'standanim' {
+			min_loops = '2'
+			max_loops = '2'
+			chance = '20'
+		}
+		0 = 'shake' {
+			min_loops = '2'
+			max_loops = '2'
+			chance = '5'
+		}
+		1 = 'rest' {
+			min_loops = '3'
+			max_loops = '5'
+			chance = '3'
+		}
+		2 = 'feeding' {
+			min_loops = '2'
+			max_loops = '2'
+			chance = '5'
+		}
+		3 = 'menace' {
+			min_loops = '2'
+			max_loops = '2'
+			chance = '5'
+		}
+		4 = 'scratch' {
+			min_loops = '2'
+			max_loops = '2'
+			chance = '5'
+		}	
+	}
+	Animset_Seismosaurus {
+		users {
+			seismosaurus
+		}
+		standanim = 'standanim' {
+			min_loops = '2'
+			max_loops = '2'
+			chance = '20'
+		}
+		0 = 'idle_0' {
+			min_loops = '2'
+			max_loops = '2'
+			chance = '5'
+		}		
+		1 = 'idle_1' {
+			min_loops = '2'
+			max_loops = '2'
+			chance = '5'
+		}
+		2 = 'idle_2' {
+			min_loops = '2'
+			max_loops = '2'
+			chance = '5'
+		}
+		3 = 'idle_3' {
+			min_loops = '2'
+			max_loops = '2'
+			chance = '5'
+		}		
+	}
+	Animset_lumberjack {
+		users {
+			seas_lumberjack
+			seas_lumberjack_minigun
+		}
+		standanim = 'standanim' {
+			min_loops = '2'
+			max_loops = '2'
+			chance = '20'
+		}
+		0 = 'idle_0' {
+			min_loops = '10'
+			max_loops = '15'
+			chance = '2'
+		}		
+		1 = 'idle_1' {
+			min_loops = '1'
+			max_loops = '1'
+			chance = '5'
+		}
+	}
+	Animset_Idle_HC_Citizen {
+		users {
+			hc_citizen_01_animal
+			hc_citizen_01_idle
+			hc_citizen_02_idle
+			hc_citizen_03_idle
+			hc_citizen_04_idle
+			hc_guard_01_idle
+			hc_guard_02_idle
+			hc_worker_01_idle
+			hc_worker_02_idle
+			hc_worker_03_idle
+			hc_trader_mule
+		}
+		standanim = 'standanim' {
+			min_loops = '2'
+			max_loops = '2'
+			chance = '3'
+		}
+		0 = 'idle_0' {
+			min_loops = '2'
+			max_loops = '2'
+			chance = '1'
+		}		
+		1 = 'idle_1' {
+			min_loops = '2'
+			max_loops = '2'
+			chance = '1'
+		}
+		2 = 'idle_2' {
+			min_loops = '2'
+			max_loops = '2'
+			chance = '1'
+		}
+		3 = 'idle_3' {
+			min_loops = '2'
+			max_loops = '2'
+			chance = '1'
+		}		
+		3 = 'idle_4' {
+			min_loops = '2'
+			max_loops = '2'
+			chance = '15'
+		}		
+		3 = 'idle_5' {
+			min_loops = '2'
+			max_loops = '2'
+			chance = '1'
+		}		
+		3 = 'all_look_left' {
+			min_loops = '2'
+			max_loops = '2'
+			chance = '5'
+		}		
+		3 = 'all_look_right' {
+			min_loops = '2'
+			max_loops = '2'
+			chance = '5'
+		}		
+		3 = 'talking_0' {
+			min_loops = '2'
+			max_loops = '2'
+			chance = '5'
+		}		
+		3 = 'talking_1' {
+			min_loops = '2'
+			max_loops = '2'
+			chance = '5'
+		}		
+		3 = 'talking_3' {
+			min_loops = '2'
+			max_loops = '2'
+			chance = '5'
+		}		
+		3 = 'talking_4' {
+			min_loops = '2'
+			max_loops = '2'
+			chance = '5'
+		}		
+		3 = 'talking_5' {
+			min_loops = '2'
+			max_loops = '2'
+			chance = '5'
+		}		
+	}
+}

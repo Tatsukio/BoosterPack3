@@ -1,0 +1,16 @@
+Root {
+	Actors {
+		Pirate {
+			generate_name = 'false'
+			owner = '0'
+			class = 'ninigi_ninja'
+			def_icon = 'ninigi_ninja'
+		}
+	}
+	Frames {
+		Frame_0 {
+			actor = 'Pirate'
+			audio = 'ds_dummy'
+		}
+	}
+}

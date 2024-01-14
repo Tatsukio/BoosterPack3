@@ -1,0 +1,580 @@
+class CResource inherit CGameObj
+
+	export const int VIS_FLAG_RSRC_STATE1		=5;
+	export const int VIS_FLAG_RSRC_STATE2		=6;
+	export const int VIS_FLAG_RSRC_STATE3		=7;
+	export const int VIS_FLAG_RSRC_STATE4		=8;
+	export const int VIS_FLAG_RSRC_STATE5		=9;
+	export const int VIS_FLAG_RSRC_STATE6		=10;
+
+	var real			m_fValue;
+	var array real		m_afState;
+	var real			m_fState1, m_fState2, m_fState3, m_fState4, m_fState5;
+
+	export constructor()
+		m_afState=6;
+		m_afState[0]=0.0f;
+		m_afState[1]=100.0f;
+		m_afState[2]=250.0f;
+		m_afState[3]=500.0f;
+		m_afState[4]=750.0f;
+		m_afState[5]=1000.0f;
+	endconstructor;
+
+	export proc void OnInit(bool p_bLoad)
+
+		var int i;
+		if(!p_bLoad)then
+			//SetType("RSRC");
+			SetHitable(true);
+			SetSelectable(true);
+			UpdateValues();
+		else
+			var ^CAttribs pxAttribs=CheckAttribs();
+			m_fValue = pxAttribs^.GetValueInt("value").ToReal();
+			RepairValues(); //WT#951
+    	endif;
+
+    	SetPlaceBlocker(true);
+
+    	var CConfig xConf;
+    	var bool bResVisInFOW=xConf.GetSetB("Server/GameplayOptions/ResourcesVisibleInFOW",true);
+    	SetVisInFOW(bResVisInFOW);
+	endproc;
+
+	export proc void UpdateValues()
+		var ^CAttribs pxAttribs=InitAttribs();
+		var ^CPropDB pxTable = CServerApp.GetPropDB_Resources();
+		if(pxTable!=null)then
+			var ^CPropDB.CNode pxRoot = ^(pxTable^.GetRoot());
+			if(pxRoot!=null)then
+				var ^CPropDB.CNode pxType = pxRoot^.Get(GetType().AsString());
+				if(pxType!=null)then
+					var ^CPropDB.CNode pxResource = pxType^.Get(GetClassName());
+					if(pxResource!=null)then
+						m_fValue = pxResource^.GetValueI("value").ToReal();
+						pxAttribs^.SetValue("value",m_fValue.ToInt());
+						pxAttribs^.SetValue("hitpoints",m_fValue.ToInt());
+						pxAttribs^.SetValue("maxhitpoints",m_fValue.ToInt());
+						//L CSrvWrap.LogSpam("Resource",GetName()+": set to "+m_fValue.ToString());
+					else
+						KLog.LogError("CResource","Missing Entry in Resources.txt: "+GetClassName());
+						//fallback
+						pxAttribs^.SetValue("value",100);
+						pxAttribs^.SetValue("hitpoints",100);
+						pxAttribs^.SetValue("maxhitpoints",100);
+					endif;
+				endif;
+			endif;
+		endif;
+	endproc;
+	
+	//WT#951 update resources with invalid hitpoint values
+	export proc void RepairValues()
+		var ^CAttribs pxAttribs=GetAttribs();
+		if(pxAttribs!=null && pxAttribs^.GetValueInt("value")>0 && (pxAttribs^.GetValueInt("hitpoints")<=0 || pxAttribs^.GetValueInt("maxhitpoints")<=0) )then
+			pxAttribs^.SetValue("value",m_fValue.ToInt());
+			pxAttribs^.SetValue("hitpoints",pxAttribs^.GetValueInt("value"));
+			pxAttribs^.SetValue("maxhitpoints",pxAttribs^.GetValueInt("value"));
+		endif;
+	endproc;
+
+	proc ^CAttribs CheckAttribs()
+		var ^CAttribs pxAttribs=GetAttribs();
+		if(pxAttribs==null)then	pxAttribs=InitAttribs(); endif;
+		return pxAttribs;
+	endproc;
+
+	export proc bool SetValue(real p_fValue)
+		if(m_fValue==p_fValue)then return false;endif;
+		m_fValue=Math.Max(p_fValue,0.0f);
+		GetAttribs()^.SetValue("value",(m_fValue+0.5).ToInt());
+		GetAttribs()^.SetValue("hitpoints",(m_fValue+0.5).ToInt());
+		if(m_fValue<=0.5f)then
+			Delete();
+		endif;
+		return true;
+	endproc;
+
+	export proc real GetValue()
+		return m_fValue;
+	endproc;
+
+	// PROC MINE ==================================
+	export proc real Mine(real p_fValue)
+		var real fOldVal=m_fValue;
+		SetValue(m_fValue-p_fValue);
+		var real fNewVal=m_fValue;
+		OnMine();
+		return (fOldVal-fNewVal);
+	endproc;
+
+	export proc void HandleEvent(ref CGameEvtPtr p_rxEvtPtr)
+		if(p_rxEvtPtr.GetClass()=="Mine")then
+			Mine(p_rxEvtPtr.GetFloat(0));
+		endif;
+	endproc;
+
+	export proc void OnUpdateFlags()
+		var real fV = GetValue();
+		var int i = m_afState.NumEntries()-1;
+		for(i=i) cond(i>=0) iter(--i) do
+			if(fV >= m_afState[i]) then break; endif;
+		endfor;
+
+		var int iS = i;
+
+		var int iC=m_afState.NumEntries();
+		for(i=0) cond(i<iC) iter(++i)do
+			SetRndInvMaskSingleFlagInv(5+i, i==iS);
+		endfor;
+	endproc;
+
+	proc void OnMine()
+	endproc;
+
+endclass;
+
+// CLASS CSTONE ==================================
+class CStone inherit CResource
+
+	proc void OnInit(bool p_bLoad)
+		if(!p_bLoad)then
+			SetType("STON");
+		endif;
+		super.OnInit(p_bLoad);
+		SetFreeBorderBlocker(true);
+		CSrvWrap.GetPathfinder().AddPFBlocker(this);
+		OnUpdateFlags();
+	endproc;
+
+	export proc void OnMine()
+		OnUpdateFlags();
+	endproc;
+
+endclass;
+
+// CLASS CFOOD ===================================
+class CFood inherit CResource
+	export proc void OnInit(bool p_bLoad)
+		if(!p_bLoad)then
+		endif;
+		super.OnInit(p_bLoad);
+	endproc;
+
+	export proc void OnMine()
+
+	endproc;
+
+endclass;
+
+
+
+class CFoodFood inherit CFood
+	export proc void OnInit(bool p_bLoad)
+		if(!p_bLoad)then
+			SetType("FOOD");
+		endif;
+		super.OnInit(p_bLoad);
+	endproc;
+
+endclass;
+
+class CFruitFood inherit CFood
+	export proc void OnInit(bool p_bLoad)
+		if(!p_bLoad)then
+		endif;
+		SetType("FRUI");
+		super.OnInit(p_bLoad);
+
+		var ^CAttribs pxAttribs=CheckAttribs();
+		if(pxAttribs!=null && pxAttribs^.GetValueInt("value")==0)then
+			UpdateValues();
+		endif;
+	endproc;
+
+endclass;
+
+// CLASS CWOOD ==================================
+class CWood inherit CResource
+
+	var CObjList m_xWorkers;
+	var int      m_iMaxWorkers;
+
+	export proc void OnInit(bool p_bLoad)
+		if(!p_bLoad)then
+			SetDynamicBBox(true);
+			SetType("WOOD");
+		endif;
+		super.OnInit(p_bLoad);
+		SetPlaceBlocker(false); //RT#17429
+		SetAnim("chop_down_0"+(Random.GetInt()%3 + 1 ).ToString(),1);
+		m_iMaxWorkers = 5;
+
+		if(!p_bLoad)then
+			CAiInterface.TreeRemoved( GetPos() );
+		endif;
+	endproc;
+
+	export proc void OnMine()
+
+	endproc;
+
+	export proc bool AddWorker(CObjHndl p_xHndl)
+		m_xWorkers.Validate();
+		if (p_xHndl.IsValid() && m_xWorkers.NumEntries() < m_iMaxWorkers) then
+			m_xWorkers.Include(p_xHndl);
+			return true;
+		endif;
+		return false;
+	endproc;
+
+	export proc bool Remove(CObjHndl p_xHndl)
+		return m_xWorkers.RemEntry(p_xHndl);
+	endproc;
+
+	export proc bool IsInList(CObjHndl p_xHndl)
+		return m_xWorkers.FindEntry(p_xHndl) >= 0;
+	endproc;
+
+	export proc real GetValueLeft()
+		return m_fValue;
+	endproc;
+
+endclass;
+
+
+// CLASS CDINO_FOOD =================================
+class CDino_Food inherit CFoodFood
+	var int 		m_iAnimalNumber;
+	var int			m_iState;
+	var int			m_iSizeClass;
+	var int			m_iAggressive;
+
+	export const int VIS_FLAG_ANML_PARTYCOL		=5;
+	export const int VIS_FLAG_ANML_SADDLE		=6;
+	export const int VIS_FLAG_ANML_HELMET		=7;
+	export const int VIS_FLAG_ANML_ARMOR		=8;
+	export const int VIS_FLAG_ANML_STANDARTE	=9;
+	export const int VIS_FLAG_ANML_ARMORSADDLE	=10;
+	export const int VIS_FLAG_ANML_MISC			=11;
+
+	const int		ROTTENTIMER=229;
+	const int		COVERTIMER1=1923;
+	const int		COVERTIMER2=1924;
+
+	var CObjHndl	m_xCorpseObj;
+
+	//Buildup stuff
+	var	int			 	m_iBuildUpType;			///! Type of BuildUp, see BuildUp.usl for details
+	var	^CBuildUpBase 	m_pxBuildUp;			///! pointer to a BuildUp
+
+	constructor()
+		m_iState = -1;
+		m_iAggressive=0;
+	endconstructor;
+
+	export proc void OnInit(bool p_bLoad)
+
+		if(!p_bLoad)then
+			SetDynamicBBox(true);
+		endif;
+		InitEvents();
+
+		super.OnInit(p_bLoad);
+
+		SetPlaceBlocker(false);
+
+		var real fAnimLength;
+		if(GetClassName().Find("baryonyx")!=-1 && IsInWater())then
+			SetAnim("drown",1,0,fAnimLength);
+		else
+			SetAnim("dying",1,0,fAnimLength);
+		endif;
+		var ^CAttribs pxAttr=GetAttribs();
+		if(pxAttr!=null)then
+			var string sClassName=GetClassName();
+			sClassName.Replace("_food","");
+			pxAttr^.SetValue("class",sClassName);
+		endif;
+		InvokeGenericSCEvent(40,4.0);
+		if(!p_bLoad)then
+			var real fRottenDur=120.0f;
+			if(GetOwner()!=-1)then
+				fRottenDur=8.0f;
+				SetHitable(false);
+				SetSelectable(false);
+			endif;
+			CreateTimer(ROTTENTIMER, CGameTimeSpan.OneSecond()*fRottenDur, false);
+		endif;
+		// endless timer !
+		if(fAnimLength < 1.0f)then
+			fAnimLength = 1.0f;
+		endif;
+
+		if(GetOwner()!=-1) then
+			//CreateTimer(COVERTIMER1, CGameTimeSpan.OneSecond()*(fAnimLength-1.0f), false);
+			//CreateTimer(COVERTIMER2, CGameTimeSpan.OneSecond()*(fAnimLength-0.6f), false);
+		endif;
+	endproc;
+
+	export proc void Save(^CUOFWriterNode p_pxWriterNode)
+		super.Save(p_pxWriterNode);
+
+		var CFourCC xBase="DiFo"; //Dino Food
+		var int iVersion = 9;
+		var ^CUOFWriterNode pxWalk=p_pxWriterNode^.AddSubChunk(xBase,iVersion);
+		var ^CArc pxArc=^(pxWalk^.GetArc());
+		(pxArc^) << m_iBuildUpType;
+		if(HasBuildUp())then
+			GetBuildUp()^.DoKArc(pxArc^, iVersion);
+		endif;
+		(pxArc^) << m_iAggressive;
+		pxWalk^.Close();
+	endproc;
+
+	export proc void Load(^CUOFReaderNode p_pxReaderNode)
+		if(p_pxReaderNode^.GetType()=="DiFo")then
+			var ^CArc pxArc=^(p_pxReaderNode^.GetArc());
+			var int iVer=p_pxReaderNode^.GetVersion();
+			if(iVer>=7)then
+				(pxArc^) << m_iBuildUpType;
+				if(HasBuildUp())then
+					m_pxBuildUp = CBuildUpFactory.Get().CreateBuildUp(m_iBuildUpType);
+					GetBuildUp()^.DoKArc(pxArc^, iVer);
+				endif;
+			endif;
+			if(iVer>=9)then
+				(pxArc^) << m_iAggressive;
+			endif;
+		else
+			super.Load(p_pxReaderNode);
+		endif;
+	endproc;
+
+
+	export proc bool HasBuildUp()
+		return m_iBuildUpType != CBuildUpBase.TYPE_NONE;
+	endproc;
+
+
+	export proc ^CBuildUpBase GetBuildUp()
+		return m_pxBuildUp;
+	endproc;
+
+	export proc int GetAggressive()
+		return m_iAggressive;
+	endproc;
+
+	export proc void SetAggressive(int p_iValue)
+		m_iAggressive=p_iValue;
+	endproc;
+
+	export proc void SetBuildUp(int p_iType)
+		m_iBuildUpType = p_iType;
+		m_pxBuildUp = CBuildUpFactory.Get().CreateBuildUp(p_iType);
+		m_pxBuildUp^.SetParent(GetHandle());
+	endproc;
+
+	export proc void Initialize(^CGameObj p_pxObj)
+		if(p_pxObj==null) then return; endif;
+		var ^CUniversalCorpse pxGameObj = cast<CUniversalCorpse>(CSrvWrap.GetObjMgr()^.CreateObj("Corpse",p_pxObj^.GetOwner(),p_pxObj^.GetPos(),p_pxObj^.GetRotation()));
+		if(pxGameObj!=null)then
+			pxGameObj^.SetSource(p_pxObj);
+			pxGameObj^.SetVisible(false);
+			pxGameObj^.SetFoodObj(GetHandle());
+			m_xCorpseObj = pxGameObj^.GetHandle();
+		endif;
+	endproc;
+
+	export proc void HandleEvent(ref CGameEvtPtr p_rxEvtPtr)
+		if(p_rxEvtPtr.GetClass()==ms_xTimerClass)then
+			if(p_rxEvtPtr.GetInt(0)==ROTTENTIMER)then
+				Rot();
+/*			elseif(p_rxEvtPtr.GetInt(0)==COVERTIMER1)then
+				var real fRadius = GetRadius();
+				if(fRadius<=3.5)then
+					InvokeGenericSCEvent(20,4.0f);
+				elseif(fRadius<=5.0)then
+					InvokeGenericSCEvent(21,4.0f);
+				else
+					InvokeGenericSCEvent(22,4.0f);
+				endif;
+			elseif(p_rxEvtPtr.GetInt(0)==COVERTIMER2)then
+				Cover();
+*/			else
+				super.HandleEvent(p_rxEvtPtr);
+			endif;
+		else
+			super.HandleEvent(p_rxEvtPtr);
+		endif;
+	endproc;
+
+	proc void OnActionEnd(bool p_bBroken)
+		if(m_iState==1)then
+			if(m_xCorpseObj.IsValid()) then
+				m_xCorpseObj.GetObj()^.Delete();
+			endif;
+			if(HasBuildUp())then
+				GetBuildUp()^.Kill();
+			endif;
+			Delete();
+		endif;
+	endproc;
+
+	proc void Cover()
+/*		SetRndInvMaskSingleFlagInv(VIS_FLAG_ANML_PARTYCOL,false);
+		SetRndInvMaskSingleFlagInv(VIS_FLAG_ANML_SADDLE,false);
+		SetRndInvMaskSingleFlagInv(VIS_FLAG_ANML_HELMET,false);
+		SetRndInvMaskSingleFlagInv(VIS_FLAG_ANML_ARMOR,false);
+		SetRndInvMaskSingleFlagInv(VIS_FLAG_ANML_STANDARTE,false);
+		SetRndInvMaskSingleFlagInv(VIS_FLAG_ANML_ARMORSADDLE,false);
+		if(GetClassName().Find("Brachiosaurus")!=-1)then
+			SetRndInvMaskSingleFlagInv(VIS_FLAG_ANML_MISC,false);
+		else
+			SetRndInvMaskSingleFlagInv(VIS_FLAG_ANML_MISC,true);
+		endif;
+*/	endproc;
+
+
+	proc void Rot()
+
+		var vec3 vSize = GetSize();
+		vSize.SetX(0.0);
+		vSize.SetY(0.0);
+		vSize*=1.3;
+
+		SetSelectable(false);
+		SetHitable(false);
+
+		var real fRadius = GetRadius();
+		if(fRadius<=3.5)then
+			InvokeGenericSCEvent(18,4.0f);
+		elseif(fRadius<=5.0)then
+			InvokeGenericSCEvent(6,4.0f);
+		else
+			InvokeGenericSCEvent(19,4.0f);
+		endif;
+
+		//InvokeGenericSCEvent(6,4.0f);
+		MoveAction(GetPos()-vSize, (vSize.Abs()/5.0));
+		m_iState = 1;
+	endproc;
+
+	export proc real Mine(real p_fValue)
+		if(!HasTimer(ROTTENTIMER))then
+			return 0.0;
+		else
+			DeleteTimer(ROTTENTIMER);
+			CreateTimer(ROTTENTIMER, CGameTimeSpan.OneSecond() * 120.0, false);
+			var real fRet = super.Mine(p_fValue);
+			if(m_xCorpseObj.IsValid()) then
+				var ^CUniversalCorpse pxCorpse = cast<CUniversalCorpse>(m_xCorpseObj.GetObj());
+				if(pxCorpse!=null) then
+					var ^CAttribs pxA = GetAttribs();
+					if(pxA!=null) then
+						var real fHP = pxA^.GetValueInt("hitpoints").ToReal();
+						var real fMaxHP = pxA^.GetValueInt("maxhitpoints").ToReal();
+						if(fMaxHP==0.0f) then
+							pxCorpse^.SetHPPercent(0);
+						else
+							pxCorpse^.SetHPPercent((fHP/(fMaxHP*0.01f)).ToInt());
+						endif;
+					endif;
+				endif;
+			endif;
+			return fRet;
+		endif;
+	endproc;
+
+	export proc CObjHndl GetCorpseHandle()
+		return m_xCorpseObj;
+	endproc;
+endclass;
+
+class CBrachio_Food inherit CDino_Food
+
+	const int		AREADAMAGETIMER=1905;
+
+	export proc void OnInit(bool p_bLoad)
+		super.OnInit(p_bLoad);
+		if(!p_bLoad)then
+			CreateTimer(AREADAMAGETIMER,CGameTimeSpan.OneSecond()*2.0,false);
+		endif;
+	endproc;
+
+	export proc void HandleEvent(ref CGameEvtPtr p_rxEvtPtr)
+		if(p_rxEvtPtr.GetClass()==ms_xTimerClass)then
+			if(p_rxEvtPtr.GetInt(0)==AREADAMAGETIMER)then
+				CFightingObj.InvokeAreaThrow(GetPos(),50.0f,GetOwner(),2);
+			else
+				super.HandleEvent(p_rxEvtPtr);
+			endif;
+		else
+			super.HandleEvent(p_rxEvtPtr);
+		endif;
+	endproc;
+
+endclass;
+
+//CLASS CFRUIT_FOOD ================================
+class CFruit_Food inherit CFruitFood
+
+	constructor()
+		m_fState1 = 10.0;
+		m_fState2 = 30.0;
+		m_fState3 = 70.0;
+		m_fState4 = 100.0;
+		m_fState5 = 150.0;
+	endconstructor;
+
+	proc void OnInit(bool p_bLoad)
+		if(!p_bLoad)then
+		endif;
+		super.OnInit(p_bLoad);
+		if(HasAnim("anim")) then
+			SetAnim("anim", 3);
+		endif;
+		OnUpdateFlags();
+	endproc;
+
+	export proc void OnMine()
+		OnUpdateFlags();
+	endproc;
+
+endclass;
+
+class CFishShoal inherit CFruitFood
+
+	constructor()
+	endconstructor;
+
+	proc void OnInit(bool p_bLoad)
+		super.OnInit(p_bLoad);
+
+		InitEvents();
+
+		var vec3 vPos=GetPos();
+		vPos.SetZ(CSrvWrap.GetScapeMgr().GetSeaLevel());
+		SetPos(vPos);
+		if(!p_bLoad)then
+			//SetDynamicBBox(true);
+			InitAttribs();
+		endif;
+		SetDynamicBBox(false);
+
+		var ^CAttribs pxAttr = GetAttribs();
+		if(pxAttr!=null) then
+			pxAttr^.SetValue("fish", 1);
+		endif;
+
+		SetAnim("shoal", 3);
+		OnUpdateFlags();
+	endproc;
+
+	export proc void OnMine()
+		//L CSrvWrap.LogSpam("FishShoal", "Enter OnMine()");
+		OnUpdateFlags();
+	endproc;
+
+endclass;

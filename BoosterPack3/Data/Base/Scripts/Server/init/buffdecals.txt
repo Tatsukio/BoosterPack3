@@ -1,0 +1,241 @@
+Root {
+	owner_more_damage {
+		attrib = 'owner_more_damage'
+		tile = 6
+		visibility = '3'
+		icon = 'bufficon_attack_up_owner'
+		tooltip = '_iw_buff_owner_more_damage'
+	}
+	owner_more_bldg_damage {
+		attrib = 'owner_more_bldg_damage'
+		tile = 6
+		visibility = '3'
+		icon = 'bufficon_attack_up_owner'
+		tooltip = '_iw_buff_owner_more_damage_bldg'
+	}
+	owner_cole {
+		attrib = 'owner_cole'
+		tile = 6
+		visibility = '3'
+		icon = 'bufficon_attack_up_owner'
+		tooltip = '_iw_buff_owner_cole'
+	}
+	owner_fire_arrows {
+		attrib = 'owner_fire_arrows'
+		tile = 6
+		visibility = '3'
+		icon = 'bufficon_attack_up_owner'
+		tooltip = '_iw_buff_owner_fire_arrows'
+	}
+	owner_less_damage {
+		attrib = 'owner_less_damage'
+		tile = 7
+		visibility = '1'
+		icon = 'bufficon_attack_down_owner'
+		tooltip = '_iw_buff_owner_less_damage'
+	}
+	owner_less_attack_speed {
+		attrib = 'owner_less_attack_speed'
+		tile = 7
+		visibility = '1'
+		icon = 'bufficon_attack_down_owner'
+		tooltip = '_iw_buff_owner_less_attack_speed'
+	}
+	owner_more_defense {
+		attrib = 'owner_more_defense'
+		tile = 8
+		visibility = '3'
+		icon = 'bufficon_shield_up_owner'
+		tooltip = '_iw_buff_owner_more_defense'
+	}
+	owner_stina {
+		attrib = 'owner_stina'
+		tile = 8
+		visibility = '3'
+		icon = 'bufficon_shield_up_owner'
+		tooltip = '_iw_buff_owner_stina'
+	}
+	owner_schliemann {
+		attrib = 'owner_schliemann'
+		tile = 13
+		visibility = '3'
+		icon = 'bufficon_shield_up_owner'
+		tooltip = '_iw_buff_owner_owner_schliemann'
+	}
+	owner_livingstone {
+		attrib = 'owner_livingstone'
+		tile = 14
+		visibility = '3'
+		icon = 'bufficon_attack_up_owner'
+		tooltip = '_iw_buff_owner_livingstone'
+	}
+	owner_more_range {
+		attrib = 'owner_more_range'
+		tile = 9
+		visibility = '3'
+		icon = 'bufficon_range_up_owner'
+		tooltip = '_iw_buff_owner_more_range'
+	}
+	owner_bela {
+		attrib = 'owner_bela'
+		tile = 9
+		visibility = '3'
+		icon = 'bufficon_range_up_owner'
+		tooltip = '_iw_buff_owner_bela'
+	}
+	owner_healing {
+		attrib = 'owner_healing'
+		tile = 10
+		visibility = '3'
+		icon = 'bufficon_heal_owner'
+		tooltip = '_iw_buff_owner_healing'
+	}
+	owner_healing_temple {
+		attrib = 'owner_healing_temple'
+		visibility = '3'
+		icon = 'bufficon_heal_owner'
+		tooltip = '_iw_buff_owner_healing_temple'
+	}
+	owner_healing_harbour {
+		attrib = 'owner_healing_harbour'
+		visibility = '3'
+		icon = 'bufficon_heal_owner'
+		tooltip = '_iw_buff_owner_healing_harbour'
+	}
+	owner_faster_buildup {
+		attrib = 'owner_faster_buildup'
+		tile = 11
+		visibility = '0'
+		icon = 'bufficon_build_up_owner'
+		tooltip = '_iw_buff_owner_faster_buildup'
+	}
+	owner_no_animal_aggro {
+		attrib = 'owner_no_animal_aggro'
+		tile = 12
+		visibility = '3'
+		icon = 'bufficon_noanimalaggro_owner'
+		tooltip = '_iw_buff_owner_no_animal_aggro'
+	}
+	owner_hold_units {
+		attrib = 'owner_hold_units'
+		visibility = '1'
+		icon = 'bufficon_trapped_owner'
+		tooltip = '_iw_buff_owner_hold_units'
+	}
+	owner_invisibility {
+		attrib = 'owner_invisibility'
+		visibility = '1'
+		icon = 'bufficon_invisible_owner'
+		tooltip = '_iw_buff_owner_invisibility'
+	}
+	owner_invisibility_bldg {
+		attrib = 'owner_invisibility_bldg'
+		visibility = '1'
+		icon = 'bufficon_invisible_owner'
+		tooltip = '_iw_buff_owner_invisibility_bldg'
+	}
+	owner_invisibility_nobldg {
+		attrib = 'owner_invisibility_nobldg'
+		visibility = '1'
+		icon = 'bufficon_invisible_owner'
+		tooltip = '_iw_buff_owner_invisibility_nobldg'
+	}
+	owner_poison {
+		attrib = 'owner_poison'
+		visibility = '1'
+		icon = 'bufficon_poisoned_owner'
+		tooltip = '_iw_buff_owner_poison'
+	}
+	more_damage {
+		attrib = 'more_damage'
+		tile = 0
+		visibility = '3'
+		icon = 'bufficon_attack_up'
+		tooltip = '_iw_buff_more_damage'
+	}
+	more_bldg_damage {
+		attrib = 'more_bldg_damage'
+		tile = 0
+		visibility = '3'
+		icon = 'bufficon_attack_up'
+		tooltip = '_iw_buff_more_damage'
+	}
+	less_damage {
+		attrib = 'less_damage'
+		tile = 1
+		visibility = '1'
+		icon = 'bufficon_attack_down'
+		tooltip = '_iw_buff_less_damage'
+	}
+	less_attack_speed {
+		attrib = 'less_attack_speed'
+		tile = 1
+		visibility = '1'
+		icon = 'bufficon_attack_down'
+		tooltip = '_iw_buff_less_damage'
+	}
+	more_defense {
+		attrib = 'more_defense'
+		tile = 2
+		visibility = '3'
+		icon = 'bufficon_shield_up'
+		tooltip = '_iw_buff_more_defense'
+	}
+	more_range {
+		attrib = 'more_range'
+		tile = 3
+		visibility = '3'
+		icon = 'bufficon_range_up'
+		tooltip = '_iw_buff_more_range'
+	}
+	faster_buildup {
+		attrib = 'faster_buildup'
+		tile = 4
+		visibility = '0'
+		icon = 'bufficon_build_up'
+		tooltip = '_iw_buff_faster_buildup'
+	}
+	no_animal_aggro {
+		attrib = 'no_animal_aggro'
+		tile = 5
+		visibility = '3'
+		icon = 'bufficon_noanimalaggro'
+		tooltip = '_iw_buff_no_animal_aggro'
+	}
+	is_invisible {
+		attrib = 'is_invisible'
+		visibility = '1'
+		icon = 'bufficon_invisible'
+		tooltip = '_iw_buff_is_invisible'
+	}
+	is_poisoned {
+		attrib = 'is_poisoned'
+		visibility = '1'
+		icon = 'bufficon_poisoned'
+		tooltip = '_iw_buff_is_poisoned'
+	}
+	is_getting_healed {
+		attrib = 'is_getting_healed'
+		visibility = '3'
+		icon = 'bufficon_heal'
+		tooltip = '_iw_buff_is_getting_healed'
+	}
+	is_camouflaged {
+		attrib = 'is_camouflaged'
+		visibility = '1'
+		icon = 'bufficon_camouflage'
+		tooltip = '_iw_buff_is_camouflaged'
+	}
+	is_held {
+		attrib = 'is_held'
+		visibility = '1'
+		icon = 'bufficon_trapped'
+		tooltip = '_iw_buff_is_held'
+	}
+	drain_life {
+		attrib = 'drain_life'
+		icon = 'bufficon_attack_down'
+		visibility = '1'
+		tooltip = '_iw_buff_drain_life'
+	}
+}

@@ -1,0 +1,220 @@
+class CBLDGConditionsMgr inherit CEvtSource
+
+	static var ^CBLDGConditionsMgr 	ms_pxInst;
+	var array CPlayerBuildings		m_axPlayers;
+
+	class CPlayerBuildings
+		
+		var array string	m_asBuildingClasses;
+		var array int		m_aiInstances;
+		
+		export constructor()
+		endconstructor;
+		
+		export destructor()
+		enddestructor;
+		
+		export proc int AddEntry(string p_sClass)
+			
+			var int iIndex = m_asBuildingClasses.FindEntry(p_sClass);
+			if(iIndex!=-1)then
+				iIndex = ++m_aiInstances[iIndex];
+			else
+				m_asBuildingClasses.AddEntry(p_sClass);
+				m_aiInstances.AddEntry(1);
+				iIndex = 1;
+			endif;
+			
+			return iIndex;
+			
+		endproc;
+		
+		export proc bool DeleteEntry(string p_sClass)
+			
+			var bool bAllDestroyed = false;
+
+			var int iIndex = m_asBuildingClasses.FindEntry(p_sClass);
+			if(iIndex!=-1)then
+				
+				m_aiInstances[iIndex]--;
+				
+				if(m_aiInstances[iIndex]<=0)then
+					
+					m_aiInstances.DeleteEntry(iIndex);
+					m_asBuildingClasses.DeleteEntry(iIndex);
+					
+					bAllDestroyed = true;
+				endif;
+				
+			else
+				bAllDestroyed = true;
+			endif;
+			
+			return bAllDestroyed;
+			
+		endproc;
+		
+		export proc bool HasEntry(string p_sClass)
+			return NumEntries(p_sClass)>0;
+		endproc;
+		
+		export proc int NumEntries(string p_sClass)
+			var int iIdx = m_asBuildingClasses.FindEntry(p_sClass);
+			if(iIdx>=0) then
+				return m_aiInstances[iIdx];
+			endif;
+			return 0;
+		endproc;
+		
+	endclass;
+
+	constructor()
+		m_axPlayers = 8;
+	endconstructor;
+
+
+	export static proc ref CBLDGConditionsMgr Get()
+		if (ms_pxInst==null)then
+			ms_pxInst=new CBLDGConditionsMgr;
+		endif;
+		return(ms_pxInst^);
+	endproc;
+
+
+	export static proc void Kill()
+		if (ms_pxInst!=null)then
+			delete ms_pxInst;
+			ms_pxInst=null;
+		endif;
+	endproc;
+	
+	export proc int AddBuilding(^CGameObj p_pxObj)
+		var int iOwner=p_pxObj^.GetOwner();
+		var string sClass=p_pxObj^.GetClassName();
+		if(iOwner==-1)then return 0; endif;
+		
+		var bool bBefore = m_axPlayers[iOwner].HasEntry(sClass);
+		
+		var int iCount = m_axPlayers[iOwner].AddEntry(sClass);
+		
+		var bool bAfter = iCount > 0;
+		
+		if(!bBefore && bAfter)then
+			var ^CLevel pxLevel=CSrvWrap.GetCurLevel();
+			if(pxLevel!=null)then
+				var ^CPlayer pxPlayer=pxLevel^.GetPlayer(iOwner);
+				if(pxPlayer!=null)then
+					var ^CBasePlayer pxBasePlayer = cast<CBasePlayer>(pxPlayer);
+					if(pxBasePlayer!=null)then
+						pxPlayer^.GetPlayerTechTreeDef().EnableFilter("Filters/"+pxBasePlayer^.m_sTribe+"/BuildObjects/"+sClass);
+					endif;
+				endif;
+			endif;
+		endif;
+		
+		var CEvtPointer xEvt = CEvtPointer.CreateEvent("BLDGCHG");
+		xEvt.SetInt(0, iOwner);
+		Broadcast(xEvt);
+		return iCount;
+	endproc;
+	
+	export proc bool DeleteBuilding(^CGameObj p_pxObj)
+		var int iOwner=p_pxObj^.GetOwner();
+		var string sClass=p_pxObj^.GetClassName();
+		if(iOwner==-1)then return false; endif;
+		
+		var bool bBefore = m_axPlayers[iOwner].HasEntry(sClass);
+
+		var bool bAllDestroyed = m_axPlayers[iOwner].DeleteEntry(sClass);
+
+		
+		if(bBefore && bAllDestroyed)then
+			var ^CLevel pxLevel=CSrvWrap.GetCurLevel();
+			if(pxLevel!=null)then
+				var ^CPlayer pxPlayer=pxLevel^.GetPlayer(iOwner);
+				if(pxPlayer!=null)then
+					var ^CBasePlayer pxBasePlayer = cast<CBasePlayer>(pxPlayer);
+					if(pxBasePlayer!=null)then
+						pxPlayer^.GetPlayerTechTreeDef().DisableFilter("Filters/"+pxBasePlayer^.m_sTribe+"/BuildObjects/"+sClass);
+					endif;
+				endif;
+			endif;
+		endif;
+
+		var CEvtPointer xEvt = CEvtPointer.CreateEvent("BLDGCHG");
+		xEvt.SetInt(0, iOwner);
+		Broadcast(xEvt);
+		return bAllDestroyed;
+	endproc;
+
+	export proc bool HasBuilding(int p_iOwner, string p_sClass)
+		if(p_iOwner==-1)then return true; endif;
+		return m_axPlayers[p_iOwner].HasEntry(p_sClass);
+	endproc;
+	
+	export proc int NumBuildings(int p_iOwner, string p_sClass) 
+		if(p_iOwner==-1)then return 0; endif;
+		return m_axPlayers[p_iOwner].NumEntries(p_sClass);
+	endproc;
+
+endclass;
+
+class CBLDGMgr
+
+	static var ^CBLDGMgr 	ms_pxInst;
+	var array CObjList		m_axBuildings;
+
+	constructor()
+		m_axBuildings = 8;
+	endconstructor;
+
+
+	export static proc ref CBLDGMgr Get()
+		if (ms_pxInst==null)then
+			ms_pxInst=new CBLDGMgr;
+		endif;
+		return(ms_pxInst^);
+	endproc;
+
+
+	export static proc void Kill()
+		if (ms_pxInst!=null)then
+			delete ms_pxInst;
+			ms_pxInst=null;
+		endif;
+	endproc;
+	
+	export proc void AddBuilding(^CGameObj p_pxObj)		
+		var int iOwner=p_pxObj^.GetOwner();
+		if(iOwner<0 || iOwner>7)then return; endif;
+		m_axBuildings[p_pxObj^.GetOwner()].Include(p_pxObj^.GetHandle());
+	endproc;
+	
+	export proc void RemoveBuilding(^CGameObj p_pxObj)
+		if(p_pxObj^.GetOwner()==-1)then return; endif;
+		m_axBuildings[p_pxObj^.GetOwner()].RemEntry(p_pxObj^.GetHandle());
+	endproc;
+
+	export proc void GetAllBuildings(int p_iOwner, ref CObjList po_rxList)
+		po_rxList.Clear();
+		if(p_iOwner>=0 && p_iOwner<8)then
+			po_rxList=m_axBuildings[p_iOwner];
+		endif;
+	endproc;
+	
+	export proc void InvalidateAllBuildlingTechTrees(int p_iOwner)
+		var int i,iC=m_axBuildings[p_iOwner].NumEntries();
+		for(i=0)cond(i<iC)iter(i++)do
+			var ^CFightingObj pxObj=cast<CFightingObj>((m_axBuildings[p_iOwner])[i].GetObj());
+			if(pxObj==null)then continue; endif;
+			pxObj^.InvalidateTechTree();
+		endfor;
+	endproc;
+
+	export proc bool HasBuilding(int p_iOwner, CObjHndl p_xHndl)
+		return m_axBuildings[p_iOwner].FindEntry(p_xHndl)!=-1;
+	endproc;
+
+endclass;
+
+

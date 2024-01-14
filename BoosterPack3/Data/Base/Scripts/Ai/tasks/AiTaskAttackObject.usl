@@ -1,0 +1,1708 @@
+class CAiTaskAttackObject inherit CAiTask
+
+	class CSpecialAttackInfo
+		export var int				m_iTimer;
+		export var int				m_iCheck;
+		export var bool				m_bDoingSpecialMove;
+		export var CAiObjWrap		m_xActor;
+		export var array string		m_asSpecialAttacks;
+		export var array int		m_aiAttackLevel;
+		export var CAiObjWrap		m_xPotentialEnemy;
+	endclass;
+
+	var array CSpecialAttackInfo				m_axSpecialAttackInfos;
+	export var procref <void,CAiObjWrap,CAiObjWrap>	m_xOnAttackInvoked;
+
+	var ^CAiBrain					m_pxBrain;
+	var ^CAiSensor					m_pxSensor;
+	var CAiObjWrapList				m_xTargets;
+	var CAiObjWrapList				m_xActors;
+	var CAiObjWrapList				m_xFighters;
+	var CAiObjWrap					m_xPotentialEnemy;
+	var CAiObjWrapList				m_xIntersectingWalls;
+
+	var bool						m_bInFight;
+	var bool						m_bPathFound;
+	var bool						m_bWorldObj;
+	var bool						m_bWallObj;
+	var bool						m_bSortTargetList;
+	var bool						m_bAmphibianPathfinding;
+	var bool						m_bAttackArea;
+	var bool						m_bWaypoints;
+	var bool						m_bRetreat;
+	var bool						m_bSpecialAttack;
+	var bool						m_bKotH;
+	var bool						m_bSorted;
+	var bool						m_bIntersectingWallsChecked;
+	var bool						m_bAttacking;
+	var bool						m_bMultimap;
+
+	var int							m_iPlayerID;
+	var int							m_iCalcPathCounter;
+	var int							m_iSortingCounter;
+	var int							m_iAttackCounter;
+	var int							m_iWalkCounter;
+	var int							m_iWalkTwoCounter;
+	var int							m_iAttackAreaCounter;
+	var int							m_iAttackAreaTwoCounter;
+	var int 						m_iFallBackCounter;
+	var int							m_iTimer;
+	var int							m_iCheck;
+	var int							m_iEnemyOwner;
+	var int							m_iIntersectingWallAtkHndl;
+	var int 						m_iReveal;
+	var int							m_iStopAttack;
+
+	var vec3						m_vAttackPos;
+
+	var string						m_sTribe;
+	var string						m_sPlayerID;
+	var string						m_sGametype;
+	var string 						m_sLevelName;
+
+
+	///Init
+	export proc void Init(^CAiGoal p_pxGoal, ref CAiObjWrapList p_rxActors, ref CAiObjWrapList p_rxSupporters, ref CAiObjWrapList p_rxTargets, vec3 p_vAttackPos, bool p_bAmphibianPathfinding)
+		super.Init(p_pxGoal);
+
+		m_pxBrain = p_pxGoal^.GetAiBrain();
+		if(m_pxBrain==null)then return; endif;
+
+		m_pxSensor=^(m_pxBrain^.GetSensor());
+		if(m_pxSensor==null) then return; endif;
+
+		m_bSpecialAttack = false;
+		m_axSpecialAttackInfos = 0;
+		m_xFighters.CopyFrom(p_rxActors);
+		m_xActors.Clear();
+		m_xActors.Include(p_rxActors);
+		m_xActors.Include(p_rxSupporters);
+
+		m_iPlayerID=m_pxBrain^.GetPlayerId();
+		m_sPlayerID=m_iPlayerID.ToString();
+		m_sTribe=m_pxSensor^.GetTechTree().GetTribe();
+		m_sGametype=CAiUtilityMgr.Get()^.GetGameType(m_pxBrain);
+		m_sLevelName=CAiUtilityMgr.Get()^.GetLevelName(m_pxBrain);
+
+		var int iNumPlayers=1+m_pxSensor^.GetNumPlayers();
+		var int iType = 1+Random.GetInt()%iNumPlayers;
+
+		if(IsSpecialAttackCharacter())then m_bSpecialAttack=true; endif;
+
+		m_xTargets.CopyFrom(p_rxTargets);
+		m_vAttackPos = p_vAttackPos;
+		m_bAmphibianPathfinding=p_bAmphibianPathfinding;
+		m_bAttackArea = false;
+		m_iEnemyOwner=-1;
+
+		if(m_xTargets.NumEntries()<=0 && m_vAttackPos!={0.0,0.0,0.0})then
+			m_bAttackArea = true;
+		endif;
+
+		m_bWaypoints=false;
+		m_bRetreat=false;
+		m_bKotH=false;
+		m_bPathFound=true;
+		m_bWorldObj=false;
+		m_bWallObj=false;
+		m_bSortTargetList=false;
+		m_bSorted=false;
+		m_bAttacking=false;
+		m_bMultimap=m_pxSensor^.GetMultimap();;
+
+		m_iTimer = 0;
+		m_iCalcPathCounter=0;
+		m_iSortingCounter=0;
+		m_iAttackCounter=0;
+		m_iIntersectingWallAtkHndl=-1;
+		m_iWalkCounter=0;
+		m_iWalkTwoCounter=0;
+		m_iAttackAreaCounter=0;
+		m_iAttackAreaTwoCounter=0;
+		m_iFallBackCounter=0;
+		m_iReveal=0;
+		m_iStopAttack=0;
+
+		SetThinkWait(20+iType);
+	endproc;
+
+
+	///AddSupporters
+	export proc void AddSupporters(ref CAiObjWrapList p_rxSupporters)
+		m_xActors.Include(p_rxSupporters);
+	endproc;
+
+
+	///AddSpecialCharacter
+	proc bool AddSpecialCharacter(CAiObjWrap p_xActor, array string p_asAttacks, array int p_aiAttackLevel, int p_iTimerCheck)
+		var CSpecialAttackInfo xSAInfo;
+		xSAInfo.m_iCheck			= p_iTimerCheck;
+		xSAInfo.m_asSpecialAttacks	= p_asAttacks;
+		xSAInfo.m_aiAttackLevel 	= p_aiAttackLevel;
+		xSAInfo.m_xActor			= p_xActor;
+		m_axSpecialAttackInfos.AddEntry(xSAInfo);
+		return true;
+	endproc;
+
+
+	///IsSpecialAttackCharacter
+	proc bool IsSpecialAttackCharacter()
+		var bool	bFound = false;
+		var int		i, iC=m_xActors.NumEntries();
+
+		if(iC<=0)then return false; endif;
+
+		for(i=0)cond(i<iC)iter(i++)do
+			if(!m_xActors[i].IsValid())then continue; endif;
+
+			var string sClassName = m_xActors[i].GetClassName();
+			if(sClassName=="Cole_s0")then
+				var array int		aiAttackLevel;
+				var array string	asSpecialAttacks;
+				aiAttackLevel.AddEntry(3);
+				asSpecialAttacks.AddEntry("Shotgun");
+				AddSpecialCharacter(m_xActors[i], asSpecialAttacks, aiAttackLevel, 1);
+				bFound = true;
+
+			elseif(sClassName=="Bela_s0")then
+				var array int		aiAttackLevel;
+				var array string	asSpecialAttacks;
+				aiAttackLevel.AddEntry(3);
+				asSpecialAttacks.AddEntry("Snipershot");
+				AddSpecialCharacter(m_xActors[i], asSpecialAttacks, aiAttackLevel, 1);
+				bFound = true;
+
+			elseif(sClassName=="special_eusmilus"||sClassName=="Stina_s0")then
+				var array int		aiAttackLevel;
+				var array string	asSpecialAttacks;
+				aiAttackLevel.AddEntry(3);
+				asSpecialAttacks.AddEntry("Hypnosis");
+				AddSpecialCharacter(m_xActors[i], asSpecialAttacks, aiAttackLevel, 1);
+				bFound = true;
+
+			elseif(sClassName=="tesla_s0")then
+				var array int		aiAttackLevel;
+				var array string	asSpecialAttacks;
+				aiAttackLevel.AddEntry(3);
+				asSpecialAttacks.AddEntry("Tesla_DstrVhcl_0");
+				AddSpecialCharacter(m_xActors[i], asSpecialAttacks, aiAttackLevel, 1);
+				bFound = true;
+
+			elseif(sClassName=="hermit_s0")then
+				var array int		aiAttackLevel;
+				var array string	asSpecialAttacks;
+				aiAttackLevel.AddEntry(3);
+				asSpecialAttacks.AddEntry("Druid_HealAnml_0");
+				AddSpecialCharacter(m_xActors[i], asSpecialAttacks, aiAttackLevel, 1);
+				bFound = true;
+
+			elseif(sClassName=="mayor_s0")then
+				var array int		aiAttackLevel;
+				var array string	asSpecialAttacks;
+				aiAttackLevel.AddEntry(3);
+				asSpecialAttacks.AddEntry("Mayor_Specialmove_0");
+				AddSpecialCharacter(m_xActors[i], asSpecialAttacks, aiAttackLevel, 1);
+				bFound = true;
+
+			elseif(sClassName=="babbage_s0")then
+				var array int		aiAttackLevel;
+				var array string	asSpecialAttacks;
+				aiAttackLevel.AddEntry(3);
+				asSpecialAttacks.AddEntry("Babbage_Minigun_0");
+				AddSpecialCharacter(m_xActors[i], asSpecialAttacks, aiAttackLevel, 1);
+				bFound = true;
+
+			elseif(sClassName=="lovelace_s0")then
+				var array int		aiAttackLevel;
+				var array string	asSpecialAttacks;
+				aiAttackLevel.AddEntry(3);
+				asSpecialAttacks.AddEntry("Ada_DeathShoot");
+				AddSpecialCharacter(m_xActors[i], asSpecialAttacks, aiAttackLevel, 1);
+				bFound = true;
+
+			elseif(sClassName=="schliemann_s0")then
+				var array int		aiAttackLevel;
+				var array string	asSpecialAttacks;
+				aiAttackLevel.AddEntry(3);
+				asSpecialAttacks.AddEntry("schliemann_deathshoot");
+				AddSpecialCharacter(m_xActors[i], asSpecialAttacks, aiAttackLevel, 1);
+				bFound = true;
+
+			elseif(sClassName=="darwin_s0")then
+				var array int		aiAttackLevel;
+				var array string	asSpecialAttacks;
+				aiAttackLevel.AddEntry(3);
+				asSpecialAttacks.AddEntry("warden_spec");
+				AddSpecialCharacter(m_xActors[i], asSpecialAttacks, aiAttackLevel, 1);
+				bFound = true;
+
+			elseif(sClassName=="hu_mammoth")then
+				var array int		aiAttackLevel;
+				var array string	asSpecialAttacks;
+				aiAttackLevel.AddEntry(3);
+				asSpecialAttacks.AddEntry("mammoth_trumpet");
+				AddSpecialCharacter(m_xActors[i], asSpecialAttacks, aiAttackLevel, 1);
+				bFound = true;
+
+			elseif(sClassName=="hu_rhino")then
+				var array int		aiAttackLevel;
+				var array string	asSpecialAttacks;
+				aiAttackLevel.AddEntry(3);
+				asSpecialAttacks.AddEntry("rhino_shake_off");
+				AddSpecialCharacter(m_xActors[i], asSpecialAttacks, aiAttackLevel, 1);
+				bFound = true;
+
+			elseif(sClassName=="hu_triceratops")then
+				var array int		aiAttackLevel;
+				var array string	asSpecialAttacks;
+				aiAttackLevel.AddEntry(3);
+				asSpecialAttacks.AddEntry("paw");
+				AddSpecialCharacter(m_xActors[i], asSpecialAttacks, aiAttackLevel, 1);
+				bFound = true;
+
+			elseif(sClassName=="aje_shaman")then
+				var array int		aiAttackLevel;
+				var array string	asSpecialAttacks;
+				aiAttackLevel.AddEntry(1);
+				asSpecialAttacks.AddEntry("Resurrect");
+				aiAttackLevel.AddEntry(1);
+				asSpecialAttacks.AddEntry("quicksand");
+				aiAttackLevel.AddEntry(1);
+				asSpecialAttacks.AddEntry("tornado");
+				AddSpecialCharacter(m_xActors[i], asSpecialAttacks, aiAttackLevel, 1);
+				bFound = true;
+
+			elseif(sClassName=="aje_allosaurus")then
+				var array int		aiAttackLevel;
+				var array string	asSpecialAttacks;
+				aiAttackLevel.AddEntry(3);
+				asSpecialAttacks.AddEntry("allosaurus_scrunch");
+				AddSpecialCharacter(m_xActors[i], asSpecialAttacks, aiAttackLevel, 1);
+				bFound = true;
+
+			elseif(sClassName=="aje_atroxosaurus")then
+				var array int		aiAttackLevel;
+				var array string	asSpecialAttacks;
+				aiAttackLevel.AddEntry(1);
+				asSpecialAttacks.AddEntry("trex_scrunch");
+				aiAttackLevel.AddEntry(1);
+				asSpecialAttacks.AddEntry("trex_roar");
+				aiAttackLevel.AddEntry(1);
+				asSpecialAttacks.AddEntry("trex_scrunch");
+				AddSpecialCharacter(m_xActors[i], asSpecialAttacks, aiAttackLevel, 1);
+				bFound = true;
+
+			elseif(sClassName=="aje_brachiosaurus")then
+				var array int		aiAttackLevel;
+				var array string	asSpecialAttacks;
+				aiAttackLevel.AddEntry(3);
+				asSpecialAttacks.AddEntry("brachiostomp");
+				AddSpecialCharacter(m_xActors[i], asSpecialAttacks, aiAttackLevel, 1);
+				bFound = true;
+
+			elseif(sClassName=="ninigi_saltasaurus_archer")then
+				var array int		aiAttackLevel;
+				var array string	asSpecialAttacks;
+				aiAttackLevel.AddEntry(3);
+				asSpecialAttacks.AddEntry("doping");
+				AddSpecialCharacter(m_xActors[i], asSpecialAttacks, aiAttackLevel, 1);
+				bFound = true;
+
+			elseif(sClassName=="ninigi_harvester")then
+				var array int		aiAttackLevel;
+				var array string	asSpecialAttacks;
+				aiAttackLevel.AddEntry(3);
+				asSpecialAttacks.AddEntry("lacerate");
+				AddSpecialCharacter(m_xActors[i], asSpecialAttacks, aiAttackLevel, 1);
+				bFound = true;
+
+			elseif(sClassName=="ninigi_seismosaurus")then
+				var array int		aiAttackLevel;
+				var array string	asSpecialAttacks;
+				aiAttackLevel.AddEntry(1);
+				asSpecialAttacks.AddEntry("barrage");
+				aiAttackLevel.AddEntry(1);
+				asSpecialAttacks.AddEntry("enchain");
+				aiAttackLevel.AddEntry(1);
+				asSpecialAttacks.AddEntry("barrage");
+				AddSpecialCharacter(m_xActors[i], asSpecialAttacks, aiAttackLevel, 1);
+				bFound = true;
+			endif;
+		endfor;
+		return bFound;
+	endproc;
+
+
+	///CheckGlobalConditions
+	proc bool CheckGlobalConditions(string p_sAttack, int p_iLevel, CAiObjWrap p_xActor)
+		if(!p_xActor.IsValid())then return false; endif;
+
+		var int iLevel=p_xActor.GetAttribValueInt("level");
+		if(iLevel<p_iLevel)then return false; endif;
+
+		var string sActions=p_xActor.GetAttribValue("SpecialActionNames");
+		var array string asToken;
+		sActions.Split(asToken,"\n",true);
+
+		if(asToken.FindEntry(p_sAttack)!=-1)then return false; endif;
+
+		if(p_sAttack=="tornado" || p_sAttack=="quicksand"||p_sAttack=="mammoth_trumpet"||p_sAttack=="allosaurus_scrunch"
+			||p_sAttack=="trex_scrunch"||p_sAttack=="trex_roar"||p_sAttack=="brachiostomp"||p_sAttack=="doping"
+			||p_sAttack=="lacerate"||p_sAttack=="barrage"||p_sAttack=="enchain"||p_sAttack=="rhino_shake_off"
+			||p_sAttack=="paw")then
+
+			var ^CAiTechTree pxT=GetAiTechTree();
+			if(pxT==null)then return false; endif;
+
+			var ^CAiNodeInstance pxNI=pxT^.GetNodeInstanceFromPartialName("InventObjects/"+p_sAttack);
+			if(pxNI==null)then return false; endif;
+
+			if(pxNI^.GetInstanceCount()<=0)then return false; endif;
+		endif;
+		return true;
+	endproc;
+
+
+	///CheckLocalConditions
+	proc bool CheckLocalConditions(string p_sAttack, CAiObjWrap p_xActor)
+		var int iNumEnemies=m_xTargets.NumEntries();
+		var int i, iC;
+		var real fDistanceToEnemy = 999999.0;
+
+		m_xPotentialEnemy.FromInt(-1);
+		m_xPotentialEnemy.FromInt(-1);
+
+		if(!p_xActor.IsValid())then return false; endif;
+
+		if((iNumEnemies>0)&&(m_xTargets[0].IsValid()))then
+			fDistanceToEnemy=(m_xTargets[0].GetPos()-p_xActor.GetPos()).Abs2();
+		endif;
+
+		if(p_sAttack=="Shotgun"||p_sAttack=="tornado"||p_sAttack=="quicksand"||p_sAttack=="Ada_DeathShoot"||p_sAttack=="mammoth_trumpet"
+			||p_sAttack=="allosaurus_scrunch"||p_sAttack=="trex_scrunch"||p_sAttack=="trex_roar"||p_sAttack=="brachiostomp"
+			||p_sAttack=="doping"||p_sAttack=="lacerate"||p_sAttack=="barrage"||p_sAttack=="enchain"||p_sAttack=="Babbage_Minigun_0"
+			||p_sAttack=="schliemann_deathshoot"||p_sAttack=="warden_spec"||p_sAttack=="rhino_shake_off"||p_sAttack=="paw")then
+
+			if(iNumEnemies<1)then return false; endif;
+
+			var bool bDoIt=false;
+			var CAiObjWrap xObj;
+			var CAiObjWrapList xList;
+			var vec3 vTargetPos;
+			var int iMaxHP= -1;
+			var int i, iC=iNumEnemies;
+
+			for(i=0)cond(i<iC)iter(i++)do
+				if(!m_xTargets[i].IsValid())then continue; endif;
+
+				if(m_xTargets[i].GetType()=="BLDG")then continue; endif;
+
+				vTargetPos = m_xTargets[i].GetPos();
+				if(p_xActor.IsValid())then
+					fDistanceToEnemy=(vTargetPos-p_xActor.GetPos()).Abs2();
+				endif;
+
+				if(fDistanceToEnemy>60.0)then continue; endif;
+
+				xList.Include(m_xTargets[i]);
+				iMaxHP += m_xTargets[i].GetAttribValueInt("hitpoints");
+				xObj=m_xTargets[i];
+			endfor;
+
+			if(!xObj.IsValid())then return false; endif;
+
+			if(iMaxHP>500)then
+				bDoIt=true;
+				m_xPotentialEnemy = xObj;
+				return true;
+			endif;
+
+			iC=xList.NumEntries();
+			var int iValidEnemies;
+			var int iSumHP = 0;
+			var real fDistanceToTarget=64.0;
+
+			if(p_sAttack=="tornado")then fDistanceToTarget=100.0; endif;
+
+			for(i=1)cond(i<iC)iter(i++)do
+				if(!xList[i].IsValid())then continue; endif;
+				if((xList[i].GetPos()-vTargetPos).Abs2S()>fDistanceToTarget)then continue; endif;
+
+				iSumHP += xList[i].GetAttribValueInt("hitpoints");
+				iValidEnemies++;
+			endfor;
+
+			m_xPotentialEnemy=xObj;
+
+			if(bDoIt)then
+				return true;
+			elseif(iValidEnemies>0)then
+				return true;
+			elseif(iSumHP>500)then
+				return true;
+			endif;
+
+		elseif(p_sAttack=="Hypnosis")then
+			if(iNumEnemies<1)then return false; endif;
+
+			var CAiObjWrap xObj;
+			var vec3 vTargetPos;
+			var int iMaxHP= -1;
+			var int i, iC=iNumEnemies;
+
+			for(i=0)cond(i<iC)iter(i++)do
+				if(!m_xTargets[i].IsValid())then continue; endif;
+				if(m_xTargets[i].GetType()!="ANML")then continue; endif;
+
+				vTargetPos=m_xTargets[i].GetPos();
+
+				if(p_xActor.IsValid())then
+					fDistanceToEnemy=(vTargetPos-p_xActor.GetPos()).Abs2();
+				endif;
+
+				if(fDistanceToEnemy>40.0)then continue; endif;
+
+				iMaxHP += m_xTargets[i].GetAttribValueInt("hitpoints");
+				xObj=m_xTargets[i];
+			endfor;
+
+			if(!xObj.IsValid())then return false; endif;
+
+			if(iMaxHP<500)then return false; endif;
+
+			m_xPotentialEnemy=xObj;
+			return true;
+
+		elseif(p_sAttack=="Snipershot")then
+			if(iNumEnemies<1)then return false; endif;
+
+			var CAiObjWrap xObj;
+			var vec3 vTargetPos;
+			var int iMaxHP= -1;
+			var int i, iC=iNumEnemies;
+
+			for(i=0)cond(i<iC)iter(i++)do
+				if(!m_xTargets[i].IsValid())then continue; endif;
+				if(m_xTargets[i].GetType()=="BLDG")then continue; endif;
+
+				vTargetPos=m_xTargets[i].GetPos();
+
+				if(p_xActor.IsValid())then
+					fDistanceToEnemy=(vTargetPos-p_xActor.GetPos()).Abs2();
+				endif;
+
+				if(fDistanceToEnemy>70.0)then continue; endif;
+
+				iMaxHP += m_xTargets[i].GetAttribValueInt("hitpoints");
+				xObj=m_xTargets[i];
+			endfor;
+
+			if(!xObj.IsValid())then return false;endif;
+			if(iMaxHP<500)then return false; endif;
+
+			m_xPotentialEnemy = xObj;
+			return true;
+
+		elseif(p_sAttack=="Tesla_DstrVhcl_0")then
+			if(iNumEnemies<1)then return false; endif;
+
+			var CAiObjWrap xObj;
+			var vec3 vTargetPos;
+			var int iMaxHP= -1;
+			var int i, iC=iNumEnemies;
+			for(i=0)cond(i<iC)iter(i++)do
+				if(!m_xTargets[i].IsValid())then continue; endif;
+				if(m_xTargets[i].GetType()!="VHCL")then continue; endif;
+
+				vTargetPos=m_xTargets[i].GetPos();
+
+				if(p_xActor.IsValid())then
+					fDistanceToEnemy=(vTargetPos-p_xActor.GetPos()).Abs2();
+				endif;
+
+				if(fDistanceToEnemy>25.0)then continue; endif;
+
+				iMaxHP += m_xTargets[i].GetAttribValueInt("hitpoints");
+				xObj = m_xTargets[i];
+			endfor;
+
+			if(!xObj.IsValid())then return false; endif;
+			if(iMaxHP<500)then return false; endif;
+
+			m_xPotentialEnemy=xObj;
+			return true;
+
+		elseif(p_sAttack=="Mayor_Specialmove_0")then
+			if(iNumEnemies<1)then return false; endif;
+
+			var CAiObjWrapList xList;
+			var vec3 vTargetPos;
+			var int iMaxHP=0;
+			var int i, iC=iNumEnemies;
+
+			for(i=0)cond(i<iC)iter(i++)do
+				if(!m_xTargets[i].IsValid())then continue; endif;
+				if(m_xTargets[i].GetType()=="BLDG")then continue; endif;
+
+				vTargetPos=m_xTargets[i].GetPos();
+
+				if(p_xActor.IsValid())then
+					fDistanceToEnemy=(vTargetPos-p_xActor.GetPos()).Abs2();
+				endif;
+
+				if(fDistanceToEnemy>6.0)then continue; endif;
+
+				xList.Include(m_xTargets[i]);
+				iMaxHP += m_xTargets[i].GetAttribValueInt("hitpoints");
+			endfor;
+
+			if(iMaxHP<500)then return false; endif;
+
+			return true;
+
+		elseif(p_sAttack=="Druid_HealAnml_0")then
+			var CAiObjWrapList xList;
+			var CAiObjQuery xQuery;
+
+			xQuery.SetOwner(m_iPlayerID);
+			xQuery.SetType("ANML");
+			xQuery.RegionCircle(p_xActor.GetPos(), 40.0);
+
+			if(!xQuery.Execute(xList))then return false; endif;
+
+			var int iMaxHP=0;
+			var int iHP=0;
+			var int j, iD=xList.NumEntries();
+
+			for(j=0)cond(j<iD)iter(j++)do
+				if(!xList[j].IsValid())then continue; endif;
+
+				xList.Include(xList[j]);
+				iMaxHP += xList[j].GetAttribValueInt("maxhitpoints");
+				iHP += xList[j].GetAttribValueInt("hitpoints");
+			endfor;
+
+			if(iHP==iMaxHP)then return false; endif;
+			return true;
+
+		elseif(p_sAttack=="Resurrect")then
+			var CAiObjWrapList xList;
+			var CAiObjQuery xQuery;
+
+			xQuery.SetOwner(m_iPlayerID);
+			xQuery.SetClass("CharacterCorpse");
+			xQuery.SetClass("Corpse",true);
+			xQuery.SetAttribNeg("level","-1");
+			xQuery.RegionCircle(p_xActor.GetPos(), 30.0);
+
+			if(!xQuery.Execute(xList))then return false; endif;
+
+			var int j, iD=xList.NumEntries();
+			if(iD<=0)then return false; endif;
+
+			var int iMaxLevel= -1;
+			var CAiObjWrap xMax;
+
+			for(j=0)cond(j<iD)iter(j++)do
+				var CAiObjWrap xObj=xList[j];
+
+				if(!xObj.IsValid())then continue; endif;
+				var int iLevel = xObj.GetAttribValueInt("level");
+				if(iLevel>iMaxLevel)then
+					xMax=xObj;
+					iMaxLevel=iLevel;
+				endif;
+			endfor;
+
+			if(!xMax.IsValid())then return false; endif;
+
+			m_xPotentialEnemy = xMax;
+			return true;
+		endif;
+		return false;
+	endproc;
+	
+	
+	///CheckForMobileCamp
+	proc void CheckForMobileCamp(CAiObjWrapList p_xActors)
+		if(m_sTribe!="Aje")then return; endif;	
+		var int i, iC=p_xActors.Validate();
+		for(i=0)cond(i<iC)iter(i++)do
+			if((p_xActors[i].GetClassName()=="aje_brachiosaurus_mobile_camp")&&(iC>5))then
+				CreateRequest("aje_spearman", "", 2, {0.0,0.0,0.0});
+				CreateRequest("aje_warrior", "", 2, {0.0,0.0,0.0});
+				CreateRequest("aje_archer", "", 2, {0.0,0.0,0.0});
+			endif;
+		endfor;
+	endproc;
+
+
+	///SetWaypoints
+	export proc void SetWaypoints(bool p_bValue)
+		m_bWaypoints=p_bValue;
+	endproc;
+
+
+	///called on start
+	export proc bool Start()
+		super.Start();
+		m_bInFight=false;
+		m_iAttackCounter=0;
+		m_iIntersectingWallAtkHndl=-1;
+		m_iWalkCounter=0;
+		m_iWalkTwoCounter=0;
+		m_iCalcPathCounter=0;
+		m_iSortingCounter=0;
+		m_iAttackAreaCounter=0;
+		m_iAttackAreaTwoCounter=0;
+
+		if(StartAttack())then
+			SetRunning();
+		else
+			SetCompleted();
+		endif;
+		return true;
+	endproc;
+
+
+	///called to shut
+	export proc void Shut()
+		Abort();
+		m_bInFight=false;
+	endproc;
+
+
+	///GetActor
+	export proc ref CAiObjWrapList GetActors()
+		return m_xActors;
+	endproc;
+
+
+	///UpdateEnemies
+	export proc void UpdateEnemies(ref CAiObjWrapList p_rxList, vec3 p_vAttackPos)
+		UpdateEnemies(p_rxList, p_vAttackPos, false);
+	endproc;
+
+
+	///UpdateEnemies
+	export proc void UpdateEnemies(ref CAiObjWrapList p_rxList, vec3 p_vAttackPos, bool p_bAttackArea)
+		var int i, iC=m_xActors.NumEntries();
+		for(i=0)cond(i<iC)iter(++i)do
+			if(!m_xActors[i].IsValid())then
+				m_xActors.RemEntry(m_xActors[i]);
+				i--;iC--;
+				continue;
+			endif;
+		endfor;
+
+		var int iD=m_xFighters.NumEntries();
+		for(i=0)cond(i<iD)iter(++i)do
+			if(!m_xFighters[i].IsValid())then
+				m_xFighters.RemEntry(m_xFighters[i]);
+				i--;iD--;
+				continue;
+			endif;
+		endfor;
+
+		iC=m_xFighters.NumEntries();
+		if(iC<=0)then return; endif;
+
+		var bool bUpdate=true;
+		if(p_rxList.NumEntries()>0)then
+			m_bAttackArea=false;
+		endif;
+
+		if(m_xTargets.NumEntries()>0 && p_rxList.NumEntries()>0)then
+			if(m_xTargets[0].IsSameAs(p_rxList[0]))then
+				for(i=0)cond(i<iC)iter(i++)do
+					if(m_xFighters[0].GetAttribValueInt("CurEnemy")==p_rxList[0].GetHandle())then
+						bUpdate=false;
+					endif;
+				endfor;
+			endif;
+		endif;
+
+		if(m_vAttackPos!=p_vAttackPos)then
+			m_vAttackPos=p_vAttackPos;
+			m_bAttackArea=true;
+			StartAttack();
+		endif;
+
+		if(p_bAttackArea)then m_bAttackArea=true; endif;
+
+		m_xTargets.CopyFrom(p_rxList);
+		if(bUpdate&& !m_bAttackArea)then StartAttack(); endif;
+	endproc;
+
+
+	///SetKotH
+	export proc void SetKotH(bool p_bKotH)
+		m_bKotH=p_bKotH;
+	endproc;
+
+
+	///Retreat
+	export proc void Retreat(vec3 p_vPos)
+		if(!m_bRetreat)then
+			m_bRetreat=true;
+			m_vAttackPos=p_vPos;
+			m_bWaypoints=false;
+			m_bAttackArea=false;
+			StartAttack();
+		endif;
+	endproc;
+
+
+	///StartAttack
+	proc bool StartAttack()
+		if(m_pxSensor==null)then return false; endif;
+		if(m_xActors.Validate()==0)then return false; endif;
+		
+		m_xFighters.Validate();
+		m_xTargets.Validate();
+		
+		m_pxSensor^.SetAggroState(m_xActors, 2);
+
+		m_bAttacking=false;
+		var bool bFound=false;
+		var CAiObjWrapList xHelperList;
+		xHelperList.Clear();
+
+		var bool bShip=false;
+		if(m_xActors[0].GetType()=="SHIP")then bShip=true; endif;
+				
+		var int iNumIdleFighters=0;
+		iterloop(m_xFighters,i) do
+			var CAiObjWrap xF=m_xFighters[i];
+			if(!xF.IsLinked()&&xF.GetCurrentTask()=="Idle") then iNumIdleFighters++; endif;
+		enditerloop;
+		
+		var vec3 vPosBase=m_pxSensor^.GetOutpost(0).GetWorldPos();
+		
+		var int j, iD=m_xTargets.NumEntries();
+		for(j=0)cond(j<iD)iter(j++)do
+			var CAiObjWrap xT=m_xTargets[j];
+			if(xT.GetAttribValueBool("active_disguise")
+				||(xT.GetAttribValueInt("active_entrench")==1)
+				||(xT.GetAttribValueInt("active_entrench")==2)
+				||((xT.GetClassName()=="aje_velociraptor")&&(xT.GetOwner()!=(-1)))
+				||(xT.GetAttribValueBool("active_camouflage"))
+				||(!xT.IsVisible(m_iPlayerID)))then
+				m_xTargets.RemEntry(xT);
+				j--;iD--;
+				continue;
+			endif;
+									
+			var CFourCC xType=m_xTargets[j].GetType();
+			if(((xType!="CHTR")&&(xType!="ANML")&&(xType!="SHIP")&&(xType!="BLDG")&&(xType!="VHCL")&&(xType!="NEST")))then
+				m_xTargets.RemEntry(m_xTargets[j]);
+				j--;iD--;
+				continue;
+			endif;
+
+			if(m_xTargets[j].IsWall()||m_xTargets[j].IsGate()&&m_xIntersectingWalls.FindEntry(m_xTargets[j])==-1)then
+				var real fBaseDist=(vPosBase-m_xTargets[j].GetPos()).Abs2S();
+				//skip near-base walls, they are blocking possible build space
+				if(fBaseDist<4096.0f) then continue; endif;
+				m_xTargets.RemEntry(m_xTargets[j]);
+				j--;iD--;
+				continue;
+			endif;
+		endfor;
+				
+		if(m_xTargets.Validate()>0)then
+			if(m_xTargets[0].GetOwner()==(-1))then
+				m_bWorldObj=true;
+			else
+				m_bWorldObj=false;
+			endif;
+		endif;
+						
+		if(iNumIdleFighters>0) then
+			if(iNumIdleFighters>=m_xFighters.NumEntries()/2) then
+				m_iWalkCounter=0;
+				m_iAttackCounter=0;
+				m_iWalkTwoCounter=0;
+				m_iCalcPathCounter=0;
+				m_iAttackAreaCounter=0;
+				m_iIntersectingWallAtkHndl=-1;
+				m_bIntersectingWallsChecked=false;
+			endif;
+		endif;
+		
+		if((m_iCalcPathCounter==1)&&(m_xTargets.NumEntries()>1))then
+			m_bPathFound=true;
+			xHelperList.CopyFrom(SortTargetList(m_xTargets, false));
+			m_xTargets.Clear();
+			m_xTargets.CopyFrom(xHelperList);
+			NoPathThenSendSiege(m_xTargets, m_xActors, m_bAmphibianPathfinding, true);
+			CheckForUpgrades(m_xActors, m_xTargets);
+		endif;	
+		m_iCalcPathCounter++;
+				
+		var int iNumISWallsO=m_xIntersectingWalls.NumEntries();
+		if(!m_bRetreat&&iNumISWallsO>0) then
+			var int iNumISWallsN=m_xIntersectingWalls.Validate();
+			if(iNumISWallsN>0) then
+				var int iH=m_xIntersectingWalls[0].GetHandle();
+				if(m_iIntersectingWallAtkHndl!=iH)then
+					m_iIntersectingWallAtkHndl=iH;
+					var vec3 vPosFirstWall=m_xIntersectingWalls[0].GetPos();
+					if((vPosFirstWall-m_xActors[0].GetPos()).Abs2S()>10000.0)then	
+						//attack next intersecting wall
+						if(m_bMultimap)then	
+							if(m_sGametype!="KingOfTheHill"&&m_sGametype!="Defender")then
+								m_pxSensor^.ExecuteGamePlayCommand(m_xActors, "Action", iH, vPosFirstWall, "/AggressiveTarget /AggrTNoAnml");
+							else
+								m_pxSensor^.ExecuteGamePlayCommand(m_xActors, "Action", iH, vPosFirstWall, "/AggressiveTarget");
+							endif;
+						else
+							m_pxSensor^.ExecuteGamePlayCommand(m_xActors, "Action", iH, vPosFirstWall, "/Walk");
+						endif;		
+					else
+						m_pxSensor^.ExecuteGamePlayCommand(m_xActors, "Action", iH, vPosFirstWall, "/Attack");	
+					endif;
+				endif;
+			endif;
+			
+			if(iNumISWallsN<iNumISWallsO) then
+				//wall was destroyed -> reevaluate
+				m_bIntersectingWallsChecked=false;
+				m_iWalkCounter=0;
+				m_iAttackCounter=0;
+				m_iWalkTwoCounter=0;
+				m_iCalcPathCounter=0;
+				m_iAttackAreaTwoCounter=0;
+				m_iAttackAreaCounter=0;
+			endif;
+					
+		elseif(m_bRetreat&& (m_vAttackPos-m_xActors[0].GetPos()).Abs2S()>400.0)then
+			m_pxSensor^.ExecuteGamePlayCommand(m_xActors, "Action", -1, m_vAttackPos, "/AggressiveTarget /AggrTNoAnml");
+			m_iTimer = 0;
+			m_iCheck = 10;
+
+		elseif((m_bAttackArea)&&((m_vAttackPos-m_xActors[0].GetPos()).Abs2S()>10000.0)&&(m_xTargets.NumEntries()<=0))then
+			if(m_iAttackAreaCounter==0)then
+				if(m_sGametype!="KingOfTheHill"&&m_sGametype!="Defender")then
+					if(m_bMultimap)then
+						m_pxSensor^.ExecuteGamePlayCommand(m_xActors, "Action", -1, m_vAttackPos, "/AggressiveTarget /Ai-Multi-PF");
+					else
+						m_pxSensor^.ExecuteGamePlayCommand(m_xActors, "Action", -1, m_vAttackPos, "/Walk");
+					endif;
+				else
+					if(m_bMultimap)then
+						m_pxSensor^.ExecuteGamePlayCommand(m_xActors, "Action", -1, m_vAttackPos, "/AggressiveTarget");
+					else
+						m_pxSensor^.ExecuteGamePlayCommand(m_xActors, "Action", -1, m_vAttackPos, "/Walk");
+					endif;			
+				endif;
+				m_iAttackAreaCounter++;
+			elseif(m_iAttackAreaCounter==1)then
+				NoPathThenSendSiege(m_xTargets, m_xActors, m_bAmphibianPathfinding, false);
+			else
+				m_iAttackAreaTwoCounter=0;
+				m_iTimer = 0;
+				m_iCheck = 10;
+			endif;
+		elseif((m_bAttackArea)&&((m_vAttackPos-m_xActors[0].GetPos()).Abs2S()<=10000.0)&&(m_xTargets.NumEntries()<=0))then
+			m_bAttacking=true;
+			
+			//CheckForMobileCamp(m_xActors);
+			
+			if(m_iAttackAreaTwoCounter==0)then
+				m_pxSensor^.ExecuteGamePlayCommand(m_xActors, "Action", -1, m_vAttackPos, "/AggressiveTarget");
+				m_iAttackAreaTwoCounter++;
+			elseif(m_iAttackAreaTwoCounter==1)then
+				NoPathThenSendSiege(m_xTargets, m_xActors, m_bAmphibianPathfinding, false);
+				m_iAttackAreaTwoCounter++;
+			else
+				//nothing to do, cancel attack
+				if(m_iAttackAreaTwoCounter>=3) then return false; endif;
+				m_iAttackAreaTwoCounter++;
+				m_iAttackAreaCounter=0;
+				m_iTimer = 0;
+				m_iCheck = 10;
+			endif;
+		elseif(m_xTargets.Validate()>0)then
+			if((m_xTargets[0].GetPos()-m_xActors[0].GetPos()).Abs2S()>10000.0)then
+				if(m_iWalkCounter==0)then
+					if(m_sGametype!="KingOfTheHill"&&m_sGametype!="Defender")then
+						if(m_bMultimap)then	
+							if((m_xTargets[0].GetOwner()== -1)||(m_xTargets[0].IsWall())||(m_xTargets[0].GetClassName()== "defender_object"))then
+								m_pxSensor^.ExecuteGamePlayCommand(m_xActors, "Action", m_xTargets[0].GetHandle(), m_xTargets[0].GetPos(), "/Attack /Ai-Multi-PF");							
+							else	
+								m_pxSensor^.ExecuteGamePlayCommand(m_xActors, "Action", m_xTargets[0].GetHandle(), m_xTargets[0].GetPos(), "/AggressiveTarget /AggrTNoAnml /Ai-Multi-PF");
+							endif;
+						else
+							m_pxSensor^.ExecuteGamePlayCommand(m_xActors, "Action", m_xTargets[0].GetHandle(), m_xTargets[0].GetPos(), "/Walk /Ai-Multi-PF");	
+						endif;
+					else
+						if((m_xTargets[0].GetOwner()== -1)||(m_xTargets[0].IsWall())||(m_xTargets[0].GetClassName()== "defender_object"))then
+							m_pxSensor^.ExecuteGamePlayCommand(m_xActors, "Action", m_xTargets[0].GetHandle(), m_xTargets[0].GetPos(), "/Attack");
+						else
+							m_pxSensor^.ExecuteGamePlayCommand(m_xActors, "Action", m_xTargets[0].GetHandle(), m_xTargets[0].GetPos(), "/AggressiveTarget");
+						endif;
+					endif;
+					m_iWalkCounter++;
+				elseif(m_iWalkCounter==1)then
+					NoPathThenSendSiege(m_xTargets, m_xActors, m_bAmphibianPathfinding, false);
+				endif;
+				m_iAttackCounter=0;
+				m_iWalkTwoCounter=0;
+			else
+				m_bAttacking=true;
+				//CheckForMobileCamp(m_xActors);
+				if(m_iAttackCounter==0)then
+					m_bPathFound=true;
+					xHelperList.Clear();
+					xHelperList.CopyFrom(SortTargetList(m_xTargets, false));
+					m_xTargets.Clear();
+					m_xTargets.CopyFrom(xHelperList);
+					NoPathThenSendSiege(m_xTargets, m_xActors, m_bAmphibianPathfinding, false);
+					CheckIfEnemyIsOnSameIsland(m_xTargets,m_xActors);
+					if(m_xTargets.Validate()>0)then				
+						if((m_xTargets[0].GetOwner()== -1)||(m_xTargets[0].IsWall())||(m_xTargets[0].GetClassName()== "defender_object"))then
+							if(!m_bMultimap&&m_xTargets[0].GetOwner()== -1)then
+							else
+								m_pxSensor^.ExecuteGamePlayCommand(m_xActors, "Action", m_xTargets[0].GetHandle(), m_xTargets[0].GetPos(), "/Attack");
+							endif;
+						else
+							m_pxSensor^.ExecuteGamePlayCommand(m_xActors, "Action", m_xTargets[0].GetHandle(), m_xTargets[0].GetPos(), "/AggressiveTarget");
+						endif;				
+					else
+						m_xTargets.Include(CheckForMissingTargets());
+						if(m_xTargets.Validate()>0)then
+							if(m_sGametype!="KingOfTheHill"&&m_sGametype!="Defender")then
+								if(m_bMultimap)then	
+									if((m_xTargets[0].GetOwner()== -1)||(m_xTargets[0].IsWall())||(m_xTargets[0].GetClassName()== "defender_object"))then
+										m_pxSensor^.ExecuteGamePlayCommand(m_xActors, "Action", m_xTargets[0].GetHandle(), m_xTargets[0].GetPos(), "/Attack");							
+									else
+										m_pxSensor^.ExecuteGamePlayCommand(m_xActors, "Action", m_xTargets[0].GetHandle(), m_xTargets[0].GetPos(), "/AggressiveTarget /AggrTNoAnml");
+									endif;
+								else
+									m_pxSensor^.ExecuteGamePlayCommand(m_xActors, "Action", m_xTargets[0].GetHandle(), m_xTargets[0].GetPos(), "/Walk");	
+								endif;
+							else
+								if((m_xTargets[0].GetOwner()== -1)||(m_xTargets[0].IsWall())||(m_xTargets[0].GetClassName()== "defender_object"))then
+									m_pxSensor^.ExecuteGamePlayCommand(m_xActors, "Action", m_xTargets[0].GetHandle(), m_xTargets[0].GetPos(), "/Attack");
+								else
+									m_pxSensor^.ExecuteGamePlayCommand(m_xActors, "Action", m_xTargets[0].GetHandle(), m_xTargets[0].GetPos(), "/AggressiveTarget");
+								endif;
+							endif;
+						endif;
+					endif;
+				endif;
+				m_iAttackCounter=1;
+				m_iWalkCounter=0;
+				m_iWalkTwoCounter=0;
+			endif;
+			if(m_xTargets.Validate()>0)then
+				OnAttackInvoked(m_xTargets[0]);
+				bFound=true;
+			else
+				bFound=false;
+			endif;
+			if(bFound==false)then return false; endif;
+
+		elseif(m_vAttackPos!={0.0,0.0,0.0}&&(m_vAttackPos-m_xActors[0].GetPos()).Abs2S()>10000.0)then
+			m_bAttacking=true;
+			if(m_iWalkTwoCounter==0)then		
+				if(m_bMultimap)then	
+					m_pxSensor^.ExecuteGamePlayCommand(m_xActors, "Action", -1, m_vAttackPos, "/AggressiveTarget");	
+				else
+					m_pxSensor^.ExecuteGamePlayCommand(m_xActors, "Action", -1, m_vAttackPos, "/Walk");
+				endif;
+				m_iWalkTwoCounter++;
+				m_bSortTargetList=false;
+			elseif(m_iWalkCounter==1)then
+				NoPathThenSendSiege(m_xTargets, m_xActors, m_bAmphibianPathfinding, false);
+			endif;
+			m_iAttackCounter=0;
+			m_iWalkCounter=0;
+			m_iTimer = 0;
+			m_iCheck = 10;
+		else
+			return false;
+		endif;
+		m_bInFight=true;
+		return true;
+	endproc;
+
+
+	///OnAttackInvoked
+	proc void OnAttackInvoked(CAiObjWrap p_xTarget)
+		if(!m_xOnAttackInvoked.IsNull()&&(m_xActors.NumEntries()>0))then
+			m_xOnAttackInvoked.Call(m_xActors[0], p_xTarget);
+		endif;
+	endproc;
+
+
+	//think
+	export proc void Think()
+		if(!IsRunning())then
+			Abort();
+			SetCompleted();
+			return;
+		endif;
+
+		if(m_xActors.Validate()<=0)then
+			Abort();
+			SetCompleted();
+			return;
+		endif;
+		
+		m_xTargets.Validate();
+		
+		CheckForItem(); 
+		CheckIfActorIsTrapped(m_xActors);
+			
+		var int i, iC;
+		if(m_bSpecialAttack)then
+			iC=m_axSpecialAttackInfos.NumEntries();
+			for(i=0)cond(i<iC)iter(++i)do
+				var ^CAiObjWrap pxActor= ^(m_axSpecialAttackInfos[i].m_xActor);
+				if(!pxActor^.IsValid())then
+					m_axSpecialAttackInfos.DeleteEntry(i);
+					i--; iC--;
+					continue;
+				endif;
+
+				if(m_axSpecialAttackInfos[i].m_bDoingSpecialMove)then
+					if(m_axSpecialAttackInfos[i].m_iTimer<60)then
+						m_axSpecialAttackInfos[i].m_iTimer++;
+					else
+						m_axSpecialAttackInfos[i].m_iTimer=0;
+						m_axSpecialAttackInfos[i].m_bDoingSpecialMove = false;
+					endif;
+					continue;
+				endif;
+
+				if(m_axSpecialAttackInfos[i].m_iTimer<m_axSpecialAttackInfos[i].m_iCheck)then
+					m_axSpecialAttackInfos[i].m_iTimer++;
+				else
+					m_axSpecialAttackInfos[i].m_iTimer=0;
+
+					var int iAttackType, iNumAttackTypes=m_axSpecialAttackInfos[i].m_asSpecialAttacks.NumEntries();
+					for(iAttackType=0)cond(iAttackType<iNumAttackTypes)iter(iAttackType++)do
+
+						var string sAttack=m_axSpecialAttackInfos[i].m_asSpecialAttacks[iAttackType];
+						var int iAttackLevel=m_axSpecialAttackInfos[i].m_aiAttackLevel[iAttackType];
+						var bool bGlobalCondition=CheckGlobalConditions(sAttack, iAttackLevel, pxActor^);
+						var bool bLocalCondition=false;
+
+						if(bGlobalCondition)then
+							bLocalCondition=CheckLocalConditions(sAttack, pxActor^);
+						endif;
+
+						m_axSpecialAttackInfos[i].m_xPotentialEnemy = m_xPotentialEnemy;
+						if((bGlobalCondition)&&(bLocalCondition))then
+							SpecialAttack(sAttack, m_xPotentialEnemy, pxActor^);
+							m_axSpecialAttackInfos[i].m_bDoingSpecialMove = true;
+							break;
+						endif;
+					endfor;
+				endif;
+			endfor;
+		endif;
+
+		if(m_bInFight)then
+			if(m_xTargets.NumEntries()>0)then
+				if(!m_xTargets[0].IsValid())then
+					m_bInFight=false;
+					if(!StartAttack())then
+						Abort();
+						SetCompleted();
+						return;
+					endif;
+				else
+					if(m_iFallBackCounter==5)then
+						m_iFallBackCounter=0;
+						m_iAttackCounter=0;
+						m_iWalkTwoCounter=0;
+						m_iIntersectingWallAtkHndl=-1;
+					endif;
+					m_iFallBackCounter++;
+					if(!StartAttack())then
+						Abort();
+						SetCompleted();
+						m_bInFight=false;
+						return;
+					endif;
+					m_bInFight=true;
+				endif;
+			else
+				m_iTimer++;
+				if((m_iCheck<m_iTimer)&&(!StartAttack()))then
+					if(m_iStopAttack>=5)then
+						m_bInFight=false;
+						m_iStopAttack=0;
+						SetCompleted();
+						return;
+					endif;
+					m_iStopAttack++;
+				endif;
+			endif;
+		endif;
+	endproc;
+
+
+	///CheckForUpgrades
+	proc void CheckForUpgrades(CAiObjWrapList p_xActors, CAiObjWrapList p_xTargets)
+		if(m_sTribe!="Aje")then return; endif;
+		if(m_pxBrain==null)then return; endif;
+		if(m_pxSensor==null)then return; endif;
+
+		if(CAiUtilityMgr.Get()^.GetCurrentAge(m_pxBrain)<=2)then return; endif;
+		var bool bUpgraded=false;
+
+		var int i, iC=p_xActors.NumEntries();
+		for(i=0)cond(i<iC)iter(i++)do
+			if(p_xActors[i].IsValid())then
+				if(p_xActors[i].GetClassName().Find("aje_ankylosaurus")!=(-1))then
+					m_pxSensor^.ExecuteGamePlayCommand(p_xActors[i].GetHandle(), "Action", p_xActors[i].GetHandle(), {0.0,0.0,0.0}, "/Actions/Aje/Upgrades/aje_ankylosaurus/aje_ankylosaurus_catapult_dino");
+					if(m_bWallObj)then	
+						break;
+					endif;
+				endif;
+			endif;
+		endfor;
+	endproc;
+
+
+	///EvaluateEnemy
+	proc bool NoPathThenSendSiege(CAiObjWrapList p_xTargets, CAiObjWrapList p_xActors, bool p_bAmphibianPathfinding, bool p_bPriorityTarget)
+		var int 		iNumEnemies=0;
+		var int 		iNumTowersWalls=0;
+		var int 		iNumActors=p_xActors.NumEntries();
+		var int 		i, iC=p_xTargets.NumEntries();
+		var vec3		vTargetPos;
+		var bool		bLevelOK;
+		var bool		bLongRange;
+		var CAiObjWrap	xObj;
+		var CAiObjWrapList xList;
+		
+		if(iNumActors<=0) then return false; endif;
+		var vec3 vPosStart=p_xActors[0].GetPos();
+		
+		if(iC>0)then
+			for(i=0)cond(i<iC)iter(i++)do
+				if(p_xTargets[i].IsValid())then
+					xObj=p_xTargets[i];
+					break;
+				endif;
+			endfor;
+
+			var ^CAiObjWrapList pxWalls;
+			if(!m_bIntersectingWallsChecked)then pxWalls=^m_xIntersectingWalls; endif;
+			m_bPathFound=CAiUtilityMgr.Get()^.CheckPathToTargetPlace(m_pxBrain,p_xTargets,p_bAmphibianPathfinding,pxWalls,vPosStart);
+
+			if(!m_bPathFound&&!m_bIntersectingWallsChecked) then
+				m_bIntersectingWallsChecked=true;
+			endif;
+
+			xList=SortTargetList(p_xTargets, p_bPriorityTarget);
+			m_xTargets.Clear();
+			m_xTargets.CopyFrom(xList);
+
+			if(!m_bPathFound)then
+				if(m_sLevelName!="Single 15")then
+					var ^CAiAttackInfo	pxAttackInfo = new CAiAttackInfo();
+					pxAttackInfo^.SetCanUse(CAiAttackInfo.AT_NotPresent,true);
+					pxAttackInfo^.GetTargets().CopyFrom(xList);
+					pxAttackInfo^.SetRisk(100.0);
+					pxAttackInfo^.SetStrategy("siege");
+					SetRequesterFor(pxAttackInfo);
+					pxAttackInfo^.SetIslandID(m_pxSensor^.ComputeIslandId(xObj.GetPos()));
+					m_pxBrain^.GetFightModule()^.RequestAttack(pxAttackInfo);
+				endif;
+			endif;
+		else
+			var ^CAiObjWrapList pxWalls;
+			if(!m_bIntersectingWallsChecked)then pxWalls=^m_xIntersectingWalls; endif;
+			if(m_vAttackPos!={0.0,0.0,0.0})then
+				m_bPathFound=CAiUtilityMgr.Get()^.CheckPathToTargetPlace(m_pxBrain, m_vAttackPos, p_bAmphibianPathfinding,pxWalls,vPosStart);
+				if(!m_bPathFound)then
+					m_iCalcPathCounter=0;
+					m_iSortingCounter=0;
+					m_iAttackCounter=0;
+					m_iWalkCounter=0;
+					m_iWalkTwoCounter=0;
+					m_iAttackAreaCounter=0;
+					return false;
+				endif;
+			endif;
+		endif;
+		return true;
+	endproc;
+
+
+	///SortTargetList
+	proc CAiObjWrapList SortTargetList(CAiObjWrapList p_xTargets, bool p_bPriorityTarget)
+		if(p_xTargets.NumEntries()<=0)then return p_xTargets; endif;
+		var int iWallpieces=0;
+		var CAiObjWrapList xSortedTargetList;
+		var CAiObjQuery xOQ;
+
+		m_bWallObj=false;
+
+		xSortedTargetList.Clear();
+		xSortedTargetList.CopyFrom(p_xTargets);
+		p_xTargets.Clear();
+
+		var int j, iD=m_xActors.NumEntries();
+		if(iD<=0)then return xSortedTargetList;endif;
+
+		for(j=0)cond(j<iD)iter(j++)do
+			if(m_xActors[j].IsValid())then
+				xOQ.SetSorting(m_xActors[j].GetPos(), 1);
+				xOQ.Execute(xSortedTargetList,p_xTargets);
+				break;
+			endif;
+		endfor;
+
+		var CAiObjWrapList xShip;
+		var CAiObjWrapList xChtr;
+		var CAiObjWrapList xWall;
+		var CAiObjWrapList xWall2;
+		var CAiObjWrapList xTower;
+		var CAiObjWrapList xHouse;
+		var CAiObjWrapList xVhcl;
+		var CAiObjWrapList xAnml;
+		var CAiObjWrapList xWrkr;
+		var CAiObjWrapList xHero;
+		var CAiObjWrapList xFireplace;
+		var CAiObjWrapList xDefenderObj;
+		var CAiObjWrapList xWarpgates;
+		var CAiObjWrapList xOffensiveBuildingList;
+		var CAiObjWrapList xTargetList;
+
+		xTargetList.Clear();
+
+		var int i, iC=p_xTargets.NumEntries();
+		if(iC<=0)then return p_xTargets; endif;
+
+		for(i=0)cond(i<iC)iter(i++)do
+			if(!p_xTargets[i].IsValid())then continue; endif;
+
+			if(p_xTargets[i].GetType()=="SHIP")then
+				xShip.AddEntry(p_xTargets[i]);
+				return p_xTargets;
+
+			elseif(p_xTargets[i].GetType()=="CHTR")then
+				if(p_xTargets[i].GetName().Find("_worker")!=(-1))then
+					xWrkr.AddEntry(p_xTargets[i]);
+				elseif((p_xTargets[i].GetName().Find("Bela_")!=(-1))||(p_xTargets[i].GetClassName()=="special_eusmilus")||(p_xTargets[i].GetName().Find("Cole_")!=(-1))
+				||(p_xTargets[i].GetName().Find("babbage_")!=(-1))||(p_xTargets[i].GetName().Find("tesla_")!=(-1))||(p_xTargets[i].GetName().Find("lovelace_")!=(-1))
+				||(p_xTargets[i].GetName().Find("hermit_")!=(-1))||(p_xTargets[i].GetName().Find("mayor_")!=(-1))||(p_xTargets[i].GetName().Find("darwin_")!=(-1)))then
+					xHero.AddEntry(p_xTargets[i]);
+				else
+					xChtr.AddEntry(p_xTargets[i]);
+				endif;
+
+			elseif(p_xTargets[i].GetType()=="BLDG")then
+				if(p_xTargets[i].IsWall()||p_xTargets[i].IsGate()||p_xTargets[i].IsTrap())then
+					if(iWallpieces<=3)then
+						xWall.AddEntry(p_xTargets[i]);
+						iWallpieces++;
+					else
+						xWall2.AddEntry(p_xTargets[i]);
+					endif;
+
+				elseif(p_xTargets[i].IsTower())then
+					xTower.AddEntry(p_xTargets[i]);
+
+				elseif(p_xTargets[i].GetClassName()=="defender_object")then
+					xDefenderObj.AddEntry(p_xTargets[i]);
+
+				elseif(p_xTargets[i].GetClassName().Find("_warpgate")!=(-1))then
+					xWarpgates.AddEntry(p_xTargets[i]);
+
+				elseif(((p_xTargets[i]).GetClassName()=="hu_fireplace")||((p_xTargets[i]).GetClassName()=="ninigi_fireplace")||((p_xTargets[i]).GetClassName()=="aje_resource_collector"))then
+					xFireplace.AddEntry(p_xTargets[i]);
+
+				elseif(p_xTargets[i].GetClassName().Find("_arena")!=(-1)||p_xTargets[i].GetClassName().Find("_animal_farm")!=(-1)||p_xTargets[i].GetClassName().Find("_machine")!=(-1)
+						||p_xTargets[i].GetClassName().Find("_weapons")!=(-1)||p_xTargets[i].GetClassName().Find("_engineer")!=(-1))then
+					xOffensiveBuildingList.AddEntry(p_xTargets[i]);
+				else
+					xHouse.AddEntry(p_xTargets[i]);
+				endif;
+			elseif(p_xTargets[i].GetType()=="VHCL")then
+				xVhcl.AddEntry(p_xTargets[i]);
+
+			elseif(p_xTargets[i].GetType()=="ANML"||p_xTargets[i].GetType()=="NEST")then
+				xAnml.AddEntry(p_xTargets[i]);
+			endif;
+		endfor;
+
+		var bool bPreferWalls=!m_bPathFound;
+		if(!m_bPathFound&&m_xIntersectingWalls.NumEntries()>0)then
+			xTargetList.Include(m_xIntersectingWalls);
+			m_bWallObj=true;
+			bPreferWalls=false;
+		endif;
+
+		if(!bPreferWalls)then
+			if(xDefenderObj.NumEntries()>0)then
+				xTargetList.Include(xDefenderObj);
+				m_bWallObj=true;
+			endif;
+			if(xWarpgates.NumEntries()>0)then
+				xTargetList.Include(xWarpgates);
+				m_bWallObj=true;
+			endif;
+			if(xHero.NumEntries()>0)then
+				xTargetList.Include(xHero);
+			endif;
+			if(xVhcl.NumEntries()>0)then
+				xTargetList.Include(xVhcl);
+			endif;
+			if(xAnml.NumEntries()>0)then
+				xTargetList.Include(xAnml);
+			endif;
+			if(xChtr.NumEntries()>0)then
+				xTargetList.Include(xChtr);
+			endif;
+			if(xWrkr.NumEntries()>0)then
+				xTargetList.Include(xWrkr);
+			endif;
+			if(xOffensiveBuildingList.NumEntries()>0)then
+				xTargetList.Include(xOffensiveBuildingList);
+			endif;
+			if(xFireplace.NumEntries()>0)then
+				xTargetList.Include(xFireplace);
+			endif;
+			if(xHouse.NumEntries()>0)then
+				xTargetList.Include(xHouse);
+			endif;
+			if(xTower.NumEntries()>0)then
+				xTargetList.Include(xTower);
+			endif;
+			if(xWall.NumEntries()>0)then
+				xTargetList.Include(xWall);
+			endif;
+			if(xWall2.NumEntries()>0)then
+				xTargetList.Include(xWall2);
+			endif;
+			if(xShip.NumEntries()>0)then
+				xTargetList.Include(xShip);
+			endif;
+		else
+			if(xWall.NumEntries()>0)then
+				m_bWallObj=true;
+				xTargetList.Include(xWall);
+			endif;
+			if(xDefenderObj.NumEntries()>0)then
+				m_bWallObj=true;
+				xTargetList.Include(xDefenderObj);
+			endif;
+			if(xWarpgates.NumEntries()>0)then
+				m_bWallObj=true;
+				xTargetList.Include(xWarpgates);
+			endif;
+			if(xHero.NumEntries()>0)then
+				xTargetList.Include(xHero);
+			endif;
+			if(xVhcl.NumEntries()>0)then
+				xTargetList.Include(xVhcl);
+			endif;
+			if(xAnml.NumEntries()>0)then
+				xTargetList.Include(xAnml);
+			endif;
+			if(xChtr.NumEntries()>0)then
+				xTargetList.Include(xChtr);
+			endif;
+			if(xWrkr.NumEntries()>0)then
+				xTargetList.Include(xWrkr);
+			endif;
+			if(xOffensiveBuildingList.NumEntries()>0)then
+				xTargetList.Include(xOffensiveBuildingList);
+			endif;
+			if(xFireplace.NumEntries()>0)then
+				xTargetList.Include(xFireplace);
+			endif;
+			if(xHouse.NumEntries()>0)then
+				xTargetList.Include(xHouse);
+			endif;
+			if(xTower.NumEntries()>0)then
+				xTargetList.Include(xTower);
+			endif;
+			if(xShip.NumEntries()>0)then
+				xTargetList.Include(xShip);
+			endif;
+			if(xWall2.NumEntries()>0)then
+				xTargetList.Include(xWall2);
+			endif;
+		endif;
+
+		return xTargetList;
+	endproc;
+
+
+	//CheckForMissingTargets
+	proc CAiObjWrapList CheckForMissingTargets()
+		var CAiObjWrapList xMissingTargets;
+		var CAiObjQuery xQuery;
+		var real fSearchRadius;
+
+		fSearchRadius=120.0;
+		
+		if(m_sGametype=="KingOfTheHill")then return xMissingTargets;endif;
+		if(m_xActors.NumEntries()<=0)then return xMissingTargets; endif;
+		if(!m_xActors[0].IsValid())then return xMissingTargets; endif;
+
+		xQuery.AddMyEnemiesToSearch(m_iPlayerID);
+		xQuery.SetType("CHTR");
+		xQuery.SetType("ANML",true);
+		xQuery.SetType("VHCL",true);
+		xQuery.SetType("BLDG",true);
+		xQuery.SetType("NEST",true);
+		xQuery.SetType("SHIP",true);
+		xQuery.RegionCircle(m_xActors[0].GetPos(), fSearchRadius);
+		xQuery.SetSorting(m_xActors[0].GetPos(),1);
+		xQuery.Execute(xMissingTargets);
+
+		var int i, iC=xMissingTargets.Validate();
+		if(iC<=0)then return xMissingTargets; endif;
+		
+		if(!m_bMultimap&&xMissingTargets[0].GetOwner()== -1)then return xMissingTargets; endif;
+
+		for(i=0)cond(i<iC)iter(i++)do
+			if((xMissingTargets[i].GetType()!="CHTR")&&(xMissingTargets[i].GetType()!="ANML")&&(xMissingTargets[i].GetType()!="VHCL")
+				&&(xMissingTargets[i].GetType()!="BLDG")&&(xMissingTargets[i].GetType()!="NEST")&&(xMissingTargets[i].GetType()!="SHIP"))then
+				xMissingTargets.RemEntry(xMissingTargets[i]);
+				i--; iC--;
+				continue;
+			endif;
+
+			var int iTargetIslandID=m_pxSensor^.ComputeIslandId(xMissingTargets[i].GetPos());
+			var int iActorIslandID=m_pxSensor^.ComputeIslandId(m_xActors[0].GetPos());
+			if(iTargetIslandID!=iActorIslandID)then
+				xMissingTargets.RemEntry(xMissingTargets[i]);
+				i--;iC--;
+				continue;
+			endif;
+			
+			if((xMissingTargets[i].GetAttribValueBool("active_disguise"))||(xMissingTargets[i].GetAttribValueInt("active_entrench")>0)
+				||(!xMissingTargets[i].IsVisible(m_iPlayerID)))then
+				xMissingTargets.RemEntry(xMissingTargets[i]);
+				i--;iC--;
+				continue;
+			endif;			
+		endfor;
+		return xMissingTargets;
+	endproc;
+	
+	
+	///CheckForItem
+	proc void CheckForItem();
+		if(!m_bMultimap)then return; endif;
+		var CAiObjWrapList xItemList;
+		var CAiObjQuery xItemQuery;
+		var CAiObjWrap xActor;
+		var vec3 vSearchPos={0.0,0.0,0.0};
+		
+		
+		var int i, iC=m_xActors.Validate();
+		if(iC<=0)then return; endif;
+		
+		for(i=0)cond(i<iC)iter(i++)do
+			if(m_xActors[i].GetAttribValue("inventory_item_name")=="")then	
+				vSearchPos=m_xActors[i].GetPos();
+				xActor=m_xActors[i];
+				break;
+			endif;
+		endfor;
+		if(vSearchPos=={0.0,0.0,0.0})then return; endif;
+		
+		xItemList.Clear();
+		xItemQuery.SetOwner(-1);
+		xItemQuery.SetType("ITEM");
+		xItemQuery.RegionCircle(vSearchPos, 30.0);
+		xItemQuery.Execute(xItemList);
+		
+		if(xItemList.Validate()<=0)then return; endif;
+		
+		m_pxSensor^.ExecuteGamePlayCommand(xActor.GetHandle(), "PickUp", xItemList[0].GetHandle(), xItemList[0].GetPos(), "");	
+	endproc;
+	
+	
+	///CheckIfEnemyIsOnSameIsland
+	proc void CheckIfEnemyIsOnSameIsland(CAiObjWrapList p_xTargets,CAiObjWrapList p_xActors)
+		var int iTargetIslandID;
+		var int iActorIslandID;
+		
+		if(p_xActors.Validate()>0)then
+			if(p_xActors[0].GetType()=="SHIP")then return; endif;
+			iActorIslandID=m_pxSensor^.ComputeIslandId(p_xActors[0].GetPos());
+		else
+			return;
+		endif;
+		
+		var int i, iC=p_xTargets.Validate();
+		if(iC<=0)then return; endif;
+		for(i=0)cond(i<iC)iter(i++)do
+			iTargetIslandID=m_pxSensor^.ComputeIslandId(p_xTargets[0].GetPos());
+			if(iTargetIslandID!=iActorIslandID)then
+				p_xTargets.RemEntry(p_xTargets[i]);
+				i--;iC--;
+			endif;
+		endfor;
+		
+		if(p_xTargets.NumEntries()<=0)then
+			p_xTargets.Include(CheckForMissingTargets());
+		endif;
+		
+		m_xTargets.Clear();
+		m_xTargets.CopyFrom(p_xTargets);
+	endproc;
+	
+	
+	///CheckIfActorIsTrapped
+	proc void CheckIfActorIsTrapped(CAiObjWrapList p_xActors)
+		var int i, iC=p_xActors.Validate();
+		if(iC<=0)then return; endif;
+		
+		var CAiObjWrapList xTrapList;
+		var CAiObjQuery xQuery;
+		
+		xQuery.Clear();
+		xTrapList.Clear();
+		
+		var bool bHasDruid=false;
+		var vec3 vDruidPos;
+		
+		for(i=0)cond(i<iC)iter(i++)do
+			if((p_xActors[i].GetClassName()=="hu_druid")||(p_xActors[i].GetClassName()=="aje_shaman")||(p_xActors[i].GetClassName()=="ninigi_monk"))then			
+				bHasDruid=true;
+				vDruidPos=p_xActors[i].GetPos();
+				if(m_iReveal==5)then
+					m_pxSensor^.ExecuteGamePlayCommand(p_xActors[i].GetHandle(), "Action", -1, {0.0,0.0,0.0}, "/Actions/Special/Moves/CHTR/reveal");
+					m_iReveal=0;
+				endif;
+				m_iReveal++;
+			endif;
+		
+			if(p_xActors[i].GetCurrentTask()=="Trapped")then
+				xQuery.SetClass("ninigi_snare_trap");
+				xQuery.SetClass("ninigi_spike_trap",true);
+				xQuery.RegionCircle(p_xActors[i].GetPos(), 10.0);
+				xQuery.Execute(xTrapList);
+			endif;
+		endfor;
+		
+		if(bHasDruid)then
+			xQuery.Clear();
+			xTrapList.Clear();
+			xQuery.SetClass("ninigi_snare_trap");
+			xQuery.RegionCircle(vDruidPos, 30.0);
+			xQuery.Execute(xTrapList);
+		endif;
+			
+		if(xTrapList.Validate()>0)then
+			m_pxSensor^.ExecuteGamePlayCommand(p_xActors, "Action", xTrapList[0].GetHandle(), xTrapList[0].GetPos(), "/Attack");
+		endif;
+	endproc;
+	
+	
+	///CreateRequest
+	proc void CreateRequest(string p_sName, string p_sObjFlag, int p_iNumber, vec3 p_vBuildPos)
+		var CAiConstructionInfoPtr pxCI;
+		var CAiNeedPtr pxNd;
+		var ^CAiNodeInstance pxNI;
+		
+		var ^CAiTechTree pxTT=^(m_pxSensor^.GetTechTree());
+		pxNI = pxTT^.GetNodeInstanceFromPartialName(p_sName, p_sObjFlag);
+		
+		if(pxNI!=null)then
+			var ^CAiModuleEconomyDefault pxEMod=cast<CAiModuleEconomyDefault>(m_pxBrain^.GetEconomyModule());
+			if(pxEMod^.IsNodeInstanceQed(pxNI))then return; endif;
+			pxNd = CAiNeed.Create(true,p_iNumber);
+			pxNd.GetNeed()^.AddEntry(pxNI);
+			pxCI = CAiConstructionInfo.Create();
+			pxCI.GetConstructionInfo()^.SetNeed(pxNd);
+			pxCI.GetConstructionInfo()^.SetPos(p_vBuildPos);
+			pxCI.GetConstructionInfo()^.SetUnique(false);
+			pxEMod^.ExternalRequestConstruction(pxCI);
+		endif;		
+	endproc;
+	
+
+	///SpecialAttack
+	proc void SpecialAttack(string p_sAttack, CAiObjWrap p_xEnemy, CAiObjWrap p_xActor)
+		if(!p_xActor.IsValid())then return; endif;
+
+		if(p_xEnemy.IsValid())then
+			if(p_sAttack=="Shotgun")then
+				m_pxSensor^.ExecuteGamePlayCommand(p_xActor.GetHandle(), "Action", p_xEnemy.GetHandle(), p_xEnemy.GetPos(), "/Actions/Special/Moves/CHTR/Shotgun");
+			endif;
+			if(p_sAttack=="Snipershot")then
+				m_pxSensor^.ExecuteGamePlayCommand(p_xActor.GetHandle(), "Action", p_xEnemy.GetHandle(), p_xEnemy.GetPos(), "/Actions/Special/Moves/CHTR/Snipershot");
+			endif;
+			if(p_sAttack=="Tesla_DstrVhcl_0")then
+				m_pxSensor^.ExecuteGamePlayCommand(p_xActor.GetHandle(), "Action", p_xEnemy.GetHandle(), p_xEnemy.GetPos(), "/Actions/Special/Moves/CHTR/Tesla_DstrVhcl_0");
+			endif;
+			if(p_sAttack=="Resurrect")then
+				m_pxSensor^.ExecuteGamePlayCommand(p_xActor.GetHandle(), "Action", p_xEnemy.GetHandle(), p_xEnemy.GetPos(), "/Actions/Special/Moves/CHTR/Resurrect");
+			endif;
+			if(p_sAttack=="Ada_DeathShoot")then
+				m_pxSensor^.ExecuteGamePlayCommand(p_xActor.GetHandle(), "Action", p_xEnemy.GetHandle(), p_xEnemy.GetPos(), "/Actions/Special/Moves/CHTR/Ada_DeathShoot");
+			endif;
+			if(p_sAttack=="Babbage_Minigun_0")then
+				m_pxSensor^.ExecuteGamePlayCommand(p_xActor.GetHandle(), "Action", p_xEnemy.GetHandle(), p_xEnemy.GetPos(), "/Actions/Special/Moves/CHTR/Babbage_Minigun_0");
+			endif;
+			if(p_sAttack=="schliemann_deathshoot")then
+				m_pxSensor^.ExecuteGamePlayCommand(p_xActor.GetHandle(), "Action", p_xEnemy.GetHandle(), p_xEnemy.GetPos(), "/Actions/Special/Moves/CHTR/schliemann_deathshoot");
+			endif;
+			if(p_sAttack=="Hypnosis")then
+				m_pxSensor^.ExecuteGamePlayCommand(p_xActor.GetHandle(), "Action", p_xEnemy.GetHandle(), p_xEnemy.GetPos(), "/Actions/Special/Moves/ANML/Hypnosis");
+			endif;
+			if(p_sAttack=="allosaurus_scrunch")then
+				m_pxSensor^.ExecuteGamePlayCommand(p_xActor.GetHandle(), "Action", p_xEnemy.GetHandle(), p_xEnemy.GetPos(), "/Actions/Aje/Moves/ANML/AlloScrunch");
+			endif;
+			if(p_sAttack=="enchain")then
+				m_pxSensor^.ExecuteGamePlayCommand(p_xActor.GetHandle(), "Action", p_xEnemy.GetHandle(), p_xEnemy.GetPos(), "/Actions/Ninigi/Moves/ANML/enchain");
+			endif;
+		else
+			if(p_sAttack=="Druid_HealAnml_0")then
+				m_pxSensor^.ExecuteGamePlayCommand(p_xActor.GetHandle(), "Action", -1, p_xActor.GetPos(), "/Actions/Special/Moves/CHTR/Druid_HealAnml_0");
+			endif;
+			if(p_sAttack=="Mayor_Specialmove_0")then
+				m_pxSensor^.ExecuteGamePlayCommand(p_xActor.GetHandle(), "Action", -1, p_xActor.GetPos(), "/Actions/Special/Moves/CHTR/Mayor_Specialmove_0");
+			endif;
+			if(p_sAttack=="warden_spec")then
+				m_pxSensor^.ExecuteGamePlayCommand(p_xActor.GetHandle(), "Action", -1, p_xActor.GetPos(), "/Actions/Special/Moves/CHTR/warden_spec");
+			endif;
+			if(p_sAttack=="mammoth_trumpet")then
+				m_pxSensor^.ExecuteGamePlayCommand(p_xActor.GetHandle(), "Action", -1, p_xActor.GetPos(), "/Actions/Hu/Moves/ANML/Mammoth_Trumpet");
+			endif;
+			if(p_sAttack=="rhino_shake_off")then
+				m_pxSensor^.ExecuteGamePlayCommand(p_xActor.GetHandle(), "Action", -1, p_xActor.GetPos(), "/Actions/Hu/Moves/ANML/rhino_shake_off");
+			endif;
+			if(p_sAttack=="paw")then
+				m_pxSensor^.ExecuteGamePlayCommand(p_xActor.GetHandle(), "Action", -1, p_xActor.GetPos(), "/Actions/Hu/Moves/ANML/titan_paw");
+			endif;
+			if(p_sAttack=="trex_scrunch")then
+				m_pxSensor^.ExecuteGamePlayCommand(p_xActor.GetHandle(), "Action", -1, p_xActor.GetPos(), "/Actions/Aje/Moves/ANML/trex_scrunch");
+			endif;
+			if(p_sAttack=="trex_roar")then
+				m_pxSensor^.ExecuteGamePlayCommand(p_xActor.GetHandle(), "Action", -1, p_xActor.GetPos(), "/Actions/Aje/Moves/ANML/trex_roar");
+			endif;
+			if(p_sAttack=="tornado")then
+				m_pxSensor^.ExecuteGamePlayCommand(p_xActor.GetHandle(), "Action", -1, p_xActor.GetPos(), "/Actions/Aje/Moves/CHTR/tornado");
+			endif;
+			if(p_sAttack=="brachiostomp")then
+				m_pxSensor^.ExecuteGamePlayCommand(p_xActor.GetHandle(), "Action", -1, p_xActor.GetPos(), "/Actions/Aje/Moves/ANML/BrachioStomp");
+			endif;
+			if(p_sAttack=="doping")then
+				m_pxSensor^.ExecuteGamePlayCommand(p_xActor.GetHandle(), "Action", -1, p_xActor.GetPos(), "/Actions/Ninigi/Moves/ANML/doping");
+			endif;
+			if(p_sAttack=="lacerate")then
+				m_pxSensor^.ExecuteGamePlayCommand(p_xActor.GetHandle(), "Action", -1, p_xActor.GetPos(), "/Actions/Ninigi/Moves/VHCL/lacerate");
+			endif;
+			if(p_sAttack=="barrage")then
+				m_pxSensor^.ExecuteGamePlayCommand(p_xActor.GetHandle(), "Action", -1, p_xActor.GetPos(), "/Actions/Ninigi/Moves/ANML/barrage");
+			endif;
+		endif;
+	endproc;
+
+endclass;

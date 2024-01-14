@@ -1,0 +1,215 @@
+Root { 
+	-1 {
+		Chars {
+			1 = 'worker'
+			2 = 'worker'
+			3 = 'worker'
+		}
+		Resources {
+			food	= '200'
+			wood	= '150'
+			stone	= '100'
+			iron	= '0'
+		}
+	} 
+	500 {
+		Chars {
+			0 = 'worker'
+			1 = 'worker'
+			2 = 'worker'
+			3 = 'worker'
+		}
+		Resources {
+			food	= '100'
+			wood	= '0'
+			stone	= '0'
+			iron	= '0'
+		}
+	}
+	1000 {
+		Chars {
+			0 = 'worker'
+			1 = 'worker'
+			2 = 'worker'
+			3 = 'livingstone_s0'
+		}
+		Resources {
+			food	= '75'
+			wood	= '50'
+			stone	= '50'
+			iron	= '0'
+		}
+	}
+	2000 {
+		Chars {
+			1 = 'worker'
+			2 = 'worker'
+			3 = 'worker'
+			4 = 'worker'
+			5 = 'worker'
+			6 = 'worker'
+			7 = 'aje_spearman'
+			8 = 'aje_spearman'
+			9 = 'aje_resource_collector'
+			10 = 'aje_dilophosaurus'
+			11 = 'livingstone_s0'
+		}
+		Resources {
+			food	= '300'
+			wood	= '200'
+			stone	= '200'
+			iron	= '0'
+		}
+	}
+	3000 {
+		Chars {
+			0 = 'worker'
+			1 = 'worker'
+			2 = 'worker'
+			3 = 'worker'
+			4 = 'worker'
+			5 = 'worker'
+			6 = 'worker'
+			7 = 'worker'
+			8 = 'worker'
+			9 = 'worker'
+			10 = 'worker'
+			11 = 'worker'
+			12 = 'worker'
+			13 = 'worker'
+			14 = 'worker'
+			15 = 'aje_resource_collector'
+			16 = 'aje_resource_collector'
+			17 = 'aje_resource_collector'
+			18 = 'aje_spearman'
+			19 = 'aje_spearman'
+			25 = 'aje_archer'
+			26 = 'aje_archer'
+			27 = 'aje_archer'
+			28 = 'aje_archer'
+			29 = 'aje_archer'
+			30 = 'aje_archer'
+			31 = 'aje_warrior'
+			32 = 'aje_warrior'
+			33 = 'aje_warrior'
+			34 = 'aje_warrior'
+			35 = 'aje_warrior'
+			36 = 'aje_warrior'
+			40 = 'aje_assassin'
+			41 = 'aje_assassin'
+			42 = 'aje_poisoner'
+			43 = 'aje_poisoner'
+			44 = 'aje_stegosaurus'
+			45 = 'aje_stegosaurus'
+			46 = 'aje_shaman'
+			47 = 'schliemann_s0'
+		}
+		Resources {
+			food	= '230'
+			wood	= '200'
+			stone	= '180'
+			iron	= '0'
+		}
+	}
+	10000 {
+		Chars {
+			0 = 'livingstone_s0'
+			1 = 'babbage_s0'
+			2 = 'Bela_s0'
+			3 = 'schliemann_s0'
+			4 = 'aje_dilophosaurus'
+			5 = 'aje_dilophosaurus'
+			6 = 'worker'
+			7 = 'worker'
+			8 = 'worker'
+			9 = 'worker'
+			10 = 'worker'
+			11 = 'worker'
+			12 = 'worker'
+			13 = 'worker'
+			14 = 'worker'
+			15 = 'worker'
+			16 = 'worker'
+			17 = 'worker'
+			18 = 'worker'
+			19 = 'worker'
+			20 = 'worker'
+			40 = 'aje_allosaurus'
+		}
+		Resources {
+			food	= '1220'
+			wood	= '1200'
+			stone	= '500'
+			iron	= '0'
+		}
+	}
+	100000 {
+		Chars {
+			0 = 'livingstone_s0'
+			1 = 'schliemann_s0'
+			2 = 'Bela_s0'
+			3 = 'hermit_s0'
+			4 = 'aje_dilophosaurus'
+			5 = 'aje_dilophosaurus'
+			6 = 'worker'
+			7 = 'worker'
+			8 = 'worker'
+			9 = 'worker'
+			10 = 'worker'
+			11 = 'worker'
+			12 = 'worker'
+			13 = 'worker'
+			14 = 'worker'
+			25 = 'aje_archer'
+			26 = 'aje_archer'
+			27 = 'aje_archer'
+			28 = 'aje_archer'
+			29 = 'aje_archer'
+			31 = 'aje_stegosaurus'
+			40 = 'aje_brachiosaurus'
+			41 = 'aje_allosaurus'
+			42 = 'aje_shaman'
+		}
+		Resources {
+			food	= '5000'
+			wood	= '5000'
+			stone	= '5000'
+			iron	= '50'
+		}
+	}
+	1000000 {
+		Chars {
+			0 = 'livingstone_s0'
+			1 = 'schliemann_s0'
+			2 = 'Bela_s0'
+			3 = 'hermit_s0'
+			4 = 'aje_dilophosaurus'
+			5 = 'aje_dilophosaurus'
+			6 = 'worker'
+			7 = 'worker'
+			8 = 'worker'
+			9 = 'worker'
+			10 = 'worker'
+			11 = 'aje_resource_collector'
+			12 = 'aje_resource_collector'
+			13 = 'aje_resource_collector'
+			14 = 'aje_resource_collector'
+			25 = 'aje_archer'
+			26 = 'aje_archer'
+			27 = 'aje_archer'
+			28 = 'aje_archer'
+			29 = 'aje_archer'
+			31 = 'aje_stegosaurus'
+			40 = 'aje_brachiosaurus'
+			41 = 'aje_allosaurus'
+			42 = 'aje_shaman'
+		}
+		Resources {
+			food	= '100000'
+			wood	= '100000'
+			stone	= '100000'
+			iron	= '3000'
+		}
+	}
+}
+

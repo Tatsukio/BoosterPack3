@@ -1,0 +1,703 @@
+﻿de	Carsten	Die Karten sollten etwa 25 Quadratkilometer groß sein...
+de	David	Natürlich besteht Wasser aus Rechtecken!
+de	Carolin	Ich achte darauf, daß keine Frauen diskriminiert werden. Oder sonstige Minderheiten...
+de	der tägliche Wahnsinn beim SEK	Hanno: Wir Grafiker müsssen ja immer einen Helm tragen wenn wir zu den Programmierern rübergehen. Sascha: Wieso, fällt sonst das Hirn raus ?
+de	Hanno H. aus O.	Ich hab doch gar nicht gecheatet! :-(
+de	Thomas zu Axel	Manchmal möchte man einfach den Programmierer anklicken und DELETE drücken...
+de	Daniel Matzke programmiert Gravitation	Es stürzt zwar nicht ab, fällt aber auch nicht runter !
+de	Daniel Matzke	Das hat auf jeden Fall einen Sinn! Ich weiß nur nicht mehr, welchen.
+de	Carsten Orthbandt	Ich versteh's zwar auch nicht, aber irgendwas hatte ich mir dabei gedacht ...
+de	Hanno Hagedorn	*KopfaufdenTsichschlag* Hmm... Der Tisch ist gar nicht so hart.
+de	Ingo Neumann	Hübsch kommt später
+de	Hanno, Daniel, Patrick (beim einkaufen)	Zucker muss kacheln!
+de	Unbekannter Grafiker	Programmierer sind potentielle Cheater!
+de	Patrick	*sing* Hier kommt die Sonne! *sing* Hier Sommt die Komme! *sing* Hier summt die Brumme! *sing*
+de	Thomas	... es liegt mir fern, etwas gegen Programmierer zu sagen, sonst hätte ich schon lange aus dem Business aussteigen müssen... (dreht sich zum Monitor) Schön, dass MAX schon wieder abgestürzt ist! Scheiss Programmierer!
+de	Daniel	Zu Danijels (mit J!) No-Angels CD auf Andre's Schreibtisch: "Die Musik ist zwar scheisse... aber naja, die Hormone zwingen einen dazu, das gutzufinden!"
+de	Programmierer	Alle Programmmierer hocken um Carsten: A gleich B plus plus plus plus plus plus plus plus plus plus plus plus C... balblabla...    Hanno: Ihr Programmierer seit doch alle krank!
+de	Axel	... übrigens: das mit dem Kinder kriegen geht ab jetzt anders!
+de	Daniel und Axel stehn vor der HustenBonBon-Box	Daniel: -Man kann aus Salmiak auch Salamik machen, wenn man das A hinter L setzt!-  Axel: -Und was soll das beudeten?-  Daniel: -hmm.. Isn Frauenname! *grins*-
+de	Carsten	Das ist genauso langsam wie immer, es zeigt es jetzt bloss an...
+de	Daniel Matzke liest PC Games	Kannst Du mir das nicht zusammenfassen, dann muss ich es nicht lesen...
+de	Bettina	Programmierer haben nur Unsinn im Kopf!
+de	Der tägliche Wahnsinn beim SEK	Thomas hat sich den Fuss verknackst und humpelt erbärmlich durch's Büro. Darauf Ingo: "Lauf, Forrest, LAUUUUUF!!!!"
+de	Der tägliche Wahnsinn beim SEK	Hanno: "Wie lange braucht denn 3D-Studio zum Abspeichern von diesem ****-Modell?" Ingo: "4 Stunden, ich mach das immer abends..."
+de	Carsten Orthbandt	++*pcSearchTree++=';';  ... erst wollte ich Klammern machen, aber das war mir dann doch zu blöd...
+de	Patrick	(Piepsstimme) Bring mich ins Licht!
+de	Patrick	Mit dem Steim im Strumpf wirst Du zum Oberschlumpf.
+de	Hanno H. aus O.	Klar kann ich rückwärts die Wand hochlaufen... mit ein bisschen Übung
+de	Andre	Sag mal, Hanno, hast du nichts zu tun, daß du mit deinem MAX spielen musst...
+de	Bekannter Programmierer	Programmierer sind grundsätzliche Spielstanddesigner (Cheater)
+de	Patrick	Ich will auch wie Marilyn Manson aussehn!
+de	Davids letzte Worte	Ich hab keine Angst vor dem Bagger!
+de	Patrick	Ich suche meine Freundin immer nach der Organverträglichkeit aus.
+de	Hanno	Wenn´s mit dem Leuchten nicht geht, dann ... gehts mit dem Leuchten nicht!
+de	Danijel	Doppelkopf? Was ist denn das?
+de	Hanno Hagedorn	Osnabrück ist die einzige Stadt des gaaaanzen Universums mit einem Kreuzbahnhof.
+de	Patrick	*sing* Nackt im Spind... *sing* (Reminissenz an Künstler für Afrika)
+de	Steffen	Mhhh ... das ging doch schon mal ... naja, sicher bauen die Programmierer extra Bugs ein, damit sie sich auf die Schulter klopfen können, wenn sie was gefixt haben.
+de	Thomas Wulff übers Essen	Ich könnt' auch drauf verzichten, wenn ich drauf verzichten könnte.
+de	Axel	Manchmal will der Spieler ja auch mal Glück haben.
+de	Patrick erzählt von seinen Träumen	...das ist noch harmlos! Ich hab im Traum schon mal Jesus gegessen!
+de	KStr.h	if((*((long*)(&(m_pD->m_c[iL]))))!=(*((long*)(&(sO.m_pD->m_c[iL]))))) {return false;};
+de	Patrick	*sing* Ich bin ein autistisches Kind *sing*
+de	Hanno	Bei der Framerate macht es keinen Unterschied, ob ich den Rechner neu hochfahre oder auf das nächste Bild warte...
+de	Carsten	... also bei mir funktioniert das ...
+de	Christoph	... also bei mir funktioniert das ...
+de	Daniel	... also bei mir funktioniert das ...
+de	Axel	... also bei mir funktioniert das ...
+de	David	... also bei mir funktioniert das ...
+de	Marko	... also bei mir funktioniert das ...
+de	Daniel	Superzwerge sind auch nur Zwerge...
+de	Jan, drausen beim Mittagessen	Woooohaaaaa! Krankenschwestern!
+de	Stefan	Manchmal geht's nicht immer.
+de	David zu Danijel, der die Kathedrale nicht spielen will	Du hast dir den Scheiss ausgedacht, du mußt das jetzt spielen!
+de	Axel Hylla in sequencer.tcl	if { $wait_next||!$wait_next }
+de	David	Durchsichtige Hosen kann sich auch ´ne hübsche Frau anziehen !
+de	Axel	Das wird der einzige Hack in den AI-Scripts.
+de	Ein anonymer SEK-Mitarbeiter	Ich kann dieses Spiel nicht mehr sehen !
+de	Christoph	Vorsicht ist besser als die Mutter der Porzellankiste.
+de	Sascha	... also bei mir funktioniert das absolut nicht ...
+de	Steffen über die Templates	... nicht auf die Größe kommt es an, sondern auf die Technik ...
+de	David	Ich mag Kinder, ich mag nur kein ganzes essen.
+de	David	Ich mach jetzt mal ein paar perverse Experimente mit Hamstern.
+de	Der tägliche Wahnsinn beim SEK	Sascha: Kann mal einer den Käse hier in der Küche wegräumen, der stinkt bis hierher. Florian: Trag's als Bug ein ...
+de	Carsten	Im Zweifelsfall können wir das auch irgendwie hacken !
+de	Patrick	Irgendwann wurde aus 'by design' 'byebye design' ...
+de	Carsten	Bevor du nicht weisst wie lange es gedauert hat, wirst du nicht wissen wie lange es dauern wird !
+de	Carsten	Ich bin kein Vegetarier, ich esse nur kein Fleisch.
+de	Marko	Da weiss der Spieler wenigstens was er nicht verpassen kann.
+de	Daniel	In Zwergenmetern stimmen einige Dinge nicht mehr. Zum Beispiel der Pythagoras.
+de	Niederländische Übersetzer	CFluid slokt 25% performance op... dat is niet best, helemaal niet best...
+de	Carsten	es ist alles nicht so einfach *stöhnunddieaugengenhimmelgerichtet*
+de	Ingo	Wie besiege ich die Torwächterin?
+de	David	Schule oder Bordell... Mal seh'n, was sie zuerst erfinden...
+de	der Schmuckverkäufer vom Ostbahnhof	Das hier ist keine 5-Mark-Schmuck-Preisaktion wie Sie sie aus ... Ihrem Gedächtniss kennen!
+de	Thomas L. aus P.	Stürzt ja nicht ab - die Scheisse hier!
+de	Claudia	Wir legen die Betonung mehr auf Kampfgötter... Tyr und Thor z.B. ...
+de	Hanno über den Coelodonta antiquitatis	Was für eine flauschige Mumu...
+de	Ingo	Es ist alles nicht so gesagt, wie es gemeint ist...
+de	Ingo	Die Polizei darf gerade soviel trinken, daß sie Blaulicht machen kann
+de	Timo Ullmann	Das ist bei anderen Säugetieren auch so. z.B. bei Möwen.
+de	Axel Reinemer	Die Frau hab' ich noch nicht kennengelernt, die sich sträubt.
+de	Ingo, Christoph, Carsten	Ingo: Was sagt man eigentlich; das oder die Eifersüchtig? Christoph + Carsten: DER Eifersüchtig!
+de	Timo Ullmann	Man muß da organisch reinrutschen...
+de	Sascha	Um friedlich zu leben, musst du sie angreifen.
+de	Der tägliche Wahnsinn im SEK	Steffen P.: Außerdem gibt es immer einen Landweg - Thomas L.: Das halte ich für ein Gerücht, deswegen heißen die Dinger ja Inseln!
+de	Fehlermeldung des USL-Compilers	(Parser) 14: internal error: how could that happen?
+de	Andrej	"(Parser) 14: internal error: how could that happen?" - der Fehler ist schon richtig, man muss nur den Text ändern...
+de	Simon zu Julian	Rechts. Also links und dann die andere Seite.
+de	Carsten	Die Release-Version ist relativ schnell. Das waren nur ein paar Sekunden, dann ist sie verreckt...
+de	Der tägliche Wahnsinn im SEK	Jan: Das schaffe ich grade nicht, ich habe so viel um die Ohren. Steffen: Dann lass dir die Haare schneiden, dann hast du weniger um die Ohren!
+de	Carsten versucht die 3D-Engine zu visualisieren	Thomas: Carsten, Du mußt erst mal die Philosophie dahinter verstehen.
+de	David beim Programmieren mit WinAPI:	Eigentlich steht hier, dass es funkioniert ...
+de	Steffen	Biogas ... Pup in Tüten sozusagen ...
+de	Aus dem USL-Quelltext	CODEGEN_ERROR(ET_None, "cannot differenz from value", "", m_iLine);
+de	Daniel Matzke und seine Frauengeschichten	Hanno, da bist du doch mal mit deiner Freundin hingegangen, in dieses Eiscafe... oder war ich das?
+de	Carsten	Unsere Engine heisst PEST... da kannst du dann auch noch bei 60 Frames sagen: das ruckelt wie die Pest...
+de	Kampagnenstruktur.seml	Diese Zeit wird allerdings kurz sein und nicht allzu viel Zeit beanspruchen.
+de	Jan	Heute ist noch nicht vorbei.
+de	Carolin	Wer von euch hat mich für den Diät-Pillen-Newsletter eingetragen ?
+de	Der tägliche Wahnsinn beim SEK	Christoph: "Die Klasse muss genau wie die Datei heißen." Sascha: "Die Klasse heißt ja so, aber die Datei heißt anders..."
+de	Jan zu Sascha	Finger weg! Das ist mein USL!
+de	Der tägliche Wahnsinn beim SEK	Sascha zu Jan: "Wir müssten uns mal BattleCom installieren, dann muss ich zum Reden nicht immer die Kopfhörer abnehmen..."
+de	Sascha	Zu Steffen über Thomas' Zeichnung: Es gibt nur wenige Frauen, die ihre beiden Brüste mit einer Hand umfassen können.
+de	Sascha,Diskussion über All-You-Can-Eat	Also, ich hab' ehrlich schon mal überlegt, ob ich Kotzen geh', weil das Essen so gut geschmeckt hat, damit ich noch mehr essen kann.
+de	Sascha und seine Mafia-Verbindungen	Carsten: "Sascha, du sollst Dich bei deinem alten Kumpel aus Bad Brahmstedt melden - die Katze"
+de	Carsten	Bei GetFilename() musste ich im Code gucken, was der Kommentar bedeutet...
+de	Christoph	Kolibris... Das sind die Vögel, die auf der Stelle stehen können.
+de	Christoph	Der Erfinder von Mario? War das nicht Luigi?
+de	Thomas L.	Kommt Zeit, kommt Redesign.
+de	Der tägliche Wahnsinn beim SEK	Sascha, brüllt quer durch den Raum: "Haaanno !" Ingo brüllt zurück "Der is kacken !"
+de	Andrej	Aber das ist ja ein Hack und Hacks mag ich nicht ... das heißt, mag ich schon, aber ...
+de	Sascha	(Diskussion über Taschenrechner in der DDR) ... aber die Taschenrechner im "Westen" gingen doch alle mit Solarzellen und im "Osten" gab es ja keine Sonne - wie sollte denn das gehen?
+de	Sascha	Wenn ich das Spiel machen würde, würde es anders aussehn! Alle nackt und viel Blut!
+de	Sascha	über die E3 Babes: Und da soll noch mal einer sagen man hätte als Frau keine Chance in der Spieleindustrie.
+de	Hanno und Steffen beim Inder	Hanno blickt auf Steffens Essen und fragt: "Wie heißt denn das?" Steffen schaut auch auf sein Essen: "51"
+de	Jan	Gibt es bei While-Schleifen ein Else?
+de	Steffen P. über den Leveleditor	Sex and Drugs and Drag'nDrop
+de	Andrej	Bei mir läuft's nicht mit 1000 FPS, ich hab das Problem nicht!
+de	David F. bei Flashpoint	David killt Thomas W.; Carsten: Und das macht Dir Spaß? David (leuchtende Augen): Jaaa. Ähm... Ne!
+de	Hanno auf dem Nachhauseweg	Guck mal, ich kann meine Augenbrauen sehen!
+de	Jan Na.	Wenn dieser Computer einen Hals hätte, dann würde ich ihn schon erwürgt haben!
+de	aus den Designdokumenten	Risiken - wird zu einem späteren Zeitpunkt ergänzt
+de	David Fraaß	Ingo: "Na wenn Ihr zur Mitternachtspremiere geht, kommt Ihr doch morgen wieder zu spät zur Arbeit" David: "Wenn alle mitkommen nicht..."
+de	Der tägliche Wahnsinn beim SEK	Ingo: "Kann ich wenigstens die Namen der Buttons anders haben?" Carsten: "Du willst die gar nicht anders haben als 0 bis 31..."
+de	Carsten	Plastilin wird im Ofen gar nicht warm!
+de	Thomas L..	Die Engine wird doch bestimmt bis ende nächster Engine dauern.
+de	Sascha	Man glaubt gar nicht, was man alles wieder anzieht - mein Wing-Commander-T-Shirt, mein Schwarzes-Auge-Shirt ... nur weil alles andere dreckig war.
+de	Der tägliche Wahnsinn beim SEK	Marko sitzt bei offenem Fenster auf dem Fensterbrett. Carsten: "So schlimm mit dem Pathfinding? Nicht springen!" Marko: "... ist der kürzeste Weg."
+de	Sascha zu Dävid	Ach so ist das also! Du Verräter! Du warst das letzte mal in unserer Badewanne!
+de	Carsten	Immer schön einen Hack nach dem anderen...
+de	Thomas W.	Können Graphiker überhaupt hinterhältig sein? Die sind doch viel zu oberflächlich...
+de	CBS-Photograph	Sascha, kannst Du mal so tun, als ob Du arbeitest?
+de	Sascha	Jan zu Sascha: "Jaja, deine Krücke!" Sascha: "Hey, sag sowas nicht über meinen Rechner! Wenn ich eine kranke Mutter zuhause habe, dann moser ich auch, aber wenn einer sie beleidigt, finde ich das trotzdem doof!"
+de	Carsten der Pixelzähler	Jan, Du hast das SEK-Logo verfälscht! Das Seitenverhältnis stimmt nicht - es müßte 89 Pixel hoch sein und es sind nur 86!
+de	Carsten	Da liegt eine ganz dünne Plane drüber.
+de	Programmierer beim Minimeeting	"Von mir ist es nicht", "Hmm, von mir auch nicht"  "... es ist von Copy And Paste.".
+de	Carsten	Ein Event ist ein Blob, der rumfliegt.
+de	Carsten	Haben die gar keine Normals oder zeigen die Normals in alle Richtungen?
+de	Die schlechten Witze beim SEK	Steffen P. zu Max "Setz dich doch mal auf meinen Rechner, ich muss mir Max auf den Rechner machen."
+de	Steffen U.	Letztendlich, ist Grass ja auch nichts anderes als grünes Haar.
+de	Carsten	Das wird *richtig* gehackt!
+de	Der tägliche Wahnsinn beim SEK	Daniel (MIT): "... was ich bei solchen Parties immer peinlich finde, ist dieses krampfhafte Bemühen älterer Herren um kurzfristige Sexualität." Carolin: "Das finde ich gerade gut!"
+de	David	Es gibt jetzt in USL 4 tolle neue Datentypen: rect, point und color.
+de	Carsten	p4 cls
+de	Christoph	Das liegt am Grill, daß die Bäume keine Blätter haben.
+de	Sascha	Wenn du in den Wald gehst, und an einem Baum anfängst zu buddeln, wirst du sehen, dass der Baum unter der Erde weitergeht.
+de	Ingo	Steffen, du kannst alle Frauen benutzen!
+de	Carsten	zu Frank: (da er das Wiggles-Intro nicht kannte), War es bei deiner Raubkopie nicht bei?
+de	Carsten	Das ist die Textur für Vegetation - aber was macht die auf dem Bildschirm?
+de	Jan	Ich hab Hunger! Ich kann mich nicht die ganze Zeit mit Wasser über Wasser halten!
+de	Steffen P.	Ich wollte gerade tippen, da kam ein Mutant von hinten.
+de	Carsten	Sascha : "Wir haben seit der letzten EXE ein Performanceproblem" ... Carsten : "Seit der Letzten erst ?"
+de	Frank	Frank schaut auf Jan´s Bildschirm und meint : "Also Asthma-Ede sieht jetzt richtig schlecht aus."
+de	Der tägliche Wahnsinn beim SEK	Christoph:"Wie alt ist Dein Kind?"  Andrej: "1,4"
+de	Christoph in UslTypeID.h	schrieb: const char* Blah() {return "blah";};
+de	Andrej	Das ist nicht überladen ... fals es nicht überladen ist.
+de	Steffen P.	Jan: "Aber dann müssen die Grafiker ja die ganzen Models wieder ändern!" ... Steffen P. : "Na und? Ich finde die können auch mal für den Papierkorb arbeiten."
+de	Ingo	Der Sketch ist alt, so von anno ... 1503.
+de	David S.	Der Hund hat mein SUIT-Script gefressen.
+de	Jan über den Leveleditor	Es geht überhaupt nicht um Funktionalität, sondern darum dass es gut aussieht.
+de	Carsten zu Thomas W. als er in die Coder-Ecke kommt	Hast du ein Visum?
+de	unbekannt	DebugView output: Neuer Preset Button meldet sich wie befohlen, Sir! Wert: 33x33
+de	Carsten über den allgemeinen Umgang mit Quotes	3. Achtet bitte darauf, daß Eure Quotes auch für Nicht-Programmierer entfernt witzig und verständlich sind.
+de	Carsten	du musst doch die polygone duplizieren... also die unsichtbaren und nicht sichtbaren...
+de	Bettina	Sascha über C&C Generals: "Das ist nur für Jungs." Bettina: "Und was machst Du dann hier?"
+de	Frank Hentschel	Aenderungsbeschreibung: //UrsRel Ghost Brush jetzt ghostmäßig auf 98,80,60,128 (ist eine Farbe)
+de	Andrej informiert sich über Andrew	Kommt dein Fahrrad auch aus Bayern?
+de	Christoph	Das ist WIRKLICH kein Hack...
+de	Christoph	Das ist selbstüberspringender Code... das ist was anderes als selbstmodifizierender...
+de	Max	... also bei mir funktioniert das ...
+de	Sascha	"Was ist das Gegenteil von kriegsverherrlichend ... ähm, kriegsverharmlosend. "
+de	Simon und Boris unterhalten sich über ein Thema das ihnen beiden unbekannt ist	"Das ist der neue, oder?"  -  "Jap."  -  "Und das der neue?"  -  "Mhhhh... nee..."  -  "Der was?
+de	Carsten	Ich muss es ja nicht auschließen, wenn ich es nicht ausschließen muss.
+de	Der tägliche Wahnsinn beim SEK	Ingo: Machst du den Schlüpper wieder an!!!! .... Boris: Wenn ich doch aber den Hintern bearbeiten muss...
+de	David S.	Ich gehe immer in die Bücherei. Da trifft man wenigstens Frauen die lesen können.
+de	Boris bei McDonalds	Ich hab mir ein Bier mit Majo bestellt.
+de	Kneipenpenner zu Jan	Nu drück mal Locke!
+de	Kneipenpenner zu Sascha	Blondie, du wirfst wie ne Schwuchtel!
+de	Der tägliche Wahnsinn beim SEK	Ich habe geträumt, ich wäre ein FTP-Server.
+de	Word-Rechtschreibkorrektur	Brachbiosaurier ... als Korrekturvorschlag zu Brachiosaurier
+de	Steffen betrachtet orientalische Ornamentik	Die haben doch sowieso alle bei den Chinesen geklaut, weil die sind ja immerhin die Mutter der Porzellankiste.
+de	Der tägliche Wahnsinn beim SEK	Iron Maiden ist nur was für Männer mit viel Haare im Gesicht.
+de	Urheber wollte anonym bleiben	Den Graphikern muss man das sicher anders erklären, als Leuten, die von Gamedesign Ahnung haben.
+de	Carsten	Das war vorher ein Programmiererrechner, da ist alles komplett durcheinander...
+de	Sascha	Das spannendste Tagebuch, das ich je gelesen habe, habe ich in der S-Bahn gefunden...
+de	Hanno und Jan	Jan: Wir warn übrigens letztens sudanesisch essen. Hanno: Wo ist denn Sudanesien?
+de	Der tägliche Wahnsinn beim SEK	Jan: Mir reichts, ich geh mal zu den Grafikern. - David S.: Selbstmord ist aber keine Lösung, Jan.
+de	Simon erläutert, wie er das Kolosseum texturiert	Ich habe einen Schnittkäse aus dem Kolosseum gemacht
+de	Jan an der Theke	Hier machen wir unser geheimes Kaffeetrinken und sonst zu Hause *deutet auf seinen Arbeitsplatz*
+de	Sascha grottenschlecht beim Billard	Wenn du das weitererzählst, reverte ich dir alle deine Dateien!
+de	Marco	Napalmleder-Shorties???
+de	Boris	"Hmm, lecker Erdbeer!" Drei Minuten und Bisse später: "Ach nee, is ja Pflaumenmus"
+de	Der tägliche Wahnsinn beim SEK	1 Tag ist im Gameplay-Scripting jetzt 10 Minuten lang. Wär nett, wenn sich die Sonne in dieser Zeit einmal um die Erde dreht...
+de	Thomas W.	Wer von euch ohne Sünde ist, der exportiere den ersten Stein
+de	Marko und Sascha über Schülerspeisung	Marko: "Bei uns war es Bärenmenü." Sascha: "Bären oder Beeren?" Marko: "Bär wie Brummbär." Sascha: "Brombeer?"
+de	Dävied´s Starwars Weisheiten	Einem geschenkten Raumschiff schaut man nicht in die Düse.
+de	Ein Programmierer	(Huh, bloß gut, daß ich das keinem Grafiker erklären muß ;-)
+de	Carsten per netsend an das gesamte SEK	Nimm das! Elender!
+de	Der tägliche Wahnsinn beim SEK	Marko: "Das ist ein Plüsch - Cuthulhu!"
+de	Thomas L.	Das ist doch die Animatorin mit dem silbernen Bär ??!!!???!!??
+de	Carsten O.	.... die Enten schwummten auch .....
+de	Kellnerin im Freischwimmer	Sie dürfen die Enten und Schwäne nicht mit dem Brot füttern sonst explodieren die.
+de	Thomas zu einer früheren Gameplay-Entscheidung	Daran möchte ich mich jetzt gar nicht erinnern!
+de	Daniel M. am Grand Canyon	Ich fasse jetzt einen Stein an, den noch nie ein Mensch zuvor berührt hat... Mist, das ist ja Holz.
+de	Daniel M. hat noch 4 min. Film auf der Cassette	Wenn wir in LA nicht soviele Ärsche von Frauen gefilmt hätten, hätten wir jetzt noch eine halbe Stunde mehr Band.
+de	David begeistert nach einem Flug über den Grand Canyon	Ich sollte öfters auf dich hören. So langsam habe ich die Befürchtung, du hättest bei der Stripperin auch Recht haben können...
+de	David unter Alkoholeinfluss	Schwarze Löcher sind geil. Und Alkohol ist auch gar nicht so übel...
+de	David	Nimm die Grabschfinger weg, ich muss die Banane erst auspacken.
+de	Hanno	ausser wenn die Eltern Insekten sind... Ähm, in Sekten sind... Ähm, in einer Sekte sind...
+de	Daniel	Los ab in den Frühstücksraum, da gibs ganz lecker ... ähm... Frauen!
+de	Daniel vor einer in besonders kleine Stücke geschnittenen Pizza	Man kann die Pizza auch so essen, dass ein Hakenkreuz übrig bleibt.
+de	Marco	Die Hälfte seines Lebens wartet der Scripter vergebens.
+de	Sascha	Zwanzig-Pfennig-Stück? Du meinst einen Double-Groschen?
+de	Unterhaltung von Marco R. und Carsten O.	M.R. :Du könntest ruhig mal über dein Ego springen!!!   C.O.: Das geht nicht, so hoch kann ich nicht springen!!!
+de	Thomas L.	Es ist besser, die ganzen Bugs auf einen zu frustrieren.
+de	Der tägliche Wahnsinn beim SEK	Christoph: "Wieso drehen sich Gebäude eigentlich zu mir hin, wenn ich sie angereife???"
+de	Ingo im Freischwimmer	Hefelosigkeit...
+de	Carsten bei Nacht	Thomas hat die Sonne getötet
+de	USL meinte, da käme 1 raus...	var int i = m_apxCards.FindEntry(m_apxCards[0]);
+de	Ingos Lebensweisheiten	Carsten: "Ich steh' nicht auf blond." Ingo: "Blonde Schamhaare siehst Du nicht, wenn Du sie zwischen den Zähnen hast."
+de	Simon in Outlook	Müß zum Ausländerbehörde gehen  Vielleicht bin ich ein bißchen spät.
+de	Gundlachsches Unschärfeprinzip	Noch besser: Random sucht immer Hu aus, braucht man weniger umbauen später.
+de	Word-Rechtschreibkorrektur	Hohlpriesterin, Hohnpriesterin, Hodepriesterin, Hosepriesterin ... als Korrekturvorschläge zu Hohepriesterin
+de	Sascha	Das haben wir nicht so eingebaut, das war auf einmal so drin!
+de	Sascha und Steffen P. beim Testing	Sascha: "Klick hinter die Mauer, dann kannst du durchlaufen, das ist ein Trick!" Steffen: "Ein Trick? Ich würd' sagen, das ist ein Bug!"
+de	Ingo beim Bomberman spielen	Ich kann ja auch mal eine andere Taktik anwenden um zu verlieren.
+de	Thomas L.	Ihr macht das schon ... ich geh jetzt Dreck einbauen.
+de	Sascha	Das ist quasi schon eingebaut!
+de	Carsten in einem Meeting zu Items	Kommt Zeit, kommt Rüstung.
+de	Der tägliche Wahnsinn beim SEK	Simon: Pissen muss ich ... Darf ich? (schaut Dävid fragend an)
+de	Jasmin	Deswegen habe ich auch ein so großes Tattoo auf dem Rücken, damit Männer wissen, wo hinten und vorne ist.
+de	Carsten und Ingo im Freischwimmer	Ingo "...naja Du weißt schon wer ist noch nicht schwarz" Carsten "Michael Jackson?!?"
+de	Sascha	Wenn ich sage, ein Kreis hat 8 Ecken, dann muss da wohl was dran sein!
+de	Gamestar	Dieser Rhino-Dino ist schwer gepanzert
+de	Carolin gibt Interviews für's Kinderprogramm	Computerspiele werden in Zukunft noch rea.... Scheisse!
+de	Thomas L. zu den Programmierern	Gottseidank habt ihr nichts mit Design zu tun!
+de	David S. zu Thomas L.	Gottseidank habt ihr nichts mit Programmierung zu tun!
+de	Thomas L. zu Sylvius	Ich merke es mir nicht nur, sondern ich schreibe es mir sogar auf.
+de	Thomas W zu Däivid	Ich spiel an deinem und du spielst an meinem.
+de	Thomas L.	Wir finden alle die Idee gut, daß wir jemanden abschießen können.
+de	Sascha zu David	Ach, da du mir gerade den kleinen Finger reichst, könntest Du nicht noch ... (längerer Featurerequest).
+de	Marco R	Das ist die größte Mehrheit.
+de	Carsten O.	"Was kann ich für meine Eloquenz"
+de	Der tägliche Wahnsinn beim SEK	Abba, Roxette und Ace of Base... alles schwedische Metal-Gruppen.
+de	Sascha	Man kann die Kamera drehen ... man kann aber auch die Kamera lassen und die Welt drehen!
+de	Sascha und die Bugs	Nachts ist es viel zu dunkel. Ich sehe nichts mehr sobald die Sonne untergeht. Nicht wie garnichts, es ist alles komplett schwarz.
+de	Jan über das Leben als Single	Mit offener Klotür sch******, 'DAS' ist der Inbegriff der Freiheit!
+de	Carsten	Ich glaube, wir haben alle nicht funktionierenden Lösungen ausprobiert.
+de	Thomas und Carsten über das Interface	Thomas: Profis können das im Optionsmenü umstellen.  Carsten: Wenn sie Profi genug sind, um das Optionsmenü zu finden ...
+de	Der tägliche Wahnsinn beim SEK	Ingo über die ungarische Zeichentrickserie "Adolars phantastische Abenteuer": Tschechei oder Ungarn, es kam jedenfalls aus der Russerei!
+de	Erik bei der Zeitplanungsbesprechung	Wenn die Revolution kommt und Features an die Wand gestellt werden ...
+de	Der tägliche Wahnsinn beim SEK	Carsten: "Meeting: Max, Jan, Steffen, ..." Sascha: "Ich?" Carsten: "Nein, Steffen-Steffen, nicht Sascha-Steffen."
+de	Jan über Arithmetik	Mal-Rechnung kommt vor Plus-Rechnung
+de	Marko	Dilohopsensaurus
+de	Jan	Bibel 2 - The Return of the Jesus
+de	Steffen P.	Natürlich haben alle Helden eine Kaste, die müssen schließlich irgendwie kastriert sein...
+de	Diskussion über spezielle Waffen für die Helden	Thomas L: Bela würde ich was Hydraulisches geben ...  Steffen P: 'nen Wagenheber!
+de	Sascha	RATS Ticket Titel: "Nicht reproduzierbarer Crash nach einiger Spielzeit"
+de	Patrick H.	Kommentar im Quellcode: "// check if box is anywhere Current the Current (Current or far) clip plane"
+de	Der tägliche Wahnsinn beim SEK	Ingo: "Wo ist denn dein Bier Boris?" Boris M.: "Na am Arbeitsplatz, wo's hingehört"
+de	Der tägliche Wahnsinn beim SEK	Ingo: "Marco, du sagst ja garnichts dazu?" Marco R.: "Ich konnte nicht, ich mußte grad schlucken!"
+de	Nadine	Marco R: "Ich sollte nicht so laut lachen." Nadine: "Vor allem nicht wie Ned Flanders!"
+de	Jan über die Actionfigurern zu Paraworld	Actionfiguren der Spielcharaktere will doch keiner. Wir sollten Actionfiguren von uns Leveldesignern rausbringen.
+de	Programmierer in freier Wildbahn	Frank zu Andrej, der die Eingangstür nicht aufgeschlossen bekommt: "Das ist doch ganz einfach!" Andrej: "Ich bin Programmierer."
+de	Marco raucht	Ich kann nicht, wenn Ihr mir dabei zuschaut...
+de	Martin zu Marko	Martin: "Weisst Du, dass die WalkAction, wenn sie ohne Pathfinder läuft, keine Animationen abspielt ? " Marko "Ja" Martin: "Das zerstört alles an was ich glaube."
+de	Simon beim Quake3 spielen	VORSICHT!! Er hat eine Waffe!
+de	Der tägliche Wahnsinn beim SEK	Steffen: Wär nett wenn die hu Dame dann demnächst drin ist    Marco: Ja deswegen hab ich die auch mal eben durchgeknallt.
+de	Der tägliche Wahnsinn beim SEK	Dävid: "Warum sind denn da noch so viele Bugs drin?" Steffen P: "Na warum fixt du sie denn nicht?" Dävid: "Naja ich bin ja kein Fixer"
+de	Boris M.´beim rauchen	Ganz schön hell hier... so ohne Licht
+de	Steffen P.	Was der Leveldesigner nicht kennt, das platziert er auch nicht!
+de	Urs DebugView	"SetAnim failed. No anim 'dying' found. see Gfx 'Jungle_Fruit_Bush'"
+de	Der tägliche Wahnsinn beim SEK	2 Sekunden vor Deadline Boris P: "mir ist just aufgefallen, das ich garkeine Alphas reingemacht habe"
+de	Carsten O. und die Zahlen	0, 1 und -1 das sind die Werte die mich interessieren... der Rest ist doch nur Rauschen
+de	Thomas L. zu Friis	Wir haben das Wasser transparent gemacht. Aber dafür kann man jetzt leider das Ende der Welt sehen!
+de	Marco R.	"Ich bin Braun(farbe)blind"
+de	Conny beim SEK-Kneipentest	Ich könnte hier bei euch bleiben... oder Spass haben.
+de	Thomas L.	Ich bestehe darauf, dass ich die letzte Instanz bin, was Hässlichkeit im Spiel angeht!
+de	Der tägliche Wahnsinn beim SEK	Carsten: "Der Bug ist doch längst gefixt!"  Thomas: "Seit wann?"  Carsten: "Seit fünf Minuten!"
+de	Der tägliche Wahnsinne beim SEK	Boris: Und kommste auch mit zum Thailänder? Simon: Nay, ich esse Tomasses Eier.
+de	Martin Zielinski	Change 44846: RT#2362 "angefixed"
+de	Boris Munser	Gähnende Hunde weckt man nicht!
+de	Thomas L.	Kannst Du ein Bisschen Farbe rausnehmen?
+de	Diskussion über Musik	Jan: "Der ist Hip-Hopper, der darf klauen." Frank: "Das nennt man sampeln."
+de	Carsten	Das ist der übelste Hack, den ich seit Wochen gesehen habe!
+de	Marko über den übelsten Hack, den Carsten seit Wochen gesehen hat	Was kann da schon schiefgehen?
+de	Simon	Das ist unfiar, ich habe nur ein Frame pro Stunde
+de	Der tägliche Wahnsinn beim SEK	Steffen: "Habe ich deinen Cole erwischt?" - Sascha: "Ein bisschen ..." - Steffen: "Ist er tot?" - Sascha: "Ein bisschen ..."
+de	Thomas L.	Das ist kein Wettereffekt, das ist ein Special Effect!
+de	Thomas L. und Marco R. über ruckelnde Level	Es kommt nicht auf die Größe an, sondern die Anzahl der Objekte.
+de	Sascha	"Da ist einer von denen Leuten tot umgefallen!" Sascha: "Ach was, der ist nur gestolpert."
+de	Andrej	Carsten, kannst du mal schauen, ich glaube in RATS gibt's einen Bug.
+de	Basti zu Hanno	Dein Zimmer ist die Visualisierung einer fragmentierten Festplatte.
+de	Sascha	Lowtec wird mich würdig vertreten, er kann nichts, was ich auch kann.
+de	Patrick Harms über einen komischen Effekt mit dem Wasser	Das war irgendwann auf einmal drin und geht jetzt nicht mehr weg.
+de	Jan	Theoretisch müsste es auch praktisch gehen.
+de	Sunflowers-Tester in einen Bug-Ticket	Wir werden ja sehen, was der Käufer davon hält...
+de	Thomas L.	Kommen wir zum nächsten Thema, auch wenn das gerade nicht Thema ist ...
+de	Stefan K.	Flugsimulatoren werden nicht gespielt, sondern bedient.
+de	Thomas L.	Zum einem neuen Bug, der Fernwaffen lahmlegt: Irgendwie haben wir einen Pazifisten in der Firma ...
+de	Carsten	Ich habe den Ruckler aus der Sequenz rausbekommen, aber jetzt läuft die Sequenz gar nicht mehr!
+de	Simon über Gabe Newell	"Sein Bauch ist wie ein kleiner Planet"
+de	Boris M. zur Zeitplanung	Ich sage nichts ohne meinen Anwalt!
+de	Der tägliche Wahnsinn beim SEK	Christoph: "... dadurch hat er ein negatives Alter." Stefan: "Dann ist er also tot und lebt noch."
+de	Boris M.	Das muss alles reworked werden, das ist noch aus meinen Jugend- und Flegeljahren!
+de	Ingo	Wie hieß nochmal der, der das Licht erfunden hat?
+de	Boris M.	Abstrakt ist ok. Hauptsache, es ist 'ne Schweinerei mit bei.
+de	Jan bei einer Diskussion über Arbeitsrecht	Dieses Gesetz gilt für uns nicht, das gilt nur für Beschäftigte im Bergbau unter Tage. Hm,... das sind wir ja eigentlich auch...
+de	Thomas und Carsten bei der Zeitplanung	Thomas: "Die Grafiker sind das Problem." Carsten: "Die Grafiker sind immer das Problem!"
+de	Meeting Cooler Kampf	Stefan: "Dann hast du ein doppeltes Feedback, wer gewonnen hat ..." Carsten: "Wer am Boden liegt, hat verloren, so einfach."
+de	Bettina	Wenn ihr wollt, mache ich meinetwegen auch einen Karate-Brachio, ihr müsst es nur sagen ...
+de	Marko	Die mit den Brüsten sind die Männer ...
+de	Boris M.	An "positiv" ist eigentlich nix negativ...
+de	Boris M.	Du kannst jetzt keine typische Frage auf diese Antwort erwarten.
+de	Thomas L.	über Mauern: "Bei dem Anstieg bekomm ich keinen hoch..."
+de	BorisP	Ich bin nicht Einstein
+de	Der tägliche Wahnsinn beim SEK	Benjamin: "Wieviel Frames sind das?" Stefan "Kannst Du doch zählen."
+de	Carsten O.	Also ohne Brille höre ich wirklich schlechter!
+de	Marko	Es geht um Franks Kopf, der auf Papier stehen muss.
+de	Stefan zum Thema Wetter	Wir müssen alle Schmetterlinge töten!
+de	Stefan	Ich mag keine Musik, die ich nicht leiden kann.
+de	MIT im Storymeeting	Nico: "Die Halle der Tore fliegt raus." Daniel: "Aber die Tore der Halle bleiben drin, oder?" Nico: "Ja, sonst kommt man ja nicht mehr in die Halle rein, wäre ja doof!"
+de	Boris Munser	"Meine Leiste ist auch schon ganz dreckig"
+de	Carsten und Sascha	Carsten: "Verglichen mit der ganzen IT-Branche ist unsere Frauenquote ...." Sascha: "Warum guckst du mich dabei an?"
+de	Der tägliche Wahnsinn beim SEK	Thomas will den Endkampf im Krater, MiT ist dagegen. Thomas: "Das ist, wie wenn ich kurz vor dem Orgasmus bin, und es dann doch nicht klappt."
+de	Bugtracker	Stefan trägt Carsten einen Bug ein. - Carstens Kommentar: "Quark. Vorführen." - Stefans Kommentar: "Käse. Vorbei kommen."
+de	Jasmin	Man ist es so gewohnt, Conny anzuschreien...
+de	Sascha	Wir könnten uns gegenseitig auf den Bauch schlagen, bis die Fettpolster weg sind.
+de	Carsten zu Sylvius	Du willst doch schon wieder was von mir. Geh weg!
+de	Jan der Nudist	Ich habe heute zum ersten mal seit fünf Wochen wieder eine richtige Hose an, und muss sagen, das ist extrem nervig!
+de	Sascha warnt Martin	"Head of" bedeutet auch nur, daß es Dein Kopf ist, der später rollt...
+de	Beim Essen im Mexikaner	Steffen P.:"Du hast ja'ne große da bin ich neidisch." Martin antwortet: "das ist doch wohl bekannt, dass ich die größere habe."
+de	Stefan und Steffen	Stefan: "Ich hab jetzt nur noch 7 Frames im Leveleditor!" - Steffen P.: "Hast du die schon wieder verbummelt? Ey, dir kann man aber auch keine Frames anvertrauen!"
+de	Thomas L. im Kampfmeeting	... tödlich sterben ...
+de	Boris Munser	Unser täglich Quote gib uns heute.
+de	Stefan	"Bei mir funktionieren die Nummerntasten im Spiel gar nicht!" .... eine Minute später: "Ups, CapsLock ..."
+de	Sascha	Meine Hose rutscht! Cool!
+de	Jan	Ein guter Hack ist kein Bug.
+de	Jan	Klingt ja leicht zu fixen ...
+de	Carsten	Wenn ich da noch ein Ticket zu kriege, gibt es Tote!
+de	beim Montagsmeeting	Sylvius: "Gibt es eine Einschätzung, wann er damit fertig sein wird?" - Stefan: "Äh ... nö." - Sylvius: "So genau wollte ich es gar nicht wissen ..."
+de	Steffen P.	"Bei der Framerate sollten wir ein rundenbasiertes Spiel machen."
+de	Der tägliche Wahnsinn beim SEK	Claudia: "Trag du den Quote doch ein!" - Frank: "Ich trau' mich nicht!"
+de	Der tägliche Wahnsinn beim SEK	hmm.. Warum steht bei den Crashmeldungen eigentlich ja / nein / Abbrechen, schließlich hab ich ja doch keine Wahl.... Da müsste eigentlich "ach so" oder "na denn" drauf stehen...
+de	Carsten	Carsten:naa..noch nicht richtig wach, wa?!  -Conny:warum? -Carsten: du gähnst so müde!
+de	Marco	Steffen, wo hast du den Kopf von Cole hingelegt?
+de	Sascha beim Mittagessen	Ist der Bob erst akzeptiert, dann codet es sich völlig ungeniert!
+de	Patrick zu Jan	Jesus! Du lebst..!
+de	Kampfmeeting	Thomas zu Bettina: "Du sollst unrealistisch brutale Sachen animieren. Brutal de luxe sozusagen!"
+de	Conny zu Ingo	Komm Ingo, rubbel mal an Boris' Falten.
+de	Nach einem Kampfmeeting	Thomas: "Das ist alles eine grosse Überraschungs-Party was wir hier machen."
+de	Sascha	Ich habe nun mal diesen Einfluß auf Frauen, wenn ich die magischen Worte sage: Ein Bier bitte...
+de	Boris M.	Nicht alles geht weg, wenn man 'nen Knopf drückt.
+de	Sascha	Enter ist kein Shortcut!
+de	Boris M.	Ich bin Selbstbesorger.
+de	Patrick	Das Goal ist fast vorhanden, weil es macht nichts.
+de	Der tägliche Wahnsinn beim SEK	Das muss eine Inkompatibilität in deinem Hirn sein.
+de	Kartenlegerin in der Mittagspause	Ziehen Sie eine Karte und ich erzähle dann ein bisschen Wahrheit!
+de	Stefan zur sommerlichen Hitze	Wenn ich eine Frau und fünfzig Jahre alt wäre, würde ich jetzt glauben, in den Wechseljahren zu sein.
+de	Stefan	Ihr wisst ja, wir stammen alle vom Affen ab ... ach, nee, die stammen ja von uns ab!
+de	Sascha G.	Man muß den Gegner besiegen bevor einen die Framerate besiegt !!!
+de	Carsten	Nach einem Blick auf die Texte am Kühlschrank: "Irgendwann kommen wir dafür alle ins Gefängnis"
+de	Ingo	Carsten ist schon so alt, er muss komprimiert leben, im ZIP-Format sozusagen...
+de	David	Da wünscht man sich doch, dass Atombomben niemals abgeschafft werden, oder?
+de	Jasmin	Mein Deutsch sucks.
+de	im Point Buy Meeting:	Marko: "Wozu brauchen wir in der Singleplayerkampagne den Chat?" Carsten: "Um den Computer zu beschimpfen."
+de	Jan	Das ist der Ersatz für Steffen, so lange seine Hand noch im Arsch ist.
+de	in der Kültürzeit	Ingo:...dann müßte die Software auch mit VDR zusammen arbeiten...... Carsten:...arbeitet meine Software mit irgend was zusammen???
+de	Frank H. aus P.	ICH bin das Meeting!
+de	Boris M. zur Fileumbenennung	Fänd' ich geil, wenn's so wäre ... Fänd' ich aber Scheiße, wenn ich es machen müsste.
+de	Martin über Spiele:	Man sollte mal ein Memory machen mit Geschlechtskrankheiten ...
+de	Carsten zum Thema Wäscheetiketten:	Es wäre noch schlimmer, wenn bei Frauen vorne ein Schniepel rausgucken würde.
+de	Claudia zu Ingo:	Wir wussten schon immer, dass Grafiker nicht lesen können.
+de	Martin & Carsten:	Martin: "Ich war auf 'nem Bikertreffen ..." Carsten: "Mit der S-Bahn?" Martin: "Ich hab' ja kein Bike ..."
+de	Carsten:	Das Problem ist, dass ich schneller Coden als Denken kann!
+de	Carsten über Haare Färben:	Ich schlafe vielleicht mit 'ner Frau, aber nicht mit 'ner Tönung!
+de	Jasmin	Bei Carsten sieht das Spiel aus wie ein schlechtes Aquarell.
+de	Programmierer und Sex	Carsten und Jasmin "Verkettete Listen sind sexy!" Martin: "Verkettete Listen sind doof, Bäume sind sexy!"
+de	Jasmin und Carsten über klassische Musik	Jasmin: "Wagner ist wie Techno." Carsten: "Ja, dauert lange und ist langweilig."
+de	Claudia	Die Biere haben mich umgehauen aber der Ouzo hält mich stabil.
+de	Nadine beim Siedler spielen	"Ich bau mir einen Ritter, mit ganz viel Glitter"
+de	Steffen P. zur unterschiedlichen Spielweise der Völker	Die sehen unterschiedlich aus. Reicht das nicht?
+de	Der tägliche Wahnsinn beim SEK	Patrick: "Das wird ein richtig hässlicher Hack" - Dennis: "Lass mich raten - du arbeitest am Spiel?"
+de	Paul J.	"Die  Leveldesigner sind die Beamten unter den Spieleentwicklern"
+de	Der tägliche Wahnsinn beim SEK	Martin: "Macht das eigentlich was, wenn beim Client der FOG ausgestellt ist?" Benjamin: "Dann siehst Du nicht, wo Du was siehst."
+de	Ingos Werkzeug	Carsten: "Ich glaube, der braucht 'nen Schraubendreher." Ingo: "Ich hab nur was für Muttern dabei."
+de	Carsten	Das ist keine Endlosschleife! Die läuft nur 2 Milliarden mal.
+de	Julia	Soziale Kälte find' ich cool.
+de	Sascha	Negerküsse sind laut Sascha "afro-amerikanische Schleimhautkontakte"
+de	Benjamin beim Lesen einer externen Spielidee - Mail	"da läuft einem glatt das Hirn raus...."
+de	Stefan	Manchmal verstehe ich meine eigenen Bugs nicht ...
+de	Boris M.	Ich bin Grafiker, kein Orthographiker.
+de	Jan	Wir sind ein Triple X Titel.
+de	Martin Z. über Ragnarok Online	Wer so ein Spiel spielt, der frisst auch kleine Kinder!
+de	Private Internetnutzung am Arbeitsplatz	Jasmin: "Gangwars, Gangwars, Gangwars" Ingo: "Wie heißt die Seite? Gaywars?"
+de	Thomas im Zeitplanungsmeeting	Wenn wir Probleme kriegen, kriegen wir das schon mit ...
+de	Carsten und Jasmin beim programmieren	Carsten: So schnell wie Du Dich verrechnest, komm ich nicht mit ...
+de	Der tägliche Wahnsinn im SEK	Ich will nicht aussehen wie ich.
+de	Der tägliche Wahnsinn im SEK	Ok, ich hab kein Problem damit, ich bau das Ding ein und mach es so langweilig wie möglich, damit ihr mal seht, dass das keinen Spaß macht...
+de	Benjamin	ich habs dann doch wieder mit dem Tier gemacht....
+de	Reinhard	Diskussion über Kongas... Reinhard: "Command and Konga?"
+de	Boris M	Dreck braucht 32 Bit
+de	Boris M	Lichter werfen keinen Schatten.
+de	Carsten	"Roter Krebs ist besser als grauer Star."
+de	2 taube Coder beim Montagsmeeting	Jasmin: Patrick hat 1 stunde gewartet bis ich Kaffee koche. Ingo: Harms??? Jasmin und Carsten: Abends?... nein morgens!
+de	Jasmin	Syphilis ist wieder im kommen.
+de	Word-Rechtschreibkorrektur	Programmeuse ... als Korrekturvorschlag zu Programmierung, nachdem die Sprache auf Französisch umgesprungen war
+de	Patrick H	Ist Origin das Zentrum vom Kreis oder ist es die obere linke Ecke vom Kreis?
+de	Thomas L.	"Stina wird eh die ganze Zeit reiten"
+de	Steffen P.	Das Mammut ist immer ein guter Vergleichssaurier, sag ich mal so.
+de	Der tägliche Wahnsinn im SEK	"... da springt mir Thomas an den Hals und ich werde ihn nicht mehr los."
+de	Simon	Thomas hat nen Sexy Arsch
+de	Sascha	Zum nichtfunktionalen LevelEd: "Das ist kein richtiger Fehler, eher eine Unpässlichkeit."
+de	David F.	Wenn man nie wieder glücklich sein will wird man Coder.
+de	Carsten O.	Wenn die Tickets erst mal fliegen.
+de	Jasmin über Carsten	Das liebe ich an ihm er ist so billig!!!!
+de	Patrick	Lego ist sehr flexibel. Da kann man alles draus bauen, so lange es ein Raumschiff ist.
+de	Dennis H.	Warum müssen Grafiker immer alles so visuell sehen?
+de	Boris P.	Das ist der Euphemismus, wo jeder mit muß.
+de	Marko	Ich bin nur nach außen hin ein anständiger Mensch.
+de	Carolin	Wenn das zuviel Zeit ist, müssen wir andere Maßnahmen erbrechen!
+de	Benjamin	"Cole kämpft mit der Kraft vieler Männer"  zu Cole-Bug, der einmal in der Welt vorhanden ist, jedoch die komplette Pyramide füllt
+de	Steffen P. im Tracker	Und wieder ist eine Woche geschafft ... und wieder ist nur Mist gemacht ... und Montag mit dem selben Fleiße, wieder an die selbe Scheiße :)
+de	Der Code, der bei der Ninigi-Gebäude-Sebstzerstörung aufgerufen wird	proc bool AuthorizationPicardFourSevenAlphaTango();
+de	im Management-Meeting	Thomas: "Wir bräuchten jemand, der Verständnis für Programmierer hat." - Carolin: "Jetzt soziales Verständnis?" - Thomas: "Nein, na so jemand, der mit den Programmierern reden kann."
+de	Marco R hat Computerprobleme	Carsten: "Hast Du Dir wieder irgendwelchen Scheiß installiert?" Marco: "Gestern gar nichts".
+de	Catherine und Benni	Benni: Dävid steht auf Muskeln Catherine: auf Schliessmuskel?
+de	Thomas W. im Standup-Meeting	Gestern habe ich gar nichts gemacht und was ich heute mache, weiß ich noch nicht.
+de	Thomas L.	Boris: Was ist mit dem Meeting? - Thomas: Das ist verschoben auf gestern!
+de	leider anonym	Du bringst es noch fertig und verläufst dich auf der kleinsten Singelplayermap ohne fog of war.
+de	Diskussion zur Animation der Wehrspinne	Thomas: "Das Ding hat 4 Beine." - Bettina: "3 Beine waren für mich auch o.k." - Thomas: "Jetzt hat es 4, ich dachte, das ist dann noch mal mehr o.k. für dich!"
+de	Carsten	Quote eines Quotes: Sein Planet ist ein kleiner Planet.
+de	Marko	So bleibt das jetzt erstmal langfristig.
+de	Benjamin	die Version stinkt!
+de	Max und Patrick	Max: "Suit ist cool!" Patrick: "KUL oder Bat?"
+de	Steffen P. deutet richtung Grafikecke	Frag mich mal nochmal wenn ich dahinten sitze und anders aussehe.
+de	Frank	Das war von den Grafikern schlecht durchdacht und besser umgesetzt.
+de	Ingo	zu Jasmin: Du verwendest meine Blastechnik!
+de	Carsten	Das ist kein Gummiband, sondern im Zweifelsfall eine Gummistange
+de	Uke in der Raucherecke stehend zu Claudia	Ich hab dich gar nicht in die Toilette reingehen sehen. Hast du dir da drin nen Spawnpoint eingestellt?
+de	Carsten beim Mittagessen	Teilen wir brüderlich oder gerecht?
+de	Jasmin	Jasmin: "Er ist so ..." - Claudia: "Diplomatisch?" - Jasmin: "Ja genau! Siehst du, das Wort gibt es nichtmal in meinem Wortschatz!"
+de	Steffen P.	Jeder darf mal Stina reiten
+de	Stefan	Ach... vielleicht sollte ich vorher mal den Level laden, bevor ich ihn jetzt hier starte...
+de	Pablo	Bibel 3 - Jesus strikes back
+de	Thomas W.	Wenn ihr überlegt, was in dem Essen alles drin ist, seid ihr nicht hungrig genug.
+de	Robert S. beim MMM	Gestern weiss ich nicht mehr was ich gemacht habe aber heute mache ich es weiter
+de	Robert Stoll	Kugelschrei-Bär
+de	Stefan K.	Sascha zu einem Rechtschreibfehler von Stefan: "Tower schreibt man nicht mit 'au'!" Stefan: "Spricht man aber so!"
+de	ThomasL	Meinetwegen könnten die Afrikaner ruhig eine hellere Hautfarbe haben
+de	Benjamin	Und was kann man bauen wenn man Babbage bei den Hu auf Stufe 5 hat? Den Führerbunker!?
+de	Martin Z. beim Wochenend-Meeting	Also ich hab die ganze Woche gefixt.
+de	Paule als Schliemann	"Ahchhhh forgeht sem"
+de	Marco Röth	"... Apro po Müll... ich habe da grad was eingecheckt"
+de	Uke	"Na Mirko, spielst Du schon wieder mit Deinem Dodo?"
+de	Jan	Ihr müsst mal Claudias Gelkissen anfassen. Das fühlt sich echt geil an.
+de	Mirko beim Mittagessen	Frauen sind immer interessant. Auch wenn sie wie eine Pizza aussehen.
+de	Leveldesigner	Frank: "Weißt du, was scheiße ist?" - Steffen: "Nein. Das heißt, es gibt viele Sachen, die ich scheiße finde, aber ich weiß nicht, was du meinst."
+de	Christoph P. aus C.	Beim betrachten von D. H.'s Code: "Das ist definitiv ein Bug... aber egal!
+de	Der tägliche Wahnsinn beim SEK	Stefan zum Thema Multiplayer: "Ih hätt mal wieder Lust auf ne Runde..." Benjamin dazu: "Ich hab auch Lust auf ein Bier."
+de	Jasmin und Carsten	Jasmin: "Hast du den Hirsch gesehen, der gerade weggebeamt ist?" - Carsten: "Der ist nur sehr schnell gelaufen!"
+de	Thomas L. zu Patrick	Aber du bist doch Gott, oder? Du bist Programmierer!
+de	Reinhard D. aus F. a. M.	Also vor der Beta wird mir hier keiner Schwanger, das is doch klar!
+de	Carsten O. aus B.	Mein englisch ist ja Windows!!!
+de	Jan beim Frühstück	Ist das da hinten Tomatenmarmelade?
+de	Benjamin über einen Triggerbug	In der Node frisst der Teufel Fliegen.
+de	Benjamin isst eine McDonalds Serviette	...hm, schmeckt besser als die Fritten!
+de	Matthias P. in einer Diskussion	Ich widerspreche dir einfach zu gerne, Frank!
+de	Thomas im Hauptsequenzenmeeting	Da wird animiert werden müssen, der Dino stirbt nicht einfach so!
+de	Matthias' Fachwissen über Schiffe	Der Kiel ist vorne ...
+de	Matthias P. bei Wünsch-Dir-Was	Ich will, dass meine Türme viel weiter schießen können. Ich will, dass meine Türme über die ganze Karte schießen können. Ich will Matze-Türme!
+de	Thomas L.  (beim WoW spielen)	Reinhard, wie heißt du?
+de	Mirko (Tester)	(stolz, nachdem er seinen Key in Saul eingetragen hatte) "Ich bin ein Programmierer!"
+de	Matthias P. zur Aussprache von Cache	Das ist richtig so, das weiß nur niemand außer mir!
+de	zu einem Crash im LevelEditor	Stefan: "Ich glaube, irgendwo im Code steht 'if login == 'stefan.karau' then random crash." - Benjamin: "Das war mal so, aber es war zu auffällig. Jetzt ist es komplizierter!"
+de	Matthias P.	Unerreichbar ist für mich nur Angela Merkel!
+de	Matthias P.	Wie löscht man eigentlich Quotes? Ich frag nur mal so ... *unschuldig*
+de	Leveldesigner unter sich	Martin: "Weißt du, was man gegen diesen Grafikfehler machen kann?" - Matthias: "Ja: Augen zu!"
+de	Uke	Hasst mich nicht, nur weil ich schön bin!
+de	Carsten	Ding Dong
+de	Jasmin	"... Ich bin ein Mausprogrammierer"
+de	Mirko im Februar	"Level 3? Ist das das mit den Dinos?"
+de	Thomas zu Steffen bezüglich einer Gamedesignfrage	Jaja, mach wie du willst, Hauptsache es funktioniert. Geh weg!
+de	Coder-Ausreden ...	Thomas: "Sieh her, die Amphibien laufen über's Wasser statt zu schwimmen!" - Christoph: "Das ist ein Eismeer ..."
+de	Steffen P. nachdem er eine Tüte Weingummis aufgegessen hat	Ein Glück, dass sie jetzt alle sind, sonst wird mir noch schlecht davon.
+de	Uke	Ich hab mal irgendwas gemacht, als ich irgendwas wollte. Aber dann hab ich's vergessen.
+de	Bettina	.. wir sind alle prä-tot...
+de	Jasmin	Das ist noch nicht mal ein Porno!
+de	Carsten	Ich meckere nicht ! .... ich kommentiere nur die technischen Rahmenbedingungen!
+de	zum Thema Saltasaurus	Stefan: "Ich find's gut, dass die Dinos ihre Originalnamen haben." - Steffen P: "Wer weiß schon, wie die damals wirklich hießen ..."
+de	David	Ich geh jetzt allein auf Toilette. Komm, Simon!
+de	Carsten zu Erik im Zeitplanungsmeeting	Du willst das multikill killfeature killen?
+de	Fachgespräche beim SEK	David: "Mehr Links passen nicht an das Model." - Steffen P: "Und Rechts?"
+de	Mittagessen	Reinhard: "Müsst ihr denn auch beim Essen knutschen? Ist ja furchtbar." - Steffen U.: "Lass sie doch, dann sind sie wenigstens ruhig."
+de	Carsten zu Thomas über gelbe Platzierungspunkte	Hatte ich schon mal gemacht. Sah Scheiße aus. Ich meine, sah für mich schon Scheiße aus, das willst du gar nicht sehen!
+de	Zum Thema Torplatzierung	Carsten: "Da wird nichts mehr geändert! Erinnerst du dich, wie lange das das letzte Mal gedauert hat?" - Thomas: "Ich dachte, ihr habt jetzt vielleicht schon Übung!"
+de	Im Platzierungsmeeting; Testspiel mit unendlichen Ressourcen	Stefan: "Schalt doch mal die Geschwindigkeit hoch!" - Thomas: "Ich will doch nicht cheaten!"
+de	Carsten über RedBull	Millionen Gummibärchen müssen dafür sterben!
+de	Carsten im Platzierungsmeeting	Ich wollte ja alle Häuser quadratisch haben, dann hätten wir jetzt diese Probleme nicht. Aber ihr wolltet ja nicht ...
+de	beim Leveltesting	Frank: "Bei mir stand der Gegner im Zelt drin und konnte sich nicht wehren." - Matthias: "Camper!"
+de	Mittagessen	Jasmin: "Wenn diese Typen nur in meine Richtung gucken, möchte ich schon zuschlagen!" - Carsten: "Jasmin hat heute wieder ihren toleranten Tag ..."
+de	Crunch-Time-Verblödung	Paul: "Das Rohr ist viel länger als Deins, David!" David: "Aber nur ein kleines bisschen." Dennis: "Also bei mir tut sich was."
+de	Star Wars-Experten unter sich	Dennis: "Ich habe eine neue Option, ForceFlush, eingebaut." Patrick: "Ist das so wie Force Pull, bloß für's Klo?"
+de	Paule beim Branch erstellen	"... lauf kleines Perforcemännchen... lauf !!!"
+de	Ingo über die Dimensionstore	... die sind noch beim Lackieren.
+de	Frank zu Matthias	Geh mal zu Carsten und mach diesen Vorschlag. Mal sehen, ob du dann morgen noch zwei Monitore hast!
+de	Planungsmeeting	Ralf: "Wann ist eigentlich der Point of no Return für euch?" - Pierre: "Du sprichst gerade von der Vergangenheit ..."
+de	Pierre *in ernstgemeintem Tonfall*	Bringt ihr eigentlich zum Release gleich einen Patch heraus?
+de	Ralf	Da fehlt der musikalische Kick, bei sowas muss immer ein bisschen Dieter Bohlen drin sein.
+de	Der tägliche Wahnsinn beim SEK	Carsten: "Ich mache jetzt einen Build." - Ingo: "Hey, die Grafiker sind wir, Bilder machen nur wir!"
+de	Freitagabendstimmung	Stefan: "Auf einem langsamen Rechner kannst du das Spiel sowieso nicht spielen." - Thomas: "Du kannst es auch auf einem schnellen Rechner nicht spielen!"
+de	Der tägliche Wahnsinn beim SEK	Sascha: "Sieht's gut aus?"  Thomas W: "Hmm... Vor allem steht's bei dir so schön."
+de	Boris M. weniger als zwei Wochen vor der Alpha zu einem Feature	Wir können ja danach, wenn wir noch Zeit haben ...
+de	Im Meeting	Carsten: "Wir werden das höchstens einmal ändern!" - Thomas: "Wie oft hast du gesagt? Ich habe gerade nicht hingehört ..."
+de	Stefan zu Stefan	Sauerstoff - Sauberstoff - Schweinberstoff ... verstehst du?
+de	Erste Übersetzungen im Glossar	Flammenwerferdreirad, Säbelzahnreiter, Kleintierfarm, Pfote, Allosaurier-Knirscher, Mammut-Panikflucht, Aggressives Zielen, Gepanzertes Dinosauriernest, Stein-Landhaus
+de	beim Frühstückstisch	Carsten: "Ach, da habe ich dich mit Michael verwechselt. Irgendso ein Zottel halt ..." - Julian: "Genau, wir Tester sind ja alle gleich."
+de	Paul über seinen WarCraft-Online-Charakter	Meine Hose macht mich schlauer.
+de	Grafiker unter sich	Thomas W.: "Lies nicht so viel, Simon, das bringt dich nur auf dumme Ideen!" - Simon: "Ich komme auf dumme Ideen, wenn ich nicht lese!"
+de	Steffen *Sauriernamen sind schwer*	Parasaurialaufus
+de	Der tägliche Wahnsinn beim SEK	Thomas: "Frank, hast du die Flaggen schon eingebaut?" - Frank: "Ja." - Thomas: "Kannst du wieder rausnehmen, funktioniert so nicht."
+de	Stefan K	Levelbaum: (Dialogszenenauslöser:) Darwin tot bevor er stirbt. (Dialogszene:)  Bela: Darwin? Darwin! Stina, Cole… Darwin hat’s erwischt!
+de	Simon und Däivid	S: "Ick muß noch Wörtsel machen." D: "Würze?" S: "Wörtseln!" D: "Ach Wurzeln mußt du machen!"
+de	Alphaerkenntnisse	Martin: "Warum spielen wir eigentlich die einzige Icewaste SIngleplayerkarte mit Aje und nicht Hu?"
+de	Steffen U.	"Nehmt das Ding und macht es pink!"
+de	Leveldesignerphilosophien	Stefan K: "Sind wir jetzt in der Prepre-Alpha oder in der Pre-Alphaalpha?" - Benjamin: "Sind wir nicht noch in der Preproduction?"
+de	Conny	Dieses Shampoo... wie heißt es noch? Urban Assassins?
+de	Thomas	Thomas *wird gerade von der AI mit mehreren Titaneinheiten überrannt*: Cole macht das schon!
+de	Mirko über unverständliche Tickets	Ich versteh nur "da hab ich die Klümbel durch die Öse feingedremelt und dann mit dem Klüfer den Hahn bis zur zur hohen Nut...".
+de	Jasmin bei den Testern	"...bekannte Fehler interessieren mich gar nicht."
+de	Programmierer Martin Z. in der Raucherpause	Was die Grafiker können kann ich schon lange.
+de	Pablo wirft Papierkugeln in den Papierkorb	Ich muß mir die Ladezeit vertreiben ... Internet kenn ich schon.
+de	Reinhard	*über die Sprachaufnahmen* Ich will die Sprecher gar nicht sehen. Vielleicht g'fällt mir die Stimme, aber dem sein Gesicht g'fällt mir net. *dreht sich zu Michael um* ... was mich direkt zu dir bringt.
+de	Stefan K. philosophiert	"Suboptimal" ist schon ziemlich nah an "optimal", während "beliebig" davon "beliebig weit entfernt" ist.
+de	Marco R.	Jasmin: Kannst Du schnell nach Hause gehen und die holen? Marco: In die Klinik?
+de	David	Ich hab noch meine Schlange, die hole ich immer raus, wenn Tonza seine raus holt!
+de	Jasmins Freudscher Versprecher	... Bugficking ...
+de	Die tägliche Brutalität beim SEK	Marco: "Kannst du das nicht einscripten?" Steffen: "Wenn du heute Abend noch Zähne haben willst, nicht..."
+de	Ralf Adam	Ein Producerjahr sind sieben Menschenjahre, wie bei Hunden!
+de	Diskussion über ein neues Feature	Thomas: "Die Minimalvariante wäre nur der Effekt ohne Gameplay dahinter." - Carsten: "Die Minimalvariante wäre: gar kein Effekt!" - Thomas: "Das wäre die Mikrovariante."
+de	Martin Wölk zu Bump- und Noisemaps	Martin: "Das ist recht schwer zu verstehen für Nichtgrafiker." - Thomas: "Das ist auch für Grafiker schwer zu vestehen."
+de	Pablo über eine Levelmap	Das ist 'ne sensible Karte ... wenn du da was falsches sagst ...
+de	Jasmin	Ich sitze nicht gern in Kreuzberg im Restaurant draußen auf der Straße. Die Leute da könnten denken, dass ich zu ihnen gehöre!
+de	Julian	Kann man bei einem Flipper eigentlich speichern?!
+de	Thomas zu Ralf	Stell nicht immer Fragen, gib Antworten!
+de	Julian Sommer	Alles was ich teste, finde ich nicht gut...
+de	Der tägliche Wahnsinn im SEK	Nico: "Ich muss nachher noch auf einen Kindergeburtstag." - Frank: "Deinen eigenen?"
+de	Der tägliche Wahnsinn im SEK	Carsten in einem Meeting, das sich bis nach 20 Uhr hingezogen hat: "Da wir ja alle irgendwann nach Hause wollen ..." - Ingo: "Nö!"
+de	Steffen P. (total aus dem Zusammenhang gerissen)	Tuning ist gesetzmäßig das Letzte!
+de	Der tägliche Wahnsin im SEK	Thomas: "Wo ist denn eigentlich Benjamin?"- David: "Ist doch egal, ich bin doch da!"
+de	Ingo im sommerlichen Meetingraum	Dreh doch die Heizung richtig hoch, dann können wir hier drin noch einen Aufguss machen!
+de	Meetingerkenntnisse	Claudia: "Wer ist 'wir'?" - Reinhard: "Wir bin ich!"
+de	Reinhard zu Carstens Meetingkunstwerken	Carsten, haben deine Eltern überlegt, dich nicht Carsten, sondern Kästchen zu nennen?
+de	Thomas	Wir faken einfach die Level 8 bis 16 und reichen sie dann ganz schnell mit einem Patch nach, bevor jemand die Kampagne bis dorthin durchgespielt hat.
+de	Reinhard in der sommerlichen Hitze	Claudia ist praktisch das Schweizer Taschenmanagement ...
+de	Matthias	Im Englischen aus dem Französischen eingedeutscht ...
+de	Christoph Knauz zu einem SF-Tester im Ticket	Augen auf beim Maptest...
+de	Nach mehreren Stunden Meeting ...	Carsten: "Habe ich schon einmal gesagt, dass das hier ein Idiotenjob ist?" - Ingo: "Dann wissen wir ja, warum du ihn machst!"
+de	Martin zu Claudia, als sie aus einem Meeting wiederkommt	Na, haben sie dich als Protokolldroiden missbraucht?
+de	Benjamin H.	Technik funktioniert besser, wenn man dagegentritt!
+de	Laurianne in einer mail an Nadine	Ich habe eine echte Verfluschung mit meinem Auto : letztes Montag habe ich... einen Parkhauspfeiler geschlagen ! Genial. Ich dachte nur " Putain de bordel de merde !!! "
+de	Thomas L.	Thomas, als ein Bild von der Wand fällt, das er vor ein paar Tagen erst angenagelt hat: "Das sind meine schlechten Vibrations!"
+de	Der tägliche Wahnsinn im SEK	Carsten: "Du kannst dir in der Sidebar die Perforce-Changelists anzeigen lassen, die submitted werden." - Marko: "Auch die von den Gegnern?"
+de	Der tägliche Wahnsinn beim SEK	Zeitplanungsdetails Punkt 3.4  Iconanpassung: "Keiner weiß so recht, was dieser Task ist, daher soll er gestrichen werden."
+de	Jan und Andrej	Jan zu Andrej: "Wir lästern über dich."  Andrej: "Aber nur Gutes, stimmts?"
+de	Julian S.	Stina ist kein Held mehr! Stina ist ein Eusmelius!
+de	Matthias über die Olsenbande	Ein Klassiker der Filmgeschichte. Das hat mich zu großen Taten inspiriert, die ich heute bereue.
+de	Carsten beim Mittagessen	Wenn wir uns nicht ranhalten, ist Speedy Krüger schneller fertig als wir!
+de	Reinhard zu 2 Grafikern	"Ihr seid so scheisse wenn ihr zu zweit seid"
+de	Der tägliche Wahnsinn im SEK	Carolin: "Wir wollen diesmal ein kurzes und knackiges Meeting." - Ingo: "Darf Thomas dann nichts sagen?"
+de	der tägliche Wahnsinn in der Straßenbahn	Kind: "hey Mama, schau mal, das sind voll viele Seiten" - Mutter: "das isn Heft" - Kind: "Achsooo"
+de	Jasmin bei der Entdeckung ihres eigenen Copy&Paste Bugs	Wir haben zwar keine lazy evaluation... aber wir haben lazy programation
+de	Peggy beim fixen eines Mouse Bugs	Wie ihr habt das Mittelrad belegt...und was ist mit Mac Usern?
+de	David beim Rauchen	Es ist total komisch, Nadine hat mehr Intelligenz als ich.
+de	Julian S. möchte zum Indier Essen gehen	This will be a fucking trip to the geschmacksnerven sky that you never forget!!!!!!!!
+de	Steffen U.	Der hat da gar keine Polygone die Geräusche machen können!
+de	Captain Obvious im Level-7-Designdokument	Eine friedliche Lösung des Konfliktes gibt es in diesem Level nicht.
+de	Frank	Funktionieren sollte alles erstmal, zwar falsch, aber es funktioniert.
+de	Benjamin im Levelmeeting:	...es passiert nicht wirklich unglaublich viel...
+de	Carsten	Bei uns hieß das nicht Räuber und Gendarm, sondern Dissident und Volkspolizist.
+de	der tägliche Wahnsinn auf der Erde	egal ob Ratte oder Maus, McDonalds macht nen Burger draus!
+de	Der tägliche Wahnsinn im SEK	Thomas: "Ich war ja nicht im Mailverteiler. Hörst du den Vorwurf in meiner Stimme?" - Frank: "Ich hab nichts gehört."
+de	Der Schluckauf	StefanW zu Benjamin: "Ich hab Schluckauf! Erschreck mich mal!" Benjamin nach kurzem Überlegen: "Du mußt alle Level bis Montag allein fertig machen!" - und der Schluckauf ward nimmer mehr gesehen...
+de	Jasmin und Michael beim finden eines AI Fehlers	Jasmin: Och der ist nicht schlimm den kann ich schnell Ficken ähh Fixen....
+de	Leveldesigner beim Review	Pablo: "Ich weiß nicht nach welchem Prinzip hier die Texturen eingesetzt wurden..." Stefan: "Prinzip Hoffnung!"
+de	Benjamin über die AI	Was ich bei der Rusher AI nicht mag, ist das sie rushed ...
+de	Leveldesignmeeting im Aquarium	Frank, einen Sitzplatz suchend, zu Steffen auf der Couch: "Du machst dich so fett!" - Steffen: "Ich bin so."
+de	Der tägliche Wahnsinn im SEK	Thomas: "Du musst jetzt kein schlechtes Gewissen haben, Benjamin!" - Steffen: "Er hat kein schlechtes Gewissen." - Thomas: "Ich weiß, deswegen erwähne ich es ja jeden Tag."
+de	Matthias P.	Ich habe die korrekte Mehrzahl von Pizza gefunden: Mafia-Torten!
+de	Nico zu Stefan über seine Termine auf der GC	Es gibt auch noch andere, die von mir unterhalten werden wollen. Bist du jetzt eifersüchtig?
+de	Uke	Nicht reproduziert, aber wahr.
+de	Carsten O. kommt zu spät zum rauchen	"...manchmal muss man Sachen auch fertig kriegen"
+de	Schweizer Essgewohnheiten	Steffen: "Da warst du eben schon supervoll und jetzt frisst du schon wieder nen Pudding" - Benni S.: "Ja, da bin ich halt jetzt noch supervoller..."
+de	Lothar (per Email einen neuen SEKler ankündigend)	Ein "neuer" SKLer
+de	David F. erklärt die Uhr	"...ähm Flick ist im Osten .... und ... ähm ... hmm... Flack ist .... hmm....."
+de	Julian Dasgupta	Ich habe das Spiel erst gestartet, als ich ein RATS-Ticket dazu hatte!
+de	Jasmin	SpiegelOnline ist mir zu spiegelig
+de	Claudia bei Jasmin wegen AI	Also wenn das ein Bug ist fix ihn bitte nicht. Ich brauch das für mein Level!
+de	Einziger Kommentar zu einem Thread voller Paraworld-Screenies (per Google-Translator übersetzt)	su syas It will suck, kath e
+de	Thomas H.	Ich bin nur der kleine Tank ohne Hirn, der hinterher rennt.
+de	David S. beschreibt Einheiten	Eusmilus Reiter: Vergleichbar mit einem Goblin Schweinereiter.
+de	Ina zu Marco	Hast du eigentlich einen Kosenamen? Ich würde dir gerne einen geben, manchmal sitzt du den ganzen Tag herum und schaust wie ein Reh in's Scheinwerferlicht.
+de	Der tägliche Wahnsinn im SEK	Stefan: "Oh, Pablo hat Taschentücher. Verpetzt ihr mich, wenn ich ihm eins klaue?" - Leveldesigner im Chor: "Ja!" - "Stefan: "Okay, aber das hält mich nicht ab."
+de	Carsten O. über Jasmin K.	"Sie schreibt nicht nur sauber Sie ist auch stubenrein"
+de	Der tägliche Wahnsinn im SEK	Julian D: "Herr Geschäftsführer, ich beantrage einen Mülleimer für mich!" - Claudia: "Machst du denn soviel Müll in der Arbeitszeit?"
+de	die neue Kaffeemaschine	Bitte nicht vergessen: Nach dem Brühen mit dem Pumpstab umrühren.
+de	Benjamin	... ich machs mir in meinem Testlevel
+de	(eine Email zur Grafikperformance)	Grass ist je nach Perspektive auch recht kostspielig.
+de	David	Schwimmen dauert nicht lange? Kommt drauf an, wie lange...
+de	Der tägliche Wahnsinn im SEK	Thomas L: "Hey, was machst denn da, ne Rakete?" - Dävid: "keine Ahnung ich mach nur die LODs..."
+de	JD. und David S.	JD: "Machen wir dann am Nachmittag noch ein bisschen PingPong". David: Du möchtest am Nachmittag noch ein bisschen pimpern?!?
+de	Uke Bosse	"Ich wurde von einem Dodo überfallen und angegriffen ..."
+de	Ukes letzter Satz in einer Bug-Beschreibung	Dieser Bug ist wahrscheinlich nie mehr reproduzierbar.
+de	Mirko Hering in 13929	Auch wenn die Betreffzeile ein wenig nach "Ich wurde von Ausserirdischen gekidnapped" klingt, habe ichs gesehen!
+de	Jasmin	... also bei mir funktioniert das ...
+de	Nadine	Beim Kaffeekochen bitte den Pumpstab während des Brühens in der Kanne belassen!
+de	Marco R.	Ich fand' den Regen geil. Da spürt man, dass man lebt!
+de	Aus einem geheimen Testdokument	Voila! Der Deathping ist verschwabbelt.
+de	Civilization 4: Hauptmenü -> Multiplayer -> LAN -> Spielmodi	HEIßER STUHL
+de	Civ IV Diplomatie oder "warum man immer ganze Sätze zum Übersetzer schicken sollte"	Alexander: "Wir freuen uns auf viele Jahre des Friedens zwischen dem Griechisch und dem Deutsch Volk."
+de	Anonym	Claudia Krüger? Ist das die Frau von Freddy?
+de	(eine Bewerbung als "linguistic QA")	Ich biete Ihnen: Intuitives Beurteilungsvermögen für sprachliche Richtigkeit
+de	(der erste Satz aus einer Bewerbung)	Sehr geehrte Damen und Herren, sicherlich erinnern Sie sich noch an den C-64, der in den frühen Achtzigern den Markt eroberte ...
+de	Jasmin	Ich kann einem Kühlschrank einen Eskimo verkaufen.
+de	Carsten O. über Glaubwürdigkeit	Eine glaubwürdige Lüge besteht aus 50% Wahrheit
+de	Weisheit aus einem chinesischen Glückskeks	Du fühlst dich nicht wohl in Bezug auf schlechte Neuigkeiten.
+de	Steffen P.: "Der Lumberjack sollte anders heißen, der kann nämlich gar kein Holz fällen." - Jan: "Doch, das kann der." - Steffen P.: "Warum hast du das programmiert?" - Jan: "Na, weil der doch Lumberjack heißt!"
+de	Claudia: "Habt ihr denn was gemacht, wo ihr vor den Konsequenzen Angst haben müsst?" - Stefan: "Nee, wir haben nichts gemacht, deswegen haben wir ja Angst!"
+de	Jan in 4974	"overlay anims verteilen, ich würde gern. nutzen die macht, du musst. programmieren mir ein interface, du musst."
+de	JayDee's Milestonebonusgeschenkvorstellung	"Ein 'Hello Kitty'-Vibrator!" [reißt triumphierend die Arme hoch]
+de	Julian S [um halb neun nachts] bei der Erstellung eines Testcases ... 	"Der Spieler hat keine Möglichkeit, über den Seeweg in die Wasserstadt zu gelangen, ohne a) SQ3 auszulösen oder b) SQ3 nicht auszulösen ... Äh?"
+de	Andre hat ein problem mit seinem Code. Christoph zu Andre	Na wo hast du denn deinen code her?
+de	Boris	Zum Thema Spiegelungen und Schatten auf Wasseroberflächen: Ich glaube, das kenne ich aus der Realität.
+de	Dave Sk. (Handygamewebsite anguckend)	'Catch the Sperm 2'? Ein Bekannter von mir hat 'Catch the Sperm 1' gemacht. Geil!
+de	MaPa_14336	Auf das Thema setz ich auch gleich mal die Bluthunde unserer QA an ...
+de	Vertipper bzw Völkernamen in Bugs	Dustriders ... Duckriders ... Horseriders ... Horsemen ... Northmen ... Nigiri ...
+de	Steffen P. zu Jan N.	"Der Bug funktioniert nicht!"
+de	Thomas L. über Lokalisierungsdetails	Englisch ist nicht unser cup of tea.
+de	Leveldesigner fachsimpeln über den voreingestellten Ressourcenwert eines Früchtebuschs	Matthias: "Null ist nicht viel." - Steffen P.: "Aber immer noch besser als gar nichts!"
+de	Handhabung des Bossgegners	Jan: "Du aktivierst den Skorpion mit dem Kommando JumpOffWall." - Steffen: "Der springt von einer Mauer?" - Jan: "Mir ist nichts Dümmeres eingefallen."
+de	Frank's Führungstil	Ihr könnt die mergen! Ihr Pussies!
+de	Leveldesigner und Bugbehandlung	Matthias: "Das ist das Schlimme mit den Bugs, man muss die immer ganz durchlesen." - Frank: "Echt? Ich mach' die immer gleich zu."
+de	Lothar S.	von meiner Seite spricht da nichts vollständig dagegen
+de	Simon beim Zahnarzt	Die haben ein Bißchen Sandstein rausgemacht.
+de	Tutorial von "The Movies"	"drücken sie die Rosette" ... "Wunderbar!"
+de	Florian M. gibt dem Leveldesign echte Wahlmöglichkeiten	Im Level-Editor bekommt Ihr nun eine Fehlermeldung, wenn die Verlinkung falsch ist. Wenn Ihr auf Ja klickt, wird die Verlinkung gelöscht. Wenn Ihr auf Nein klickt stürzt der Server ab.
+de	Matthias	Tja, Paul, eigentlich erwarte ich einfach eine Lösung, ich will gar nicht wissen, wie schwierig das alles ist!
+de	Julian D. zu Claudia	Ich würde ja gerne jemanden ärgern, wo Tom nicht da ist, aber du bietest irgendwie gar keine Angriffsfläche!
+de	Steffen P. öffnet das Fenster	Mal ein bisschen frischen Smog von draußen reinlassen!
+de	Ina	Gott bin ich sauer... Ich muss sofort shoppen gehen!
+de	Die täglichen Missverständnisse beim SEK	Steffen: "Ich werd' den dann hier mit einer Jockeypose draufsetzen" Thomas W.:"Jogginghose?"
+de	Julian D.	"Sonst bin ich ja eigentlich ein stilles Wasser"
+de	Steffen P.	Man muss das auf natürliche Art und Weise verbieten ...
+de	DaveS & ClaudiaK beim Lektorieren ... 	Hmm ist Triceratops schon der Plural? -- Hm, analog zu Klops / Klöpse könnten wir Triceratops / Triceratöpse nehmen ...
+de	Benjamin H.	Pablo ist aktiver Passivraucher.
+de	nach dem SEK-Webseitenupdate vom 13.01. von Julian	Carsten: "Marco, das wirst du doch nicht so eng sehen, oder?" - Marco: "Und wie eng ich das sehe! So eng wie meine Hand um seinen Hals!"
+de	Küchengespräche im SEK	Paul zu Claudia: "Der Wasserkocher hat nicht getriggert. Ich musste ihn per Hand auslösen." - Karsten: "Was redest du da?" - Paul: "Das ist die Sprache, die Claudia versteht!"
+de	in einer 135qm Wohnung in einem 41qm Wohnzimmer	Carolin: "Wow, hier ist es ja geräumig!" - Ingo lapidar: "Geht so ..."
+de	Steffen U. (während er L4-Studenten erklärt, wie die Wolken im Spiel funktionieren)	Das ist so, damit man nachts auch richtig sehen kann, wie die Sonne hinter den Wolken ist.
+de	Nico	Ich finde nicht, dass es einen Weg geben sollte, den der Leveldesigner plant, und der als ideal gelten muß.
+de	Carsten spricht mit Nico an Thomas' Telefon	Thomas: "Ich möchte nicht mit Nico reden." - Carsten "Keine Sorge, er möchte auch nicht mit dir reden." - Thomas: "Der hat immer so schlechte Laune." - Carsten: "Er sagt, du hättest immer schlechte Laune."
+de	Ina	Marco, willst Du die Schwanzanimation sofort haben?
+de	Paule über Daves Viallini	Die schmecken nach Schrank.
+de	Frank	Die Map-Pings funktionieren jetzt, außer dass sie in der Minimap nicht angezeigt werden.
+de	Marco R.	Ich bin ein Mann, ich kann entweder schreiben oder ... gar nichts tun
+de	Florian zu den Leveldesignern nach einem kleinen Stromausfall in der Leveldesign-Ecke	Typisch, die Leveldesigner machen mal wieder Pause!
+de	Good Vibrations im Madonna...	Marco zu Reinhard: "Du bist irgendwie so negativ..." Reinhard: "Leck mich!"
+de	Julian D. zum Thema kreativ gemodellter Tiere im Spiel	Es gibt ein Wildschwein, aber es gibt nicht wirklich ein Wildschwein!
+de	Julian D. als Antwort auf eine Korrektur eines falsch ausgesprochenen Tiernamens	Ich denke mir das genauso aus, wir ihr euch Tiere ausdenkt, ihr doofen Tierausdenker!
+de	Julian D. zu einer ausweichenden Antwort von Thomas L.	Da hätte ich ja gleich den Hausmeister fragen können!
+de	Provisorischer Namensvorschlag für ein Infofenstericon	Ranged Piercing Poison Area Attack
+de	ein TV-Team möchte zur AI-Programmierung	Als nächstes gehen wir mal zu den Intelligenzen ...
+de	Carsten O´s Welt	Da stellt sich die Frage ob gegen die Vogelgrippe Hühnersuppe Hilft?
+de	David F.	Nachdem bei Jans Monitor Flammen zu sehen sind: "Boah, kann ich den Monitor bekommen?"
+de	Erste Reaktion darauf, dass Jans Monitor brennt	Hol mal jemand einen Fotoapperat!
+de	Ina zur Beschreibung der situation in der heiligen Stadt die von den Piraten tyranisiert wird 	Da ist Bagdad!
+de	Julian D.	Wolfenstein ohne Hitler ist wie Cappucino ohne Sahne!
+de	Wettergrammatik	Danijel: "Es schneit." - Steffen P. "Ist schon geschnitten, fällt nur noch runter ..."
+de	Dävid	Benni, zeig doch mal deinen Pullermann!
+de	Florian M.	Also bei mir funktioniert das...
+de	Sarahs Arbeitsweisheiten	Es ist erst erledigt wenns gemacht ist ...
+de	Steffen P.	100 Stein sind ne Menge Holz
+de	Ina	Oh mein Gott, mein Gehirn ist eingeschmolzen nach 8 Stunden AC/DC
+de	Benjamin S. in mail über LipSyncDaten	LSD need!
+de	Steffen P. zu dem Thema, in welcher P4-Version er arbeitet	Virtuell sitze ich da drüben. *zeigt zu den Programmierern*
+de	Unbekannter Programmierer zu unbekannten LevelDesigner	schande über dein haupt, unwürdiger->lead->lowtec heisst die reihenfolge, nicht unwürdiger->lowtec...
+de	Marian (zu Marco)	Ich kann den Schwanz nicht anfassen....äh......vergiss es
+de	Marco R.	Ingo: "Marco, wieso hast Du eigentlich Sarahs Pulli an?" Marco: "Weil sie meinen BH hat."
+de	Piet	Da muss ich mich ganz schön anstrengen, um im Sommer meine Bikinifrisur wiederzubekommen!
+de	Frank	Nu bleib doch mal ganz unruhig!
+de	Paul auf dem Weg zum Mittagessen	Kann mal jemand dem Kind die Augen zuhalten, damit wir bei Rot über die Ampel gehen können?
+de	erste Version der Übersetzung von Newstickermeldungen	Halte dich fest, Ich werde dir eine Truppe zur Unterstützung senden %1 Einheiten sofort!
+de	Julian D.	*beim Bezahlen des Mittagsessens zu einer Bedienung, die fragt, ob er zu den SEK-lern gehört, die an einem anderen Tisch gesessen haben*: Wir sitzen zwar in derselben Firma, aber ich mag die nicht!
+de	Steffen P.	Wenn ich mich im Forum aulassen will gegen irgendwelche Typen, dann schreibe ich den Text, aber schicke ihn nicht ab. Dann geht es mir gleich besser!
+de	Ingo versucht bei den neuen Paraworld-T-Shirts die passende Größe zu finden	"M" wie "mickrig"!
+de	Andre zu Carsten	Einchecken ist wieder ok? Auch wenns nicht in Ordnung ist?
+de	Dävid beim Betrachten des Regens	...von wo kommt denn das überhaupt? ... Steffen U.: von oben
+de	Dem SEK bekannter Betatester	Es könnte auch Mutanten geben, in dieser Zeit war sowas ja üblich, aber es ist ja Paraworld also nicht wirklich die erde.
+de	der tägliche Wahnsinn beim SEK	Benjamin: "Oh Gott!" - Julian D.: "Ja, bitte?"
+de	Ingo	Es ist nicht alles Schokolade was stinkt.
+de	Marco	Ingo! Meine Füße schwitzen!
+de	Ina	Nein, ich kann das nicht. Das kann ich nur mit Christophs Gerät.

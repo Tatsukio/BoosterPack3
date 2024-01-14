@@ -1,0 +1,122 @@
+class CAiNPCMgr inherit CAiGoal
+
+	var CAiObjWrapList	m_xNPCs;
+	var CAiObjWrap		m_xFortuneCookie;
+
+	///constructor
+	export constructor()
+	endconstructor;
+	
+	
+	///destructor
+	export destructor()
+	enddestructor;
+	
+	
+	///Init
+	export proc bool Init(^CAiBrain p_pxBrain)
+		super.Init(p_pxBrain);
+		SetThinkWait(5);
+		return true;
+	endproc;
+	
+	
+	///Think
+	export proc void Think()
+		UpdatePlayerNPCs();
+	endproc;
+
+
+	///GetAllNPCs
+	export proc CAiObjWrapList GetAllNPCs()
+		return GetAllNPCs(false);
+	endproc;
+	
+	
+	///GetAllNPCs
+	export proc CAiObjWrapList GetAllNPCs(bool p_bForceUpdate)
+		if(p_bForceUpdate == true)then
+			UpdatePlayerNPCs();
+		endif;
+		return m_xNPCs;
+	endproc;
+
+
+	///AllNPC
+	export proc CAiObjWrap GetNPC(string p_sClass)
+		var CAiObjWrap xNPC;
+		var int i, iC = m_xNPCs.NumEntries();		
+		for(i=0)cond(i<iC)iter(i++)do
+			var CAiObjWrap xObj = m_xNPCs[i];
+			
+			if(!xObj.IsValid())then return xNPC; endif;
+			
+			if(xObj.GetClassName()==p_sClass)then
+				return xObj;
+			endif;
+		endfor;
+		
+		return xNPC;
+	endproc;
+	
+	
+	///HasNPC-class
+	export proc bool HasNPC(string p_sClass)
+		return HasNPC(p_sClass, -1);
+	endproc;
+
+	
+	///HasNPC-class-level
+	export proc bool HasNPC(string p_sClass, int p_iLevel)
+		var int i, iC = m_xNPCs.NumEntries();
+		for(i=0)cond(i<iC)iter(i++)do		
+			var CAiObjWrap xObj = m_xNPCs[i];
+			if(!xObj.IsValid())then return false; endif;	
+			if(xObj.GetClassName()==p_sClass)then
+				if(p_iLevel==-1)then
+					return true;
+				elseif(p_iLevel==xObj.GetAttribValueInt("level"))then
+					return true;
+				endif;
+			endif;
+		endfor;		
+		return false;
+	endproc;
+	
+	
+	///UpdatePlayerNPCs
+	export proc void UpdatePlayerNPCs()
+		m_xNPCs.Clear();
+		
+		var ^CAiBrain pxBrain = GetAiBrain();		
+		if(pxBrain == null)then return; endif;
+		
+		var string sNPCs = pxBrain^.GetPlayerAttrib("NPCList");
+		var array string asHandles;
+		sNPCs.Split(asHandles,";",true);
+		
+		var int i, iC = asHandles.NumEntries();
+		if(iC<=0)then return; endif;
+		
+		for(i=0)cond(i<iC)iter(i++)do
+			var CAiObjWrap xObj;
+			xObj.FromInt(asHandles[i].ToInt());	
+			if(xObj.IsValid())then 	m_xNPCs.Include(xObj); endif;
+		endfor;
+		
+		var int j, iD=m_xNPCs.NumEntries();
+		if(iD<=0)then return; endif;
+		
+		for(j=0)cond(j<iD)iter(j++)do		
+			if(!m_xNPCs[j].IsValid())then continue; endif;
+			
+			m_xFortuneCookie = m_xNPCs[j];
+			var ^CAiModuleFightDefault pxModule = cast<CAiModuleFightDefault>(pxBrain^.GetFightModule());		
+			if(pxModule!=null)then
+				pxModule^.AddToKindergarten(m_xFortuneCookie, true);
+			endif;
+		endfor;
+	
+	endproc;
+
+endclass;

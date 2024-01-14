@@ -1,0 +1,1976 @@
+///CAiGoalBuildVillage
+class CAiGoalBuildVillage inherit CAiGoal
+
+	var array CRequestInfo			m_axBuildList;
+	var ^CAiTechTree 				m_pxTT;
+	var ^CAiBrain					m_pxBrain;
+	var ^CAiSensor					m_pxSensor;
+	var ^CAiModuleControlDefault	m_pxCM;
+	var ^CAiModuleDefenseDefault	m_pxDM;
+	var ^CAiNPCMgr 					m_pxNPCMgr;
+	
+	export const int 				m_kiBuildNothing = 0;
+	export const int 				m_kiBuildBaseVillage = 1;
+	export const int 				m_kiBuildDoDoVillage = 2;
+	export const int 				m_kiBuildGiraffenVillage = 3;
+	export const int 				m_kiBuildSchneckenVillage = 4;
+	export const int 				m_kiBuildEconomyVillageLevel= 5;
+	export const int 				m_kiBuildArmyVillageLevel= 6;
+	export const int 				m_kiBuildWallVillageLevel= 7;
+	export const int 				m_kiBuildHarbourVillageLevel= 8;
+
+	export var int 					m_iSucceededRequests;
+	var int 						m_iBuildLevel;
+	var int 						m_iFailedRequests;
+	var int 						m_iFailedHarbourRequests;
+	var int							m_iRefreshTimer;
+	var int							m_iCurRequested;
+	var int 						m_iType;
+	var int							m_iPlayerID;
+	var int							m_iNumPlayers;
+	var	int							m_iAge;
+	var int							m_iHeroes;
+	var int							m_iSpecialBuildList;
+	var int							m_iCurrentAge;
+	var int							m_iDifficulty;
+	var int 						m_iNumShips;
+	
+	var bool						m_bTowersRequested;
+	var bool						m_bWallPlacer;
+	var bool						m_bBrainwash;
+	var bool						m_bHarbour;
+	var bool						m_bMapWarpgate;
+	var bool						m_bNewStart;
+	var bool						m_bHoldBuilding;
+	var bool						m_bAssistEnabled;
+	var bool						m_bMultimap;
+	var bool						m_bWatermap;
+
+	var string						m_sVillageType;
+	var string 						m_sTribe;
+	var string						m_sPlayerID;	
+	var string						m_sDifficulty;
+	
+
+	///Class CREquestInfo
+	class CRequestInfo
+		export var CAiConstructionInfoPtr	m_pxCI;
+		export var bool	m_bRequested;
+	endclass;
+
+
+	///constructor
+	export constructor()
+	endconstructor;
+
+
+	///destructor
+	export destructor()
+	enddestructor;
+
+
+	///init
+	export proc bool Init(^CAiBrain p_pxBrain)
+		super.Init(p_pxBrain);
+		if(p_pxBrain==null)then return false; endif;
+
+		m_pxBrain=p_pxBrain;
+		if(m_pxBrain==null)then return false; endif;
+
+		m_pxSensor=^(p_pxBrain^.GetSensor());
+		if(m_pxSensor==null)then return false; endif;
+
+		m_pxTT = ^(m_pxSensor^.GetTechTree());
+		m_sTribe = m_pxTT^.GetTribe();
+
+		m_iBuildLevel= -1;
+		m_sVillageType="D1";
+		m_iRefreshTimer=0;
+		m_iCurRequested=0;
+		m_bWallPlacer=false;
+		m_bBrainwash=false;
+		m_iSpecialBuildList=0;
+		m_bTowersRequested=false;
+		m_bNewStart=false;
+		m_iAge=0;
+		m_iCurrentAge=0;
+		m_bHoldBuilding=false;
+		m_iNumShips=0;
+
+		SetBuildLevel(m_kiBuildBaseVillage);
+		m_iType = 1+Random.GetInt()%7;
+
+		m_iPlayerID=m_pxBrain^.GetPlayerId();
+		m_sPlayerID=m_iPlayerID.ToString();
+		m_iNumPlayers=m_pxSensor^.GetNumPlayers();
+		m_bMultimap=m_pxSensor^.GetMultimap();
+		m_bWatermap=m_pxSensor^.GetWatermap();
+		
+		m_pxCM=cast<CAiModuleControlDefault>(m_pxBrain^.GetControlModule());
+		m_pxDM=cast<CAiModuleDefenseDefault>(m_pxBrain^.GetDefenseModule());
+		
+		SetThinkWait(m_pxCM^.GetDifficultyInt());
+		m_pxNPCMgr = ^(m_pxCM^.GetNPCMgr());
+		
+		m_sDifficulty=m_pxCM^.GetDifficulty();
+		m_iDifficulty=m_pxCM^.GetOldDifficultyInt();
+		m_bHarbour=m_pxSensor^.GetHarbour();
+		m_bMapWarpgate=m_pxSensor^.GetMapWarpgate();
+		m_bAssistEnabled=m_pxCM^.GetAIAssistEnabled();
+		
+		return true;
+	endproc;
+
+
+	///shut
+	export proc void Shut()
+	endproc;
+
+
+	///SetBuildLevel
+	export proc void SetBuildLevel(int p_iBuildLevel)
+		var int iLevel=Math.Clamp(p_iBuildLevel,m_kiBuildNothing,m_kiBuildSchneckenVillage);
+		m_iBuildLevel=iLevel;
+		RemoveAllRequests();
+		ClearBuildList();
+		m_iCurRequested = 0;
+		UpdateBuildList();
+		RequestNext(5);
+	endproc;
+
+
+	///SetVillageType
+	export proc void SetVillageType(string p_sType)
+		RemoveAllRequests();
+		ClearBuildList();
+		m_iCurRequested = 0;
+
+		if(p_sType == "Deactivate")then
+			Deactivate();
+			return;
+		elseif(p_sType.GetLength()>=2)then
+			m_sVillageType = p_sType.Left(2);
+		elseif(p_sType.GetLength()==1)then
+			m_sVillageType = p_sType+"1";
+		else
+			m_sVillageType = "D1";
+		endif;
+
+		UpdateBuildList();
+		RequestNext(5);
+	endproc;
+
+
+	///GetVillageType
+	export proc string GetVillageType()
+		return m_sVillageType;
+	endproc;
+
+
+	///GetBuildLevel
+	export proc int GetBuildLevel()
+		return m_iBuildLevel;
+	endproc;
+
+
+	///AddRequest
+	proc void AddRequest(CAiConstructionInfoPtr p_pxCI)
+		if(p_pxCI==null)then return; endif;
+		var CRequestInfo xRI;
+		xRI.m_pxCI = p_pxCI;
+		xRI.m_bRequested = false;
+		m_axBuildList.AddEntry(xRI);
+	endproc;
+
+
+	///AddRequest-> add a request to the BuildList with objflag
+	proc bool AddRequest(string p_sName, string p_sObjFlag, int p_iNumber, bool p_bBuildIfNotExist, vec3 p_vBuildPos)
+		var CAiConstructionInfoPtr pxCI;
+		if(p_bBuildIfNotExist)then
+			if(FindInRequests(p_sName, p_sObjFlag, true))then
+				return false;
+			endif;
+		endif;
+
+		pxCI = CreateRequest(p_sName, p_sObjFlag, p_iNumber, p_bBuildIfNotExist, p_vBuildPos);
+		if(pxCI!=null)then
+			AddRequest(pxCI);
+			return true;
+		endif;
+		
+		return false;
+	endproc;
+
+
+	///AddRequest
+	proc bool AddRequestOnTop(string p_sName, string p_sObjFlag, int p_iNumber, bool p_bBuildIfNotExist, vec3 p_vBuildPos)
+		var CAiConstructionInfoPtr pxCI;
+
+		if(p_bBuildIfNotExist)then
+			if(FindInRequests(p_sName, p_sObjFlag, true))then return false; endif;
+		endif;
+
+		pxCI=CreateRequest(p_sName, p_sObjFlag, p_iNumber, p_bBuildIfNotExist, p_vBuildPos);
+		if(pxCI!=null)then
+			var int iC = m_axBuildList.NumEntries();
+			var int i = iC-1;
+			if(iC==0)then
+				AddRequest(pxCI);
+			else
+				m_axBuildList.AddEntry(m_axBuildList[i]);
+				while(i>0)do
+					m_axBuildList[i] = m_axBuildList[i-1];
+					i--;
+				endwhile;
+				m_axBuildList[0].m_pxCI = pxCI;
+				m_axBuildList[0].m_bRequested = false;
+			endif;	
+			return true;
+		endif;
+		return false;
+	endproc;
+
+
+	///AddRequest
+	export proc bool AddRequest(string p_sName, int p_iNumber, bool p_bBuildIfNotExist)
+		return AddRequest(p_sName, "", p_iNumber, p_bBuildIfNotExist, {0.0, 0.0, 0.0});
+	endproc;
+
+
+	///AddRequest
+	proc bool AddRequest(string p_sName, int p_iNumber, bool p_bBuildIfNotExist, vec3 p_vBuildPos)
+		return AddRequest(p_sName, "", p_iNumber, p_bBuildIfNotExist, p_vBuildPos);
+	endproc;
+
+
+	///AddRequestOnTop
+	proc bool AddRequestOnTop(string p_sName, int p_iNumber, bool p_bBuildIfNotExist)
+		return AddRequestOnTop(p_sName, "", p_iNumber, p_bBuildIfNotExist, {0.0, 0.0, 0.0});
+	endproc;
+
+
+	///AddRequestOnTop
+	proc bool AddRequestOnTop(string p_sName, int p_iNumber, bool p_bBuildIfNotExist, vec3 p_vBuildPos)
+		return AddRequestOnTop(p_sName, "", p_iNumber, p_bBuildIfNotExist, p_vBuildPos);
+	endproc;
+
+
+	///CreateRequest
+	proc CAiConstructionInfoPtr CreateRequest(string p_sName, string p_sObjFlag, int p_iNumber, bool p_bBuildIfNotExist, vec3 p_vBuildPos)
+		var CAiConstructionInfoPtr pxCI;
+		var CAiNeedPtr pxNd;
+		var ^CAiNodeInstance pxNI;
+
+		pxNI = m_pxTT^.GetNodeInstanceFromPartialName(p_sName, p_sObjFlag);
+		if(pxNI!=null)then
+			var ^CAiModuleEconomyDefault pxEMod=cast<CAiModuleEconomyDefault>(m_pxBrain^.GetEconomyModule());
+			if(pxEMod^.IsNodeInstanceQed(pxNI))then return pxCI; endif;
+			
+			if(p_bBuildIfNotExist)then
+				p_iNumber-=pxNI^.GetInstanceCount(0);
+				if(p_iNumber<=0)then return pxCI; endif;
+				if(pxEMod^.IsNodeInstanceQed(pxNI))then return pxCI; endif;
+			endif;
+			
+			pxNd = CAiNeed.Create(true,p_iNumber);
+			pxNd.GetNeed()^.AddEntry(pxNI);
+			pxCI = CAiConstructionInfo.Create();
+			SetRequesterFor(pxCI.GetConstructionInfo());
+			pxCI.GetConstructionInfo()^.SetNeed(pxNd);
+			pxCI.GetConstructionInfo()^.SetPos(p_vBuildPos);
+			pxCI.GetConstructionInfo()^.SetUnique(p_bBuildIfNotExist);
+		endif;
+		return pxCI;
+	endproc;
+
+
+	///ClearBuildList
+	proc void ClearBuildList()
+		var int i = 0;
+		var int iC = m_axBuildList.NumEntries();
+		m_axBuildList = 0;
+	endproc;
+
+
+	///UpdateSpecialBuildList
+	export proc void UpdateSpecialBuildList()
+		if(m_pxBrain==null)then return; endif;
+		if(m_pxCM==null)then return; endif;
+		if(!m_pxCM^.GetKindergardenEnabled())then return; endif;		
+		if(m_sDifficulty=="Easy")then return; endif;
+		if(m_iCurrentAge<3)then return; endif;
+		if(m_pxNPCMgr==null)then return; endif;
+		
+		m_iHeroes=1+Random.GetInt()%3;
+						
+		if(m_iHeroes==1)then
+			if((!m_pxNPCMgr^.HasNPC("Cole_s0"))&&(!FindInRequests("CHTR/Cole_s0")))then
+				AddRequest("CHTR/Cole_s0",1,true);
+			endif;
+			if((!m_pxNPCMgr^.HasNPC("babbage_s0"))&&(!FindInRequests("CHTR/babbage_s0")))then
+				AddRequest("CHTR/babbage_s0",1,true);
+			endif;
+			if((!m_pxNPCMgr^.HasNPC("hermit_s0"))&&(!FindInRequests("CHTR/hermit_s0")))then
+				AddRequest("CHTR/hermit_s0",1,true);
+			endif;
+		
+		elseif(m_iHeroes==2)then
+			if((!m_pxNPCMgr^.HasNPC("special_eusmilus"))&&(!FindInRequests("CHTR/special_eusmilus")))then
+				AddRequest("CHTR/special_eusmilus",1,true);
+			endif;
+			if((!m_pxNPCMgr^.HasNPC("lovelace_s0"))&&(!FindInRequests("CHTR/lovelace_s0")))then
+				AddRequest("CHTR/lovelace_s0",1,true);
+			endif;
+			if((!m_pxNPCMgr^.HasNPC("tesla_s0"))&&(!FindInRequests("CHTR/tesla_s0")))then
+				AddRequest("CHTR/tesla_s0",1,true);
+			endif;
+			if((!m_pxNPCMgr^.HasNPC("Stina_s0"))&&(!FindInRequests("CHTR/special_eusmilus")))then
+				AddRequest("CHTR/special_eusmilus",1,true);
+			endif;
+		
+		elseif(m_iHeroes==3)then
+			if((!m_pxNPCMgr^.HasNPC("Bela_s0"))&&(!FindInRequests("CHTR/Bela_s0")))then
+				AddRequest("CHTR/Bela_s0",1,true);
+			endif;
+			if((!m_pxNPCMgr^.HasNPC("mayor_s0"))&&(!FindInRequests("CHTR/mayor_s0")))then
+				AddRequest("CHTR/mayor_s0",1,true);
+			endif;
+			if((!m_pxNPCMgr^.HasNPC("darwin_s0"))&&(!FindInRequests("CHTR/darwin_s0")))then
+				AddRequest("CHTR/darwin_s0",1,true);
+			endif;
+		endif;
+	endproc;
+
+
+	///FindInRequests
+	proc bool FindInRequests(string p_sRequest)
+		return FindInRequests(p_sRequest, "", false);
+	endproc;
+
+
+	///FindInRequests
+	proc bool FindInRequests(string p_sRequest, string p_sObjFlag, bool p_bCheckCurRequestedOnly)
+		var bool bReturn = false;
+		var int i, iC = m_axBuildList.NumEntries();
+		for(i=0)cond(i<iC)iter(i++)do
+
+			var CAiConstructionInfoPtr pxCI = m_axBuildList[i].m_pxCI;
+			if(pxCI==null)then continue; endif;
+
+			if(p_bCheckCurRequestedOnly)then
+				if(!m_axBuildList[i].m_bRequested)then continue; endif;
+			endif;
+
+			var CAiNeedPtr pxNeed = pxCI.GetConstructionInfo()^.GetNeed();
+			if(pxNeed==null)then continue; endif;
+			if(pxNeed.GetNeed()^.GetNeededInstanceCount()<=0)then continue; endif;
+
+			var string sTT = pxNeed.GetNeed()^.GetAt(0)^.GetTTPath();
+			if(sTT.Find(p_sRequest)!=-1)then
+				if(!p_sObjFlag.IsEmpty())then
+					var ^CAiAttribs pxAttribs = ^(pxNeed.GetNeed()^.GetAt(0)^.GetFlags());
+					if(pxAttribs^.GetValue("ObjFlag")!=p_sObjFlag)then continue; endif;
+				endif;		
+				
+				bReturn = true; 
+			endif;
+		endfor;	
+		
+		return bReturn;
+	endproc;
+
+
+	///AddWarpGateTowers
+	proc void AddWarpGateTowers(string p_sWarpGateClass)
+		if(m_pxDM==null)then return; endif;
+		if(m_bTowersRequested)then return; endif;
+		
+		var CAiObjQuery 	xOQ;
+		var CAiObjWrapList	xList;
+		
+		xOQ.SetOwner(m_iPlayerID);
+		xOQ.SetClass(p_sWarpGateClass);
+		
+		xList.Clear();
+		xOQ.Execute(xList);
+		
+		if(xList.NumEntries()<=0)then return; endif;
+		if(!xList[0].IsValid())then return; endif;
+		var vec3 vPos=xList[0].GetPos();
+		
+		if(m_sTribe == "Hu")then
+			AddRequest("BLDG/hu_large_tower",5,false,vPos);
+			AddRequest("BLDG/hu_large_tower",5,false,vPos);
+		elseif(m_sTribe == "Aje")then		
+			AddRequest("BLDG/aje_medium_tower",5,false,vPos);
+			AddRequest("BLDG/aje_medium_tower",5,false,vPos);
+		elseif(m_sTribe == "Ninigi")then
+			AddRequest("BLDG/ninigi_small_tower",5,false,vPos);
+			AddRequest("BLDG/ninigi_small_tower",5,false,vPos);
+		endif;
+	
+		m_bTowersRequested=true;	
+	endproc;
+
+
+	///UpdateBuildList
+	export proc void UpdateBuildList()
+		if(m_pxBrain==null)then  return; endif;
+		if(m_pxSensor==null)then return; endif;
+		
+		var string sBehavior 	= m_sVillageType.Left(1);
+		var int iType 			= m_sVillageType.Right(1).ToInt();
+		var int iAge			=CAiUtilityMgr.Get()^.GetCurrentAge(m_pxBrain);
+		
+		if(m_axBuildList.NumEntries()>0)then ClearBuildList(); endif;
+		
+		if(m_bMultimap)then
+			CheckForEnemyShips();
+			
+			if(CheckForUnitLimit())then return; endif;
+		
+			if(CheckNumFightingUnits())then 
+				if(iAge>=3)then return; endif;
+			endif;
+		
+			if(!m_bAssistEnabled)then	
+				if(m_iSpecialBuildList>=5)then
+					UpdateSpecialBuildList();
+					m_iSpecialBuildList=0;
+				endif;
+				m_iSpecialBuildList++;
+			endif;	
+		endif;
+		
+		if(m_sTribe=="Hu")then			
+			if(m_bHarbour)then	
+				AddRequest("BLDG/hu_harbour",1,true);
+				AddRequest("SHIP/hu_fishing_boat",1,true);
+			endif;		
+			
+			AddRequest("BLDG/hu_stone_cottage",6,true);
+			AddRequest("BLDG/hu_lumberjack_cottage",1,true);
+			AddRequest("BLDG/hu_stone_quarry",1,true);
+			AddRequest("age_2",1,true);
+
+			if(sBehavior=="D")then
+				//age 2
+				if(iAge>=2)then
+					AddRequest("BLDG/hu_arena",2,true);
+					AddRequest("BLDG/hu_small_animal_farm",2,true);
+					AddRequest("BLDG/hu_corn_field",3,true);
+					if(m_bWatermap&&!m_bAssistEnabled)then	
+						AddRequest("SHIP/hu_dragon_boat",2,true);
+					endif;
+					
+					AddRequest("resource_inventory_upgrade",1,true);
+					AddRequest("wood_inventory_upgrade_1",1,true);
+					AddRequest("food_inventory_upgrade_1",1,true);
+					AddRequest("age_3",1,true);
+				endif;
+
+				//age 3
+				if(iAge>=3)then
+					AddRequest("BLDG/hu_marketplace",1,true);
+					AddRequest("BLDG/hu_medium_animal_farm",1,true);
+					AddRequest("BLDG/hu_machine_maker",1,true);
+					AddRequest("BLDG/hu_temple",1,true);
+					AddRequest("BLDG/hu_large_animal_farm",1,true);
+					AddRequest("BLDG/hu_tavern",1,true);
+					
+					AddRequest("resource_inventory_upgrade_2",1,true);
+					AddRequest("wood_inventory_upgrade_2",1,true);
+					AddRequest("food_inventory_upgrade_2",1,true);
+					AddRequest("hu_capacity_1",1,true);
+					AddRequest("age_4",1,true);
+				endif;			
+				
+				//age 4
+				if(iAge>=4)then
+					AddRequest("resource_inventory_upgrade_3",1,true);
+					AddRequest("wood_inventory_upgrade_3",1,true);
+					AddRequest("food_inventory_upgrade_3",1,true);
+					AddRequest("BLDG/hu_bunker",3,true);
+					AddRequest("hu_capacity_2",1,true);
+					AddRequest("age_5",1,true);	
+				endif;								
+								
+				//age 5
+				if(iAge>=5)then
+					AddRequest("resource_inventory_upgrade_4",1,true);
+					AddRequest("wood_inventory_upgrade_4",1,true);
+					AddRequest("food_inventory_upgrade_4",1,true);
+					AddRequest("hu_capacity_3",1,true);					
+					
+					if(m_sDifficulty=="Hard")then						
+						AddRequest("BLDG/hu_kennel",4,true);
+						AddRequest("BLDG/hu_magic_cauldron",4,true);
+						AddRequest("hu_falling_stones",1,true);
+						AddRequest("ANML/hu_eusmilus",2,true);	
+					endif;					
+				endif;
+					
+			elseif(sBehavior=="G")then 					
+				//age 2
+				if(iAge>=2)then	
+					AddRequest("BLDG/hu_arena",2,true);
+					AddRequest("BLDG/hu_small_animal_farm",2,true);
+					AddRequest("BLDG/hu_bunker",3,true);
+					AddRequest("BLDG/hu_corn_field",3,true);
+					AddRequest("BLDG/hu_medium_animal_farm",1,true);
+					if(m_bWatermap&&!m_bAssistEnabled)then
+						AddRequest("SHIP/hu_dragon_boat",2,true);
+					endif;					
+					
+					AddRequest("resource_inventory_upgrade",1,true);
+					AddRequest("wood_inventory_upgrade_1",1,true);
+					AddRequest("food_inventory_upgrade_1",1,true);
+					AddRequest("age_3",1,true);
+				endif;
+									
+				//age 3
+				if(iAge>=3)then
+					AddRequest("BLDG/hu_marketplace",1,true);	
+					AddRequest("BLDG/hu_temple",1,true);
+					AddRequest("BLDG/hu_machine_maker",1,true);
+					AddRequest("BLDG/hu_large_animal_farm",1,true);	
+					AddRequest("BLDG/hu_tavern",1,true);
+					
+					AddRequest("resource_inventory_upgrade_2",1,true);
+					AddRequest("wood_inventory_upgrade_2",1,true);
+					AddRequest("food_inventory_upgrade_2",1,true);
+					AddRequest("hu_capacity_1",1,true);
+					AddRequest("age_4",1,true);
+				endif;
+				
+				//age 4
+				if(iAge>=4)then
+					AddRequest("resource_inventory_upgrade_3",1,true);
+					AddRequest("wood_inventory_upgrade_3",1,true);
+					AddRequest("food_inventory_upgrade_3",1,true);
+					AddRequest("hu_capacity_2",1,true);
+					AddRequest("age_5",1,true);
+				endif;
+				
+				//age 5
+				if(iAge>=5)then			
+					AddRequest("resource_inventory_upgrade_4",1,true);
+					AddRequest("wood_inventory_upgrade_4",1,true);
+					AddRequest("food_inventory_upgrade_4",1,true);
+					AddRequest("hu_capacity_3",1,true);					
+					
+					if(m_sDifficulty=="Hard")then						
+						AddRequest("BLDG/hu_kennel",4,true);
+						AddRequest("BLDG/hu_magic_cauldron",4,true);
+						AddRequest("hu_falling_stones",1,true);
+						AddRequest("ANML/hu_eusmilus",2,true);	
+					endif;			
+				endif;
+														
+			elseif(sBehavior=="S")then 					
+				//age 2
+				if(iAge>=2)then
+					AddRequest("BLDG/hu_bunker",3,true);
+					AddRequest("BLDG/hu_arena",1,true);
+					AddRequest("BLDG/hu_small_animal_farm",1,true);					
+					AddRequest("BLDG/hu_corn_field",3,true);
+					AddRequest("BLDG/hu_medium_animal_farm",1,true);
+					AddRequest("BLDG/hu_marketplace",1,true);
+					if(m_bWatermap&&!m_bAssistEnabled)then	
+						AddRequest("SHIP/hu_dragon_boat",2,true);
+					endif;					
+					
+					AddRequest("resource_inventory_upgrade",1,true);
+					AddRequest("wood_inventory_upgrade_1",1,true);
+					AddRequest("food_inventory_upgrade_1",1,true);
+					AddRequest("age_3",1,true);
+					
+					if(m_iDifficulty>=7)then
+						AddRequest("BLDG/hu_small_tower",3,true);
+					endif;
+				endif;
+				
+				//age 3
+				if(iAge>=3)then
+					AddRequest("BLDG/hu_temple",1,true);
+					AddRequest("BLDG/hu_machine_maker",1,true);
+					AddRequest("BLDG/hu_large_animal_farm",1,true);	
+					AddRequest("BLDG/hu_tavern",1,true);				
+					
+					AddRequest("resource_inventory_upgrade_2",1,true);
+					AddRequest("wood_inventory_upgrade_2",1,true);
+					AddRequest("food_inventory_upgrade_2",1,true);
+					AddRequest("hu_capacity_1",1,true);
+					AddRequest("age_4",1,true);
+				endif;
+				
+				//age 4
+				if(iAge>=4)then
+					AddRequest("resource_inventory_upgrade_3",1,true);
+					AddRequest("wood_inventory_upgrade_3",1,true);
+					AddRequest("food_inventory_upgrade_3",1,true);
+					AddRequest("hu_capacity_2",1,true);
+					AddRequest("age_5",1,true);
+					if(m_iDifficulty>=7)then
+						AddRequest("BLDG/hu_large_tower",3,true);
+					endif;
+				endif;
+	
+				//age 5
+				if(iAge>=5)then
+					AddRequest("resource_inventory_upgrade_4",1,true);
+					AddRequest("wood_inventory_upgrade_4",1,true);
+					AddRequest("food_inventory_upgrade_4",1,true);
+					AddRequest("hu_capacity_3",1,true);
+					
+					if(m_sDifficulty=="Hard")then						
+						AddRequest("BLDG/hu_kennel",4,true);
+						AddRequest("BLDG/hu_magic_cauldron",4,true);
+						AddRequest("hu_falling_stones",1,true);
+						AddRequest("ANML/hu_eusmilus",2,true);	
+					endif;			
+				endif;
+			endif;
+	
+			if((iAge==5)&&(!FindInRequests("BLDG/hu_warpgate")))then
+				
+				if(!m_pxSensor^.GetWarpGate())then
+					if(m_bMapWarpgate)then	
+						var ^CAiModuleEconomyDefault pxEMod=cast<CAiModuleEconomyDefault>(m_pxBrain^.GetEconomyModule());
+						var ^CAiWallPlacer pxPlacer = ^(GetAiSensor()^.GetWallPlacer());
+						AddRequestOnTop("BLDG/hu_warpgate",1,true);
+						AddWarpGateTowers("hu_warpgate");
+					endif;
+				endif;
+			endif;
+
+		elseif(m_sTribe=="Aje")then
+			//age 1
+			AddRequest("BLDG/aje_tent",6,true);
+			AddRequest("ANML/aje_resource_collector",1,true);
+			AddRequest("BLDG/aje_rodeo",2,true);
+			
+			if(m_bHarbour)then	
+				AddRequest("BLDG/aje_floating_harbour",1,true);
+			endif;
+			
+			AddRequest("age_2",1,true);
+			
+			if(sBehavior=="D")then
+				//age 2
+				if(iAge>=2)then				
+					AddRequest("BLDG/aje_temple",1,true);
+					AddRequest("BLDG/aje_small_farm", "aje_medium_farm", 1, true, {0.0, 0.0, 0.0});
+					AddRequest("BLDG/aje_bazaar",1,true);
+					if(m_bWatermap&&!m_bAssistEnabled)then		
+						AddRequest("SHIP/aje_cronosaurus",2,true);
+						AddRequest("SHIP/aje_transport_turtle",1,true);
+					endif;
+					
+					AddRequest("aje_resource_tool_upgrade_1",1,true);
+					AddRequest("age_3",1,true);
+				endif;													
+
+				//age 3
+				if(iAge>=3)then
+					AddRequest("BLDG/aje_slaughterhouse",1,true);
+					AddRequest("BLDG/aje_tent", "aje_big_tent",6,true, {0.0, 0.0, 0.0});
+					AddRequest("BLDG/aje_small_farm", "aje_huge_farm",1,true, {0.0, 0.0, 0.0});
+					AddRequest("BLDG/aje_weapons_builder",1,true);
+					
+					AddRequest("aje_resource_tool_upgrade_2",1,true);
+					AddRequest("aje_capacity_1",1,true);
+					AddRequest("age_4",1,true);
+				endif;
+								
+				//age4
+				if(iAge>=4)then
+					AddRequest("BLDG/aje_cook_house",1,true);
+					
+					AddRequest("aje_resource_tool_upgrade_3",1,true);
+					AddRequest("aje_capacity_2",1,true);
+					AddRequest("age_5",1,true);
+				endif;
+									
+				//age 5
+				if(iAge>=5)then
+					if(m_bWatermap&&!m_bAssistEnabled)then	
+						AddRequest("ANML/aje_torpedo_turtle",5,true);
+					endif;
+					AddRequest("aje_resource_tool_upgrade_4",1,true);
+					AddRequest("aje_capacity_3",1,true);
+					
+					if(m_sDifficulty=="Hard")then
+						AddRequest("BLDG/aje_scarecrow",4,true);
+						AddRequest("ANML/aje_tracker_dino",4,true);
+						AddRequest("ANML/aje_eusmilus",2,true);
+						AddRequest("BLDG/aje_tesla_tower",2,true);
+					endif;
+				endif;
+							
+			elseif(sBehavior=="G")then				
+				//age 2	
+				if(iAge>=2)then
+					AddRequest("BLDG/aje_temple",1,true);
+					AddRequest("BLDG/aje_small_farm", "aje_medium_farm", 1, true, {0.0, 0.0, 0.0});
+					AddRequest("BLDG/aje_bazaar",1,true);
+					if(m_bWatermap&&!m_bAssistEnabled)then	
+						AddRequest("SHIP/aje_cronosaurus",2,true);
+						AddRequest("SHIP/aje_transport_turtle",1,true);
+					endif;
+	
+					AddRequest("aje_resource_tool_upgrade_1",1,true);
+					AddRequest("age_3",1,true);
+				endif;						
+
+				//age 3
+				if(iAge>=3)then
+					AddRequest("BLDG/aje_slaughterhouse",1,true);
+					AddRequest("BLDG/aje_tent", "aje_big_tent",5,true, {0.0, 0.0, 0.0});
+					AddRequest("BLDG/aje_small_farm", "aje_huge_farm",1,true, {0.0, 0.0, 0.0});
+					AddRequest("BLDG/aje_weapons_builder",1,true);	
+					AddRequest("BLDG/aje_cook_house",1,true);
+					
+					AddRequest("aje_resource_tool_upgrade_2",1,true);
+					AddRequest("aje_capacity_1",1,true);
+					AddRequest("age_4",1,true);	
+				endif;			
+				
+				//age4
+				if(iAge>=4)then				
+					AddRequest("aje_resource_tool_upgrade_3",1,true);
+					AddRequest("aje_capacity_2",1,true);
+					AddRequest("age_5",1,true);
+				endif;				
+
+				//age 5
+				if(iAge>=5)then	
+					if(m_bWatermap&&!m_bAssistEnabled)then	
+						AddRequest("ANML/aje_torpedo_turtle",5,true);
+					endif;
+					
+					AddRequest("aje_resource_tool_upgrade_4",1,true);
+					AddRequest("aje_capacity_3",1,true);
+					
+					if(m_sDifficulty=="Hard")then
+						AddRequest("BLDG/aje_scarecrow",4,true);
+						AddRequest("ANML/aje_tracker_dino",4,true);
+						AddRequest("ANML/aje_eusmilus",2,true);
+						AddRequest("BLDG/aje_tesla_tower",2,true);
+					endif;
+				endif;	
+				
+			elseif(sBehavior=="S")then
+				//age 2
+				if(iAge>=2)then
+					AddRequest("BLDG/aje_temple",1,true);
+					AddRequest("BLDG/aje_small_farm", "aje_medium_farm", 1, true, {0.0, 0.0, 0.0});
+					AddRequest("BLDG/aje_bazaar",1,true);
+					if(m_bWatermap&&!m_bAssistEnabled)then	
+						AddRequest("SHIP/aje_cronosaurus",2,true);
+						AddRequest("SHIP/aje_transport_turtle",1,true);
+					endif;
+					
+					AddRequest("aje_resource_tool_upgrade_1",1,true);
+					AddRequest("age_3",1,true);
+					
+					if(m_iDifficulty>=7)then
+						AddRequest("BLDG/aje_small_tower",3,true);
+					endif;
+				endif;
+									
+				//age 3
+				if(iAge>=3)then
+					AddRequest("BLDG/aje_slaughterhouse",1,true);
+					AddRequest("BLDG/aje_tent", "aje_big_tent",5,true, {0.0, 0.0, 0.0});
+					AddRequest("BLDG/aje_small_farm", "aje_huge_farm",1,true, {0.0, 0.0, 0.0});
+					AddRequest("BLDG/aje_weapons_builder",1,true);
+					AddRequest("BLDG/aje_cook_house",1,true);
+					
+					AddRequest("aje_resource_tool_upgrade_2",1,true);
+					AddRequest("aje_capacity_1",1,true);
+					AddRequest("age_4",1,true);
+				endif;
+
+				//age4
+				if(iAge>=4)then
+					AddRequest("aje_resource_tool_upgrade_3",1,true);
+					AddRequest("aje_capacity_2",1,true);
+					AddRequest("age_5",1,true);	
+					
+					if(m_iDifficulty>=7)then
+						AddRequest("BLDG/aje_medium_tower",3,true);
+					endif;
+				endif;		
+														
+				//age 5
+				if(iAge>=5)then
+					if(m_bWatermap&&!m_bAssistEnabled)then	
+						AddRequest("ANML/aje_torpedo_turtle",5,true);
+					endif;
+					AddRequest("aje_resource_tool_upgrade_4",1,true);
+					AddRequest("aje_capacity_3",1,true);
+					
+					if(m_sDifficulty=="Hard")then
+						AddRequest("BLDG/aje_scarecrow",4,true);
+						AddRequest("ANML/aje_tracker_dino",4,true);
+						AddRequest("ANML/aje_eusmilus",3,true);
+						AddRequest("BLDG/aje_tesla_tower",4,true);
+					endif;
+				endif;		
+			endif;
+
+			if((iAge==5)&&(!FindInRequests("BLDG/aje_warpgate")))then
+				if(!m_pxSensor^.GetWarpGate())then
+					if(m_bMapWarpgate)then	
+						var ^CAiModuleEconomyDefault pxEMod=cast<CAiModuleEconomyDefault>(m_pxBrain^.GetEconomyModule());
+						var ^CAiWallPlacer pxPlacer = ^(GetAiSensor()^.GetWallPlacer());
+						AddRequestOnTop("BLDG/aje_warpgate", 1, true);
+						AddWarpGateTowers("aje_warpgate");
+					endif;
+				endif;
+			endif;
+
+		elseif(m_sTribe=="Ninigi")then	
+			AddRequest("BLDG/ninigi_fireplace",3,true);
+			if(m_bHarbour)then
+				AddRequest("BLDG/ninigi_harbour",1,true);
+				AddRequest("SHIP/ninigi_fishing_boat",2,true);
+			endif;
+			
+			AddRequest("BLDG/ninigi_dojo",1,true);
+			AddRequest("BLDG/ninigi_hunting_lodge",1,true);
+			AddRequest("BLDG/ninigi_stone_quarry",1,true);
+			AddRequest("BLDG/ninigi_lumbermill",1,true);
+			AddRequest("age_2",1,true);
+				
+			if(sBehavior=="D")then
+				//age 2	
+				if(iAge>=2)then
+					AddRequest("BLDG/ninigi_paddy",3,true);
+					AddRequest("BLDG/ninigi_engineer",2,true);					
+					AddRequest("BLDG/ninigi_temple",1,true);
+					AddRequest("BLDG/ninigi_animal_farm",1,true);
+					AddRequest("BLDG/ninigi_warehouse",1,true);
+					if(m_bWatermap&&!m_bAssistEnabled)then	
+						AddRequest("SHIP/ninigi_fire_boat",2,true);
+					endif;
+					
+					AddRequest("ninigi_pannier_food_1",1,true);
+					AddRequest("ninigi_pannier_wood_1",1,true);
+					AddRequest("ninigi_pannier_stone_1",1,true);
+					AddRequest("age_3",1,true);
+				endif;
+
+				//age 3
+				if(iAge>=3)then
+					AddRequest("BLDG/ninigi_weapon_maker",1,true);
+					AddRequest("BLDG/ninigi_teahouse",1,true);
+								
+					AddRequest("ninigi_pannier_food_2",1,true);
+					AddRequest("ninigi_pannier_wood_2",1,true);
+					AddRequest("ninigi_pannier_stone_2",1,true);
+					AddRequest("ninigi_capacity_1",1,true);
+					AddRequest("ninigi_snare_trap",10,true);
+					AddRequest("age_4",1,true);		
+				endif;							
+					
+				//age 4	
+				if(iAge>=4)then	
+					AddRequest("BLDG/ninigi_bamboofarm",3,true);
+					AddRequest("BLDG/ninigi_rocket_ramp",5,true);
+					AddRequest("BLDG/ninigi_resin_field",5,true);
+					
+					AddRequest("ninigi_pannier_food_3",1,true);
+					AddRequest("ninigi_pannier_wood_3",1,true);
+					AddRequest("ninigi_pannier_stone_3",1,true);
+					AddRequest("ninigi_capacity_2",1,true);
+					AddRequest("age_5",1,true);
+				endif;	
+									
+				//age5
+				if(iAge>=5)then
+					AddRequest("BLDG/ninigi_telescope_tower",1,true);
+							
+					AddRequest("ninigi_pannier_food_4",1,true);
+					AddRequest("ninigi_pannier_wood_4",1,true);
+					AddRequest("ninigi_pannier_stone_4",1,true);
+					AddRequest("ninigi_capacity_3",1,true);	
+					
+					if(m_sDifficulty=="Hard")then
+						AddRequest("ANML/ninigi_eusmilus",2,true);
+						AddRequest("BLDG/ninigi_dilophosaurus_nest",5,true);
+						AddRequest("BLDG/ninigi_poison_trap",5,true);
+						AddRequest("BLDG/ninigi_cauldron",5,true);
+					endif;
+				endif;				
+
+			elseif(sBehavior=="G")then
+				//age 2
+				if(iAge>=2)then
+					AddRequest("ninigi_snare_trap",10,true);
+					AddRequest("BLDG/ninigi_paddy",3,true);
+					AddRequest("BLDG/ninigi_engineer",2,true);
+					AddRequest("BLDG/ninigi_temple",1,true);
+					AddRequest("BLDG/ninigi_animal_farm",1,true);
+					AddRequest("BLDG/ninigi_warehouse",1,true);
+					if(m_bWatermap&&!m_bAssistEnabled)then	
+						AddRequest("SHIP/ninigi_fire_boat",2,true);
+					endif;
+				
+					AddRequest("ninigi_pannier_food_1",1,true);
+					AddRequest("ninigi_pannier_wood_1",1,true);
+					AddRequest("ninigi_pannier_stone_1",1,true);
+					AddRequest("age_3",1,true);
+				endif;			
+				
+				//age 3		
+				if(iAge>=3)then		
+					AddRequest("BLDG/ninigi_weapon_maker",1,true);
+					AddRequest("BLDG/ninigi_teahouse",1,true);
+					
+					AddRequest("ninigi_pannier_food_2",1,true);
+					AddRequest("ninigi_pannier_wood_2",1,true);
+					AddRequest("ninigi_pannier_stone_2",1,true);
+					AddRequest("ninigi_capacity_1",1,true);
+					AddRequest("age_4",1,true);
+				endif;
+
+				//age 4
+				if(iAge>=4)then
+					AddRequest("BLDG/ninigi_bamboofarm",3,true);
+					AddRequest("BLDG/ninigi_rocket_ramp",5,true);
+					AddRequest("BLDG/ninigi_resin_field",5,true);
+						
+					AddRequest("ninigi_pannier_food_3",1,true);
+					AddRequest("ninigi_pannier_wood_3",1,true);
+					AddRequest("ninigi_pannier_stone_3",1,true);
+					AddRequest("ninigi_capacity_2",1,true);
+					AddRequest("age_5",1,true);
+				endif;			
+				
+				//age5
+				if(iAge>=5)then	
+					AddRequest("BLDG/ninigi_telescope_tower",1,true);
+									
+					AddRequest("ninigi_pannier_food_4",1,true);
+					AddRequest("ninigi_pannier_wood_4",1,true);
+					AddRequest("ninigi_pannier_stone_4",1,true);
+					AddRequest("ninigi_capacity_3",1,true);	
+					
+					if(m_sDifficulty=="Hard")then
+						AddRequest("ANML/ninigi_eusmilus",3,true);
+						AddRequest("BLDG/ninigi_dilophosaurus_nest",5,true);
+						AddRequest("BLDG/ninigi_poison_trap",5,true);
+						AddRequest("BLDG/ninigi_cauldron",5,true);
+					endif;
+				endif;				
+
+			elseif(sBehavior=="S")then
+				//age 2
+				if(iAge>=2)then
+					AddRequest("ninigi_snare_trap",10,true);
+					AddRequest("BLDG/ninigi_paddy",3,true);
+					AddRequest("BLDG/ninigi_engineer",1,true);
+					AddRequest("BLDG/ninigi_temple",1,true);
+					AddRequest("BLDG/ninigi_animal_farm",1,true);
+					AddRequest("BLDG/ninigi_warehouse",1,true);
+					if(m_bWatermap&&!m_bAssistEnabled)then	
+						AddRequest("SHIP/ninigi_fire_boat",2,true);
+					endif;
+									
+					AddRequest("ninigi_pannier_food_1",1,true);
+					AddRequest("ninigi_pannier_wood_1",1,true);
+					AddRequest("ninigi_pannier_stone_1",1,true);
+					AddRequest("ninigi_hammock_1", 1,true);
+					AddRequest("age_3",1,true);
+					
+					if(m_iDifficulty>=7)then
+						AddRequest("BLDG/ninigi_small_tower",3,true);
+					endif;
+				endif;
+				
+				//age 3		
+				if(iAge>=3)then		
+					AddRequest("BLDG/ninigi_weapon_maker",1,true);
+					AddRequest("BLDG/ninigi_teahouse",1,true);
+	
+					AddRequest("ninigi_pannier_food_2",1,true);
+					AddRequest("ninigi_pannier_wood_2",1,true);
+					AddRequest("ninigi_pannier_stone_2",1,true);
+					AddRequest("ninigi_capacity_1",1,true);
+					AddRequest("age_4",1,true);
+					
+					if(m_iDifficulty>=7)then
+						AddRequest("BLDG/ninigi_small_tower",3,true);
+					endif;
+				endif;					
+			
+				//age 4
+				if(iAge>=4)then
+					AddRequest("BLDG/ninigi_bamboofarm",3,true);
+					AddRequest("BLDG/ninigi_rocket_ramp",5,true);
+					AddRequest("BLDG/ninigi_resin_field",5,true);
+					
+					AddRequest("ninigi_pannier_food_3",1,true);
+					AddRequest("ninigi_pannier_wood_3",1,true);
+					AddRequest("ninigi_pannier_stone_3",1,true);
+					AddRequest("ninigi_capacity_2",1,true);
+					AddRequest("age_5",1,true);
+				endif;
+				
+				//age5
+				if(iAge>=5)then	
+					AddRequest("BLDG/ninigi_telescope_tower",1,true);
+									
+					AddRequest("ninigi_pannier_food_4",1,true);
+					AddRequest("ninigi_pannier_wood_4",1,true);
+					AddRequest("ninigi_pannier_stone_4",1,true);
+					AddRequest("ninigi_capacity_3",1,true);	
+					
+					if(m_sDifficulty=="Hard")then
+						AddRequest("ANML/ninigi_eusmilus",3,true);
+						AddRequest("BLDG/ninigi_dilophosaurus_nest",5,true);
+						AddRequest("BLDG/ninigi_poison_trap",5,true);
+						AddRequest("BLDG/ninigi_cauldron",5,true);
+					endif;
+				endif;
+			endif;
+		
+			if((iAge==5)&&(!FindInRequests("BLDG/ninigi_warpgate")))then
+				if(!m_pxSensor^.GetWarpGate())then
+					if(m_bMapWarpgate)then	
+						var ^CAiModuleEconomyDefault pxEMod=cast<CAiModuleEconomyDefault>(m_pxBrain^.GetEconomyModule());
+						var ^CAiWallPlacer pxPlacer = ^(GetAiSensor()^.GetWallPlacer());
+						AddRequestOnTop("BLDG/ninigi_warpgate", 1, true);
+						AddWarpGateTowers("ninigi_warpgate");
+					endif;
+				endif;
+			endif;
+
+		elseif(m_sTribe=="SEAS")then
+			if(iType>0)then
+				if(sBehavior=="D")then
+					AddRequest("age_2",1,true);
+					if(m_bHarbour)then	
+						AddRequest("BLDG/seas_carrier",1,true);
+						AddRequest("VHCL/seas_hovercraft",1,true);
+						AddRequest("SHIP/seas_submarine",1,true);
+					endif;
+					
+					AddRequest("BLDG/seas_headquarters",2,true);
+					AddRequest("BLDG/seas_steelwork",1,true);
+					AddRequest("BLDG/seas_barracks",1,true);
+				
+					AddRequest("age_3",1,true);
+					if(m_bHarbour)then	
+						AddRequest("VHCL/seas_helicopter",1,true);
+					endif;
+
+					AddRequest("age_4",1,true);
+					AddRequest("BLDG/seas_greenhouse",1,true);
+					AddRequest("BLDG/seas_garage",3,true);
+					AddRequest("age_5",1,true);
+
+				elseif(sBehavior=="G")then
+					AddRequest("age_2",1,true);
+					if(m_bHarbour)then	
+						AddRequest("BLDG/seas_carrier",1,true);
+						AddRequest("VHCL/seas_hovercraft",1,true);
+						AddRequest("SHIP/seas_submarine",1,true);
+					endif;
+					AddRequest("BLDG/seas_headquarters",2,true);
+					AddRequest("BLDG/seas_steelwork",1,true);
+					AddRequest("BLDG/seas_barracks",1,true);
+			
+					AddRequest("age_3",1,true);
+					if(m_bHarbour)then	
+						AddRequest("VHCL/seas_helicopter",1,true);
+					endif;
+
+					AddRequest("age_4",1,true);
+					AddRequest("BLDG/seas_greenhouse",1,true);
+					AddRequest("BLDG/seas_garage",3,true);
+
+					AddRequest("age_5",1,true);
+
+				elseif(sBehavior=="S")then
+					AddRequest("age_2",1,true);
+					if(m_bHarbour)then	
+						AddRequest("BLDG/seas_carrier",1,true);
+						AddRequest("SHIP/seas_submarine",1,true);
+						AddRequest("VHCL/seas_hovercraft",1,true);
+					endif;
+					AddRequest("BLDG/seas_headquarters",2,true);
+					AddRequest("BLDG/seas_steelwork",1,true);
+					AddRequest("BLDG/seas_barracks",1,true);
+					
+
+					AddRequest("age_3",1,true);
+					if(m_bHarbour)then	
+						AddRequest("VHCL/seas_helicopter",1,true);
+					endif;
+					AddRequest("age_4",1,true);
+					AddRequest("BLDG/seas_greenhouse",1,true);
+					AddRequest("BLDG/seas_garage",3,true);
+					AddRequest("age_5",1,true);
+				endif;
+			endif;
+		endif;
+		
+		CheckForFightUpgrades();
+		
+		m_iSucceededRequests=0;
+		m_iFailedRequests=0;
+		m_iFailedHarbourRequests=0;
+	endproc;
+
+
+	///RequestNext
+	proc void RequestNext(int p_iAmount)
+		if(m_pxBrain==null)then  return; endif;
+
+		var ^IAiModuleEconomy pxEMod = m_pxBrain^.GetEconomyModule();
+		if(pxEMod==null)then return; endif;
+				
+		if(m_axBuildList.NumEntries()<1)then
+			UpdateSpecialBuildList();
+			CheckForFightUpgrades();
+			UpdateBuildList();
+		endif;
+
+		var int i, iC = m_axBuildList.NumEntries();
+		var int iMax = 0;
+		p_iAmount -= m_iCurRequested;
+		
+		for(i=0)cond((i<iC))iter(++i)do			
+			if(i>=5)then break; endif;
+			if(m_axBuildList[i].m_bRequested)then continue; endif;
+			
+			if(m_axBuildList[i].m_pxCI==null)then continue; endif;
+
+			var bool bRequest=false;
+			var CAiNeedPtr pxNd=m_axBuildList[i].m_pxCI.GetConstructionInfo()^.GetNeed();
+			var ^CAiNodeInstance pxNI=pxNd.GetNeed()^.GetAt(0);
+			
+			if(pxNI==null)then return; endif;
+			
+			var string sTTPath=pxNI^.GetTTPath();
+			if(m_axBuildList[i].m_pxCI.GetConstructionInfo()^.IsUnique())then
+									
+				if((pxNI^.GetInstanceCount(0)+pxNI^.GetPendingCount())<pxNd.GetNeed()^.GetNeededInstanceCount())then
+					bRequest = true;
+				endif;
+				
+				if(CheckForUnitLimit())then 
+					if((sTTPath.Find("stone_cottage")==(-1))&&(sTTPath.Find("_fireplace")==(-1))&&(sTTPath.Find("_tent")==(-1))
+						&&(sTTPath.Find("headquarters")==(-1))&&(sTTPath.Find("aje_resource_collector")==(-1))&&(sTTPath.Find("/InventObjects")==(-1)))then
+						continue; 
+					endif;
+				endif;
+				
+				if(m_sTribe=="SEAS")then	
+					if(pxNI^.GetTTPath().Find("_carrier")!=(-1))then
+						if(CheckForCarrier()>=2)then 
+							continue;
+						else
+							bRequest=true;
+						endif;
+					endif;
+	
+					if(pxNI^.GetTTPath().Find("_greenhouse")!=(-1))then
+						if(CheckForGreenhouse()>2)then 
+							continue;
+						else
+							bRequest=true;
+						endif;
+					endif;
+				endif;
+			else
+				bRequest = true;
+			endif;
+
+			if(bRequest)then
+				if(!pxEMod^.ExternalRequestConstruction(m_axBuildList[i].m_pxCI))then
+				else	
+					m_axBuildList[i].m_bRequested = true;
+					m_iCurRequested++;
+					p_iAmount--;
+				endif;
+			endif;
+		endfor;
+	endproc;
+
+
+	///Think
+	export proc void Think()
+		CheckForFireplace(m_iPlayerID);	
+		m_iCurrentAge=CAiUtilityMgr.Get()^.GetCurrentAge(m_pxBrain);
+				
+		if(m_iRefreshTimer<5)then
+			m_iRefreshTimer++;
+			return;
+		else
+			m_iRefreshTimer=0;
+		endif
+		
+		if((!m_bNewStart)&&(m_iCurrentAge==5)&&(m_pxBrain!=null))then
+			ClearBuildList();
+			m_bNewStart=true;
+		endif;
+		
+		RequestMoreResourceBuilding();
+		
+		if(!m_bAssistEnabled)then
+			if(m_iDifficulty>=6)then	
+				CheckAgeOfOtherPlayers();	
+			endif;
+		endif;
+		
+		UpdateBuildList();
+		RequestNext(5);
+	endproc;
+
+
+	///RemoveRequestInfo
+	proc void RemoveRequestInfo(^CAiConstructionInfo p_pxCI)
+		if(p_pxCI == null)then return; endif;
+		var int i, iC = m_axBuildList.NumEntries();
+		for(i=0)cond(i<iC)iter(++i)do
+			if(m_axBuildList[i].m_pxCI == p_pxCI)then
+				m_axBuildList.DeleteEntry(i);
+				break;
+			endif;
+		endfor;
+		m_iCurRequested--;
+	endproc;
+
+
+	///EvtRequestSucceeded
+	export proc void EvtRequestSucceeded(^CAiRequestInfo p_pxRequest)
+		var ^CAiConstructionInfo pxCI=cast<CAiConstructionInfo>(p_pxRequest);
+		var string sBehavior=m_sVillageType.Left(1);
+		if(pxCI!=null)then
+			var CAiNeedPtr pxNd=pxCI^.GetNeed();
+			var ^CAiNodeInstance pxNI=pxNd.GetNeed()^.GetAt(0);
+			RemoveRequestInfo(pxCI);
+			if(pxNI^.GetTTPath().Find("_harbour")!= (-1))then
+				m_iFailedHarbourRequests=0;
+			endif;
+			if(m_axBuildList.NumEntries()>0)then
+				RequestNext(5);
+			endif;
+		endif;
+	endproc;
+
+
+	///EvtRequestFailed-> A request has failed - probably a building that couldn't be built
+	export proc void EvtRequestFailed(^CAiRequestInfo p_pxRequest)
+		if(m_pxBrain==null)then return; endif;
+		var ^CAiConstructionInfo pxCI=cast<CAiConstructionInfo>(p_pxRequest);
+		if(pxCI!=null)then
+			var CAiNeedPtr pxNd=pxCI^.GetNeed();
+			var ^CAiNodeInstance pxNI=pxNd.GetNeed()^.GetAt(0);
+			RemoveRequestInfo(pxCI);
+			m_iFailedRequests++;
+			if(pxNI^.GetTTPath().Find("_harbour")!= (-1))then
+				m_iFailedHarbourRequests++;
+			endif;
+			RequestNext(5);
+		endif;
+	endproc;
+	
+
+	///CheckForFireplace
+	proc CAiObjWrap CheckForFireplace(int p_iOwner)
+		var string sFireplace="";
+		if(m_sTribe=="Hu")then
+			sFireplace="hu_fireplace";
+		elseif(m_sTribe=="Ninigi")then
+			sFireplace="ninigi_fireplace";
+		elseif(m_sTribe=="Aje")then
+			sFireplace="aje_resource_collector";
+		elseif(m_sTribe=="SEAS")then
+			sFireplace="seas_headquarters";
+		endif;
+
+		var CAiObjWrapList xList;
+		var CAiObjWrap	xOW;
+		var CAiObjQuery xQuery;
+		xQuery.SetOwner(p_iOwner);
+		xQuery.SetClass(sFireplace);
+		xQuery.Execute(xList);
+
+		if(xList.Validate()<=0)then
+			if(CAiWrap.GetBrain(p_iOwner)!=null)then
+				if(!m_bBrainwash)then	
+					m_bBrainwash=true;
+					ClearBuildList();
+				endif;
+				
+				AddRequestOnTop(sFireplace,1,true);
+				
+				if(m_sTribe=="Aje")then
+					AddRequest("small_animal_farm",1,true);
+				endif;
+			endif;
+			return xOW;
+		else
+			m_bBrainwash=false;
+			return xList[0];
+		endif;
+	endproc;
+	
+	
+	///CheckAgeOfOtherPlayers
+	proc void CheckAgeOfOtherPlayers()
+		if(m_pxBrain==null)then return; endif;
+		if(m_pxSensor==null)then return; endif;	
+		if(!m_pxSensor^.GetMultimap())then return; endif;
+
+		var ^CAiModuleControlDefault pxCM=cast<CAiModuleControlDefault>(m_pxBrain^.GetControlModule());
+		if(pxCM==null)then return; endif;
+		if(m_pxTT==null)then return; endif;
+
+		var string sTribe 	= m_pxTT^.GetTribe();
+		var int iOtherAge	=0;
+		var int iOwnAge		=CAiUtilityMgr.Get()^.GetCurrentAge(m_pxBrain);
+		var int i, iC		=m_iNumPlayers;
+
+		for(i=0)cond(i<iC)iter(i++)do
+			if(i==m_iPlayerID)then continue; endif;
+
+			var ^CAiBrain pxBrain = CAiWrap.GetBrain(i);
+			if(pxBrain==null)then
+				var CAiObjWrap xObj=(CheckForFireplace(i));
+				if(!xObj.IsValid())then continue; endif;
+				iOtherAge=xObj.GetAge();
+			endif;
+
+			if(iOtherAge>iOwnAge)then
+				var CAiObjWrapList xObjList;
+				xObjList.AddEntry(CheckForFireplace(m_iPlayerID));
+
+				if(xObjList.Validate()<=0)then return; endif;
+
+				if(m_iAge!=iOtherAge)then
+					m_iAge=iOtherAge;
+					var bool bExecute=m_pxSensor^.ExecuteGamePlayCommand(xObjList[0].GetHandle(), "Action", -1, {0.0,0.0,0.0},"/Actions/"+sTribe+"/Upgrades/"+xObjList[0].GetClassName()+"/age_"+(iOwnAge+1).ToString()+" /AI_Help");
+				endif;
+				break;
+			endif;
+		endfor;
+	endproc;
+
+
+	///CheckForCarrier
+	proc int CheckForCarrier()
+		var CAiObjWrapList xList;
+		var CAiObjQuery xQuery;
+		xQuery.SetOwner(m_iPlayerID);
+		xQuery.SetClass("seas_carrier");
+		xQuery.Execute(xList);
+		return xList.NumEntries();
+	endproc;
+	
+	
+	///CheckForGreenhouse
+	proc int CheckForGreenhouse()
+		var CAiObjWrapList xList;
+		var CAiObjQuery xQuery;
+		xQuery.SetOwner(m_iPlayerID);
+		xQuery.SetClass("seas_greenhouse");
+		xQuery.Execute(xList);
+		return xList.NumEntries();
+	endproc;
+	
+	
+	///CheckNumFightingUnits
+	proc bool CheckNumFightingUnits()
+		var CAiObjWrapList xList;
+		var CAiObjWrapList xWorkerList;
+		var CAiObjQuery xQuery;
+		
+		xList.Clear();
+		xWorkerList.Clear();
+		
+		xQuery.SetOwner(m_iPlayerID);
+		xQuery.SetType("CHTR");
+		xQuery.SetType("ANML",true);
+		xQuery.SetType("VHCL",true);
+		xQuery.Execute(xList);
+		
+		var int i, iC=xList.NumEntries();
+		if(xList.Validate()==0)then m_bHoldBuilding=true; endif;
+		
+		for(i=0)cond(i<iC)iter(i++)do
+			if(xList[i].GetClassName().Find("_worker")!= -1)then
+				xWorkerList.AddEntry(xList[i]);
+				xList.RemEntry(xList[i]);
+				i--; iC--;
+			endif;
+		endfor;
+				
+		if(iC<10)then 
+			m_bHoldBuilding=true;
+		else
+			m_bHoldBuilding=false;
+		endif;
+		return m_bHoldBuilding;
+	endproc;
+	
+	
+	///CheckForUnitLimit
+	proc bool CheckForUnitLimit()
+		var bool bFull=false;
+		var ^CAiPyramid pxPyr=m_pxSensor^.GetPyramid();
+		if(pxPyr==null)then return false; endif;
+		
+		var int iUnitCount=pxPyr^.GetTotalNumUnits();
+		var int iUnitCap=(m_pxBrain^.GetPlayerAttrib("max_units")).ToInt();
+		var int i, iVirtualUnits;
+		
+		for(i=0)cond(i<5)iter(i++)do
+			iVirtualUnits+=(m_pxBrain^.GetPlayerAttrib("virtual_units_"+i.ToString())).ToInt();
+		endfor;
+				
+		if(((iUnitCount+iVirtualUnits)>=iUnitCap)&&(iUnitCap<52))then
+			bFull=true;
+			if(m_sTribe=="Hu")then	
+				AddRequestOnTop("hu_stone_cottage",1,false);
+			elseif(m_sTribe=="Aje")then
+				AddRequestOnTop("BLDG/aje_tent", "aje_big_tent",1,false, {0.0, 0.0, 0.0});
+				AddRequestOnTop("aje_tent",1,false);
+			elseif(m_sTribe=="Ninigi")then
+				AddRequestOnTop("ninigi_fireplace",1,false);
+			elseif(m_sTribe=="SEAS")then
+				AddRequestOnTop("seas_headquarters",1,false);
+			endif;
+		endif;		
+		return bFull;
+	endproc;
+	
+	
+	///RequestMoreResourceBuilding
+	proc void RequestMoreResourceBuilding()
+		if(m_pxTT==null)then return; endif;
+		var ^CAiNodeInstance pxStoneNI, pxWoodNI, pxFoodNI;
+		
+		pxStoneNI = m_pxTT^.GetNodeInstanceFromPartialName("stone");		
+		pxWoodNI = m_pxTT^.GetNodeInstanceFromPartialName("wood");
+		pxFoodNI = m_pxTT^.GetNodeInstanceFromPartialName("food");
+		
+		if(m_sTribe=="Hu")then
+
+			if(pxStoneNI^.GetInstanceCount() >= pxStoneNI^.GetMaxInstanceCount())then
+				var ^CAiNodeInstance pxNI=m_pxTT^.GetNodeInstanceFromPartialName("hu_stone_quarry", "");
+				if(pxNI==null)then return; endif;	
+				if(pxNI^.GetInstanceCount()<pxNI^.GetMaxInstanceCount())then
+					AddRequest("BLDG/hu_stone_quarry",1,true);
+				else
+					AddRequest("BLDG/hu_warehouse",1,true);
+				endif;
+			elseif(pxWoodNI^.GetInstanceCount() >= pxWoodNI^.GetMaxInstanceCount())then
+				var ^CAiNodeInstance pxNI=m_pxTT^.GetNodeInstanceFromPartialName("hu_lumberjack_cottage", "");
+				if(pxNI==null)then return; endif;	
+				if(pxNI^.GetInstanceCount()<pxNI^.GetMaxInstanceCount())then
+					AddRequest("BLDG/hu_lumberjack_cottage",1,true);
+				else
+					AddRequest("BLDG/hu_warehouse",1,true);
+				endif;
+			elseif(pxFoodNI^.GetInstanceCount() >= pxFoodNI^.GetMaxInstanceCount())then
+				var ^CAiNodeInstance pxNI=m_pxTT^.GetNodeInstanceFromPartialName("hu_lumberjack_cottage", "");
+				if(pxNI==null)then return; endif;	
+				if(pxNI^.GetInstanceCount()<pxNI^.GetMaxInstanceCount())then
+					AddRequest("BLDG/hu_lumberjack_cottage",1,true);
+				else
+					AddRequest("BLDG/hu_warehouse",1,true);
+				endif;
+			endif;
+			
+			
+		elseif(m_sTribe=="Aje")then
+			if(pxStoneNI^.GetInstanceCount() >= pxStoneNI^.GetMaxInstanceCount())then	
+				var ^CAiNodeInstance pxNI=m_pxTT^.GetNodeInstanceFromPartialName("aje_resource_collector", "");
+				if(pxNI==null)then return; endif;
+				if(pxNI^.GetInstanceCount()<pxNI^.GetMaxInstanceCount())then
+					AddRequest("ANML/aje_resource_collector",1,true);
+				endif;
+			elseif(pxWoodNI^.GetInstanceCount() >= pxWoodNI^.GetMaxInstanceCount())then
+				var ^CAiNodeInstance pxNI=m_pxTT^.GetNodeInstanceFromPartialName("aje_resource_collector", "");
+				if(pxNI==null)then return; endif;
+				if(pxNI^.GetInstanceCount()<pxNI^.GetMaxInstanceCount())then
+					AddRequest("ANML/aje_resource_collector",1,true);
+				endif;
+			elseif(pxFoodNI^.GetInstanceCount() >= pxFoodNI^.GetMaxInstanceCount())then
+				var ^CAiNodeInstance pxNI=m_pxTT^.GetNodeInstanceFromPartialName("aje_resource_collector", "");
+				if(pxNI==null)then return; endif;
+				if(pxNI^.GetInstanceCount()<pxNI^.GetMaxInstanceCount())then
+					AddRequest("ANML/aje_resource_collector",1,true);
+				endif;
+			endif;
+		
+		elseif(m_sTribe=="Ninigi")then
+			if(pxStoneNI^.GetInstanceCount() >= pxStoneNI^.GetMaxInstanceCount())then	
+				var ^CAiNodeInstance pxNI=m_pxTT^.GetNodeInstanceFromPartialName("ninigi_stone_quarry", "");
+				if(pxNI==null)then return; endif;
+				if(pxNI^.GetInstanceCount()<pxNI^.GetMaxInstanceCount())then
+					AddRequest("BLDG/ninigi_stone_quarry",1,true);
+				else
+					AddRequest("BLDG/ninigi_warehouse",1,true);
+				endif;
+			elseif(pxWoodNI^.GetInstanceCount() >= pxWoodNI^.GetMaxInstanceCount())then
+				var ^CAiNodeInstance pxNI=m_pxTT^.GetNodeInstanceFromPartialName("ninigi_lumbermill", "");
+				if(pxNI==null)then return; endif;
+				if(pxNI^.GetInstanceCount()<pxNI^.GetMaxInstanceCount())then
+					AddRequest("BLDG/ninigi_lumbermill",1,true);
+				else
+					AddRequest("BLDG/ninigi_warehouse",1,true);
+				endif;
+			
+			elseif(pxFoodNI^.GetInstanceCount() >= pxFoodNI^.GetMaxInstanceCount())then
+				var ^CAiNodeInstance pxNI=m_pxTT^.GetNodeInstanceFromPartialName("ninigi_hunting_lodge", "");
+				if(pxNI==null)then return; endif;
+				if(pxNI^.GetInstanceCount()<pxNI^.GetMaxInstanceCount())then
+					AddRequest("BLDG/ninigi_hunting_lodge",1,true);
+				else
+					AddRequest("BLDG/ninigi_warehouse",1,true);
+				endif;
+			endif;
+		endif;
+	endproc;
+	
+	
+	///CheckForEnemyShips
+	proc void CheckForEnemyShips()
+		var CAiObjWrapList xEnemyShipList;
+		var CAiObjQuery xQuery;
+		var int iNumShips=0;
+		m_iNumShips=0;
+		var int i, iC=m_iNumPlayers;
+		
+		for(i=0)cond(i<iC)iter(i++)do
+			if(i==m_iPlayerID)then continue; endif;
+			if(!m_pxSensor^.IsEnemy(m_iPlayerID))then continue; endif;
+			xQuery.Clear();
+			xEnemyShipList.Clear();
+			
+			xQuery.SetOwner(i);
+			xQuery.SetType("SHIP");
+			xQuery.Execute(xEnemyShipList);
+			
+			var int j, jC=xEnemyShipList.Validate();
+			if(jC<=0)then continue; endif;
+			
+			for(j=0)cond(j<jC)iter(j++)do
+				if((xEnemyShipList[j].GetClassName().Find("fishing_boat")!=-1)||(xEnemyShipList[j].GetClassName().Find("floating")!=-1)||(xEnemyShipList[j].GetClassName().Find("transport")!=-1))then
+					xEnemyShipList.RemEntry(xEnemyShipList[j]);
+					j--; jC--;
+				endif;
+			endfor;	
+			
+			iNumShips=xEnemyShipList.NumEntries();
+			if(iNumShips>m_iNumShips)then m_iNumShips=iNumShips; endif;
+		endfor;
+		
+		var CAiObjWrapList xOwnShipList;
+		var CAiObjQuery xOwnQuery;
+		
+		xOwnShipList.Clear();
+		xOwnQuery.SetOwner(m_iPlayerID);
+		xOwnQuery.SetType("SHIP");
+		xOwnQuery.Execute(xOwnShipList);
+		
+		var int iI, iIC=xOwnShipList.Validate();		
+		for(iI=0)cond(iI<iIC)iter(iI++)do
+			if((xOwnShipList[iI].GetClassName().Find("fishing_boat")!=-1)||(xOwnShipList[iI].GetClassName().Find("floating")!=-1)||(xOwnShipList[iI].GetClassName().Find("transport")!=-1))then
+				xOwnShipList.RemEntry(xOwnShipList[iI]);
+				iI--; iIC--;
+			endif;
+		endfor;
+		
+		if(xOwnShipList.NumEntries()>=m_iNumShips)then return; endif;
+			
+		if(m_sTribe=="Hu")then
+			if(m_iCurrentAge==2)then	
+				AddRequest("SHIP/hu_dragon_boat",1,true);
+			elseif(m_iCurrentAge==3)then
+				AddRequest("SHIP/hu_ram_ship",1,true);
+			elseif(m_iCurrentAge>=4)then
+				AddRequest("SHIP/hu_steam_boat",1,true);
+			endif;
+		
+		elseif(m_sTribe=="Aje")then
+			if(m_iCurrentAge==2)then
+				AddRequest("SHIP/aje_cronosaurus",1,true);
+			elseif(m_iCurrentAge>=3)then
+				AddRequest("SHIP/aje_catamaran",1,true);
+				AddRequest("SHIP/aje_cronosaurus",1,true);
+			endif;
+		
+		elseif(m_sTribe=="Ninigi")then
+			if(m_iCurrentAge==2)then
+				AddRequest("SHIP/ninigi_fire_boat",1,true);
+			elseif(m_iCurrentAge==3)then
+				AddRequest("SHIP/ninigi_muraeno_submarine",1,true);
+			elseif(m_iCurrentAge>=4)then
+				AddRequest("SHIP/ninigi_rocket_boat",1,true);
+			endif;
+		endif;
+	endproc;
+	
+	
+	///CheckForFightUpgrades
+	proc void CheckForFightUpgrades()
+		if(m_pxTT==null)then return; endif;
+		var int iAge=CAiUtilityMgr.Get()^.GetCurrentAge(m_pxBrain);
+		
+		var string sBehavior= m_sVillageType.Left(1);
+		if((sBehavior=="G")&&(iAge<4))then return; endif;
+		
+		if(m_sTribe=="Hu")then	
+			if(iAge>=2)then	
+				if(m_iDifficulty>2)then	
+					AddRequest("res_weapon_upgrade",1,true);
+					AddRequest("res_defense_upgrade",1,true);
+					AddRequest("tec_weapon_upgrade",1,true);
+					AddRequest("tec_range_upgrade",1,true);
+				endif;
+				
+				if(m_sDifficulty!="Easy")then	
+					var ^CAiNodeInstance pxNIWarrior=m_pxTT^.GetNodeInstanceFromPartialName("hu_warrior", "");
+					if(pxNIWarrior!=null)then
+						if(m_pxTT^.GetAllNodeInstanceCount(pxNIWarrior^.GetTTPath())>0)then 
+							AddRequest("kick",1,true); 
+						endif;
+					endif;
+				endif;
+			endif;
+			
+			if(iAge>=3)then
+				if(m_iDifficulty>2)then		
+					AddRequest("res_weapon_upgrade_2",1,true);
+					AddRequest("res_defense_upgrade_2",1,true);
+				endif;	
+				
+				if(m_sDifficulty!="Easy")then				
+					AddRequest("warcry",1,true); 
+					AddRequest("roar",1,true);
+					
+					var ^CAiNodeInstance pxNIDruid=m_pxTT^.GetNodeInstanceFromPartialName("hu_druid", "");
+					if(pxNIDruid!=null)then
+						if(m_pxTT^.GetAllNodeInstanceCount(pxNIDruid^.GetTTPath())>0)then AddRequest("oracle",1,true); endif;
+					endif;
+					
+					var ^CAiNodeInstance pxNIScout=m_pxTT^.GetNodeInstanceFromPartialName("hu_scout", "");
+					if(pxNIScout!=null)then
+						if(m_pxTT^.GetAllNodeInstanceCount(pxNIScout^.GetTTPath())>0)then AddRequest("drums",1,true); endif;
+					endif;
+					
+					var ^CAiNodeInstance pxNIBoar=m_pxTT^.GetNodeInstanceFromPartialName("hu_wild_boar", "");
+					if(pxNIBoar!=null)then
+						if(m_pxTT^.GetAllNodeInstanceCount(pxNIBoar^.GetTTPath())>0)then AddRequest("wild_boar_rage",1,true); endif;
+					endif;
+					
+					var ^CAiNodeInstance pxNIRhino=m_pxTT^.GetNodeInstanceFromPartialName("hu_rhino", "");
+					if(pxNIRhino!=null)then
+						if(m_pxTT^.GetAllNodeInstanceCount(pxNIRhino^.GetTTPath())>0)then AddRequest("rhino_shake_off",1,true); endif;
+					endif;
+				endif;
+			endif;
+			
+			if(iAge>=4)then
+				if(m_iDifficulty>2)then		
+					AddRequest("hu_weapons_smith_anvil",1,true);
+					AddRequest("hu_bunker_upgrade",1,true);
+				endif;
+				
+				if(m_sDifficulty!="Easy")then	
+					AddRequest("hu_worker_vs_building",1,true); 
+					AddRequest("hu_kentrosaurus_armor",1,true); 
+					
+					var ^CAiNodeInstance pxNIScout=m_pxTT^.GetNodeInstanceFromPartialName("hu_scout", "");
+					if(pxNIScout!=null)then
+						if(m_pxTT^.GetAllNodeInstanceCount(pxNIScout^.GetTTPath())>0)then AddRequest("scout_upgrade",1,true); endif;
+					endif;
+				endif;
+				
+				if(m_sDifficulty=="Hard")then
+					var ^CAiNodeInstance pxNIDruid=m_pxTT^.GetNodeInstanceFromPartialName("hu_druid", "");
+					if(pxNIDruid!=null)then
+						if(m_pxTT^.GetAllNodeInstanceCount(pxNIDruid^.GetTTPath())>0)then AddRequest("insects",1,true); AddRequest("illusion",1,true); endif;
+					endif;
+					
+					var ^CAiNodeInstance pxNIRhino=m_pxTT^.GetNodeInstanceFromPartialName("hu_rhino", "");
+					if(pxNIRhino!=null)then
+						if(m_pxTT^.GetAllNodeInstanceCount(pxNIRhino^.GetTTPath())>0)then AddRequest("pennant",1,true); endif;
+					endif;
+					
+					var ^CAiNodeInstance pxNISteam=m_pxTT^.GetNodeInstanceFromPartialName("hu_steam_ram", "");
+					if(pxNISteam!=null)then
+						if(m_pxTT^.GetAllNodeInstanceCount(pxNISteam^.GetTTPath())<=0)then AddRequest("ram_head",1,true); endif;
+					endif;
+					
+					var ^CAiNodeInstance pxNIWarrior=m_pxTT^.GetNodeInstanceFromPartialName("hu_warrior", "");
+					if(pxNIWarrior!=null)then 
+						if(m_pxTT^.GetAllNodeInstanceCount(pxNIWarrior^.GetTTPath())>0)then AddRequest("quake",1,true); endif;
+					endif;
+					
+					var ^CAiNodeInstance pxNIMammoth=m_pxTT^.GetNodeInstanceFromPartialName("hu_mammoth", "");
+					if(pxNIMammoth!=null)then 
+						if(m_pxTT^.GetAllNodeInstanceCount(pxNIMammoth^.GetTTPath())>0)then AddRequest("mammoth_stampede",1,true); AddRequest("mammoth_trumpet",1,true); endif;
+					endif;
+					
+					var ^CAiNodeInstance pxNIMammothLog=m_pxTT^.GetNodeInstanceFromPartialName("hu_mammoth_log_cannon", "");
+					if(pxNIMammothLog!=null)then 
+						if(m_pxTT^.GetAllNodeInstanceCount(pxNIMammothLog^.GetTTPath())>0)then AddRequest("mammoth_stampede",1,true); AddRequest("mammoth_trumpet",1,true); endif;
+					endif;
+				endif;	
+			endif;
+			
+			if(iAge==5)then
+				if(m_sDifficulty!="Easy")then					
+					var ^CAiNodeInstance pxNIBoar=m_pxTT^.GetNodeInstanceFromPartialName("hu_wild_boar", "");
+					if(pxNIBoar!=null)then
+						if(m_pxTT^.GetAllNodeInstanceCount(pxNIBoar^.GetTTPath())>0)then AddRequest("animal_blades",1,true); endif;
+					endif;
+					
+					var ^CAiNodeInstance pxNIRhino=m_pxTT^.GetNodeInstanceFromPartialName("hu_rhino", "");
+					if(pxNIRhino!=null)then
+						if(m_pxTT^.GetAllNodeInstanceCount(pxNIRhino^.GetTTPath())>0)then AddRequest("animal_blades",1,true); AddRequest("hu_rhino_armor",1,true); endif;
+					endif;
+					
+					var ^CAiNodeInstance pxNIRhinoBallista=m_pxTT^.GetNodeInstanceFromPartialName("hu_rhino_ballista", "");
+					if(pxNIRhinoBallista!=null)then
+						if(m_pxTT^.GetAllNodeInstanceCount(pxNIRhinoBallista^.GetTTPath())>0)then AddRequest("animal_blades",1,true); AddRequest("hu_rhino_armor",1,true); endif;
+					endif;
+					
+					var ^CAiNodeInstance pxNIMammoth=m_pxTT^.GetNodeInstanceFromPartialName("hu_mammoth", "");
+					if(pxNIMammoth!=null)then 
+						if(m_pxTT^.GetAllNodeInstanceCount(pxNIMammoth^.GetTTPath())>0)then AddRequest("animal_blades",1,true); AddRequest("hu_mammoth_armor",1,true); endif;
+					endif;
+					
+					var ^CAiNodeInstance pxNIMammothLog=m_pxTT^.GetNodeInstanceFromPartialName("hu_mammoth_log_cannon", "");
+					if(pxNIMammothLog!=null)then 
+						if(m_pxTT^.GetAllNodeInstanceCount(pxNIMammothLog^.GetTTPath())>0)then AddRequest("animal_blades",1,true); AddRequest("hu_mammoth_armor",1,true); endif;
+					endif;
+					
+					var ^CAiNodeInstance pxNITower=m_pxTT^.GetNodeInstanceFromPartialName("hu_large_tower", "");
+					if(pxNITower!=null)then 
+						if(m_pxTT^.GetAllNodeInstanceCount(pxNITower^.GetTTPath())>0)then AddRequest("hu_ballista_upgrade",1,true); endif;
+					endif;
+				endif;
+				
+				if(m_sDifficulty=="Hard")then
+					var ^CAiNodeInstance pxNIRhino=m_pxTT^.GetNodeInstanceFromPartialName("hu_rhino", "");
+					if(pxNIRhino!=null)then
+						if(m_pxTT^.GetAllNodeInstanceCount(pxNIRhino^.GetTTPath())>0)then AddRequest("shake_off",1,true); endif;
+					endif;
+					
+					var ^CAiNodeInstance pxNITriceratops=m_pxTT^.GetNodeInstanceFromPartialName("hu_triceratops", "");
+					if(pxNITriceratops!=null)then
+						if(m_pxTT^.GetAllNodeInstanceCount(pxNITriceratops^.GetTTPath())>0)then AddRequest("paw",1,true); AddRequest("titan_shake_off",1,true); endif;
+					endif;
+				endif;		
+			endif;
+			
+		elseif(m_sTribe=="Aje")then
+			if(iAge>=2)then
+				if(m_sDifficulty!="Easy")then	
+					AddRequest("twister",1,true);
+				endif;		
+			endif;
+			
+			if(iAge>=3)then
+				if(m_iDifficulty>2)then		
+					AddRequest("aje_animal_damage_upgrade_1",1,true);
+					AddRequest("aje_animal_defense_upgrade_1",1,true);
+					AddRequest("aje_hitrange_upgrade",1,true);
+					AddRequest("aje_poison_duration_upgrade",1,true);
+				endif;
+				
+				if(m_sDifficulty!="Easy")then
+					var ^CAiNodeInstance pxNIStego=m_pxTT^.GetNodeInstanceFromPartialName("aje_stegosaurus", "");
+					if(pxNIStego!=null)then
+						if(m_pxTT^.GetAllNodeInstanceCount(pxNIStego^.GetTTPath())>0)then AddRequest("aje_stegosaurus_armor",1,true); endif;
+					endif;
+				endif;
+				
+				if(m_sDifficulty=="Hard")then
+					AddRequest("matrix",1,true);
+					
+					var ^CAiNodeInstance pxNIStego=m_pxTT^.GetNodeInstanceFromPartialName("aje_stegosaurus", "");
+					if(pxNIStego!=null)then
+						if(m_pxTT^.GetAllNodeInstanceCount(pxNIStego^.GetTTPath())>0)then AddRequest("stegosaurus_caudal_bash",1,true); endif;
+					endif;
+					
+					var ^CAiNodeInstance pxNIBrachio=m_pxTT^.GetNodeInstanceFromPartialName("aje_brachiosaurus", "");
+					if(pxNIBrachio!=null)then
+						if(m_pxTT^.GetAllNodeInstanceCount(pxNIBrachio^.GetTTPath())>0)then AddRequest("brachiostomp",1,true); endif;
+					endif;
+					
+					var ^CAiNodeInstance pxNIWarrior=m_pxTT^.GetNodeInstanceFromPartialName("aje_warrior", "");
+					if(pxNIWarrior!=null)then
+						if(m_pxTT^.GetAllNodeInstanceCount(pxNIWarrior^.GetTTPath())>0)then AddRequest("warpaint",1,true); endif;
+					endif;
+					
+					var ^CAiNodeInstance pxNIShaman=m_pxTT^.GetNodeInstanceFromPartialName("aje_shaman", "");
+					if(pxNIShaman!=null)then
+						if(m_pxTT^.GetAllNodeInstanceCount(pxNIShaman^.GetTTPath())>0)then AddRequest("termites",1,true); AddRequest("camouflage",1,true); AddRequest("farsight",1,true); endif;
+					endif;
+
+					var ^CAiNodeInstance pxNIAnkylo=m_pxTT^.GetNodeInstanceFromPartialName("aje_ankylosaurus", "");
+					if(pxNIAnkylo!=null)then
+						if(m_pxTT^.GetAllNodeInstanceCount(pxNIAnkylo^.GetTTPath())>0)then AddRequest("ram",1,true); endif;
+					endif;
+				endif;		
+			endif;
+			
+			if(iAge>=4)then
+				if(m_iDifficulty>2)then
+					AddRequest("aje_animal_damage_upgrade_2",1,true);
+					AddRequest("aje_animal_defense_upgrade_2",1,true);
+				endif;
+				
+				if(m_sDifficulty!="Easy")then
+					AddRequest("aje_worker_vs_buildings",1,true);
+					
+					var ^CAiNodeInstance pxNIBrachio=m_pxTT^.GetNodeInstanceFromPartialName("aje_brachiosaurus", "");
+					if(pxNIBrachio!=null)then
+						if(m_pxTT^.GetAllNodeInstanceCount(pxNIBrachio^.GetTTPath())>0)then AddRequest("aje_brachiosaurus_armor",1,true); AddRequest("aje_hitrange_upgrade",1,true); endif;
+					endif;
+					
+					var ^CAiNodeInstance pxNIAnkylo=m_pxTT^.GetNodeInstanceFromPartialName("aje_ankylosaurus", "");
+					if(pxNIAnkylo!=null)then
+						if(m_pxTT^.GetAllNodeInstanceCount(pxNIAnkylo^.GetTTPath())>0)then AddRequest("aje_hitrange_upgrade",1,true); endif;
+					endif;
+				endif;
+				
+				if(m_sDifficulty=="Hard")then
+					var ^CAiNodeInstance pxNIAllo=m_pxTT^.GetNodeInstanceFromPartialName("aje_allosaurus", "");
+					if(pxNIAllo!=null)then
+						if(m_pxTT^.GetAllNodeInstanceCount(pxNIAllo^.GetTTPath())>0)then AddRequest("allosaurus_scrunch",1,true); endif;
+					endif;
+					
+					var ^CAiNodeInstance pxNIShaman=m_pxTT^.GetNodeInstanceFromPartialName("aje_shaman", "");
+					if(pxNIShaman!=null)then						
+						if(m_pxTT^.GetAllNodeInstanceCount(pxNIShaman^.GetTTPath())>0)then AddRequest("quicksand",1,true); endif;
+					endif;
+				endif;		
+			endif;
+			
+			if(iAge==5)then
+				if(m_iDifficulty>2)then		
+					AddRequest("aje_animal_damage_upgrade_3",1,true);
+					AddRequest("aje_animal_defense_upgrade_3",1,true);	
+				endif;
+				
+				if(m_sDifficulty!="Easy")then
+					var ^CAiNodeInstance pxNIAllo=m_pxTT^.GetNodeInstanceFromPartialName("aje_allosaurus", "");
+					if(pxNIAllo!=null)then
+						if(m_pxTT^.GetAllNodeInstanceCount(pxNIAllo^.GetTTPath())>0)then AddRequest("aje_allosaurus_armor",1,true); endif;
+					endif;
+					
+					var ^CAiNodeInstance pxNIShaman=m_pxTT^.GetNodeInstanceFromPartialName("aje_shaman", "");
+					if(pxNIShaman!=null)then
+						if(m_pxTT^.GetAllNodeInstanceCount(pxNIShaman^.GetTTPath())>0)then AddRequest("tornado",1,true); endif;
+					endif;
+				endif;
+				
+				if(m_sDifficulty=="Hard")then
+					var ^CAiNodeInstance pxNIAtroxo=m_pxTT^.GetNodeInstanceFromPartialName("aje_atroxosaurus", "");
+					if(pxNIAtroxo!=null)then						
+						if(m_pxTT^.GetAllNodeInstanceCount(pxNIAtroxo^.GetTTPath())>0)then AddRequest("trex_scrunch",1,true); AddRequest("trex_roar",1,true); endif;
+					endif;
+				endif;		
+			endif;
+		
+		elseif(m_sTribe=="Ninigi")then
+			if(iAge>=2)then	
+				if(m_sDifficulty!="Easy")then		
+					AddRequest("burst_arrow",1,true);
+				endif;			
+			endif;
+			
+			if(iAge>=3)then
+				if(m_sDifficulty!="Easy")then
+					AddRequest("ninigi_archer_range_upgrade_1", 1,true); 
+					AddRequest("archer_damage_upgrade_1",1,true);
+					
+					var ^CAiNodeInstance pxNIWarrior=m_pxTT^.GetNodeInstanceFromPartialName("ninigi_warrior", "");
+					if(pxNIWarrior!=null)then
+						if(m_pxTT^.GetAllNodeInstanceCount(pxNIWarrior^.GetTTPath())>0)then AddRequest("ninigi_archer_range_upgrade_1", 1,true); AddRequest("archer_damage_upgrade_1",1,true); endif;
+					endif;
+					var ^CAiNodeInstance pxNICannon=m_pxTT^.GetNodeInstanceFromPartialName("ninigi_firecannon", "");
+					if(pxNICannon!=null)then
+						if(m_pxTT^.GetAllNodeInstanceCount(pxNICannon^.GetTTPath())>0)then AddRequest("improved_cross_hairs", 1,true); endif;
+					endif;
+					var ^CAiNodeInstance pxNIRamp=m_pxTT^.GetNodeInstanceFromPartialName("ninigi_rocket_ramp", "");
+					if(pxNIRamp!=null)then
+						if(m_pxTT^.GetAllNodeInstanceCount(pxNIRamp^.GetTTPath())>0)then AddRequest("improved_cross_hairs", 1,true); endif;
+					endif;
+					var ^CAiNodeInstance pxNIBoat=m_pxTT^.GetNodeInstanceFromPartialName("ninigi_rocket_boat", "");
+					if(pxNIBoat!=null)then
+						if(m_pxTT^.GetAllNodeInstanceCount(pxNIBoat^.GetTTPath())>0)then AddRequest("improved_cross_hairs", 1,true); endif;
+					endif;
+				endif;
+				
+				if(m_sDifficulty=="Hard")then
+					AddRequest("quickshot", 1,true);
+				
+					var ^CAiNodeInstance pxNIMonk=m_pxTT^.GetNodeInstanceFromPartialName("ninigi_monk", "");
+					if(pxNIMonk!=null)then
+						if(m_pxTT^.GetAllNodeInstanceCount(pxNIMonk^.GetTTPath())>0)then AddRequest("fireworks",1,true); endif;
+					endif;
+					var ^CAiNodeInstance pxNINinja=m_pxTT^.GetNodeInstanceFromPartialName("ninigi_ninja", "");
+					if(pxNINinja!=null)then
+						if(m_pxTT^.GetAllNodeInstanceCount(pxNINinja^.GetTTPath())>0)then AddRequest("lockpicking",1,true); AddRequest("warrior_damage_upgrade",1,true);endif;
+					endif;	
+				endif;		
+			endif;
+			
+			if(iAge>=4)then
+				if(m_iDifficulty>2)then		
+					AddRequest("quickshot", 1,true);
+					AddRequest("ninigi_worker_vs_building",1,true); 
+				endif;
+
+				if(m_sDifficulty!="Easy")then
+					AddRequest("archer_damage_upgrade_2",1,true); 
+					AddRequest("multishot",1,true);
+					
+					var ^CAiNodeInstance pxNITower=m_pxTT^.GetNodeInstanceFromPartialName("ninigi_small_tower", "");
+					if(pxNITower!=null)then
+						if(m_pxTT^.GetAllNodeInstanceCount(pxNITower^.GetTTPath())>0)then AddRequest("tower_sordes_upgrade",1,true); endif;
+					endif;
+				endif;
+				
+				if(m_sDifficulty=="Hard")then
+					var ^CAiNodeInstance pxNINinja=m_pxTT^.GetNodeInstanceFromPartialName("ninigi_ninja", "");
+					if(pxNINinja!=null)then
+						if(m_pxTT^.GetAllNodeInstanceCount(pxNINinja^.GetTTPath())>0)then AddRequest("disguise",1,true); endif;
+					endif;	
+				endif;		
+			endif;
+			if(iAge==5)then
+				if(m_sDifficulty!="Easy")then
+					var ^CAiNodeInstance pxNISalta=m_pxTT^.GetNodeInstanceFromPartialName("ninigi_saltasaurus_archer", "");
+					if(pxNISalta!=null)then
+						if(m_pxTT^.GetAllNodeInstanceCount(pxNISalta^.GetTTPath())>0)then AddRequest("doping",1,true); endif;
+					endif;
+					var ^CAiNodeInstance pxNIHarvester=m_pxTT^.GetNodeInstanceFromPartialName("ninigi_harvester", "");
+					if(pxNIHarvester!=null)then
+						if(m_pxTT^.GetAllNodeInstanceCount(pxNIHarvester^.GetTTPath())>0)then AddRequest("lacerate",1,true); endif;
+					endif;
+				endif;
+				if(m_sDifficulty=="Hard")then
+					var ^CAiNodeInstance pxNISeismo=m_pxTT^.GetNodeInstanceFromPartialName("ninigi_seismosaurus", "");
+					if(pxNISeismo!=null)then
+						if(m_pxTT^.GetAllNodeInstanceCount(pxNISeismo^.GetTTPath())>0)then AddRequest("barrage",1,true); AddRequest("enchain",1,true); endif;
+					endif;
+				endif;		
+			endif;
+		endif;
+	endproc;
+
+endclass;

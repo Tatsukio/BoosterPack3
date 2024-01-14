@@ -1,0 +1,1343 @@
+class CTextButton inherit CButton
+	var ^CStaticCtrl			m_pxText;
+
+	export proc void SetText(string p_sText, int p_iXOffset, int p_iYOffset)
+		if (m_pxText == null) then
+			m_pxText = new CStaticCtrl();
+			AddChild(m_pxText);
+			m_pxText^.SetPos(0, 0);
+			m_pxText^.SetSize(GetWidth(), GetHeight());
+			m_pxText^.SetSuitAlpha(true);
+			m_pxText^.SetTransparent(true);
+			m_pxText^.SetVisible(true);
+		endif
+		m_pxText^.SetSize(GetWidth() + p_iXOffset, GetHeight() + p_iYOffset);
+		m_pxText^.SetText(p_sText);
+	endproc;
+	
+	export proc void ChangeAbsTextPosition(int p_iX, int p_iY)
+		m_pxText^.SetPos(m_pxText^.GetPos().GetX()+p_iX, m_pxText^.GetPos().GetY()+p_iY);
+	endproc;
+
+	export proc void SetTextColor(color p_xColor)
+		if (m_pxText != null) then
+			m_pxText^.SetTextColor(p_xColor);
+		endif
+	endproc
+
+endclass
+
+class CInGameScreen inherit CWindow
+
+	var ^CDesktop				m_pxDesktop;
+	var ^CObjMgr				m_pxObjMgr;
+//	var ^CNewsTicker	 		m_pxNewsTicker;
+	var string 					m_sBottomPath;
+	var string 					m_sImagePath;
+	var string 					m_sSizePath;
+	var string					m_sTempImagePath;
+	static var ^CInGameScreen	ms_pxInGameScreen;
+	var string					m_sIconsPath;
+	var ^CCommandBar			m_pxCmdBar;
+	var	bool					m_bGameActive;
+	var ^CNewPyramid			m_pxTribeView;
+	var ^CTribeViewLayoutMgr 	m_pxTribe;
+	var ^CMiniMap				m_pxMiniMap;
+	var ^CMiniMapWindow2		m_pxMiniMapWindow;
+	var ^CButton				m_pxSmall;
+	var ^CTribeViewButton				m_pxSmall0;
+	var ^CTribeViewButton				m_pxSmall1;
+	var ^CTribeViewButton				m_pxSmall2;
+	var ^CTribeViewButton				m_pxSmall3;
+	var ^CTribeViewButton				m_pxSmall4;
+	var ^CInfo					m_pxInfo;
+	var ^CToolTipWindow			m_pxToolTipWindow;
+	var ^CRessourceBar			m_pxRscBar;	
+	var ^CTextButton			m_pxDiplomacyButton;
+	var ^CTextButton			m_pxQuestButton;
+	var ^CGroupBar				m_pxGroupBar;
+	var ^CTimerWnd				m_pxCounter;
+	var int						m_iPyraButtonUpdateTimer;
+	var int 					m_iServerCheckTimer;
+	var string					m_sPlayerTribe;
+	var	CDialogSceneMgr			m_xDialogSceneMgr;
+	var ^CCountDownWindow		m_pxCountDownWindow;
+	var ^CNewsTicker			m_pxNewsTickerWindow;
+	var ^CToolTip				m_pxToolTip;
+	
+	//Test
+	var int						m_iDestructionTimer;	
+	var bool					m_bCheckResources;
+	
+	var int						m_iAUTOSAVETIMER;
+	
+	class COwnerTimerList
+		export var int 			m_iOwner;
+		export var array SHWND	m_ahTimerList;
+	endclass;
+	
+	var array COwnerTimerList	m_axTimerWindows;
+	
+	export constructor(^CDesktop p_pxDesktop)		
+		m_pxObjMgr=^(CClientWrap.GetObjMgr());
+		m_bGameActive=false;
+		m_pxDesktop=p_pxDesktop;
+		m_pxDesktop^.SetIngameScreen(this);
+		CIconMgr.Get();
+		ms_pxInGameScreen=this;
+
+		var int iDesktopWidth = CWindowMgr.Get().GetDesktop(0)^.GetWidth();
+		var int iDesktopHeight = CWindowMgr.Get().GetDesktop(0)^.GetHeight();
+
+		m_pxCmdBar=new CCommandBar;
+		AddChild(m_pxCmdBar);
+		
+		m_pxGroupBar=new CGroupBar(this);
+		AddChild(m_pxGroupBar);
+
+		m_pxDesktop^.SetStandardActivationChild(this);
+		m_sIconsPath = CClientWrap.GetUrsRelPath()+"/Data/Base/Texture/UI/HUD/Hu/1024/icons/";
+		m_sTempImagePath = CClientWrap.GetUrsRelPath()+"/Data/Base/UI/";
+		var point xSize = m_pxDesktop^.GetSize();
+		var int iX = xSize.GetX();
+		var int iY = xSize.GetY();
+		SetPos(0,0);
+		SetSize(m_pxDesktop^.GetWidth()-0,m_pxDesktop^.GetHeight()-0);
+		SetBackground(false);
+
+		m_pxTribeView = ^(CNewPyramid.Get());
+		AddChild(m_pxTribeView);
+		m_pxTribeView^.SetPos(32,iDesktopHeight-744); //24
+		//m_pxTribeView^.SetXtras();
+		m_pxTribeView^.CollapsedView();
+		m_pxTribeView^.SetVisible(true);
+		m_pxTribeView^.SetTransparent(false);
+		m_pxTribe = m_pxTribeView^.GetTribeViewPtr();
+
+		m_pxSmall=new CButton;
+		m_pxSmall^.SetTransparent(true);
+		m_pxSmall^.SetAlwaysOnTop(true);
+		m_pxSmall^.SetVisible(true);
+		m_pxSmall^.SetPos(0,iDesktopHeight-742); //26
+		m_pxSmall^.SetFrame(false);
+		m_pxSmall^.SetBackground(false);
+		m_pxSmall^.SetSuitAlpha(false);
+		m_pxSmall^.m_xOnClick = OnPyramidOpen;
+		m_pxSmall^.m_xOnRightClick = OnPyramidClose;
+		m_pxSmall^.SetSound("");
+		m_iPyraButtonUpdateTimer = SetTimer(1000, true);
+		UpdatePyramidButton();
+		m_pxSmall^.SetSize(26,540);
+
+		// buttons for ac sorting feature (start)
+		m_pxSmall4=new CTribeViewButton;
+		m_pxSmall4^.SetTransparent(true);
+		m_pxSmall4^.SetAlwaysOnTop(true);
+		m_pxSmall4^.SetVisible(true);
+		m_pxSmall4^.SetPos(0,0);
+		m_pxSmall4^.SetFrame(false);
+		m_pxSmall4^.SetBackground(false);
+		m_pxSmall4^.SetSuitAlpha(false);
+		m_pxSmall4^.SetSize(31,79);
+		m_pxSmall4^.SetText("");
+		m_pxSmall4^.SetToolTipText(CLocalizer.Get().Translate("_UI_ArmyController_Sorting_SortAll"),
+			CLocalizer.Get().Translate("_UI_ArmyController_Sorting_CurrentMethod")+"\n\n"+
+			CLocalizer.Get().Translate("_UI_ArmyController_Sorting_Method0")
+		);
+		m_pxSmall4^.m_xOnRMBClick = OnPyramidSortAll;
+		m_pxSmall^.AddChild(m_pxSmall4);
+
+		m_pxSmall3=new CTribeViewButton;
+		m_pxSmall3^.SetTransparent(true);
+		m_pxSmall3^.SetAlwaysOnTop(true);
+		m_pxSmall3^.SetVisible(true);
+		m_pxSmall3^.SetPos(0,80);
+		m_pxSmall3^.SetFrame(false);
+		m_pxSmall3^.SetBackground(false);
+		m_pxSmall3^.SetSuitAlpha(false);
+		m_pxSmall3^.SetSize(31,61);
+		m_pxSmall3^.SetText("");
+		m_pxSmall3^.SetToolTipText(
+			CLocalizer.Get().Translate("_UI_ArmyController_Sorting_ChangeMethod"),
+			CLocalizer.Get().Translate("_UI_ArmyController_Sorting_CurrentMethod")+"\n\n"+
+			CLocalizer.Get().Translate("_UI_ArmyController_Sorting_Method0")
+		);
+		m_pxSmall3^.m_xOnRMBClick = OnChangeSortMethod;
+		m_pxSmall^.AddChild(m_pxSmall3);
+
+		m_pxSmall2=new CTribeViewButton;
+		m_pxSmall2^.SetTransparent(true);
+		m_pxSmall2^.SetAlwaysOnTop(true);
+		m_pxSmall2^.SetVisible(true);
+		m_pxSmall2^.SetPos(0,142);
+		m_pxSmall2^.SetFrame(false);
+		m_pxSmall2^.SetBackground(false);
+		m_pxSmall2^.SetSuitAlpha(false);
+		m_pxSmall2^.SetSize(31,94);
+		m_pxSmall2^.SetText("");
+		m_pxSmall2^.SetToolTipText(CLocalizer.Get().Translate("_UI_ArmyController_Sorting_SortLevel"),
+			CLocalizer.Get().Translate("_UI_ArmyController_Sorting_CurrentMethod")+"\n\n"+
+			CLocalizer.Get().Translate("_UI_ArmyController_Sorting_Method0")
+		);
+		m_pxSmall2^.m_xOnRMBClick = OnPyramidSort2;
+		m_pxSmall^.AddChild(m_pxSmall2);
+
+		m_pxSmall1=new CTribeViewButton;
+		m_pxSmall1^.SetTransparent(true);
+		m_pxSmall1^.SetAlwaysOnTop(true);
+		m_pxSmall1^.SetVisible(true);
+		m_pxSmall1^.SetPos(0,237);
+		m_pxSmall1^.SetFrame(false);
+		m_pxSmall1^.SetBackground(false);
+		m_pxSmall1^.SetSuitAlpha(false);
+		m_pxSmall1^.SetSize(31,115);
+		m_pxSmall1^.SetText("");
+		m_pxSmall1^.SetToolTipText(CLocalizer.Get().Translate("_UI_ArmyController_Sorting_SortLevel"),
+			CLocalizer.Get().Translate("_UI_ArmyController_Sorting_CurrentMethod")+"\n\n"+
+			CLocalizer.Get().Translate("_UI_ArmyController_Sorting_Method0")
+		);
+		m_pxSmall1^.m_xOnRMBClick = OnPyramidSort1;
+		m_pxSmall^.AddChild(m_pxSmall1);
+
+		m_pxSmall0=new CTribeViewButton;
+		m_pxSmall0^.SetTransparent(true);
+		m_pxSmall0^.SetAlwaysOnTop(true);
+		m_pxSmall0^.SetVisible(true);
+		m_pxSmall0^.SetPos(0,353);
+		m_pxSmall0^.SetFrame(false);
+		m_pxSmall0^.SetBackground(false);
+		m_pxSmall0^.SetSuitAlpha(false);
+		m_pxSmall0^.SetSize(31,191);
+		m_pxSmall0^.SetText("");
+		m_pxSmall0^.SetToolTipText(CLocalizer.Get().Translate("_UI_ArmyController_Sorting_SortLevel"),
+			CLocalizer.Get().Translate("_UI_ArmyController_Sorting_CurrentMethod")+"\n\n"+
+			CLocalizer.Get().Translate("_UI_ArmyController_Sorting_Method0")
+		);
+		m_pxSmall0^.m_xOnRMBClick = OnPyramidSort0;
+		m_pxSmall^.AddChild(m_pxSmall0);
+		// buttons for ac sorting feature (end)
+
+		AddChild(m_pxSmall);
+
+		m_iServerCheckTimer=SetTimer(2500,true);
+			
+		m_pxNewsTickerWindow=new CNewsTicker;
+		m_pxNewsTickerWindow^.SetPos(iDesktopWidth - 235,37);
+		m_pxNewsTickerWindow^.SetTransparent(true);
+		AddChild(m_pxNewsTickerWindow);
+		
+		var ^CButton pxHistoryButton = new CButton();
+		pxHistoryButton^.SetVisible(false);
+		pxHistoryButton^.SetFrame(false);
+		pxHistoryButton^.SetBitmap(
+			"hud/chathistorybutton_idle.tga",
+			"hud/chathistorybutton_down.tga",
+			"hud/chathistorybutton_hover.tga",
+			""
+		);
+		pxHistoryButton^.SetSize(26,26);
+		pxHistoryButton^.m_xOnClick=OnShowHistory;
+		AddChild(pxHistoryButton);
+		pxHistoryButton^.SetPos(iDesktopWidth-26, 0);
+
+		m_pxMiniMap=^(CClientWrap.GetUIMgr().GetMiniMap());
+		m_pxMiniMapWindow = new CMiniMapWindow2;
+		m_pxMiniMapWindow^.SetMiniMap(m_pxMiniMap);
+		m_pxMiniMapWindow^.AddChild(m_pxMiniMap);
+		m_pxMiniMap^.SetVisible(true);
+		m_pxMiniMap^.SetSize(230,230);
+		m_pxMiniMap^.SetDestinationSize({256,256});
+		m_pxMiniMap^.SetBorderWidth(46);
+		m_pxMiniMap^.SetPos(30,32);//(79,81);//(44,48);
+		var string sTemp;
+		if(CSettings.Get("Game/ControllerOptions/EnemyFriendColorsMiniMap",sTemp)==false)then
+			sTemp="true";
+			CSettings.Set("Game/ControllerOptions/EnemyFriendColorsMiniMap",sTemp);
+		endif;
+   		var int iMode=0;
+   		if(sTemp=="true") then iMode=1; endif;
+		m_pxMiniMap^.SetColorMode(iMode);
+		m_pxMiniMapWindow^.SetPos(iDesktopWidth-270-1,iDesktopHeight-270-1);		
+		m_pxMiniMapWindow^.SetTransparent(true);
+		m_pxMiniMapWindow^.SetBackground(true);
+		m_pxMiniMapWindow^.SetSuitAlpha(true);
+
+		m_pxToolTipWindow=new CToolTipWindow;
+		m_pxToolTipWindow^.SetSize(235,192);
+		m_pxToolTipWindow^.SetPos(iDesktopWidth - 235 ,m_pxMiniMapWindow^.GetPos().GetY() - 192);
+		m_pxToolTipWindow^.FixBottomLeft(m_pxMiniMapWindow^.GetPos().GetY() + 19, m_pxMiniMapWindow^.GetPos().GetX() + 35);
+		m_pxToolTipWindow^.SetTransparent(true);
+		m_pxToolTipWindow^.SetVisible(true);
+		m_pxToolTipWindow^.SetFrame(true);
+		m_pxToolTipWindow^.SetFrameType("Custom1");
+		m_pxToolTipWindow^.SetSuitAlpha(true);
+		m_pxToolTipWindow^.EnableMsgHitTest(false);
+		m_pxToolTipWindow^.SetAlwaysOnTop(true);
+		m_pxToolTipWindow^.ClearToolTip();
+		AddChild(m_pxToolTipWindow);
+//		AddChild(m_pxToolTipWindow^.GetInfoBar());
+		AddChild(m_pxMiniMapWindow);
+		
+		m_pxCountDownWindow=new CCountDownWindow();
+		AddChild(m_pxCountDownWindow);		
+		m_pxCountDownWindow^.SetPos(335,2);
+
+		m_pxRscBar=new CRessourceBar;
+		m_pxRscBar^.SetPos(295,0);
+		m_pxRscBar^.SetSize(460,23);
+		m_pxRscBar^.Init("Hu");
+		m_pxRscBar^.EnableMsgHitTest(false);
+		AddChild(m_pxRscBar);
+		
+		var int iMenuButtonHeight=32;
+		var ^CTextButton pxBtn;
+		pxBtn=new CTextButton;
+		pxBtn^.SetSuitAlpha(false);
+		pxBtn^.SetTransparent(true);
+		pxBtn^.SetAlwaysOnTop(true);
+		pxBtn^.SetVisible(true);
+		pxBtn^.SetFrame(false);
+		pxBtn^.SetBackground(false);
+		pxBtn^.m_xOnClick = OnGameMenu;
+		pxBtn^.SetSize(95,iMenuButtonHeight);
+		pxBtn^.SetPos(m_pxRscBar^.GetPos().GetX() - 60,0);
+		pxBtn^.SetBitmap("hud/menu_menubutton.tga","hud/menu_menubutton_down.tga","hud/menu_menubutton_hover.tga","hud/menu_menubutton.tga");
+		pxBtn^.SetText(CLocalizer.Get().Translate("_UI_IngaScre_Button_Menu"), 8, -9);
+		pxBtn^.ChangeAbsTextPosition(0, -2);
+		pxBtn^.SetTextColor({{0, 0, 0, 255}});
+		AddChild(pxBtn);
+		begin QuestButton;
+			m_pxQuestButton=new CTextButton;
+			m_pxQuestButton^.SetSuitAlpha(false);
+			m_pxQuestButton^.SetTransparent(true);
+			m_pxQuestButton^.SetAlwaysOnTop(true);
+			m_pxQuestButton^.SetVisible(true);
+			m_pxQuestButton^.SetPos(m_pxRscBar^.GetPos().GetX() + m_pxRscBar^.GetWidth() - 35,0);
+			m_pxQuestButton^.SetFrame(false);
+			m_pxQuestButton^.SetBackground(false);
+			m_pxQuestButton^.m_xOnClick = OnShowQuest;
+			m_pxQuestButton^.SetSize(69,iMenuButtonHeight);
+			m_pxQuestButton^.SetBitmap("hud/menu_questbutton.tga","hud/menu_questbutton_down.tga","hud/menu_questbutton_hover.tga","hud/menu_questbutton.tga");
+			m_pxQuestButton^.SetText(CLocalizer.Get().Translate("_UI_IngaScre_Button_Quest"), 0, -9);
+			m_pxQuestButton^.ChangeAbsTextPosition(0, -2);
+			m_pxQuestButton^.SetTextColor({{0, 0, 0, 255}});
+			CQuestWindow.InitFeedBack(m_pxQuestButton^.GetSHWND());
+			AddChild(m_pxQuestButton);
+		end QuestButton;
+		m_pxDiplomacyButton=new CTextButton;
+		m_pxDiplomacyButton^.SetSuitAlpha(false);
+		m_pxDiplomacyButton^.SetTransparent(true);
+		m_pxDiplomacyButton^.SetAlwaysOnTop(true);
+		m_pxDiplomacyButton^.SetVisible(true);
+		m_pxDiplomacyButton^.SetPos(m_pxQuestButton^.GetPos().GetX() + m_pxQuestButton^.GetWidth(),0);
+		m_pxDiplomacyButton^.SetFrame(false);
+		m_pxDiplomacyButton^.SetBackground(false);
+		m_pxDiplomacyButton^.m_xOnClick = OpenDiplomacyWindow;
+		m_pxDiplomacyButton^.SetSize(91,iMenuButtonHeight);
+		m_pxDiplomacyButton^.SetBitmap("hud/menu_alliesbutton.tga","hud/menu_alliesbutton_down.tga","hud/menu_alliesbutton_hover.tga","hud/menu_alliesbutton.tga");
+		m_pxDiplomacyButton^.SetText(CLocalizer.Get().Translate("_UI_IngaScre_Button_Diplomacy"), 0, -9);
+		m_pxDiplomacyButton^.ChangeAbsTextPosition(0, -2);
+		m_pxDiplomacyButton^.SetTextColor({{0, 0, 0, 255}});
+		AddChild(m_pxDiplomacyButton);
+		pxBtn=new CTextButton;
+		pxBtn^.SetSuitAlpha(false);
+		pxBtn^.SetTransparent(true);
+		pxBtn^.SetAlwaysOnTop(true);
+		pxBtn^.SetVisible(true);
+		pxBtn^.SetPos(m_pxDiplomacyButton^.GetPos().GetX() + m_pxDiplomacyButton^.GetWidth(),0);
+		pxBtn^.SetFrame(false);
+		pxBtn^.SetBackground(false);
+		pxBtn^.m_xOnClick = OnChatToAll;
+		pxBtn^.m_xOnRightClick=OnShowHistory;
+		pxBtn^.SetSize(80,iMenuButtonHeight);
+		pxBtn^.SetBitmap("hud/menu_chatbutton.tga","hud/menu_chatbutton_down.tga","hud/menu_chatbutton_hover.tga","hud/menu_chatbutton.tga");
+		pxBtn^.SetText(CLocalizer.Get().Translate("_UI_IngaScre_Button_Chat"), -8, -9);
+		pxBtn^.SetToolTipText(CLocalizer.Get().Translate("_UI_IngaScre_Button_Chat_TT"));
+		pxBtn^.ChangeAbsTextPosition(0, -2);
+		pxBtn^.SetTextColor({{0, 0, 0, 255}});
+		AddChild(pxBtn);
+
+		m_sImagePath=CWindowMgr.Get().GetUIDataPath()+"HUD/"+"Hu"+"/"+m_sSizePath;
+		m_sTempImagePath = CClientWrap.GetUrsRelPath()+"/Data/Base/UI/";
+		m_pxCmdBar^.Init(m_pxDesktop,this,"Hu");
+		if(m_pxTribeView!=null)then
+			m_pxTribeView^.Init("Hu");
+		endif;
+
+//		CFeedback.Get().SetPos(10,40);
+//		AddChild(^(CFeedback.Get()));
+		
+		m_pxToolTip=new CToolTip;
+		m_pxToolTip^.SetPos(10,100);
+		AddChild(m_pxToolTip);
+
+		m_pxInfo=new CInfo;
+		m_pxInfo^.SetPos(0,iDesktopHeight - 197 );
+		m_pxInfo^.SetSize(104,197);
+		//m_pxInfo^.SetTransparent(false);
+		m_pxInfo^.SetVisible(true);
+		m_pxInfo^.SetSuitAlpha(false);
+		m_pxInfo^.SetBitmap(m_sTempImagePath+"hud/infowin_bg_closed.tga");
+		m_pxInfo^.EnableMsgHitTest(false);
+		AddChild(m_pxInfo);
+		
+		m_pxCounter = new CTimerWnd();
+		m_pxCounter^.SetVisible(false);
+		AddChild(m_pxCounter);
+		m_pxCounter^.SetPos(iDesktopWidth-(CTimerWnd.WIDTH+5), 5);
+				
+		
+		sTemp = "";
+		if(CSettings.Get("Game/ControllerOptions/RotateMiniMap",sTemp)==false)then
+			sTemp="false";
+			CSettings.Set("Game/ControllerOptions/RotateMiniMap",sTemp);
+		endif;
+		m_pxMiniMap^.SetFollowCamera(sTemp=="true");
+
+		SetTimer(250,true);
+
+		SetTransparent(true);
+		SetBackground(false);
+		
+		m_bCheckResources == false;
+
+		UpdateAutosaveTimer();
+		
+		// start with open army controller
+		OnPyramidOpen();
+    endconstructor;
+
+	//destructor
+    export destructor()    	
+    	ms_pxInGameScreen=null;
+   		CFeedback.Kill();
+   		CIconMgr.Kill();
+   		m_pxDesktop^.SetIngameScreen(null);
+   		m_pxDesktop^.SetStandardActivationChild(null);
+		
+		if(m_pxGroupBar!=null) then m_pxGroupBar^.Destroy(); endif;
+		if(m_pxCmdBar!=null) then m_pxCmdBar^.Destroy(); endif;
+		if(m_pxCounter!=null) then m_pxCounter^.Destroy(); endif;
+		m_xDialogSceneMgr.Reset();
+	enddestructor;
+	
+	export proc void UpdateAutosaveTimer()
+		var CConfig xConf;
+		var bool bAutosaveEnabled = xConf.GetB("Game/AutosaveEnabled",false);
+		var int iAutosaveInterval = xConf.GetI("Game/AutosaveInterval",10);
+		
+		UnsetTimer(m_iAUTOSAVETIMER);
+		if(bAutosaveEnabled)then
+			m_iAUTOSAVETIMER=SetTimer(iAutosaveInterval*60*1000,true);
+		else
+			m_iAUTOSAVETIMER=0;
+		endif;
+	endproc;
+	
+	proc bool OnShowHistory()
+		if(CGameWrap.GetSequencePlaying())then //kein History Fenster wenn Sequence läuft
+			return true;
+		endif;
+		var ^CHistoryWindow pxHistoryWindow=new CHistoryWindow();
+		pxHistoryWindow^.SetNewsticker(m_pxNewsTickerWindow);
+		AddChild(pxHistoryWindow);
+		CWindowMgr.Get().SetModal(pxHistoryWindow);
+		return true;
+	endproc;
+	
+	export proc void EnableToolTipWindow()
+		CWindowMgr.Get().m_xOnToolTip=m_pxToolTipWindow^.OnToolTip;
+	endproc;
+
+	
+	export proc ^CNewsTicker GetNewsTickerWindow()
+		return m_pxNewsTickerWindow;
+	endproc;
+	
+	static proc void SetFocusToDesktop()
+		var ^CDesktop pxDesktop=CClientWrap.GetDesktop();
+		CWindowMgr.Get().BringWindowToTop(pxDesktop,true);
+	endproc;
+
+	export proc bool OnPyramidSortAll()
+		var bool bResult = (m_pxTribeView^.SortLevel(2)&&m_pxTribeView^.SortLevel(1)&&m_pxTribeView^.SortLevel(0));
+		m_pxTribeView^.TryAdditionalCards();
+		SetFocusToDesktop();
+		return bResult;
+	endproc;
+	
+	export proc bool OnChangeSortMethod()
+		var bool bResult = m_pxTribeView^.ChangeSortMethod();
+		m_pxSmall4^.SetToolTipText(CLocalizer.Get().Translate("_UI_ArmyController_Sorting_SortAll"),
+			CLocalizer.Get().Translate("_UI_ArmyController_Sorting_CurrentMethod")+"\n\n"+
+			CLocalizer.Get().Translate("_UI_ArmyController_Sorting_Method"+m_pxTribeView^.GetSortingMethod().ToString())
+		);
+		m_pxSmall3^.SetToolTipText(
+			CLocalizer.Get().Translate("_UI_ArmyController_Sorting_ChangeMethod"),
+			CLocalizer.Get().Translate("_UI_ArmyController_Sorting_CurrentMethod")+"\n\n"+
+			CLocalizer.Get().Translate("_UI_ArmyController_Sorting_Method"+m_pxTribeView^.GetSortingMethod().ToString())
+		);
+		m_pxSmall2^.SetToolTipText(CLocalizer.Get().Translate("_UI_ArmyController_Sorting_SortLevel"),
+			CLocalizer.Get().Translate("_UI_ArmyController_Sorting_CurrentMethod")+"\n\n"+
+			CLocalizer.Get().Translate("_UI_ArmyController_Sorting_Method"+m_pxTribeView^.GetSortingMethod().ToString())
+		);
+		m_pxSmall1^.SetToolTipText(CLocalizer.Get().Translate("_UI_ArmyController_Sorting_SortLevel"),
+			CLocalizer.Get().Translate("_UI_ArmyController_Sorting_CurrentMethod")+"\n\n"+
+			CLocalizer.Get().Translate("_UI_ArmyController_Sorting_Method"+m_pxTribeView^.GetSortingMethod().ToString())
+		);
+		m_pxSmall0^.SetToolTipText(CLocalizer.Get().Translate("_UI_ArmyController_Sorting_SortLevel"),
+			CLocalizer.Get().Translate("_UI_ArmyController_Sorting_CurrentMethod")+"\n\n"+
+			CLocalizer.Get().Translate("_UI_ArmyController_Sorting_Method"+m_pxTribeView^.GetSortingMethod().ToString())
+		);
+		//m_pxTribeView^.CheckPyramid();
+		SetFocusToDesktop();
+		return bResult;
+	endproc;
+
+	export proc bool OnPyramidSort2()
+		var bool bResult = m_pxTribeView^.SortLevel(2);
+		SetFocusToDesktop();
+		return bResult;
+	endproc;
+
+	export proc bool OnPyramidSort1()
+		var bool bResult = m_pxTribeView^.SortLevel(1);
+		SetFocusToDesktop();
+		return bResult;
+	endproc;
+
+	export proc bool OnPyramidSort0()
+		var bool bResult = m_pxTribeView^.SortLevel(0);
+		SetFocusToDesktop();
+		return bResult;
+	endproc;
+
+	export proc ^CToolTip GetToolTip()
+		return m_pxToolTip;
+	endproc;
+		
+//	//get InGameScreen
+//	//Was ist das denn für eine komische Funktion?
+//	export static proc ^CInGameScreen Get()
+//		if(ms_pxInGameScreen==null)then
+//			//CGameWrap.LogWarning("UI.InGameScreen","called Get() after destructor");
+//		endif;
+//		return ms_pxInGameScreen;
+//	endproc;
+	
+	export proc ^CTimerWnd GetCounter()
+		return m_pxCounter;
+	endproc;
+
+	export proc ^CDialogSceneMgr GetDlgSceneMgr()
+		return ^m_xDialogSceneMgr;
+	endproc;
+	
+	export proc void SetVisible(bool p_bV)
+		super.SetVisible(p_bV);
+		m_xDialogSceneMgr.SetVisible(p_bV);
+	endproc;
+
+	export proc void UpdatePyramidButton();
+		var ^CAttribs pxA = CGameWrap.GetClient().GetPlayer().GetAttribs();
+		var ^CPlayer pxPlayer = ^(CGameWrap.GetClient().GetPlayer());
+		var CTechTree xTechTree;
+		var string sPlayerTribe;
+		if (pxPlayer != null) then
+			xTechTree = pxPlayer^.GetPlayerTechTree();
+			var ^CLevelInfo.CPlayerSlot pxSlot = pxPlayer^.GetPlayerSlot();
+			if(pxSlot!=null)then
+				sPlayerTribe = pxSlot^.GetTribe();
+			endif;
+		endif;
+		if(pxA==null) then return; endif;
+		
+		var array int aiBlendPos;
+		aiBlendPos = 6;
+		aiBlendPos[0] = 0;
+		aiBlendPos[1] = 65;
+		aiBlendPos[2] = 44;
+		aiBlendPos[3] = 26;
+		aiBlendPos[4] = 15;
+		aiBlendPos[5] = 0;
+		
+		var int iAge = pxA^.GetValueInt("age");
+		var int iBlendPos = aiBlendPos[iAge];
+		/*if (iAge == 4) then
+			iBlendPos = 15;
+		elseif (iAge == 3) then
+			iBlendPos = 26;
+		elseif (iAge == 2) then
+			iBlendPos = 44;
+		elseif (iAge == 1) then
+			iBlendPos = 65;
+		endif;
+		*/
+		var bool bNextAgeAvailable=false;
+		var real fNextAgeProgress=0.0f;
+		var ^CObj pxSomeObj = null;
+		
+		var CObjQueryCln xQ;
+		xQ.SetOwner(CGameWrap.GetClient().GetPlayerID());
+		var CObjList xL; xQ.Execute(xL);
+				
+		m_sPlayerTribe=CGameWrap.GetClient().GetPlayer().GetPlayerSlot()^.GetTribe();
+		var string sClass = m_sPlayerTribe+"_";
+		
+		var string sPath;
+		var string sAge = (iAge+1).ToString();
+		if(sPlayerTribe=="Aje") then
+			xQ.SetType("ANML", true);
+			sClass +="resource_collector";
+			sPath = "/Actions/Aje/Upgrades/aje_resource_collector/age_"+sAge;
+		else
+			xQ.SetType("BLDG", true);
+			sClass+="fireplace";
+			if (sPlayerTribe=="Hu") then
+				sPath = "/Actions/Hu/Upgrades/hu_fireplace/age_"+sAge;
+			elseif (sPlayerTribe=="Ninigi") then
+				sPath = "/Actions/Ninigi/Upgrades/ninigi_fireplace/age_"+sAge;
+			endif;
+		endif;
+		sClass.MakeLower();
+		
+		var string sCurInvents = pxA^.GetValue("inventions_in_progress");
+		if(!sCurInvents.IsEmpty()) then
+			if(sCurInvents.Find("age_"+(iAge+1).ToString())>=0) then
+				var int i, iC = xL.NumEntries();
+				for(i=0) cond(i<iC) iter(++i) do
+					if(xL[i].IsValid())then
+						var ^CObj pxO = xL[i].GetObj();
+						if(pxSomeObj==null) then
+							pxSomeObj = pxO;
+						endif;
+						if(pxO^.GetClassName()!=sClass) then continue; endif;	
+						var ^CAttribs pxAttrib = pxO^.GetAttribs();
+						if(pxAttrib!=null) then 
+							var string sProcessObj = pxAttrib^.GetValue("CurProcessObj");
+							if(sProcessObj.Find("age_"+(iAge+1).ToString())>=0) then
+								fNextAgeProgress = pxAttrib^.GetValueInt("CurProcess").ToReal();
+								bNextAgeAvailable=true;
+								m_bCheckResources = true;
+							endif;
+						endif;
+					endif;
+				endfor;
+			endif;			
+		else
+			m_bCheckResources = CPyramidRestrictionsMgr.Get().CheckResources(sPath, pxA,xTechTree, sPlayerTribe);
+		endif;
+		if(!bNextAgeAvailable && iAge<5) then
+			var string sPath;
+			if(m_sPlayerTribe=="Hu") then
+				sPath = "/Actions/Hu/Upgrades/BLDG/hu_fireplace";
+			elseif(m_sPlayerTribe=="Aje") then
+				sPath = "/Actions/Aje/Upgrades/BLDG/aje_resource_collector";
+			elseif(m_sPlayerTribe=="Ninigi") then
+				sPath = "/Actions/Ninig/Upgrades/BLDG/ninigi_fireplace";
+			endif;
+			
+			var string sConditionPath = sPath+"/conditions";
+			var bool bCheckInventObjects = true;
+			var int i = 0;
+			if(pxSomeObj==null) then
+				var CObjQueryCln xQ;
+				xQ.SetOwner(CGameWrap.GetClient().GetPlayerID());
+				var CObjList xL;
+				xQ.Execute(xL);
+				
+				var int i, iC = xL.NumEntries();
+				for(i=0) cond(i<iC) iter(++i)do
+					if(xL[i].IsValid()) then
+						pxSomeObj = xL[i].GetObj();
+						break;
+					endif;
+				endfor;
+			endif;
+			 if(pxSomeObj!=null) then
+				var CTechTree xTT = pxSomeObj^.GetTechTree();
+				var string sInventObj = xTT.GetValueS(sConditionPath+"/inventobjects/"+i.ToString(),"");
+				while(sInventObj!="")do
+					if(xTT.GetValueI("Objects/"+m_sPlayerTribe+"/InventObjects/"+sInventObj+"/invented",0)==1)then
+					else
+						bCheckInventObjects = false;
+					endif;
+					i++;
+					sInventObj = xTT.GetValueS(sConditionPath+"/inventobjects/"+i.ToString(),"");
+				endwhile;
+				
+				if(i==0 || bCheckInventObjects)then
+					bNextAgeAvailable=true;
+				endif;
+			endif;
+		endif;
+		
+		var int iNoAvailPos = aiBlendPos[iAge];
+		if(bNextAgeAvailable && m_bCheckResources) then
+			iBlendPos = aiBlendPos[iAge+1];
+		endif;		
+		
+		if(fNextAgeProgress>0.0f && iAge<5) then
+			var int iDiff = aiBlendPos[iAge]-aiBlendPos[iAge+1];
+			var real fProc = iDiff.ToReal()*0.01f;
+			fProc*=fNextAgeProgress;
+			iNoAvailPos -= (fProc+0.5f).ToInt();
+		endif;
+		
+		m_pxSmall^.SetBitmap(CGameInst.GetBitmapMgr().GetBlendBitmap("16, layer pyramid_bg_avail, vslice pyramid_bg_nextage "+iNoAvailPos.ToString()+", vslice pyramid_bg_noavail "+iBlendPos.ToString()+", layer pyramid_ovl_levelupable")^.GetBitmap(),
+							CGameInst.GetBitmapMgr().GetBlendBitmap("16, layer pyramid_bg_avail_down, vslice pyramid_bg_nextage_down "+iNoAvailPos.ToString()+", vslice pyramid_bg_noavail_down "+iBlendPos.ToString()+", layer pyramid_ovl_levelupable")^.GetBitmap(),
+							CGameInst.GetBitmapMgr().GetBlendBitmap("16, layer pyramid_bg_avail_hover, vslice pyramid_bg_nextage_hover "+iNoAvailPos.ToString()+", vslice pyramid_bg_noavail_hover "+iBlendPos.ToString()+", layer pyramid_ovl_levelupable")^.GetBitmap(),
+							CGameInst.GetBitmapMgr().GetBlendBitmap("16, layer pyramid_bg_avail, vslice pyramid_bg_nextage "+iNoAvailPos.ToString()+", vslice pyramid_bg_noavail "+iBlendPos.ToString()+", layer pyramid_ovl_levelupable")^.GetBitmap());
+	endproc;
+
+	export proc void OnWhisper(string p_sFrom, string p_sText, int p_iType)
+		var string sPrefix;
+		var string sSuffix;
+		if(p_iType==0)then
+			sPrefix = "!";
+			sSuffix = " whispers: ";
+		elseif(p_iType==1)then
+			sPrefix = "§";
+			sSuffix = ": ";
+		elseif(p_iType==2)then
+			sPrefix = "$";
+			sSuffix = ": ";
+		endif;
+		OnChatMsg(sPrefix+p_sFrom+sSuffix+p_sText);
+	endproc;
+	
+	export proc void OnChatMsg(string p_sMsg)
+		var int iChatState;
+		if(p_sMsg.GetAt(0)=='!')then
+			p_sMsg.Delete(0);
+			iChatState = 1;
+		elseif(p_sMsg.GetAt(0)=='&')then
+			p_sMsg.Delete(0);
+			iChatState = 2;
+		elseif(p_sMsg.GetAt(0)=='§')then
+			p_sMsg.Delete(0);
+			iChatState = 3;
+		elseif(p_sMsg.GetAt(0)=='$')then
+			p_sMsg.Delete(0);
+			iChatState = 4;
+		endif;
+		p_sMsg.Replace(":und:","&");
+		var array string asLines;
+		var int iLength=p_sMsg.GetLength();
+		while(iLength>0)do
+			asLines.AddEntry(p_sMsg.Left(Math.Min(iLength,40)));
+			iLength = p_sMsg.Delete(0,Math.Min(iLength,40));
+		endwhile;
+		var int i, iC = asLines.NumEntries();
+		for(i=0)cond(i<iC)iter(i++)do
+			CFeedback.Print(asLines[i]);
+		endfor;
+	endproc;
+
+	export proc bool CheckDiplomacyButton()
+		//Check if diplomacy buttons are available
+		var string sType="multiplayer";
+		var ^CLevelInfoClient	pxLevelInfo;
+		pxLevelInfo=^(CGameWrap.GetClient().GetLevelInfo());
+		var ^CPropDB pxGenericDB=^(pxLevelInfo^.GetGenericData());
+		var ^CPropDB.CNode pxMapType=pxGenericDB^.FindNode("Base/MapType",false);
+		if(pxMapType!=null)then
+			sType=pxMapType^.Value();
+		else
+			KLog.LogWarn("IngameScreen","Could not read levelinfo!");
+		endif;
+		if(sType=="multiplayer"&&CGameWrap.GetClient().HasValidPlayerSlot()) then
+			m_pxDiplomacyButton^.m_xOnClick = OpenDiplomacyWindow;
+			m_pxDiplomacyButton^.SetDisabled(false);
+		else
+			m_pxDiplomacyButton^.m_xOnClick.Clear();
+			m_pxDiplomacyButton^.SetDisabled(true);
+		endif;
+		return(true);
+	endproc;
+
+	//Chat to all players
+	export proc bool OnChatToAll()
+		var ^CIngameChatBar pxInGameChatbar=new CIngameChatBar("All");
+		AddChild(pxInGameChatbar);
+		CWindowMgr.Get().SetModal(pxInGameChatbar);
+		CWindowMgr.Get().BringWindowToTop(pxInGameChatbar,true);
+		pxInGameChatbar^.SetEditControlActive();
+		return true;
+	endproc;
+	
+	//Chat to all players
+	export proc bool OnChatToAllies()
+		var ^CIngameChatBar pxInGameChatbar=new CIngameChatBar("Allies");
+		AddChild(pxInGameChatbar);
+		CWindowMgr.Get().SetModal(pxInGameChatbar);
+		CWindowMgr.Get().BringWindowToTop(pxInGameChatbar,true);
+		pxInGameChatbar^.SetEditControlActive();
+		return true;
+	endproc;
+	
+	//Chat to enemies
+	export proc bool OnChatToEnemies()
+		var ^CIngameChatBar pxInGameChatbar=new CIngameChatBar("Enemies");
+		AddChild(pxInGameChatbar);
+		CWindowMgr.Get().SetModal(pxInGameChatbar);
+		CWindowMgr.Get().BringWindowToTop(pxInGameChatbar,true);
+		pxInGameChatbar^.SetEditControlActive();
+		return true;
+	endproc;
+	
+
+	proc bool OnShowQuest()		
+		if(CGameWrap.GetSequencePlaying())then //kein Quest Fenster wenn Sequence läuft
+			return true;
+		endif;
+		var ^CQuestWindow pxQuestWindow=new CQuestWindow();    	
+		AddChild(pxQuestWindow);
+		CWindowMgr.Get().SetModal(pxQuestWindow);				
+		return true;
+	endproc;
+
+	export proc ^CMiniMapWindow2 GetMiniMapWindow()
+		return m_pxMiniMapWindow;
+	endproc;
+
+	//On Init
+	export proc void Init(string p_sTribe)
+		m_sImagePath=CWindowMgr.Get().GetUIDataPath()+"HUD/"+p_sTribe+"/"+m_sSizePath;
+		m_pxCmdBar^.Init(m_pxDesktop,this,p_sTribe);
+		if(m_pxTribeView!=null)then
+			m_pxTribeView^.Init(p_sTribe);
+		endif;
+		m_pxRscBar^.Init(p_sTribe);
+		m_pxRscBar^.SetBitmap(m_sTempImagePath+"hud/resource_bar.tga");
+		m_sPlayerTribe = p_sTribe;
+	endproc;
+
+
+	//on tool tip
+	proc bool OnToolTip(string p_sMsg)
+//		CGameWrap.LogInfo("UI.NewUI.GetScapeEdit","ToolTip: "+p_sMsg);
+		return false;
+	endproc;
+
+
+	//handle massage
+	proc bool HandleMessage(ref CEvtPointer p_rxEvt)
+		if(p_rxEvt.GetClass()==CSubscriptionMgr.GetEvtClass_ObjChange())then
+			var CClntHndl xObjHandle;
+			var bitset dwTypes, dwAttribGroups, dwAttribTest;
+			if(CSubscriptionMgr.EvtGetData_ObjChange(p_rxEvt,xObjHandle,dwTypes,dwAttribGroups))then
+				if((dwTypes & CSubscriptionMgr.CT_ObjAttribs) != 0d) then
+					if(xObjHandle.IsValid())then
+						var ^CObj pxObj = xObjHandle.GetObj();
+						if(pxObj!=null)then
+							dwAttribTest=CGameWrap.GetSubscriptionMgr().GetGroupMask("rallyupdate");
+							if((dwAttribGroups & dwAttribTest)!=0b)then
+								CMainController.Get().RallyUpdate();
+							endif;
+							dwAttribTest=CGameWrap.GetSubscriptionMgr().GetGroupMask("WalkTargetUpdate");
+							if((dwAttribGroups & dwAttribTest)!=0b)then
+								CMainController.Get().WalkTargetUpdate();
+							endif;
+						endif;
+					endif;
+				elseif((dwTypes & CSubscriptionMgr.CT_Owner) != 0d) then
+					CGameInst.ms_xSelectionInfo.Init(^(CClientWrap.GetSelection()));
+					OnChangeSelection();
+				endif;
+			endif;
+			return true;
+		endif;
+		return false;
+	endproc;
+
+
+/// ******************  Bitte drin lassen ... man weis ja nie ;) ****************************************///
+/*	//called to drop inventory from pyramid into the world
+	proc bool AcceptDropWindow(^CDragWindow p_pxDragWnd, point p_xMousePos)
+		if(p_pxDragWnd^.GetIdentifier() !="URSCARD")then return false; endif;
+		var string sMsg;
+		var point xPos = p_pxDragWnd^.GetOriginalPos();
+		var ^CPyrCard pxCard = cast<CPyrCard>(p_pxDragWnd^.GetSource());
+		var ^CInvCard pxInventoryCard = cast<CInvCard>(p_pxDragWnd^.GetSource());
+
+		if(pxCard==null && pxInventoryCard==null)then return false; endif;
+		if(pxCard!=null)then
+			sMsg = "Only inventory\n";
+			sMsg +="items can be\n";
+			sMsg +="placed into world";
+			SetToolTipText(sMsg);
+			return false;
+		endif;
+		if(pxInventoryCard!=null) then
+			sMsg = "This action will place\n";
+			sMsg +="the item into the\n";
+			sMsg +="world. Another char\n";
+			sMsg +="will be able to\n";
+			sMsg +="pick up that item";
+			SetToolTipText(sMsg);
+			var int iSlotID = pxInventoryCard^.GetSlotID();
+			pxCard = m_pxTribeView^.GetCard(iSlotID);
+			var ^CObj pxObj = pxCard^.GetObjToSelect().GetObj();
+			var vec3 vCharPos = pxObj^.GetPos();
+			var vec3 vDropPos = CClientWrap.GetScapeMgr().GetPickPoint();
+			var real fDist = (vCharPos - vDropPos).Abs();
+			if (fDist <= 10.0f) then
+				return true;
+			else
+				sMsg = "The char cannot place an\n";
+				sMsg +="item that far away from\n";
+				sMsg +="himself! Try a little closer.";
+				SetToolTipText(sMsg);
+				return false;
+			endif;
+		endif;
+		return true;
+	endproc;
+
+
+	//called when Inventory is dropped into the world
+	proc void DropWindow(^CDragWindow p_pxDragWnd, point p_xMousePos)
+		var ^CInvCard pxInventoryCard = cast<CInvCard>(p_pxDragWnd^.GetSource());
+		var string sMsg;
+		if(pxInventoryCard==null)then return; endif;
+		if(pxInventoryCard!=null)then
+			var vec3 vPos = CClientWrap.GetScapeMgr().GetPickPoint();
+			var int iOwner = 1;
+			var string sName = pxInventoryCard^.GetName();
+			var int iXtraSlotID = pxInventoryCard^.GetXtraSlotID();
+			var int iSlotID = pxInventoryCard^.GetSlotID();
+			var int iLvl=m_pxTribe^.SlotIndex2Level(iSlotID);
+			var ^CPyrCard pxCard = m_pxTribeView^.GetCard(iSlotID);
+			var CClntHndl xHndl = pxCard^.GetObj();
+			var CClntHndl xInvHndl = pxInventoryCard^.GetObj();
+			CEvt_GamePlayCommand.Send(xHndl,"DropItem", xInvHndl, vPos, "");
+			pxInventoryCard^.SetBitmap(m_pxTribeView^.GetBackgroundBitmap(iLvl, "background"));
+			pxInventoryCard^.SetBitmapName("background");
+			pxInventoryCard^.SetDraggable(false);
+			m_pxTribe^.GetSlotInfo(iSlotID)^.GetXtra(false,iXtraSlotID)^.m_bUsed=false;
+		endif;
+	endproc;*/
+///*******************************************************************************************************///
+
+	export proc ^CNewPyramid GetPyramid()
+		return m_pxTribeView;
+	endproc;
+
+	export proc ^CGroupBar GetGroupBar()
+		return m_pxGroupBar;
+	endproc;
+
+	export proc ^CCommandBar GetCmdBar()
+		return m_pxCmdBar;
+	endproc;
+
+    //opens the different states of the new pyramid
+	export proc bool OnPyramidOpen()		
+		TogglePyramidState(false);
+		// put focus back on the desktop, otherwise we can't scroll anymore after clicking
+		var ^CDesktop pxDesktop=CClientWrap.GetDesktop();
+		CWindowMgr.Get().BringWindowToTop(pxDesktop,true);
+		return true;
+	endproc;
+
+
+	//called to close the pyramid
+	export proc bool OnPyramidClose()		
+		TogglePyramidState(true);
+		var ^CDesktop pxDesktop=CClientWrap.GetDesktop();
+		CWindowMgr.Get().BringWindowToTop(pxDesktop,true);
+		
+		return true;
+	endproc;
+
+    proc bool OnGameMenu()
+    	var ^CSequence pxSequence=CGameWrap.GetClient().GetSequence();
+		if(pxSequence!=null)then //kein Menü wenn Sequence läuft
+			return true;
+		endif;
+		CUIStateMgr.Get().SetState(CUIStateMgr.STATE_GAMEMENU);
+        return true;
+    endproc;
+
+	//called when selection changes
+    export proc void OnChangeSelection()
+    	if(!m_bGameActive)then return;endif;
+		m_pxCmdBar^.OnChangeSelection();
+		m_pxGroupBar^.OnChangeSelection();
+		m_pxTribeView^.UpdateSelection();
+		m_pxInfo^.SetBitmap(m_sTempImagePath+"/hud/infowin_bg_closed.tga");
+		m_pxInfo^.Update(true);
+		//rally point update
+		var ^CObjSelection pxSel = ^(CClientWrap.GetSelection());
+		if(pxSel^.NumEntries()!=0)then
+			var int i,iC=pxSel^.NumEntries();
+			for(i=0)cond(i<iC)iter(i++)do
+				var ^CObj pxObj = pxSel^[i].GetObj();
+				if(pxObj!=null)then
+					var ^CAttribs pxAttr = pxObj^.GetAttribs();
+					CGameWrap.GetSubscriptionMgr().SubscribeObjChanges(this,pxSel^[i],CSubscriptionMgr.CT_Owner, "rallyupdate");
+					if(pxAttr!=null && pxAttr^.GetValueInt("IsRallySite")!=0)then
+						CGameWrap.GetSubscriptionMgr().SubscribeObjChanges(this,pxSel^[i],CSubscriptionMgr.CT_ObjAttribs, "rallyupdate");
+					endif;
+					if(pxAttr!=null)then
+						CGameWrap.GetSubscriptionMgr().SubscribeObjChanges(this,pxSel^[i],CSubscriptionMgr.CT_ObjAttribs, "WalkTargetUpdate");
+					endif;
+				endif;
+			endfor;
+		else
+			CGameWrap.GetSubscriptionMgr().UnsubscribeObjChanges(this);
+		endif;
+//		CGameWrap.LogInfo("UI.NewUI.GetScapeEdit","Selection Change");
+    endproc;
+
+
+	//called when values change
+    export proc void OnChangeValues()
+    	if(!m_bGameActive)then return;endif;
+//		CGameWrap.LogInfo("UI.NewUI.GetScapeEdit","Value Change");
+		m_pxCmdBar^.OnChangeValues(CInvoke.PLYRCHG);
+		m_pxRscBar^.Update();
+    endproc;
+
+	//called when levelinfo was changed
+    export proc void OnLevelInfoChanged()
+    	if(!m_bGameActive)then     		
+    		return;
+    	endif;
+		m_pxRscBar^.Update();
+		/*
+		if(m_pxToolTipWindow!=null) then
+			var ^CInfoBar pxBar = m_pxToolTipWindow^.GetInfoBar();
+			if(pxBar!=null) then
+				pxBar^.SetText(pxBar^.GetUnconvertedText()); // enforce update
+			endif;
+		endif;
+		*/
+		m_pxTribeView^.UpdateBlockedSlots();
+		
+		var ^CLevelInfoClient pxLE=^(CGameWrap.GetClient().GetLevelInfo());
+		var string sInfoBarText=pxLE^.GetAttribs().GetValue("InfoBarText");		
+		//m_pxToolTipWindow^.GetInfoBar()^.SetText(sInfoBarText);
+
+// Functionality was moved to CUIMgr.GetLocalizedNewstickerMsg		
+//		var array string asVal;
+//		sInfoBarText.Replace("\\t", "\t");
+//		sInfoBarText.Split(asVal,"\t",false);
+//		var int iCount=asVal.NumEntries();
+//		if(iCount>0)then
+//			sInfoBarText = CLocalizer.Get().Translate(asVal[0]);
+//			var int i,iC=asVal.NumEntries();
+//			for(i=1)cond(i<iC)iter(i++)do
+//				sInfoBarText.Replace("%"+i.ToString(),CLocalizer.Get().Translate(asVal[i]));
+//			endfor;
+//		endif;
+
+		m_pxCountDownWindow^.SetText(CUIMgr.GetLocalizedNewstickerMsg(sInfoBarText));		
+    endproc;
+
+
+	//called when techtree had a change
+	export proc void OnChangeTechTree(ref CStringArray p_rasChanges)
+		if(!m_bGameActive)then return;endif;
+		var int i,iC=p_rasChanges.NumEntries();
+		KLog.LogWarn("UI.NewUI.GetScapeEdit","TTChange "+i.ToString());
+		for(i=0) cond(i<iC) iter(i++) do
+			var string sTTPath = p_rasChanges[i];
+			//GetPyramid()^.ShowUpdates(sTTPath);
+			//KLog.LogWarn("UI.NewUI.GetScapeEdit","TTCh: "+p_rasChanges[i]+" "+i.ToString());
+		endfor;
+		m_pxCmdBar^.OnChangeTechTree();
+		//GetPyramid()^.UpdateUpgrades();
+		GetPyramid()^.OnTechtreeChange();
+	endproc;
+
+	export proc void OnTick()
+		if(!m_bGameActive)then return;endif;		
+		var string sTTID="";
+		var string sTTText="";
+		var string sTTTitle="";
+		var string sObjClass="";
+		if(m_pxObjMgr!=null)then
+			var CClntHndl xHovered=m_pxObjMgr^.GetHitObj();
+			if(xHovered.IsValid())then
+				var ^CObj pxObj=xHovered.GetObj();
+				if(pxObj!=null)then
+					/*
+					if(pxObj^.GetType()=="QMRK")then
+						var ^CAttribs pxAttr = pxObj^.GetAttribs();
+						if(pxAttr!=null)then
+							sTTID=pxAttr^.GetValue("QuestionMarkToolTip");
+							if(!sTTID.IsEmpty())then
+								sTTText=CLocalizer.Get().Translate(sTTID);									
+							endif;								
+						endif;
+					else							
+						sTTID=CHelpMenu.GetObjHelpitemKey(pxObj);							
+					endif;
+					*/
+
+					// changed to fix RT#15496 (start)
+					// problem: combined objects may produce invalid tool tip results because the hovered object may be a part of the combined object which has no valid tool tip
+					// solution: use the root parent of the combined object
+					
+					var ^CObj pxParentObj=pxObj^.GetGroupedRootParentObj();
+					
+					if(pxParentObj^.GetType()=="QMRK")then
+						var ^CAttribs pxAttr = pxParentObj^.GetAttribs();
+						if(pxAttr!=null)then
+							sTTID=pxAttr^.GetValue("QuestionMarkToolTip");
+							if(!sTTID.IsEmpty())then
+								sTTText=CLocalizer.Get().Translate(sTTID);									
+							endif;								
+						endif;
+					elseif( pxParentObj^.GetType() == "FRUI" ) then
+						//	Wir unterscheiden hier zwischen Fischen und Fruchtbüschen, denn laut Jan sind Fische Meeresfrüchte :)
+						if ( pxParentObj^.GetClassName().Find( "Fish" ) != -1 ) then
+							sTTID = "_fish";
+						else
+							sTTID="_fruit";
+						endif;
+					elseif( pxParentObj^.GetType() == "STON" ) then
+						sTTID="_stone";
+					elseif( pxParentObj^.GetType() == "WOOD" ) then
+						sTTID="_wood";
+					elseif( pxParentObj^.GetType() == "TREE" ) then
+						sTTID="_wood";						
+					elseif( pxParentObj^.GetType() == "FOOD" ) then
+						sTTID="_food";
+					elseif( pxParentObj^.GetType() == "FNTN" ) then
+						if ( pxParentObj^.GetClassName() == "valhalla_laerad_well" ) then
+							sTTID = "_laerad_well";
+						elseif( pxParentObj^.GetClassName().Find( "bloodfountain" ) >= 0 ) then
+							sTTID = "_healing_well_01";
+						elseif( pxParentObj^.GetClassName().Find( "seas_healspring" ) >= 0 ) then
+							sTTID = "_healing_well_01";
+						elseif( pxParentObj^.GetClassName().Find( "healing_well_01" ) >= 0 ) then
+							sTTID = "_healing_well_01";
+						elseif( pxParentObj^.GetClassName().Find( "seas_healspring" ) >= 0 ) then
+							sTTID = "_healing_well_01";
+						endif;
+					else
+						sTTID=CHelpMenu.GetObjHelpitemKey(pxParentObj);						
+					endif;						
+					
+					// changed to fix RT#15496 (end)
+				endif;
+			endif;
+		endif;
+//		sTTText = CClientWrap.GetUIMgr().GetToopTipText(sTTID, sTTTitle);
+//		SetToolTipText(sTTID+" BLAH "+sTTTitle, sTTID+" BLAH "+sTTText);
+		if(sTTID.IsEmpty()) then 
+			SetToolTipText(sTTText);
+		else
+			if(sTTText.IsEmpty())then
+				sTTText = CClientWrap.GetUIMgr().GetToopTipText(sTTID, sTTTitle);
+				SetToolTipText(sTTTitle, sTTText);
+			else
+				sTTText = sTTText+CClientWrap.GetUIMgr().GetToopTipText(sTTID, sTTTitle);
+				SetToolTipText(sTTTitle, sTTText);
+			endif;
+		 endif;		
+		 HandleTimers();
+//		CGameWrap.LogInfo("UI.NewUI.GetScapeEdit","Tick");
+	endproc
+	
+	proc void HandleTimers()
+		//	
+		/*var int iMaxShowedTimers=1;
+		var ^CLevelInfo pxLevelInfo=^(CGameWrap.GetClient().GetLevelInfo());
+		if(pxLevelInfo^.IsMultiplayer())then
+			iMaxShowedTimers=16;
+		endif;
+		*/
+		var array CClntHndl axAllVisibleTimers;
+		begin CheckTimerList;
+			var int i,iC=m_axTimerWindows.NumEntries();
+			for(i=0)cond(i<iC)iter(i++)do
+				var int j,jC=m_axTimerWindows[i].m_ahTimerList.NumEntries();
+				for(j=0)cond(j<jC)iter(j++)do
+					var ^CTimerWindow pxTimerWindow=cast<CTimerWindow>(CWindowMgr.Get().GetWindow(m_axTimerWindows[i].m_ahTimerList[j]));
+					if(pxTimerWindow==null)then
+						m_axTimerWindows[i].m_ahTimerList.DeleteEntry(j);
+						j--;
+						jC--;
+					else	
+						axAllVisibleTimers.Include(pxTimerWindow^.GetTimerObj());					
+					endif;					
+				endfor;
+				if(m_axTimerWindows[i].m_ahTimerList.NumEntries()==0)then
+					m_axTimerWindows.DeleteEntry(i);
+					i--;
+					iC--;
+				endif;
+			endfor;
+		end CheckTimerList;
+		
+		
+		var ^CObjMgr pxOM = ^(CClientWrap.GetObjMgr());
+		var CObjList xTimerObjects; 
+		pxOM^.GetTimerObjects(xTimerObjects);
+		var int i,iC=xTimerObjects.NumEntries();		
+		for(i=0)cond(i<iC)iter(i++)do
+			var CClntHndl xTimerObj=xTimerObjects[i];
+			var int iIdx=axAllVisibleTimers.FindEntry(xTimerObj);
+			if(iIdx==-1)then
+				var ^CObj pxTimerObj=xTimerObj.GetObj();
+				if(pxTimerObj!=null)then
+					var ^CAttribs pxAttribs=pxTimerObj^.GetAttribs();
+					if(pxAttribs!=null)then;
+						var bool bShow=pxAttribs^.GetValueBool("show");
+						var string sTooltip=pxAttribs^.GetValue("tooltip");
+						if(bShow)then
+							var ^CTimerWindow pxNewTimerWindow=new CTimerWindow(xTimerObj);
+							if(!sTooltip.IsEmpty())then
+								pxNewTimerWindow^.SetToolTipText(CUIMgr.GetLocalizedNewstickerMsg(sTooltip));
+							endif;
+							AddChild(pxNewTimerWindow);
+							
+							var int iRow=-1;
+							var int k,kC=m_axTimerWindows.NumEntries();
+							for(k=0)cond(k<kC)iter(k++)do
+								if(m_axTimerWindows[k].m_iOwner==pxTimerObj^.GetOwner())then
+									iRow=k;
+									break;
+								endif;
+							endfor;
+							if(iRow==-1)then
+								var ^COwnerTimerList pxOTL=^(m_axTimerWindows.NewEntryRef());
+								pxOTL^.m_iOwner=pxTimerObj^.GetOwner();
+								iRow=m_axTimerWindows.NumEntries()-1;
+							endif;
+							System.Assert(iRow!=-1);
+							m_axTimerWindows[iRow].m_ahTimerList.Include(pxNewTimerWindow^.GetSHWND());							
+						endif;
+					endif;
+				else
+				endif;
+			endif;
+		endfor;
+		begin UpdateTimerPos;
+			var int iXBase=(295-60)+33;
+			var int iYBase=30;
+			var int i,iC=m_axTimerWindows.NumEntries();
+			for(i=0)cond(i<iC)iter(i++)do
+				var ^COwnerTimerList pxOTL=^(m_axTimerWindows[i]);
+				var int j,jC=pxOTL^.m_ahTimerList.NumEntries();
+				for(j=0)cond(j<jC)iter(j++)do					
+					var SHWND hWalk=pxOTL^.m_ahTimerList[j];
+					var ^CTimerWindow pxTimerWindow=cast<CTimerWindow>(CWindowMgr.Get().GetWindow(hWalk));
+					if(pxTimerWindow==null)then continue; endif;
+					var int iW=pxTimerWindow^.GetWidth();
+					var int iX=iXBase+(iW*i);
+					var int iY=iYBase+(j*25);
+					pxTimerWindow^.SetPos(iX,iY);
+				endfor;
+			endfor;
+		end UpdateTimerPos;		
+	endproc;
+
+//	// returns the root object for pxObj
+//	// uses GetGroupedParentObj() to find root node
+//	// if pxObj doesn't have a parent pxObj is returned
+//	proc ^CObj GetRootObject(^CObj p_pxObj)
+//		var ^CObj pxParentObj;
+//		if(p_pxObj!=null)then
+//			pxParentObj=p_pxObj^.GetGroupedParentObj();
+//			if (pxParentObj == p_pxObj || pxParentObj == null) then
+//				return p_pxObj;
+//			else
+//				return GetRootObject(pxParentObj);
+//			endif;
+//		endif;
+//		return null;
+//	endproc
+
+	export proc void OnGameStart()
+//		CGameWrap.LogInfo("UI.NewUI.GetScapeEdit","GameStart");
+		m_bGameActive=true;
+		OnLevelInfoChanged();
+		if(m_pxQuestButton!=null)then
+			var ^CLevelInfo pxLevelInfo=^(CGameWrap.GetClient().GetLevelInfo());
+			if(pxLevelInfo^.IsMultiplayer())then
+				m_pxQuestButton^.SetDisabled(true);
+			endif;
+		endif;
+	endproc
+
+	export proc ^CDialogSceneMgr GetDialogSceneMgr()
+		return ^m_xDialogSceneMgr;
+	endproc;
+	
+	export proc bool GetGameActive()
+		return(m_bGameActive);
+	endproc;
+
+	export proc void SetGameActive(bool p_bParam)
+		m_bGameActive=p_bParam;
+	endproc;
+
+	export proc void OnGameEnd()
+		CClientWrap.GetDesktop()^.CaptureStop();
+		m_bGameActive=false;
+		m_xDialogSceneMgr.Reset();
+	endproc
+
+    proc bool OpenDiplomacyWindow()
+    	var ^CDiplomacyWindow pxDiplomacyWindow=new CDiplomacyWindow();    	
+		AddChild(pxDiplomacyWindow);
+		CWindowMgr.Get().SetModal(pxDiplomacyWindow);		
+        return true;
+    endproc;
+
+	export proc void TogglePyramidState(bool p_bBackward)
+		var int iCurrent=m_pxTribe^.GetCurrentMode();
+		if(p_bBackward)then
+			switch(iCurrent)
+				case(1)do m_pxTribeView^.SmallView(); endcase;
+				case(2)do m_pxTribeView^.CollapsedView(); endcase;
+				case default do m_pxTribeView^.SmallView(); endcase;
+			endswitch;
+		else
+			switch(iCurrent)
+				case(1)do m_pxTribeView^.SmallView(); endcase;
+				case(2)do m_pxTribeView^.CollapsedView(); endcase;
+				case default do m_pxTribeView^.SmallView(); endcase;
+			endswitch;
+		endif;
+		
+		var ^CUTCmdSender pxUTCmdSender=CClientWrap.GetUTCmdSender();
+		if(pxUTCmdSender!=null)then
+			if(iCurrent==2)then
+				pxUTCmdSender^.WindowClose("Pyramid");
+			else
+				pxUTCmdSender^.WindowOpen("Pyramid");
+			endif;
+		endif;
+	endproc;
+
+
+	//on timer
+	export proc bool SetDestructionTimer()
+		m_iDestructionTimer=SetTimer(2000,true);
+		return(true);
+	endproc;
+
+    proc bool OnTimer(int p_iID)
+		if (p_iID==m_iDestructionTimer)then
+			Destroy();			
+		elseif (p_iID == m_iPyraButtonUpdateTimer) then
+			UpdatePyramidButton();	
+		elseif(p_iID==m_iServerCheckTimer)then
+			if(!CClientWrap.IsServerProcessRunning())then
+				//Hm....
+				//CUIStateMgr.Get().SetState(CUIStateMgr.STATE_GAMEEND,"ServerLost");
+			endif;
+		elseif(p_iID==m_iAUTOSAVETIMER)then
+			CGameInst.DoAutosave();
+		endif;
+    	return true;
+	endproc;
+
+endclass;
+

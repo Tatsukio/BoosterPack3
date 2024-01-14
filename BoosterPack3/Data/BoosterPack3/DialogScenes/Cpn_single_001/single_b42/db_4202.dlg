@@ -1,0 +1,16 @@
+Root {
+	Actors {
+		Survivor {
+			def_icon = 'hu_pikeman'
+			owner = '1'
+			class = 'hu_pikeman'
+			generate_name = 'false'
+		}
+	}
+	Frames {
+		Frame_0 {
+			actor = 'Survivor'
+			audio = 'ds_dummy'
+		}
+	}
+}

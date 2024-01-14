@@ -1,0 +1,780 @@
+/*?
+	?group URS.Scripts.Server.Classes
+	?item CStartLocation
+	?desc class for starting location object
+	?prefix CStartLocation
+?*/
+class CStartLocation inherit CGameObj
+
+	export const int	SEQUENCE_TIMER_2=200;
+	export const int	SEQUENCE_TIMER_3=333;
+	var string m_sSeqFile;
+
+	export constructor()
+		CStartLocationMgr.Get().Register(this);
+	endconstructor;
+
+
+	export destructor()
+		CStartLocationMgr.Get().Unregister(this);
+	enddestructor;
+
+	export proc void HandleEditorCommand(string p_sCommand,^CGameObj p_pxObject,vec3 p_vPos,string p_sMiscParams)
+		if(p_sCommand=="LE_SetTTFilters")then
+			var ^CTechTreeDef pxTTDef=GetTechTreeDef();
+			if(pxTTDef==null)then return; endif;
+			pxTTDef^.ClearFilters();
+
+			var array string asFilter;
+			p_sMiscParams.Split(asFilter,"\n",true);
+			var int i,iC=asFilter.NumEntries();
+			for(i=0)cond(i<iC)iter(i++)do
+				pxTTDef^.EnableFilter(asFilter[i]);
+			endfor;
+		else
+			super.HandleEditorCommand(p_sCommand,p_pxObject,p_vPos,p_sMiscParams);
+		endif;
+	endproc;
+
+	proc void HandleEvent(ref CGameEvtPtr p_rxEvtPtr)
+		if (p_rxEvtPtr.GetClass() == ms_xTimerClass) then
+			if(p_rxEvtPtr.GetInt(0) == SEQUENCE_TIMER_2 ) then
+				var ^CLevel pxLevel=CSrvWrap.GetCurLevel();
+				if(pxLevel^.IsGameInProgress())then
+					var ^CAttribs pxAttr=GetAttribs();
+					if(pxAttr!=null && pxAttr^.GetValue("is_sequence")=="1")then
+						var string sFile=pxAttr^.GetValue("seq_filename");
+						if(sFile!="")then
+							SetFOW(10000.0);
+							m_sSeqFile=sFile;
+	                		DeleteTimer(SEQUENCE_TIMER_2);
+	                		CreateTimer(SEQUENCE_TIMER_3,CGameTimeSpan.OneSecond(),true);
+	                	endif;
+					endif;
+				endif;
+			elseif(p_rxEvtPtr.GetInt(0)==SEQUENCE_TIMER_3) then
+              	var CSequenceInfo xSeqInfo;
+              	xSeqInfo.m_sSeqFile=m_sSeqFile;
+              	CSrvWrap.StartSequence(xSeqInfo);
+              	DeleteTimer(SEQUENCE_TIMER_3);
+        	endif;
+        else
+            super.HandleEvent(p_rxEvtPtr);
+        endif;
+	endproc;
+
+	export proc void OnInit(bool p_bLoad)
+		super.OnInit(p_bLoad);
+		InitEvents();
+   		if(!p_bLoad)then
+			SetType("SLOC");
+	     	SetSelectable(false);
+	    	SetHitable(false);
+			var ^CAttribs pxAttribs=GetAttribs();
+			if(pxAttribs==null)then pxAttribs=InitAttribs();endif;
+			InitTechTreeDef();
+		else
+			var ^CLevel pxLevel=CSrvWrap.GetCurLevel();
+			if(pxLevel^.IsEditable())then
+				SetVisible(true);
+				SetSelectable(true);
+			else
+				SetVisible(false);
+				SetSelectable(false);
+			endif;
+			var ^CAttribs pxAttribs=GetAttribs();
+			if(pxAttribs==null)then pxAttribs=InitAttribs();endif;
+			// make sure there is a techtreedef, also by objects already placed and saved
+			if(GetTechTreeDef()==null)then
+				InitTechTreeDef();
+			endif;
+		endif;
+	endproc;
+
+	export proc string GetFilters()
+		var ^CAttribs pxAttribs=GetAttribs();
+		if(pxAttribs!=null)then
+			var string sFilters=pxAttribs^.GetValue("filters");
+			if(sFilters!="")then
+				return(sFilters);
+			else
+				return("-1");
+			endif;
+		else
+			return("-1");
+		endif;
+	endproc;
+
+endclass;
+
+class CStartLocationMgr inherit IStartLocationMgr
+
+	static var ^CStartLocationMgr 	ms_pxInstance;
+	var CObjHndl					m_xHndl;
+	var int							m_iInventoryTimer;
+	var array ^CStartLocation 		m_apxAllStartLocations;
+	var bool						m_bFirstLocationInitialized;
+
+	constructor()
+		CSrvWrap.SetStartLocationMgr(this);
+	endconstructor;
+
+	destructor()
+		CSrvWrap.SetStartLocationMgr(null);
+	enddestructor;
+
+	export proc void Register(^CStartLocation p_pxSL)
+		m_apxAllStartLocations.AddEntry(p_pxSL);
+	endproc;
+
+	export proc void Unregister(^CStartLocation p_pxSL)
+		m_apxAllStartLocations.RemEntry(p_pxSL);
+	endproc;
+
+
+	export static proc ref CStartLocationMgr Get()
+		if(ms_pxInstance==null)then
+			ms_pxInstance=new CStartLocationMgr;
+		endif;
+		return ms_pxInstance^;
+	endproc;
+
+
+	export static proc void ShutStatic()
+		delete ms_pxInstance;
+	endproc;
+
+
+	proc void CreateLocations()
+		var  int iNumPlayers = 0;
+		var ^CLevel pxLevel=CSrvWrap.GetCurLevel();
+		var ^CLevelInfo pxLevelInfo=^(pxLevel^.GetLevelInfo());
+		m_bFirstLocationInitialized=false;
+		if(!pxLevelInfo^.IsMultiplayer())then
+			iNumPlayers=InitStartLocsSP();
+		else
+			iNumPlayers=InitStartLocsMP();
+		endif;
+
+		var ^CPropDB.CNode pxNode = pxLevelInfo^.GetGenericData().FindNode("Variables/_Internal_NumPlayers", true);
+		if(pxNode!=null) then
+			pxNode^.SetValue("value", iNumPlayers);
+		endif;
+		pxNode = pxLevelInfo^.GetGenericData().FindNode("Variables/_Internal_NeededDeadEnemies", true);
+		if(pxNode!=null) then
+			pxNode^.SetValue("value", iNumPlayers-1);
+		endif;
+		CProdLog.StartNewLog();
+	endproc;
+
+	proc int InitStartLocsSP()
+		var int iNumPlayers=0;
+		var ^CLevel pxLevel=CSrvWrap.GetCurLevel();
+		var ^CLevelInfo pxLevelInfo=^(pxLevel^.GetLevelInfo());
+		var ^CPropDB pxGenericDB=^(pxLevelInfo^.GetGenericData());
+		var ^CObjMgrHost pxObjMgr=CSrvWrap.GetObjMgr();
+		var CPlayerSlotID xIter;
+		for(xIter=CPlayerSlotID.First())cond(xIter<=CPlayerSlotID.Last())iter(xIter.Incr())do
+			var ^CLevelInfo.CPlayerSlot pxPS=^(pxLevelInfo^.GetPlayerSlot(xIter));
+			if(pxLevel^.GetPlayer(pxPS^.GetOwner())==null) then continue; endif;
+			if(pxPS^.IsFree())then continue; endif;
+			var ^CStartLocation pxStartLocation=null;
+			var ^CPropDB.CNode pxStartLocsPool=pxGenericDB^.FindNode("PlayerSettings/Player_"+pxPS^.GetOwner().ToString()+"/StartLocations",false);
+			if(pxStartLocsPool!=null)then
+				var int i,iC=pxStartLocsPool^.NumSubs();
+				if(iC!=0)then
+					var array ^CStartLocation apxStartLocs;
+					for(i=0)cond(i<iC)iter(i++)do
+						var string sTmp=(pxStartLocsPool^)[i].Name();
+						var CGuid xSLGuid;xSLGuid.FromString(sTmp);
+						var ^CStartLocation pxSL=cast<CStartLocation>(pxObjMgr^.GetObjByGuid(xSLGuid));
+						if(pxSL==null)then continue; endif;
+						if(pxSL^.GetOwner()!=-1 && pxSL^.GetOwner()!=pxPS^.GetOwner())then continue; endif;
+						apxStartLocs.AddEntry(pxSL);
+					endfor;
+					if(apxStartLocs.NumEntries()!=0)then
+						Random.Seed();
+						var int iIdx=0;
+						if(GetRandomEnabled())then
+							iIdx=Random.GetInt()%apxStartLocs.NumEntries();
+						endif;
+						pxStartLocation=apxStartLocs[iIdx];
+						if(pxStartLocation!=null)then
+							pxStartLocation^.SetOwner(pxPS^.GetOwner());
+						endif;
+					endif;
+				endif;
+			endif;
+			if(pxStartLocation==null)then
+				var int i,iC=m_apxAllStartLocations.NumEntries();
+				for(i=0)cond(i<iC)iter(i++)do
+					if(m_apxAllStartLocations[i]^.GetOwner()==pxPS^.GetOwner())then
+						pxStartLocation=m_apxAllStartLocations[i];
+						break;
+					endif;
+				endfor;
+			endif;
+			if(pxStartLocation!=null)then
+				CreateLocation(pxStartLocation);
+				iNumPlayers++;
+			else
+				KLog.LogError("StartLocation","no start location found for player: "+pxPS^.GetOwner().ToString());
+			endif;
+		endfor;
+		return iNumPlayers;
+	endproc;
+
+	proc int InitStartLocsMP()
+		begin old_version;
+			var bool bInitOwner=true;
+			var int i,iC=m_apxAllStartLocations.NumEntries();
+			for(i=0)cond(i<iC)iter(i++)do
+				if(m_apxAllStartLocations[i]^.GetOwner()!=-1)then
+					bInitOwner=false;
+					break;
+				endif;
+			endfor;
+			if(bInitOwner)then
+				var int i,iC=m_apxAllStartLocations.NumEntries();
+				for(i=0)cond(i<iC)iter(i++)do
+					m_apxAllStartLocations[i]^.SetOwner(i%8);
+				endfor;
+			endif;
+		end old_version;
+
+		var ^CLevel pxLevel=CSrvWrap.GetCurLevel();
+		var ^CLevelInfo pxLevelInfo=^(pxLevel^.GetLevelInfo());
+		var array ^CStartLocation apxStartLocs;
+		var array int aiStartLocsOwners;
+		var int iNumPlayers=0;
+		var CPlayerSlotID xIter;
+		var int iP=0;
+		for(xIter=CPlayerSlotID.First())cond(xIter<=CPlayerSlotID.Last())iter(xIter.Incr())do
+			iP++;
+			var ^CLevelInfo.CPlayerSlot pxPS=^(pxLevelInfo^.GetPlayerSlot(xIter));
+			if(pxPS^.IsFree())then
+				continue;
+			endif;
+			if(pxLevel^.GetPlayer(pxPS^.GetOwner())==null) then
+				continue;
+			endif;
+			var int iSlotHeadQuater=pxPS^.GetHeadQuater();
+			var int i,iC=m_apxAllStartLocations.NumEntries();
+			for(i=0)cond(i<iC)iter(i++)do
+				var ^CStartLocation pxSL=m_apxAllStartLocations[i];
+				if(pxSL==null)then continue; endif;
+				if(pxSL^.GetOwner()==iSlotHeadQuater && apxStartLocs.FindEntry(pxSL)==-1)then
+					apxStartLocs.AddEntry(pxSL);
+					aiStartLocsOwners.AddEntry(pxPS^.GetOwner());
+					break;
+				endif;
+			endfor;
+		endfor;
+		var int i,iC=apxStartLocs.NumEntries();
+		for(i=0)cond(i<iC)iter(i++)do
+			var ^CStartLocation pxSL=apxStartLocs[i];
+			pxSL^.SetOwner(aiStartLocsOwners[i]);
+			CreateLocation(pxSL);
+			iNumPlayers++;
+		endfor;
+		return iNumPlayers;
+	endproc;
+
+	proc bool GetRandomEnabled()
+  		var ^CLevel pxLevel=CSrvWrap.GetCurLevel();
+  		var ^CGameAttribs pxAttr = ^(pxLevel^.GetLevelInfo().GetAttribs());
+  		if(pxAttr==null || pxAttr^.GetValue("random").ToInt()!=1 )then
+  			return false;
+  		endif;
+  		return true;
+  	endproc;
+
+	proc void CorrectLevelToMinLevel(^CStartLocation p_pxStartLoc, ref int po_riLevel, string p_sClassName, string p_sTribe)
+		if(p_pxStartLoc == null)then
+			return;
+		endif;
+
+		var ^CTechTree.CNode pxTribeNode=p_pxStartLoc^.GetTechTree().FindNode("Objects/"+p_sTribe);
+		var ^CTechTree.CNode pxObjNode;
+
+		if(pxTribeNode==null)then
+			return;
+		endif;
+		pxObjNode = pxTribeNode^.FindNodeRecursiveByName(p_sClassName);
+		if(pxObjNode == null)then
+			return;
+		endif;
+
+		var int iMinLvl = pxObjNode^.GetSubValueI("captainlevel") - 1;
+
+		if(iMinLvl > po_riLevel)then
+			//KLog.LogSpam("RoStTmp", "Correcting level for "+p_sClassName+" from "+po_riLevel.ToString()+" to "+iMinLvl.ToString());
+			po_riLevel = iMinLvl;
+		endif;
+	endproc;
+
+	proc void CreateLocation(^CStartLocation p_pxStartLoc)
+		var ^CAttribs pxAttr = p_pxStartLoc^.GetAttribs();
+		var int iOwner=p_pxStartLoc^.GetOwner();
+		if(iOwner==-1)then return; endif;
+				
+
+		var ^CLevel pxLevel=CSrvWrap.GetCurLevel();
+		var ^CPlayer pxPlayer = pxLevel^.GetPlayer(iOwner);
+		if(pxPlayer==null)then /*CSrvWrap.LogInfo("StartLocationMgr","StartLocation: No player for ID "+iOwner.ToString());*/
+			return;
+		endif;
+		var ^CLevelInfo.CPlayerSlot pxPlayerSlot = pxPlayer^.GetPlayerSlot();
+
+		// copy TT-filter
+		if(p_pxStartLoc^.GetTechTreeDef()!=null)then
+			pxPlayer^.GetPlayerTechTreeDef().AddFilter(p_pxStartLoc^.GetTechTreeDef()^);
+		endif;
+		
+		var vec3 vPos = p_pxStartLoc^.GetPos();
+		if(pxPlayerSlot==null ||pxPlayerSlot^.IsFree()||pxPlayerSlot^.GetType()=="closed")then return; endif;
+
+		if(pxAttr!=null && pxAttr^.GetValue("is_sequence")=="1")then
+			if(pxAttr^.ContainsKey("seq_filename"))then
+				var string sFile=pxAttr^.GetValue("seq_filename");
+				if(sFile!="")then
+					p_pxStartLoc^.CreateTimer(p_pxStartLoc^.SEQUENCE_TIMER_2,CGameTimeSpan.OneSecond(),true);
+					return();
+				else
+					KLog.LogError("StartLocation","No sequence file found!");
+				endif;
+			endif;
+		endif;
+
+		var ^CLevelInfoHost pxLevelInfo=CSrvWrap.GetLevelInfo(false);
+		if(pxLevelInfo^.IsSaveGame()) then
+			//KLog.LogError("CHP","SkipPB");
+			return;
+		endif;
+
+		//Set startposition for client
+		var ^CPropDB.CNode pxBaseNode=^((pxLevelInfo^.GetGenericData())["Base"]);
+		var real fAngle;
+		if(!pxBaseNode^.GetValue("DefaultCamera",fAngle))then
+			fAngle=0.785f;
+		endif;
+		var int iTmp=(fAngle*1000.0f).ToInt();
+		CSrvWrap.SendGenericEvtToPlayer(iOwner,"start_pos\t"+vPos.ToString()+"\t"+iTmp.ToString());
+		if(!m_bFirstLocationInitialized) then
+			CSrvWrap.SendGenericEvtToSpectators("start_pos\t"+vPos.ToString()+"\t"+iTmp.ToString());
+		endif;
+
+		//Test
+		//var ^CPropDB pxDBTmp=^(pxLevelInfo^.GetGenericData());
+		//pxDBTmp^.Save("C:/LITest.tst");
+
+		var string sTribe=pxPlayerSlot^.GetTribe();
+		var ^CGameObj pxTmp;
+		var real fStandRange = 3.0f;
+		var bool bIncludeBuildings=true;
+		var ^CPropDB.CNode pxPlayerSettingsNode=pxLevelInfo^.GetGenericData().FindNode("PlayerSettings/Player_"+iOwner.ToString(),false);
+		if(pxPlayerSettingsNode!=null)then
+			if(pxPlayerSettingsNode^.GetValueI("IncludeBuildings",1)!=1)then
+				bIncludeBuildings=false;
+			endif;
+		endif;
+		if(pxBaseNode^.GetValueI("IncludeBuildings",1)!=1)then
+			bIncludeBuildings=false;
+		endif;		
+		if(pxAttr!=null && bIncludeBuildings)then
+			vPos.SetZ(CSrvWrap.GetScapeMgr().GetHeight(vPos.GetX(),vPos.GetY()));
+			if(sTribe=="Aje")then
+				if(pxPlayerSlot^.IsAIPlayer() || CSrvWrap.GetGame().GetCredits()==-1)then
+					pxTmp=CSrvWrap.GetObjMgr()^.CreateObj("aje_resource_collector",iOwner,vPos);
+					CSrvWrap.GetCurLevel()^.GetStatisticMgr().AddUnit( pxTmp^.GetOwner(), pxTmp^.GetClassName(), pxTmp^.GetType(), 1 );
+				endif;
+			elseif(sTribe=="Ninigi")then
+				pxTmp=CSrvWrap.GetObjMgr()^.CreateObj("ninigi_fireplace",iOwner,vPos);
+				cast<CBuilding>(pxTmp)^.SetReady();
+				CSrvWrap.GetCurLevel()^.GetStatisticMgr().AddSample( CStatisticSample.EcoBuildings.ToInt(), iOwner, 1 );
+			elseif(sTribe=="SEAS")then
+				pxTmp=CSrvWrap.GetObjMgr()^.CreateObj("seas_headquarters",iOwner,vPos);
+				cast<CBuilding>(pxTmp)^.SetReady();
+				CSrvWrap.GetCurLevel()^.GetStatisticMgr().AddSample( CStatisticSample.EcoBuildings.ToInt(), iOwner, 1 );
+			else
+				pxTmp=CSrvWrap.GetObjMgr()^.CreateObj("hu_fireplace",iOwner,vPos);
+				cast<CBuilding>(pxTmp)^.SetReady();
+				CSrvWrap.GetCurLevel()^.GetStatisticMgr().AddSample( CStatisticSample.EcoBuildings.ToInt(), iOwner, 1 );
+			endif;
+			if(pxTmp!=null)then
+				fStandRange = pxTmp^.GetRadius();
+				pxTmp^.Rotate(p_pxStartLoc^.GetRotation());
+			endif;
+			m_bFirstLocationInitialized=true;
+		endif;
+		//PointBuy
+		var bool bIgnorePB=(pxAttr!=null && pxAttr^.GetValue("ignore_pointbuy")=="1");
+
+		var CPropDB xCosts;
+		xCosts.Load(CSrvWrap.GetUrsRelPath()+"/Data/Base/Scripts/Server/settings/PointBuyCosts.txt");
+
+		var ^CPropDB.CNode pxResourceNode = xCosts.GetRoot().Get("Resources");
+		var ^CPropDB.CNode pxUnitsNode = xCosts.GetRoot().Get("Units");
+
+		var int iPoints = 0;
+		var bool bSinglePlayer=false;
+		if(pxLevelInfo!=null)then
+			var ^CGameAttribs pxLIAttribs = ^(pxLevelInfo^.GetAttribs());
+			if(pxLIAttribs!=null)then
+				iPoints = pxLIAttribs^.GetValueInt("credits");
+			endif;
+		endif;
+
+		var ^CPropDB pxGenericData=^(pxLevelInfo^.GetGenericData());
+
+		/*
+		var ^CPropDB.CNode pxPlayerNode1=pxGenericData^.FindNode("PlayerSettings/Player_0", false);
+		var ^CPropDB.CNode pxPlayerNode2=pxGenericData^.FindNode("PlayerSettings/Player_1", false);
+		if(pxPlayerNode1!=null) then
+			KLog.LogWarn("Manni","SPCredits in Game: "+pxPlayerNode1^.GetValueI("SPCredits").ToString());
+		endif;
+		if(pxPlayerNode2!=null) then
+			KLog.LogWarn("Manni","SPCredits in Game: "+pxPlayerNode2^.GetValueI("SPCredits").ToString());
+		endif;
+		*/		
+		if(!bIgnorePB)then
+			var int iAvailableCredits = CSrvWrap.GetGame().GetCredits();
+			var int iUsedCredits = 0;
+			var CObjList xCreatedUnits;
+
+			var CPropDB xNewCosts;
+			if(!xNewCosts.Load(CSrvWrap.GetUrsRelPath()+"/Data/Base/Scripts/Server/settings/NewPointBuyCosts.txt"))then
+				KLog.LogError("StartLocation","Could not load NewPointBuyCosts.txt");
+			endif;
+			
+			begin PredefinedSet;
+				if(pxLevelInfo^.IsMultiplayer() && iAvailableCredits==-1)then
+					var CPropDB xPresetDB;
+					if(!xPresetDB.Load(CSrvWrap.GetUrsRelPath()+"/Data/Base/Scripts/Game/misc/DefPresets.txt"))then
+						KLog.LogError("StartLocation","Could not load DefPresets.txt");
+					endif;
+					
+					var ^CPropDB.CNode pxLockedPresetNodeUnits = xPresetDB.FindNode(sTribe+"/_pb_locked/Units",false);
+					if(pxLockedPresetNodeUnits!=null)then
+						var ^CPropDB.CNode pxPointBuyPreset=pxGenericData^.FindNode("PlayerSettings/Player_"+iOwner.ToString()+"/PointBuyPreset/"+sTribe,false);
+						if(pxPointBuyPreset!=null)then
+							pxPointBuyPreset^.Clear();
+							pxPointBuyPreset^.Join(pxLockedPresetNodeUnits);
+						endif;
+					else
+						KLog.LogError("StartLocation","Could not find locked preset in db.");
+						iAvailableCredits = 0; // force cheat check
+					endif;
+					var ^CPropDB.CNode pxLockedPresetNodeRessources = xPresetDB.FindNode(sTribe+"/_pb_locked/Resources",false);
+					if(pxLockedPresetNodeRessources!=null)then
+						var ^CPropDB.CNode pxResourceNode=pxGenericData^.FindNode("PlayerSettings/Player_"+iOwner.ToString()+"/Restrictions/Resources",false);
+						if(pxResourceNode!=null)then
+							pxResourceNode^.Clear();
+							pxResourceNode^.Join(pxLockedPresetNodeRessources);
+						endif;
+					else
+						KLog.LogError("StartLocation","Could not find locked preset in db.");
+						iAvailableCredits = 0; // force cheat check
+					endif;
+				endif;
+			end PredefinedSet;
+			
+			begin CreateCharacters;
+				var ^CPropDB.CNode pxPointBuyPreset=pxGenericData^.FindNode("PlayerSettings/Player_"+iOwner.ToString()+"/PointBuyPreset/"+sTribe,false);
+				//auskommentiert weil es auf C: schreibt. Das haut den SF Testern um die Ohren da sie keine Schreibrechte auf Ihren Testrechnern haben!!!
+				//pxGenericData^.Save("C:/GenericDataResult.txt");
+				var Quat qRot=p_pxStartLoc^.GetRot();
+				if(pxPointBuyPreset!=null)then					
+					var int i,iC=pxPointBuyPreset^.NumSubs();
+					for(i=0)cond(i<iC)iter(i++)do						
+						var ^CPropDB.CNode pxWalk=^((pxPointBuyPreset^)[i]);
+						var int iSlotID=pxWalk^.Name().ToInt();
+						var int iCharLevel=0;
+						if(iSlotID==51)then
+							iCharLevel=4;
+						elseif(iSlotID>=48 && iSlotID<=50)then
+							iCharLevel=3;
+						elseif(iSlotID>=40 && iSlotID<=47)then
+							iCharLevel=2;
+						elseif(iSlotID>=25 && iSlotID<=39)then
+							iCharLevel=1;
+						elseif(iSlotID>=0 && iSlotID<=24)then
+							iCharLevel=0;
+						endif;
+
+						var string sCharType=pxWalk^.Value();
+						var string sObjClass;
+						var string sCaste="res";
+						var string sTribeLow=sTribe;
+						
+						var bool bStina = false;
+
+						//L KLog.LogWarn("Manni","sCharType: "+sCharType);
+						sTribeLow.MakeLower();
+						if(sCharType=="Nature" || sCharType=="Technics" ||sCharType=="Resource" || sCharType=="worker")then
+							if(sTribe=="SEAS")then
+								sObjClass="seas_worker";
+							else
+								if(sCharType=="Technics")then
+									sCaste="tec";
+								elseif(sCharType=="Nature")then
+									sCaste="nat";
+								endif;
+								sObjClass=sTribeLow+"_worker";
+							endif;
+						else//Held
+							if(sCharType == "Stina_s0")then
+								sObjClass = "special_eusmilus";
+								bStina = true;
+							else
+								sObjClass=sCharType;
+							endif;
+						endif;						
+						if(sObjClass=="Blocked")then
+							continue;
+						endif;
+						CorrectLevelToMinLevel(p_pxStartLoc, iCharLevel, sObjClass, sTribe);
+						var ^CGameObj pxObj=(CSrvWrap.GetObjMgr()^.CreateObj(sObjClass,iOwner,vPos));
+						if(pxObj==null)then
+							KLog.LogError("StartLocation","CreateObj of class '"+sObjClass+"' failed");
+							continue;
+						endif;
+						//CSrvWrap.GetCurLevel()^.GetStatisticMgr().AddUnit( pxObj^.GetOwner(), pxObj^.GetClassName(), pxObj^.GetType(), 1 );
+						
+						// set pyramid slot
+						var ^CAttribs pxAttribs = pxObj^.GetAttribs();
+						if(pxAttribs!=null)then
+							//L KLog.LogSpam("StartLocation","set clientpyramid_slotid of obj "+pxObj^.GetName()+" to "+iSlotID.ToString());
+							pxAttribs^.SetValue("clientpyramid_slotid",iSlotID);
+						endif;
+
+						var vec3 vOffset={0.7,0.7,0.0};
+						if(sCaste=="res")then
+						elseif(sCaste=="tec")then
+							vOffset=vOffset.RotZ((2.0/3.0)*Math.Pi());
+						elseif(sCaste=="nat" || bStina)then
+							vOffset=vOffset.RotZ((4.0/3.0)*Math.Pi());
+						else
+							vOffset=vOffset.RotZ((Random.GetInt()%629).ToReal()/100.0);
+						endif;
+						var vec3 vGroupPos=vPos+(vOffset*fStandRange);
+						var vec3 vTmp;
+						CSrvWrap.GetObjMgr()^.GetFreePos(vTmp,pxObj,vGroupPos);
+						vTmp.SetZ(CSrvWrap.GetScapeMgr().GetHeight(vTmp.GetX(),vTmp.GetY()));
+						var ^CFightingObj pxTmpObj = cast<CFightingObj>(pxObj);
+						if(pxTmpObj!=null) then
+							pxTmpObj^.HandleGamePlayCommand("Action", null, vTmp, "/SetPos");
+							pxTmpObj^.SetLevelClean(iCharLevel);
+							pxTmpObj^.FullHeal();
+							pxTmpObj^.UpdateGfx();
+							pxTmpObj^.GetBestWeapon(null,true);
+							pxTmpObj^.SetRot(qRot);
+							pxTmpObj^.UpdateAggressionPos(vTmp);
+						else
+							pxObj^.SetPos(vTmp);
+						endif;
+						
+						xCreatedUnits.Include(pxObj^.GetHandle());
+					
+						var int iObjLevel = 0;	
+						if(pxTmpObj!=null)then
+							iObjLevel = pxTmpObj^.GetLevel();
+							//L KLog.LogSpam("StartLocation",pxTmpObj^.GetName()+" level: "+iObjLevel.ToString());
+							//L KLog.LogSpam("StartLocation","path: "+CreateCostsDbUnitPath(pxTmpObj));
+							var ^CPropDB.CNode pxUnitNode = xNewCosts.FindNode(CreateCostsDbUnitPath(pxTmpObj),false);
+							if(pxUnitNode!=null)then
+								var int iUnitCosts = pxUnitNode^.GetValueI("Level"+(iObjLevel+1).ToString(),-1);
+								if(iUnitCosts>-1)then
+									iUsedCredits += iUnitCosts;
+								else
+									KLog.LogError("StartLocation","A Unknown unit costs: "+pxObj^.GetName());
+								endif;
+							else
+								KLog.LogError("StartLocation","B Unknown unit costs: "+pxObj^.GetName());
+							endif;
+						else
+							KLog.LogError("StartLocation","Unknown object: "+pxObj^.GetName());
+						endif;
+					endfor;
+				endif;
+			end CreateCharacters;
+			
+			var bool bHasFoodGift = false;
+			
+			begin InitResources;
+				var ^CAttribs pxPlayerAttr = pxPlayer^.GetAttribs();
+				if(pxPlayerAttr!=null)then
+					var ^CPropDB.CNode pxResourceNode=pxGenericData^.FindNode("PlayerSettings/Player_"+iOwner.ToString()+"/Restrictions/Resources",false);
+					if(pxResourceNode!=null)then
+						var ^CPropDB.CNode pxHuNode=pxResourceNode^.Get("Hu");
+						var int iFood=pxResourceNode^.GetValueI("food");
+						var int iStone=pxResourceNode^.GetValueI("stone");
+						var int iWood=pxResourceNode^.GetValueI("wood");
+						var int iSkulls=pxResourceNode^.GetValueI("iron");
+						if(pxHuNode!=null)then
+							iFood=pxHuNode^.GetValueI("food");
+							iStone=pxHuNode^.GetValueI("stone");
+							iWood=pxHuNode^.GetValueI("wood");
+							iSkulls=pxHuNode^.GetValueI("iron");
+						endif;
+						pxPlayerAttr^.SetValue("food",iFood);
+						pxPlayerAttr^.SetValue("wood",iWood);
+						pxPlayerAttr^.SetValue("stone",iStone);
+						pxPlayerAttr^.SetValue("iron",iSkulls);
+						
+						var ^CPropDB.CNode pxRessourceNode = xNewCosts.FindNode("Resources/"+sTribe,false);
+						if(pxRessourceNode!=null)then
+							iUsedCredits+=(iFood.ToReal() * pxRessourceNode^.GetValueR("food",0.0)).ToInt();
+							iUsedCredits+=(iWood.ToReal() * pxRessourceNode^.GetValueR("wood",0.0)).ToInt();
+							iUsedCredits+=(iStone.ToReal() * pxRessourceNode^.GetValueR("stone",0.0)).ToInt();
+							iUsedCredits+=(iSkulls.ToReal() * pxRessourceNode^.GetValueR("iron",0.0)).ToInt();
+							bHasFoodGift=(iFood>=30);
+						else
+							KLog.LogError("StartLocation","ressource costs");
+						endif;
+					endif;
+				endif;
+			end InitResources;
+
+			
+			begin CheaterPenalty;
+			 	// resource collector
+			 	if(iAvailableCredits>-1)then
+					if(sTribe=="Aje")then
+						var ^CPropDB.CNode pxUnitNode = xNewCosts.FindNode("Units/Aje/Animals/aje_resource_collector",false);
+						if(pxUnitNode!=null)then
+							var int iUnitCosts = pxUnitNode^.GetValueI("Level1",-1);
+							if(iUnitCosts>-1)then
+								iAvailableCredits+=iUnitCosts;
+							else
+								KLog.LogError("StartLocation","C Unknown unit costs: aje_resource_collector");
+							endif;
+						else
+							KLog.LogError("StartLocation","D Unknown unit costs: aje_resource_collector");
+						endif;
+					endif;
+					// mp food gift
+					iAvailableCredits+=30;
+				endif;
+
+				// aply cheater penalty
+				if(pxLevelInfo^.IsMultiplayer() && !pxPlayerSlot^.IsAIPlayer() && iAvailableCredits>-1 && (iUsedCredits>iAvailableCredits || !bHasFoodGift))then
+					KLog.LogWarn("StartLocation","We have a cheater here. owner: "+iOwner.ToString());
+					KLog.LogSpam("StartLocation","used: "+iUsedCredits.ToString()+" available: "+iAvailableCredits.ToString());
+					var ^CAttribs pxPlayerAttr = pxPlayer^.GetAttribs();
+					if(pxPlayerAttr!=null)then
+						pxPlayerAttr^.SetValue("food",0);
+						pxPlayerAttr^.SetValue("wood",0);
+						pxPlayerAttr^.SetValue("stone",0);
+						pxPlayerAttr^.SetValue("iron",0);
+					endif;
+					var int i, iC=xCreatedUnits.NumEntries();
+					for(i=0)cond(i<iC)iter(i++)do
+						if(!xCreatedUnits[i].IsValid())then continue; endif;
+						var ^CGameObj pxObj = xCreatedUnits[i].GetObj();
+						if(pxObj!=null)then
+							var ^CFightingObj pxFO = cast<CFightingObj>(pxObj);
+							if(pxFO!=null)then
+								pxFO^.Die();
+							endif;
+						endif;
+					endfor;
+					var string sTmp = sTribe;
+					sTmp.MakeLower();
+					CSrvWrap.GetObjMgr()^.CreateObj(sTmp+"_worker",iOwner,p_pxStartLoc^.GetPos());
+					if(sTribe=="Aje")then
+						CSrvWrap.GetObjMgr()^.CreateObj("aje_resource_collector",iOwner,p_pxStartLoc^.GetPos());
+					endif;
+				endif;
+			end CheaterPenalty;
+
+			begin InitWarpGate;
+				var bool bForbidden=CSrvWrap.GetGame().GetDisableWarpgate();
+				if(bForbidden)then
+					var ^CTechTreeDef pxDef=^(pxPlayer^.GetPlayerTechTreeDef());
+					if(pxDef!=null)then
+						var ^CBasePlayer pxBPlayer=cast<CBasePlayer>(pxPlayer);
+						if(pxBPlayer!=null)then
+							var string sTribe=pxBPlayer^.m_sTribe;
+							if(sTribe=="Hu")then
+								pxDef^.EnableFilter("/Filters/Hu/Upgrades/hu_warpgate/warpgate_invisible");
+							elseif(sTribe=="Aje")then
+								pxDef^.EnableFilter("/Filters/Aje/Upgrades/aje_warpgate/warpgate_invisible");
+							elseif(sTribe=="Ninigi")then
+								pxDef^.EnableFilter("/Filters/Ninigi/Upgrades/ninigi_warpgate/warpgate_invisible");
+							elseif(sTribe=="SEAS")then
+								pxDef^.EnableFilter("/Filters/SEAS/Upgrades/seas_warpgate/warpgate_invisible");
+							endif;
+						endif;
+					endif;
+				endif;
+			end InitWarpGate;
+		endif;
+
+		var ^CGameObj pxObj=CSrvWrap.GetObjMgr()^.CreateObj("start_locator",iOwner,p_pxStartLoc^.GetPos());
+
+	endproc;
+
+	proc void SetPlayerDefaultResources(^CPlayer p_pxPlayer, string p_sTribe, ref array string p_rasRes)
+		KLog.LogError("Error", "obsolete Funktion: SetPlayerDefaultResources()");
+		/*var ^CAttribs pxAttr = p_pxPlayer^.GetAttribs();
+		var ^CLevelInfo.CPlayerSlot pxPlayerSlot = p_pxPlayer^.GetPlayerSlot();
+
+		if(pxAttr!=null)then
+			var ^CLevelInfoHost pxLevelInfo=CSrvWrap.GetLevelInfo(false);
+			var ^CPropDB pxData = ^(pxLevelInfo^.GetGenericData());
+			var ^CPropDB.CNode pxBase = pxData^.GetRoot().Get("Base");
+			if(pxBase!=null && pxBase^.GetValueS("MapType","multiplayer")=="singleplayer")then
+				//single player
+				var ^CPropDB.CNode pxResources = ^((pxData^)["PlayerSettings/Player_"+pxPlayerSlot^.GetOwner().ToString()+"/Restrictions/Resources/"+p_sTribe]);
+				var int iL, iC = p_rasRes.NumEntries();
+				for(iL=0)cond(iL<iC)iter(iL++)do
+					var ^CPropDB.CNode pxNode = pxResources^.Get(p_rasRes[iL]);
+					if(pxNode!=null)then
+						pxAttr^.SetValue(p_rasRes[iL], pxNode^.ValueI());
+					endif;
+				endfor;
+			endif;
+		endif;
+		*/
+	endproc;
+
+	export proc bool StartAllGameOverTriggers()
+		return(true);
+	endproc;
+	
+	static proc string CreateCostsDbUnitPath(^CFightingObj p_pxObj)
+		if(p_pxObj==null)then return ""; endif;
+		var string sPath = "Units/";
+		if(p_pxObj^.GetTribeName()=="Special")then
+			sPath += "Heroes";
+		else		
+			sPath += p_pxObj^.GetTribeName()+"/";
+			if(p_pxObj^.GetType().ToString()=="ANML")then
+				sPath += "Animals";
+			elseif(p_pxObj^.GetType().ToString()=="VHCL")then
+				sPath += "Vehicles";
+			else
+				sPath += "Character";
+			endif;
+		endif;
+		sPath += "/"+p_pxObj^.GetClassName();
+		return sPath;
+	endproc;
+	
+endclass;
+
+class CStartLocator inherit CGameObj
+
+	export proc void OnInit(bool p_bLoad)
+		super.OnInit(p_bLoad);
+		InitEvents();
+   		if(!p_bLoad)then
+			SetType("SLCT");
+	     	SetSelectable(false);
+	    	SetHitable(false);
+	    	SetVisible(false);
+		endif;
+	endproc;
+
+endclass;

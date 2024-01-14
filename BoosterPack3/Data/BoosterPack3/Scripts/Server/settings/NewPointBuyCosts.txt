@@ -1,0 +1,663 @@
+Root {
+	Units {
+		Hu {
+			Character {
+				hu_worker {
+					Level1 = '60'
+					Level2 = '100'
+					Level3 = '170'
+					Level4 = '300'
+					Level5 = '700'
+				}
+				hu_warrior {
+					Level1 = '80'
+					Level2 = '150'
+					Level3 = '400'
+					Level4 = '800'
+					Level5 = '2000'
+				}
+				hu_jetpack_warrior {
+					Level2 = '250'
+					Level3 = '500'
+					Level4 = '1000'
+					Level5 = '2500'
+				}
+				hu_berserker {
+					Level3 = '600'
+					Level4 = '1200'
+					Level5 = '3000'
+				}
+				hu_killer {
+					Level3 = '500'
+					Level4 = '1000'
+					Level5 = '2500'
+				}
+				hu_undead_warrior {
+					Level2 = '300'
+					Level3 = '600'
+					Level4 = '1200'
+					Level5 = '3000'
+				}
+				hu_spearman {
+					Level2 = '150'
+					Level3 = '400'
+					Level4 = '800'
+					Level5 = '2000'
+				}
+				hu_pikeman {
+					Level2 = '180'
+					Level3 = '460'
+					Level4 = '940'
+					Level5 = '2300'
+				}
+				hu_druid {
+					Level3 = '430'
+					Level4 = '860'
+					Level5 = '2150'
+				}
+				hu_archer {
+					Level2 = '150'
+					Level3 = '400'
+					Level4 = '800'
+					Level5 = '2000'
+				}
+				hu_marksman {
+					Level2 = '240'
+					Level3 = '480'
+					Level4 = '960'
+					Level5 = '2400'
+				}
+				hu_flamethrower {
+					Level2 = '280'
+					Level3 = '560'
+					Level4 = '1120'
+					Level5 = '2500'
+				}
+			}
+			Animals {
+				hu_scout {
+					Level1 = '120'
+					Level2 = '160'
+					Level3 = '420'
+					Level4 = '840'
+					Level5 = '2100'
+				}
+				hu_chariot {
+					Level2 = '200'
+					Level3 = '500'
+					Level4 = '1000'
+					Level5 = '2500'
+				}
+				hu_wild_boar {
+					Level2 = '180'
+					Level3 = '460'
+					Level4 = '940'
+					Level5 = '2300'
+				}
+				hu_kentrosaurus {
+					Level2 = '230'
+					Level3 = '490'
+					Level4 = '980'
+					Level5 = '2450'
+				}
+				hu_eusmilus {
+					Level2 = '410'
+					Level3 = '820'
+					Level4 = '1640'
+					Level5 = '3280'
+				}
+				hu_rhino {
+					Level3 = '1200'
+					Level4 = '3300'
+					Level5 = '5500'
+				}
+				hu_rhino_transporter {
+					Level3 = '1500'
+					Level4 = '3500'
+					Level5 = '6000'
+				}
+				hu_rhino_ballista {
+					Level3 = '1500'
+					Level4 = '3500'
+					Level5 = '6000'
+				}
+				hu_mammoth {
+					Level3 = '2000'
+					Level4 = '4000'
+					Level5 = '6500'
+				}
+				hu_mammoth_lumber_upgrade {
+					Level3 = '2250'
+					Level4 = '4300'
+					Level5 = '6800'
+				}
+				hu_mammoth_log_cannon {
+					Level3 = '2500'
+					Level4 = '4800'
+					Level5 = '7000'
+				}
+				hu_triceratops {
+					Level4 = '6000'
+					Level5 = '9000'
+				}
+			}
+			Vehicles {
+				hu_steam_ram {
+					Level2 = '300'
+					Level3 = '600'
+					Level4 = '1200'
+					Level5 = '3000'
+				}
+				hu_steam_tank {
+					Level4 = '5000'
+					Level5 = '7500'
+				}
+				hu_mobile_suit {
+					Level3 = '2600'
+					Level4 = '4800'
+					Level5 = '7200'
+				}
+				hu_cart {
+					Level1 = '100'
+					Level2 = '120'
+					Level3 = '200'
+					Level4 = '330'
+					Level5 = '820'
+				}
+			}
+		}
+		Aje {
+			Character {
+				aje_worker {
+					Level1 = '60'
+					Level2 = '100'
+					Level3 = '170'
+					Level4 = '300'
+					Level5 = '700'
+				}
+				aje_warrior {
+					Level2 = '150'
+					Level3 = '400'
+					Level4 = '800'
+					Level5 = '2000'
+				}
+				aje_rammer {
+					Level3 = '600'
+					Level4 = '1200'
+					Level5 = '3000'
+				}
+				aje_assassin {
+					Level3 = '450'
+					Level4 = '900'
+					Level5 = '2250'
+				}
+				aje_spearman {
+					Level1 = '80'
+					Level2 = '150'
+					Level3 = '400'
+					Level4 = '800'
+					Level5 = '2000'
+				}
+				aje_poisoner {
+					Level3 = '350'
+					Level4 = '700'
+					Level5 = '1700'
+				}
+				aje_shaman {
+					Level3 = '430'
+					Level4 = '860'
+					Level5 = '2150'
+				}
+				aje_archer {
+					Level2 = '150'
+					Level3 = '400'
+					Level4 = '800'
+					Level5 = '2000'
+				}
+				aje_thrower {
+					Level2 = '260'
+					Level3 = '520'
+					Level4 = '1040'
+					Level5 = '2500'
+				}
+				aje_flamethrower {
+					Level2 = '280'
+					Level3 = '560'
+					Level4 = '1120'
+					Level5 = '2500'
+				}
+			}
+			Animals {
+				aje_resource_collector {
+					Level1 = '250'
+					Level2 = '450'
+					Level3 = '800'
+					Level4 = '1600'
+					Level5 = '4000'
+				}
+				aje_velociraptor_handler {
+					Level1 = '80'
+					Level2 = '150'
+					Level3 = '400'
+					Level4 = '800'
+					Level5 = '2000'
+				}
+				aje_dilophosaurus {
+					Level1 = '140'
+					Level2 = '180'
+					Level3 = '440'
+					Level4 = '860'
+					Level5 = '2120'
+				}
+				aje_ankylosaurus {
+					Level2 = '270'
+					Level3 = '540'
+					Level4 = '980'
+					Level5 = '2400'
+				}
+				aje_stegosaurus {
+					Level2 = '240'
+					Level3 = '500'
+					Level4 = '950'
+					Level5 = '2350'
+				}
+				aje_eusmilus {
+					Level2 = '410'
+					Level3 = '820'
+					Level4 = '1640'
+					Level5 = '3280'
+				}
+				aje_brachiosaurus {
+					Level3 = '2500'
+					Level4 = '4500'
+					Level5 = '7000'
+				}
+				aje_allosaurus {
+					Level3 = '2300'
+					Level4 = '4400'
+					Level5 = '6900'
+				}
+				aje_atroxosaurus {
+					Level4 = '6000'
+					Level5 = '9000'
+				}
+				aje_triceratops_archer {
+					Level4 = '5000'
+					Level5 = '7500'
+				}
+				aje_trade_dino {
+					Level1 = '100'
+					Level2 = '120'
+					Level3 = '200'
+					Level4 = '330'
+					Level5 = '820'
+				}
+			}
+			Vehicles {
+			}
+		}
+		Ninigi {
+			Character {
+				ninigi_worker {
+					Level1 = '60'
+					Level2 = '100'
+					Level3 = '170'
+					Level4 = '300'
+					Level5 = '700'
+				}
+				ninigi_warrior {
+					Level2 = '150'
+					Level3 = '400'
+					Level4 = '800'
+					Level5 = '2000'
+				}
+				ninigi_ninja {
+					Level3 = '500'
+					Level4 = '1000'
+					Level5 = '2500'
+				}
+				ninigi_sumo {
+					Level3 = '500'
+					Level4 = '1000'
+					Level5 = '2500'
+				}
+				ninigi_spearman {
+					Level2 = '150'
+					Level3 = '400'
+					Level4 = '800'
+					Level5 = '2000'
+				}
+				ninigi_monk {
+					Level3 = '430'
+					Level4 = '860'
+					Level5 = '2150'
+				}
+				ninigi_icespearman {
+					Level3 = '460'
+					Level4 = '940'
+					Level5 = '2300'
+				}
+				ninigi_archer {
+					Level1 = '80'
+					Level2 = '150'
+					Level3 = '400'
+					Level4 = '800'
+					Level5 = '2000'
+				}
+				ninigi_mortar {
+					Level2 = '230'
+					Level3 = '490'
+					Level4 = '980'
+					Level5 = '2450'
+				}
+				ninigi_marksman {
+					Level2 = '260'
+					Level3 = '540'
+					Level4 = '1100'
+					Level5 = '2250'
+				}
+				ninigi_flamethrower {
+					Level2 = '280'
+					Level3 = '560'
+					Level4 = '1120'
+					Level5 = '2500'
+				}
+			}
+			Animals {
+				ninigi_scout {
+					Level1 = '120'
+					Level2 = '160'
+					Level3 = '420'
+					Level4 = '840'
+					Level5 = '2100'
+				}
+				ninigi_baryonyx {
+					Level2 = '210'
+					Level3 = '480'
+					Level4 = '990'
+					Level5 = '2470'
+				}
+				ninigi_parasaurolophus_drums {
+					Level2 = '300'
+					Level3 = '600'
+					Level4 = '1200'
+					Level5 = '3000'
+				}
+				ninigi_parasaurolophus_gatling {
+					Level2 = '290'
+					Level3 = '580'
+					Level4 = '1160'
+					Level5 = '2800'
+				}
+				ninigi_eusmilus {
+					Level2 = '410'
+					Level3 = '820'
+					Level4 = '1640'
+					Level5 = '3280'
+				}
+				ninigi_saltasaurus_archer {
+					Level3 = '1600'
+					Level4 = '3700'
+					Level5 = '6200'
+				}
+				ninigi_seismosaurus {
+					Level4 = '6000'
+					Level5 = '9000'
+				}
+			}
+			Vehicles {
+				ninigi_smokebomb_thrower {
+					Level1 = '350'
+					Level2 = '700'
+					Level3 = '1400'
+					Level4 = '3400'
+					Level5 = '5700'
+				}
+				ninigi_flamethrower_trike {
+					Level2 = '270'
+					Level3 = '540'
+					Level4 = '980'
+					Level5 = '2400'
+				}
+				ninigi_harvester {
+					Level3 = '2250'
+					Level4 = '4300'
+					Level5 = '6800'
+				}
+				ninigi_firecannon {
+					Level3 = '2500'
+					Level4 = '4500'
+					Level5 = '7000'
+				}
+				ninigi_cart {
+					Level1 = '100'
+					Level2 = '120'
+					Level3 = '200'
+					Level4 = '330'
+					Level5 = '820'
+				}
+			}
+		}
+		SEAS {
+			Character {
+				seas_worker {
+					Level1 = '80'
+					Level2 = '160'
+					Level3 = '320'
+					Level4 = '640'
+					Level5 = '1280'
+				}
+				seas_warrior {
+					Level1 = '100'
+					Level2 = '200'
+					Level3 = '400'
+					Level4 = '800'
+					Level5 = '1600'
+				}
+				seas_marksman {
+					Level2 = '200'
+					Level3 = '400'
+					Level4 = '800'
+					Level5 = '1600'
+				}
+				seas_gunner {
+					Level2 = '250'
+					Level3 = '500'
+					Level4 = '1000'
+					Level5 = '2000'
+				}
+				seas_rocketman {
+					Level2 = '250'
+					Level3 = '500'
+					Level4 = '1000'
+					Level5 = '2000'
+				}
+				seas_flamethrower {
+					Level2 = '250'
+					Level3 = '500'
+					Level4 = '1000'
+					Level5 = '2000'
+				}
+				seas_medic {
+					Level3 = '500'
+					Level4 = '1000'
+					Level5 = '2000'
+				}
+			}
+			Animals {
+				seas_triceratops {
+					Level3 = '2000'
+					Level4 = '4000'
+					Level5 = '8000'
+				}
+				seas_triceratops_transporter {
+					Level3 = '2500'
+					Level4 = '5000'
+					Level5 = '10000'
+				}
+				seas_triceratops_resource_collector {
+					Level3 = '2250'
+					Level4 = '4500'
+					Level5 = '9000'
+				}
+			}
+			Vehicles {
+				seas_mechanical_walker {
+					Level1 = '300'				
+					Level2 = '600'				
+					Level3 = '1200'
+					Level4 = '2400'
+					Level5 = '4800'
+				}
+				seas_mobile_suit {				
+					Level2 = '700'				
+					Level3 = '1400'
+					Level4 = '2800'
+					Level5 = '5600'
+				}
+				seas_mobile_suit_flamethrower {				
+					Level2 = '700'				
+					Level3 = '1400'
+					Level4 = '2800'
+					Level5 = '5600'
+				}
+				seas_wehrspinne {								
+					Level3 = '2500'
+					Level4 = '5000'
+					Level5 = '10000'
+				}
+				seas_lumberjack {
+					Level4 = '5000'
+					Level5 = '10000'
+				}
+				seas_lumberjack_minigun {
+					Level5 = '10000'
+				}
+				seas_hovercraft {
+					Level1 = '300'				
+					Level2 = '600'				
+					Level3 = '1200'
+					Level4 = '2400'
+					Level5 = '4800'
+				}
+				seas_helicopter {								
+					Level3 = '1500'
+					Level4 = '3000'
+					Level5 = '6000'
+				}
+			}
+		}
+		Heroes {
+			Cole_s0 {
+				Level1 = '600'
+				Level2 = '1000'
+				Level3 = '2000'
+				Level4 = '4000'
+				Level5 = '8000'
+			}
+			Bela_s0 {
+				Level1 = '600'
+				Level2 = '1000'
+				Level3 = '2000'
+				Level4 = '4000'
+				Level5 = '8000'
+			}
+			Stina_s0 {
+				Level1 = '600'
+				Level2 = '1000'
+				Level3 = '2000'
+				Level4 = '4000'
+				Level5 = '8000'
+			}
+			special_eusmilus {
+				Level1 = '600'
+				Level2 = '1000'
+				Level3 = '2000'
+				Level4 = '4000'
+				Level5 = '8000'
+			}
+			mayor_s0 {
+				Level1 = '600'
+				Level2 = '1000'
+				Level3 = '2000'
+				Level4 = '4000'
+				Level5 = '8000'
+			}
+			darwin_s0 {
+				Level1 = '600'
+				Level2 = '1000'
+				Level3 = '2000'
+				Level4 = '4000'
+				Level5 = '8000'
+			}
+			hermit_s0 {
+				Level1 = '600'
+				Level2 = '1000'
+				Level3 = '2000'
+				Level4 = '4000'
+				Level5 = '8000'
+			}
+			tesla_s0 {
+				Level1 = '600'
+				Level2 = '1000'
+				Level3 = '2000'
+				Level4 = '4000'
+				Level5 = '8000'
+			}
+			babbage_s0 {
+				Level1 = '600'
+				Level2 = '1000'
+				Level3 = '2000'
+				Level4 = '4000'
+				Level5 = '8000'
+			}
+			lovelace_s0 {
+				Level1 = '600'
+				Level2 = '1000'
+				Level3 = '2000'
+				Level4 = '4000'
+				Level5 = '8000'
+			}
+			livingstone_s0 {
+				Level1 = '600'
+				Level2 = '1000'
+				Level3 = '2000'
+				Level4 = '4000'
+				Level5 = '8000'
+			}
+			schliemann_s0 {
+				Level1 = '600'
+				Level2 = '1000'
+				Level3 = '2000'
+				Level4 = '4000'
+				Level5 = '8000'
+			}
+		}
+	}
+	Resources {
+		Hu {
+			wood = '1.5'
+			stone = '2.0'
+			food = '1.0'
+			iron = '100'
+		}
+		Aje {
+			wood = '1.5'
+			stone = '2.0'
+			food = '1.0'
+			iron = '100'
+		}
+		Ninigi {
+			wood = '1.5'
+			stone = '2.0'
+			food = '1.0'
+			iron = '100'
+		}
+		SEAS {
+			wood = '1.5'
+			stone = '2.0'
+			food = '1.0'
+			iron = '100'
+		}
+	}	
+}	
