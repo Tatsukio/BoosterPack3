@@ -3,11 +3,11 @@ Root {
 	voice_hu_undead_warrior_selected {
 		global = '1'
 		sound_0 {
-			wav = 'Hu/Warrior/Hu_Warrior_die_1.wav'
+			wav = 'Hu/Warrior/Hu_M_Warrior_die_1.wav'
 			volume = '70'
 		}
 		sound_1 {
-			wav = 'Hu/Warrior/Hu_Warrior_die_2.wav'
+			wav = 'Hu/Warrior/Hu_M_Warrior_die_2.wav'
 			volume = '70'
 		}
 		sound_2 {
@@ -19,7 +19,7 @@ Root {
 		global = '1'
 		sequential = '1'
 		sound_0 {
-			wav = 'Hu/Warrior/Hu_Warrior_hit_1.wav'
+			wav = 'Hu/Warrior/Hu_M_Warrior_hit_1.wav'
 			volume = '70'
 		}
 		sound_1 {
@@ -27,7 +27,7 @@ Root {
 			volume = '70'
 		}
 		sound_2 {
-			wav = 'Hu/Warrior/Hu_Warrior_hit_4.wav'
+			wav = 'Hu/Warrior/Hu_M_Warrior_hit_4.wav'
 			volume = '70'
 		}
 
@@ -91,11 +91,11 @@ Root {
 	voice_hu_undead_warrior_task_attack_walk {
 		global = '1'
 		sound_0 {
-			wav = 'Hu/Warrior/Hu_Warrior_die_2.wav'
+			wav = 'Hu/Warrior/Hu_M_Warrior_die_2.wav'
 			volume = '70'
 		}
 		sound_1 {
-			wav = 'Hu/Warrior/Hu_Warrior_hit_1.wav'
+			wav = 'Hu/Warrior/Hu_M_Warrior_hit_1.wav'
 			volume = '70'
 		}
 		sound_2 {
@@ -107,15 +107,15 @@ Root {
 		global = '1'
 		sound_0 {
 			wav = 'Hu/Captain/Hu_M_Captain_fear_1.wav'
-			volume = '70'
+			volume = '100'
 		}
 		sound_1 {
 			wav = 'Hu/Unique1/Hu_M_Unique1_fear_3.wav'
-			volume = '70'
+			volume = '100'
 		}
 		sound_2 {
 			wav = 'Hu/Warrior/Hu_M_Warrior_die_4.wav'
-			volume = '70'
+			volume = '100'
 		}
 	}
 	voice_hu_undead_warrior_fear {

@@ -37406,7 +37406,7 @@ Root {
 					}
 					hu_flamethrower {
 						description = '_hu_flamethrower'
-						gfx = 'flamethrower_s2'
+						gfx = 'seas_flamethrower_s2'
 						aggressive = '1'
 						hitpoints = '300.000000'
 						FOW = '35.000000'
@@ -131109,7 +131109,7 @@ Root {
 						Helper {
 							LevelBonusData {
 								description = 'hu_flamethrower'
-								gfx = 'flamethrower_s2'
+								gfx = 'seas_flamethrower_s2'
 								aggressive = '1'
 								hitpoints = '300.000000'
 								FOW = '35.000000'
@@ -131124,7 +131124,7 @@ Root {
 						}
 						LevelBonusData {
 							description = '_hu_flamethrower'
-							gfx = 'flamethrower_s2'
+							gfx = 'seas_flamethrower_s2'
 							aggressive = '1'
 							hitpoints = '300.000000'
 							FOW = '35.000000'
@@ -131186,7 +131186,7 @@ Root {
 						Helper {
 							LevelBonusData {
 								description = 'hu_flamethrower'
-								gfx = 'flamethrower_s2'
+								gfx = 'seas_flamethrower_s2'
 								aggressive = '1'
 								hitpoints = '300.000000'
 								FOW = '35.000000'
@@ -131201,7 +131201,7 @@ Root {
 						}
 						LevelBonusData {
 							description = '_hu_flamethrower'
-							gfx = 'flamethrower_s3'
+							gfx = 'seas_flamethrower_s3'
 							aggressive = '1'
 							hitpoints = '500.000000'
 							FOW = '35.000000'
@@ -131278,7 +131278,7 @@ Root {
 						Helper {
 							LevelBonusData {
 								description = 'hu_flamethrower'
-								gfx = 'flamethrower_s2'
+								gfx = 'seas_flamethrower_s2'
 								aggressive = '1'
 								hitpoints = '300.000000'
 								FOW = '35.000000'
@@ -131293,7 +131293,7 @@ Root {
 						}
 						LevelBonusData {
 							description = '_hu_flamethrower'
-							gfx = 'flamethrower_s4'
+							gfx = 'seas_flamethrower_s4'
 							aggressive = '1'
 							hitpoints = '800.000000'
 							FOW = '35.000000'
@@ -131370,7 +131370,7 @@ Root {
 						Helper {
 							LevelBonusData {
 								description = 'hu_flamethrower'
-								gfx = 'flamethrower_s2'
+								gfx = 'seas_flamethrower_s2'
 								aggressive = '1'
 								hitpoints = '300.000000'
 								FOW = '35.000000'
@@ -131385,7 +131385,7 @@ Root {
 						}
 						LevelBonusData {
 							description = '_hu_flamethrower'
-							gfx = 'flamethrower_s5'
+							gfx = 'seas_flamethrower_s5'
 							aggressive = '1'
 							hitpoints = '1300.000000'
 							FOW = '35.000000'
