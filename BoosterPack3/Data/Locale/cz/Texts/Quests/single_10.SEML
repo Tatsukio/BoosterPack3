@@ -6,59 +6,59 @@
 \{chapter single_10}
 
 	\{section -name L10MQ01}
-You have finally reached the right island. Now it is time to look for the temple and the prophet.
+Konečně správný ostrov. Je čas najít chrám a proroka.
 \{p} \{p}
-Objectives:
+Úkoly:
 \{p}
-1) Find the Temple!
+1) Najdi chrám!
 \{p} \{p}
-Hints:
+Tipy:
 \{p}
-1) Beware of the SEAS Patrols in the jungle! Try to avoid being detected for as long as possible!
+1) Dávej pozor na hlídky SEAS v džungli! Snaž se zůstat co nejdéle nezpozorován!
 \{p}
-2) Don’t let the patrols get away when they discover you!
+2) Jakmile tě hlídky spatří, nenech je uniknout!
 	\{/section}
 
 	\{section -name L10MQ02}
-The SEAS have turned the temple into a fortress. It is likely that they are holding the prophet captive there. Their defense must be broken!
+Jednotky SEAS proměnily chrám v pevnost. Je pravděpodobné, že drží proroka uvnitř v zajetí. Musíš prorazit jejich obrannou!
 \{p} \{p}
-Objectives:
+Úkoly:
 \{p}
-1) Fight your way through the base and reach the temple!
+1) Probojuj se základnou až k chrámu!
 \{p}
-2) Take Béla, Cole, and Stina to the entrance to the temple!
+2) Doveď Bélu, Colea a Stinu ke vchodu do chrámu!
 \{p} \{p}
-Hints:
+Tipy:
 \{p}
-1) The main entrances to the temple are heavily guarded. Perhaps there are ways round the defenses.
+1) Hlavní vchody do chrámu jsou dobře hlídané. Možná se dají obránci nějak obejít.
 	\{/section}
 
 	\{section -name L10SQ01}
-The alarm has been triggered. The SEAS know that you are here. If you destroy the SEAS Outposts, your chances in this unequal fight will increase considerably.
+Spustil alarm. Jednotky SEAS vědí o tvé přítomnosti. Podaří-li se ti zničit předsunutá stanoviště SEAS, tvé šance v tomto nevyrovnaném boji podstatně stoupnou.
 \{p} \{p}
-Objectives:
+Úkoly:
 \{p}
-1) Destroy all SEAS Outposts!
+1) Znič všechna předsunutá stanoviště SEAS!
 \{p} \{p}
-Hints:
+Tipy:
 \{p}
-1) An outpost is considered as eliminated when all workers and production buildings have been destroyed.
+1) Předsunuté stanoviště zničíš zabitím všech dělníků a srovnáním výrobních budov se zemí.
 	\{/section}
 
 	\{section -name L10SQ02}
-Warden suggested to create a distraction in the SEAS base by smuggling carnivores into it.
+Warden navrhuje odvést pozornost vpuštěním masožravců do základny SEAS.
 \{p} \{p}
-Objectives:
+Úkoly:
 \{p}
-1) Open or destroy the back entrance of the SEAS base by the temple!
+1) Otevři nebo znič zadní vchod do základny SEAS u chrámu!
 \{p}
-2) At least one carnivore must survive until the gate has been opened.
+2) Alespoň jeden masožravec musí přežít, než bránu otevřeš.
 \{p} \{p}
-Hints:
+Tipy:
 \{p}
-1) Make use of Warden's Special Ability to move units past the animals unharmed.
+1) Využij Wardenovu schopnost přesunovat jednotky kolem zvířat bez zranění.
 \{p}
-2) Do not attack the carnivores as this would cancel out Warden’s Special Ability.
+2) Útokem na masožravce zrušíš účinek Wardenovy speciální schopnosti.
 	\{/section}
 
 \{/chapter}

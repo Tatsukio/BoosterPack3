@@ -4,62 +4,62 @@
 %/class:chtr/vschtr:++/vsanml:++/vsvhcl:+/vsbldg:+%
    \{/tooltipshort}
    \{tooltipmedium}
-%/lvl1:Very strong, high HP%
-%/lvl2:Increases melee damage done by infantry in vicinity%
-%/lvl3:Special Move: Shotgun%
-%/lvl4:• Norsemen receive Berserker
-\\{br}• Dustriders receive Rammer
-\\{br}• Dragon Clan receives Sumo wrestler%
-%/lvl5:Increases HP for infantry%
+%/lvl1:Velmi silný, hodně ZB%
+%/lvl2:Zvyšuje pěchotě ve svém okolí poškození v boji zblízka%
+%/lvl3:Speciální zbraň: Brokovnice%
+%/lvl4:Seveřani: Berserkr
+\\{br}• Pouštní jezdci:  Beranidlo
+\\{br}• Dračí klan: Zápasník sumo%
+%/lvl5:Zvyšuje ZB pěchotě%
    \{/tooltipmedium}
    \{tooltiplong}
-Anthony Cole is a close combat specialist who also possesses a \{ref H_ui.seml#_cole_special_move_1} Shotgun special move.\{/ref} \\{br}
-This allows him to attack enemies from medium range. The \{ref H_ui.seml#_cole_special_move_1} shot\{/ref} does percentual damage and is therefore well-suited for use against enemies with a lot of \{ref H_ui.seml#_iw_hitpoints}hit points.\{/ref}
-Cole is a spontaneous, direct individual full of the joy of life who always says what he thinks and is prepared to defend his opinions. His lack of self-control sometimes gets him into trouble.\{p}
+Anthony Cole je specialista na boj zblízka, který také mistrně ovládá \{ref H_ui.seml#_cole_special_move_1} brokovnici.\{/ref} \\{br}
+Díky tomu může útočit na nepřátele i ze střední vzdálenosti. \{ref H_ui.seml#_cole_special_move_1} Brokovnice\{/ref} působí procentuální zranění a je proto velmi vhodná proti nepřátelům s velkým počtem \{ref H_ui.seml#_iw_hitpoints}zásahových bodů.\{/ref}
+Cole je spontánní, přímý člověk plný radosti ze života, který vždy říká, co si myslí, a své názory je připraven bránit. Jeho nedostatek sebeovládání ho čas od času dostane do problémů.\{p}
 
-The son of an Italian-American mother and an Irish-American father, Anthony represents the joint product of two long lines of American immigrants. The Cole and Fratelli families belonged to lower middle-class New York.\{p}
-Cole's father worked as a policeman until his suspension for repeatedly being drunk while on duty. The extensive contacts Cole's mother's family held soon brought the offer of a job in a security company in southern California. This led to the entire family moving to Los Angeles when Anthony was eleven. The next six years proved to be the happiest of his life.\{p}
-In New York, street kids had to be able to use a knife to get ahead - in Los Angeles it was a surfboard. Together, the California sun, a joy in a wide variety of sports (at first baseball, skateboarding and swimming, and later surfing and free-climbing) and the miracles of pubescent human biology helped make Cole a very popular young man with just one small problem: the hot-blooded temperament he inherited from his mother.
-It was this that led to his being involved in an almost never-ending series of fights. Since his mother always came to his defense ("My Tony would never do anything like that."). and his father was even proud of his sons' behavior ("That's my boy! He really knows how to take care of himself.") he never really learned to control his feelings.\{p}
-Whenever he wasn't in school or a fight somewhere or playing sports Anthony loved to visit his father, who worked shifts at the "Page Museum at the La Brea Tar Pits" and the "Natural History Museum of Los Angeles." Cole was fascinated by the wonders of nature and began to develop a passion for fossils – a passion which would lead to his studying geology.\{p}
-Cole was 17 when his father got fired from the security company. The Natural History Museum of Los Angeles County Foundation was not prepared to accept or forgive an unfortunate incident during which Mr. Cole Senior assaulted an Irish protestant visitor to the Page Museum without grounds using one of the pieces on exhibit (a prime example of just where a difference of opinion can lead on St. Patrick's Day).\{p}
-Due to his age there was little or no chance of his finding another job, leaving the family with no other choice than to move to a small apartment in San Jose. Cole's mother managed to find a minimum-wage job in neighboring Silicon Valley typing long columns of numbers from old documents into a modern database. His father devoted more and more of his time to his high-proof hobby.\{p}
-Cole – uprooted and lonely – became more and more a surly loner. His only refuge during this difficult period lay in his hobbies. He immersed himself even more deeply into his sports, an ancient Oldsmobile (Anthony has been a car enthusiast ever since he got his driver's license), which he loved to take for a spin whenever possible, and - school.\\{br}
-To this point an average student, Cole studied with a hitherto unknown passion, having decided to under no circumstances end up like his father. He breezed into college, and later university.\{p}
-Upon completing his Ph.D., Cole was offered a lucrative job on a Canadian oil platform, which he accepted enthusiastically. As much as geology fascinated him, he had little time for academic culture and most of his colleagues. He was proud of his immense salary and had no problem with the rough camaraderie on board. His only worries centered around two things he had to leave behind – his car (a Corvette convertible) and his fiancée.\{p}
-His Corvette waited for him faithfully, which is more than can be said for his fiancée. His first holiday at home ended in disaster – having discovered the truth about his fiancée, Cole got thoroughly drunk and lost both his driver's license and his car.\{p}
-Somewhat less than completely cooperative, Anthony was later charged with "Resisting arrest" – and lost his job. Frustrated and confused, he applied for a graduate stipendium at his Alma Mater and was accepted.\{p}
-Cole completed his studies in geology with distinction and specialized in sediments. During his post-graduate project he discovered a spot on an Indian reserve on the Nevada border (in an area the Indians considered holy) where different rock strata appeared to have been "twirled," intertwining in a most peculiar manner.\{p}
-At the last moment, the \{ref H_story.seml#_story_seas} SEAS\{/ref} managed to prevent Cole from being able to publish an excellent article on the subject. Cole became suspicious and secretly began to spend his time examining crop circles, the Bermuda Triangle, and other similar phenomena.
+Narodil se v Americe, jeho matka je Italka a otec Ir. Anthony představuje spojení dvou starých rodin amerických přistěhovalců. Coleovi a Fratelliovi patřili ke střední newyorské třídě.\{p}
+Coleův otec pracoval jako policista, než byl pro opakované opilství ve službě propuštěn od sboru. Rozsáhlé kontakty rodiny Coleovy matky mu však brzy přinesly nabídku na práci u bezpečnostní agentury v jižní Kalifornii. Celá rodina se přestěhovala do Los Angeles. Anthonymu bylo jedenáct let. Následujících šest let bylo nejšťastnějším obdobím jeho života.\{p}
+V New Yorku musely děti na ulici umět použít nůž, aby prorazily - v Los Angeles to bylo surfařské prkno. Kalifornské slunce, nadšení pro různé sporty (nejdříve to byly baseball, skateboarding a plavání, později surfování a lezení bez jištění) a zázraky dospívání udělaly z Colea velmi oblíbeného mladíka pouze s jedním problémem: horkokrevností zděděnou po matce.
+A právě ta vedla k jeho účasti v téměř nikdy nekončících potyčkách. Protože ho matka vždy bránila ("Můj Tony by nikdy nic takového neprovedl.") a otec byl na chování svého syna dokonce hrdý ("To je můj kluk! Ví, jak se o sebe postarat."), nikdy se nenaučil ovládat své pocity.\{p}
+Pokud nebyl ve škole,  někde se nerval nebo nesportoval, strašně rád navštěvoval otce, který pracoval na směny v Pagově Muzeu u La Brea Tar Pits a Přírodovědném muzeu města Los Angeles. Fascinován zázraky přírody začal pomalu propadat vášni ke zkamenělinám, která ho dovedla až ke studiu geologie.\{p}
+Když bylo Coleovi 17, bezpečnostní agentura otce vyhodila. Okresní nadace Přírodopisného muzea města Los Angeles nebyla připravena přijmout ani odpustit nešťastný incident, během něhož Cole starší bezdůvodně napadl irského protestantského návštěvníka Pagova muzea jedním z vystavených exponátů (prvotřídní důkaz toho, kam mohou vést rozdílné názory v den svatého Patrika).\{p}
+Kvůli věku měl otec jen malou nebo žádnou šanci, že najde další práci. Protože neměli jinou možnost, musela se rodina přestěhovat do malého bytu v San Jose. Coleova matka dokázala najít práci za minimální mzdu v sousedním Silicon Valley, kde zapisovala dlouhé sloupce čísel ze starých dokumentů do moderní databáze. Otec začal stále víc a víc propadat své zálibě v pití.\{p}
+Z osamělého a z kořenů vytrženého Colea se postupem času stával zahořklý samotář. Jediné útočiště v této těžké době mu poskytovaly koníčky. Byly to hlavně sporty, do kterých se pustil ještě usilovněji, starý Oldsmobile (auta miloval od chvíle, kdy dostal řidičský průkaz), ve kterém vyrazil na projížďku, kdykoli to šlo, a škola.\\{br}
+Do této chvíle průměrný student Cole se začal věnovat studiu s nevídanou vášní, protože se rozhodl, že za žádných okolností neskončí jako otec. Hladce proklouzl do přípravky i na vysokou.\{p}
+Po dokončení doktorátu obdržel Cole lukrativní nabídku na práci na kanadské ropné plošině, kterou nadšeně přijal. Geologie ho natolik fascinovala, že měl na akademický život a své kolegy jen velmi málo času. Byl hrdý na svůj vysoký plat a s drsnými kamarádskými vztahy na palubě neměl žádné problémy. Starost mu dělaly pouze dvě věci, které opustil – auto (Corvetta kabriolet) a snoubenka.\{p}
+Corvetta čekala věrně, což je víc, než se dá říct o snoubence. Jeho první dovolená doma skončila katastrofou – když zjistil pravdu, zpil se úplně namol a přišel o řidičák i o auto.\{p}
+Protože s policisty poněkud méně spolupracoval, obvinili ho později z "kladení odporu při zatýkání", a tak přišel i o práci. Naštvaný a zmatený si zažádal o stipendium na své alma mater, které mu bylo uděleno.\{p}
+Studium geologie ukončil s vyznamenáním a specializoval se na usazené horniny. Při svém postgraduálním projektu objevil místo v indiánské rezervaci na hranicích Nevady (na území považovaném indiány za svaté),  kde různé vrstvy skály vypadaly jako "zkroucené," proplétaly se totiž velmi zvláštním způsobem.\{p}
+Na poslední chvíli se \{ref H_story.seml#_story_seas} SEAS\{/ref} podařilo Coleovi zabránit v otištění vynikajícího článku na toto téma. Cole začal mít podezření a potají se pustil do zkoumání kruhů v obilí, bermudského trojúhelníku a dalších podobných úkazů.
 
    \{/tooltiplong}
 \{/helpitem}
 
-\{helpitem -name _stina Stina Holmlund}
+\{helpitem -name _stina Stina Holmlundová}
 \{img /bunit:stina -ralign}
    \{tooltipshort}
 %/class:anml/vschtr:++/vsanml:++/vsvhcl:+/vsbldg:+%
    \{/tooltipshort}
    \{tooltipmedium}
-%/lvl1:Very fast rider%
-%/lvl2:Increases armor for spear and pikemen in vicinity%
-%/lvl3:Special Move: Hypnosis%
-%/lvl4:• All three tribes receive Eusmilus rider%
-%/lvl5:Increases armor (close combat) for animal units%
+%/lvl1:Velmi rychlý jezdec%
+%/lvl2:Zvyšuje obranu kopiníkům a lancerům ve svém okolí%
+%/lvl3:Dokáže hypnotizovat zvířata a jezdecké jednotky%
+%/lvl4:Nová jednotka pro všechny klany – jezdec na šavlozubém tygru%
+%/lvl5:Zvyšuje obranu (boj zblízka) zvířecím jednotkám%
    \{/tooltipmedium}
    \{tooltiplong}
-Except for during the tutorial and at the beginning of level 1, Stina Holmlund rides an \{ref H_animals.seml#_eusmilus}Eusmilus \{/ref} and attacks at short range.\\{br}
-A special ability allows her to \{ref H_ui.seml#_stina_special_move_1} hypnotise animals\{/ref} and get them to lie motionless for a while, but she has to touch the animal in order to do so.
-Stina is a self-confident, open woman who tends to use common sense and empathy in solving problems.\{p}
+Kromě výuky a začátku první úrovně Stina Holmlundová jezdí \{ref H_animals.seml#_eusmilus}na šavlozubém tygru \{/ref} a bojuje na krátkou vzdálenost.\\{br}
+Její speciální schopnost jí umožňuje \{ref H_ui.seml#_stina_special_move_1} hypnotizovat zvířata\{/ref} a přinutit je na chvíli si bez hnutí lehnout, musí se však zvířete dotknout.
+Stina je sebejistá, otevřená žena se sklonem řešit problémy pomocí zdravého rozumu a empatie.\{p}
 
-Stina was born on May 5th 1972 in Stockholm, the daughter of Danish diplomat Björn Holmlund and Swedish politician Anne Holmlund, born Andersson.\{p}
-Her mother is a member of the Swedish Green Party and passed a strong love of the beauty of nature on to her daughter. She spent all her holidays with her grandfather Olav Andersson, who breeds and trains sled-dogs in Kiruna. Together they have taken many a trip through Sweden's lonely landscape, trips which often place harsh demands on both of them.\{p}
-The effort and privations of such activity brought Stina to a level of fitness which proved useful time and again. Elementary and secondary school posed little problem. Her natural intelligence and the diligence instilled in her by her parents and grandfather made even difficult problems seem deceptively easy. She was less successful in dealing with the amorous advances of her fellow students.\{p}
-Although she has had a number of short affairs she has never really felt fulfilled. Early in life Stina began to suspect that she outstripped most of her male counterparts. She found the sons of other diplomats particularily annoying with their superficiality and arrogant behavior. She despised the shallow party girls she grew up with and longed instead for more meaningful conversation.\{p}
-Stina began studying biology and veterinary medicine at Sweden's oldest university in Uppsala in 1992. She continued to work for her grandfather during semester breaks. She completed both courses of study with honours in 1998 after just 10 semesters. In 1999 she gained her doctorate in veterinary medicine.\{p}
-Her doctoral thesis deals with anachronistic animals which have changed but little over thousands of years, seemingly in defiance of evolution. During the course of her first project, Stina fell in love with one of her colleagues, a young professor who was unfortunately married. Even though this was the first relationship that ever gave Stina what she was looking for - namely a man who takes her seriously and is able to converse with her on equal terms - she ended it after less than a year. Stina is unwilling to play second fiddle in a relationship.\{p}
-Still, the two managed to part as friends. Stina left the project and began her second doctoral thesis, this time in biology. She did her research on a special type of unicellular organism which, according to evolutionary theory, should long since have died out.\{p}
-Stina remained an active animal protectionist throughout her studies.
+Narodila se 5. května 1972 ve Stockholmu dánskému diplomatovi Björnu Holmlundovi a švédské političce Anne Holmlundové, rozené Anderssonové.\{p}
+Její matka je členkou švédské Strany zelených a na svou dceru přenesla silnou lásku ke krásám přírody. Všechny prázdniny Stina tráví u dědečka Olafa Anderssona, který chová a cvičí tažné psy v Kiruně. Společně podnikají mnoho výletů opuštěnou švédskou krajinou, které často na oba kladou drsné požadavky.\{p}
+Díky vynaloženému úsilí a strádání je Stina v takové kondici, která čas od času přijde v hod. Základní a střední škola nepředstavuje žádný problém. Její přirozená inteligence a pracovitost, kterou jí vštípili rodiče a dědeček, dělají i z obtížných problémů snadnou záležitost. Méně úspěšná už je, pokud jde o milostné návrhy svých spolužáků.\{p}
+Přestože má několik krátkých vztahů, nikdy se necítí skutečně naplněná. Brzy začíná mít podezření, že předčí většinu svých mužských protějšků. Synové diplomatů jsou svou nadřazeností a arogancí obzvlášť otravní. Pohrdá povrchními děvčaty z večírků, s kterými vyrůstá, a touží po smysluplnější konverzaci.\{p}
+Biologii a zvěrolékařství začíná studovat na nejstarší švédské univerzitě v Uppsale v roce 1992. Během prázdnin mezi semestry i nadále pokračuje v práci pro dědečka. Oba obory končí s vyznamenáním v roce 1998 po pouhých 10 semestrech. V roce 1999 získává doktorát ze zvěrolékařství.\{p}
+Tématem její doktorandské práce jsou anachronická zvířata, která v průběhu tisíců let vykázala jen nepatrné změny, zdánlivě navzdory evoluci. Během svého prvního projektu se Stina zamiluje do jednoho z kolegů, mladého profesora, který je bohužel ženatý. Přestože to je první vztah, který jí poskytuje, co hledá – muže, který by ji bral vážně a dokázal by s ní mluvit jako s rovnocenným partnerem – končí ho ani ne po roce. Ve vztahu Stina není ochotná hrát druhé housle.\{p}
+Rozchází se však jako přátelé. Stina opouští projekt a začíná pracovat na své druhé doktorandské práci, tentokrát z biologie. Zkoumá zvláštní typ jednobuněčných organizmů, které měly podle evoluční teorie už dávno zaniknout.\{p}
+Během studia se aktivně podílí na ochraně zvířat.
 
    \{/tooltiplong}
 \{/helpitem}
@@ -70,26 +70,26 @@ Stina remained an active animal protectionist throughout her studies.
 %/class:chtr/vschtr:++/vsanml:++/vsvhcl:+/vsbldg:+%
    \{/tooltipshort}
    \{tooltipmedium}
-%/lvl1:Excellent archer%
-%/lvl2:Increases range for long range fighters in vicinity%
-%/lvl3:Special Move: Sniper shot%
-%/lvl4:• Norsemen receive Crossbowman
-\\{br}• Dustriders receive Venom thrower
-\\{br}• Dragon Clan receives Marksman%
-%/lvl5:Bonus damage caused by long range weapons%
+%/lvl1:Vynikající lukostřelec%
+%/lvl2:Zvyšuje dostřel válečníků ve svém okolí%
+%/lvl3:Speciální vlastnost: odstřelování%
+%/lvl4:Seveřani: Střelec z kuše
+\\{br}• Pouštní jezdci:  Vrhač jedu
+\\{br}• Dračí klan: Střelec%
+%/lvl5:Bonus k poškození střelnými zbraněmi%
    \{/tooltipmedium}
    \{tooltiplong}
 
-Béla Benedek is an excellent archer.\\{br}
-His range increases with each level; when chief, his range is greater than that of any other infantry \{ref H_general.seml#_units} unit.\{/ref}\{p}
+Béla Benedek je vynikající lukostřelec.\\{br}
+Jeho dostřel roste s každou úrovní; na nejvyšší úrovni má větší dostřel než všechny ostatní pěší \{ref H_general.seml#_units} jednotky.\{/ref}\{p}
 
-His father was a doctor, his mother a nurse. The youngest of two children, Béla is 4 years younger than his sister, who works as a teacher in Sopron.\\{br}
-He had an easy time of it in school. His father was convinced that since, as the son of a doctor, Béla would never be allowed to go to university anyway (equality of opportunity under communism) there was no reason to force him. His extremely good grades were solely the result of his own natural abilities.\{p}
-At the age of 14 he took part in 1989's Pan-European Picknick. The successful crossing of the border defenses by a number of East Germans made a lasting impression on him (the famous Hungarian Escape).\{p}
-The political changes which took place in Eastern Europe also opened new opportunities for young Béla, and he decided to attend high school, from which he graduated in June of 1993. He then registered at the local university, where he studied physics.\\{br}
-One of his professors, Prof. László Tamás, recognized his unusual abilities and the two formed a deep friendship which lasts to this day. Tamás encouraged Béla to participate in a student exchange program in order to further his studies. In 1995 Béla went to the prestigious Lomonosov University in Moskow (Alma Mater to almost all Russian Nobel Prize winning physicists) for two years of study.\\{br}
-In 1998 he finished his degree with a major in theoretical physics. He began to write his doctoral thesis in Russia, where he shared a research project with colleagues from the USA and China. In 1999 Béla accepted an offer to go to MIT. There he joined a fraternity which he soon left, disturbed by its strange rituals and customs. He submitted his doctoral thesis on "Conditional Anomalies of Sub-Atomic Particles in Multi-Dimensional Spaces" in 2001 and successfully defended it the same year.\{p}
-Béla is allergic to onions, which give him an unbearable itch and result in a terrible rash. However, it was exactly this extremely uncomfortable condition which led the armed forces to declaring him unfit for military service. His allergy makes him a very fussy eater and he seldom eats in restaurants. He knits to relax, for he finds the precise movements extremely soothing.
+Bélův otec byl doktor a matka zdravotní sestra. Má o 4 roky starší sestru, která pracuje jako učitelka v Šoproni.\\{br}
+Škola šla Bélovi snadno. Jeho otec byl přesvědčen, že jako syn doktora stejně na univerzitu nikdy nebude moct jít (rovnost příležitostí v komunismu), nebyl tedy důvod ho do něčeho nutit. Bélovy vynikající známky byly výsledkem pouze jeho přirozených schopností.\{p}
+Jako čtrnáctiletý se v roce 1989 zúčastnil panevropského pikniku. Úspěšné překročení hranic množstvím Východních Němců v něm zanechalo trvalý dojem (známý Maďarský útěk).\{p}
+Politické změny, které se ve východní Evropě odehrály, také otevřely mladému Bélovi nové možnosti – rozhodl se jít na střední školu, kterou ukončil v červnu 1993. Následně se zapsal na místní univerzitu ke studiu fyziky.\\{br}
+Jeden z jeho profesorů, prof. László Tamás, si všiml jeho neobvyklých schopností a vzniklo mezi nimi přátelské pouto přetrvávající až dodnes. Tamás podpořil Bélu, aby se přihlásil do výměnného studentského programu a dál tak napomohl svému studiu. V roce 1995 odjel Béla na prestižní Lomonosovovu univerzitu v Moskvě (alma mater téměř všech ruských nositelů Nobelovy ceny za fyziku) na dva roky.\\{br}
+V roce 1998 ukončil studium teoretické fyziky. V Rusku začal pracovat na své doktorandské práci, kde se podílel na výzkumném projektu s kolegy z USA a Číny. V roce 1999 přijal nabídku práce v MIT. Zde vstoupil do spolku, který brzy opustil, znepokojen podivnými rituály a zvyky. V roce 2001 předložil svou doktorandskou práci na téma Podmíněné anomálie subatomárních částic ve vícedimenzionálním prostoru a ještě téhož roku ji úspěšně obhájil.\{p}
+Béla je alergický na cibuli, z které má nesnesitelné svědění končící hrozivou vyrážkou. Nicméně tato velmi nepříjemná okolnost vedla armádu k tomu, že jej prohlásila za neschopného vojenské služby. Díky své alergii nadělá kolem jídla plno povyku a jen zřídka jí v restauracích. Relaxuje pletením, protože přesné pohyby mu připadají velmi uklidňující.
    \{/tooltiplong}
 \{/helpitem}
 
@@ -99,22 +99,22 @@ Béla is allergic to onions, which give him an unbearable itch and result in a t
 %/class:chtr/vschtr:+/vsanml:+/vsvhcl:++/vsbldg:+%
    \{/tooltipshort}
    \{tooltipmedium}
-%/lvl1:Constructs buildings very fast%
-%/lvl2:Increases construction speed%
-%/lvl3:Special Move: Vehicle destruction%
-%/lvl4:• Norsemen receive Jetpack-Warrior
-\\{br}• Dustriders receive Taslow tower
-\\{br}• Dragon Clan receives Poison trap%
-%/lvl5:Gains resources when enemy buildings are destroyed%
+%/lvl1:Velmi rychle staví budovy%
+%/lvl2:Zvyšuje rychlost stavění%
+%/lvl3:Dokáže zničit vozidla dotekem%
+%/lvl4:Seveřani: Jetpack bojovník
+\\{br}• Pouštní jezdci: Taslowova věž
+\\{br}• Dračí klan: Otrávená past%
+%/lvl5:Ze zničených nepřátelských budov získá suroviny%
    \{/tooltipmedium}
    \{tooltiplong}
-Taslow is a gifted technician whose preferred weapon is a drum-fed repeating crossbow.\{p}
+Taslow je nadaný technik. Jeho oblíbená zbraň je kuše s otočným zásobníkem.\{p}
 
-Born one of eight children in 1860 in a small town in what is now Croatia, Taslow was an incredibly talented physicist, inventor, and electrical engineer.\\{br}
-Receiving his schooling in a nearby city, Taslow excelled at his studies, finally studying electrical engineering at an Austrian university. Upon completing his studies with honours he moved to Budapest, where he went to work for an American company.\\{br}
-It was this company which would lead to his leaving his war-torn country for the United States.\\{br}
-It didn't take long for young Taslow to make a name for himself as a brilliant theorist and engineer, and he worked with such greats as Edison and Westinghouse before going into business for himself.\\{br}
-His pioneer research into electricity and radio resulted in a number of important patents and international recognition before his disappearance under mysterious circumstances.
+Taslow se narodil jako jedno z osmi dětí v roce 1860 v městečku na území dnešního Chorvatska. Byl neuvěřitelně talentovaný fyzik, vynálezce a elektroinženýr.\\{br}
+Základní vzdělání získal v nedalekém městě, ve studiu vynikal a zakončil je studiem elektroinženýrství na Rakouské univerzitě. Po ukončení studia s vyznamenáním se odstěhoval do Budapešti, kde přijal práci u americké společnosti.\\{br}
+Tato společnost hrála hlavní úlohu v jeho odchodu z válkou rozervané vlasti do Spojených států.\\{br}
+Mladému Taslowovi netrvalo dlouho udělat si jméno jako brilantní teoretik a inženýr a než začal pracovat na vlastní pěst, stál po boku takových velikánů jako Edison či Westinghouse.\\{br}
+Jeho pionýrský výzkum elektřiny a rádiových vln vyústil v nespočet důležitých patentů a mezinárodní uznání, než za podivných okolností zmizel.
 
    \{/tooltiplong}
 \{/helpitem}
@@ -125,46 +125,46 @@ His pioneer research into electricity and radio resulted in a number of importan
 %/class:chtr/vschtr:+/vsanml:++/vsvhcl:+/vsbldg:+%
    \{/tooltipshort}
    \{tooltipmedium}
-%/lvl1:Not attacked by wild animals%
-%/lvl2:Units in vicinity are not attacked by wild animals%
-%/lvl3:Special Move: One with Nature%
-%/lvl4:• Norsemen receive Eusmilus kennel
-\\{br}• Dustriders receive Tracker dino
-\\{br}• Dragon Clan receives Dilophosaurus nest%
-%/lvl5:Production of animal units at reduced resource costs%
+%/lvl1:Divoká zvířata na něj neútočí%
+%/lvl2:Divoká zvířata neútočí na jednotky v jeho okolí%
+%/lvl3:Speciální vlastnost: Sjednocení s přírodou%
+%/lvl4: Seveřani: Ohrada šavlozubých tygrů
+\\{br}• Pouštní jezdci: Stopařský dinosaurus
+\\{br}• Dračí klan: Dilophosauří hnízdo%
+%/lvl5:Menší spotřeba surovin na výrobu zvířecích jednotek%
    \{/tooltipmedium}
    \{tooltiplong}
-James Warden was a brilliant naturalist and biologist with an uncanny ability to \{ref H_ui.seml#_warden_special_move_1}tame wild animals. \{/ref}\{p}
+James Warden byl vynikající přírodovědec a biolog s tajuplnou schopností \{ref H_ui.seml#_warden_special_move_1}ochočit si divoká zvířata. \{/ref}\{p}
 
-Born at the start of the nineteenth century, James Warden was an English naturalist who developed the basis of what is now the modern theory of evolution by proposing natural selection as a mechanism.\\{br}
-A worldwide sea voyage with many stops provided him with inspiration and a great deal of the data on which he based his theory.\{p}
-James Warden was born the youngest of three children in a small town in England. His mother died when he was twelve, and the next year he entered boarding school. After finishing school Warden was sent to Edinburgh University to study medicine.\\{br}
-At Edinburgh he soon grew disenchanted with the brutal surgical procedures of the time and began to neglect his studies, preferring to spend his time in student societies for naturalists. It was here that he met some of the period's most renowned naturalists and began his studies into change through acquired characteristics.\\{br}
-Upon hearing of his work, James' father decided to separate him from his "ne'er-do-well" friends and enrolled him at Christ's College, Cambridge instead.\\{br}
-At Cambridge James excelled in riding and shooting, much to the detriment of his studies. It was during this period that Warden met one of England's foremost naturalists, who later recommended him to the captain of the ship which would take him on his epic journey.\\{br}
-It was this journey which honed his keen observational skills and his uncanny abilities in dealing with wild animals.\{p}
-Upon his return he presented his findings and theories in a book which was to become a standard in natural science. While on a tour to promote his new book James Warden disappeared in an apparent shipwreck.\\{br}
-His body was never found.
+Warden se narodil na začátku devatenáctého století. Tento anglický přírodovědec položil základ moderní teorii evoluce tím, že navrhl přirozený výběr jako její mechanismus.\\{br}
+Plavba po mořích celého světa mu poskytla inspiraci a obrovské množství údajů, na kterých svou teorii založil.\{p}
+Narodil se jako poslední ze tří dětí v malé anglické vesničce. Matka mu zemřela, když mu bylo dvanáct, a následující rok vstoupil do internátu. Po ukončení školy byl Warden poslán studovat medicínu na univerzitu v  Edinburghu.\\{br}
+Zde brzy pocítil rozčarování nad brutálními chirurgickými postupy té doby. Začal zanedbávat studium a svůj čas raději trávil ve studentských přírodovědných spolcích, kde se seznámil s tehdejšími nejznámějšími přírodovědci a začal se zabývat změnami pomocí druhotných znaků.\\{br}
+Když se o jeho práci doslechl otec, rozhodl se Jamese oddělit od jeho zahálčivých přátel a zapsal ho místo toho na Christ's College v Cambridgi.\\{br}
+V Cambridgi James vynikal v jízdě na koni a střelbě, k velké škodě jeho studií. V tomto období se seznámil s jedním z prvořadých anglických přírodovědců, na jehož doporučení ho přijal kapitán lodi, která Jamese později vzala na jeho velkolepou cestu.\\{br}
+Cestu, která vybrousila jeho pronikavé pozorovací nadání a záhadnou schopnost zacházení s divokými zvířaty.\{p}
+Po návratu své nálezy a teorie předložil v knize, která se měla stát v přírodních vědách normou. Během propagační cesty své nové knihy James Warden zmizel při ztroskotání lodi.\\{br}
+Jeho tělo se nikdy nenašlo.
 
    \{/tooltiplong}
 \{/helpitem}
 
-\{helpitem -name _trader Trader}
+\{helpitem -name _trader Kupec}
 \{img /bunit:trader -ralign}
    \{tooltipshort}
 %/class:chtr/vschtr:+/vsanml:+/vsvhcl:+/vsbldg:+%
    \{/tooltipshort}
    \{tooltipmedium}
-• close combat fighter
+• jeho předností je boj zblízka
    \{/tooltipmedium}
    \{tooltiplong}
-The Flying Trader is an important part of life on Paraworld - and knows it. If necessary, he fights in close combat.\{p}
+Kupec je důležitou součástí života Paraworldu – a ví to. Není-li jiná možnost, zapojí se do boje zblízka.\{p}
 
-The Flying Trader isn't really THE flying trader, but rather a set of practically indistinguishable triplets.\\{br}
-Their main means of transportation is by zeppelin. Over the years they have managed to build up an impressive trade empire.
-With the possible exception of the Pirate stronghold they are the most important source of trade goods on the planet.
-There's almost no way to get around them. Treat them right and they'll treat you right.\\{br}
-All three brothers are short in stature - which is to say they are really short - and seem more than a bit shady when first met.
+Kupec není ve skutečnosti kupec, ale spíše prakticky od sebe nerozeznatelná trojčata.\\{br}
+Jejich hlavní dopravní prostředek je zepelín. V průběhu doby se jim podařilo vybudovat působivou obchodní říši.
+Pravděpodobně až na pirátskou pevnost jsou nejdůležitější zdroj zboží na planetě.
+Neexistuje skoro žádný způsob, jak je obejít. Jednej s nimi dobře a oplatí ti stejnou mincí.\\{br}
+Všichni tři bratři jsou malého vzrůstu – což znamená opravdu malého – a při prvním setkání působí víc než podezřele.
 
    \{/tooltiplong}
 \{/helpitem}
@@ -175,46 +175,46 @@ All three brothers are short in stature - which is to say they are really short 
 %/class:chtr/vschtr:++/vsanml:+/vsvhcl:+/vsbldg:++%
    \{/tooltipshort}
    \{tooltipmedium}
-%/lvl1:Excellent armor%
-%/lvl2:Units in vicinity do more damage to enemy buildings%
-%/lvl3:Special Move: Minigun%
-%/lvl4:• Norsemen receive Exo enforcer
-\\{br}• Dustriders receive Triceratops transporter
-\\{br}• Dragon Clan receives Corsair%
-%/lvl5:Buildings are completed more quickly%
+%/lvl1:Vynikající obrana%
+%/lvl2:Jednotky v jeho blízkosti způsobí nepřátelským budovám větší poškození%
+%/lvl3:Speciální zbraň: Kulomet%
+%/lvl4:Seveřani: Exoskelet
+\\{br}• Pouštní jezdci: Přepravní triceratops
+\\{br}• Dračí klan: Korzár%
+%/lvl5:Rychlejší stavba budov%
    \{/tooltipmedium}
    \{tooltiplong}
-Jarvis Babbit is a cold, yet brilliant scientist with morals and ethics more suited to Victorian England than today's world.\{p}
+Jarvis Babbit je chladný, ale přesto vynikající vědec s morálními a etickými zásadami, které se více hodí do viktoriánské Anglie než do dnešního světa.\{p}
 
-Jarvis Babbit was an English mathematician, analytical philosopher, and scientist who would seem to have been the first person to come up with the idea of a programmable computer.\\{br}
-Born in London in the late 18th century, he graduated from Cambridge in 1805. A few years later Babbit helped found the Analytical Society and later won the Gold Medal of the Royal Astronomical Society "for his invention of an engine for calculating mathematical and astronomical tables".\\{br}
-For many years he worked as a professor of mathematics at Cambridge. He contributed largely to several scientific periodicals, and was instrumental in founding both the Astronomical Society and the Statistical Society. During the later years of his life he resided in London, devoting himself to the construction of machines capable of performing arithmetical and even algebraic calculations.\\{br}
-It was during this time that Jarvis Babbit gradually became ever more reclusive, drawing back from public life. His research turned to the esoteric, many said, and he eventually founded the \{ref H_story.seml#_story_seas}SEAS, the Society for the Exact Alternative Sciences. \{/ref}\\{br}
-His few friends were heard to remark that his lifestyle must have been most healthy indeed, as he hardly seemed to age at all. Little is known of his later years, although he is thought to have died in 1871.
+Jarvis Babbit byl anglický matematik, analytický filozof a vědec, který jako první přišel s myšlenkou programovatelného počítače.\\{br}
+Narodil se v Londýně na sklonku osmnáctého století, Cambridge absolvoval v roce 1805. O několik let později pomáhal zakládat Analytickou společnost a vyhrál zlatou medaili Královské astronomické společnosti „za vynález stroje pro výpočet matematických a astronomických tabulek“.\\{br}
+Mnoho let pracoval jako profesor matematiky v Cambridgi. Velkou měrou přispíval do několika vědeckých časopisů a pomáhal zakládat Astronomickou i Statistickou společnost. V pozdním období svého života přesídlil do Londýna, kde se věnoval konstruování strojů schopných provádět aritmetické i algebraické výpočty.\\{br}
+Právě v této době se Jarvis Babbit postupně stále více uzavíral do sebe a stáhl se z veřejného života. Podle mnohých se jeho výzkum zaměřil na esoteriku a nakonec založil \{ref H_story.seml#_story_seas}SEAS, Společnost pro exaktní alternativní vědy. \{/ref}\\{br}
+Podle přátel musel vést skutečně velmi zdravý způsob života, protože se zdálo, jako by se ho stárnutí vůbec nedotklo. O jeho dalším životě je toho známo jen velmi málo, má se však za to, že zemřel v roce 1871.
 
    \{/tooltiplong}
 \{/helpitem}
 
-\{helpitem -name _lovelace Ada Loven}
+\{helpitem -name _lovelace Ada Lovenová}
 \{img /bunit:lovelace -ralign}
    \{tooltipshort}
 %/class:chtr/vschtr:+/vsanml:+/vsvhcl:+/vsbldg:+%
    \{/tooltipshort}
    \{tooltipmedium}
-%/lvl1:Lifts Fog of War further%
-%/lvl2:Enemies in vicinity are slowed down%
-%/lvl3:Special Move: Headshot%
-%/lvl4:• Norsemen receive Killer
-\\{br}• Dustriders receive Assassin
-\\{br}• Dragon Clan receives Ice Spearman%
-%/lvl5:Units can be produced more quickly%
+%/lvl1:Odkrývá větší část mapy%
+%/lvl2:Zpomaluje nepřátele ve svém okolí%
+%/lvl3:Přesný zásah%
+%/lvl4:Seveřani: Zabiják
+\\{br}• Pouštní jezdci: Vrah
+\\{br}• Dračí klan: Kopiník%
+%/lvl5:Rychlejší výroba jednotek%
    \{/tooltipmedium}
    \{tooltiplong}
-\{ref H_heros.seml#_babbage} Jarvis Babbit's \{/ref}long-time assistant and second-in-command of the \{ref H_story.seml#_story_seas}SEAS.\{/ref}\{p}
+\{ref H_heros.seml#_babbage} Dlouholetá asistentka Jarvise Babbita \{/ref} a druhá osoba v čele \{ref H_story.seml#_story_seas}SEAS.\{/ref}\{p}
 
-Born an only child in the early 1800's, Ada Loven is mainly known for having written a description of \{ref H_heros.seml#_babbage} Jarvis Babbit's \{/ref}early mechanical general-purpose computer, the analytical engine.\\{br}
-Herself an avid student, Ada Loven met Jarvis Babbit while translating for him some notes on one of his inventions, a primitive computer.
-Their cooperation intensified over the years, as did their relationship, with Ada eventually becoming \{ref H_heros.seml#_babbage} Babbit's \{/ref} right hand, as it were. With him at the founding of the \{ref H_story.seml#_story_seas}SEAS,\{/ref} she became its de facto second in command.
+Narodila se na začátku devatenáctého století. Proslavila se hlavně svou prací popisující raný mechanický univerzální počítač \{ref H_heros.seml#_babbage} Jarvise Babbita \{/ref}- analytický stroj.\\{br}
+S Jarvisem Babbitem se Ada Loven seznámila, když pro něj překládala několik záznamů o jednom z jeho vynálezů, kterým byl primitivní počítač.
+Jejich spolupráce časem zesílila, stejně jako jejich vztah, Ada se nakonec stala \{ref H_heros.seml#_babbage} Babbitovou \{/ref} pravou rukou. Protože stála u zrodu \{ref H_story.seml#_story_seas}SEAS,\{/ref} stala se de facto druhou osobou ve vedení.
 
    \{/tooltiplong}
 \{/helpitem}
@@ -225,22 +225,22 @@ Their cooperation intensified over the years, as did their relationship, with Ad
 %/class:chtr/vschtr:++/vsanml:+/vsvhcl:+/vsbldg:+%
    \{/tooltipshort}
    \{tooltipmedium}
-%/lvl1:Heals by causing damage%
-%/lvl2:Damage aura%
-%/lvl3:Special Move: Vanish%
-%/lvl4:All tribes receive Flamethrower%
-%/lvl5:Infantry rage%
+%/lvl1:Léčí se způsobením poškození%
+%/lvl2:Aura ničení%
+%/lvl3:Speciální akce: Zmizení%
+%/lvl4:Všechny kmeny mohou vyrábět plamenometčíky%
+%/lvl5:Hněv pěchoty%
    \{/tooltipmedium}
    \{tooltiplong}
-David Leighton was an English explorer and missionary whose exploration of Africa became legendary.\{p}
+David Leighton byl anglický průzkumník a misionář, jehož zkoumání Afriky se stalo legendou.\{p}
 
-Leighton was born in Glasgow, Scotland in the early 1800's and studied medicine and theology at the University of Glasgow.\\{br}
-He later joined the London Missionary Society, becoming a minister.\\{br}
-Sent to Africa in the mid 1800's he had little success, making few conversions to the christian faith. It was perhaps his failure in this respect which contributed to his growing fanaticism.\{p}
-After a short return visit to England he turned to exploration. Leighton was one of the first Westerners to complete a transcontinental journey across Africa.
-The purpose of his journey was to open trade routes, whilst accumulating useful information about the African continent. Leighton was a fierce proponent of trade and missions to be established in central Africa, all of which ended in disaster.\\{br}
-Leighton returned to Africa years later as head of a large expedition. While Leighton was exploring a large African river he contracted a strange illness and eventually failed to reappear from an exploratory hike.\\{br}
-The whereabouts of his remains are unknown.
+Leighton se narodil v Glasgow, ve Skotsku, začátkem devatenáctého století a na Glasgowské univerzitě také vystudoval lékařství a teologii.\\{br}
+Později se přidal k Londýnské misionářské společnosti a stal se duchovním.\\{br}
+V padesátých letech byl vyslán s malým úspěchem do Afriky, podařilo se mu totiž získat jen několik lidí pro křesťanskou víru. Právě toto selhání možná přispělo k jeho rostoucímu fanatizmu.\{p}
+Po krátkém návratu do Anglie se vrhl do průzkumu. Byl jedním z prvním zápaďanů, kteří dokončili transkontinentální cestu napříč Afrikou.
+Záměrem jeho cesty bylo otevření obchodních cest, zatímco nashromáždí užitečné informace o Africe. Leighton byl divokým zastáncem zřízení obchodních a misijních center ve střední Africe, ale všechny tyto plány skončily pohromou.\\{br}
+Do Afriky se vrátil o několik let později v čele velké expedice. Při průzkumu velké africké řeky dostal záhadnou chorobu a nakonec se z jednoho průzkumného pochodu nevrátil.\\{br}
+Kde leží jeho pozůstatky, není známo.
 
    \{/tooltiplong}
 \{/helpitem}
@@ -251,116 +251,117 @@ The whereabouts of his remains are unknown.
 %/class:chtr/vschtr:++/vsanml:+/vsvhcl:+/vsbldg:++%
    \{/tooltipshort}
    \{tooltipmedium}
-%/lvl1:Poisons enemies in close combat%
-%/lvl2:Skull bonus aura%
-%/lvl3:Special Move: Sacrifice%
-%/lvl4:• Norsemen receive Undead warrior
-\\{br}• Dustriders receive Skull protector totem
-\\{br}• Dragon Clan receives Shiprepair extension%
-%/lvl5:Ships and vehicles get cheaper%
+%/lvl1:Otráví nepřítele v boji zblízka%
+%/lvl2:Aura bonusu lebek%
+%/lvl3:Speciální akce: Obětování%
+%/lvl4:Seveřani získají jednotku nemrtvý válečník 
+\\{br}Pouštní jezdci získají jednotku ochránce lebek
+\\{br}Dračí klan získá vylepšení regenerace lodí%
+%/lvl5:Výroba lodí a vozidel stojí méně surovin%
    \{/tooltipmedium}
    \{tooltiplong}
-Heinrich Kleemann was a distinguished German archaeologist and expert on ancient civilisations.\{p}
+Heinrich Kleemann byl vynikající německý archeolog a expert na starověké civilizace.\{p}
 
-Born into a poor German family in 1815, Kleemann attended school but was unable to complete his studies for financial reasons.\\{br}
-After a number of years in minor clerical positions Kleemann discovered his talent for trade and by his mid-thirties he was a millionare.\\{br}
-It was then that Kleemann began to indulge his passion for archaeology, a passion he said his father imbued in him.\\{br}
-Kleemann's greatest assets in his career as a classical archaeologist were his tenacity and organisational skills, which helped him make finds which had eluded other archaeologists for decades.
-Unfortunately he also evinced other personality traits which were less desirable. Branded a cheat, braggart and liar, he was eventually proven to have faked a number of his most spectacular finds and was convicted of smuggling antiquities out of the Middle East.\\{br}
-Long hailed as the expert on ancient civilisations Kleemann was quick to notice his incipient decline and suddenly began to fall ill. It is rumoured that his apparent death from an infection was in fact feigned, and that he disappeared with the help of some unknown accomplices.
+Narodil se v chudé německé rodině roku 1815. Studia nedokončil z finančních důvodů.\\{br}
+Po mnoha letech na nižších úřednických postech Kleemann objevil svůj talent pro obchod a jako třicátník už byl milionářem.\\{br}
+V té době se Kleemann oddal své vášni pro archeologii, pro kterou ho nadchl jeho otec.\\{br}
+Kleemannovou největší výhodou v kariéře klasického archeologa byla jeho houževnatost a organizační dovednosti, což mu dopomohlo k nálezům, jaké se ostatním archeologům vyhýbaly po desetiletí.
+Naneštěstí ukazoval i jiné znaky své osobnosti, které už byly méně žádoucí. Byl také prvotřídní podvodník, chvástal a lhář a nakonec mu dokázali, že mnoho svých nejvýznamnějších nálezů zfalšoval, a byl také obviněn z pašování starožitností ze Středního východu.\\{br}
+Kleemann, dlouho uznávaný jako expert na starověké civilizace, rychle rozpoznal svůj neodvratný pád a náhle onemocněl. Říká se, že smrt na infekci pouze předstíral a s pomocí neznámých společníků zmizel.
 
    \{/tooltiplong}
 \{/helpitem}
 
-\{helpitem -name _mayor Governor}
+\{helpitem -name _mayor Guvernér}
 \{img /bunit:mayor -ralign}
    \{tooltipshort}
 %/class:chtr/vschtr:++/vsanml:+/vsvhcl:+/vsbldg:+%
    \{/tooltipshort}
    \{tooltipmedium}
-%/lvl1:Causes area damage around him%
-%/lvl2:Damage caused by nearby enemy units is reduced%
-%/lvl3:Special Move: Whirling blade%
-%/lvl4:• Norsemen receive Falling stones
-\\{br}• Dustriders receive Wall
-\\{br}• Dragon Clan receives Wall%
-%/lvl5:Workers become better fighters: increased HP, weapon does more damage%
+%/lvl1:Způsobí plošné poškození ve svém okolí%
+%/lvl2:Sníží poškození způsobené nepřátelskými jednotkami%
+%/lvl3:Speciální útok: Vířivá čepel%
+%/lvl4:Seveřani: Padající kamení
+\\{br}• Pouštní jezdci: Hradba
+\\{br}• Dračí klan: Hradba%
+%/lvl5:Dělníci lépe bojují: mají více ZB, způsobí větší poškození%
    \{/tooltipmedium}
    \{tooltiplong}
-A powerful and vain man, the Governor is an accomplished warrior.\{p}
+Guvernér, mocný a domýšlivý muž, vynikající válečník.\{p}
 
-The Governor is the illegitimate son of the High Priest of the temple in the \{ref H_special_location.seml#_hc_general} Holy City.\{/ref}\\{br}
-Abandoned in the desert as a baby he grew up as a member of a small \{ref H_story.seml#_story_aje} Dustrider clan\{/ref} that found him. And he really grew up - he is enormous.
-He finally worked his way up to the post of Governor of the \{ref H_special_location.seml#_hc_general} Holy City\{/ref} by gaining the council's trust through his many deeds in their service.\\{br}
-Vain, he is well aware of his power and prerogatives.
+Guvernér je nelegitimní syn nejvyššího kněze chrámu ve \{ref H_special_location.seml#_hc_general} svatém městě.\{/ref}\\{br}
+Po narození ho ponechali v poušti, a tak vyrostl v malém klanu\{ref H_story.seml#_story_aje} Pouštních jezdců\{/ref}, který ho našel. A vyrostl skutečně – má postavu obra.
+Časem se mu podařilo propracovat se až na místo guvernéra \{ref H_special_location.seml#_hc_general} svatého města.\{/ref} Důvěru rady si získal svými činy v jejích službách.\\{br}
+Je domýšlivý, neboť si je velmi dobře vědom své moci i privilegií.
 
    \{/tooltiplong}
 \{/helpitem}
 
-\{helpitem -name _hermit Arch Druid}
+\{helpitem -name _hermit Arcidruid}
 \{img /bunit:hermit -ralign}
    \{tooltipshort}
 %/class:chtr/vschtr:+/vsanml:++/vsvhcl:+/vsbldg:+%
    \{/tooltipshort}
    \{tooltipmedium}
-%/lvl1:Heals himself%
-%/lvl2:Heals own and allied units in nearby vicinity%
-%/lvl3:Special Move: Animal Healing%
-%/lvl4:• Norsemen receive Magic Cauldron
-\\{br}• Dustriders receive Scarecrow
-\\{br}• Dragon Clan receives Fire Cauldron%
-%/lvl5:Enhanced healing%
+%/lvl1:Vyléčí sebe%
+%/lvl2:Vyléčí vlastní i spřátelené jednotky poblíž sebe%
+%/lvl3:Úplně vyléčí všechny vlastní zvířecí jednotky v nejbližším okolí%
+%/lvl4:Seveřani: Magický kotel
+\\{br}• Pouštní jezdci: Strašák
+\\{br}• Dračí klan: Kotel%
+%/lvl5:Rozšířené léčení%
    \{/tooltipmedium}
    \{tooltiplong}
-The Arch Druid is a wise man who lives in tune with nature and the world around him.\{p}
+Arcidruid je moudrý muž, který žije v souladu s přírodou a světem kolem sebe.\{p}
 
-He lives alone on an island, where he keeps the old traditions alive and watches over the holy mammoths.\\{br}
-He is the last descendant of a line of wise men and women who have served the \{ref H_story.seml#_story_hu}Norsemen's \{/ref} spiritual needs throughout the ages.\\{br}
+Žije sám na ostrově, kde udržuje při životě staré tradice a dohlíží na svaté mamuty.\\{br}
+Je posledním následovníkem linie moudrých mužů a žen, kteří sloužili duchovním potřebám \{ref H_story.seml#_story_hu}Seveřanů \{/ref} celé věky.\\{br}
 
    \{/tooltiplong}
 \{/helpitem}
 
-\{helpitem -name _tutorial_stina -nodisplay Stina Holmlund}
+\{helpitem -name _tutorial_stina -nodisplay Stina Holmlundová}
 \{img /bunit:tutorial_stina -ralign}
    \{tooltipshort}
 %/class:chtr/vschtr:++/vsanml:++/vsvhcl:+/vsbldg:+%
    \{/tooltipshort}
    \{tooltipmedium}
-%/lvl1:Strong%
-%/lvl2:Increases armor for spear- and pikemen in vicinity%
-%/lvl3:Special Move: Hypnosis%
-%/lvl4:• All three tribes receive Eusmilus rider%
-%/lvl5:Increases armor (close combat) for animal units%
+%/lvl1:Silná%
+%/lvl2:Zvyšuje obranu kopiníkům a lancerům ve svém okolí%
+%/lvl3:Dokáže hypnotizovat zvířata a jezdecké jednotky%
+%/lvl4:Nová jednotka pro všechny klany – jezdec na šavlozubém tygru%
+%/lvl5:Zvyšuje obranu (boj zblízka) zvířecím jednotkám%
    \{/tooltipmedium}
    \{tooltiplong}
-Except for the tutorial and at the beginning of level 1, Stina Holmlund rides an \{ref H_animals.seml#_eusmilus}Eusmilus \{/ref} and attacks at short range.\\{br}
-A special ability allows her to \{ref H_ui.seml#_stina_special_move_1} hypnotise animals\{/ref} and get them to lie motionless for a while, but she has to touch the animal in order to do so.
-Stina is a self-confident, open woman who tends to use common sense and empathy in solving problems.\{p}
+Kromě výuky a začátku první úrovně Stina Holmlundová jezdí \{ref H_animals.seml#_eusmilus} na šavlozubém tygru \{/ref} a bojuje na krátkou vzdálenost.\\{br}
+Její speciální schopnost jí umožňuje \{ref H_ui.seml#_stina_special_move_1} hypnotizovat zvířata \{/ref} a přinutit je na chvíli si bez hnutí lehnout, musí se jich však dotknout.
+Stina je sebejistá, otevřená žena se sklonem řešit problémy pomocí zdravého rozumu a empatie.\{p}
 
-Stina was born on May 5th 1972 in Stockholm, as the daughter of Danish diplomat Björn Holmlund and Swedish politician Anne Holmlund, née Andersson.\{p}
-Her mother is a member of the Swedish Green Party and passes a strong love of the beauty of nature on to her daughter. Of all things, Anne Holmlund is also responsible for the dead-end in which her husband's career has landed. The committed politician has no qualms about taking part in spectacular actions, whatever the consequences may be. A purposeful actionism which Stina has also inherited. Stina has never felt comfortable with the stuffy atmosphere of consular life.\{p}
-She spends all her holidays with her grandfather Olav Andersson, who breeds and trains sled-dogs in Kiruna. Together they take many a trip through Swedens lonely landscape, trips which often place harsh demands on both of them.\{p}
-The effort and privations bring Stina to a level of fitness which proves useful time and again. Elementary and secondary school pose little problem. Her natural intelligence and the diligence instilled by her parents and grandfather make even difficult problems seem deceptively easy. She is less successful in dealing with the amorous advances of her fellow students.\{p}
-Although she has a number of short affairs she never really feels fulfilled. Early in life Stina begins to suspect that she outstrips most of her male counterparts. She finds the sons of other diplomats particularily annoying with their superficiality and arrogant behavior. She despises the shallow party girls she grew up with and longs instead for more meaningful conversation.\{p}
-Stina begins studying biology and veterinary medicine at the Sweden's oldest university in Uppsala in 1992. She continues to work for her grandfather during semester breaks. She completes both courses of study with honours in 1998 after just 10 semesters. In 1999 she gains her doctorate in veterinary medecine.\{p}
-Her doctoral thesis deals with anachronistic animals which have changed but little over thousands of years, seemingly in defiance of evolution. During the course of her first project, Stina falls in love with one of her colleagues, a young professor who is unfortunately married. Even though this is the first relationship which has ever offered Stina that which she seeks, namely a man who takes her seriously and is able to converse with her on equal terms, she ends it after less than a year. Stina is unwilling to play second fiddle in a relationship.\{p}
-Still, the two manage to part as friends. Stina leaves the project and begins her second doctoral thesis, this time in biology. She does her research on a special type of unicellular organism which, according to evolutionary theory, should long since have died out.\{p}
-Stina remains an active animal protectionist throughout her studies.
+Narodila se 5. května 1972 ve Stockholmu dánskému diplomatovi Björnu Holmlundovi a švédské političce Anne Holmlundové, rozené Anderssonové.\{p}
+Její matka je členkou švédské Strany zelených a na svou dceru přenesla silnou lásku ke krásám přírody. Mimo jiné je Anne Holmlundová také zodpovědná za to, že se kariéra jejího manžela ocitla ve slepé uličce. Jako oddaná politička se bez výčitek svědomí účastní velkolepých akcí, bez ohledu na následky. Toto účelové jednání Stina také podědila. V zatuchlé atmosféře konzulárního života se nikdy necítí dobře.\{p}
+Všechny prázdniny Stina tráví u dědečka Olafa Anderssona, který chová a cvičí tažné psy v Kiruně. Společně podnikají mnoho výletů opuštěnou švédskou krajinou, které často na oba kladou drsné požadavky.\{p}
+Díky vynaloženému úsilí a strádání je Stina v takové kondici, která čas od času přijde v hod. Základní a střední škola nepředstavuje žádný problém. Její přirozená inteligence a pracovitost, kterou jí vštípili rodiče a dědeček, dělají i z obtížných problémů snadnou záležitost. Méně úspěšná už je, pokud jde o milostné návrhy svých spolužáků.\{p}
+Přestože má několik krátkých vztahů, nikdy se necítí skutečně naplněná. Brzy začíná mít podezření, že předčí většinu svých mužských protějšků. Synové diplomatů jsou svou nadřazeností a arogancí obzvlášť otravní. Pohrdá povrchními děvčaty z večírků, s kterými vyrůstá, a touží po smysluplnější konverzaci.\{p}
+Biologii a zvěrolékařství začíná studovat na nejstarší švédské univerzitě v Uppsale v roce 1992. Během prázdnin mezi semestry i nadále pokračuje v práci pro dědečka. Oba obory končí s vyznamenáním v roce 1998 po pouhých 10 semestrech. V roce 1999 získává doktorát ze zvěrolékařství.\{p}
+Tématem její doktorandské práce jsou anachronická zvířata, která v průběhu tisíců let vykázala jen nepatrné změny, zdánlivě navzdory evoluci. Během svého prvního projektu se Stina zamiluje do jednoho z kolegů, mladého profesora, který je bohužel ženatý. Přestože to je první vztah, který jí poskytuje, co hledá – muže, který by ji bral vážně a dokázal by s ní mluvit jako s rovnocenným partnerem – končí ho ani ne po roce. Ve vztahu Stina není ochotná hrát druhé housle.\{p}
+Rozchází se však jako přátelé. Stina opouští projekt a začíná pracovat na své druhé doktorandské práci, tentokrát z biologie. Zkoumá zvláštní typ jednobuněčných organizmů, které měly podle evoluční teorie už dávno zaniknout.\{p}
+Během studia se aktivně podílí na ochraně zvířat.
 
    \{/tooltiplong}
 \{/helpitem}
 
 
-\{helpitem -name _babbage_mobile_suit Babbit's exo enforcer}
+\{helpitem -name _babbage_mobile_suit Babbitův exoskelet}
 \{img /bunit:babbage_mobile_suit -ralign}
    \{tooltipshort}
 %/class:vhcl/vschtr:++/vsanml:++/vsvhcl:++/vsbldg:++%
    \{/tooltipshort}
    \{tooltipmedium}
-• Powerful robot
-\\{br}• Close combat and minigun
+• Silný robot
+\\{br}• Boj zblízka a kulomet
    \{/tooltipmedium}
    \{tooltiplong}
-The Exo enforcer is a two-legged robot, designed for close combat. Babbit uses a special version with a couple of extras e.g. a minigun.
+Exoskelet je dvounohý robot zkonstruovaný pro boj zblízka. Babbit používá speciální verzi s několika vylepšeními, např. kulometem.
    \{/tooltiplong}
 \{/helpitem}
+

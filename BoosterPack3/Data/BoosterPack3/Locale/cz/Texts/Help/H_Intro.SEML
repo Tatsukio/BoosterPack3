@@ -4,47 +4,44 @@
 \{comment $Author: claudia.krueger $}
 \{comment $Revision: #4 $}
 
-\{chapter -name _about_paraworld About ParaWorld}
-\{helpitem -name _intro Introduction}
+\{chapter -name _about_paraworld O ParaWorldu}
+\{helpitem -name _intro Úvod}
    \{tooltipshort}
-
    \{/tooltipshort}
    \{tooltipmedium}
-
    \{/tooltipmedium}
    \{tooltiplong}
-ParaWorld is a real-time strategy game set in a world fraught with danger and excitement. \\{br}
-A world of \{ref H_general.seml#_animals} dinosaurs and giant mammals\{/ref}. In order to win players must harvest \{ref H_general.seml#_resources} resources\{/ref}, recruit and train \{ref H_general.seml#_units} units \{/ref} and erect \{ref H_general.seml#_building} buildings and defensive structures \{/ref} while defending themselves from \{ref H_general.seml#_animals} wild animals \{/ref} and bitter enemies.
+ParaWorld je realtimová strategie zasazená do světa plného nebezpečí a vzrušení. \\{br}
+Je to svět \{ref H_general.seml#_animals} dinosaurů a obřích savců\{/ref}. Aby hráči zvítězili, musí těžit \{ref H_general.seml#_resources} suroviny\{/ref}, najímat a cvičit \{ref H_general.seml#_units} jednotky \{/ref}, jakož i stavět \{ref H_general.seml#_building} budovy a obranná zařízení\{/ref}, zatímco se budou bránit proti \{ref H_general.seml#_animals} divokým zvířatům \{/ref} a nelítostným protivníkům.
    \{/tooltiplong}
 \{/helpitem}
 
-\{helpitem -name _3_tribes The tribes}
-   \{tooltipshort}
 
+
+\{helpitem -name _3_tribes Klany}
+   \{tooltipshort}
    \{/tooltipshort}
    \{tooltipmedium}
-
    \{/tooltipmedium}
    \{tooltiplong}
-In ParaWorld players can select one of three different tribes to play.\\{br}
-Each tribe has its own advantages and disadvantages, making them completely different to play. \{p}
-The \{ref H_story.seml#_story_hu} Norsemen\{/ref} are a strong tribe whose roots lie in northern Europe. Their powerful, well-armored \{ref H_general.seml#_units} units \{/ref} are well-suited to close combat. \{p}
-The \{ref H_story.seml#_story_aje} Dustriders\{/ref} are a nomadic people whose origins lie in Africa. The \{ref H_story.seml#_story_aje} Dustriders\{/ref} feature the most mounted and animal \{ref H_general.seml#_units} units \{/ref} and are the only tribe to have tamed the giant carnivores. \{p}
-The \{ref H_story.seml#_story_ninigi} Dragon Clan\{/ref} is of Asian ancestry and is the most technically oriented tribe in ParaWorld. They rely primarily on traps and ranged weapons for defence.
+V ParaWorldu mohou hráči hrát za jeden ze tří různých klanů.\\{br}
+Každý klan má své výhody a nevýhody, a proto je hra za každý z nich naprosto odlišná. \{p}
+\{ref H_story.seml#_story_hu} Seveřani\{/ref} jsou silný klan s kořeny v severní Evropě. Jejich dobře vyzbrojené \{ref H_general.seml#_units} jednotky \{/ref} se skvěle hodí pro boj zblízka. \{p}
+\{ref H_story.seml#_story_aje} Pouštní jezdci\{/ref} jsou kočovný lid s původem v Africe. \{ref H_story.seml#_story_aje} Pouštní jezdci\{/ref} mají nejvíce jezdeckých a zvířecích \{ref H_general.seml#_units} jednotek \{/ref} a jsou jediní, kdo si ochočil velké masožravce. \{p}
+\{ref H_story.seml#_story_ninigi} Dračí klan\{/ref} má předky v Asii a je to nejvíce technicky zaměřený klan v ParaWorldu. Na svou obranu používají především pasti a střelné zbraně.
    \{/tooltiplong}
 \{/helpitem}
 
-\{chapter -name _about_onlinehelp About the Online help}
-\{helpitem -name _help Help}
-   \{tooltipshort}
 
+\{chapter -name _about_onlinehelp Online nápověda}
+\{helpitem -name _help Nápověda}
+   \{tooltipshort}
    \{/tooltipshort}
    \{tooltipmedium}
-
    \{/tooltipmedium}
    \{tooltiplong}
-Use F1 to access this Help file.\\{br}
-If an object has been selected the help file will automatically open the corresponding chapter.  \{p}
-The links on the left represent an overview of the available help topics. Players can use them to navigate through to the desired topic the same way they would use the Windows Explorer. Double-clicking a headline displays the corresponding text in the text window. \{p}
+Klávesa F1 otevře nápovědu.\\{br}
+Je-li vybraný objekt, nápověda se automaticky otevře na odpovídající kapitole.  \{p}
+Odkazy nalevo slouží jako přehled dostupných témat. S jejich pomocí mohou hráči procházet vybrané téma stejným způsobem jako v Průzkumníku Windows. Kliknou-li dvakrát na titulek, požadovaný text se zobrazí v textovém okně. \{p}
    \{/tooltiplong}
 \{/helpitem}

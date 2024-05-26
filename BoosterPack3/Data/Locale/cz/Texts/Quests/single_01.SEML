@@ -6,243 +6,243 @@
 \{chapter single_01}
 
 	\{section -name L01MQ00_never_let_a_hereo_die}
-Cole, Stina, and Béla must survive!
+Cole, Stina a Béla musí přežít!
 \{p} \{p}
-Objectives:
+Úkoly:
 \{p}
-1) Be careful, injured units cannot be healed!
+1) Hlavně opatrně, zraněné jednotky nelze uzdravit!
 \{p} \{p}
-Hints:
+Tipy:
 \{p}
-1) A unit can be healed completely when promoted to the next level.
+1) Jednotka se plně uzdraví při povýšení na další úroveň.
 \{p}
 	\{/section}
 
 	\{section -name L01MQ01_find_stina}
-Explore the island to find Stina!
+Prozkoumej ostrov a najdi Stinu!
 \{p} \{p}
-Objectives:
+Úkoly:
 \{p}
-1) Find Stina; you could really use her abilities.
+1) Najdi Stinu, její schopnosti by se ti vážně hodily.
 \{p} \{p}
-Hints:
+Tipy:
 \{p}
-1) The animals on this island are very dangerous.
+1) Zvířata tady na ostrově jsou velmi nebezpečná.
 \{p}
 	\{/section}
 
 	\{section -name L01MQ01b_find_bela}
-Explore the island to find and save Béla!
+Prozkoumej ostrov, najdi a zachraň Bélu!
 \{p} \{p}
-Objectives:
+Úkoly:
 \{p}
-1) Béla has also been stranded somewhere on this island. Find him.
+1) Béla také uvízl někde na ostrově. Najdi ho.
 \{p} \{p}
-Hints:
+Tipy:
 \{p}
-1) Béla was apprehended and locked up. You must free him.
+1) Béla byl zatčen a uvězněn. Musíš ho osvobodit.
 \{p}
 	\{/section}
 
 	\{section -name L01MQ02_vanish_the_blood_hu}
-Destroy the Barbarians’ Main Base!
+Znič hlavní budovu barbarů!
 \{p} \{p}
-Objectives:
+Úkoly:
 \{p}
-1) You need to destroy the Barbarian’s settlement.
+1) Musíš zničit osadu barbarů.
 \{p}
-2) When the Town Center has been destroyed, you have won!
+2) Zničením hlavní budovy zvítězíš!
 \{p} \{p}
-Hints:
+Tipy:
 \{p}
-1) Research the hills in the North to find the Barbarians’ base!
+1) Prozkoumej kopce na severu, abys našel základnu barbarů!
 \{p}
-2) Concentrate your attacks on the Town Center!
+2) Zaměř útok na hlavní budovu!
 \{p}
-3) There are two ways to the Base.
+3) K základně vedou dvě přístupové cesty.
 	\{/section}
 
 	\{section -name L01MQ03_help_hu_vs_dilo}
-Help the Norseman fight the Dilophosaurus.
+Pomoz seveřanovi v boji s dilophosaury.
 \{p} \{p}
-Objectives:
+Úkoly:
 \{p}
-1) Kill all Dilophosauruses and destroy their nest!
+1) Zabij všechny dilophosaury a znič jejich hnízdo!
 \{p}
-2) Accompany the Norseman on his way to his companions; he must survive!
+2) Doprovoď seveřana k jeho druhům; musí přežít!
 \{p} \{p}
-Hints:
+Tipy:
 \{p}
-1) Follow him to his village.
+1) Následuj ho do jeho vesnice.
 \{p}
 	\{/section}
 
 	\{section -name L01MQ04_free_spearman}
-Free the Spearmen!
+Osvoboď kopiníky!
 \{p} \{p}
-Objectives:
+Úkoly:
 \{p}
-1) The Barbarians hold some Spearmen captive close by. Find and free them!
+1) Barbaři drží poblíž několik kopiníků v zajetí. Najdi je a osvoboď!
 \{p}
-2) The Spearmen are being held captive and will only join you once their guards are out of the way.
+2) Zajatí kopiníci se k tobě přidají teprve po odstranění stráží.
 \{p} \{p}
-Hints:
+Tipy:
 \{p}
-1) Take the left path to ambush the Barbarians.
+1) Vydej se levou stezkou a napadni barbary, odkud to nečekají.
 \{p}
-2) As long as you fight the Barbarians, the Spearmen are safe.
+2) Dokud budeš bojovat s barbary, kopiníci budou v bezpečí.
 \{p}
 	\{/section}
 
 	\{section -name L01MQ05_revenge_of_cats}
-Kill all Smilodons in the vicinity!
+Zabij všechny smilodony v okolí!
 \{p} \{p}
-Objectives:
+Úkoly:
 \{p}
-1) You must kill all the Smilodons and destroy their den to turn this area into a safe place.
+1) Musíš zabít všechny smilodony a zničit jejich doupě, aby byla oblast bezpečná.
 \{p} \{p}
-Hints:
+Tipy:
 \{p}
-1) Don’t forget the animals’ cave!
+1) Nezapomeň na jeskyně!
 \{p}
 	\{/section}
 
 	\{section -name L01MQ06_free_the_prison}
-Free all prisoners from their cages!
+Osvoboď všechny zajatce z klecí!
 \{p} \{p}
-Objectives:
+Úkoly:
 \{p}
-1) Béla can automatically open cages if he manages to get close enough.
+1) Béla umí klece otevřít automaticky, když se mu podaří dostat dostatečně blízko.
 \{p}
-2) Conquer the Barbarians guarding the cages!
+2) Poraz barbary hlídající klece!
 \{p} \{p}
-Hints:
+Tipy:
 \{p}
-1) Béla must do this alone, Cole and Stina cannot help him.
+1) Béla to musí zvládnout sám, Cole a Stina mu pomoct nemohou.
 \{p}
-2) Creep to the Archers and free them first. They can then in turn help you to fight the guards from a safe distance.
+2) Doplaz se k lučištníkům a osvoboď je jako první. Mohou ti pomoct v boji se strážemi z bezpečné vzdálenosti.
 	\{/section}
 
 	\{section -name L01SQ04_Base_Basics}
-Construct the main buildings of a base.
+Vybuduj hlavní budovy základny.
 \{p} \{p}
-Objectives:
+Úkoly:
 \{p}
-1) Build 3 Cottages,
+1) Postav 3 chalupy.
 \{p}
-2) a Forester’s Lodge
+2) Postav 1 myslivnu.
 \{p}
-3) invent Epoch 2.
+3) Vynalezni epochu 2.
 \{p} \{p}
-Hints:
+Tipy:
 \{p}
-1) You only need to build one cottage from scratch; two damaged ones are already in the village and can be repaired.
+1) Jen jednu chalupu musíš postavit celou od základů; ve vesnici se již nachází dvě poškozené, které můžeš opravit.
 \{p}
-2) In order to invent the next Epoch, you need 200 Food, 200 Wood and 200 Stone.
+2) Na vynalezení další epochy potřebuješ 200 jednotek jídla, 200 jednotek dřeva a 200 jednotek kamene.
 \{p}
 	\{/section}
 
 	\{section -name L01SQ06_Base_Enhanced}
-Expand your Base!
+Rozšiř svou základnu!
 \{p} \{p}
-Objectives:
+Úkoly:
 \{p}
-1) Invent Epoch 3.
+1) Vynalezni epochu 3.
 \{p}
-2) Build a Harbor and a Fishing Boat.
+2) Postav přístav a rybářskou loď.
 \{p} \{p}
-Hints:
+Tipy:
 \{p}
-1) A Fishing Boat can be used to harvest the Resource Food.
+1) Rybářskou loď můžeš využít ke sběru jídla.
 \{p}
-2) You need 700 Food, 700 Wood and 700 Stone to explore the third Epoch.
+2) K prozkoumání třetí epochy potřebuješ 700 jednotek jídla, 700 jednotek dřeva a 700 jednotek kamene.
 \{p}
-3) Build Forester’s Lodges and Stone Quarries to increase your storage capacity!
+3) Zvyš skladovací kapacitu postavením mysliven a kamenolomů!
 	\{/section}
 
 	\{section -name L01SQ07_Base_Fight}
-Prepare for a fight against the Barbarians by expanding your base further!
+Připrav se na boj s barbary dalším rozšířením své základny!
 \{p} \{p}
-Objectives:
+Úkoly:
 \{p}
-1) Build a Weapon Smith,
+1) Postav zbrojírnu.
 \{p}
-2) a Machine Shop,
+2) Postav výrobnu strojů.
 \{p}
-3) a Barracks,
+3) Postav kasárna.
 \{p}
-4) a small Animal Farm
+4) Postav malou zvířecí farmu.
 \{p}
-5) and two Bunkers!
+5) Postav dva bunkry!
 \{p} \{p}
-Hints:
+Tipy:
 \{p}
-1) Build more cottages to increase your population limit!
+1) Postav další chalupy pro zvýšení limitu jednotek!
 	\{/section}
 
 	\{section -name L01SQ01_suprise_attack}
-Perform a surprise attack to free the Spearmen prisoners!
+Překvapivým útokem osvoboď zajaté kopiníky!
 \{p} \{p}
-Objectives:
+Úkoly:
 \{p}
-1) Creep up to the Spearmen prisoners and free them!
+1) Doplaz se k zajatým kopiníkům a osvoboď je!
 \{p} \{p}
-Hints:
+Tipy:
 \{p}
-1) Don’t follow the direct path! Walk down the hollow path on the left! It goes around a corner and enables you to attack the enemy from behind.
+1) Nezkoušej to přímou cestou! Vydej se stezkou nalevo, po které se dostaneš nepřátelům do zad.
 	\{/section}
 
 	\{section -name L01SQ02_find_all_artefacts}
-Find all 3 Artifacts!
+Najdi všechny 3 artefakty!
 \{p} \{p}
-Objectives:
+Úkoly:
 \{p}
-1) Explore the island to find the three artifacts hidden on it.
+1) Prozkoumej ostrov a najdi všechny 3 ukryté artefakty.
 \{p}
-2) You need to collect all three artifacts to finish this task.
+2) Tento úkol dokončíš pouze nalezením všech tří artefaktů.
 \{p} \{p}
-Hints:
+Tipy:
 \{p}
-1) There are two paths, but only one of them leads to the treasure.
+1) Jsou dvě cesty, avšak jen jedna vede k pokladu.
 \{p}
-2) Even in the darkest ruins, you might be able to find light.
+2) I v té nejtemnější zřícenině dokážeš najít světlo.
 \{p}
-3) One man’s death is another man’s gain.
+3) Smrt jednoho rovná se zisk druhého.
 	\{/section}
 
 	\{section -name L01SQ03_repair_buildings}
-Repair your buildings!
+Oprav své budovy!
 \{p} \{p}
-Objectives:
+Úkoly:
 \{p}
-1) Repair your Town Center
+1) Oprav hlavní budovu.
 \{p}
-2) Work on the Stone Quarry
+2) Oprav kamenolom.
 \{p}
-3) Renovate the Tavern
+3) Oprav tavernu.
 \{p}
-4) Repair the damages to your two Cottages
+4) Oprav dvě poškozené chalupy.
 \{p} \{p}
-Hints:
+Tipy:
 \{p}
-1) Provide all of your buildings with 100% of their Hitpoints
+1) Oprav všechny budovy na 100%
 \{p}
-2) You need resources to repair buildings.
+2) Na opravy potřebuješ suroviny.
 
 	\{/section}
 
 	\{section -name L01SQ05_hu_outpost}
-Destroy the Barbarians Outpost!
+Znič předsunuté stanoviště barbarů!
 \{p} \{p}
-Objectives:
+Úkoly:
 \{p}
-1) There is a Barbarians Outpost close to your base. Destroy it!
+1) Poblíž tvé základny se nachází předsunuté stanoviště barbarů. Znič ho!
 \{p}
-2) Destroy all buildings and units to accomplish this mission!
+2) Úkol dokončíš zničením všech budov a jednotek!
 \{p} \{p}
-Hints:
+Tipy:
 \{p}
-1) Destroy the buildings as quickly as possible in order to cut the unit supply lines.
+1) Co nejrychlejším zničením budov přeruš výrobu nových jednotek.
 	\{/section}
 
 \{/chapter}

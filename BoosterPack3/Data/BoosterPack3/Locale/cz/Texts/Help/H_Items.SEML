@@ -4,314 +4,316 @@
 \{comment $Author: claudia.krueger $}
 \{comment $Revision: #5 $}
 
-\{chapter -name _artefacts_offensive Artifacts with offensive bonus}
-\{helpitem -name _item_ankh_of_power Ankh of power}
+\{chapter -name _artefacts_offensive Artefakty s útočným bonusem}
+
+
+\{helpitem -name _item_ankh_of_power Ankh moci}
 \{img /bunit:item_ankh_of_power -ralign}
    \{tooltipshort}
-
    \{/tooltipshort}
    \{tooltipmedium}
-• Increases damage done by all units
+• Zvyšuje poškození způsobené všemi jednotkami
    \{/tooltipmedium}
    \{tooltiplong}
-The Ankh of power increases the damage done by all of a player's \{ref H_general.seml#_units} units. \{/ref}
+Ankh moci zvyšuje poškození způsobené všemi hráčovými \{ref H_general.seml#_units} jednotkami. \{/ref}
    \{/tooltiplong}
 \{/helpitem}
 
-\{helpitem -name _item_totem_of_war War totem }
+
+
+\{helpitem -name _item_totem_of_war Válečný totem}
 \{img /bunit:item_totem_of_war -ralign}
    \{tooltipshort}
 
    \{/tooltipshort}
    \{tooltipmedium}
-• Increases damage done by infantry
+• Zvyšuje poškození způsobené pěšími jednotkami
    \{/tooltipmedium}
    \{tooltiplong}
-The War totem inspires both ranged and close combat infantry \{ref H_general.seml#_units} units \{/ref} to fight even more ferociously, increasing the damage they do.
+Válečný totem inspiruje všechny pěší \{ref H_general.seml#_units} jednotky \{/ref}, aby bojovaly ještě zuřivěji, a zvyšuje poškození, které způsobí.
    \{/tooltiplong}
 \{/helpitem}
 
-\{helpitem -name _item_bridle Aura of power}
+
+
+
+\{helpitem -name _item_bridle Aura moci}
 \{img /bunit:item_bridle -ralign}
    \{tooltipshort}
-
    \{/tooltipshort}
    \{tooltipmedium}
-• Increases damage done by mounted units and vehicles
+• Zvyšuje poškození způsobené jezdeckými jednotkami a vozidly
    \{/tooltipmedium}
    \{tooltiplong}
-The Aura of power increases the damage done by a player's infantry and mounted \{ref H_general.seml#_units} units. \{/ref} This bonus does not apply to ships.
+Aura moci zvyšuje poškození způsobené hráčovými pěšími a jezdeckými \{ref H_general.seml#_units} jednotkami. \{/ref} Tento bonus se netýká lodí.
    \{/tooltiplong}
 \{/helpitem}
 
-\{helpitem -name _item_shipweapons Ship breaker}
+
+\{helpitem -name _item_shipweapons Ničitel lodí}
 \{img /bunit:item_shipweapons -ralign}
    \{tooltipshort}
-
    \{/tooltipshort}
    \{tooltipmedium}
-• Increases damage done by ships
+• Zvyšuje poškození způsobené loděmi
    \{/tooltipmedium}
    \{tooltiplong}
-The Ship breaker improves the damage done by a player's ships. This does not apply to \{ref H_ninigi_produkte.seml#_ninigi_mineship_mine} Floating mines\{/ref} or \{ref H_ninigi_produkte.seml#_ninigi_water_turret} Floating towers.\{/ref}
+Ničitel lodí zvyšuje poškození způsobené hráčovými loděmi. Bonus se nevztahuje na\{ref H_ninigi_produkte.seml#_ninigi_mineship_mine} vodní miny\{/ref} ani \{ref H_ninigi_produkte.seml#_ninigi_water_turret} plovoucí věže.\{/ref}
    \{/tooltiplong}
 \{/helpitem}
 
 
-\{chapter -name _artefacts_defensive Artifacts with defensive bonus}
-\{helpitem -name _item_amulett2 Ironclad amulet}
+\{chapter -name _artefacts_defensive Artefakty s obranným bonusem}
+\{helpitem -name _item_amulett2 Pancířový amulet}
 \{img /bunit:item_amulett2 -ralign}
    \{tooltipshort}
    \{/tooltipshort}
    \{tooltipmedium}
-• Increases close combat defense for all units
+• Zvyšuje všem jednotkám obranu při boji zblízka
    \{/tooltipmedium}
    \{tooltiplong}
-All damage incurred in close combat decreases.
+Veškeré poškození utrpěné v boji zblízka se snižuje.
    \{/tooltiplong}
 \{/helpitem}
-
-\{helpitem -name _item_ring Ring of range defense}
+\{helpitem -name _item_ring Prsten obrany proti střelám}
 \{img /bunit:item_ring -ralign}
    \{tooltipshort}
-
    \{/tooltipshort}
    \{tooltipmedium}
-• Increases defense against long-range weapons
+• Zvyšuje obranu proti střelným zbraním
    \{/tooltipmedium}
    \{tooltiplong}
-Reduces damage caused by ranged \{ref H_general.seml#_units} units. \{/ref} \\{br}
-This does not apply to close combat damage caused by ranged \{ref H_general.seml#_units} units, \{/ref} e.g. a dagger attack from an Archer.
+Snižuje zranění způsobené střeleckými \{ref H_general.seml#_units} jednotkami. \{/ref} \\{br}
+Nevztahuje se na poškození způsobené střeleckou \{ref H_general.seml#_units} jednotkou v boji zblízka, \{/ref} např. zaútočí-li lučištník dýkou.
    \{/tooltiplong}
 \{/helpitem}
 
-\{helpitem -name _item_amulett1 Bony amulet}
+\{helpitem -name _item_amulett1 Kostěný amulet}
 \{img /bunit:item_amulett1 -ralign}
    \{tooltipshort}
-
    \{/tooltipshort}
    \{tooltipmedium}
-• Increases defense against animals and mounted units
+• Zvyšuje obranu proti zvířecím a jezdeckým jednotkám
    \{/tooltipmedium}
    \{tooltiplong}
-When a tribe has this item, the damage done to its \{ref H_general.seml#_units} units \{/ref} by animals and mounted \{ref H_general.seml#_units} units \{/ref} is reduced.
+Má-li klan ve svém držení tento amulet, poškození způsobené jeho \{ref H_general.seml#_units} jednotkám \{/ref} zvířecími a jezdeckými \{ref H_general.seml#_units} jednotkami \{/ref} se snižuje.
    \{/tooltiplong}
 \{/helpitem}
 
-\{chapter -name _artefacts_healing Artifacts for healing and hit points}
-
-\{helpitem -name _item_basaltring_of_toughness Basalt ring of endurance}
+\{chapter -name _artefacts_healing Léčivé artefakty}
+\{helpitem -name _item_basaltring_of_toughness Bazaltový prsten vytrvalosti}
 \{img /bunit:item_basaltring_of_toughness -ralign}
    \{tooltipshort}
    \{/tooltipshort}
    \{tooltipmedium}
-• Increases hitpoints for infantry
+• Zvyšuje pěchotě počet zásahových bodů
    \{/tooltipmedium}
    \{tooltiplong}
-The Basalt ring of endurance infuses player \{ref H_general.seml#_units} units \{/ref} with amazing powers of resistance, which in turn grant infantry \{ref H_general.seml#_units} units \{/ref} many additional \{ref H_ui.seml#_iw_hitpoints}hit points. \{/ref}
+Bazaltový prsten vytrvalosti naplní hráčovy \{ref H_general.seml#_units} jednotky \{/ref} úžasnou odolností, díky níž získají pěší \{ref H_general.seml#_units} jednotky \{/ref} navíc velké množství \{ref H_ui.seml#_iw_hitpoints}zásahových bodů. \{/ref}
    \{/tooltiplong}
 \{/helpitem}
-
 \{helpitem -name _item_talisman Talisman}
 \{img /bunit:item_talisman -ralign}
    \{tooltipshort}
    \{/tooltipshort}
    \{tooltipmedium}
-• All units gain hitpoints
+• Všechny jednotky získávají zásahové body
    \{/tooltipmedium}
    \{tooltiplong}
-All of a player's \{ref H_general.seml#_units} units \{/ref} gain hitpoints.\\{br}
-Injured \{ref H_general.seml#_units} units \{/ref} do not automatically die if this item is lost, but rather lose a percentage of their \{ref H_ui.seml#_iw_hitpoints}hit points. \{/ref}
+Všechny hráčovy \{ref H_general.seml#_units} jednotky \{/ref} získávají zásahové body.\\{br}
+Zraněné \{ref H_general.seml#_units} jednotky \{/ref} nejsou při ztrátě talismanu automaticky zničeny, ale přijdou o procento svých \{ref H_ui.seml#_iw_hitpoints}zásahových bodů. \{/ref}
    \{/tooltiplong}
 \{/helpitem}
 
-\{helpitem -name _item_healall Healing}
+
+\{helpitem -name _item_healall Léčení}
 \{img /bunit:item_healall -ralign}
    \{tooltipshort}
    \{/tooltipshort}
    \{tooltipmedium}
-• Increases healing rate
+• Urychluje léčení
    \{/tooltipmedium}
    \{tooltiplong}
-Applies to \{ref H_general.seml#_units} units \{/ref} stationed near to a Temple.\\{br}
-Healers such as \{ref H_hu_produkte.seml#_hu_druid} Druids\{/ref} and \{ref H_ninigi_produkte.seml#_ninigi_monk} Monks\{/ref} are able to heal injured \{ref H_general.seml#_units} units \{/ref} faster than usual.
+Platí pro \{ref H_general.seml#_units} jednotky \{/ref} u chrámu.\\{br}
+Léčitelé jako \{ref H_hu_produkte.seml#_hu_druid} druidi\{/ref} a \{ref H_ninigi_produkte.seml#_ninigi_monk} mnichové\{/ref} dokáží léčit zraněné \{ref H_general.seml#_units} jednotky \{/ref} rychleji než obvykle.
    \{/tooltiplong}
 \{/helpitem}
 
-\{helpitem -name _item_admirals_hat Poseidon's shield}
+
+\{helpitem -name _item_admirals_hat Poseidonův štít}
 \{img /bunit:item_admirals_hat -ralign}
    \{tooltipshort}
    \{/tooltipshort}
    \{tooltipmedium}
-• Increases hitpoints for ships
+• Zvyšuje zásahové body lodím
    \{/tooltipmedium}
    \{tooltiplong}
-Increases \{ref H_ui.seml#_iw_hitpoints}hit points \{/ref}  for all of a player's ships. \\{br}
-Injured \{ref H_general.seml#_units} units \{/ref} do not automatically die if this item is lost, but rather lose a percentage of their \{ref H_ui.seml#_iw_hitpoints}hit points.\{/ref}
+Zvyšuje \{ref H_ui.seml#_iw_hitpoints}zásahové body \{/ref} všem hráčovým lodím. \\{br}
+Poškozené \{ref H_general.seml#_units} jednotky \{/ref} nejsou při ztrátě štítu automaticky zničeny, ale přijdou o procento svých \{ref H_ui.seml#_iw_hitpoints}zásahových bodů.\{/ref}
    \{/tooltiplong}
 \{/helpitem}
 
-\{helpitem -name _item_ride_cup Pellet}
+\{helpitem -name _item_ride_cup Jezdecký pohár}
 \{img /bunit:item_ride_cup -ralign}
    \{tooltipshort}
    \{/tooltipshort}
    \{tooltipmedium}
-• Increases hitpoints of animals and mounted units
+• Zvyšuje zásahové body zvířecím a jezdeckým jednotkám
    \{/tooltipmedium}
    \{tooltiplong}
-Increases the \{ref H_ui.seml#_iw_hitpoints}hit points \{/ref}  of all of a player's animals and mounted units. \\{br}
-Injured \{ref H_general.seml#_units} units \{/ref} do not automatically die if this item is lost, but rather lose a percentage of their \{ref H_ui.seml#_iw_hitpoints}hitpoints. \{/ref}
+Zvyšuje \{ref H_ui.seml#_iw_hitpoints}zásahové body \{/ref} všem zvířecím a jezdeckým jednotkám hráče. \\{br}
+Zraněné \{ref H_general.seml#_units} jednotky \{/ref} nejsou při ztrátě poháru automaticky zničeny, ale přijdou o procento svých \{ref H_ui.seml#_iw_hitpoints}zásahových bodů. \{/ref}
    \{/tooltiplong}
 \{/helpitem}
 
-\{helpitem -name _item_seas_multitool SEAS multitool}
+\{helpitem -name _item_seas_multitool Víceúčelový nástroj SEAS}
 \{img /bunit:item_seas_multitool -ralign}
    \{tooltipshort}
    \{/tooltipshort}
    \{tooltipmedium}
-• Increases hitpoints of vehicles and animals
+• Zvyšuje zásahové body vozidlům a zvířatům
    \{/tooltipmedium}
    \{tooltiplong}
-Increases the \{ref H_ui.seml#_iw_hitpoints}hit points \{/ref}  of all of a player's vehicles and animals. \\{br}
-Injured \{ref H_general.seml#_units} units \{/ref} do not automatically die if this item is lost, but rather lose a percentage of their \{ref H_ui.seml#_iw_hitpoints}hitpoints. \{/ref}
+Zvyšuje \{ref H_ui.seml#_iw_hitpoints}zásahové body \{/ref} všem vozidlům a zvířecím jednotkám hráče. \\{br}
+Poškozené \{ref H_general.seml#_units} jednotky \{/ref} nejsou při ztrátě tohoto artefaktu automaticky zničeny, ale přijdou o procento svých \{ref H_ui.seml#_iw_hitpoints}zásahových bodů. \{/ref}
    \{/tooltiplong}
 \{/helpitem}
 
-\{chapter -name _artefacts_economy Economy artifacts}
-\{helpitem -name _item_toolkit Toolkit}
+\{chapter -name _artefacts_economy Ekonomické artefakty}
+\{helpitem -name _item_toolkit Schránka na nářadí}
 \{img /bunit:item_toolkit -ralign}
    \{tooltipshort}
    \{/tooltipshort}
    \{tooltipmedium}
-• No resources needed for repairs
+• Opravy jsou zadarmo
    \{/tooltipmedium}
    \{tooltiplong}
-\{ref H_general.seml#_building} Buildings\{/ref}can now be repaired for free. \\{br}
-This would otherwise cost a percentage of the original resources needed for construction proportional to the damage incurred.
+\{ref H_general.seml#_building} Budovy\{/ref}lze nyní opravit zadarmo. \\{br}
+Jinak by cena opravy odpovídala množství surovin potřebných ke stavbě poškozeného úseku.
    \{/tooltiplong}
 \{/helpitem}
 
-\{helpitem -name _item_pannier Pannier}
+\{helpitem -name _item_pannier Košík}
 \{img /bunit:item_pannier -ralign}
    \{tooltipshort}
    \{/tooltipshort}
    \{tooltipmedium}
-• Workers carry more resources
+• Dělníci unesou více surovin
    \{/tooltipmedium}
    \{tooltiplong}
-The Pannier allows Workers to carry more resources per trip. \\{br}
-This is in addition to any bonuses granted by inventions, upgrades and increases in level.
+Díky košíku unesou dělníci více surovin. \\{br}
+Je to doplněk všech bonusů získaných z vynálezů, vylepšení a zvýšení úrovní.
    \{/tooltiplong}
 \{/helpitem}
 
-\{helpitem -name _item_incubator Incubator}
+\{helpitem -name _item_incubator Inkubátor}
 \{img /bunit:item_incubator -ralign}
    \{tooltipshort}
    \{/tooltipshort}
    \{tooltipmedium}
-• Reduces production time for animals and vehicles
+• Zkracuje výrobu zvířat a vozidel
    \{/tooltipmedium}
    \{tooltiplong}
-The Incubator reduces the time needed to produce animals, mounted units and vehicles. It does not, however, reduce the cost.
+Inkubátor zkracuje čas potřebný na výrobu zvířat, jezdeckých jednotek a vozidel. Pořizovací cena však zůstává stejná.
    \{/tooltiplong}
 \{/helpitem}
 
-\{helpitem -name _item_scroll_of_steam_mechanics Scroll of steam mechanics}
+\{helpitem -name _item_scroll_of_steam_mechanics Svitek parní mechaniky}
 \{img /bunit:item_scroll_of_steam_mechanics -ralign}
    \{tooltipshort}
    \{/tooltipshort}
    \{tooltipmedium}
-• Reduces production time for all units
+• Zkracuje výrobu všech jednotek
    \{/tooltipmedium}
    \{tooltiplong}
-The Scroll of steam mechanics reduces the time needed to produce \{ref H_general.seml#_units} units. \{/ref} It does not, however, reduce the cost.
+Svitek parní mechaniky zkracuje čas potřebný na výrobu \{ref H_general.seml#_units} jednotek. \{/ref} Pořizovací cena však zůstává stejná.
    \{/tooltiplong}
 \{/helpitem}
 
-\{helpitem -name _item_steam_turbine Steam turbine}
+\{helpitem -name _item_steam_turbine Parní turbína}
 \{img /bunit:item_steam_turbine -ralign}
    \{tooltipshort}
    \{/tooltipshort}
    \{tooltipmedium}
-• Reduces ship production time
+• Zkracuje výrobu lodí
    \{/tooltipmedium}
    \{tooltiplong}
-The Steam turbine reduces the time needed to produce ships. It does not, however, reduce the cost.
+Parní turbína zkracuje čas potřebný na výrobu lodí. Pořizovací cena však zůstává stejná.
    \{/tooltiplong}
 \{/helpitem}
 
-\{helpitem -name _item_medallion_of_fertility Medallion of fertility}
+\{helpitem -name _item_medallion_of_fertility Medailon plodnosti}
 \{img /bunit:item_medallion_of_fertility -ralign}
    \{tooltipshort}
    \{/tooltipshort}
    \{tooltipmedium}
-• Reduces infantry production time
+• Zkracuje výrobu pěších jednotek
    \{/tooltipmedium}
    \{tooltiplong}
-The Medallion of fertility reduces the time needed to produce infantry \{ref H_general.seml#_units} units. \{/ref} It does not, however, reduce the cost.
+Medailon plodnosti zkracuje čas potřebný na výrobu pěších \{ref H_general.seml#_units} jednotek. \{/ref} Pořizovací cena však zůstává stejná.
    \{/tooltiplong}
 \{/helpitem}
 
-\{chapter -name _artefacts_misc Artifacts with miscellaneous effects}
-\{helpitem -name _item_lens_of_perspective Lens of perspective}
+\{chapter -name _artefacts_misc Artefakty s různým účinkem}
+\{helpitem -name _item_lens_of_perspective Dalekohled}
 \{img /bunit:item_lens_of_perspective -ralign}
    \{tooltipshort}
    \{/tooltipshort}
    \{tooltipmedium}
-• Increases visibility for infantry
+• Zvyšuje viditelnost pěším jednotkám
    \{/tooltipmedium}
    \{tooltiplong}
-The Lens of perspective increases infantry visibility, allowing them to be used as Scouts. It also decreases chances of walking into an ambush.
+Dalekohled zvyšuje pěším jednotkám viditelnost a umožňuje tak hráči použít je jako zvědy. Snižuje také riziko padnutí do léčky.
    \{/tooltiplong}
 \{/helpitem}
 
-\{helpitem -name _item_eye_of_the_golden_pteranodon Eye of the pteranodon}
+\{helpitem -name _item_eye_of_the_golden_pteranodon Oko zlatého pteranodona}
 \{img /bunit:item_eye_of_the_golden_pteranodon -ralign}
    \{tooltipshort}
    \{/tooltipshort}
    \{tooltipmedium}
-• Increases visibility for animals and vehicles
+• Zvyšuje viditelnost zvířatům a vozidlům
    \{/tooltipmedium}
    \{tooltiplong}
-Increasing animal, mounted unit and vehicle visibility, the Eye of the golden pteranodon is particularly useful to large catapults who can then see further than they can fire.
+Protože zvířatům, jezdeckým jednotkám a vozidlům zvyšuje viditelnost, je Oko zlatého pteranodona užitečné zvlášť pro velké katapulty, které díky němu vidí dál, než dostřelí.
    \{/tooltiplong}
 \{/helpitem}
 
-\{helpitem -name _item_flowerpot_of_insanity Flowerpot of insanity}
+\{helpitem -name _item_flowerpot_of_insanity Mísa šílenství}
 \{img /bunit:item_flowerpot_of_insanity -ralign}
    \{tooltipshort}
    \{/tooltipshort}
    \{tooltipmedium}
-• More skulls for units killed
+• Více lebek za zabitou jednotku
    \{/tooltipmedium}
    \{tooltiplong}
-With the Flowerpot of insanity, the player gets more \{ref H_general.seml#_skulls}skulls \{/ref} for each enemy \{ref H_general.seml#_units} units \{/ref} killed. \\{br}
-\{ref H_general.seml#_skulls}Skulls \{/ref} are required to increase \{ref H_general.seml#_units} unit \{/ref} levels and produce \{ref H_general.seml#_heros} heroes. \{/ref} The \{ref H_story.seml#_story_aje} Dustriders\{/ref} also require \{ref H_general.seml#_skulls}skulls \{/ref} to begin a new \{ref H_general.seml#_techtree} Epoch.\{/ref}
+S Mísou šílenství hráč získá více \{ref H_general.seml#_skulls}lebek \{/ref} za každou nepřátelskou \{ref H_general.seml#_units} jednotku \{/ref}, kterou zabije. \\{br}
+\{ref H_general.seml#_skulls}Lebky \{/ref} hráč potřebuje pro zvýšení úrovně \{ref H_general.seml#_units} jednotek \{/ref} a výrobu \{ref H_general.seml#_heros} hrdinů. \{/ref} \{ref H_story.seml#_story_aje} Pouštní jezdci\{/ref} používají \{ref H_general.seml#_skulls}lebky \{/ref} také k výzkumu nové \{ref H_general.seml#_techtree} epochy.\{/ref}
    \{/tooltiplong}
 \{/helpitem}
 
-\{helpitem -name _item_telescope Telescope}
+\{helpitem -name _item_telescope Teleskop}
 \{img /bunit:item_telescope -ralign}
    \{tooltipshort}
    \{/tooltipshort}
    \{tooltipmedium}
-• Increases visibility for all units
+• Zvyšuje viditelnost všem jednotkám
    \{/tooltipmedium}
    \{tooltiplong}
-For most \{ref H_general.seml#_units} units \{/ref} this means they can then see much further than normal. \\{br}
-As a result all ranged weapons including catapults are then able to see further than they can fire.
+Pro většinu \{ref H_general.seml#_units} jednotek \{/ref} to znamená, že vidí mnohem dál než normálně. \\{br}
+Díky tomu všechny střelné zbraně včetně katapultů vidí dál než dostřelí.
    \{/tooltiplong}
 \{/helpitem}
 
-\{helpitem -name _item_compass Compass}
+\{helpitem -name _item_compass Kompas}
 \{img /bunit:item_compass -ralign}
    \{tooltipshort}
    \{/tooltipshort}
    \{tooltipmedium}
-• Reveals landscape on minimap
+• Odkryje mapu
    \{/tooltipmedium}
    \{tooltiplong}
-The entire map is revealed, but enemy positions are not shown.
+Celá mapa se odkryje, nepřátelské pozice však zůstanou skryté.
    \{/tooltiplong}
 \{/helpitem}
 
@@ -320,9 +322,9 @@ The entire map is revealed, but enemy positions are not shown.
    \{tooltipshort}
    \{/tooltipshort}
    \{tooltipmedium}
-• Increases visibility for ships
+• Zvyšuje viditelnost lodím
    \{/tooltipmedium}
    \{tooltiplong}
-The Sextant increases visibility from aboard ships, making it easier to explore shore areas.
+Sextant zvyšuje viditelnost z paluby lodí. Průzkum pobřeží je tak o něco snadnější.
    \{/tooltiplong}
 \{/helpitem}

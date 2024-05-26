@@ -4,176 +4,166 @@
 \{comment $Author: claudia.krueger $}
 \{comment $Revision: 4 $}
 
-\{chapter -name _development Development}
-\{helpitem -name _tipps_general General}
+\{chapter -name _development Rozvoj}
+\{helpitem -name _tipps_general Obecné}
    \{tooltipshort}
-
    \{/tooltipshort}
    \{tooltipmedium}
-
    \{/tooltipmedium}
    \{tooltiplong}
-The Tips and Tricks section is primarily designed to help less experienced players (casual gamers). \\{br}
-The following sections contain a couple of tricks and ideas on how to play ParaWorld successfully. Experienced players are unlikely to learn anything new here. \{p}
+Sekce Tipy a triky má pomoci především méně zkušeným (příležitostným) hráčům. \\{br}
+Následující kapitoly obsahují několik tipů a nápadů, jak úspěšně hrát ParaWorld. Zkušení hráči se zde pravděpodobně nic nového nedoví. \{p}
    \{/tooltiplong}
 \{/helpitem}
 
-\{helpitem -name _start_building Development}
-   \{tooltipshort}
 
+
+\{helpitem -name _start_building Rozvoj}
+   \{tooltipshort}
    \{/tooltipshort}
    \{tooltipmedium}
-
    \{/tooltipmedium}
    \{tooltiplong}
-A functioning economy is needed in order to provide the supplies and reinforcements required to successfully conduct battles. \\{br}
-It is therefore important to find and secure adequate supplies of \{ref H_general.seml#_resources} resources. \{/ref} The start area always contains a limited supply of all of the different \{ref H_general.seml#_resources} resources, \{/ref} but these are often too small to last the entire game. \{p}
-Since all of the different \{ref H_general.seml#_resources} resources \{/ref} - \{ref H_ui.seml#_tb_food} food,\{/ref} \{ref H_world.seml#_stone} stones, \{/ref} and \{ref H_world.seml#_wood} wood \{/ref} – are required throughout the entire game, it is a good idea to ensure a steady supply as quickly as possible. A few Workers should be assigned to do nothing except harvest \{ref H_general.seml#_resources} resources. \{/ref} It is also important to secure new supplies of the necessary \{ref H_general.seml#_resources} resources \{/ref} before the old supplies are completely exhausted. In many games, opposing forces will quickly venture out to secure adequate supplies of \{ref H_general.seml#_resources} resources \{/ref} at an early stage. Don't wait too long before taking care of this. \{p}
-\{ref H_general.seml#_animals}Wild animals \{/ref} and occasionally enemy troops make the territory outside the starting area dangerous. It is therefore a good idea to build defensive fortifications or station troops around these \{ref H_general.seml#_resources} resources \{/ref} in order to protect them. \{p}
-It is important to \{ref H_general.seml#_building} build\{/ref} \{ref H_general.seml#_resources} resource \{/ref} collection points close to the source of the \{ref H_general.seml#_resources} resources \{/ref} in question to keep supply routes short, which in turn speeds up harvesting. Some sources can only be harvested by but a few Workers at the same time. Sending more Workers to these sources is a waste of time, as they end up standing around idle. \{p}
+Funkční ekonomika je nezbytně nutná pro zajištění materiálu a bojových jednotek potřebných k úspěšnému vedení bojů. \\{br}
+Proto je důležité najít a zabezpečit odpovídající zásoby \{ref H_general.seml#_resources} surovin. \{/ref} Na startovní pozici se vždy nachází určité množství všech \{ref H_general.seml#_resources} surovin, \{/ref} často je však příliš malé, aby vydrželo po celou hru. \{p}
+Protože všechny \{ref H_general.seml#_resources} suroviny \{/ref} - \{ref H_ui.seml#_tb_food} jídlo,\{/ref} \{ref H_world.seml#_stone} kámen \{/ref} i \{ref H_world.seml#_wood} dřevo \{/ref} – jsou potřebné po celou hru, je dobrý nápad zajistit si jejich stálý přísun co nejrychleji. Několik dělníků by mělo pracovat výhradně na shromažďování \{ref H_general.seml#_resources} surovin. \{/ref} Důležité také je zajistit nové zdroje \{ref H_general.seml#_resources} surovin, \{/ref} ještě než dojde k úplnému vyčerpání starých zdrojů. V mnoha hrách se protivníci vydají hledat odpovídající zdroje \{ref H_general.seml#_resources} surovin \{/ref} již v rané fázi hry. Příliš dlouho s tím tedy neotálej. \{p}
+\{ref H_general.seml#_animals}Divoká zvířata \{/ref} a příležitostně také nepřátelské jednotky znamenají mimo startovní pozici nebezpečí. Proto je dobrý nápad postavit obranné opevnění nebo umístit jednotky u zdrojů \{ref H_general.seml#_resources} surovin \{/ref} na jejich ochranu. \{p}
+Důležité je \{ref H_general.seml#_building} stavět sběrná místa pro\{/ref} \{ref H_general.seml#_resources} suroviny \{/ref} blízko zdrojů \{ref H_general.seml#_resources} surovin, \{/ref} aby byly zásobovací cesty krátké, což urychlí těžbu. Na některých zdrojích může ve stejnou chvíli pracovat pouze několik dělníků. Vyslání dalších dělníků k takovému zdroji je mrhání časem, protože přebyteční dělníci budou jen zahálčivě postávat kolem. \{p}
  \{p}
-The only things necessary in the beginning are a steady supply of \{ref H_general.seml#_resources} resources \{/ref} and the appropriate \{ref H_general.seml#_building} building\{/ref} to produce some basic combat \{ref H_general.seml#_units} units.\{/ref} The next thing to do is to increase the number of residential \{ref H_general.seml#_building} buildings,\{/ref} in order to allow the production of more \{ref H_general.seml#_units} units.\{/ref} Work should simultaneously begin on the most important discoveries and inventions. This is especially true for the initiation of new \{ref H_general.seml#_techtree}epochs \{/ref} in the main \{ref H_general.seml#_building} building.\{/ref} Other inventions and discoveries should be made as and when needed. For example, developing a special ability for a particular \{ref H_general.seml#_units} unit\{/ref} only makes sense when that \{ref H_general.seml#_units} unit\{/ref} is being trained and used.
+Na začátku hry jsou nezbytně nutné pouze dvě věci: stálý přísun \{ref H_general.seml#_resources} surovin \{/ref} a příslušná \{ref H_general.seml#_building} budova\{/ref} na výrobu několika základních bojových \{ref H_general.seml#_units} jednotek.\{/ref} Dále je nutné zvýšit počet obytných \{ref H_general.seml#_building} budov,\{/ref} aby bylo možné vyrábět více \{ref H_general.seml#_units} jednotek.\{/ref} Současně s tím by měla začít práce na nejdůležitějších objevech a vynálezech. To platí zvlášť pro zahájení nových \{ref H_general.seml#_techtree}epoch \{/ref} v hlavní \{ref H_general.seml#_building} budově.\{/ref} Práce na dalších vynálezech a objevech by měla začít v případě potřeby. Například vývoj speciální schopnosti pro určitou \{ref H_general.seml#_units} jednotku\{/ref} dává smysl pouze tehdy, má-li hráč tuto \{ref H_general.seml#_units} jednotku\{/ref} k dispozici a používá ji.
    \{/tooltiplong}
 \{/helpitem}
 
-\{helpitem -name _resource_shortage Resource shortages}
-   \{tooltipshort}
 
+\{helpitem -name _resource_shortage Nedostatek surovin}
+   \{tooltipshort}
    \{/tooltipshort}
    \{tooltipmedium}
-
    \{/tooltipmedium}
    \{tooltiplong}
-A steady supply of \{ref H_general.seml#_resources} resources\{/ref} is the key to a successful game.\\{br}
-For that reason it is important to avoid bottlenecks at all costs. \{p}
-\{ref H_ui.seml#_tb_food} Food\{/ref} shortages are the easiest to avoid as there are many different ways of getting \{ref H_ui.seml#_tb_food} food.\{/ref} \{ref H_world.seml#_fruit} Fruit bushes\{/ref} and \{ref H_world.seml#_fish}schools of fish \{/ref} are enough to ensure an adequate initial supply of \{ref H_ui.seml#_tb_food} food\{/ref}. Fields or \{ref H_aje_gebaeude.seml#_aje_slaughterhouse} Slaughterhouses\{/ref} should be invented as quickly as possible and a few Workers detailed to work in them to ensure a continuous supply. \{ref H_world.seml#_food}Hunting\{/ref} \{ref H_general.seml#_animals}wild animals \{/ref} is a good way to bridge spontaneous bottlenecks in the \{ref H_ui.seml#_tb_food} food \{/ref} supply. \{ref H_world.seml#_food}Hunting\{/ref} also supplies \{ref H_general.seml#_skulls} skulls \{/ref} in addition to \{ref H_ui.seml#_tb_food} food\{/ref}. \{p}
-If \{ref H_world.seml#_wood} wood \{/ref} is in short supply. The distance between the supply and the \{ref H_general.seml#_resources} resource \{/ref} collection point should be kept as short as possible, especially when harvesting \{ref H_world.seml#_wood} wood \{/ref} as this distance can increase dramatically as time passes. Some maps feature very little \{ref H_world.seml#_wood} wood\{/ref}, forcing players to use it sparingly. It is therefore important to secure new sources of \{ref H_world.seml#_wood} wood \{/ref} at an early stage. The \{ref H_story.seml#_story_hu} Norsemen\{/ref} and the \{ref H_story.seml#_story_ninigi} Dragon Clan\{/ref} have special \{ref H_general.seml#_units} units\{/ref} capable of harvesting \{ref H_world.seml#_wood} wood \{/ref} very quickly: the \{ref H_Ninigi_Produkte.seml#_ninigi_harvester} Scorpion \{/ref} and the \{ref H_Hu_Produkte.seml#_hu_mammoth_lumber} Mammoth Harvester.\{/ref}\{p}
-\{ref H_world.seml#_stone} Stone \{/ref} is the rarest \{ref H_general.seml#_resources} resource \{/ref} in the game. New sources of \{ref H_world.seml#_stone} stone \{/ref} should be located and defended as quickly as possible, instead of waiting until the supply of \{ref H_world.seml#_stone} stone \{/ref} dries up. A \{ref H_general.seml#_resources} resource \{/ref} collection point \{ref H_hu_gebaeude.seml#_hu_warehouse}(Warehouse,\{/ref} \{ref H_ninigi_gebaeude.seml#_ninigi_fireplace}Town center \{/ref} or \{ref H_aje_produkte.seml#_aje_resource_collector} Mobile center\{/ref} - depending on the nation) should be built in the immediate area to keep transport times to a minimum. Since sources of \{ref H_world.seml#_stone} stone \{/ref} are usually fought over quite heavily, it is a good idea to make sure that all \{ref H_world.seml#_stone} stone \{/ref} supplies are heavily defended and to be prepared for enemy attacks. \{p}
-\{ref H_general.seml#_skulls} Skulls \{/ref} cannot be harvested, but only collected through defeating enemies. If the supply of \{ref H_general.seml#_skulls} skulls \{/ref} sinks too low, players can go \{ref H_world.seml#_food} and hunt\{/ref} \{ref H_general.seml#_animals} animals\{/ref}. All \{ref H_general.seml#_animals} animals\{/ref} – including the peaceful ones - yield \{ref H_general.seml#_skulls} skulls\{/ref}, if only a few. In order to keep this emergency reserve available it is a good idea not to destroy all the nests in the area, thus ensuring that there are always \{ref H_general.seml#_animals} animals\{/ref} in the immediate vicinity. \{p}
+Stálý přísun \{ref H_general.seml#_resources} surovin\{/ref} je klíčem úspěšné hry.\\{br}
+Z toho důvodu je důležité vyhnout se zásobovacím potížím za každou cenu. \{p}
+Nedostatku \{ref H_ui.seml#_tb_food} jídla\{/ref} lze předejít nejsnadněji, protože je mnoho způsobů, jak je získat. \{ref H_world.seml#_fruit} Ovocné keře \{/ref} a \{ref H_world.seml#_fish}hejna ryb \{/ref} postačí k zajištění potřebného počátečního přísunu \{ref H_ui.seml#_tb_food} jídla\{/ref}. Je dobré co nejrychleji vynalézt pole nebo \{ref H_aje_gebaeude.seml#_aje_slaughterhouse} jatka\{/ref} a přidělit k nim několik dělníků, což zajistí nepřetržité dodávky jídla. \{ref H_world.seml#_food}Lov\{/ref} \{ref H_general.seml#_animals}divokých zvířat \{/ref} dobře poslouží k pokrytí krátkodobého nedostatku \{ref H_ui.seml#_tb_food} jídla. \{/ref} \{ref H_world.seml#_food}Lov \{/ref} je také zdrojem \{ref H_general.seml#_skulls} lebek, \{/ref} nejen \{ref H_ui.seml#_tb_food} jídla\{/ref}. \{p}
+Je-li nedostatek \{ref H_world.seml#_wood} dřeva\{/ref}. Vzdálenosti mezi zdroji \{ref H_general.seml#_resources} surovin \{/ref} a sběrnými místy by měla být co nejkratší, zvláště pak při těžbě \{ref H_world.seml#_wood} dřeva, \{/ref} protože tato vzdálenost se může časem dramaticky zvětšit. Na některých mapách je jen velmi málo \{ref H_world.seml#_wood} dřeva\{/ref}, což nutí hráče používat je šetrně. Proto je důležité zajistit si nové zdroje \{ref H_world.seml#_wood} dřeva \{/ref} už v rané fázi hry. \{ref H_story.seml#_story_hu} Seveřani\{/ref} a \{ref H_story.seml#_story_ninigi} Dračí klan\{/ref} mají speciální \{ref H_general.seml#_units} jednotky,\{/ref} které umí těžit \{ref H_world.seml#_wood} dřevo \{/ref} velmi rychle: je to \{ref H_Ninigi_Produkte.seml#_ninigi_harvester} škorpion \{/ref} a \{ref H_Hu_Produkte.seml#_hu_mammoth_lumber} pracovní mamut.\{/ref}\{p}
+\{ref H_world.seml#_stone} Kámen \{/ref} je nejvzácnější \{ref H_general.seml#_resources} surovina \{/ref} ve hře. Nové zdroje \{ref H_world.seml#_stone} kamene \{/ref} je třeba co nejrychleji najít a bránit a nečekat, až starý zdroj \{ref H_world.seml#_stone} kamene \{/ref} vyschne. Sběrná místa pro \{ref H_general.seml#_resources} suroviny \{/ref} \{ref H_hu_gebaeude.seml#_hu_warehouse}(skladiště,\{/ref} \{ref H_ninigi_gebaeude.seml#_ninigi_fireplace}hlavní budova \{/ref} nebo \{ref H_aje_produkte.seml#_aje_resource_collector} sběrač surovin\{/ref} - podle národu) by měla stát co nejblíže u zdrojů, aby byla doba přepravy co nekratší. Protože o zdroje \{ref H_world.seml#_stone} kamene \{/ref} se vedou obvykle velmi tvrdé boje, je dobrý nápad zajistit všem zdrojům \{ref H_world.seml#_stone} kamene \{/ref} dobrou obranu a být neustále připraven na nepřátelský útok. \{p}
+\{ref H_general.seml#_skulls} Lebky \{/ref} nelze sbírat, lze je získat pouze z poraženého nepřítele. Pokud zásoba \{ref H_general.seml#_skulls} lebek \{/ref} klesne příliš nízko, hráč může vyrazit na \{ref H_world.seml#_food} lov\{/ref} \{ref H_general.seml#_animals} zvířat\{/ref}. Všechna \{ref H_general.seml#_animals} zvířata\{/ref} – včetně těch mírumilovných - představují zdroj \{ref H_general.seml#_skulls} lebek\{/ref}, i když jen několika. Aby byla tato nouzová rezerva k dispozici, je dobré nezničit všechna hnízda v okolí, díky čemuž se budou nějaká \{ref H_general.seml#_animals} zvířata\{/ref} poblíž vždy vyskytovat. \{p}
  \{p}
-In addition to normal harvesting,\{ref H_general.seml#_trading} trade \{/ref} provides a source of \{ref H_general.seml#_resources} resources \{/ref} with the exception of \{ref H_general.seml#_skulls} skulls\{/ref}. In order to \{ref H_general.seml#_trading}trade\{/ref}, players must send a Market Wagon to a second Marketplace. Players can also trade between two of their own Marketplaces, which shouldn't be too close together as the profit made is partly based on the distance between them. \{p}
-Players can also request other players to supply missing \{ref H_general.seml#_resources} resources \{/ref} as \{ref H_general.seml#_trading} tribute\{/ref}.
+Kromě běžné těžby slouží také \{ref H_general.seml#_trading} obchod \{/ref} jako zdroj \{ref H_general.seml#_resources} surovin \{/ref} s výjimkou \{ref H_general.seml#_skulls} lebek\{/ref}. Aby mohl hráč \{ref H_general.seml#_trading}obchodovat\{/ref}, musí vyslat obchodní vozík do druhého tržiště. Hráči mohou obchodovat také mezi dvěma svými tržišti, která by však neměla být příliš blízko sebe, protože výdělek se částečně odvíjí od vzdálenosti mezi nimi. \{p}
+Hráči mohou také požádat ostatní hráče, aby jim dodali chybějící \{ref H_general.seml#_resources} suroviny \{/ref} jako \{ref H_general.seml#_trading} příspěvek\{/ref}.
  \{p}
-The \{ref H_story.seml#_story_aje} Dustriders \{/ref} also have another means of gaining needed \{ref H_general.seml#_resources} resources\{/ref}: whenever they demolish a \{ref H_general.seml#_building} building\{/ref}, they receive a lot of the construction \{ref H_general.seml#_resources} resources \{/ref} back. This means that in case of emergency they can demolish any unneeded \{ref H_general.seml#_building} buildings.\{/ref}
+\{ref H_story.seml#_story_aje} Pouštní jezdci \{/ref} znají i další způsob získání potřebných \{ref H_general.seml#_resources} surovin\{/ref}: za každou strženou \{ref H_general.seml#_building} budovu\{/ref} dostanou konstrukční \{ref H_general.seml#_resources} suroviny \{/ref} zpět. To znamená, že ve stavu nouze mohou strhnout všechny nepotřebné \{ref H_general.seml#_building} budovy.\{/ref}
    \{/tooltiplong}
 \{/helpitem}
 
-\{helpitem -name _diplomacy Diplomacy}
-   \{tooltipshort}
 
+
+\{helpitem -name _diplomacy Diplomacie}
+   \{tooltipshort}
    \{/tooltipshort}
    \{tooltipmedium}
-
    \{/tooltipmedium}
    \{tooltiplong}
-The \{ref H_ui.seml#_tb_diplomacy} Diplomacy menu \{/ref} allows players to change their diplomatic relations with other nations, forge alliances and pay \{ref H_general.seml#_trading} tribute\{/ref}. \\{br}
-Players can form alliances right at the start of the game simply by starting on the same team. Allies receive a number of advantages: they can see whatever their ally can see and can pass through allied gates as if they were their own. \{p}
-Paying \{ref H_ui.seml#_tb_diplomacy} tribute \{/ref} allows allies to support one another and divide their work: one player protects the other, who in turn concentrates on developing their economy and supports their protector by paying tribute.
+Pomocí menu \{ref H_ui.seml#_tb_diplomacy} Diplomacie \{/ref} mohou hráči měnit své diplomatické vztahy s ostatními národy, tvořit aliance a platit \{ref H_general.seml#_trading} příspěvky\{/ref}. \\{br}
+Hráči mohou vytvořit alianci už na začátku hry jednoduše tak, že začnou hrát za stejný tým. Spojenci získávají mnoho výhod: vidí vše, co ostatní spojenci, a mohou procházet jejich branami, jako by to byly jejich vlastní. \{p}
+Placení \{ref H_ui.seml#_tb_diplomacy} příspěvku \{/ref} umožňuje spojencům vzájemně se podporovat a rozdělit si práci: jeden hráč chrání druhého, který se soustředí na rozvoj jejich ekonomiky a podporuje ochránce placením příspěvku.
  \{p}
-Players can also select the AI as an ally at the start of play. Players can use simple chat commands to communicate with it: e.g. "AI1: food" would tell the AI in the first player slot after the server player to pay the player 50 \{ref H_ui.seml#_tb_food} food\{/ref} as tribute if it is capable of doing so and is allied with the player. "wood" requests \{ref H_world.seml#_wood} wood, \{/ref} "stone" \{ref H_world.seml#_stone} stone \{/ref} and "skulls" \{ref H_general.seml#_skulls} skulls.\{/ref} "AI1: help" calls it to help when the player's base is under attack. The allied AI will also occasionally request \{ref H_general.seml#_resources} resources \{/ref}and military aid. \{p}
+Hráči si mohou na začátku hry vybrat také spojence řízeného počítačem, s kterým mohou komunikovat pomocí jednoduchých příkazů v chatu, např. "AI1: jídlo" řekne AI ve slotu prvního hráče po hostiteli hry, aby zaplatil hráči 50 jednotek \{ref H_ui.seml#_tb_food} jídla\{/ref} jako příspěvek, může-li tak učinit a je to spojenec hráče. Příkaz "dřevo" je požadavek pro \{ref H_world.seml#_wood} dřevo, \{/ref} "kámen" pro \{ref H_world.seml#_stone} kámen \{/ref} a "lebky" pro \{ref H_general.seml#_skulls} lebky.\{/ref} Příkaz "AI1: pomoc" přivolá spojence na pomoc, je-li napadena hráčova základna. Spojenecká AI také občas požádá o \{ref H_general.seml#_resources} suroviny \{/ref}i vojenskou pomoc. \{p}
    \{/tooltiplong}
 \{/helpitem}
 
-\{helpitem -name _animal Fauna}
-   \{tooltipshort}
 
+\{helpitem -name _animal Zvířata}
+   \{tooltipshort}
    \{/tooltipshort}
    \{tooltipmedium}
-
    \{/tooltipmedium}
    \{tooltiplong}
-\{ref H_animals.seml} Animals \{/ref} play a major role in ParaWorld.\\{br}
-Dangerous opponents, they are at the same time prey and domestic animals for the different nations. Aggressive animals can pose a particularily great problem for a fledgling nation. In the beginning weapons are often too weak to defeat large carnivores. If a player does encounter one it is a good idea to retreat and carefully explore to determine just which area the carnivore protects. The different nations' scout \{ref H_general.seml#_units}units \{/ref} are particularily well suited to the job as they are faster than the large predators. \{p}
-Peaceful animals are the perfect prey, but they do flee when attacked. It is therefore a good idea to either trap them in a corner or to kill them quickly. Neutral animals are sometimes dangerous in that they can constitute a challenge, turning to defend themselves. Still, they can be hunted if necessary. \{p}
-If the nests are destroyed, no more young animals will hatch. It is usually a better idea to leave the nests alone. This allows players to continue hunting and collecting \{ref H_general.seml#_skulls} skulls \{/ref} without having to go to battle against enemy nations.
+\{ref H_animals.seml} Zvířata \{/ref} hrají v ParaWorldu hlavní roli.\\{br}
+Pro různé národy jsou tito nebezpeční protivníci kořistí i domácími zvířaty zároveň. Agresivní zvířata představují zvlášť velký problém pro mladý národ. Na začátku hry zbraně často nestačí na poražení velkých masožravců. Pokud hráč na jednoho z nich narazí, je lepší ustoupit a opatrně zjistit, jaké území si brání. Na tuto práci se skvěle hodí výzvědné \{ref H_general.seml#_units}jednotky \{/ref}, protože jsou rychlejší než velcí dravci. \{p}
+Mírumilovná zvířata jsou vynikající kořist, při napadení však prchají. Není proto špatné zahnat je do rohu nebo je zabít rychle. Neutrální zvířata jsou někdy nebezpečná, protože se mohou rozhodnout místo útěku bránit, a to představuje problém. Přesto se dají lovit, je-li potřeba. \{p}
+Pokud hráč zničí hnízdo, žádná další mláďata se už nenarodí. Obvykle je lepší nechat je být. Hráč tak může pokračovat v lovu a sbírání \{ref H_general.seml#_skulls} lebek \{/ref}, aniž by musel vytáhnout do boje proti nepříteli.
    \{/tooltiplong}
 \{/helpitem}
 
-\{helpitem -name _walls Walls}
+\{helpitem -name _walls Hradby}
    \{tooltipshort}
-
    \{/tooltipshort}
    \{tooltipmedium}
-
    \{/tooltipmedium}
    \{tooltiplong}
-Walls are a good way to provide a player's base with protection against \{ref H_general.seml#_animals} wild animals \{/ref} and lightning enemy attacks. \\{br}
-Since walls require a great deal of \{ref H_world.seml#_stone} stone \{/ref} players should use the natural landscape to their advantage, e.g. by simply closing any gaps in surrounding cliffs. Walls can be expanded and augmented whenever the player wishes. Intersecting walls can also be built. Gates require three adjacent straight sections of wall, making it difficult to place them in close quarters. Gates can only be placed into existing walls. \{p}
-Infantry units can be placed on mountable walls (\{ref H_story.seml#_story_hu} Norsemen,\{/ref} otherwise only with \{ref H_heros.seml#_mayor} Governor \{/ref} level 4); ranged units are particularily well suited to the purpose as they receive additional protection from the walls. Towers and gates give access to the walls. \{p}
-Some special \{ref H_general.seml#_units} units\{/ref} are also capable of crossing walls: the \{ref H_Ninigi_Produkte.seml#_ninja} Dragon Clan Ninja \{/ref} can open enemy gates for a short period of time while the \{ref H_Hu_Produkte.seml#_hu_jetpack_warrior} Norsemen Jetpack Warrior \{/ref} can jump over them. Ranged weapons can also fire over walls.
+Hradby jsou dobrý způsob ochrany základny před \{ref H_general.seml#_animals} divokými zvířaty \{/ref} a bleskovými útoky nepřátel. \\{br}
+Protože jejich stavba vyžaduje velké množství \{ref H_world.seml#_stone} kamene \{/ref}, hráči by měli využít přirozený ráz krajiny ve svůj prospěch, např. uzavřením mezer mezi skalami kolem základny. Hradby lze kdykoli podle přání upravit. Postavit je možné i křižující se zdi. Brány vyžadují tři pole v rovné části hradby, díky čemuž je obtížné umístit je těsně vedle sebe, lze je začlenit výhradně do již stojící hradby. \{p}
+Pěší jednotky mohou obsadit hradby s ochozem (platí pro \{ref H_story.seml#_story_hu} Seveřany,\{/ref} jinak pouze s \{ref H_heros.seml#_mayor} guvernérem \{/ref} na úrovni 4); skvěle se k tomuto účelu hodí střelecké jednotky, protože jim hradby poskytnou ochranu navíc. Přístup na hradby zajišťují brány a věže. \{p}
+Některé speciální \{ref H_general.seml#_units} jednotky\{/ref} umí hradby překonat: \{ref H_Ninigi_Produkte.seml#_ninja} nindža Dračího klanu \{/ref} dokáže nepřátelské brány na chvíli otevřít, zatímco \{ref H_Hu_Produkte.seml#_hu_jetpack_warrior} bojovník s jetpackem Seveřanů \{/ref} je přeskočí. Střelné zbraně mohou přes hradby střílet.
    \{/tooltiplong}
 \{/helpitem}
 
-\{helpitem -name _defense Defense}
+\{helpitem -name _defense Obrana}
    \{tooltipshort}
-
    \{/tooltipshort}
    \{tooltipmedium}
-
    \{/tooltipmedium}
    \{tooltiplong}
-In as much as the goal of the game is to destroy the enemy, players must at all times be prepared to defend themselves against attack by other players.\\{br}
-It is important to plan in advance for which side attacks are likely to come and how to counter them.
-Usually the terrain itself provides some protection and limits the number of possible attack routes. The remaining open sides should be protected by defensive structures and combat units. Having to call these units in from afar in case of an attack can cost precious time and lead to heavy losses. \{p}
-Recognizing an enemy attack early on is extremely useful as it allows the player more time to react. The \{ref H_story.seml#_story_ninigi} Dragon Clan,\{/ref} for example, can use its \{ref H_Ninigi_Gebaeude.seml#_ninigi_telescope_tower} Telescope towers \{/ref} to see great distances, allowing them to detect enemy units earlier. The other nations also have their own early warning techniques.
+Jakkoli je cílem hry zničit nepřítele, hráč musí být neustále připraven bránit se útokům ostatních hráčů.\\{br}
+Je důležité si s předstihem určit, z které strany pravděpodobně útoky přijdou a jak se jim postavit.
+Obvykle určitou ochranu poskytne už samotný terén a omezí útočníkům počet možných přístupových cest. Zbývající otevřená místa by měly chránit bojové jednotky a obranné konstrukce. Musí-li hráč volat jednotky v případě útoku zdaleka, může ho to stát vzácný čas a vést až k těžkým ztrátám. \{p}
+Rozpoznat začínající nepřátelský útok je mimořádně užitečné, protože hráč získá víc času na přípravu. \{ref H_story.seml#_story_ninigi} Dračí klan\{/ref} například umí použít \{ref H_Ninigi_Gebaeude.seml#_ninigi_telescope_tower} hvězdárny \{/ref} k pozorování velkých vzdáleností, což mu umožňuje dříve odhalit nepřátelské jednotky. I ostatní národy mají své způsoby, jak včas odhalit hrozící nebezpečí.
  \{p}
-Defensive structures composed of walls and towers are strong and hold enemies back. However they too are vulnerable to attack and there are special weapons (long-range catapults) which are capable of destroying them from a distance. A sortie and attack on the catapults can eliminate this threat. The only problem is that the whole thing could be designed as an ambush. \{p}
-The higher a \{ref H_general.seml#_units}unit \{/ref} or tower is, the greater its range. It therefore makes sense to place towers atop cliffs or mountains wherever possible. Towers can be ordered to attack specific targets in exactly the same manner as other units by selecting them and then right-clicking the enemy unit to be attacked or by using the tower's \{ref H_ui.seml#cb_attack} attack button \{/ref}.
+Obranné konstrukce složené z hradeb a věží jsou silné a nepřítele zadrží. Nicméně ani ony nejsou odolné proti útoku a existují speciální zbraně (katapulty s dlouhým dostřelem), které je dokáží zničit z dálky. Výpad a útok na katapulty hrozbu odstraní. Jediný problém je, že to vše může být připravená léčka. \{p}
+Čím výš se \{ref H_general.seml#_units}jednotka \{/ref} nebo věž nachází, tím větší má dostřel. Dává tedy smysl umístit věže na vrcholky skal nebo hor všude, kde je to možné. Věžím lze přikázat, aby útočily na specifické cíle, naprosto stejným způsobem jako všem ostatním jednotkám: levým tlačítkem myši hráč věž vybere a pak pravým tlačítkem klikne na vybranou nepřátelskou jednotku nebo použije \{ref H_ui.seml#cb_attack} tlačítko útok \{/ref} věže.
    \{/tooltiplong}
 \{/helpitem}
 
 
-\{chapter -name _combat_strategy Combat and strategy}
-\{helpitem -name _pyramid Using the Army controller}
-   \{tooltipshort}
+\{chapter -name _combat_strategy Boj a strategie}
 
+\{helpitem -name _pyramid Použití okna Stav armády}
+   \{tooltipshort}
    \{/tooltipshort}
    \{tooltipmedium}
-
    \{/tooltipmedium}
    \{tooltiplong}
-The \{ref H_general.seml#_pyramid} Army controller\{/ref} serves a twofold purpose. It provides a fast and convenient overview of the player's \{ref H_general.seml#_units}units \{/ref} while also allowing the player to manage them.\\{br}
-Using the \{ref H_general.seml#_pyramid} Army controller\{/ref} players can maintain an overview of their people at all times. At the same time, the \{ref H_general.seml#_pyramid} Army controller\{/ref}, limits the total number of \{ref H_general.seml#_units}units, \{/ref} forcing players to carefully plan their tactics when promoting \{ref H_general.seml#_units}units. \{/ref} \{p}
-Hitting the TAB key or clicking the \{ref H_ui.seml#_epochs} Epoch bar \{/ref} on the left opens and closes the \{ref H_general.seml#_pyramid} Army controller.\{/ref} When open, the \{ref H_general.seml#_pyramid} Army controller\{/ref} displays all \{ref H_general.seml#_units}unit \{/ref} and all available empty \{ref H_general.seml#_units}unit \{/ref} slots.\{ref H_general.seml#_units}Units \{/ref} can be rearranged per Drag'n'Drop, e.g. to get a better overview and to make it easier to select them within the \{ref H_general.seml#_pyramid} Army controller\{/ref} using a drag box. \{p}
-Under some circumstances, it may be a good idea to minimize the \{ref H_general.seml#_pyramid} Army controller\{/ref} so that only those \{ref H_general.seml#_units}units \{/ref} currently involved in something interesting are displayed. \{p}
-Whenever a \{ref H_general.seml#_units}unit \{/ref} is promoted or raised a level, it regains all its \{ref H_ui.seml#_iw_hitpoints}hitpoints\{/ref}. This can be very useful in combat if a player keeps a close eye on their \{ref H_general.seml#_units}units. \{/ref}
+Okno \{ref H_general.seml#_pyramid} Stav armády\{/ref} má dva účely. Poskytuje hráči rychlý a pohodlný přehled jeho \{ref H_general.seml#_units}jednotek \{/ref} a zároveň mu umožňuje jejich správu.\\{br}
+Pomocí okna \{ref H_general.seml#_pyramid} Stav armády\{/ref} si hráč udrží přehled o všech svých jednotkách po celou dobu hry. Současně \{ref H_general.seml#_pyramid} Stav armády\{/ref} omezuje celkový počet \{ref H_general.seml#_units}jednotek, \{/ref} což nutí hráče s rozmyslem plánovat zvyšování úrovní \{ref H_general.seml#_units}jednotkám. \{/ref} \{p}
+Stisknutím klávesy tabulátor nebo kliknutím na lištu \{ref H_ui.seml#_epochs} Epocha \{/ref} vlevo se okno \{ref H_general.seml#_pyramid} Stav armády\{/ref} otevře nebo zavře. Je-li otevřeno, zobrazí se v něm všechny \{ref H_general.seml#_units}jednotky \{/ref} včetně dostupných prázdných slotů \{ref H_general.seml#_units}jednotek. \{/ref} \{ref H_general.seml#_units}Jednotky \{/ref} lze uspořádat přetažením myší, např. aby hráč získal lepší přehled a usnadnil si jejich vybírání v okně \{ref H_general.seml#_pyramid} Stav armády\{/ref}. \{p}
+Za určitých okolností není špatné okno \{ref H_general.seml#_pyramid} Stav armády\{/ref} zavřít, aby se zobrazily \{ref H_general.seml#_units}jednotky \{/ref}, které jsou právě zapojeny do nějaké zajímavé činnosti. \{p}
+Při každém zvýšení úrovně \{ref H_general.seml#_units}jednotka \{/ref} získá zpět všechny \{ref H_ui.seml#_iw_hitpoints}zásahové body\{/ref}. To může být velmi užitečné v boji, dává-li hráč na své \{ref H_general.seml#_units}jednotky \{/ref} pozor.
    \{/tooltiplong}
 \{/helpitem} 
 
-\{helpitem -name _tactics Tips on Combat tactics}
-   \{tooltipshort}
 
+\{helpitem -name _tactics Tipy k taktice boje}
+   \{tooltipshort}
    \{/tooltipshort}
    \{tooltipmedium}
-
    \{/tooltipmedium}
    \{tooltiplong}
-There are many basic tactics which can make it easier to win.  \\{br}
-Firstly, use a sensible mix of \{ref H_general.seml#_units}units. \{/ref} Keep an eye on the enemy and use \{ref H_general.seml#_units}units \{/ref} best able to counter their attacking units. For example, pole weapons are excellent against animals and mounted \{ref H_general.seml#_units}units \{/ref} while close combat \{ref H_general.seml#_units}units \{/ref} are best against archers. Plan attacks on particularly strong or particularly effective enemy \{ref H_general.seml#_units}units \{/ref}carefully instead of just throwing \{ref H_general.seml#_units}units \{/ref} at them. \{p}
-Secondly, try to combine \{ref H_general.seml#_units}units \{/ref} in a logical manner. Powerful combat \{ref H_general.seml#_units}units \{/ref} become even more dangerous when accompanied by a healer while some mounted archery \{ref H_general.seml#_units}units \{/ref}can carry additional archers, increasing their firepower.
+Je mnoho základních taktik, které mohou cestu za vítězstvím usnadnit.  \\{br}
+Zaprvé, použij rozumnou kombinaci \{ref H_general.seml#_units}jednotek. \{/ref} Dávej pozor na nepřítele a použij \{ref H_general.seml#_units}jednotky \{/ref}, které si s odražením útočníků poradí nejlépe. Například kopiníci jsou vynikající proti zvířatům a jezdeckým \{ref H_general.seml#_units}jednotkám \{/ref}, zatímco \{ref H_general.seml#_units}jednotky \{/ref} pro boj zblízka jsou nejúčinnější proti lučištníkům. Útoky na velmi silné nebo účinné nepřátelské \{ref H_general.seml#_units} jednotky \{/ref}pečlivě naplánuj, nepouštěj se do boje bezhlavě. \{p}
+Zadruhé, zkus \{ref H_general.seml#_units}jednotky \{/ref} zkombinovat logicky. Silné bojové \{ref H_general.seml#_units}jednotky \{/ref} se stanou ještě nebezpečnější, pokud je bude doprovázet léčitel, zatímco některé jezdecké \{ref H_general.seml#_units}jednotky \{/ref}mohou nést lukostřelce, čímž se zvýší jejich palebná síla.
  \{p}
-A clever strategy can often carry the day. Diversionary attacks, sabotage attacks by special camouflaged \{ref H_general.seml#_units}unit \{/ref} and attacks on enemy supply lines are just a few strategies which can be of help.  \{p}
+Moudrá strategie často zvítězí. Útoky k odvedení pozornosti, sabotáže pomocí speciálních maskovaných \{ref H_general.seml#_units}jednotek \{/ref} a útoky na nepřátelské zásobovací cesty je jen několik strategií, které mohou pomoci.  \{p}
  \{p}
-\{ref H_general.seml#_stances} Stances \{/ref} can also be of tactical use. Depending on the situation it might make sense to position \{ref H_general.seml#_units}units \{/ref} at strategically important points with a \{ref H_ui.seml#_stance_0} Hold Position \{/ref} stance or to switch them to defensive to prevent them from attacking enemy \{ref H_general.seml#_units}units, \{/ref} such as when setting up an ambush, for example.
+\{ref H_general.seml#_stances} Režimy \{/ref} lze také takticky využít. Podle situace může mít význam umístit \{ref H_general.seml#_units}jednotky \{/ref} do strategicky významných bodů s příkazem \{ref H_ui.seml#_stance_0} Držet pozici \{/ref}, nebo je přepnout do obranného režimu, aby nezaútočily na nepřátelské \{ref H_general.seml#_units}jednotky, \{/ref} například když chystáš léčku.
    \{/tooltiplong}
 \{/helpitem}
 
-\{helpitem -name _strategy Strategy}
-   \{tooltipshort}
 
+
+
+\{helpitem -name _strategy Strategie}
+   \{tooltipshort}
    \{/tooltipshort}
    \{tooltipmedium}
-
    \{/tooltipmedium}
    \{tooltiplong}
-There are any number of strategies which can be used when playing ParaWorld. These strategies can be roughly divided into the categories Boomer and Rusher.  \{p}
-Boomers first strengthen their defenses, fully develop their settlements and wait until they have all of the inventions and discoveries before they attack. \\{br}
-Rushers are the exact opposite: they build up a small army and attack as quickly as possible in the hope of winning before the enemy has a chance to set up their defenses. The danger with this strategy is that the player may themselves be overrun in the process. If a rusher is unsuccessful they must then change their strategy to cope with the enemy's continuing technical and military development. \{p}
-There are innumerable variations and combinations of these two strategies. The sheer variety and number of available combat units enables a multitude of strategies to be used. Some players prefer fast \{ref H_general.seml#_units}units \{/ref} and hit and run tactics that weaken the enemy while others prefer frontal combat with heavily armored \{ref H_general.seml#_units}units. \{/ref} \{p}
-It is a good idea to work towards definite goals according to predefined strategies. This is more effective than just  \{ref H_general.seml#_building} building\{/ref} and inventing everything possible. It saves \{ref H_general.seml#_resources} resources,\{/ref} as only those structures and inventions required by the chosen strategy are then built. It is also useful to know which \{ref H_heros.seml} heroes \{/ref} enable which inventions and special \{ref H_general.seml#_units}units. \{/ref} \{p}
+Je nespočet strategií, jak hrát ParaWorld. Zhruba je můžeme rozdělit do dvou kategorií: na pomalé a rychlé.  \{p}
+Pomalá strategie spočívá v posílení obrany, plném rozvoji základny a vyčkání na všechny vynálezy a objevy. Teprve pak přijde na řadu útok. \\{br}
+Rychlá strategie je úplný opak: hráč postaví malou armádu a co nejrychleji zaútočí v naději, že zvítězí, než bude mít nepřítel šanci vybudovat svou obranu. Nebezpečí u této strategie je, že nepřítel hráče předběhne. Pokud tedy hráč, který se rozhodl pro rychlý útok, neuspěje, musí změnit svou strategii, aby se dokázal vyrovnat nepřetržitému technickému i vojenskému rozvoji nepřítele. \{p}
+Variací a kombinací těchto dvou strategií je velmi mnoho. Už jen samotná rozmanitost a množství dostupných bojových jednotek umožňují použít velký počet způsobů hry. Někteří hráči dávají přednost rychlým \{ref H_general.seml#_units}jednotkám \{/ref} a taktice rychlého napadení a ústupu, která nepřítele oslabí, zatímco jiní upřednostňují přímý boj s těžce obrněnými d \{ref H_general.seml#_units}jednotkami. \{/ref} \{p}
+Je dobré postupně se propracovat ke konečnému cíli podle předem určené strategie. Takový postup je mnohem efektivnější než pouhé  \{ref H_general.seml#_building} stavění\{/ref} a vynalézání všeho možného. Šetří \{ref H_general.seml#_resources} suroviny,\{/ref} protože hráč postaví a vynalezne pouze věci, které jsou pro zvolenou strategii potřebné. Je také užitečné vědět, kteří \{ref H_heros.seml} hrdinové \{/ref} zpřístupňují požadované vynálezy a speciální \{ref H_general.seml#_units}jednotky. \{/ref} \{p}
 
-When choosing \{ref H_general.seml#_units}units \{/ref} it is important to keep in mind that the biggest and most powerful \{ref H_general.seml#_units}units \{/ref} are not always the most successful. Instead of using just a few large and powerful \{ref H_general.seml#_units}units \{/ref} players can also swamp their enemies with hordes of smaller \{ref H_general.seml#_units}units \{/ref} which can be replaced quickly and cheaply. The tool tips contain information as to which \{ref H_general.seml#_units}units \{/ref} are effective against which. This information allows players to produce those \{ref H_general.seml#_units}units \{/ref} best suited to counter the enemy attack.
-
+Při výběru \{ref H_general.seml#_units}jednotek \{/ref} je důležité nezapomínat, že největší a nejsilnější \{ref H_general.seml#_units}jednotky \{/ref} nejsou vždy ty nejúspěšnější. Místo několika velkých a silných \{ref H_general.seml#_units}jednotek \{/ref} mohou hráči zavalit nepřítele hordami menších \{ref H_general.seml#_units}jednotek \{/ref}, které lze rychle a levně nahradit. Nápověda obsahuje také informace o tom, proti kterým jednotkám jsou jednotlivé \{ref H_general.seml#_units}jednotky \{/ref} nejúčinnější. To umožňuje hráči vyrobit si takové \{ref H_general.seml#_units}jednotky \{/ref}, které nejlépe odrazí nepřátelský útok.
    \{/tooltiplong}
 \{/helpitem}
 

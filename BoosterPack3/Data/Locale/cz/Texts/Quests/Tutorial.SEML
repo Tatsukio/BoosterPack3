@@ -6,434 +6,434 @@
 \{chapter Tutorial}
 
 	\{section -name T00G1MQ01}
-Be careful and take care of the heroes!
+Dávej pozor a postarej se o hrdiny!
 \{p} \{p}
-Objectives:
+Úkoly:
 \{p}
-1) The heroes mustn’t die!
+1) Hrdinové nesmí zemřít!
 \{p} \{p}
-Hints:
+Tipy:
 \{p}
-1) You can heal the heroes.
+1) Hrdiny můžeš léčit.
 \{p}
 
 	\{/section}
 	
 	\{section -name T00C1MQ01}
-Run with the heroes to this marker!
+Přesuň se s hrdiny na toto místo!
 \{p} \{p}
-Objectives:
+Úkoly:
 \{p}
-1) Send the heroes to the marker!
+1) Pošli hrdiny ke značce!
 \{p} \{p}
-Hints:
+Tipy:
 \{p}
-1) Select the heroes and right-click on a spot close to the marker!
+1) Vyber hrdiny a pravým tlačítkem myši klikni poblíž značky!
 \{p}
 	\{/section}
 
 	\{section -name T00C1MQ02}
-Kill the Smilodon in the village to make the inhabitants visible.
+Zabij smilodony ve vesnici, aby se objevili její obyvatelé.
 \{p} \{p}
-Objectives:
+Úkoly:
 \{p}
-1) Drive the Smilodon out of the village!
+1) Vyžeň smilodony z vesnice!
 \{p} \{p}
-Hints:
+Tipy:
 \{p}
-1) Select the heroes and right-click on the Smilodon to attack.
+1) Vyber hrdiny a kliknutím pravého tlačítka na smilodony zaútoč.
 \{p}
 	\{/section}
 
 	\{section -name T00C1MQ03}
-Take the heroes to Ada!
+Zaveď hrdiny za Adou!
 \{p} \{p}
-Objectives:
+Úkoly:
 \{p}
-1) Run to Ada with the heroes!
+1) Přesuň hrdiny k Adě!
 \{p} \{p}
-Hints:
+Tipy:
 \{p}
-1) Select the heroes and right-click on a spot close to Ada!
+1) Vyber hrdiny a klikni pravým tlačítkem poblíž Ady!
 \{p}
 	\{/section}
 	
 	\{section -name T00C2MQ01}
-Rebuild the village!
+Obnov vesnici!
 \{p} \{p}
-Objectives:
+Úkoly:
 \{p}
-1) Follow Ada’s instructions to rebuild the village!
+1) Podle pokynů Ady obnov vesnici!
 \{p} \{p}
-Hints:
+Tipy:
 \{p}
-1) Take note of Ada’s instructions and the Help Info!
+1) Pozorně čti nápovědu a poslouchej pokyny Ady!
 \{p}
 	\{/section}
 
 	\{section -name T00C2MQ02}
-Let your three workers harvest 90 Food units from fruit bushes!
+Vyšli tři dělníky nasbírat 90 jednotek jídla z ovocných keřů!
 \{p} \{p}
-Objectives:
+Úkoly:
 \{p}
-1) Harvest 90 Food!
+1) Nasbírej 90 jednotek jídla!
 \{p} \{p}
-Hints:
+Tipy:
 \{p}
-1) Select the workers and right-click on the berry bushes. The workers automatically harvest the bushes.
+1) Vyber dělníky a pravým tlačítkem klikni na ovocné keře. Dělníci se automaticky pustí do obírání keřů.
 \{p}
 	\{/section}
 
 	
 	\{section -name T00C2MQ03}
-Build 3 additional workers in the town center!
+Vyrob další 3 dělníky v hlavní budově!
 \{p} \{p}
-Objectives:
+Úkoly:
 \{p}
-1) Build 3 workers!
+1) Vyrob 3 dělníky!
 \{p}
-2) Increase the total number of workers to at least 6!
+2) Zvyš celkový počet dělníků nejméně na 6!
 \{p} \{p}
-Hints:
+Tipy:
 \{p}
-1) You can produce workers in the town center. They cost 30 Food Units each.
+1) Dělníky vyrobíš v hlavní budově. Jeden stojí 30 jednotek jídla.
 \{p}
-2) You can order more than one worker. They will then be produced in sequence.
+2) Můžeš objednat i více dělníků najednou. Budou vyrobeni hned po sobě.
 	\{/section}
 
 	\{section -name T00C2MQ04}
-Look for the resource "Stone" around the village!
+Najdi v okolí vesnice surovinu “kámen”!
 \{p} \{p}
-Objectives:
+Úkoly:
 \{p}
-1) Look for Stone Resources!
+1) Najdi surovinu kámen!
 \{p} \{p}
-Hints:
+Tipy:
 \{p}
-1) You should separate your heroes and let them search in different directions.
+1) Měl bys hrdiny rozdělit a poslat je hledat různými směry.
 \{p}
 	\{/section}
 
 	\{section -name T00C2MQ05}
-Collect sufficient Resources!
+Nasbírej dostatek surovin!
 \{p} \{p}
-Objectives:
+Úkoly:
 \{p}
-1) Collect 300 Food!
+1) Nasbírej 300 jednotek jídla!
 \{p}
-2) Collect 300 Wood!
+2) Nasbírej 300 jednotek dřeva!
 \{p}
-3) Collect 300 Stone!
+3) Nasbírej 300 jednotek kamene!
 \{p} \{p}
-Hints:
+Tipy:
 \{p}
-1) Produce more additional workers to be able to harvest resources more quickly.
+1) Vyrob další dělníky, abys získal suroviny rychleji.
 \{p}
-2) You need the appropriate number of resources in store. 
+2) Musíš mít dostatečné množství surovin v zásobě. 
 	\{/section}
 
 	\{section -name T00C2MQ06}
-Build a Stone Quarry!
+Postav kamenolom!
 \{p} \{p}
-Objectives:
+Úkoly:
 \{p}
-1) Place a Stone Quarry close to the Resource "Stone"!
+1) Umísti kamenolom poblíž suroviny "kámen"!
 \{p} \{p}
-Hints:
+Tipy:
 \{p}
-1) The closer you place this building to the stones, the shorter the distances your workers have to cover and the faster they can accumulate resources.
+1) Čím blíž kamenolom umístíš ke kamení, tím kratší vzdálenost budou muset dělníci urazit a tím rychleji surovinu nashromáždí.
 \{p}
-2) A Stone Quarry enables you to store more stones.
+2) Kamenolom umožňuje skladovat více kamene.
 \{p}
-3) You need wood to construct this building.
+3) K postavení této budovy potřebuješ dřevo.
 \{p}
 	\{/section}
 
 	\{section -name T00C2MQ07}
-Build a Forester’s Lodge close to the woods!
+Postav myslivnu poblíž lesa!
 \{p} \{p}
-Objectives:
+Úkoly:
 \{p}
-1) Build a Forester’s Lodge!
+1) Postav myslivnu!
 \{p} \{p}
-Hints:
+Tipy:
 \{p}
-1) The closer you place the building to the forest, the shorter the distances your workers have to cover, and the faster they accumulate resources.
+1) Čím blíže myslivnu umístíš k lesu, tím kratší vzdálenost budou muset dělníci urazit a tím rychleji surovinu nashromáždí.
 \{p}
-2) The Forester’s Lodge increases the storage capacity for Food and Wood.
+2) Myslivna zvyšuje skladovací kapacitu jídla a dřeva.
 \{p}
-3) You need stones to construct the building.
+3) K postavení této budovy potřebuješ kámen.
 	\{/section}
 
 	\{section -name T00C2MQ08}
-Repair all Buildings!
+Oprav všechny budovy!
 \{p} \{p}
-Objectives:
+Úkoly:
 \{p}
-1) Repair the Town Center and the Cottage!
+1) Oprav hlavní budovu a chalupu!
 \{p}
-2) Get 100% Hitpoints for both buildings!
+2) Obě budovy musí mít 100%!
 \{p} \{p}
-Hints:
+Tipy:
 \{p}
-1) Select one or more workers and right-click on the building to repair. The Repair icon appears in the Army Controller and the workers start repairing the building.
+1) Vyber jednoho nebo více dělníků a kliknutím pravého tlačítka na budovu začni s opravou. Ikona oprav se objeví v okně Stav armády a dělníci se pustí do opravy budovy.
 \{p}
-2) Repairs cost Resources.
+2) Opravy stojí suroviny.
 \{p}
-3) The more workers repair a building the faster the repair work is completed.
+3) Čím více dělníků na opravě pracuje, tím rychleji ji dokončí.
 \{p}
 	\{/section}
 
 	\{section -name T00C2MQ09}
-Protect your workers and kill the Smilodon to prevent it from doing any more damage!
+Ochraň dělníky a zabij smilodony, aby nenapáchali další škody!
 \{p} \{p}
-Objectives:
+Úkoly:
 \{p}
-1) Kill the Smilodon!
+1) Zabij smilodony!
 \{p} \{p}
-Hints:
+Tipy:
 \{p}
-1) Even though workers are able to fight, they are very weak and much rather leave the combat area.
+1) Přestože dělníci umí bojovat, jsou velmi slabí a je pravděpodobné, že z boje utečou.
 \{p}
 	\{/section}
 
 	\{section -name T00C3MQ01}
-Additional units need more accommodation, so you need to build more cottages.
+Další jednotky potřebují ubytování, proto musíš postavit více chalup.
 \{p} \{p}
-Objectives:
+Úkoly:
 \{p}
-1) Build 2 additional Cottages
+1) Postav další 2 chalupy
 \{p} \{p}
-Hints:
+Tipy:
 \{p}
-1) Additional cottages increase the unit limit, which means you can produce additional units.
+1) Více chalup zvyšuje limit jednotek, což znamená, že můžeš vyrobit více jednotek.
 \{p}
 	\{/section}
 
 	\{section -name T00C3MQ02}
-Research Epoch 2!
+Vyzkoumej epochu 2!
 \{p} \{p}
-Objectives:
+Úkol:
 \{p}
-1) Research Epoch 2 in the Town Center!
+1) Vyzkoumej epochu 2 v hlavní budově!
 \{p} \{p}
-Hints:
+Tipy:
 \{p}
-1) You need 200 Food, 200 Wood and 200 Stone to start researching.
+1) K zahájení výzkumu potřebuješ 200 jednotek jídla, 200 jednotek dřeva a 200 jednotek kamene.
 \{p}
-2) You need to have all the required resources in place before you can start the research process.
+2) Výzkum nemůžeš začít, dokud nebudeš mít všechny potřebné suroviny ve skladu.
 \{p}
-3) If you cancel a research project, you get your resources back.
+3) Pokud výzkum zrušíš, suroviny dostaneš zpět.
 \{p}
 	\{/section}
 
 	\{section -name T00C3MQ03}
-You should prepare for future battles. First, you need a barracks.
+Měl by ses připravit na budoucí boje. Nejdříve potřebuješ kasárna.
 \{p} \{p}
-Objectives:
+Úkoly:
 \{p}
-1) Build a barracks!
+1) Postav kasárna!
 \{p} \{p}
-Hints:
+Tipy:
 \{p}
-1) Combat units are trained in the barracks.
+1) V kasárnách se cvičí bojové jednotky.
 \{p}
 	\{/section}
 
 	\{section -name T00C3MQ04}
-Now, you need a few warriors. Produce four Spearmen in the barracks.
+Teď potřebuješ několik válečníků. Vyrob v kasárnách 4 kopiníky.
 \{p} \{p}
-Objectives:
+Úkoly:
 \{p}
-1) Train 4 Spearmen in the barracks!
+1) Vycvič v kasárnách 4 kopiníky!
 \{p} \{p}
-Hints:
+Tipy:
 \{p}
-1) Spearmen are effective against animals.
+1) Kopiníci jsou nejužitečnější proti zvířatům.
 \{p}
-2) Spearmen are suitable for mid-range and melee attacks.
+2) Kopiníci se hodí pro boj zblízka a na střední vzdálenost.
 \{p}
 	\{/section}
 
 	\{section -name T00C3MQ05}
-Look for the Smilodon nest outside the village!
+Najdi v okolí vesnice hnízdo smilodonů!
 \{p} \{p}
-Objectives:
+Úkoly:
 \{p}
-1) Look for the nest!
+1) Najdi hnízdo!
 \{p} \{p}
-Hints:
+Tipy:
 \{p}
-1) Your heroes and combat troops should be together in case they are attacked en route.
+1) Hrdinové a bojové jednotky by se měli držet pohromadě pro případ, že by na ně cestou něco zaútočilo.
 \{p}
 	\{/section}
 
 	\{section -name T00C3MQ06}
-Kill all Smilodons and destroy their nest to prevent the village from being attacked!
+Zabij všechny smilodony a znič jejich hnízdo, abys uchránil vesnici před dalšími útoky!
 \{p} \{p}
-Objectives:
+Úkoly:
 \{p}
-1) Kill all Smilodons!
+1) Zabij všechny smilodony!
  \{p}
-2) Destroy the nest!
+2) Znič hnízdo!
 \{p} \{p}
-Hints:
+Tipy:
 \{p}
-1) Concentrate on the Smilodons first, and then destroy the nest to make sure that none are left!
+1) Zaměř se nejdříve na smilodony a pak znič hnízdo, abys zajistil, že žádný nezbyl!
 \{p}
 	\{/section}
 
 	\{section -name T00C3MQ07}
-Skulls can be used to promote units to a new level. All units become stronger when promoted. In addition, heroes also receive special abilities.
+Lebky můžeš použít na zvýšení úrovně jednotek. Všechny jednotky po zvýšení úrovně zesílí. Hrdinové navíc získají speciální schopnosti.
 \{p} \{p}
-Objectives:
+Úkoly:
 \{p}
-1) Promote a unit to Level 2!
+1) Povyš libovolnou jednotku na úroveň 2!
 \{p} \{p}
-Hints:
+Tipy:
 \{p}
-1) You have collected enough skulls in combat to promote a unit.
+1) Nasbíral jsi v boji dostatek lebek, abys mohl zvýšit jednotce úroveň.
 \{p}
-2) To promote a unit, select it and press the Promotion Button. Alternatively, you can left-click on a unit and drag it to the desired level in the Army Controller.
+2) Úroveň jednotce zvýšíš tak, že ji vybereš a klikneš na tlačítko Povýšit. Nebo klikneš na jednotku levým tlačítkem a přetáhneš ji na požadovanou úroveň v okně Stav armády.
 \{p}
 	\{/section}
 
 	\{section -name T00C3MQ08}
-Move all Heroes to Ada’s Position!
+Přesuň všechny hrdiny k Adě!
 \{p} \{p}
-Objectives:
+Úkoly:
 \{p}
-1) Take the Heroes back to Ada!
+1) Přesuň hrdiny zpět k Adě!
 \{p} \{p}
-Hints:
+Tipy:
 \{p}
-1) To complete the chapter, all Heroes congregate round Ada.
+1) Shromážděním hrdinů u Ady tato kapitola končí.
 \{p}
 	\{/section}
 
 	\{section -name T00C4MQ01}
-The Dinosaur Farm produces animal units which can be used in combat and exploration missions.
+Dinosauří farma vyrábí zvířecí jednotky, které můžeš použít v boji i k průzkumu.
 \{p} \{p}
-Objectives:
+Úkoly:
 \{p}
-1) Build a Small Dinosaur Farm!
+1) Postav malou dinosauří farmu!
 \{p} \{p}
-Hints:
+Tipy:
 \{p}
-1) The Dinosaur Farm produces animal units.
+1) Dinosauří farma slouží k výrobě zvířecích jednotek.
 \{p}
-2) Animals are faster and stronger than normal infantry units.
+2) Zvířata jsou rychlejší a silnější než normální pěší jednotky.
 \{p}
 	\{/section}
 
 	\{section -name T00C4MQ02}
-You need a Chariot now.
+Teď potřebuješ válečný vůz.
 \{p} \{p}
-Objectives:
+Úkoly:
 \{p}
-1) Build a chariot in the Small Dinosaur Farm!
+1) Vyrob v malé dinosauří farmě válečný vůz!
 \{p} \{p}
-Hints:
+Tipy:
 \{p}
-1) The chariot is a transport vehicle carrying an Archer. It can carry another unit which will then be able to use its ranged weapon.
+1) Válečný vůz je přepravní prostředek pro lučištníka. Má místo i pro spolujezdce, který z něj může střílet.
 \{p}
-2) The Chariot is faster than an Infantry Unit.
+2) Válečný vůz je rychlejší než pěší jednotka.
 \{p}
 	\{/section}
 
 	\{section -name T00C4MQ03}
-Build another Archer as a passenger for the Chariot!
+Vyrob dalšího lučištníka, který bude ve válečném voze jako spolujezdec!
 \{p} \{p}
-Objectives:
+Úkoly:
 \{p}
-1) Train an Archer in the barracks!
+1) Lučištníka vycvičíš v kasárnách!
 \{p} \{p}
-Hints:
+Tipy:
 \{p}
-1) Archers are ranged units and not very suitable for melee situations.
+1) Lučištníci jsou jednotky pro boj na dálku a nehodí se pro boj zblízka.
 \{p}
-2) Archers can be placed on transporters. They will then be protected and can cause enormous damage due to their large range.
+2) Lučištníky lze umístit na přepravní jednotky. Budou chráněni a mohou způsobit velké poškození díky dalekému dostřelu.
 \{p}
 	\{/section}
 
 	\{section -name T00C4MQ04}
-Send your Archer to the chariot by right-clicking on it. He will automatically enter the chariot.
+Pravým tlačítkem přikaž lučištníkovi nastoupit na válečný vůz. Lučištník na něj nastoupí automaticky.
 \{p} \{p}
-Objectives:
+Úkoly:
 \{p}
-1) Add your Archer to the Chariot!
+1) Přidej lučištníka na válečný vůz!
 \{p} \{p}
-Hints:
+Tipy:
 \{p}
-1) Transporters can have various capacities which are represented by the number of empty spaces in the Action Menu when selecting a transporter.
+1) Přepravní jednotky mohou mít různou kapacitu, kterou po vybrání jednotky ukazují prázdná místa v okně Stav armády.
 \{p}
-2) Melee warriors are well protected but cannot fight aboard a transporter. Ranged fighters are more effective in a transporter.
+2) Jednotky pro boj zblízka jsou dobře chráněny, ale nemohou z přepravní jednotky zasahovat do boje. Umístění jednotek pro boj na dálku na přepravní jednotku je tedy mnohem efektivnější.
 \{p}
 	\{/section}
 
 	\{section -name T00C4MQ05}
-Find the Artifact and make it yours!
+Najdi a seber artefakt!
 \{p} \{p}
-Objectives:
+Úkoly:
 \{p}
-1) Find the Artifact and let a unit pick it up by right-clicking on it.
+1) Najdi artefakt a kliknutím pravého tlačítka na něj rozkaž jednotce, aby ho vzala.
 \{p}
-2) Build additional combat units like Warriors, Archers, Spearmen, Scouts or Chariots!
+2) Vyrob další bojové jednotky: válečníky, lučištníky, kopiníky, zvědy nebo válečné vozy!
 \{p}
-3) You need at least 10 warriors to enter the gate.
+3) Ke vstupu do brány potřebuješ nejméně 10 válečníků.
 \{p} \{p}
-Hints:
+Tipy:
 \{p}
-1) Artifacts have a positive effect on all of a tribe’s units (not just the unit carrying the artifact).
+1) Artefakty mají pozitivní účinek na všechny jednotky kmene (nejen na jednotku, která jej nese).
 \{p}
-2) Any unit can pick up an artifact. Each unit can only carry one artifact.
+2) Artefakt může zvednout každá jednotka, avšak v dané chvíli u sebe může mít pouze jeden.
 \{p}
-3) Artifacts always have positive effects, never negative ones.
+3) Artefakty mají vždy pozitivní účinek, nikdy negativní.
 \{p}
 	\{/section}
 
 	\{section -name T00C4MQ06}
-The attackers need to be defeated. Ada must not die!
+Musíš porazit útočníky. Ada nesmí zemřít!
 \{p} \{p}
-Objectives:
+Úkoly:
 \{p}
-1) Defeat the Attackers and protect Ada!
+1) Poraz útočníky a ochraň Adu!
 \{p} \{p}
-Hints:
+Tipy:
 \{p}
-1) Concentrate your attacks on the Mammoth.
+1) Zaměř útok na mamuty.
 \{p}
 	\{/section}
 
 	\{section -name T00C4SQ01}
-The thief is escaping! You must catch him!
+Zloděj prchá! Musíš ho chytit!
 \{p} \{p}
-Objectives:
+Úkoly:
 \{p}
-1) Follow the thief with the chariot and catch him!
+1) Sleduj zloděje s válečným vozem a chyť ho!
 \{p}
-2) You only have a small amount of time to catch the thief!
+2) K dopadení zloděje máš omezený čas!
 \{p} \{p}
-Hints:
+Tipy:
 \{p}
-1) The Countdown Meter at the top of the screen shows you how much time you have left to accomplish your mission.
+1) Odpočet v horní části obrazovky ukazuje, kolik času ti zbývá k dokončení úkolu.
 \{p}
-2) Subquests don’t have to be completed to successfully accomplish a mission. They do, however, provide you with additional points which can be used to take more units to the next level.
+2) Vedlejší úkoly není k úspěšnému dokončení mise nutné splnit. Nicméně představují zdroj dalších bodů, které můžeš použít k povýšení více jednotek na další úroveň.
 \{p}
 	\{/section}
 	
 	\{section -name L01MQ00b_coles_dead}
-Béla is in the Tavern, there you can re-hire defeated heroes!
+Béla je v taverně, kde si můžeš znovu najmout poražené hrdiny!
 \{p} \{p}
-Objectives:
+Úkoly:
 \{p}
-1) Hire Béla in the Tavern!
+1) Najmi Bélu v taverně!
 \{p} \{p}
-Hints:
+Tipy:
 \{p}
-1) Click on the Tavern and then on the Béla icon!
+1) Klikni na tavernu a pak na ikonu Bély!
 \{p}
-2) You need 1250 Food and 125 Skulls to hire Béla. At the moment you have enough resources. 
+2) K najmutí Bély potřebuješ 1250 jednotek jídla a 125 lebek. Máš dostatek surovin. 
 \{p}
 	\{/section}
 

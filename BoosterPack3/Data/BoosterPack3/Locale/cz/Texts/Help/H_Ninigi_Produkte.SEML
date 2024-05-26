@@ -4,269 +4,270 @@
 \{comment $Author: claudia.krueger $}
 \{comment $Revision: #4 $}
 
-\{chapter -name _infantry Infantry}
-\{helpitem -name _ninigi_worker Worker}
+\{chapter -name _infantry Pěší jednotky}
+\{helpitem -name _ninigi_worker Dělník}
 \{img /bunit:ninigi_worker -ralign}
    \{tooltipshort}
 %/class:chtr/vschtr:/vsanml:/vsvhcl:/vsbldg:%
    \{/tooltipshort}
    \{tooltipmedium}
-• Erects buildings
-\\{br}• Harvests resources
-\\{br}• Poor fighter
+• Staví budovy
+\\{br}• Těží suroviny
+\\{br}• Špatný v boji
    \{/tooltipmedium}
    \{tooltiplong}
-Produced at the \{ref H_ninigi_gebaeude.seml#_ninigi_fireplace} Town center,\{/ref} Workers perform all of the civilian work. \\{br}
-They harvest \{ref H_general.seml#_resources}resources \{/ref} and erect \{ref H_general.seml#_building}buildings. \{/ref} They can defend themselves when attacked but are no match for regular combat \{ref H_general.seml#_units}units. \{/ref} Upgrading \{ref H_general.seml#_resources}resource \{/ref} \{ref H_general.seml#_building}buildings\{/ref} improves the Workers' tempo. Just as with the other \{ref H_general.seml#_units}units, \{/ref} Workers can also be raised to higher levels using \{ref H_general.seml#_skulls} skulls.\{/ref} They then receive more \{ref H_ui.seml#_iw_hitpoints}hit points, \{/ref} work faster and are capable of carrying heavier loads. They are equipped with a sling for \{ref H_world.seml#_food} hunting\{/ref} and ranged defence. An \{ref H_ui.seml#_ninigi_worker_vs_building}upgrade \{/ref} increases the damage they do when attacking enemy \{ref H_general.seml#_building}buildings.\{/ref}
+Dělníky vyrábí \{ref H_ninigi_gebaeude.seml#_ninigi_fireplace} hlavní budova \{/ref} a oni vykonávají všechny civilní práce. \\{br}
+Těží \{ref H_general.seml#_resources}suroviny \{/ref} a staví \{ref H_general.seml#_building}budovy. \{/ref} Při napadení se umí bránit, ale v žádném případě se nemohou měřit s běžnými bojovými \{ref H_general.seml#_units}jednotkami. \{/ref} Vylepšení budov pro sběr surovin zvýší jejich rychlost. Tak jako jiným \{ref H_general.seml#_units}jednotkám \{/ref} i dělníkům je možné zvýšit úroveň pomocí \{ref H_general.seml#_skulls} lebek.\{/ref} Na vyšší úrovni mají více \{ref H_ui.seml#_iw_hitpoints}zásahových bodů, \{/ref} pracují rychleji a unesou těžší náklad. Mají u sebe prak, který jim slouží k \{ref H_world.seml#_food} lovu\{/ref} i vlastní obraně. \{ref H_ui.seml#_ninigi_worker_vs_building}Vylepšení \{/ref} zvýší poškození, které způsobí útokem nepřátelským \{ref H_general.seml#_building} budovám.\{/ref}
    \{/tooltiplong}
 \{/helpitem}
 
-\{helpitem -name _ninigi_archer Archer}
+\{helpitem -name _ninigi_archer Lučištník}
 \{img /bunit:ninigi_archer -ralign}
    \{tooltipshort}
 %/class:chtr/vschtr:+/vsanml:+/vsvhcl:+/vsbldg:--%
    \{/tooltipshort}
    \{tooltipmedium}
-• Infantry
-\\{br}• Long range fighter
-\\{br}• Ineffective in melee
+• Pěší jednotka
+\\{br}• Pro boj na dálku
+\\{br}• Neefektivní v boji zblízka
    \{/tooltipmedium}
    \{tooltiplong}
-Archers are relatively weak ranged \{ref H_general.seml#_units}units\{/ref} which are cheap to produce. \\{br}
-They form the basic \{ref H_story.seml#_story_ninigi} Dragon Clan\{/ref} \{ref H_general.seml#_units}unit\{/ref} and are available from the very beginning. If embroiled in close combat they defend themselves with a shortsword, but they are no match for a \{ref H_ninigi_produkte.seml#_ninigi_warrior} Warrior.\{/ref} Archers are most effective when placed on a wall or when firing from the shelter of a \{ref H_general.seml#_transport} transporter.\{/ref} Archers are produced in the \{ref H_ninigi_gebaeude.seml#_ninigi_dojo}Dojo. \{/ref}
+Lučištník je relativně slabá střelecká \{ref H_general.seml#_units}jednotka\{/ref}, která se dá vyrobit velmi levně. \\{br}
+Je to základní \{ref H_general.seml#_units}jednotka\{/ref} \{ref H_story.seml#_story_ninigi} Dračího klanu\{/ref} a je dostupná od začátku hry. V boji zblízka se brání krátkým mečem, ale pro \{ref H_ninigi_produkte.seml#_ninigi_warrior} válečníky\{/ref} nepředstavují žádnou hrozbu. Největší účinek má jejich střelba z hradeb nebo z \{ref H_general.seml#_transport} přepravní jednotky.\{/ref} Vyrábí je \{ref H_ninigi_gebaeude.seml#_ninigi_dojo}dóžó. \{/ref}
    \{/tooltiplong}
 \{/helpitem}
 
-\{helpitem -name _ninigi_warrior Samurai}
+\{helpitem -name _ninigi_warrior Samuraj}
 \{img /bunit:ninigi_warrior -ralign}
    \{tooltipshort}
 %/class:chtr/vschtr:+/vsanml:-/vsvhcl:+/vsbldg:+%
    \{/tooltipshort}
    \{tooltipmedium}
-• Infantry
-\\{br}• Melee fighter
+• Pěší jednotka
+\\{br}• Bojuje zblízka
    \{/tooltipmedium}
    \{tooltiplong}
-Samurai are skilled at close combat and are particularly effective at fighting other infantry \{ref H_general.seml#_units}units.\{/ref} \\{br}
-Samurai are produced in the \{ref H_ninigi_gebaeude.seml#_ninigi_dojo}Dojo. \{/ref}
+Samuraj je velmi nadaný v boji zblízka a je velmi účinný proti jiným pěším \{ref H_general.seml#_units}jednotkám.\{/ref} \\{br}
+Vyrábí je \{ref H_ninigi_gebaeude.seml#_ninigi_dojo} dóžó. \{/ref}
    \{/tooltiplong}
 \{/helpitem}
 
-\{helpitem -name _ninigi_ninja Ninja}
+\{helpitem -name _ninigi_ninja Nindža}
 \{img /bunit:ninigi_ninja -ralign}
    \{tooltipshort}
 %/class:chtr/vschtr:++/vsanml:+/vsvhcl:+/vsbldg:--%
    \{/tooltipshort}
    \{tooltipmedium}
-• Infantry
-\\{br}• Disguise upgrade
-\\{br}• Lockpicking upgrade
+• Pěší jednotka
+\\{br}• Vylepšení maskování
+\\{br}• Vylepšení páčení zámků
    \{/tooltipmedium}
    \{tooltiplong}
-Ninjas, able to attack at both close range and middle distances, do twice as much damage in close combat.\\{br}
-An upgrade allows them to hide themselves. They remain indistinguishable until they attack. Another upgrade allows them to pick the lock of an opposing gate, causing it to stand open for a short period during which the owner cannot close it. Ninjas are produced by the \{ref H_ninigi_gebaeude.seml#_ninigi_weapon_maker} Weapon maker.\{/ref}
+Nindžové bojují zblízka i na střední vzdálenost. V boji zblízka způsobí dvojnásobné poškození. \\{br}
+Vylepšení jim umožňuje ukrýt se tak, že zůstanou neodhaleni, dokud nezaútočí. Další vylepšení jim umožňuje páčit zámky nepřátelských bran, které se po vypáčení zámku na krátkou dobu otevřou a nejdou zavřít. Vyrábí je \{ref H_ninigi_gebaeude.seml#_ninigi_weapon_maker} zbrojíř.\{/ref}
    \{/tooltiplong}
 \{/helpitem}
 
-\{helpitem -name _ninigi_sumo Sumo wrestler}
+\{helpitem -name _ninigi_sumo Zápasník sumo}
 \{img /bunit:ninigi_sumo -ralign}
    \{tooltipshort}
 %/class:chtr/vschtr:++/vsanml:+/vsvhcl:+/vsbldg:+%
    \{/tooltipshort}
    \{tooltipmedium}
-• Strong melee fighter
-\\{br}• Causes area damage
-\\{br}• Can only be produced when Cole has reached level 4
+• Silná jednotka pro boj zblízka
+\\{br}• Působí plošné poškození
+\\{br}• Lze ho vyrábět, až se Cole dostane na úroveň 4
    \{/tooltipmedium}
    \{tooltiplong}
-A powerful close combat specialist, the Sumo wrestler damages all enemy \{ref H_general.seml#_units}units\{/ref} around him. \\{br}
-Sumo wrestlers are produced by the \{ref H_ninigi_gebaeude.seml#_ninigi_weapon_maker} Weapon maker.\{/ref}
+Zápasník sumo je specialista na boj zblízka a způsobí poškození všem nepřátelským \{ref H_general.seml#_units}jednotkám\{/ref} kolem sebe. \\{br}
+Vyrábí je \{ref H_ninigi_gebaeude.seml#_ninigi_weapon_maker} zbrojíř.\{/ref}
    \{/tooltiplong}
 \{/helpitem}
 
-\{helpitem -name _ninigi_spearman Spearman}
+\{helpitem -name _ninigi_spearman Kopiník}
 \{img /bunit:ninigi_spearman -ralign}
    \{tooltipshort}
 %/class:chtr/vschtr:-/vsanml:+/vsvhcl:-/vsbldg:--%
    \{/tooltipshort}
    \{tooltipmedium}
-• Infantry
-\\{br}• Throws spears
+• Pěší jednotka
+\\{br}• Vrhá kopí
    \{/tooltipmedium}
    \{tooltiplong}
-Produced in the \{ref H_ninigi_gebaeude.seml#_ninigi_dojo}Dojo, \{/ref} Spearmen are cheap, versatile fighters, adept at using their spears to defend themselves in close combat or throwing them at medium-range targets.
-Their weapons make them particularly effective against animals and mounted \{ref H_general.seml#_units}units.\{/ref} Not only their weapons but also their armor is especially useful against\{ref H_animals.seml} animals\{/ref}: Spearman have a defensive bonus against \{ref H_animals.seml}wild animals\{/ref} and mounted \{ref H_general.seml#_units}units. \{/ref} They can throw their spears from the tops of walls or from \{ref H_general.seml#_transport} transport units.\{/ref}
+Vyrábí je \{ref H_ninigi_gebaeude.seml#_ninigi_dojo} dóžó. \{/ref} Jsou to levní a všestranní bojovníci, kteří zkušeně používají kopí na svou obranu v boji zblízka nebo je vrhají na středně vzdálené cíle.
+Díky své zbrani jsou velmi účinní proti zvířatům a jezdeckým \{ref H_general.seml#_units}jednotkám.\{/ref} Není to však pouze jejich zbraň, také jejich brnění je velmi užitečné v boji se \{ref H_animals.seml} zvířaty\{/ref}: kopiníci mají obranný bonus proti \{ref H_animals.seml}divokým zvířatům\{/ref} a jezdeckým \{ref H_general.seml#_units}jednotkám. \{/ref} Kopí mohou vrhat také z hradeb nebo z \{ref H_general.seml#_transport} přepravních jednotek.\{/ref}
    \{/tooltiplong}
 \{/helpitem}
 
-\{helpitem -name _ninigi_monk Monk}
+\{helpitem -name _ninigi_monk Mnich}
 \{img /bunit:ninigi_monk -ralign}
    \{tooltipshort}
 %/class:chtr/vschtr:/vsanml:/vsvhcl:/vsbldg:%
    \{/tooltipshort}
    \{tooltipmedium}
-• Healer
+• Léčitel
    \{/tooltipmedium}
    \{tooltiplong}
-Monks do not fight. \\{br}
-They are capable of healing nearby \{ref H_general.seml#_units}units\{/ref} but must first recharge before healing the next. Monks heal own \{ref H_general.seml#_units}units\{/ref} as well as allied \{ref H_general.seml#_units}units,\{/ref} but begin healing own \{ref H_general.seml#_units}units\{/ref} first. The \{ref H_ui.seml#_ninigi_fireworks}Fireworks skill \{/ref} allows them to briefly raise the Fog of War. They are produced in the \{ref H_ui.seml#_ninigi_temple}Temple.\{/ref}
+Mniši nebojují. \\{br}
+Umí léčit \{ref H_general.seml#_units}jednotky\{/ref} ve svém okolí, ale po každém léčení se musí nejdříve dobít. Léčí vlastní \{ref H_general.seml#_units}jednotky\{/ref} i spojenecké \{ref H_general.seml#_units}jednotky,\{/ref} ale jako první léčí vlastní \{ref H_general.seml#_units}jednotky.\{/ref} Pomocí \{ref H_ui.seml#_ninigi_fireworks}ohňostroje \{/ref} dokáží na chvíli zvednout zakrytí mapy. Vyrábí je \{ref H_ui.seml#_ninigi_temple}chrám.\{/ref}
    \{/tooltiplong}
 \{/helpitem}
 
-\{helpitem -name _ninigi_icespearman Ice spearman}
+\{helpitem -name _ninigi_icespearman Ledový kopiník}
 \{img /bunit:ninigi_icespearman -ralign}
    \{tooltipshort}
 %/class:chtr/vschtr:+/vsanml:+/vsvhcl:+/vsbldg:--%
    \{/tooltipshort}
    \{tooltipmedium}
-• Infantry
-\\{br}• Freezes enemies with spears
-\\{br}• Can only be produced once Ada has reached level 4
+• Pěší jednotka
+\\{br}• Nepřátele zmrazí kopím
+\\{br}• Lze ho vyrábět, až se Ada dostane na úroveň 4
    \{/tooltipmedium}
    \{tooltiplong}
-Produced by the \{ref H_ninigi_gebaeude.seml#_ninigi_weapon_maker} Weapon maker,\{/ref} Ice spearmen throw spears which immobilize enemy \{ref H_general.seml#_units}units\{/ref} for a short period of time. \\{br}
-Once they thaw these \{ref H_general.seml#_units}units\{/ref} are in turn immune to the spears' frost effect for a while. The icespears do relatively little damage otherwise and do not freeze \{ref H_general.seml#_building}buildings.\{/ref}
+Vyrábí je \{ref H_ninigi_gebaeude.seml#_ninigi_weapon_maker} zbrojíř.\{/ref} Vrhají kopí, která nepřátelské \{ref H_general.seml#_units}jednotky\{/ref} krátce znehybní. \\{br}
+Po rozmrznutí jsou tyto \{ref H_general.seml#_units}jednotky\{/ref} proti mrazícímu účinku kopí na chvíli imunní. Kromě zmrazení ledoví kopiníci způsobí jen relativně malé poškození. \{ref H_general.seml#_building}Budovy\{/ref} zmrazit nelze.
    \{/tooltiplong}
 \{/helpitem}
 
-\{helpitem -name _ninigi_mortar Mortar}
+\{helpitem -name _ninigi_mortar Moždíř}
 \{img /bunit:ninigi_mortar -ralign}
    \{tooltipshort}
 %/class:chtr/vschtr:-/vsanml:-/vsvhcl:+/vsbldg:++%
    \{/tooltipshort}
    \{tooltipmedium}
-• Infantry
-\\{br}• Long-range
-\\{br}• Area damage
+• Pěší jednotka
+\\{br}• Velký dostřel
+\\{br}• Plošné poškození
    \{/tooltipmedium}
    \{tooltiplong}
-As opposed to the \{ref H_ninigi_produkte.seml#_ninigi_firecannon}Dragon tank, \{/ref} the Mortar is also effective against infantry and mounted \{ref H_general.seml#_units}units.\{/ref} \\{br}
-Mortars are produced by the \{ref H_ninigi_gebaeude.seml#_ninigi_weapon_maker} Weapon maker.\{/ref}
+Na rozdíl od \{ref H_ninigi_produkte.seml#_ninigi_firecannon}Dračího tanku \{/ref} je moždíř účinný i proti pěchotě a jezdeckým \{ref H_general.seml#_units}jednotkám.\{/ref} \\{br}
+Vyrábí je \{ref H_ninigi_gebaeude.seml#_ninigi_weapon_maker} zbrojíř.\{/ref}
    \{/tooltiplong}
 \{/helpitem}
 
-\{helpitem -name _ninigi_marksman Marksman}
+\{helpitem -name _ninigi_marksman Kulometčík}
 \{img /bunit:ninigi_marksman -ralign}
    \{tooltipshort}
 %/class:chtr/vschtr:++/vsanml:++/vsvhcl:+/vsbldg:-%
    \{/tooltipshort}
    \{tooltipmedium}
-• Infantry
-\\{br}• Strong long-range fighter
-\\{br}• Can only be produced once Béla has reached level 4
+• Pěší jednotka
+\\{br}• Silný v boji na dálku
+\\{br}• Lze ho vyrábět, až se Béla dostane na úroveň 4
    \{/tooltipmedium}
    \{tooltiplong}
-Produced by the \{ref H_ninigi_gebaeude.seml#_ninigi_weapon_maker} Weapon maker,\{/ref} the Marksman is a powerful ranged \{ref H_general.seml#_units}unit\{/ref} whose individual attack does much less damage than that of an \{ref H_ninigi_produkte.seml#_ninigi_archer}Archer.  \{/ref}
-However, their rate of fire is so great that they in end effect do approximately twice as much damage as an \{ref H_ninigi_produkte.seml#_ninigi_archer}Archer.  \{/ref} Both range and damage increase with each new level reached. If embroiled in close combat they defend themselves with a dagger which does a great deal less damage than their bows.
+Vyrábí je \{ref H_ninigi_gebaeude.seml#_ninigi_weapon_maker} zbrojíř.\{/ref} Je to silná střelecká \{ref H_general.seml#_units}jednotka\{/ref}, jejíž samostatný útok způsobí mnohem menší poškození než útok \{ref H_ninigi_produkte.seml#_ninigi_archer}lučištníka.  \{/ref}
+Střílí však tak rychle, že ve skutečnosti nakonec způsobí poškození přibližně dvakrát větší než \{ref H_ninigi_produkte.seml#_ninigi_archer}lučištník. \{/ref} Dostřel i poškození se na každé nové úrovni zvýší. 
    \{/tooltiplong}
 \{/helpitem}
 
-\{helpitem -name _ninigi_flamethrower Flamethrower}
-\{img /bunit:ninigi_flamethrower -ralign}
-   \{tooltipshort}
-%/class:chtr/vschtr:++/vsanml:+/vsvhcl:-/vsbldg:-%
-   \{/tooltipshort}
-   \{tooltipmedium}
-• Infantry
-\\{br}• Area damage
-\\{br}• Can't attack from a transporter
-\\{br}• Can only be produced if Leighton has reached level 4
-   \{/tooltipmedium}
-   \{tooltiplong}
-Flamethrowers are produced by the \{ref H_ninigi_gebaeude.seml#_ninigi_weapon_maker}Weapon maker\{/ref}. They damage everything in line of fire. \\{br}
-   \{/tooltiplong}
-\{/helpitem}
+\{helpitem -name _ninigi_flamethrower Plamenometčík}
+	\{img /bunit:ninigi_flamethrower -ralign}
+	   \{tooltipshort}
+	%/class:chtr/vschtr:++/vsanml:+/vsvhcl:-/vsbldg:-%
+	   \{/tooltipshort}
+	   \{tooltipmedium}
+	• Pěší jednotka
+	\\{br}• Působí plošné poškození
+	\\{br}• Nemůže útočit z přepravních jednotek
+	\\{br}• Lze ho vyrábět, až se Leighton dostane na úroveň 4
+	   \{/tooltipmedium}
+	   \{tooltiplong}
+	Plamenometčíci jsou vybaveni plamenometem, který působí plošné poškození, a vyrábí je \{ref H_ninigi_gebaeude.seml#_ninigi_weapon_maker}Zbrojíř\{/ref}. \\{br}
+	   \{/tooltiplong}
+	\{/helpitem}
 
-\{chapter -name _animal_units Animal units}
-\{helpitem -name _ninigi_scout Scout}
+
+\{chapter -name _animal_units Zvířecí jednotky}
+\{helpitem -name _ninigi_scout Zvěd}
 \{img /bunit:ninigi_scout -ralign}
    \{tooltipshort}
 %/class:anml/vschtr:+/vsanml:+/vsvhcl:-/vsbldg:--%
    \{/tooltipshort}
    \{tooltipmedium}
-• Weak animal unit
-\\{br}• Fast
-\\{br}• Excellent vision
+• Slabá zvířecí jednotka
+\\{br}• Je rychlý
+\\{br}• Má vynikající zrak
    \{/tooltipmedium}
    \{tooltiplong}
-Produced on \{ref H_ninigi_gebaeude.seml#_ninigi_animal_farm} Animal farms,\{/ref} Scouts are best suited to exploring the terrain. \\{br}
-While relatively weak in combat they are fast and boast excellent vision, allowing them to see further than usual. Scouts are one of the weakest close combat \{ref H_general.seml#_units}units.\{/ref}
+Vyrábí je \{ref H_ninigi_gebaeude.seml#_ninigi_animal_farm} dinosauří farma.\{/ref} Nejlépe se hodí na průzkum terénu. \\{br}
+Přestože jsou relativně slabí v boji, jsou rychlí a mají vynikající zrak, díky němuž vidí dál než jiné jednotky. Patří mezi nejslabší bojové \{ref H_general.seml#_units}jednotky.\{/ref}
    \{/tooltiplong}
 \{/helpitem}
 
-\{helpitem -name _ninigi_baryonyx Baryonyx rider}
+\{helpitem -name _ninigi_baryonyx Jezdec na baryonyxovi}
 \{img /bunit:ninigi_baryonyx -ralign}
    \{tooltipshort}
 %/class:anml/vschtr:+/vsanml:+/vsvhcl:-/vsbldg:-%
    \{/tooltipshort}
    \{tooltipmedium}
-• Moderately powerful unit
-\\{br}• Can swim and walk
+• Středně silná jednotka
+\\{br}• Pohybuje se po souši i ve vodě
    \{/tooltipmedium}
    \{tooltiplong}
-Produced on \{ref H_ninigi_gebaeude.seml#_ninigi_animal_farm} Animal farms,\{/ref} Baryonyx riders are very fast and can move both on land and in the water. \\{br}
-Thus, they are an ideal escort for \{ref H_general.seml#_transport} Transport ships\{/ref} being able to attack enemies firing from the sea as well as those firing from the shore. They are also well-suited to hit and run tactics as there are very few \{ref H_general.seml#_units}units\{/ref} capable of following them into the water.
+Vyrábí je \{ref H_ninigi_gebaeude.seml#_ninigi_animal_farm} zvířecí farma.\{/ref} Jsou velmi rychlí a pohybují se po souši i ve vodě. \\{br}
+Představují tedy ideální doprovod pro \{ref H_general.seml#_transport} přepravní lodě\{/ref}, protože mohou zaútočit na nepřátele na moři i na pobřeží. Hodí se také skvěle k rychlým výpadům, protože je jen několik \{ref H_general.seml#_units}jednotek\{/ref}, které za nimi mohou do vody.
    \{/tooltiplong}
 \{/helpitem}
 
-\{helpitem -name _ninigi_parasaurolophus_drums War drums}
+\{helpitem -name _ninigi_parasaurolophus_drums Válečný buben}
 \{img /bunit:ninigi_parasaurolophus_drums -ralign}
    \{tooltipshort}
 %/class:anml/vschtr:/vsanml:/vsvhcl:/vsbldg:%
    \{/tooltipshort}
    \{tooltipmedium}
-• Medium animal unit
-\\{br}• Combat bonus for nearby units
-\\{br}• Unable to fight
+• Střední zvířecí jednotka
+\\{br}• Přidává jednotkám v okolí útočný bonus
+\\{br}• Nebojuje
    \{/tooltipmedium}
    \{tooltiplong}
-While the War drums do no damage in their own right, they increase the power of any of their tribe's \{ref H_general.seml#_units}units\{/ref} in their immediate area.
-They are produced on \{ref H_ninigi_gebaeude.seml#_ninigi_animal_farm} Animal farms.\{/ref}
+Válečné bubny samy o sobě žádné poškození nepůsobí, místo toho zvyšují sílu všech vlastních \{ref H_general.seml#_units}jednotek\{/ref} ve svém okolí.
+Vyrábí je \{ref H_ninigi_gebaeude.seml#_ninigi_animal_farm} zvířecí farma.\{/ref}
    \{/tooltiplong}
 \{/helpitem}
 
-\{helpitem -name _ninigi_parasaurolophus_gatling Gatling rider}
+\{helpitem -name _ninigi_parasaurolophus_gatling Jezdec kulometčík}
 \{img /bunit:ninigi_parasaurolophus_gatling -ralign}
    \{tooltipshort}
 %/class:anml/vschtr:+/vsanml:+/vsvhcl:-/vsbldg:-%
    \{/tooltipshort}
    \{tooltipmedium}
-• Medium animal unit
-\\{br}• Strong ranged fighter
+• Střední zvířecí jednotka
+\\{br}• Silný v boji na dálku
    \{/tooltipmedium}
    \{tooltiplong}
-Produced on \{ref H_ninigi_gebaeude.seml#_ninigi_animal_farm} Animal farms,\{/ref} Gatling riders are capable of firing over middle distances, where they cause a good deal of damage to infantry, mounted \{ref H_general.seml#_units}units\{/ref} and \{ref H_general.seml#_animals}animals.  \{/ref}
-Their greatest weakness is their poor constitution - they cannot take much damage themselves.
+Vyrábí je \{ref H_ninigi_gebaeude.seml#_ninigi_animal_farm} zvířecí farma.\{/ref} Dostřelí na střední vzdálenost, na kterou způsobí velké poškození pěším a jezdeckým \{ref H_general.seml#_units}jednotkám\{/ref} i \{ref H_general.seml#_animals}zvířatům.  \{/ref}
+Největší slabinou je jejich špatná tělesná stavba - nesnesou nijak velké poškození.
    \{/tooltiplong}
 \{/helpitem}
 
-\{helpitem -name _ninigi_saltasaurus_archer Salta transporter}
+\{helpitem -name _ninigi_saltasaurus_archer Přepravní saltasaurus}
 \{img /bunit:ninigi_saltasaurus_archer -ralign}
    \{tooltipshort}
-%/class:anml/vschtr:++/vsanml:+/vsvhcl:+/vsbldg:-%
+%/class:anml/vschtr:++/vsanml:+/vsvhcl:+/vsbldg:+%
    \{/tooltipshort}
    \{tooltipmedium}
-• Strong animal unit
-\\{br}• Effective in melee and long range battle
+• Silná zvířecí jednotka
+\\{br}• Efektivní v boji zblízka i na dálku
    \{/tooltipmedium}
    \{tooltiplong}
-Produced on \{ref H_ninigi_gebaeude.seml#_ninigi_animal_farm} Animal farms,\{/ref} the Salta transporter is one of the  \{ref H_story.seml#_story_ninigi} Dragon Clan's\{/ref} largest \{ref H_general.seml#_units}units.\{/ref} \\{br}
-They are slow, but able to carry up to 3 additional infantry \{ref H_general.seml#_units}units.\{/ref} This is particularly effective when these \{ref H_general.seml#_units}units\{/ref} are \{ref H_ninigi_produkte.seml#_ninigi_archer}Archers,  \{/ref} who can then fire from the protection of their cage. These passengers cannot be attacked directly as long as the Salta transporter still lives.
+Vyrábí je \{ref H_ninigi_gebaeude.seml#_ninigi_animal_farm} zvířecí farma.\{/ref} Je to jedna z největších \{ref H_general.seml#_units}jednotek\{/ref} \{ref H_story.seml#_story_ninigi} Dračího klanu.\{/ref} \\{br}
+Jsou pomalí, ale unesou až 3 pěší \{ref H_general.seml#_units}jednotky.\{/ref} Velmi účinné je, jsou-li to \{ref H_ninigi_produkte.seml#_ninigi_archer}lučištníci,  \{/ref} kteří mohou z bezpečí koše střílet. Dokud přepravní saltasaurus žije, nelze jeho pasažéry napadnout přímo.
    \{/tooltiplong}
 \{/helpitem}
 
-\{helpitem -name _ninigi_eusmilus Eusmilus rider}
+\{helpitem -name _ninigi_eusmilus Jezdec na šavlozubém tygru}
 \{img /bunit:ninigi_eusmilus -ralign}
    \{tooltipshort}
 %/class:anml/vschtr:+/vsanml:+/vsvhcl:+/vsbldg:-%
    \{/tooltipshort}
    \{tooltipmedium}
-   • Fast cavalry unit
-\\{br}• Can only be produced once Stina has reached level 4
+   • Rychlá jezdecká jednotka
+\\{br}• Lze ji vyrábět, až se Stina dostane na úroveň 4
    \{/tooltipmedium}
    \{tooltiplong}
-Produced on \{ref H_ninigi_gebaeude.seml#_ninigi_animal_farm} Animal farms,\{/ref} the Eusmilus rider is a fast, cheap, yet effective \{ref H_general.seml#_units}unit.\{/ref} \\{br}
-While they cannot take much more damage than a normal infantry \{ref H_general.seml#_units}unit\{/ref} would they themselves deal out a very great deal more.
+Vyrábí je \{ref H_ninigi_gebaeude.seml#_ninigi_animal_farm} zvířecí farma.\{/ref} Je to rychlá a levná, a přesto efektivní \{ref H_general.seml#_units}jednotka.\{/ref} \\{br}
+Přestože nesnese větší poškození než běžná pěší \{ref H_general.seml#_units}jednotka,\{/ref} nepříteli způsobí mnohonásobně větší škody.
    \{/tooltiplong}
 \{/helpitem}
 
@@ -276,238 +277,238 @@ While they cannot take much more damage than a normal infantry \{ref H_general.s
 %/class:anml/vschtr:+/vsanml:+/vsvhcl:-/vsbldg:-%
    \{/tooltipshort}
    \{tooltipmedium}
-• Stays close to its nest
-\\{br}• Attacks enemies on sight
-\\{br}• Can only be produced once Warden has reached level 4
+• Drží se u hnízda
+\\{br}• Útočí na nepřítele, jakmile ho spatří
+\\{br}• Lze ho vyrábět, až se Warden dostane na úroveň 4
    \{/tooltipmedium}
    \{tooltiplong}
-Produced in \{ref H_ninigi_gebaeude.seml#_ninigi_dilophosaurus_nest}Dilophosaurus nests, \{/ref} the \{ref H_animals.seml#_dilophosaurus}Dilophosaurus \{/ref} is a smaller \{ref H_general.seml#_units}unit\{/ref} which once produced takes off in a random direction until it encounters an enemy, which it then attacks.
-This \{ref H_general.seml#_units}unit\{/ref} does not appear in the \{ref H_general.seml#__pyramid} Army controller \{/ref}as it dies after a certain period of time.
+Vyrábí je \{ref H_ninigi_gebaeude.seml#_ninigi_dilophosaurus_nest} dilophosauří hnízdo. \{/ref} \{ref H_animals.seml#_dilophosaurus}Dilophosaurus \{/ref} je menší \{ref H_general.seml#_units}jednotka\{/ref}, která ihned po vyrobení vyrazí náhodným směrem, dokud nepotká nepřítele, na kterého pak zaútočí.
+V okně \{ref H_general.seml#__pyramid} stav armády \{/ref}se neobjevuje, protože po určité době zahyne.
    \{/tooltiplong}
 \{/helpitem}
 
-\{helpitem -name _ninigi_seismosaurus Seismosaurus titan}
+\{helpitem -name _ninigi_seismosaurus Seismosaurus titán}
 \{img /bunit:ninigi_seismosaurus -ralign}
    \{tooltipshort}
 %/class:anml/vschtr:++/vsanml:++/vsvhcl:++/vsbldg:++%
    \{/tooltipshort}
    \{tooltipmedium}
-• Strongest animal unit
+• Nejsilnější zvířecí jednotka
    \{/tooltipmedium}
    \{tooltiplong}
-Produced on \{ref H_ninigi_gebaeude.seml#_ninigi_animal_farm} Animal farms,\{/ref} the Seismosaurus titan is the \{ref H_story.seml#_story_ninigi} Dragon Clan's\{/ref} largest and most impressive \{ref H_general.seml#_units}unit,\{/ref} capable of both taking and doing impressive amounts of damage.
+Vyrábí je \{ref H_ninigi_gebaeude.seml#_ninigi_animal_farm} zvířecí farma.\{/ref} Je to největší a nejpůsobivější \{ref H_general.seml#_units}jednotka\{/ref} \{ref H_story.seml#_story_ninigi} Dračího klanu\{/ref}, která snese i způsobí ohromující poškození.
    \{/tooltiplong}
 \{/helpitem}
 
-\{chapter -name _vehicles Vehicles}
-\{helpitem -name _ninigi_smokebomb_thrower Smokebomber}
+\{chapter -name _vehicles Vozidla}
+\{helpitem -name _ninigi_smokebomb_thrower Vrhač kouřových bomb}
 \{img /bunit:ninigi_smokebomb_thrower -ralign}
    \{tooltipshort}
 %/class:vhcl/vschtr:/vsanml:/vsvhcl:/vsbldg:%
    \{/tooltipshort}
    \{tooltipmedium}
-• Hides units close by
+• Ukryje jednotky ve svém okolí
    \{/tooltipmedium}
    \{tooltiplong}
-Produced by the \{ref H_ninigi_gebaeude.seml#_ninigi_engineer} Engineer,\{/ref} Smokebombers do just what their name implies - they throw smokebombs. \\{br}
-These camouflage allied \{ref H_general.seml#_units}units\{/ref} in the area, but not the Smokebomber himself, other Smokebombers or \{ref H_ninigi_gebaeude.seml#_ninigi_smoke_tower}Smoke towers.  \{/ref}Smokebombers can neither fight nor be camouflaged in any way. Their smokefield moves with them. The camouflage provided by the Smokebomber is so dense, not even the \{ref H_ui.seml#_reveal} Reveal ability\{/ref} can detect \{ref H_general.seml#_units}units\{/ref} concealed this way.
+Vyrábí je \{ref H_ninigi_gebaeude.seml#_ninigi_engineer} mechanik.\{/ref} Dělají přesně to, co říká jejich jméno - vrhají kouřové bomby. \\{br}
+Kouř ukryje spřátelené \{ref H_general.seml#_units}jednotky\{/ref} v okolí, avšak samotný vrhač bomb, jiné vrhače nebo \{ref H_ninigi_gebaeude.seml#_ninigi_smoke_tower}kouřové věže \{/ref} ne. Vrhače nebojují a nelze je žádným způsobem ukrýt. Kouřové pole, které vytvoří, se pohybuje s nimi. Maskování, které jejich kouř poskytuje, je tak dobré, že ani schopnost \{ref H_ui.seml#_reveal} odhalení pastí\{/ref} takto ukryté \{ref H_general.seml#_units}jednotky\{/ref} nezjistí.
    \{/tooltiplong}
 \{/helpitem}
 
-\{helpitem -name _ninigi_flamethrower_trike Trike}
+\{helpitem -name _ninigi_flamethrower_trike Tříkolka}
 \{img /bunit:ninigi_flamethrower_trike -ralign}
    \{tooltipshort}
 %/class:vhcl/vschtr:++/vsanml:+/vsvhcl:-/vsbldg:--%
    \{/tooltipshort}
    \{tooltipmedium}
-• Armed with flamethrower
-\\{br}• Damages enemy and neutral units
+• Je vyzbrojena plamenometem
+\\{br}• Způsobí poškození nepřátelským i neutrálním jednotkám
    \{/tooltipmedium}
    \{tooltiplong}
-Produced by the  \{ref H_ninigi_gebaeude.seml#_ninigi_engineer} Engineer,\{/ref} the Trike shoots fire over middle distances, damaging all enemy and neutral \{ref H_general.seml#_units}units\{/ref} in the line of fire.
-It is most effective against infantry, animals and mounted \{ref H_general.seml#_units}units.\{/ref}
+Vyrábí je \{ref H_ninigi_gebaeude.seml#_ninigi_engineer} mechanik.\{/ref} Mají středně velký dostřel. Způsobí poškození všem nepřátelským i neutrálním \{ref H_general.seml#_units}jednotkám\{/ref}, které se ocitnou ve směru střelby.
+Nejúčinnější jsou proti pěším, zvířecím a jezdeckým \{ref H_general.seml#_units}jednotkám.\{/ref}
    \{/tooltiplong}
 \{/helpitem}
 
-\{helpitem -name _ninigi_harvester Scorpion}
+\{helpitem -name _ninigi_harvester Škorpion}
 \{img /bunit:ninigi_harvester -ralign}
    \{tooltipshort}
 %/class:vhcl/vschtr:++/vsanml:+/vsvhcl:+/vsbldg:+%
    \{/tooltipshort}
    \{tooltipmedium}
-• Strong melee unit
-\\{br}• Fast wood harvester
+• Silný v boji zblízka
+\\{br}• Rychle těží dřevo
    \{/tooltipmedium}
    \{tooltiplong}
-Produced by the  \{ref H_ninigi_gebaeude.seml#_ninigi_engineer} Engineer,\{/ref} the Scorpion is a logging \{ref H_general.seml#_units}unit\{/ref} capable of felling entire trees and bringing them back to the base. \\{br}
-Although slow, it is also a powerful close combat \{ref H_general.seml#_units}unit\{/ref} well capable of defending itself.
+Vyrábí je \{ref H_ninigi_gebaeude.seml#_ninigi_engineer} mechanik.\{/ref} Je to těžební \{ref H_general.seml#_units}jednotka\{/ref}, která dokáže porážet celé stromy a odvézt je na základnu. \\{br}
+Přestože je škorpion pomalý, je silný v boji zblízka a umí se skvěle bránit.
    \{/tooltiplong}
 \{/helpitem}
 
-\{helpitem -name _ninigi_firecannon Dragon tank}
+\{helpitem -name _ninigi_firecannon Dračí tank}
 \{img /bunit:ninigi_firecannon -ralign}
    \{tooltipshort}
 %/class:vhcl/vschtr:--/vsanml:--/vsvhcl:--/vsbldg:++%
    \{/tooltipshort}
    \{tooltipmedium}
-• Powerful long-range weapon
-\\{br}• Deals area damage
+• Silná střelná zbraň
+\\{br}• Působí územní poškození
    \{/tooltipmedium}
    \{tooltiplong}
-Produced by the  \{ref H_ninigi_gebaeude.seml#_ninigi_engineer} Engineer,\{/ref} Dragon Tanks can fire much farther than they can see and cause widespread damage. \\{br}
-\{ref H_general.seml#_building}Buildings\{/ref} are much more affected than any other enemy \{ref H_general.seml#_units}units.\{/ref}
+Vyrábí je \{ref H_ninigi_gebaeude.seml#_ninigi_engineer} mechanik.\{/ref} Dostřelí mnohem dál než vidí a způsobí územní poškození. \\{br}
+\{ref H_general.seml#_building}Budovy\{/ref} jsou postižené mnohem víc než všechny ostatní nepřátelské \{ref H_general.seml#_units}jednotky.\{/ref}
    \{/tooltiplong}
 \{/helpitem}
 
-\{helpitem -name _ninigi_cart Trade cart}
+\{helpitem -name _ninigi_cart Obchodní vozík}
 \{img /bunit:ninigi_cart -ralign}
    \{tooltipshort}
 %/class:vhcl/vschtr:/vsanml:/vsvhcl:/vsbldg:%
    \{/tooltipshort}
    \{tooltipmedium}
-• Gains resources through traveling between allied and own Marketplaces
-\\{br}• Unable to fight
+• Získává suroviny obchodováním
+\\{br}• Nebojuje
    \{/tooltipmedium}
    \{tooltiplong}
-Trade carts travel back and forth between two \{ref H_ninigi_gebaeude.seml#_ninigi_emporium} Emporiums\{/ref} transporting needed \{ref H_general.seml#_resources}resources. \{/ref} \\{br}
-The greater the distance between the two \{ref H_ninigi_gebaeude.seml#_ninigi_emporium} Emporiums\{/ref} involved, the higher the profit. Trade carts are incapable of defending themselves. If attacked and destroyed during the trip all \{ref H_general.seml#_resources}resources \{/ref} carried are lost. Trade carts are produced in the \{ref H_ninigi_gebaeude.seml#_ninigi_emporium} Emporium.\{/ref}
+Obchodní vozíky cestují mezi \{ref H_ninigi_gebaeude.seml#_ninigi_emporium} tržišti\{/ref} a přepravují potřebné \{ref H_general.seml#_resources}suroviny. \{/ref} \\{br}
+Čím větší je mezi \{ref H_ninigi_gebaeude.seml#_ninigi_emporium} tržišti\{/ref} vzdálenost, tím vyšší je zisk. Obchodní vozíky se nedokáží bránit. Dojde-li cestou k jejich zničení, všechny převážené \{ref H_general.seml#_resources}suroviny \{/ref} jsou ztraceny. Vyrábí je \{ref H_ninigi_gebaeude.seml#_ninigi_emporium} tržiště.\{/ref}
    \{/tooltiplong}
 \{/helpitem}
 
 
-\{chapter -name _ships Ships}
+\{chapter -name _ships Lodě}
 
-\{helpitem -name _ninigi_fishing_boat Fishing boat}
+\{helpitem -name _ninigi_fishing_boat Rybářská loď}
 \{img /bunit:ninigi_fishing_boat -ralign}
    \{tooltipshort}
 %/class:vhcl/vschtr:/vsanml:/vsvhcl:/vsbldg:%
    \{/tooltipshort}
    \{tooltipmedium}
-• Unable to fight
-\\{br}• Harvests fish
+• Nebojuje
+\\{br}• Loví ryby
    \{/tooltipmedium}
    \{tooltiplong}
-Produced in the \{ref H_ninigi_gebaeude.seml#_ninigi_harbour} Harbor,\{/ref} Fishing boats are used to harvest \{ref H_world.seml#_fish} fish\{/ref} as a food source. \\{br}
-Once a particular fishing ground has been exhausted the boat will automatically move to another fishing ground within sight.
+Vyrábí je \{ref H_ninigi_gebaeude.seml#_ninigi_harbour} přístav.\{/ref} Používají se k lovu \{ref H_world.seml#_fish} ryb\{/ref}, které slouží jako zdroj jídla. \\{br}
+Po vyčerpání loviště se rybářská loď automaticky přesune na další loviště v dohledu.
    \{/tooltiplong}
 \{/helpitem}
 
-\{helpitem -name _ninigi_minelayer Minelayer}
+\{helpitem -name _ninigi_minelayer Minonoska}
 \{img /bunit:ninigi_minelayer -ralign}
    \{tooltipshort}
 %/class:vhcl/vschtr:/vsanml:/vsvhcl:/vsbldg:%
    \{/tooltipshort}
    \{tooltipmedium}
-• Unable to fight
-\\{br}• Lays Floating mines
+• Nebojuje
+\\{br}• Pokládá vodní miny
    \{/tooltipmedium}
    \{tooltiplong}
-With the click of a mouse button the Minelayer drops a \{ref H_ninigi_produkte.seml#_ninigi_mineship_mine}Floating mine \{/ref} at its current position. \\{br}
-Difficult to see, the \{ref H_ninigi_produkte.seml#_ninigi_mineship_mine}Mines \{/ref}cause a great deal of damage to any enemy ships in their immediate vicinity when they explode. Minelayers are produced in the \{ref H_ninigi_gebaeude.seml#_ninigi_harbour} Harbor.\{/ref}
+Po kliknutí myší vypustí minonoska \{ref H_ninigi_produkte.seml#_ninigi_mineship_mine}vodní minu \{/ref} na místě, kde se právě nachází. \\{br}
+\{ref H_ninigi_produkte.seml#_ninigi_mineship_mine}Miny \{/ref}nejsou skoro vidět a jejich výbuch způsobí všem nepřátelským lodím poblíž velké poškození. Minonosky vyrábí \{ref H_ninigi_gebaeude.seml#_ninigi_harbour} přístav.\{/ref}
    \{/tooltiplong}
 \{/helpitem}
 
-\{helpitem -name _ninigi_mineship_mine Floating mine}
+\{helpitem -name _ninigi_mineship_mine Vodní mina}
 \{img /bunit:ninigi_mineship_mine -ralign}
    \{tooltipshort}
 %/class:vhcl/vschtr:/vsanml:/vsvhcl:/vsbldg:%
    \{/tooltipshort}
    \{tooltipmedium}
-• Floats in the water
-\\{br}• Causes area damage
-\\{br}• Difficult to see
+• Plave ve vodě
+\\{br}• Působí plošné poškození
+\\{br}• Není téměř vidět
    \{/tooltipmedium}
    \{tooltiplong}
-Produced by the \{ref H_ninigi_produkte.seml#_ninigi_minelayer}Minelayer, \{/ref} these Mines can be destroyed by targeted attacks once they have been detected. \\{br}
-Mines are one-shot weapons which are destroyed when activated.
+Vyrábí je \{ref H_ninigi_produkte.seml#_ninigi_minelayer}minonoska. \{/ref} Po odhalení je lze zničit cíleným útokem. \\{br}
+Jsou to jednorázové zbraně, které se po aktivaci zničí.
    \{/tooltiplong}
 \{/helpitem}
 
-\{helpitem -name _ninigi_fire_boat Fire boat}
+\{helpitem -name _ninigi_fire_boat Ohnivá loď}
 \{img /bunit:ninigi_fire_boat -ralign}
    \{tooltipshort}
 %/class:vhcl/vschtr:+/vsanml:+/vsvhcl:+/vsbldg:-%
    \{/tooltipshort}
    \{tooltipmedium}
-• Armed with flamethrower
-\\{br}• Damages enemy and neutral units
+• Je vyzbrojena plamenometem
+\\{br}• Způsobí poškození nepřátelským i neutrálním jednotkám
    \{/tooltipmedium}
    \{tooltiplong}
-Produced in the \{ref H_ninigi_gebaeude.seml#_ninigi_harbour} Harbor,\{/ref} Fire boats are armed with a flamethrower which shoots fire over middle distances, damaging all enemy and neutral \{ref H_general.seml#_units}units\{/ref} in the line of fire.
+Vyrábí je \{ref H_ninigi_gebaeude.seml#_ninigi_harbour} přístav.\{/ref} Jsou vyzbrojeny plamenometem, který má střední dostřel a způsobí poškození všem nepřátelským i neutrálním \{ref H_general.seml#_units}jednotkám\{/ref} ve směru střelby.
    \{/tooltiplong}
 \{/helpitem}
 
-\{helpitem -name _ninigi_muraeno_submarine Muraeno submarine}
+\{helpitem -name _ninigi_muraeno_submarine Muraeno ponorka}
 \{img /bunit:ninigi_muraeno_submarine -ralign}
    \{tooltipshort}
 %/class:vhcl/vschtr:-/vsanml:-/vsvhcl:+/vsbldg:-%
    \{/tooltipshort}
    \{tooltipmedium}
-• Only visible while firing
+• Je viditelná pouze během střelby
    \{/tooltipmedium}
    \{tooltiplong}
-Produced in the \{ref H_ninigi_gebaeude.seml#_ninigi_harbour} Harbor,\{/ref} the Muraeno submarine's greatest weapon is its stealth capability. \\{br}
-It is invisible except for when it surfaces to fire. It does a medium amount of damage and doesn't have all that many \{ref H_ui.seml#_iw_hitpoints}hit points, \{/ref} relying instead on stealth.
+Vyrábí je \{ref H_ninigi_gebaeude.seml#_ninigi_harbour} přístav.\{/ref} Její největší zbraní je její schopnost utajení. \\{br}
+Kromě chvíle, kdy se vynoří k útoku, je neviditelná. Působí středně velké poškození a nemá příliš mnoho \{ref H_ui.seml#_iw_hitpoints}zásahových bodů. \{/ref} Místo toho spoléhá na svou schopnost zůstat nezpozorována.
    \{/tooltiplong}
 \{/helpitem}
 
-\{helpitem -name _ninigi_rocket_boat Rocket boat}
+\{helpitem -name _ninigi_rocket_boat Raketová loď}
 \{img /bunit:ninigi_rocket_boat -ralign}
    \{tooltipshort}
 %/class:vhcl/vschtr:-/vsanml:-/vsvhcl:-/vsbldg:+%
    \{/tooltipshort}
    \{tooltipmedium}
-• Long-range ship
-\\{br}• Deals area damage
+• Loď pro boj na dálku
+\\{br}• Působí plošné poškození
    \{/tooltipmedium}
    \{tooltiplong}
-Produced in the \{ref H_ninigi_gebaeude.seml#_ninigi_harbour} Harbor,\{/ref} the Rocket boat is a powerful ship with an extremely long-range weapon. \\{br}
-Its visibility is somewhat greater than its firing range. This ship does a great deal of damage, although it is not quite as powerful as some of the \{ref H_story.seml#_story_hu}Norsemen \{/ref} ships.
+Vyrábí je \{ref H_ninigi_gebaeude.seml#_ninigi_harbour} přístav.\{/ref} Je to silná loď vybavená zbraní mimořádně velkého dosahu. \\{br}
+Dohlédne dál, než dostřelí. Působí velké poškození, i když není tak silná jako některé lodě \{ref H_story.seml#_story_hu}seveřanů \{/ref}.
    \{/tooltiplong}
 \{/helpitem}
 
-\{helpitem -name _ninigi_corsair Corsair}
+\{helpitem -name _ninigi_corsair Korzár}
 \{img /bunit:ninigi_corsair -ralign}
    \{tooltipshort}
 %/class:vhcl/vschtr:/vsanml:/vsvhcl:/vsbldg:%
    \{/tooltipshort}
    \{tooltipmedium}
-• Unable to fight
-\\{br}• Builds Floating towers
-\\{br}• Can only be produced once Babbit has reached level 4
+• Nebojuje
+\\{br}• Staví plovoucí věže
+\\{br}• Lze ho vyrábět, až se Babbit dostane na úroveň 4
    \{/tooltipmedium}
    \{tooltiplong}
-Produced in the \{ref H_ninigi_gebaeude.seml#_ninigi_harbour} Harbor,\{/ref} the Corsair is extremely fast and incredibly tough. \\{br}
-Unable to fight, Corsairs build \{ref H_ninigi_produkte.seml#_ninigi_water_turret}Floating towers \{/ref} which function exactly the same as land-based towers. With the click of a mouse button the Corsair builds a \{ref H_ninigi_produkte.seml#_ninigi_water_turret}Floating tower \{/ref} at its current position.
+Vyrábí je \{ref H_ninigi_gebaeude.seml#_ninigi_harbour} přístav.\{/ref} Jsou mimořádně rychlí a odolní. \\{br}
+Nebojují. Staví \{ref H_ninigi_produkte.seml#_ninigi_water_turret}plovoucí věže \{/ref}, které fungují naprosto stejně jako věže na pevnině. Po kliknutí myší korzár postaví \{ref H_ninigi_produkte.seml#_ninigi_water_turret}plovoucí věž \{/ref} na místě, kde se právě nachází.
    \{/tooltiplong}
 \{/helpitem}
 
-\{helpitem -name _ninigi_water_turret Floating tower}
+\{helpitem -name _ninigi_water_turret Plovoucí věž}
 \{img /bunit:ninigi_water_turret -ralign}
    \{tooltipshort}
  %/class:vhcl/vschtr:+/vsanml:+/vsvhcl:+/vsbldg:+%
    \{/tooltipshort}
    \{tooltipmedium}
-• Immobile
-\\{br}• Floats where built
-\\{br}• Attacks on sight
+• Nepohybuje se
+\\{br}• Plave tam, kde byla postavena
+\\{br}• Útočí na pohled
    \{/tooltipmedium}
    \{tooltiplong}
-Built and placed by \{ref H_ninigi_produkte.seml#_ninigi_corsair} Corsairs,\{/ref} Floating towers automatically fire at enemies just as a \{ref H_story.seml#_story_ninigi} Dragon Clan\{/ref} Defense tower does.
+Staví je \{ref H_ninigi_produkte.seml#_ninigi_corsair} korzár.\{/ref} Na nepřátele útočí automaticky stejně jako obranné věže \{ref H_story.seml#_story_ninigi} Dračího klanu\{/ref}.
    \{/tooltiplong}
 \{/helpitem}
 
-\{helpitem -name _ninigi_transport_boat Transport ship}
+\{helpitem -name _ninigi_transport_boat Přepravní loď}
 \{img /bunit:ninigi_transport_boat -ralign}
    \{tooltipshort}
 %/class:vhcl/vschtr:/vsanml:/vsvhcl:/vsbldg:%
    \{/tooltipshort}
    \{tooltipmedium}
-• Unable to fight
-\\{br}• May transport up to 10 units
+• Nebojuje
+\\{br}• Uveze až 10 jednotek
    \{/tooltipmedium}
    \{tooltiplong}
-Produced in the \{ref H_ninigi_gebaeude.seml#_ninigi_harbour} Harbor,\{/ref} a Transport ship can carry anything except other Transport ships. \\{br}
-Ranged \{ref H_general.seml#_units}units\{/ref} cannot fire while aboard. The \{ref H_general.seml#_units}unit\{/ref} limit cannot be avoided by trying to load \{ref H_general.seml#_units}units\{/ref} already carrying other combat \{ref H_general.seml#_units}units.\{/ref}
+Vyrábí je \{ref H_ninigi_gebaeude.seml#_ninigi_harbour} přístav.\{/ref} Uveze každou jednotku s výjimkou jiné přepravní lodě. \\{br}
+Střelecké \{ref H_general.seml#_units}jednotky\{/ref} nemohou z její paluby střílet. Limit \{ref H_general.seml#_units} jednotek\{/ref}nelze obejít naložením přepravních \{ref H_general.seml#_units} jednotek\{/ref}, které již nesou jiné bojové \{ref H_general.seml#_units} jednotky\{/ref}, na další přepravní jednotky.
    \{/tooltiplong}
 \{/helpitem}

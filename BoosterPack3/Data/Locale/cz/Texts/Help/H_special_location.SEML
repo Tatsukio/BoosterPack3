@@ -4,132 +4,139 @@
 \{comment $Author: claudia.krueger $}
 \{comment $Revision: #4 $}
 
-\{chapter -name _tribe_structures Tribe structures}
-\{helpitem -name _druid_tree Arch druid's home}
+\{chapter -name _tribe_structures Klanové budovy}
+
+\{helpitem -name _druid_tree Arcidruidův domov}
    \{tooltipshort}
    \{/tooltipshort}
    \{tooltipmedium}
-• Arch Druid's home
+• Arcidruidův domov
    \{/tooltipmedium}
    \{tooltiplong}
-The \{ref H_heros.seml#_hermit} Arch druid \{/ref} is a reclusive herb doctor famous for his eccentric ways and encyclopedic knowledge.\\{br}
-He lives in a large cave located between three old trees, whose roots have penetrated the cave and lend it support. The Arch druid's strange tools and ingredients lie spread out amongst these roots and fill the air with the scent of herbs.
+\{ref H_heros.seml#_hermit} Arcidruid \{/ref} je samotářský léčitel a bylinkář známý svými výstředními způsoby a encyklopedickými znalostmi.\\{br}
+Žije ve velké jeskyni mezi třemi starými stromy, jejichž kořeny prorostly dovnitř a působí jako přirozená podpora stěn. Mezi nimi si arcidruid rozkládá své zvláštní nástroje a přísady, které plní vzduch vůní bylin.
    \{/tooltiplong}
 \{/helpitem}
 
-\{helpitem -name _amazon_temple Amazon temple}
+\{helpitem -name _amazon_temple Chrám Amazonek}
 \{img /bunit:amazon_temple -ralign}
    \{tooltipshort}
    \{/tooltipshort}
    \{tooltipmedium}
-• Center of the Amazon community
+• Centrum společenství Amazonek
    \{/tooltipmedium}
    \{tooltiplong}
-A sacred place to the Amazons. Seriously threatening or destroying this \{ref H_general.seml#_building} building\{/ref} hits them where it hurts most.  \\{br}
-This Temple is one of the few important \{ref H_general.seml#_building} buildings\{/ref} erected by the \{ref H_story.seml#_story_aje} Dustriders \{/ref} in the \{ref H_general.seml#_savannah} Savannah.\{/ref} Many \{ref H_general.seml#_building} buildings\{/ref} in the \{ref H_general.seml#_savannah} Savannah\{/ref} are temporary, either as a result of a nomadic lifestyle or due to erosion through wind and sand. This makes this large temple even more important, as it was built by the first Amazons after they separated from their original culture in order to found their own.
+Svaté místo Amazonek. Zničení této \{ref H_general.seml#_building} budovy\{/ref} je zasáhne na nejcitlivějším místě. \\{br}
+Chrám je jedna z několika důležitých \{ref H_general.seml#_building} budov\{/ref} postavených \{ref H_story.seml#_story_aje} Pouštními jezdci \{/ref} v \{ref H_general.seml#_savannah} savaně.\{/ref} Mnoho \{ref H_general.seml#_building} budov\{/ref} v \{ref H_general.seml#_savannah} savaně\{/ref} stojí jen dočasně, je to výsledek kočovného způsobu života i větrné a písečné eroze. O to je tento velký chrám důležitější, protože ho postavily první Amazonky po odtržení od původního společenství s cílem založit své vlastní.
    \{/tooltiplong}
 \{/helpitem}
 
-\{helpitem -name _sacrefice_stone Sacrifice stone}
+
+
+
+\{helpitem -name _sacrefice_stone Obětní kámen}
    \{tooltipshort}
    \{/tooltipshort}
    \{tooltipmedium}
-• Blood-spattered place of worship for the Barbarians
+• Krví zbrocené místo barbarských pobožností
    \{/tooltipmedium}
    \{tooltiplong}
-A large sacrificial altar built for ... do we really want to know? \\{br}
-At any rate, this stone monument is still in use as a place to worship the dark gods the Barbarians serve. Typical of their architecture, it is built of large gray stones. Although this place is sacred to the Barbarians it would seem that it isn't that sacred. They would not go to any great lengths to protect it. It seems to be more of a means to an end.
+Velký obětní oltář postavený k... chceme to skutečně vědět? \\{br}
+Tento kamenný monument barbaři stále používají k uctívání svých temných bohů. Jak je pro jejich architekturu typické, je postaven z velkých bloků šedého kamene. Přestože toto místo barbaři považují za posvátné, nijak zvlášť jim na něm nezáleží. S jeho ochranou by si hlavu dlouho nelámali. Slouží spíše jako prostředek pro odchod na onen svět.
    \{/tooltiplong}
 \{/helpitem}
 
-\{helpitem -name _cage Barbarian cage}
+\{helpitem -name _cage Barbarská klec}
    \{tooltipshort}
    \{/tooltipshort}
    \{tooltipmedium}
-• Holds prisoners captive
+• Slouží k dočasnému uvěznění zajatců
    \{/tooltipmedium}
    \{tooltiplong}
-A cage built by the Barbarians to keep prisoners in until they are transferred somewhere else. \\{br}
-Locked, it is made of reinforced wood. The lock is relatively simple - all that is needed to pick it is a little patience and skill. However, it is impossible to play around with it as long as guards are watching the cage.
+Klec postavená barbary slouží k uvěznění zajatců, než budou přemístěni jinam. \\{br}
+Je vyrobena ze zpevněného dřeva. Zámek je relativně jednoduchý – na jeho vypáčení stačí trocha trpělivosti a šikovnosti. Dokud však klec hlídají stráže, je to nemožné.
    \{/tooltiplong}
 \{/helpitem}
 
-\{helpitem -name _pt_citywall_gate Watergate}
+\{helpitem -name _pt_citywall_gate Vodní brána}
 \{img /bunit:pt_citywall_gate -ralign}
    \{tooltipshort}
    \{/tooltipshort}
    \{tooltipmedium}
-• Fortified gate, blocking the path
+• Zesílená brána blokující cestu
    \{/tooltipmedium}
    \{tooltiplong}
-This mighty Watergate has been erected by the Pirates to defend their base from attacks. Of course, it only opens for their own ships and not for the enemy.
+Tuto mohutnou bránu postavili piráti, aby ubránili svou základnu před útoky. Otevírá se samozřejmě pouze pro ně. Pro nepřítele ne.
    \{/tooltiplong}
 \{/helpitem}
 
-\{helpitem -name _pirate_main_ship Main pirate ship}
+\{helpitem -name _pirate_main_ship Hlavní pirátská loď}
 \{img /bunit:pirate_main_ship -ralign}
    \{tooltipshort}
    \{/tooltipshort}
    \{tooltipmedium}
-• Pirate Headquarters
-\\{br}• Provides resources for their base
+• Velitelství pirátů
+\\{br}• Dodává suroviny základně
    \{/tooltipmedium}
    \{tooltiplong}
-This is the Pirates' main control center. \\{br}
-Destroying this ship deals the Pirates a severe blow, as it provides them with all their resources -  they obviously just unload them from the ship while players have to work hard for them. Many years have passed since this ship was last seaworthy and it has since been converted into a stationary fortress. The surrounding ships have also been permanently anchored and incorporated into the structure. The Pirates are inordinately proud of their base. We would be, too, if it were ours. But taking apart a cool base belonging to someone else is almost as much fun as having such a cool base yourself.
+Je to velitelské centrum pirátů. \\{br}
+Zničení této lodi zasadí pirátům tvrdý úder, protože je zásobuje všemi surovinami - stačí jim je jen vyložit z lodi, zatímco hráči kvůli nim musí tvrdě pracovat. Od její poslední plavby už uplynulo mnoho let a za tu dobu ji piráti přeměnili na nepohyblivou pevnost. Okolní lodě také ukotvili nastálo a včlenili do systému. Na svou základnu jsou piráti neobyčejně hrdí. Také bychom byli, kdyby byla naše. Ale zničit skvělou základnu, která patří někomu jinému, je skoro stejná zábava, jako kdyby naše byla.
    \{/tooltiplong}
 \{/helpitem}
 
-\{helpitem -name _water_temple Water temple}
+\{helpitem -name _water_temple Vodní chrám}
    \{tooltipshort}
    \{/tooltipshort}
    \{tooltipmedium}
-• Cultural site
-\\{br}• Prevents water from flowing into the desert
+• Náboženské místo
+\\{br}• Brání vodě téct do pouště
    \{/tooltipmedium}
    \{tooltiplong}
-A huge temple complex where the \{ref H_story.seml#_story_aje} Dustriders \{/ref} worship their gods. \\{br}
-It is incredibly sacred to them, so they are extremely allergic to unwanted visitors. The temple is well maintained and kept free of even the smallest grain of sand, let alone weeds.  Still, there are small graffities resembling "Do not touch!"- signs to be found. A silence pregnant with meaning lies over the entire complex.
+Obrovský chrámový komplex, ve kterém \{ref H_story.seml#_story_aje} Pouštní jezdci \{/ref} uctívají své bohy. \\{br}
+Chrám je pro ně velmi posvátný, proto jsou na nezvané návštěvníky extrémně alergičtí. Dobře ho udržují, není v něm možné najít ani to nejmenší zrnko prachu.  Přesto lze na zdech najít nápisy "Nedotýkat!" Nad celým komplexem se vznáší významné ticho.
    \{/tooltiplong}
 \{/helpitem}
 
-\{helpitem -name _water_temple_door Water temple door}
+\{helpitem -name _water_temple_door Brána vodního chrámu}
 \{img /bunit:water_temple_door -ralign}
    \{tooltipshort}
    \{/tooltipshort}
    \{tooltipmedium}
-• Door to the temple
-\\{br}• Closed to unworthy nonbelievers like you
+• Dveře do chrámu
+\\{br}• Pro nehodné bezvěrce, jako jsi ty, jsou zavřené
    \{/tooltipmedium}
    \{tooltiplong}
-This is the entrance to the \{ref H_special_location.seml#_water_temple}Water Temple \{/ref} - but the \{ref H_story.seml#_story_aje} Dustriders \{/ref} are not likely to let you in. Looks like there is no other option than to go right on through anyway.
+Toto je vstup do \{ref H_special_location.seml#_water_temple}vodního chrámu \{/ref} - ale \{ref H_story.seml#_story_aje} Pouštní jezdci \{/ref} tě dovnitř nejspíš nepustí. Vypadá to však, že jiná možnost než projít skrz není.
    \{/tooltiplong}
 \{/helpitem}
 
-\{helpitem -name _jungle_temple Jungle temple}
+\{helpitem -name _jungle_temple Pralesní chrám}
    \{tooltipshort}
    \{/tooltipshort}
    \{tooltipmedium}
-• Abandoned temple complex, now overgrown
+• Opuštěný chrámový komplex zarostlý džunglí
    \{/tooltipmedium}
    \{tooltiplong}
-This long-forgotten temple complex is so old that no one knows why it was built or later abandoned. \\{br}
-It appears the \{ref H_story.seml#_story_Dragon Clan} Dragon Clan \{/ref} erected this complex, but strange structural ornaments reflect a different influence. However, the facts indicate that something deep in the past caused the \{ref H_story.seml#_story_Dragon Clan} Dragon Clan \{/ref} to suddenly abandon the temple and the island. To this day, the \{ref H_story.seml#_story_Dragon Clan} Dragon Clan \{/ref} has never again built large stone houses.
+Tento dávno zapomenutý chrám je tak starý, že nikdo už neví, proč byl postaven a později opuštěn. \\{br}
+Zdá se, že tento komplex vybudoval \{ref H_story.seml#_story_Dragon Clan} Dračí klan, \{/ref} avšak zvláštní konstrukční ozdoby odráží jiný vliv. Fakta nicméně ukazují, že něco v dávné minulosti způsobilo, že\{ref H_story.seml#_story_Dragon Clan} Dračí klan \{/ref} chrám i ostrov náhle opustil. Žádnou jinou velkou kamennou budovu \{ref H_story.seml#_story_Dragon Clan} Dračí klan \{/ref} už nikdy víc nepostavil.
    \{/tooltiplong}
 \{/helpitem}
 
-\{helpitem -name _walhalla Valhalla}
+\{helpitem -name _walhalla Valhala}
    \{tooltipshort}
    \{/tooltipshort}
    \{tooltipmedium}
-• Mystical Norsemen temple complex
-\\{br}• Abandoned and almost forgotten
+• Mystický chrámový komplex Seveřanů
+\\{br}• Opuštěný a téměř zapomenutý
    \{/tooltipmedium}
    \{tooltiplong}
-Valhalla is a large place sacred to the \{ref H_story.seml#_story_hu} Norsemen.\{/ref}\\{br}
-It was the center of their belief for as long as they lived in the \{ref H_general.seml#_icewaste} Icewaste.\{/ref} As the encroaching winter forced the \{ref H_story.seml#_story_hu} Norsemen \{/ref} to move south, Valhalla lived on in memory and legend as the place to which famous warriors went in their afterlife. Before the last of the \{ref H_Hu_Produkte.seml#_hu_druid} Druids \{/ref} left Valhalla's sacred halls they sealed the city, protecting it against desecration with their mightiest spells, until the day their descendants return with the spring to once again fill the icy halls with warmth and life.
+Valhala je rozsáhlé posvátné místo \{ref H_story.seml#_story_hu} Seveřanů.\{/ref}\\{br}
+Byla centrem jejich náboženství, dokud obývali \{ref H_general.seml#_icewaste} Ledovou pustinu.\{/ref} Když dlouhá zima přinutila \{ref H_story.seml#_story_hu} Seveřany \{/ref} přesunout se na jih, Valhala zůstala v jejich paměti a legendách místem, kam slavní válečníci odcházeli v posmrtném životě. Před odchodem z Valhaly poslední \{ref H_Hu_Produkte.seml#_hu_druid} druidové \{/ref} zapečetili posvátné síně svými nejmocnějšími kouzly, aby je ochránili před znesvěcením až do dne, kdy se jejich potomci vrátí s jarem, aby opět naplnili ledové síně teplem a životem.
    \{/tooltiplong}
 \{/helpitem}
+
+
+
 
 \{helpitem -name _laerad_well Hvergelmir}
 \{img /bunit:laerad_well -ralign}
@@ -137,204 +144,203 @@ It was the center of their belief for as long as they lived in the \{ref H_gener
 
    \{/tooltipshort}
    \{tooltipmedium}
-• Heals units
-\\{br}• Recharges over time
+• Léčí jednotky
+\\{br}• Průběžně se obnovuje
    \{/tooltipmedium}
    \{tooltiplong}
-The healing fountain, Hvergelmir, can restore a certain amount of \{ref H_ui.seml#_iw_hitpoints}hit points. \{/ref} \\{br}
-It recharges slowly over time. If more than one \{ref H_general.seml#_units} unit\{/ref} reaches the fountain, the first \{ref H_general.seml#_units} unit\{/ref} reaching it will be healed, then the next and so on, until the capacitiy of the fountain is depleted.
+Léčivá fontána Hvergelmir dokáže vrátit jednotce určité množství \{ref H_ui.seml#_iw_hitpoints}zásahových bodů. \{/ref} \\{br}
+Její moc se časem obnovuje. Dostane-li se k ní více \{ref H_general.seml#_units} jednotek\{/ref}, fontána vyléčí nejdříve první \{ref H_general.seml#_units} jednotku\{/ref}, pak další a další, než se její moc vyčerpá.
    \{/tooltiplong}
 \{/helpitem}
 
-\{helpitem -name _hu_berserk_statue Stone golem}
+\{helpitem -name _hu_berserk_statue Kamenný golem}
 \{img /bunit:hu_berserk_statue -ralign}
    \{tooltipshort}
    \{/tooltipshort}
    \{tooltipmedium}
-• Large golem
-\\{br}• Looks grumpy
-\\{br}• Unfriendly
+• Velký golem
+\\{br}• Vypadá naštvaně
+\\{br}• Nechová se mile
    \{/tooltipmedium}
    \{tooltiplong}
-Incredibly tough and strong, these Stone golems have a lot of \{ref H_ui.seml#_iw_hitpoints}hit points. \{/ref} \\{br}
-They were originally created and enchanted by the \{ref H_story.seml#_story_hu} Norsemen \{/ref} to protect their sacred \{ref H_special_location.seml#_walhalla} Valhalla.\{/ref} Eternal guards consecrated to the old gods. As is to be expected of stones they tend to be somewhat slow.
+Kamenní golemové jsou neuvěřitelně tvrdí a silní a mají velmi mnoho \{ref H_ui.seml#_iw_hitpoints}zásahových bodů. \{/ref} \\{br}
+Původně je stvořili a začarovali \{ref H_story.seml#_story_hu} Seveřani \{/ref}, aby chránili svou posvátnou \{ref H_special_location.seml#_walhalla} Valhalu.\{/ref} Jsou to věční strážci zasvěcení starým bohům. Jak se dá u kamene čekat, jsou poněkud pomalejší.
    \{/tooltiplong}
 \{/helpitem}
 
-\{helpitem -name _hu_undead_killer Statue}
+\{helpitem -name _hu_undead_killer Socha}
 \{img /bunit:hu_undead_killer -ralign}
    \{tooltipshort}
    \{/tooltipshort}
    \{tooltipmedium}
-• Infantry
-\\{br}• Melee fighter
-\\{br}• Does a lot of damage
-\\{br}• Low on hitpoints
+• Pěší voják
+\\{br}• Bojuje zblízka
+\\{br}• Působí velké poškození
+\\{br}• Má málo zásahových bodů
    \{/tooltipmedium}
    \{tooltiplong}
-Resurrected corpse of an honorable \{ref H_hu_produkte.seml#_hu_killer}Killer\{/ref} consecrated upon his death to the continued defense of \{ref H_special_location.seml#_walhalla} Valhalla.\{/ref}\\{br}
-These creatures are extremely strong and can kill almost every other being with a single strike. The fact that they are undead makes them a threat that no one should underestimate. Fortunately, they have almost no lifepower left, so they can be easily killed and sent to the everlasting afterlife.
+Oživlá mrtvola váženého \{ref H_hu_produkte.seml#_hu_killer}zabijáka\{/ref}, kterého po smrti zasvětili neustálé obraně \{ref H_special_location.seml#_walhalla} Valhaly.\{/ref}\\{br}
+Tito tvorové jsou neobyčejně silní a dokáží zabít téměř každou bytost jediným úderem. Fakt, že jsou nemrtví, z nich činí hrozbu, kterou by neměl nikdo podcenit. Naštěstí jim zbývá jen malé množství životní energie, a tak není tak těžké je zabít a poslat na nekonečný výlet do záhrobí.
    \{/tooltiplong}
 \{/helpitem}
 
-\{helpitem -name _hu_undead_warrior Undead warrior}
+\{helpitem -name _hu_undead_warrior Nemrtvý válečník}
 \{img /bunit:hu_undead_warrior -ralign}
    \{tooltipshort}
    \{/tooltipshort}
    \{tooltipmedium}
-• Infantry
-\\{br}• Melee fighter
-\\{br}• Less susceptible to attack than normal warrior
+• Pěší jednotka
+\\{br}• Bojuje zblízka
+\\{br}• Nižší útočné schopnosti než normální válečník
    \{/tooltipmedium}
    \{tooltiplong}
-Resurrected corpse of an honorable \{ref H_hu_produkte.seml#_hu_warrior}Warrior \{/ref} consecrated upon his death to the continued defense of \{ref H_special_location.seml#_walhalla} Valhalla.\{/ref}\\{br}
-The fact that they are already dead, makes them less susceptible to attack enemy units. Nevertheless you should never forget, that these resurged fighters are still very powerful and very deadly.
+Oživlá mrtvola váženého \{ref H_hu_produkte.seml#_hu_warrior}válečníka \{/ref}, kterého po smrti zasvětili neustálé obraně \{ref H_special_location.seml#_walhalla} Valhaly.\{/ref}\\{br}
+Díky faktu, že jsou tyto bytosti mrtvé, neútočí na nepřátelské jednotky nijak rychle. Stále bys však měl mít na paměti, že jsou to velmi silní a smrtící válečníci.
    \{/tooltiplong}
 \{/helpitem}
 
-\{helpitem -name _carrier_launch_pad Launch ramp}
+\{helpitem -name _carrier_launch_pad Odpalovací rampa}
 \{img /bunit:carrier_launch_pad -ralign}
    \{tooltipshort}
    \{/tooltipshort}
    \{tooltipmedium}
-• Huge wooden construction
-\\{br}• Used to get airborne
+• Velká dřevěná konstrukce
+\\{br}• Poslouží ke vzlétnutí kluzáku
    \{/tooltipmedium}
    \{tooltiplong}
-This huge structure was built by the \{ref H_general.seml#_heros} heroes\{/ref} to help their glider build up enough speed to compensate for the missing engines. \\{br}
-The principle is similar to that of ski jumping and other methods of launching a glider: build up enough speed and launch the glider. \{ref H_heros.seml#_bela} Béla \{/ref} has taken everything into his extensive calculations: roll speed, angle, roll friction, air currents and all the other pertinent factors.  \{p}
-While some might be reminded of a movie about a plane crash in the desert and an aircraft engineer who later turns out to be a toymaker, nobody really wants to push \{ref H_heros.seml#_bela} Béla \{/ref} on this.
+Tuto velkou konstrukci postavili \{ref H_general.seml#_heros} hrdinové\{/ref}, aby nahradili chybějící motory a jejich kluzák získal dostatečnou rychlost ke startu. \\{br}
+Princip je stejný jako u skoků na lyžích a jiných metod vypuštění kluzáku: vyvinout dostatečnou rychlost a vypustit kluzák do vzduchu. \{ref H_heros.seml#_bela} Béla \{/ref} do svých rozsáhlých výpočtů zahrnul všechny proměnné: nájezdovou rychlost, úhel sklonu, tření, vzdušné proudy i všechny další příslušné faktory.  \{p}
+Zatímco některým to může připomenout film o pádu letadla do pouště a leteckém inženýrovi, z kterého se později vyklube výrobce hraček, nikdo v tomhle nechce na \{ref H_heros.seml#_bela} Bélu \{/ref} tlačit.
    \{/tooltiplong}
 \{/helpitem}
 
-\{helpitem -name _ninigi_telescope_tower_ruins Telescope tower ruin}
+\{helpitem -name _ninigi_telescope_tower_ruins Zřícenina hvězdárny}
 \{img /bunit:ninigi_telescope_tower_ruins -ralign}
    \{tooltipshort}
    \{/tooltipshort}
    \{tooltipmedium}
-• Must be rebuilt
-\\{br}• Takes quite a while to repair
+• Potřebuje opravit
+\\{br}• Oprava bude chvíli trvat
    \{/tooltipmedium}
    \{tooltiplong}
-The crumbling ruins of a huge \{ref H_ninigi_gebaeude.seml#_ninigi_telescope_tower} Telescope tower. \{/ref} \\{br}
-The principle is similar to that of the towers built by the \{ref H_story.seml#_story_Dragon Clan} Dragon Clan \{/ref} to see great distances, although this tower is much more complex. In addition to a large telescope it also contains a small observatory which was obviously well appointed. Repairing this observatory is a long and tedious affair. The precision instruments require absolutely meticuluous repairs in order to allow \{ref H_heros.seml#_bela} Béla \{/ref} to successfully complete the necessary calculations.
+Rozpadající se ruiny velké \{ref H_ninigi_gebaeude.seml#_ninigi_telescope_tower} hvězdárny. \{/ref} \\{br}
+Princip je stejný jako u věží postavených \{ref H_story.seml#_story_Dragon Clan} Dračím klanem \{/ref} k pozorování velkých vzdáleností, ačkoliv tato věž je mnohem složitější. Kromě velkého dalekohledu se tu nachází také malá observatoř, která byla očividně dobře vybavená. Oprava observatoře bude dlouhý a obtížný úkol. Přesné nástroje vyžadují naprosto pečlivou opravu, aby \{ref H_heros.seml#_bela} Béla \{/ref} mohl úspěšně dokončit nezbytné úkony.
    \{/tooltiplong}
 \{/helpitem}
 
-\{helpitem -name _hc_general Holy city}
+\{helpitem -name _hc_general Svaté město}
    \{tooltipshort}
    \{/tooltipshort}
    \{tooltipmedium}
-• This world's only city
-\\{br}• Center of native civilization
+• Jediné město tohoto světa
+\\{br}• Centrum původní civilizace
    \{/tooltipmedium}
    \{tooltiplong}
-The Holy city is the only truly large settlement on all of Paraworld. \\{br}
-People of all nationalities live here together in peace, governed by a council composed of representatives from all three nations. The city's roots lie so far in the past that stories of its founding had already turned to myth and legend at a time when the city was still young.  \{p}
-The Holy city is home to a huge temple in which the city council meets. The temple walls feature elaborate murals depicting scenes from the city's past. A short distance from the temple stands a huge arena in which competitions similar to those of ancient Rome's Circus Maximus are held.  \{p}
-The Holy city has always offered refuge to one and all, regardless of nationality. Occasionally individual tribes have descended on the city in an attempt to plunder it of its fabled riches, but the city fortifications have always been so well developed that the city is all but impregnable against land attack.
+Svaté město je jediné skutečně velké osídlení na celém Paraworldu. \\{br}
+Lidé zde žijí pospolu v míru, pod dohledem rady složené ze zástupců všech tří národů. Kořeny města leží tak hluboko v minulosti, že se z příběhů o jeho založení staly mýty a legendy ještě v době, kdy bylo stále mladé. \{p}
+Ve městě se nachází velký chrám, v němž se schází rada. Jeho stěny pokrývají nástěnné malby, které zachycují scény z minulosti města. Poblíž stojí ohromná aréna, v níž se odehrávají závody nápadně připomínající starověký Řím a jeho Circus Maximus.  \{p}
+Svaté město vždy nabízelo útočiště každému bez ohledu na jeho národnost. Čas od času na ně jednotlivé klany zaútočily a pokusily se je připravit o jeho bájné poklady, ale opevnění města bylo vždy na takové úrovni, že pozemní útok nikdy neměl nejmenší naději na úspěch.
    \{/tooltiplong}
 \{/helpitem}
 
-\{helpitem -name _hcl13_gate Holy city main gate}
+\{helpitem -name _hcl13_gate Hlavní brána svatého města}
 \{img /bunit:hcl13_gate -ralign}
    \{tooltipshort}
    \{/tooltipshort}
    \{tooltipmedium}
-• Only way into Holy city overland
+• Jediná suchozemská přístupová cesta do svatého města 
    \{/tooltipmedium}
    \{tooltiplong}
-This is the huge Main gate leading to the \{ref H_special_location.seml#_hc_general} Holy city \{/ref}.
+Toto je velká hlavní brána vedoucí do \{ref H_special_location.seml#_hc_general} svatého města \{/ref}
    \{/tooltiplong}
 \{/helpitem}
 
-\{helpitem -name _hcl13_city_wall Holy city wall}
+\{helpitem -name _hcl13_city_wall Hradba svatého města}
 \{img /bunit:hcl13_city_wall -ralign}
    \{tooltipshort}
    \{/tooltipshort}
    \{tooltipmedium}
-• Ancient but well maintained fortification
+• Starověké, ale dobře udržované opevnění
    \{/tooltipmedium}
    \{tooltiplong}
-Ancient beyond belief, the \{ref H_special_location.seml#_hc_general} Holy city's \{/ref} fortifications are extremely well maintained. \\{br}
-Although it would appear that the Holy city has had to withstand more than one attack, the traces of war are old indeed. Times have obviously changed greatly since then. Today none of the three existing nations would ever presume to attack this mighty fortress, for it has truly come to be the \{ref H_special_location.seml#_hc_general} Holy city \{/ref} for all - a place of peace, harmony and spiritual inspiration.
+Neuvěřitelně staré opevnění \{ref H_special_location.seml#_hc_general} svatého města \{/ref} je mimořádně dobře udržované. \\{br}
+Ačkoliv se zdá, že svaté město muselo odolat nejednomu útoku, stopy zanechané válkou jsou opravdu staré. Časy se od té doby očividně hodně změnily. Dnes by si ani jeden ze tří existujících národů na tuto mocnou pevnost netroufl zaútočit, protože se\{ref H_special_location.seml#_hc_general} svaté město \{/ref} stalo svaté skutečně pro všechny – stalo se místem míru, harmonie a duchovní inspirace.
 \{/tooltiplong}
 \{/helpitem}
 
-\{helpitem -name _healing_well_01 Healing fountain}
+\{helpitem -name _healing_well_01 Léčivá fontána}
 \{img /bunit:healing_well_01 -ralign}
    \{tooltipshort}
    \{/tooltipshort}
    \{tooltipmedium}
-• Heals injured units
-\\{br}• Recharges over time
+• Léčí zraněné jednotky
+\\{br}• Časem se její moc obnovuje
 \{/tooltipmedium}
    \{tooltiplong}
-The Healing fountain restores a certain amount of \{ref H_ui.seml#_iw_hitpoints}hit points. \{/ref} It recharges slowly over time. \\{br}
-If more than one \{ref H_general.seml#_units} unit\{/ref} reaches the fountain, the first \{ref H_general.seml#_units} unit\{/ref} reaching it will be healed, then the next and so on, until the capacitiy of the Healing fountain is depleted.
+Léčivá fontána obnoví jednotce určité množství \{ref H_ui.seml#_iw_hitpoints}zásahových bodů. \{/ref} Její moc se časem pomalu obnovuje. \\{br}
+Dostane-li se k fontáně více \{ref H_general.seml#_units} jednotek\{/ref}, fontána uzdraví nejdříve první \{ref H_general.seml#_units} jednotku \{/ref} a pak postupně další a další, než se její moc úplně vyčerpá.
    \{/tooltiplong}
 \{/helpitem}
 
 \{chapter -name _seas SEAS}
-\{helpitem -name _seas_prison -redirect _seas_jail_part_02 -nodisplay SEAS prison}
+\{helpitem -name _seas_prison -redirect _seas_jail_part_02 -nodisplay Vězení SEAS}
    \{tooltipshort}
    \{/tooltipshort}
    \{tooltipmedium}
-• Part of SEAS prison complex
+• Část vězeňského komplexu SEAS
    \{/tooltipmedium}
    \{tooltiplong}
-A \{ref H_story.seml#_story_SEAS} SEAS \{/ref} prison from where inmates must be freed. \\{br}
-The locks are too complicated even for a \{ref H_Ninigi_Produkte.seml#_ninja} Ninja \{/ref} to pick, so there is but one option left - brute force.
+Vězení \{ref H_story.seml#_story_SEAS} SEAS, \{/ref} z kterého musíš osvobodit vězně. \\{br}
+Zámky jsou příliš složité na vypáčení dokonce i pro \{ref H_Ninigi_Produkte.seml#_ninja} nindžu, \{/ref} a tak zbývá jen jediná možnost – hrubá síla.
    \{/tooltiplong}
 \{/helpitem}
 
-\{helpitem -name _seas_jail_part_02 SEAS prison}
+\{helpitem -name _seas_jail_part_02 Vězení SEAS}
 \{img /bunit:seas_jail_part_02 -ralign}
    \{tooltipshort}
    \{/tooltipshort}
    \{tooltipmedium}
-• Part of SEAS prison complex
+• Část vězeňského komplexu SEAS
    \{/tooltipmedium}
    \{tooltiplong}
-A \{ref H_story.seml#_story_SEAS} SEAS \{/ref} prison from where inmates must be freed. \\{br}
-The locks are too complicated even for a \{ref H_Ninigi_Produkte.seml#_ninja} Ninja \{/ref} to pick, so there is but one option left - brute force.
+Vězení \{ref H_story.seml#_story_SEAS} SEAS, \{/ref} z kterého musíš osvobodit vězně. \\{br}
+Zámky jsou příliš složité na vypáčení dokonce i pro \{ref H_Ninigi_Produkte.seml#_ninja} nindžu, \{/ref} a tak zbývá jen jediná možnost – hrubá síla.
    \{/tooltiplong}
 \{/helpitem}
 
-\{helpitem -name _seas_control_building SEAS control building}
+\{helpitem -name _seas_control_building Řídicí budova SEAS}
    \{tooltipshort}
    \{/tooltipshort}
    \{tooltipmedium}
-• Contains important controls for Volcano Jet
+• Uvnitř se nachází důležité ovládání vulkanického motoru
    \{/tooltipmedium}
    \{tooltiplong}
-This Control center is crucial to the \{ref H_story.seml#_story_SEAS} SEAS' \{/ref} insane plot. \\{br}
-As long as they control these \{ref H_general.seml#_building} buildings\{/ref} they can continue to work on starting their \{ref H_special_location.seml#_seas_volcano_jet} Volcano jet. \{/ref}In order to stop them these \{ref H_general.seml#_building} buildings\{/ref} must be captured and the \{ref H_story.seml#_story_SEAS} SEAS \{/ref} troops prevented from coming too close. The Control buildings are filled with equipment that would make a civilized mind shudder. No one really wants to try to destroy these machines for fear that they might accidentally start the \{ref H_special_location.seml#_seas_volcano_jet} Volcano jet. \{/ref} Even \{ref H_heros.seml#_bela} Béla \{/ref} and 
-\{ref H_heros.seml#_tesla} Taslow \{/ref} are not certain they could find a safe ad hoc way to destroy the Control buildings. It would also appear to be just too dangerous to attack the \{ref H_special_location.seml#_seas_volcano_jet} Jet \{/ref} itself as long as the SEAS remain in control of these buildings.
+Toto řídicí centrum je pro \{ref H_story.seml#_story_SEAS} SEAS\{/ref} a jejich šílený plán klíčové. \\{br}
+Dokud budou mít \{ref H_general.seml#_building} budovy\{/ref} pod kontrolou, mohou pokračovat se spuštěním \{ref H_special_location.seml#_seas_volcano_jet} vulkanického motoru. \{/ref}Zastavíš je jedině tak, že \{ref H_general.seml#_building} budovy\{/ref} obsadíš a zabráníš jednotkám\{ref H_story.seml#_story_SEAS} SEAS \{/ref} v jejich opětovném dobytí. Budovy řídicího centra jsou plné vybavení, z něhož by se civilizovaná mysl zděsila. Nikdo nechce ani v nejmenším zkoušet tyto stroje zničit ze strachu, že by mohly náhodou spustit \{ref H_special_location.seml#_seas_volcano_jet} vulkanický motor. \{/ref} Dokonce ani \{ref H_heros.seml#_bela} Béla \{/ref} a \{ref H_heros.seml#_tesla} Taslow \{/ref} si nejsou jistí, zda by dokázali najít bezpečný způsob, jak řídicí centrum zničit. Zaútočit na samotný\{ref H_special_location.seml#_seas_volcano_jet} motor \{/ref} se zdá být také příliš nebezpečné, dokud SEAS mají budovy pod kontrolou.
    \{/tooltiplong}
 \{/helpitem}
 
-\{helpitem -name _seas_volcano_jet SEAS volcano jet}
+\{helpitem -name _seas_volcano_jet SEAS vulkanický motor}
    \{tooltipshort}
    \{/tooltipshort}
    \{tooltipmedium}
-• Gargantuan SEAS machine
+• Gargantuovský stroj SEAS 
    \{/tooltipmedium}
    \{tooltiplong}
-This is the monstrous machine said to be capable of pushing a planet out of its orbit. \\{br}
-Maybe it can, but then again, maybe not. What it definitely can do is spout enough lava and ash to make life difficult over an immense area. Our \{ref H_general.seml#_heros} heroes\{/ref} fear that the consequences could be infinitely worse than those of a normal eruption as the concentrated jet of lava would penetrate much, much further into the atmosphere. No one wants to predict the exact consequences of such a mega-eruption, but everyone agrees on one thing: we don't want want to find out, either.
+Toto je ten monstrózní stroj, o němž se povídá, že dokáže vychýlit planetu z oběžné dráhy. \\{br}
+Možná že dokáže a možná taky ne. Rozhodně však dokáže vychrlit dost lávy a popela, aby ztížil život na značném území. Naši \{ref H_general.seml#_heros} hrdinové\{/ref} se obávají, že následky by mohly být nekonečně horší než u normálního sopečného výbuchu, protože soustředěný proud lávy by se dostal mnohem výš do atmosféry. Nikdo nechce předvídat následky takové megaerupce, ale všichni se shodují na jednom: nechtějí to ani zjistit.
    \{/tooltiplong}
 \{/helpitem}
 
-\{helpitem -name _final_door_volcano Final door to volcanic jet}
+\{helpitem -name _final_door_volcano Poslední dveře k vulkanickému motoru}
    \{tooltipshort}
    \{/tooltipshort}
    \{tooltipmedium}
-• Behind it lies open volcanic vent
-\\{br}• Opens once Control building has been taken over
+• Za nimi se nachází turbína motoru 
+\\{br}• Otevřou se po dobytí řídicího centra
    \{/tooltipmedium}
    \{tooltiplong}
-This door leads to an underground complex which in turn leads directly to the main volcanic vent. \\{br}
-The air in the chamber at the foot of the vent is hot and sticky, and a gentle crackling fills the air. Most people would only stay here when forced to – or out of sheer despair. This door will only open once the player has taken over the \{ref H_special_location.seml#_seas_control_building} SEAS control building \{/ref}.
+Tyto dveře vedou do podzemního systému, který pro změnu vede k hlavní turbíně motoru. \\{br}
+Vzduch v komoře pod turbínou je horký a lepkavý, plný jemného praskání. Většina lidí by tu zůstala jen z donucení – nebo z čirého zoufalství. Dveře se otevřou, teprve až hráč obsadí \{ref H_special_location.seml#_seas_control_building} řídicí centrum SEAS \{/ref}.
    \{/tooltiplong}
 \{/helpitem}
