@@ -6,73 +6,73 @@
 \{chapter single_16}
 
 	\{section -name L16MQ01}
-Here in the crater, the heroes are left to their own devices and things are heating up! Stina, Béla, Cole, Ada and Taslow must not die!
+V kráteru jsou hrdinové odkázáni sami na sebe a začíná jít do tuhého! Stina, Béla, Cole, Ada a Taslow nesmí zemřít!
 \{p} \{p}
-Objectives:
+Úkoly:
 \{p}
-1) All Heroes must survive!
+1) Všichni hrdinové musí přežít!
 \{p} \{p}
-Hints:
+Tipy:
 \{p}
-1) There are healing wells on the battlefield; use them when your heroes are badly injured. But you’d better be careful – the wells only have limited healing capacity and are also located right in the middle of the combat action.
+1) Na bojišti jsou léčivé studny; použij je, až budou hrdinové těžce zranění. Ale dávej pozor – studny mají pouze omezenou léčivou schopnost a nachází se přímo uprostřed bojiště.
  \{p}
-2) You cannot control, heal, or promote Taslow directly.
+2) Taslowa nemůžeš přímo řídit, léčit ani mu zvýšit úroveň.
 	\{/section}
 
 	\{section -name L16MQ02}
-Babbit sends out troops from 3 of his bases to stop Taslow. Destroy these bases.
+Babbit posílá jednotky ze svých 3 základen, aby zastavil Taslowa. Znič je.
 
 \{p} \{p}
-Objectives:
+Úkoly:
 \{p}
-1) Destroy the Barracks and Garages inside the 3 SEAS-bases, which are attacking you!
+1) Znič kasárna a autodílny uvnitř 3 základen SEAS, které na tebe útočí!
 \{p} \{p}
-Hints:
+Tipy:
 \{p}
-1) The bases consist of two production buildings, which can either be Barracks or Garages.
+1) Každá základna má dvě výrobní budovy, buď kasárna a autodílnu, dvoje kasárna, nebo dvě autodílny.
 	\{/section}
 
 	\{section -name L16MQ03}
-Babbit has started the Scorpio and attacks you with it! Eliminate this mechanical monster!
+Babbit spustil Škorpióna a útočí s ním na tebe! Znič tu mechanickou příšeru!
 \{p} \{p}
-Objectives:
+Úkoly:
 \{p}
-1) Attack the Scorpio! You need to tackle the control station as soon as Taslow has opened it.
+1) Zaútoč na Škorpióna! Jakmile Taslow otevře řídicí stanici, pusť se do ní.
  \{p}
 \{p} \{p}
-Hints:
+Tipy:
 \{p}
-1) The Scorpio can attack you with its legs, claws, and even his flamethrower. If you cause enough damage to the Scorpio, these functions will continually diminish.
+1) Škorpión umí útočit nohama, klepety a plamenometem. Pokud ho dostatečně poškodíš, jeho funkčnost se postupně zmenší.
  \{p}
-2) The Scorpio is a very strong unit which can cause massive damage! Don’t stand around, try and avoid its fierce attacks! There are no safe spots on the battlefield, you need to keep moving!
+2) Škorpión je velmi silná jednotka, která dokáže způsobit rozsáhlé poškození! Nepostávej na místě, snaž se jeho zuřivým útokům vyhýbat! Na bojišti před ním nejsi nikde v bezpečí, musíš být neustále v pohybu!
 	\{/section}
 
 	\{section -name L16MQ04}
-Babbit must give up the destroyed Scorpio, but he still has his mechanized combat suit.
+Babbit musí oželet zničeného Škorpióna, avšak pořád má mechanický bojový oblek.
 \{p} \{p}
-Objectives:
+Úkoly:
 \{p}
-1) Destroy Babbit!
+1) Znič Babbita!
 \{p} \{p}
-Hints:
+Tipy:
 \{p}
-1) Babbit will try to kill his archrival Taslow. You need to stop him!
+1) Babbit se pokusí zabít svého arcinepřítele Taslowa. Musíš ho zastavit!
 
 	\{/section}
 
 	\{section -name L16SQ01}
-The towers located close to the bases are directed from control centers which can easily be reprogrammed. \{br}If you destroy all SEAS troops in the vicinity of a control building and then approach it with two heroes you can then reprogram the towers to fire on your enemies.
+Věže poblíž základen jsou řízeny řídicími centry, která\{br}se dají lehce přeprogramovat.\{br}Pokud zničíš všechny jednotky SEAS v blízkosti řídicí budovy a pak se k ní přiblížíš se dvěma hrdiny, můžeš\{br}věž přeprogramovat, aby střílela na tvé nepřátele.
 \{p} \{p}
-Objectives:
+Úkoly:
 
 \{p}
-1) Find the two control buildings for the towers, \{br}eliminate the SEAS troops in the vicinity, and move at \{br}least two heroes to the question mark near the control building!
+1) Najdi dvě řídicí budovy věží, \{br}zneškodni jednotky SEAS poblíž a doveď \{br}alespoň dva hrdiny k otazníku u řídicí budovy!
 \{p} \{p}
-Hints:
+Tipy:
 \{p}
-1) The SEAS cannot recapture the control buildings quickly enough, so you don’t need to worry about the towers.
+1) Jednotky SEAS nedokáží řídicí budovy získat zpět dostatečně rychle, takže si s věžemi nemusíš dělat starosti.
  \{p}
-2) The towers will help you cope with SEAS troops as they come under fire on their way to the combat scene. They are, however, useless when it comes to Babbit’s monstrous Scorpio as it is outside their reach.
+2) Věže ti pomohou vypořádat se s jednotkami SEAS, \{br}které se cestou na bojiště dostanou do jejich palebného pole. Nicméně proti Babbitově monstróznímu Škorpiónovi jsou nepoužitelné, protože se pohybuje mimo jejich dostřel.
 	\{/section}
 
 \{/chapter}

@@ -75,4 +75,4 @@
 "_NT_RscWaring_FOOD";"%1: Nemůžu najít další jídlo!"
 "_NT_RscWaring_STON";"%1: Nemůžu najít další kámen!"
 "_NT_TransportCannotUnboard";"Zde nelze vyložit."
-"_NT_TransportUnboardAtShore";"Jednotku musíš vyložit na pobřeží."
+"_NT_TransportUnboardAtShore";"You have to unboard at a Shore."

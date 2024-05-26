@@ -4,565 +4,566 @@
 \{comment $Author: claudia.krueger $}
 \{comment $Revision: #5 $}
 
-\{chapter -name _economy_buildings Economy buildings}
+\{chapter -name _economy_buildings Ekonomické budovy}
 
-\{helpitem -name _hu_fireplace Town center}
+\{helpitem -name _hu_fireplace Hlavní budova}
 \{img /bunit:hu_fireplace -ralign}
    \{tooltipshort}
 %/class:bldg%
    \{/tooltipshort}
    \{tooltipmedium}
-• Resource collection point
-\\{br}• Increases resource storage
-\\{br}• Produces Workers
-\\{br}• Ushers in new Epoch
-\\{br}• Increases unit limit
+• Sběrné místo pro suroviny
+\\{br}• Zvyšuje skladovací kapacitu
+\\{br}• Vyrábí dělníky
+\\{br}• Začíná epochy
+\\{br}• Zvyšuje limit jednotek
    \{/tooltipmedium}
    \{tooltiplong}
-The Town center is the basic \{ref H_story.seml#_story_hu}Norsemen \{/ref} \{ref H_general.seml#_building} building,\{/ref} and is needed to produce \{ref H_hu_produkte.seml#_hu_worker} Workers\{/ref} and begin new \{ref H_general.seml#_techtree}Epochs. \{/ref} \\{br}
-Once begun, these \{ref H_general.seml#_techtree}Epochs\{/ref} cannot be rescinded. Inventions in progress are lost if the \{ref H_general.seml#_building} building\{/ref} is destroyed.
+Hlavní budova je základní \{ref H_general.seml#_building} budova\{/ref} \{ref H_story.seml#_story_hu}seveřanů. \{/ref} Vyrábí \{ref H_hu_produkte.seml#_hu_worker} dělníky\{/ref} a začíná nové \{ref H_general.seml#_techtree}epochy. \{/ref} \\{br}
+Jakmile je nová \{ref H_general.seml#_techtree}epocha\{/ref} zahájena, nelze ji zrušit. Při zničení \{ref H_general.seml#_building} budovy\{/ref} budou všechny rozpracované vynálezy ztraceny.
    \{/tooltiplong}
 \{/helpitem}
 
-\{helpitem -name _hu_fireplace_1 -redirect _hu_fireplace -nodisplay Town center Epoch 1}
+\{helpitem -name _hu_fireplace_1 -redirect _hu_fireplace -nodisplay Hlavní budova 1. epocha}
 \{img /bunit:hu_fireplace_1 -ralign}
    \{tooltipshort}
 %/class:bldg%
    \{/tooltipshort}
    \{tooltipmedium}
-• Resource collection point
-\\{br}• Increases resource storage
-\\{br}• Produces workers
-\\{br}• Ushers in new Epoch
-\\{br}• Increases unit limit
+• Sběrné místo pro suroviny
+\\{br}• Zvyšuje skladovací kapacitu
+\\{br}• Vyrábí dělníky
+\\{br}• Začíná epochy
+\\{br}• Zvyšuje limit jednotek
    \{/tooltipmedium}
    \{tooltiplong}
-The Town center is the basic \{ref H_story.seml#_story_hu}Norsemen \{/ref} \{ref H_general.seml#_building} building,\{/ref} and is needed to produce \{ref H_hu_produkte.seml#_hu_worker} Workers\{/ref} and begin new \{ref H_general.seml#_techtree}Epochs.\{/ref} \\{br}
-Once begun, these \{ref H_general.seml#_techtree}Epochs\{/ref} cannot be rescinded. Inventions in progress are lost if the \{ref H_general.seml#_building} building\{/ref} is destroyed.
+Hlavní budova je základní \{ref H_general.seml#_building} budova\{/ref} \{ref H_story.seml#_story_hu}seveřanů. \{/ref} Vyrábí \{ref H_hu_produkte.seml#_hu_worker} dělníky\{/ref} a začíná nové \{ref H_general.seml#_techtree}epochy. \{/ref} \\{br}
+Jakmile je nová \{ref H_general.seml#_techtree}epocha\{/ref} zahájena, nelze ji zrušit. Při zničení \{ref H_general.seml#_building} budovy\{/ref} budou všechny rozpracované vynálezy ztraceny.
    \{/tooltiplong}
 \{/helpitem}
 
-\{helpitem -name _hu_fireplace_2 -redirect _hu_fireplace -nodisplay Town center Epoch 2}
+\{helpitem -name _hu_fireplace_2 -redirect _hu_fireplace -nodisplay Hlavní budova 2. epocha}
 \{img /bunit:hu_fireplace_2 -ralign}
    \{tooltipshort}
 %/class:bldg%
    \{/tooltipshort}
    \{tooltipmedium}
-• Resource collection point
-\\{br}• Increases resource storage
-\\{br}• Produces workers
-\\{br}• Ushers in new Epoch
-\\{br}• Increases unit limit
+• Sběrné místo pro suroviny
+\\{br}• Zvyšuje skladovací kapacitu
+\\{br}• Vyrábí dělníky
+\\{br}• Začíná epochy
+\\{br}• Zvyšuje limit jednotek
    \{/tooltipmedium}
    \{tooltiplong}
-The Town center is the basic \{ref H_story.seml#_story_hu}Norsemen \{/ref} \{ref H_general.seml#_building} building,\{/ref} and is needed to produce \{ref H_hu_produkte.seml#_hu_worker} Workers\{/ref} and begin new \{ref H_general.seml#_techtree}Epochs.\{/ref} \\{br}
-Once begun, these \{ref H_general.seml#_techtree}Epochs\{/ref} cannot be rescinded. Inventions in progress are lost if the \{ref H_general.seml#_building} building\{/ref} is destroyed.
+Hlavní budova je základní \{ref H_general.seml#_building} budova\{/ref} \{ref H_story.seml#_story_hu}seveřanů. \{/ref} Vyrábí \{ref H_hu_produkte.seml#_hu_worker} dělníky\{/ref} a začíná nové \{ref H_general.seml#_techtree}epochy. \{/ref} \\{br}
+Jakmile je nová \{ref H_general.seml#_techtree}epocha\{/ref} zahájena, nelze ji zrušit. Při zničení \{ref H_general.seml#_building} budovy\{/ref} budou všechny rozpracované vynálezy ztraceny.
    \{/tooltiplong}
 \{/helpitem}
 
-\{helpitem -name _hu_fireplace_3 -redirect _hu_fireplace -nodisplay Town center Epoch 3}
+\{helpitem -name _hu_fireplace_3 -redirect _hu_fireplace -nodisplay Hlavní budova 3. epocha}
 \{img /bunit:hu_fireplace_3 -ralign}
    \{tooltipshort}
 %/class:bldg%
    \{/tooltipshort}
    \{tooltipmedium}
-• Resource collection point
-\\{br}• Increases resource storage
-\\{br}• Produces workers
-\\{br}• Ushers in new Epoch
-\\{br}• Increases unit limit
+• Sběrné místo pro suroviny
+\\{br}• Zvyšuje skladovací kapacitu
+\\{br}• Vyrábí dělníky
+\\{br}• Začíná epochy
+\\{br}• Zvyšuje limit jednotek
    \{/tooltipmedium}
    \{tooltiplong}
-The Town Center is the basic \{ref H_story.seml#_story_hu}Norsemen \{/ref} \{ref H_general.seml#_building} building,\{/ref} and is needed to produce \{ref H_hu_produkte.seml#_hu_worker} Workers\{/ref} and begin new \{ref H_general.seml#_techtree}Epochs.\{/ref} \\{br}
-Once begun, these \{ref H_general.seml#_techtree}Epochs\{/ref} cannot be rescinded. Inventions in progress are lost if the \{ref H_general.seml#_building} building\{/ref} is destroyed.
+Hlavní budova je základní \{ref H_general.seml#_building} budova\{/ref} \{ref H_story.seml#_story_hu}seveřanů. \{/ref} Vyrábí \{ref H_hu_produkte.seml#_hu_worker} dělníky\{/ref} a začíná nové \{ref H_general.seml#_techtree}epochy. \{/ref} \\{br}
+Jakmile je nová \{ref H_general.seml#_techtree}epocha\{/ref} zahájena, nelze ji zrušit. Při zničení \{ref H_general.seml#_building} budovy\{/ref} budou všechny rozpracované vynálezy ztraceny.
    \{/tooltiplong}
 \{/helpitem}
 
-\{helpitem -name _hu_fireplace_4 -redirect _hu_fireplace -nodisplay Town center Epoch 4}
+\{helpitem -name _hu_fireplace_4 -redirect _hu_fireplace -nodisplay Hlavní budova 4. epocha}
 \{img /bunit:hu_fireplace_4 -ralign}
    \{tooltipshort}
 %/class:bldg%
    \{/tooltipshort}
    \{tooltipmedium}
-• Resource collection point
-\\{br}• Increases resource storage
-\\{br}• Produces workers
-\\{br}• Ushers in new Epoch
-\\{br}• Increases unit limit
+• Sběrné místo pro suroviny
+\\{br}• Zvyšuje skladovací kapacitu
+\\{br}• Vyrábí dělníky
+\\{br}• Začíná epochy
+\\{br}• Zvyšuje limit jednotek
    \{/tooltipmedium}
    \{tooltiplong}
-The Town center is the basic \{ref H_story.seml#_story_hu}Norsemen \{/ref} \{ref H_general.seml#_building} building,\{/ref} and is needed to produce \{ref H_hu_produkte.seml#_hu_worker} Workers\{/ref} and begin new \{ref H_general.seml#_techtree}Epochs.\{/ref} \\{br}
-Once begun, these \{ref H_general.seml#_techtree}Epochs\{/ref} cannot be rescinded. Inventions in progress are lost if the \{ref H_general.seml#_building} building\{/ref} is destroyed.
+Hlavní budova je základní \{ref H_general.seml#_building} budova\{/ref} \{ref H_story.seml#_story_hu}seveřanů. \{/ref} Vyrábí \{ref H_hu_produkte.seml#_hu_worker} dělníky\{/ref} a začíná nové \{ref H_general.seml#_techtree}epochy. \{/ref} \\{br}
+Jakmile je nová \{ref H_general.seml#_techtree}epocha\{/ref} zahájena, nelze ji zrušit. Při zničení \{ref H_general.seml#_building} budovy\{/ref} budou všechny rozpracované vynálezy ztraceny.
    \{/tooltiplong}
 \{/helpitem}
 
-\{helpitem -name _hu_fireplace_5 -redirect _hu_fireplace -nodisplay Town center Epoch 5}
+\{helpitem -name _hu_fireplace_5 -redirect _hu_fireplace -nodisplay Hlavní budova 5. epocha}
 \{img /bunit:hu_fireplace_5 -ralign}
    \{tooltipshort}
 %/class:bldg%
    \{/tooltipshort}
    \{tooltipmedium}
-• Resource collection point
-\\{br}• Increases resource storage
-\\{br}• Produces workers
-\\{br}• Ushers in new Epoch
-\\{br}• Increases unit limit
+• Sběrné místo pro suroviny
+\\{br}• Zvyšuje skladovací kapacitu
+\\{br}• Vyrábí dělníky
+\\{br}• Začíná epochy
+\\{br}• Zvyšuje limit jednotek
    \{/tooltipmedium}
    \{tooltiplong}
-The Town center is the basic \{ref H_story.seml#_story_hu}Norsemen \{/ref} \{ref H_general.seml#_building} building,\{/ref} and is needed to produce \{ref H_hu_produkte.seml#_hu_worker} Workers\{/ref} and begin new \{ref H_general.seml#_techtree}Epochs.\{/ref}\\{br}
-Once begun, these \{ref H_general.seml#_techtree}Epochs\{/ref} cannot be rescinded. Inventions in progress are lost if the \{ref H_general.seml#_building} building\{/ref} is destroyed.
+Hlavní budova je základní \{ref H_general.seml#_building} budova\{/ref} \{ref H_story.seml#_story_hu}seveřanů. \{/ref} Vyrábí \{ref H_hu_produkte.seml#_hu_worker} dělníky\{/ref} a začíná nové \{ref H_general.seml#_techtree}epochy. \{/ref} \\{br}
+Jakmile je nová \{ref H_general.seml#_techtree}epocha\{/ref} zahájena, nelze ji zrušit. Při zničení \{ref H_general.seml#_building} budovy\{/ref} budou všechny rozpracované vynálezy ztraceny.
    \{/tooltiplong}
 \{/helpitem}
 
-\{helpitem -name _hu_lumberjack_cottage Foresters lodge}
+\{helpitem -name _hu_lumberjack_cottage Myslivna}
 \{img /bunit:hu_lumberjack_cottage -ralign}
    \{tooltipshort}
 %/class:bldg%
    \{/tooltipshort}
    \{tooltipmedium}
-• Collection point for wood and food
-\\{br}• Increases storage
-\\{br}• Upgrades transportation
+• Sběrné místo pro dřevo a jídlo
+\\{br}• Zvyšuje skladovací kapacitu
+\\{br}• Vylepšuje přepravu
    \{/tooltipmedium}
    \{tooltiplong}
-The Foresters lodge is a cheap collection point. \\{br}
-It can be quickly constructed and is useful in tapping new \{ref H_world.seml#_wood} wood\{/ref} and \{ref H_ui.seml#_tb_food}food  \{/ref}\{ref H_general.seml#_resources} resources. \{/ref}Upgrades to \{ref H_ui.seml#_tb_food}food  \{/ref} and \{ref H_world.seml#_wood} wood\{/ref} transport capacity enable both to be harvested more efficiently. The Foresters lodge also increases \{ref H_world.seml#_wood} wood\{/ref} und \{ref H_ui.seml#_tb_food}food  \{/ref} storage capacity.
+Myslivna je levné sběrné místo. \\{br}
+Její stavba je rychlá a hodí se při zahájení těžby na novém místě. Vylepšení přepravní kapacity \{ref H_ui.seml#_tb_food}jídla  \{/ref} i \{ref H_world.seml#_wood} dřeva\{/ref} umožní dělníkům pracovat efektivněji. Zvyšuje také skladovací kapacitu \{ref H_world.seml#_wood} dřeva\{/ref} i \{ref H_ui.seml#_tb_food}jídla. \{/ref} 
    \{/tooltiplong}
 \{/helpitem}
 
-\{helpitem -name _hu_stone_quarry Stone quarry}
+\{helpitem -name _hu_stone_quarry Kamenolom}
 \{img /bunit:hu_stone_quarry -ralign}
    \{tooltipshort}
 %/class:bldg%
    \{/tooltipshort}
    \{tooltipmedium}
-• Collection point for stone
-\\{br}• Increases storage
-\\{br}• Upgrades transportation
+• Sběrné místo pro kámen
+\\{br}• Zvyšuje skladovací kapacitu
+\\{br}• Vylepšuje přepravu
    \{/tooltipmedium}
    \{tooltiplong}
-The Stone quarry is a cheap collection point.
-\\{br}It can be quickly constructed and is useful in tapping new \{ref H_world.seml#_stone} stone\{/ref} \{ref H_general.seml#_resources} resources. \{/ref} Upgrades to \{ref H_world.seml#_stone} stone\{/ref} transport capacity enable it to be harvested more efficiently. The Stone quarry also increases \{ref H_world.seml#_stone} stone\{/ref} storage capacity.
+Kamenolom je levné sběrné místo. \\{br}
+Jeho stavba je rychlá a hodí se při zahájení těžby na novém místě. Vylepšení přepravní kapacity \{ref H_world.seml#_stone} kamene\{/ref} umožní dělníkům pracovat efektivněji. Zvyšuje také skladovací kapacitu \{ref H_world.seml#_stone} kamene.\{/ref}
    \{/tooltiplong}
 \{/helpitem}
 
-\{helpitem -name _hu_stone_cottage Cottage}
+\{helpitem -name _hu_stone_cottage Chalupa}
 \{img /bunit:hu_stone_cottage -ralign}
    \{tooltipshort}
 %/class:bldg%
    \{/tooltipshort}
    \{tooltipmedium}
-• Increases unit limit
+• Zvyšuje limit jednotek
    \{/tooltipmedium}
    \{tooltiplong}
-Cottages are needed to increase the \{ref H_ui.seml#_tb_unitlimit} unit limit.\{/ref}
-\\{br}While Town centers also increase the \{ref H_ui.seml#_tb_unitlimit} unit limit,\{/ref} Cottages are cheaper and faster to build. If the \{ref H_ui.seml#_tb_unitlimit} unit limit\{/ref} sinks due to their destruction the surplus \{ref H_general.seml#_units} units\{/ref} still remain, but cannot be replaced once they die.
+Chalupa zvyšuje \{ref H_ui.seml#_tb_unitlimit} limit jednotek.\{/ref} \\{br}
+Přestože hlavní budovy také zvyšují \{ref H_ui.seml#_tb_unitlimit} limit jednotek,\{/ref} stavba chalupy je levnější a rychlejší. Sníží-li se zničením chalupy \{ref H_ui.seml#_tb_unitlimit} limit jednotek\{/ref}, přebytečné \{ref H_general.seml#_units} jednotky\{/ref} hráči zůstanou, ale po zničení je nelze nahradit.
    \{/tooltiplong}
 \{/helpitem}
 
-\{helpitem -name _hu_corn_field Corn field}
+\{helpitem -name _hu_corn_field Obilné pole}
 \{img /bunit:hu_corn_field -ralign}
    \{tooltipshort}
 %/class:bldg%
    \{/tooltipshort}
    \{tooltipmedium}
-• Produces food
-\\{br}• Can employ up to 2 Workers
+• Vyrábí jídlo
+\\{br}• Musí na něm pracovat 1 dělník
+\\{br}• Zaměstná až 2 dělníky
    \{/tooltipmedium}
    \{tooltiplong}
-Corn fields require no upkeep and continually produce \{ref H_ui.seml#_tb_food}food  \{/ref} when actively farmed by at least 1 \{ref H_hu_produkte.seml#_hu_worker} Worker.\{/ref} \\{br}
-They are the most efficient means of producing \{ref H_ui.seml#_tb_food}food.\{/ref} They can be farmed by up to 2 \{ref H_hu_produkte.seml#_hu_worker} Workers.\{/ref}
+Obilné pole nevyžaduje údržbu a nepřetržitě vyrábí \{ref H_ui.seml#_tb_food}jídlo \{/ref}, pracuje-li na něm alespoň 1 \{ref H_hu_produkte.seml#_hu_worker} dělník.\{/ref} \\{br}
+Je to nejefektivnější způsob výroby \{ref H_ui.seml#_tb_food}jídla.\{/ref} Pracovat na nich mohou až 2 \{ref H_hu_produkte.seml#_hu_worker} dělníci.\{/ref}
    \{/tooltiplong}
 \{/helpitem}
 
-\{helpitem -name _hu_warehouse Warehouse}
+\{helpitem -name _hu_warehouse Skladiště}
 \{img /bunit:hu_warehouse -ralign}
    \{tooltipshort}
 %/class:bldg%
    \{/tooltipshort}
    \{tooltipmedium}
-• Resource collection point
-\\{br}• Increases storage
+• Sběrné místo pro suroviny
+\\{br}• Zvyšuje skladovací kapacitu
    \{/tooltipmedium}
    \{tooltiplong}
-Warehouses serve as collection points for a number of different \{ref H_general.seml#_resources} resources\{/ref} at the same time.\\{br}
-All raw materials are stored here. Warehouses increase the storage capacity for all \{ref H_general.seml#_resources} resources.\{/ref} Warehouses can be upgraded to Marketplaces. These allow trade.
+Skladiště slouží jako sběrné místo pro všechny \{ref H_general.seml#_resources} suroviny\{/ref}. \\{br}
+Zvyšuje skladovací kapacitu všech \{ref H_general.seml#_resources} surovin.\{/ref} Lze je vylepšit na tržiště, která umožňují hráči obchodovat.
    \{/tooltiplong}
 \{/helpitem}
 
-\{helpitem -name _hu_marketplace Marketplace}
+\{helpitem -name _hu_marketplace Tržiště}
 \{img /bunit:hu_marketplace -ralign}
    \{tooltipshort}
 %/class:bldg%
    \{/tooltipshort}
    \{tooltipmedium}
-• Resource collection point
-\\{br}• Increases storage
-\\{br}• Produces Trade wagons
+• Sběrné místo pro suroviny
+\\{br}• Zvyšuje skladovací kapacitu
+\\{br}• Vyrábí obchodní vozíky
    \{/tooltipmedium}
    \{tooltiplong}
-Marketplaces can build \{ref H_hu_produkte.seml#_hu_cart} Market wagons.\{/ref} \\{br}
-These allow you to \{ref H_general.seml#_trading}trade  \{/ref}\{ref H_general.seml#_resources} resources\{/ref} with other players. With the exception of negotiating tribute this is the only way to acquire missing \{ref H_general.seml#_resources} resources.\{/ref} The greater the distance between the two Marketplaces involved, the higher the profit. \{ref H_hu_produkte.seml#_hu_cart} Market wagons\{/ref} can only travel from one Marketplace to another. Once such a route has been established they then travel back and forth between the two. If the \{ref H_hu_produkte.seml#_hu_cart} Market wagon\{/ref} is destroyed the \{ref H_general.seml#_resources} resources\{/ref} carried are lost. \{p}
-Players can also \{ref H_general.seml#_trading}trade  \{/ref} \{ref H_general.seml#_skulls} skulls\{/ref} for raw materials. For 100 \{ref H_general.seml#_skulls} skulls\{/ref} players can get 100 \{ref H_ui.seml#_tb_food}food,\{/ref} \{ref H_world.seml#_wood} wood\{/ref} or \{ref H_world.seml#_stone} stone.\{/ref} This only works in one direction - players cannot \{ref H_general.seml#_trading}trade  \{/ref} raw materials for \{ref H_general.seml#_skulls} skulls.\{/ref}
+Tržiště vyrábí \{ref H_hu_produkte.seml#_hu_cart} obchodní vozíky.\{/ref} \\{br}
+Pomocí nich můžeš \{ref H_general.seml#_trading}obchodovat se \{/ref}\{ref H_general.seml#_resources} surovinami\{/ref} s ostatními hráči. Kromě vyjednávacího poplatku je to jediný způsob, jak získat chybějící \{ref H_general.seml#_resources} suroviny.\{/ref} Čím větší je mezi tržišti vzdálenost, tím vyšší je zisk. \{ref H_hu_produkte.seml#_hu_cart} Obchodní vozíky\{/ref} cestují výhradně tam a zpět mezi dvěma tržišti. Dojde-li cestou k jejich zničení, všechny převážené \{ref H_general.seml#_resources} suroviny\{/ref} jsou nenávratně ztraceny. \{p}
+Hráči mohou také \{ref H_general.seml#_trading}prodat  \{/ref} \{ref H_general.seml#_skulls} lebky\{/ref} za suroviny. Za 100 \{ref H_general.seml#_skulls} lebek\{/ref} získají 100 jednotek \{ref H_ui.seml#_tb_food}jídla,\{/ref} \{ref H_world.seml#_wood} dřeva\{/ref} nebo \{ref H_world.seml#_stone} kamene.\{/ref} Obráceně to však nefunguje - nelze \{ref H_general.seml#_trading}prodat  \{/ref} suroviny za \{ref H_general.seml#_skulls} lebky.\{/ref}
    \{/tooltiplong}
 \{/helpitem}
 
-\{helpitem -name _hu_warpgate Warp gate}
+\{helpitem -name _hu_warpgate Prostorová brána}
 \{img /bunit:hu_warpgate -ralign}
    \{tooltipshort}
 %/class:bldg%
    \{/tooltipshort}
    \{tooltipmedium}
-• Win the game by completing and holding the gate until it opens
+• Pokud bránu postavíš a ubráníš ji, než se otevře, vyhraješ hru
    \{/tooltipmedium}
    \{tooltiplong}
-Once the Warp gate has been built it must first be held for a certain period of time before the Gate itself opens. \\{br}
-The player who built the gate first wins when the Gate opens.
-All players are notified both when a Warp gate has been placed and when the countdown starts after completion. This serves as a warning to players that they will lose if they don't do something to stop the player with the Warp gate.
+Jakmile hráč postaví prostorovou bránu, musí ji po určitou dobu bránit, než se otevře. \\{br}
+Vyhrává ten, komu se brána otevře nejdříve.
+Všichni hráči jsou upozorněni na umístění brány a na zahájení odpočtu po jejím dokončení. Tento systém je má varovat, že pokud nějakým způsobem hráče s prostorovou bránou nezastaví, prohrají hru.
    \{/tooltiplong}
 \{/helpitem}
 
-\{chapter -name _combat_buildings Combat buildings}
-\{helpitem -name _hu_arena Barracks}
+\{chapter -name _combat_buildings Vojenské budovy}
+\{helpitem -name _hu_arena Kasárna}
 \{img /bunit:hu_arena -ralign}
    \{tooltipshort}
 %/class:bldg%
    \{/tooltipshort}
    \{tooltipmedium}
-• Produces infantry units
-\\{br}• Epoch upgrades allow production of advanced fighters
+• Vyrábí pěší jednotky
+\\{br}• Vyšší epochy umožňují výrobu lepších válečníků
    \{/tooltipmedium}
    \{tooltiplong}
-Barracks are the basic \{ref H_general.seml#_building} buildings\{/ref} used to produce combat \{ref H_general.seml#_units} units.\{/ref} \\{br}
-They produce cheap but weak \{ref H_general.seml#_units} units.\{/ref} Infantry \{ref H_general.seml#_units} units\{/ref} may be used to man \{ref H_hu_gebaeude.seml#_hu_bunker}Bunkers \{/ref}and Walls or to mount some animal \{ref H_general.seml#_units} units.\{/ref} \{ref H_hu_produkte.seml#_hu_warrior} Warriors\{/ref} are the basic \{ref H_story.seml#_story_hu}Norsemen \{/ref} combat \{ref H_general.seml#_units} unit.\{/ref} While effective against infantry they are not particularly well-suited to fighting \{ref H_general.seml#_animals}animals.\{/ref} In addition to \{ref H_hu_produkte.seml#_hu_warrior} Warriors\{/ref} the Barracks also produce \{ref H_hu_produkte.seml#_hu_spearman} Spearmen\{/ref} specialized in fighting \{ref H_general.seml#_animals}animals\{/ref} and \{ref H_hu_produkte.seml#_hu_archer} Archers\{/ref} skilled in the use of bows.
+Kasárna jsou základní \{ref H_general.seml#_building} budova\{/ref} používaná na výrobu bojových \{ref H_general.seml#_units} jednotek.\{/ref} \\{br}
+Vyrábí levné, ale slabé \{ref H_general.seml#_units} jednotky.\{/ref} Pěchotu lze použít na obsazení \{ref H_hu_gebaeude.seml#_hu_bunker}bunkrů \{/ref}a hradeb nebo pro jízdu na některých zvířecích \{ref H_general.seml#_units} jednotkách.\{/ref} \{ref H_hu_produkte.seml#_hu_warrior} Válečník\{/ref} je základní bojová \{ref H_general.seml#_units} jednotka \{/ref} \{ref H_story.seml#_story_hu}seveřanů.\{/ref} Nejefektivnější je v boji s jinými pěšími jednotkami, nehodí se k boji se \{ref H_general.seml#_animals}zvířaty.\{/ref} Kromě \{ref H_hu_produkte.seml#_hu_warrior} válečníků\{/ref} kasárna vyrábí také \{ref H_hu_produkte.seml#_hu_spearman} kopiníky\{/ref} specializující se na boj se \{ref H_general.seml#_animals}zvířaty\{/ref} a \{ref H_hu_produkte.seml#_hu_archer} lučištníky\{/ref}.
    \{/tooltiplong}
 \{/helpitem}
 
-\{helpitem -name _hu_small_animal_farm Small animal farm}
+\{helpitem -name _hu_small_animal_farm Malá zvířecí farma}
 \{img /bunit:hu_small_animal_farm -ralign}
    \{tooltipshort}
 %/class:bldg%
    \{/tooltipshort}
    \{tooltipmedium}
-• Produces mounted units
-\\{br}• Epoch upgrades allow production of advanced riders
-\\{br}• Can be upgraded to Large animal farm
+• Vyrábí jezdecké jednotky
+\\{br}• Vyšší epochy umožňují vyrábět lepší jezdce
+\\{br}• Lze ji vylepšit na velkou zvířecí farmu 
    \{/tooltipmedium}
    \{tooltiplong}
-The Small animal farm produces animals such as Scout and Wild boars. \\{br}
-These \{ref H_general.seml#_units} units\{/ref} are faster than infantry \{ref H_general.seml#_units} units,\{/ref} but also more expensive. The farm can be globally upgraded to a \{ref H_hu_gebaeude.seml#_hu_huge_farm}Large animal farm \{/ref} capable of producing more powerful animal \{ref H_general.seml#_units} units.\{/ref} Furthermore, a number of different upgrades for the animals can be developed on the farms. The stronger an animal is, the higher its starting level.
+Malá zvířecí farma vyrábí zvířata, například zvědy a divočáky. \\{br}
+Tyto \{ref H_general.seml#_units} jednotky\{/ref} jsou rychlejší než pěší \{ref H_general.seml#_units} jednotky,\{/ref} ale také dražší. Lze ji vylepšit na \{ref H_hu_gebaeude.seml#_hu_huge_farm}velkou zvířecí farmu \{/ref}, která vyrábí silnější zvířecí \{ref H_general.seml#_units} jednotky.\{/ref} Farmy mohou také vynalézt mnohá vylepšení pro zvířata. Čím silnější zvíře je, tím vyšší má počáteční úroveň.
    \{/tooltiplong}
 \{/helpitem}
 
-\{helpitem -name _hu_harbour Harbor}
+\{helpitem -name _hu_harbour Přístav}
 \{img /bunit:hu_harbour -ralign}
    \{tooltipshort}
 %/class:bldg%
    \{/tooltipshort}
    \{tooltipmedium}
-• Produces ships
-\\{br}• Epoch upgrades allow production of advanced ships
-\\{br}• Collection point for fish
-\\{br}• Repairs ships in immediate vicinity
+• Vyrábí lodě
+\\{br}• Vyšší epochy umožňují vyrábět lepší lodě
+\\{br}• Sběrné místo pro ryby
+\\{br}• Automaticky opravuje lodě ve svém okolí
    \{/tooltipmedium}
    \{tooltiplong}
-The Harbor is essential if you want to leave an island or cross open water as only \{ref H_general.seml#_transport} Transport ships \{/ref}may transport \{ref H_general.seml#_units} units\{/ref} over deep water. \\{br}
-Harbors may only be built on flat, sandy beaches. \{ref H_hu_produkte.seml#_hu_fishing_boat}Fishing boats \{/ref} may be used as an alternative to harvesting \{ref H_world.seml#_fruit} fruit bushes\{/ref} and \{ref H_hu_gebaeude.seml#_hu_corn_field}corn fields \{/ref} or hunting. Each new \{ref H_general.seml#_techtree}Epoch\{/ref} allows the construction of stronger warships. Damaged ships close to the Harbor will be repaired automatically, without using \{ref H_general.seml#_resources} resources\{/ref}
+Přístav je nezbytný pro opuštění ostrova nebo překročení otevřené vody, protože pouze \{ref H_general.seml#_transport} přepravní lodě \{/ref}mohou převézt \{ref H_general.seml#_units} jednotky\{/ref} přes hlubokou vodu. \\{br}
+Přístav je možné postavit pouze na rovné písečné pláži. \{ref H_hu_produkte.seml#_hu_fishing_boat}Rybářské lodě \{/ref} lze použít jako náhradu obírání \{ref H_world.seml#_fruit} ovocných keřů\{/ref}, obdělávání \{ref H_hu_gebaeude.seml#_hu_corn_field}obilných polí \{/ref} nebo lovu. Každá nová \{ref H_general.seml#_techtree}epocha\{/ref} umožní vyrábět silnější válečné lodě. Poškozené lodě ve svém okolí přístav opraví automaticky zdarma.
    \{/tooltiplong}
 \{/helpitem}
 
-\{helpitem -name _hu_weapons_smith Weapon smith}
+\{helpitem -name _hu_weapons_smith Zbrojíř}
 \{img /bunit:hu_weapons_smith -ralign}
    \{tooltipshort}
 %/class:bldg%
    \{/tooltipshort}
    \{tooltipmedium}
-• Produces special units
-\\{br}• Invents weapon upgrades
+• Vyrábí speciální jednotky
+\\{br}• Vynalézá vylepšení zbraní
    \{/tooltipmedium}
    \{tooltiplong}
-The Weapon smith invents all upgrades having to do with weapon damage and defense. \\{br}
-The \{ref H_general.seml#_units} units\{/ref} developed here are specialized infantry \{ref H_general.seml#_units} units,\{/ref} most of which are only available in connection with a particular \{ref H_general.seml#_heros} hero.\{/ref} Once an invention has been completed it cannot be lost, although inventions in progress are lost if the \{ref H_general.seml#_building} building\{/ref} is destroyed. Some inventions first require an upgrade to \{ref H_hu_gebaeude.seml#_hu_weapons_smith_anvil}Improved weapon smith. \{/ref}
+Zbrojíř vynalézá všechna útočná i obranná vylepšení zbraní. \\{br}
+\{ref H_general.seml#_units} Jednotky\{/ref}, které vyrábí, jsou specializované pěší \{ref H_general.seml#_units} jednotky,\{/ref} z nichž je většina dostupná pouze ve spojení s určitým \{ref H_general.seml#_heros} hrdinou.\{/ref} Po dokončení zůstávají vynálezy hráči nastálo, avšak je-li \{ref H_general.seml#_building} budova\{/ref} zbrojíře zničena, všechny právě rozpracované vynálezy jsou ztraceny. Některé vynálezy vyžadují nejdříve vylepšení na \{ref H_hu_gebaeude.seml#_hu_weapons_smith_anvil}vylepšeného zbrojíře. \{/ref}
    \{/tooltiplong}
 \{/helpitem}
 
-\{helpitem -name _hu_machine_maker Machine shop}
+\{helpitem -name _hu_machine_maker Výrobna strojů}
 \{img /bunit:hu_machine_maker -ralign}
    \{tooltipshort}
 %/class:bldg%
    \{/tooltipshort}
    \{tooltipmedium}
-• Produces machines
-\\{br}• Epoch upgrades allow production of advanced machines
+• Vyrábí stroje
+\\{br}• Vyšší epochy umožňují vyrábět lepší stroje
    \{/tooltipmedium}
    \{tooltiplong}
-\{ref H_hu_produkte.seml#_hu_steam_tank}Battle tanks \{/ref} and \{ref H_hu_produkte.seml#_hu_steam_ram} Battle rams\{/ref} may be produced here. \\{br}
-These vehicles are powerful and well armored but also extremely specialized. For example, the \{ref H_hu_produkte.seml#_hu_steam_ram} Battle ram\{/ref} is only really effective against \{ref H_general.seml#_building} buildings.\{/ref} This is also where vehicle upgrades are developed.
+Výrobna strojů vyrábí například \{ref H_hu_produkte.seml#_hu_steam_tank}bitevní tanky \{/ref} a \{ref H_hu_produkte.seml#_hu_steam_ram} beranidla\{/ref}. \\{br}
+Tato vozidla jsou silná a dobře obrněná, ale také určená pro speciální účely. \{ref H_hu_produkte.seml#_hu_steam_ram} Beranidlo\{/ref} je například účinné pouze proti \{ref H_general.seml#_building} budovám.\{/ref} Výrobna strojů vynalézá také vylepšení strojů.
    \{/tooltiplong}
 \{/helpitem}
 
-\{helpitem -name _hu_temple Temple}
+\{helpitem -name _hu_temple Chrám}
 \{img /bunit:hu_temple -ralign}
    \{tooltipshort}
 %/class:bldg%
    \{/tooltipshort}
    \{tooltipmedium}
-• Heals units in immediate vicinity
-\\{br}• Produces Druids
-\\{br}• Develops special unit upgrades
+• Léčí jednotky ve svém okolí
+\\{br}• Vyrábí druidy
+\\{br}• Vynalézá vylepšení pro speciální jednotky
    \{/tooltipmedium}
    \{tooltiplong}
-The Temple heals all player \{ref H_general.seml#_units} units\{/ref} in its immediate vicinity. \\{br}
-Opposing \{ref H_general.seml#_units} units\{/ref} are not healed. The Temple is also where mystical abilities are developed for special \{ref H_general.seml#_units} units.\{/ref} This is where \{ref H_hu_produkte.seml#_hu_druid} Druids\{/ref} are trained. The Temple cannot heal ships.
+Chrám léčí všechny hráčovy \{ref H_general.seml#_units} jednotky\{/ref} ve svém okolí. \\{br}
+\{ref H_general.seml#_units} Jednotky\{/ref} nepřátel neléčí. Vynalézá tajemné schopnosti pro speciální \{ref H_general.seml#_units} jednotky.\{/ref} Vyrábí také \{ref H_hu_produkte.seml#_hu_druid} druidy.\{/ref} Neumí opravit lodě.
    \{/tooltiplong}
 \{/helpitem}
 
-\{helpitem -name _hu_tavern Tavern}
+\{helpitem -name _hu_tavern Taverna}
 \{img /bunit:hu_tavern -ralign}
    \{tooltipshort}
 %/class:bldg%
    \{/tooltipshort}
    \{tooltipmedium}
-• Hires heroes
+• Slouží k najímání hrdinů
    \{/tooltipmedium}
    \{tooltiplong}
-The Tavern is the place to go to hire \{ref H_general.seml#_heros} heroes.\{/ref} \\{br}
-If a \{ref H_general.seml#_heros} hero\{/ref} has died, they can once again be found and hired in the Tavern. All hired \{ref H_general.seml#_heros} heroes\{/ref} start off at level 1 and have to be raised from there using \{ref H_general.seml#_skulls} skulls.\{/ref} \{ref H_general.seml#_heros} Heroes\{/ref} can only appear individually for each tribe.
+Taverna slouží k najímaní \{ref H_general.seml#_heros} hrdinů.\{/ref} \\{br}
+Když \{ref H_general.seml#_heros} hrdina\{/ref} zemře, najmeš si ho znovu v taverně. Všichni najatí \{ref H_general.seml#_heros} hrdinové\{/ref} začínají opět na úrovni 1. Úroveň jim můžeš zvýšit pomocí \{ref H_general.seml#_skulls} lebek.\{/ref} V klanu může být každý \{ref H_general.seml#_heros} hrdina\{/ref} jen jednou.
    \{/tooltiplong}
 \{/helpitem}
 
-\{helpitem -name _hu_big_animal_farm Large animal farm}
+\{helpitem -name _hu_big_animal_farm Velká zvířecí farma}
 \{img /bunit:hu_big_animal_farm -ralign}
    \{tooltipshort}
 %/class:bldg%
    \{/tooltipshort}
    \{tooltipmedium}
-• Produces riders
-\\{br}• Epoch upgrades allow production of advanced riders
+• Vyrábí jezdecké jednotky
+\\{br}• Vyšší epochy umožňují vyrábět lepší jezdce
    \{/tooltipmedium}
    \{tooltiplong}
-The Large animal farm produces mounted \{ref H_general.seml#_units} units.\{/ref}\\{br}
-Heavy mounted \{ref H_general.seml#_units} units\{/ref} are extremely specialized, e.g. the \{ref H_hu_produkte.seml#_hu_mammoth_logcannon}Log cannon \{/ref} is only really effective against \{ref H_general.seml#_building} buildings.\{/ref} Many mounted \{ref H_general.seml#_units} units\{/ref} can also be used as \{ref H_general.seml#_transport}transportation  \{/ref}for infantry \{ref H_general.seml#_units} units.\{/ref} All of the \{ref H_general.seml#_units} units\{/ref} usually produced in \{ref H_hu_gebaeude.seml#_hu_small_farm} Small animal farms\{/ref} may also be produced here.
+Velká zvířecí farma vyrábí jezdecké \{ref H_general.seml#_units} jednotky.\{/ref}\\{br}
+Tyto \{ref H_general.seml#_units} jednotky\{/ref} jsou určeny pro speciální účely, například \{ref H_hu_produkte.seml#_hu_mammoth_logcannon}mamut s dělem \{/ref} je účinný pouze proti \{ref H_general.seml#_building} budovám.\{/ref} Mnoho jezdeckých \{ref H_general.seml#_units} jednotek\{/ref} lze také použít pro \{ref H_general.seml#_transport}přepravu  \{/ref}pěších \{ref H_general.seml#_units} jednotek.\{/ref} Všechny \{ref H_general.seml#_units} jednotky\{/ref} vyráběné \{ref H_hu_gebaeude.seml#_hu_small_farm} malou zvířecí farmou\{/ref} vyrábí i velká zvířecí farma.
    \{/tooltiplong}
 \{/helpitem}
 
-\{helpitem -name _hu_weapons_smith_anvil Improved weapon smith}
+\{helpitem -name _hu_weapons_smith_anvil Vylepšený zbrojíř}
 \{img /bunit:hu_weapons_smith_anvil -ralign}
    \{tooltipshort}
 %/class:bldg%
    \{/tooltipshort}
    \{tooltipmedium}
-• Produces special units
-\\{br}• Invents weapon upgrades
+• Vyrábí speciální jednotky
+\\{br}• Vynalézá vylepšení zbraní
    \{/tooltipmedium}
    \{tooltiplong}
-The Weapon smith invents all upgrades having to do with weapon damage and defense. \\{br}
-The \{ref H_general.seml#_units} units\{/ref} developed here are specialized infantry \{ref H_general.seml#_units} units,\{/ref} most of which are only available in connection with a particular \{ref H_general.seml#_heros} hero.\{/ref} Once an invention has been completed it cannot be lost, although inventions in progress are lost if the \{ref H_general.seml#_building} building\{/ref} is destroyed. The Improved weapon smith allows all remaining weapon upgrades to be made.
+Zbrojíř vynalézá všechna útočná i obranná vylepšení zbraní. \\{br}
+Jednotky, které vyrábí, jsou specializované pěší \{ref H_general.seml#_units} jednotky,\{/ref} z nichž je většina dostupná pouze ve spojení s určitým \{ref H_general.seml#_heros} hrdinou.\{/ref} Po dokončení zůstávají vynálezy hráči nastálo, avšak je-li \{ref H_general.seml#_building} budova\{/ref} zbrojíře zničena, všechny právě rozpracované vynálezy jsou ztraceny. Vylepšený zbrojíř dokáže vynalézt všechny zbývající vylepšení.
    \{/tooltiplong}
 \{/helpitem}
 
-\{chapter -name _defense_buildings Defensive buildings}
-\{helpitem -name _hu_bunker Bunker}
+\{chapter -name _defense_buildings Obranné budovy}
+\{helpitem -name _hu_bunker Bunkr}
 \{img /bunit:hu_bunker -ralign}
    \{tooltipshort}
 %/class:bldg%
    \{/tooltipshort}
    \{tooltipmedium}
-• Protects up to 4 units
-\\{br}• Fires arrows when manned
-\\{br}• Can be integrated into walls
+• Ochrání až 4 jednotky
+\\{br}• Nachází-li se v něm jednotky, střílí šípy
+\\{br}• Lze ho začlenit do hradby
    \{/tooltipmedium}
    \{tooltiplong}
-Bunkers function very much as Towers do except that they don't fire independently but have to be manned by infantry \{ref H_general.seml#_units} units.\{/ref} \\{br}
-Placing additional troops in the Bunker does not increase the damage inflicted until the upgrade to "Improved bunker" has been made. Once the upgrade has been completed additional troops increase the amount of damage inflicted. Any \{ref H_general.seml#_units} unit\{/ref} can fire from a Bunker, even those not equipped with ranged weapons such as \{ref H_hu_produkte.seml#_hu_warrior} Warriors.\{/ref} When a Bunker is destroyed the \{ref H_general.seml#_units} units\{/ref} manning it appear where it used to be and are then vulnerable to attack.
+Bunkry fungují stejně jako věže s tou výjimkou, že nestřílí nezávisle, ale musí je obsluhovat pěší \{ref H_general.seml#_units} jednotky.\{/ref} \\{br}
+Přidání dalších jednotek do bunkru nezvýší velikost způsobeného poškození, toho dosáhne pouze vylepšení na vylepšený bunkr. Jakmile je vylepšení hotovo, další jednotky zvýší velikost poškození, které bunkr způsobí. Z bunkru může střílet každá \{ref H_general.seml#_units} jednotka\{/ref}, dokonce i ta, která je určena pro boj zblízka, například \{ref H_hu_produkte.seml#_hu_warrior} válečník.\{/ref} Po zničení bunkru se \{ref H_general.seml#_units} jednotky\{/ref}, které ho obsluhovaly, objeví na jeho místě a jsou opět zranitelné nepřátelským útokem.
    \{/tooltiplong}
 \{/helpitem}
 
-\{helpitem -name _hu_bunker_2 Improved bunker}
+\{helpitem -name _hu_bunker_2 Vylepšený bunkr}
 \{img /bunit:hu_bunker_2 -ralign}
    \{tooltipshort}
 %/class:bldg%
    \{/tooltipshort}
    \{tooltipmedium}
-• Protects up to 4 units
-\\{br}• Fires arrows when manned
-\\{br}• Can be integrated into walls
+• Ochrání až 4 jednotky
+\\{br}• Nachází-li se v něm jednotky, střílí šípy
+\\{br}• Lze ho začlenit do hradby
    \{/tooltipmedium}
    \{tooltiplong}
-Bunkers function very much as Towers do except that they don't fire independently but have to be manned by infantry \{ref H_general.seml#_units} units.\{/ref} \\{br}
-Placing additional troops in the Bunker does not increase the damage inflicted until the upgrade to "Improved bunker" has been made. Once the upgrade has been completed additional troops increase the amount of damage inflicted. The Improved bunker protects the troops even better. The weapon range is also increased. Any \{ref H_general.seml#_units} unit\{/ref} can fire from a Bunker, even those not equipped with ranged weapons such as \{ref H_hu_produkte.seml#_hu_warrior} Warriors.\{/ref} When a Bunker is destroyed the \{ref H_general.seml#_units} units\{/ref} manning it appear where it used to be and are then vulnerable to attack.
+Bunkry fungují stejně jako věže s tou výjimkou, že nestřílí nezávisle, ale musí je obsluhovat pěší \{ref H_general.seml#_units} jednotky.\{/ref} \\{br}
+Přidání dalších jednotek do bunkru nezvýší velikost způsobeného poškození, toho dosáhne pouze vylepšení na vylepšený bunkr. Jakmile je vylepšení hotovo, další jednotky zvýší velikost poškození, které bunkr způsobí. Vylepšený bunkr chrání jednotky ještě lépe. Má také větší dostřel. Z bunkru může střílet každá \{ref H_general.seml#_units} jednotka\{/ref}, dokonce i ta, která je určena pro boj zblízka, například \{ref H_hu_produkte.seml#_hu_warrior} válečník.\{/ref} Po zničení bunkru se \{ref H_general.seml#_units} jednotky\{/ref}, které ho obsluhovaly, objeví na jeho místě a jsou opět zranitelné nepřátelským útokem.
    \{/tooltiplong}
 \{/helpitem}
 
-\{helpitem -name _hu_palisade Palisade}
+\{helpitem -name _hu_palisade Palisáda}
 \{img /bunit:hu_palisade -ralign}
    \{tooltipshort}
 %/class:bldg%
    \{/tooltipshort}
    \{tooltipmedium}
-• Non-mountable wall
-\\{br}• Towers may be integrated
+• Nelze na ni umístit jednotky
+\\{br}• Lze do ní začlenit věže
    \{/tooltipmedium}
    \{tooltiplong}
-The Palisade is a non-mountable fortification. \\{br}
-This means \{ref H_general.seml#_units} units\{/ref} cannot man Palisades during an attack. It can be globally upgraded to a mountable wall. A straight, even stretch of wall three wall sections long is needed to insert a gate. Palisades keep enemies and \{ref H_animals.seml}wild animals \{/ref} out. Towers can be integrated into them. Towers and Walls remain separate \{ref H_general.seml#_building} buildings,\{/ref} however, which can be attacked and destroyed independently. \{ref H_hu_gebaeude.seml#_hu_bunker}Bunkers \{/ref} may also be integrated into walls and Palisades.
+Palisáda patří mezi neobsaditelné obranné konstrukce. \\{br}
+To znamená, že \{ref H_general.seml#_units} jednotky\{/ref} ji nemohou během útoku obsadit. Lze ji vylepšit na hradbu s ochozem. Brány lze umístit pouze do přímých úseků. Palisáda udržuje nepřátele i \{ref H_animals.seml}divoká zvířata \{/ref} mimo základnu. Lze do ní začlenit věže. Palisáda i věže však nadále zůstávají oddělenými \{ref H_general.seml#_building} budovami,\{/ref} které lze napadnout a zničit nezávisle na sobě. \{ref H_hu_gebaeude.seml#_hu_bunker}Bunkry \{/ref} lze do hradeb i palisád také začlenit.
    \{/tooltiplong}
 \{/helpitem}
 
-\{helpitem -name _hu_palisade_gate Gate}
+\{helpitem -name _hu_palisade_gate Brána}
 \{img /bunit:hu_palisade_gate -ralign}
    \{tooltipshort}
 %/class:bldg%
    \{/tooltipshort}
    \{tooltipmedium}
-• Opens for allied units
-\\{br}• Can be closed completely
-\\{br}• Can only be inserted into existing wall
+• Otevírá se spojeneckým jednotkám
+\\{br}• Lze ji úplně zavřít
+\\{br}• Musí být vestavěna do již stojící hradby
    \{/tooltipmedium}
    \{tooltiplong}
-Gates open for both the player's own and allied \{ref H_general.seml#_units} units\{/ref} automatically while remaining closed to all others. \\{br}
-Gates can also be closed completely, even for own \{ref H_general.seml#_units} units.\{/ref} They can only be placed in an existing straight, even section of wall three fields in width. An icon will indicate possible gate locations during wall construction and whenever the "Gate" icon has been selected. Gates also function as stairways to the top of the walls.
+Brány se otevírají hráčovým i spojeneckým \{ref H_general.seml#_units} jednotkám\{/ref} automaticky. Pro všechny ostatní zůstanou zavřené. \\{br}
+Brány lze také úplně zavřít i pro vlastní \{ref H_general.seml#_units} jednotky.\{/ref} Je možné je umístit pouze do již stojící rovné sekce hradby o šířce tří polí. Během stavby hradby ikona ukáže možné umístění bran i místa, kam byly brány vybrány. Brány slouží také k přístupu na ochoz hradby.
    \{/tooltiplong}
 \{/helpitem}
 
-\{helpitem -name _hu_small_tower Small tower}
+\{helpitem -name _hu_small_tower Malá věž}
 \{img /bunit:hu_small_tower -ralign}
    \{tooltipshort}
 %/class:bldg%
    \{/tooltipshort}
    \{tooltipmedium}
-• Attacks enemies on sight
-\\{br}• Can stand alone or be part of a wall
-\\{br}• Serves as stairway to mountable walls
+• Útočí na nepřátele, jakmile je spatří
+\\{br}• Může stát samostatně nebo jako součást hradby
+\\{br}• Slouží k přístupu na hradby s ochozem
    \{/tooltipmedium}
    \{tooltiplong}
-Towers fire automatically and do not need to be manned. \\{br}
-They can be placed on the wall grid, allowing them to be integrated into a wall at a later point in time. Towers and gates allow defending infantry \{ref H_general.seml#_units} units\{/ref} to mount walls, but allow both attackers and defenders to descend.
+Věže útočí automaticky a nepotřebují žádnou obsluhu. \\{br}
+Lze je postavit samostatně a později je začlenit do hradby. Věže a brány slouží pěším \{ref H_general.seml#_units} jednotkám\{/ref} obránce k přístupu na hradby, sestup však umožní i nepříteli.
    \{/tooltiplong}
 \{/helpitem}
 
-\{helpitem -name _hu_small_wall Small wall}
+\{helpitem -name _hu_small_wall Hradba}
 \{img /bunit:hu_small_wall -ralign}
    \{tooltipshort}
  %/class:bldg%
    \{/tooltipshort}
    \{tooltipmedium}
-• Small mountable wall
-\\{br}• Towers may be integrated
-\\{br}• Units mounted on it receive defense bonus
+• Nízká hradba s ochozem
+\\{br}• Lze do ní začlenit věže
+\\{br}• Jednotky na hradbě získávají obranný bonus
    \{/tooltipmedium}
    \{tooltiplong}
-Palisades can be globally upgraded to small walls which can be manned by infantry \{ref H_general.seml#_units} units.\{/ref} \\{br}
-\{ref H_general.seml#_units} Units\{/ref} manning walls receive a defense bonus. Small walls can be globally upgraded to reinforced walls. Towers and gates provide access to the walls. Ranged \{ref H_general.seml#_units} units\{/ref} such as \{ref H_hu_produkte.seml#_hu_archer} Archers\{/ref} and \{ref H_hu_produkte.seml#_hu_spearman} Spearmen\{/ref} can fire from the walls.
+Palisádu lze vylepšit na hradbu, na kterou může hráč umístit pěší \{ref H_general.seml#_units} jednotky.\{/ref} \\{br}
+\{ref H_general.seml#_units} Jednotky\{/ref} na hradbě získávají obranný bonus. Hradbu lze vylepšit na zesílenou hradbu. Věže a brány slouží k přístupu na ochoz. Střelecké \{ref H_general.seml#_units} jednotky\{/ref}, například \{ref H_hu_produkte.seml#_hu_archer} lučištníci\{/ref} a \{ref H_hu_produkte.seml#_hu_spearman} kopiníci\{/ref} mohou z hradeb střílet a vrhat kopí.
    \{/tooltiplong}
 \{/helpitem}
 
-\{helpitem -name _hu_small_wall_gate Gate}
+\{helpitem -name _hu_small_wall_gate Brána}
 \{img /bunit:hu_small_wall_gate -ralign}
    \{tooltipshort}
 %/class:bldg%
    \{/tooltipshort}
    \{tooltipmedium}
-• Opens for allied units
-\\{br}• Can be closed completely
-\\{br}• Can only be inserted into existing wall
+• Otevírá se spojeneckým jednotkám
+\\{br}• Lze ji úplně zavřít
+\\{br}• Musí být vestavěna do již stojící hradby
    \{/tooltipmedium}
    \{tooltiplong}
-Gates open for both the player's own and allied units automatically while remaining closed to all others. \\{br}
-Gates can also be closed completely, even for own \{ref H_general.seml#_units} units.\{/ref} They can only be placed in an existing straight, even section of wall three fields in width. An icon will indicate possible gate locations during wall construction and whenever the "Gate" icon has been selected. Gates also function as stairways to the top of the walls.
+Brány se otevírají hráčovým i spojeneckým \{ref H_general.seml#_units} jednotkám\{/ref} automaticky. Pro všechny ostatní zůstanou zavřené. \\{br}
+Brány lze také úplně zavřít i pro vlastní \{ref H_general.seml#_units} jednotky.\{/ref} Je možné je umístit pouze do již stojící rovné sekce hradby o šířce tří polí. Během stavby hradby ikona ukáže možné umístění bran i místa, kam byly brány vybrány. Brány slouží také k přístupu na ochoz hradby.
    \{/tooltiplong}
 \{/helpitem}
 
-\{helpitem -name _hu_large_tower Large tower}
+\{helpitem -name _hu_large_tower Velká věž}
 \{img /bunit:hu_large_tower -ralign}
    \{tooltipshort}
 %/class:bldg%
    \{/tooltipshort}
    \{tooltipmedium}
-• Attacks enemies on sight
-\\{br}• Can stand alone or be part of a wall
-\\{br}• Serves as stairway to mountable walls
+• Útočí na nepřátele, jakmile je spatří
+\\{br}• Může stát samostatně nebo jako součást hradby
+\\{br}• Slouží k přístupu na hradby s ochozem
    \{/tooltipmedium}
    \{tooltiplong}
-This is the \{ref H_story.seml#_story_hu}Norsemen's \{/ref} largest tower. \\{br}
-However, a global upgrade to a \{ref H_hu_gebaeude.seml#_hu_ballista_tower}Ballista tower \{/ref} can increase the towers' range and damage even more. Towers fire automatically and do not need to be manned by infantrymen. They can be placed on the wall grid, allowing them to be integrated into a wall at a later point in time. Towers and gates allow defending infantry \{ref H_general.seml#_units} units\{/ref} to mount walls.
+Je to největší věž \{ref H_story.seml#_story_hu}seveřanů \{/ref}. \\{br}
+Vylepšení na \{ref H_hu_gebaeude.seml#_hu_ballista_tower}věž s balistou \{/ref} ještě zvýší její dostřel i poškození, které způsobí. Věže útočí automaticky a nepotřebují žádnou obsluhu. Lze je postavit samostatně a později je začlenit do hradby. Věže a brány slouží pěším \{ref H_general.seml#_units} jednotkám\{/ref} obránce k přístupu na hradby.
    \{/tooltiplong}
 \{/helpitem}
 
-\{helpitem -name _hu_re_enforced_wall Reinforced wall}
+\{helpitem -name _hu_re_enforced_wall Zesílená hradba}
 \{img /bunit:hu_re_enforced_wall -ralign}
    \{tooltipshort}
 %/class:bldg%
    \{/tooltipshort}
    \{tooltipmedium}
-• Reinforced mountable wall
-\\{br}• Towers may be integrated
-\\{br}• Units stationed on it receive defense bonus
+• Zesílená hradba s ochozem
+\\{br}• Lze do ní začlenit věže
+\\{br}• Jednotky na hradbě získávají obranný bonus
    \{/tooltipmedium}
    \{tooltiplong}
-The strongest wall the \{ref H_story.seml#_story_hu}Norsemen \{/ref} can build. \\{br}
-If the \{ref H_heros.seml#_mayor}Governor  \{/ref}has reached level 4, the reinforced wall can be equipped with \{ref H_ui.seml#_hu_falling_stones_upgrade} Falling stones.\{/ref} These cause damage to attacking close combat \{ref H_general.seml#_units} units.\{/ref} Infantry \{ref H_general.seml#_units} units\{/ref} can be stationed on reinforced walls. \{ref H_general.seml#_units} Units\{/ref} manning walls receive a defense bonus. Towers and gates provide access to the walls.
+Nejsilnější hradba jakou dokáží \{ref H_story.seml#_story_hu}seveřané \{/ref} postavit. \\{br}
+Až se \{ref H_heros.seml#_mayor}guvernér  \{/ref}has dostane na úroveň 4, lze hradbu vylepšit o \{ref H_ui.seml#_hu_falling_stones_upgrade} kameny.\{/ref} Ty způsobí poškození zblízka útočícím bojovým \{ref H_general.seml#_units} jednotkám.\{/ref} Na zesílenou hradbu lze umístit pěší \{ref H_general.seml#_units} jednotky\{/ref}, které získají obranný bonus. Věže a brány slouží k přístupu na hradby.
    \{/tooltiplong}
 \{/helpitem}
 
-\{helpitem -name _hu_re_enforced_wall_gate Gate}
+\{helpitem -name _hu_re_enforced_wall_gate Brána}
 \{img /bunit:hu_re_enforced_wall_gate -ralign}
    \{tooltipshort}
 %/class:bldg%
    \{/tooltipshort}
    \{tooltipmedium}
-• Opens for allied units
-\\{br}• Can be closed completely
-\\{br}• Can only be inserted into existing wall
+• Otevírá se spojeneckým jednotkám
+\\{br}• Lze ji úplně zavřít
+\\{br}• Musí být vestavěna do již stojící hradby
    \{/tooltipmedium}
    \{tooltiplong}
-Gates open for both the player's own and allied \{ref H_general.seml#_units} units\{/ref} automatically while remaining closed to all others. \\{br}
-Gates can also be closed completely, even for own \{ref H_general.seml#_units} units.\{/ref} They can only be placed in an existing straight, even section of wall three fields in width. An icon will indicate possible gate locations during wall construction and whenever the "Gate" icon has been selected. Gates also function as stairways to the top of the walls.
+Brány se otevírají hráčovým i spojeneckým \{ref H_general.seml#_units} jednotkám\{/ref} automaticky. Pro všechny ostatní zůstanou zavřené. \\{br}
+Brány lze také úplně zavřít i pro vlastní \{ref H_general.seml#_units} jednotky.\{/ref} Je možné je umístit pouze do již stojící rovné sekce hradby o šířce tří polí. Během stavby hradby ikona ukáže možné umístění bran i místa, kam byly brány vybrány. Brány slouží také k přístupu na ochoz hradby.
    \{/tooltiplong}
 \{/helpitem}
 
-\{helpitem -name _hu_ballista_tower Ballista tower}
+\{helpitem -name _hu_ballista_tower Věž s balistou}
 \{img /bunit:hu_ballista_tower -ralign}
    \{tooltipshort}
 %/class:bldg%
    \{/tooltipshort}
    \{tooltipmedium}
-• Attacks enemies on sight
-\\{br}• Can stand alone or be part of a wall
-\\{br}• Serves as stairway to mountable walls
+• Útočí na nepřátele, jakmile je spatří
+\\{br}• Může stát samostatně nebo jako součást hradby
+\\{br}• Slouží k přístupu na hradby s ochozem
    \{/tooltipmedium}
    \{tooltiplong}
-The strongest tower the\{ref H_story.seml#_story_hu}Norsemen \{/ref} can build, the Ballista tower features an extremely long range and deals out a lot of damage.
+Věž s balistou je nejsilnější věž, jakou dokáží \{ref H_story.seml#_story_hu}seveřané \{/ref} postavit, má mimořádně velký dostřel a způsobí ohromující poškození.
    \{/tooltiplong}
 \{/helpitem}
 
-\{helpitem -name _hu_kennel Eusmilus kennel}
+\{helpitem -name _hu_kennel Doupě šavlozubých tygrů }
 \{img /bunit:hu_kennel -ralign}
    \{tooltipshort}
 %/class:bldg%
    \{/tooltipshort}
    \{tooltipmedium}
-• Breeds Eusmilus
-\\{br}• Eusmilus attack on sight
-\\{br}• Can only be built if Warden has reached level 4
+• Rodí šavlozubé tygry
+\\{br}• Tygři útočí, jakmile spatří kořist
+\\{br}• Lze ho stavět, až se Warden dostane na úroveň 4
    \{/tooltipmedium}
    \{tooltiplong}
-The Kennel is home to a number of small predators who attack all enemies coming within range. \\{br}
-Any \{ref H_animals.seml#_eusmilus} Eusmilus\{/ref} killed are automatically replaced. In the beginning there are just 2 \{ref H_animals.seml#_eusmilus} Eusmilus',\{/ref} which can later be increased to a total of 4. In case of an attack the \{ref H_animals.seml#_eusmilus} animals\{/ref} will chase and attack any enemies found within their range. If their prey leaves the boundaries of their territory they will return to the Kennel even if enemies are still within sight.
+Doupě je domov mnoha malých dravců, kteří útočí na všechny nepřátele ve svém teritoriu. \\{br}
+Každé zabité zvíře automaticky nahradí nové. Na začátku jsou \{ref H_animals.seml#_eusmilus} šavlozubí tygři\{/ref} pouze 2. Tento počet lze později zvýšit až na 4. Pokud jde o útok, \{ref H_animals.seml#_eusmilus} tygři\{/ref} budou pronásledovat a zaútočí na každého nepřítele, kterého zahlédnou. Překročí-li kořist hranice jejich teritoria, vrátí se zpět k hnízdu, i když nepřítele stále vidí.
    \{/tooltiplong}
 \{/helpitem}
 
-\{helpitem -name _hu_magic_cauldron Magic cauldron}
+\{helpitem -name _hu_magic_cauldron Magický kotel}
 \{img /bunit:hu_magic_cauldron -ralign}
    \{tooltipshort}
 
    \{/tooltipshort}
    \{tooltipmedium}
-• Increases fighting skills of units in vicinity
-\\{br}• Can only be built if Arch druid has reached level 4
+• Zlepšuje bojové schopnosti jednotek ve svém okolí
+\\{br}• Lze ho stavět, až se arcidruid dostane na úroveň 4
    \{/tooltipmedium}
    \{tooltiplong}
-The \{ref H_story.seml#_story_hu}Norsemen's \{/ref} Magic cauldron improves the fighting abilities of \{ref H_story.seml#_story_hu}Norsemen \{/ref} \{ref H_hu_produkte.seml#_hu_warrior} Warriors\{/ref} within its range by increasing the damage they do.
-Enemies can attack the Cauldron just as they would any other \{ref H_general.seml#_building} building.\{/ref} The combat bonus is lost if the Cauldron is destroyed.
+Magický kotel \{ref H_story.seml#_story_hu}seveřanů \{/ref} zlepšuje bojové schopnosti \{ref H_hu_produkte.seml#_hu_warrior} válečníků\{/ref} ve svém dosahu zvýšením poškození, které způsobí.
+Nepřátelé na něj mohou zaútočit stejně jako na kteroukoli jinou \{ref H_general.seml#_building} budovu.\{/ref} Pokud se jim ho podaří zničit, jednotky útočný bonus ztrácí.
    \{/tooltiplong}
 \{/helpitem}

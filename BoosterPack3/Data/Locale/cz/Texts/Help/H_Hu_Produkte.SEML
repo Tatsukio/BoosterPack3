@@ -4,103 +4,113 @@
 \{comment $Author: claudia.krueger $}
 \{comment $Revision: #4 $}
 
-\{chapter -name _infantry Infantry}
 
-\{helpitem -name _hu_worker Worker}
+\{chapter -name _infantry Pěší jednotky}
+
+\{helpitem -name _hu_worker Dělník}
 \{img /bunit:hu_worker -ralign}
    \{tooltipshort}
 %/class:chtr%
 \{/tooltipshort}
 \{tooltipmedium}
-• Erect buildings
-\\{br}• Harvest resources
-\\{br}• Poor fighters
+• Staví budovy
+\\{br}• Těží suroviny
+\\{br}• Špatný v boji
 \{/tooltipmedium}
 \{tooltiplong}
-Produced by the \{ref H_hu_gebaeude.seml#_hu_fireplace}Town center, \{/ref} Workers perform all of the civilian work. \\{br}
-They harvest \{ref H_general.seml#_resources}resources \{/ref} and \{ref H_general.seml#_building} erect buildings.\{/ref} They can defend themselves when attacked but are no match for regular combat \{ref H_general.seml#_units}units.  \{/ref}Upgrading \{ref H_general.seml#_resources}resource\{/ref} \{ref H_general.seml#_building}buildings\{/ref} improves the Workers' tempo. Just as with the other \{ref H_general.seml#_units}units,\{/ref} Workers can also be raised to higher levels using \{ref H_general.seml#_skulls} skulls.\{/ref} They then receive more \{ref H_ui.seml#_iw_hitpoints}hit points, \{/ref} work faster and are capable of carrying heavier loads. They are equipped with a sling for \{ref H_world.seml#_food}hunting \{/ref} and ranged defense. An \{ref H_ui.seml#_hu_worker_vs_building}upgrade \{/ref} increases the damage they do when attacking enemy \{ref H_general.seml#_building} buildings.\{/ref}
+Dělníky vyrábí \{ref H_hu_gebaeude.seml#_hu_fireplace}hlavní budova \{/ref} a vykonávají všechny civilní práce. \\{br}
+Těží \{ref H_general.seml#_resources}suroviny \{/ref} a staví \{ref H_general.seml#_building} budovy.\{/ref} Při napadení se umí bránit, ale v žádném případě se nemohou měřit s běžnými bojovými \{ref H_general.seml#_units}jednotkami. \{/ref} Vylepšení budov pro sběr surovin zvýší jejich rychlost. Tak jako jiným \{ref H_general.seml#_units} jednotkám\{/ref} i dělníkům je možné zvýšit úroveň pomocí \{ref H_general.seml#_skulls} lebek.\{/ref} Na vyšší úrovni mají více \{ref H_ui.seml#_iw_hitpoints} zásahových bodů, \{/ref} pracují rychleji a unesou těžší náklad. Mají u sebe prak, který jim slouží k \{ref H_world.seml#_food}lovu \{/ref} i vlastní obraně. \{ref H_ui.seml#_hu_worker_vs_building}Vylepšení \{/ref} zvýší poškození, které způsobí útokem nepřátelským \{ref H_general.seml#_building} budovám.\{/ref}
 \{/tooltiplong}
 \{/helpitem}
 
-\{helpitem -name _hu_warrior Warrior}
+
+
+\{helpitem -name _hu_warrior Válečník}
 \{img /bunit:hu_warrior -ralign}
    \{tooltipshort}
 %/class:chtr/vschtr:+/vsanml:-/vsvhcl:+/vsbldg:+%
    \{/tooltipshort}
    \{tooltipmedium}
-• Infantry
-\\{br}• Melee fighter
+• Pěší jednotka
+\\{br}• Bojuje zblízka
 \{/tooltipmedium}
 \{tooltiplong}
-Warriors are skilled at close combat and are particularly effective at fighting other infantry \{ref H_general.seml#_units}units.\{/ref} \\{br}
-They can also be placed on walls or in \{ref H_general.seml#_transport} transport vehicles.\{/ref} Warriors are cheaply produced in the \{ref H_hu_gebaeude.seml#_hu_barracks} Barracks.\{/ref} They are available from \{ref H_general.seml#_techtree}Epoch \{/ref} 1 on.
+Válečníci jsou nadaní v boji zblízka a zvlášť efektivní jsou pak v boji proti jiným pěším \{ref H_general.seml#_units}jednotkám.\{/ref} \\{br}
+Lze je umístit i na hradby nebo do \{ref H_general.seml#_transport} přepravních vozidel.\{/ref} Válečníky vyrábí docela levně \{ref H_hu_gebaeude.seml#_hu_barracks} kasárna.\{/ref} Jsou dostupní již od \{ref H_general.seml#_techtree}epochy \{/ref} 1.
 \{/tooltiplong}
 \{/helpitem}
 
-\{helpitem -name _hu_jetpack_warrior Jetpack warrior}
+
+
+\{helpitem -name _hu_jetpack_warrior Jetpack válečník}
 \{img /bunit:hu_jetpack_warrior -ralign}
    \{tooltipshort}
  %/class:chtr/vschtr:+/vsanml:-/vsvhcl:+/vsbldg:+%
    \{/tooltipshort}
    \{tooltipmedium}
-• Infantry
-\\{br}• Melee fighter
-\\{br}• May jump long distances
-\\{br}• Can only be produced if Taslow has reached level 4
+• Pěší jednotka
+\\{br}• Bojuje zblízka
+\\{br}• Přeskočí velkou vzdálenost
+\\{br}• Lze ho vyrábět, až se Taslow dostane na úroveň 4
    \{/tooltipmedium}
    \{tooltiplong}
-Offering the same combat skills as the normal \{ref H_hu_produkte.seml#_hu_warrior}Warrior, \{/ref} this \{ref H_general.seml#_units}unit\{/ref} is equipped with a jetpack which allows it to "jump" great distances, and enables it to leapfrog defensive structures or enemy troops. \\{br}
-The Jetpacks must then first recharge before they can be used again. These Jetpacks may also malfunction. Jetpack Warriors are produced by the \{ref H_hu_gebaeude.seml#_hu_weapons_smith}Weapon smith.\{/ref}
+Kromě toho, že má stejné bojové schopnosti jako normální \{ref H_hu_produkte.seml#_hu_warrior}válečník, \{/ref} je tato \{ref H_general.seml#_units}jednotka\{/ref} vybavena tryskovým batohem, který jí umožňuje “přeskočit” velkou vzdálenost a přenést se například přes obranné konstrukce nebo nepřátelské jednotky. \\{br}
+Před opětovným použitím je nutné Jetpack válečníky nejdříve nabít. Může u nich dojít i k poruše. Vyrábí je \{ref H_hu_gebaeude.seml#_hu_weapons_smith}zbrojíř.\{/ref}
    \{/tooltiplong}
 \{/helpitem}
 
-\{helpitem -name _hu_berserker Berserker}
+
+
+\{helpitem -name _hu_berserker Berserkr}
 \{img /bunit:hu_berserker -ralign}
    \{tooltipshort}
 %/class:chtr/vschtr:++/vsanml:+/vsvhcl:+/vsbldg:+%
    \{/tooltipshort}
    \{tooltipmedium}
-• Infantry
-\\{br}• Melee fighter
-\\{br}• Berserk rage on enemy contact
-\\{br}• Can only be produced if Cole has reached level 4
+• Pěší jednotka
+\\{br}• Bojuje zblízka
+\\{br}• Při kontaktu s nepřítelem ho zachvátí bojové šílenství
+\\{br}• Lze ho vyrábět, až se Cole dostane na úroveň 4
    \{/tooltipmedium}
    \{tooltiplong}
-A powerful close combat \{ref H_general.seml#_units}unit,\{/ref} the Berserker has one great weakness: He falls into a berserk rage at the very sight of an enemy, a rage which possesses him for as long as a single enemy is in sight. Berserkers will neither retreat nor break off combat - not even upon direct order. Berserkers are produced by the \{ref H_hu_gebaeude.seml#_hu_weapons_smith}Weapon smith.\{/ref}
+Berserkr je silná \{ref H_general.seml#_units}jednotka\{/ref} pro boj zblízka, která má však jednu slabinu: jakmile spatří nepřítele, upadne do bojového šílenství, které neustane, dokud bude v dohledu jediný nepřítel. Berserkr z boje neustoupí a nepřestane bojovat - ani na přímý rozkaz. Vyrábí je \{ref H_hu_gebaeude.seml#_hu_weapons_smith}zbrojíř.\{/ref}
    \{/tooltiplong}
 \{/helpitem}
 
-\{helpitem -name _hu_killer Killer}
+
+\{helpitem -name _hu_killer Zabiják}
 \{img /bunit:hu_killer -ralign}
    \{tooltipshort}
 %/class:chtr/vschtr:++/vsanml:++/vsvhcl:++/vsbldg:--%
    \{/tooltipshort}
    \{tooltipmedium}
-• Infantry
-\\{br}• Melee fighter
-\\{br}• Low on hitpoints
-\\{br}• Can only be produced if Ada has reached level 4
+• Pěší jednotka
+\\{br}• Bojuje zblízka
+\\{br}• Má málo zásahových bodů
+\\{br}• Lze ho vyrábět, až se Ada dostane na úroveň 4
    \{/tooltipmedium}
    \{tooltiplong}
-Produced by the \{ref H_hu_gebaeude.seml#_hu_weapons_smith}Weapon smith,\{/ref}Killers are an extremely powerful close combat \{ref H_general.seml#_units}unit\{/ref} whose only weakness lies in their incredibly poor constitution. \\{br}
-Comparatively easy to kill, the best idea is to use an armored \{ref H_general.seml#_transport} transport unit\{/ref} to bring them to the combat zone.
+Zabijáky vyrábí \{ref H_hu_gebaeude.seml#_hu_weapons_smith}zbrojíř.\{/ref}Je to mimořádně silná \{ref H_general.seml#_units}jednotka\{/ref} pro boj zblízka, jejíž jediná slabina spočívá v její neuvěřitelně chatrné stavbě těla. \\{br}
+Protože je poměrně snadné je zabít, nejlepší je dopravit je v pancéřované \{ref H_general.seml#_transport} přepravní jednotce\{/ref} až na bojiště.
    \{/tooltiplong}
 \{/helpitem}
 
-\{helpitem -name _hu_spearman Spearman}
+
+\{helpitem -name _hu_spearman Kopiník}
 \{img /bunit:hu_spearman -ralign}
    \{tooltipshort}
 %/class:chtr/vschtr:-/vsanml:+/vsvhcl:-/vsbldg:--%
    \{/tooltipshort}
    \{tooltipmedium}
-• Infantry
-\\{br}• Throws spears
+• Pěší jednotka
+\\{br}• Vrhá kopí
    \{/tooltipmedium}
    \{tooltiplong}
-Spearmen are a medium-ranged \{ref H_general.seml#_units}unit\{/ref} produced in the \{ref H_hu_gebaeude.seml#_hu_barracks} Barracks,\{/ref} well suited to manning walls or \{ref H_general.seml#_transport} transport units\{/ref} where they can throw their spears from protection. \\{br}
-Their weapons make them particularly effective against \{ref H_general.seml#_animals}animals  \{/ref}and mounted \{ref H_general.seml#_units}units.\{/ref}Not only their weapons, but also their armor is especially useful against\{ref H_animals.seml} animals:\{/ref} Spearmen have a defensive bonus against \{ref H_animals.seml}wild animals\{/ref} and mounted \{ref H_general.seml#_units}units. \{/ref}
+Kopiník je \{ref H_general.seml#_units}jednotka\{/ref} určená pro boj na střední vzdálenost. Vyrábí je \{ref H_hu_gebaeude.seml#_hu_barracks} kasárna.\{/ref} Hodí se k obsazení hradeb nebo pro boj z \{ref H_general.seml#_transport} přepravních jednotek\{/ref}, odkud mohou z krytu vrhat kopí. \\{br}
+Díky své zbrani jsou velmi účinní proti \{ref H_general.seml#_animals}zvířatům  \{/ref}a jezdeckým \{ref H_general.seml#_units}jednotkám.\{/ref} Není to však pouze jejich zbraň, také jejich brnění je velmi užitečné v boji se\{ref H_animals.seml} zvířaty:\{/ref} proti \{ref H_animals.seml}divokým zvířatům\{/ref} a jezdeckým \{ref H_general.seml#_units}jednotkám \{/ref} mají obranný bonus.
 \{/tooltiplong}
 \{/helpitem}
+
 
 \{helpitem -name _hu_pikeman Lancer}
 \{img /bunit:hu_pikeman -ralign}
@@ -108,15 +118,16 @@ Their weapons make them particularly effective against \{ref H_general.seml#_ani
 %/class:chtr/vschtr:--/vsanml:++/vsvhcl:--/vsbldg:--%
    \{/tooltipshort}
    \{tooltipmedium}
-• Infantry
-\\{br}• Uses lances
-\\{br}• Ineffective in close combat
+• Pěší jednotka
+\\{br}• Používá kopí
+\\{br}• Neefektivní v boji zblízka
    \{/tooltipmedium}
    \{tooltiplong}
-Produced by the \{ref H_hu_gebaeude.seml#_hu_weapons_smith}Weapon smith,\{/ref} Lancers cause more damage to targets at a range of 5 or 6 m than when the target is right in front of them. \\{br}
-This \{ref H_general.seml#_units}unit\{/ref} is designed to take out \{ref H_general.seml#_animals}animals  \{/ref} and mounted \{ref H_general.seml#_units}units,\{/ref} and is unsuited to other tasks. Their weapons and armor are especially useful against\{ref H_animals.seml} animals\{/ref}: Lancers have a defensive bonus against \{ref H_animals.seml}wild animals\{/ref} and mounted \{ref H_general.seml#_units}units. \{/ref}
+Lancery vyrábí \{ref H_hu_gebaeude.seml#_hu_weapons_smith}zbrojíř.\{/ref} Větší poškození způsobí cílům na vzdálenost 5 - 6 m, než když je mají přímo před sebou. \\{br}
+Tato \{ref H_general.seml#_units}jednotka\{/ref} je určena k zneškodnění \{ref H_general.seml#_animals}zvířat \{/ref} a jezdeckých \{ref H_general.seml#_units}jednotek\{/ref} a nehodí se na jiné účely. Jejich zbraně i brnění jsou velmi efektivní v boji se\{ref H_animals.seml} zvířaty\{/ref}: proti \{ref H_animals.seml}divokým zvířatům\{/ref} a jezdeckým \{ref H_general.seml#_units}jednotkám \{/ref} mají obranný bonus.
    \{/tooltiplong}
 \{/helpitem}
+
 
 \{helpitem -name _hu_druid Druid}
 \{img /bunit:hu_druid -ralign}
@@ -124,200 +135,234 @@ This \{ref H_general.seml#_units}unit\{/ref} is designed to take out \{ref H_gen
 %/class:chtr%
    \{/tooltipshort}
    \{tooltipmedium}
-• Infantry
-\\{br}• Heals own units in vicinity
-\\{br}• Detects traps and hidden units
-\\{br}• Does not fight
+• Pěší jednotka
+\\{br}• Léčí vlastní jednotky v okolí
+\\{br}• Odhaluje pasti a ukryté jednotky
+\\{br}• Nebojuje
    \{/tooltipmedium}
    \{tooltiplong}
-Druids do not fight. \\{br}
-They are capable of healing nearby \{ref H_general.seml#_units}units\{/ref} but must first recharge before healing the next. A Druid heals own \{ref H_general.seml#_units}units\{/ref} as well as allied \{ref H_general.seml#_units}units,\{/ref} but he begins healing own \{ref H_general.seml#_units}units\{/ref} first. Druids only look for traps in their spare time, not when they are healing. Druids are produced in the \{ref H_hu_gebaeude.seml#_hu_temple} Temple.\{/ref}
+Druidové nebojují. \\{br}
+Dokáží vyléčit \{ref H_general.seml#_units}jednotky\{/ref} poblíž, ale před dalším léčením se musí dobít. Léčí vlastní \{ref H_general.seml#_units}jednotky\{/ref} i spojenecké \{ref H_general.seml#_units}jednotky,\{/ref} avšak vlastní \{ref H_general.seml#_units}jednotky\{/ref} léčí jako první. Po pastech pátrají pouze ve volném čase, během léčení ne. Vyrábí je \{ref H_hu_gebaeude.seml#_hu_temple} chrám.\{/ref}
    \{/tooltiplong}
 \{/helpitem}
 
-\{helpitem -name _hu_archer Archer}
+
+\{helpitem -name _hu_archer Lučištník}
 \{img /bunit:hu_archer -ralign}
    \{tooltipshort}
 %/class:chtr/vschtr:+/vsanml:+/vsvhcl:+/vsbldg:--%
    \{/tooltipshort}
    \{tooltipmedium}
-• Infantry
-\\{br}• Long-range fighter
-\\{br}• Ineffective in close combat
+• Pěší jednotka
+\\{br}• Pro boj na dálku
+\\{br}• Neefektivní v boji zblízka
    \{/tooltipmedium}
    \{tooltiplong}
-Archers are amongst the weakest of ranged \{ref H_general.seml#_units}units,\{/ref} but are cheap to produce. \\{br}
-If embroiled in close combat they defend themselves with a dagger, but they are no match for a warrior. Archers are most effective when placed on a wall or when firing from the shelter of a \{ref H_general.seml#_transport} transporter.\{/ref} They don't really cause much damage - their major advantage lies in their range. Both the damage they do and the range at which they do it increase with each new level. Archers are produced in the \{ref H_hu_gebaeude.seml#_hu_barracks} Barracks.\{/ref}
+Lučištníci patří mezi nejslabší střelecké \{ref H_general.seml#_units}jednotky,\{/ref} ale jejich výroba je velmi levná. \\{br}
+Zapletou-li se do boje zblízka, brání se dýkou, pro válečníky však nejsou rovnocennými soupeři. Největší účinek má jejich střelba z hradby nebo z \{ref H_general.seml#_transport} přepravní jednotky.\{/ref} Nepůsobí nijak velké poškození - jejich hlavní výhoda je dostřel. Poškození i dostřel se na každé nové úrovni zvýší. Vyrábí je \{ref H_hu_gebaeude.seml#_hu_barracks} kasárna.\{/ref}
    \{/tooltiplong}
 \{/helpitem}
 
-\{helpitem -name _hu_marksman Crossbowman}
+
+\{helpitem -name _hu_marksman Střelec z kuše}
 \{img /bunit:hu_marksman -ralign}
    \{tooltipshort}
 %/class:chtr/vschtr:+/vsanml:+/vsvhcl:+/vsbldg:-%
    \{/tooltipshort}
    \{tooltipmedium}
-• Infantry
-\\{br}• Long-range fighter
-\\{br}• Ineffective in close combat
-\\{br}• Can only be produced if Béla has reached level 4
+• Pěší jednotka
+\\{br}• Pro boj na dálku
+\\{br}• Neefektivní v boji zblízka
+\\{br}• Lze ho vyrábět, až se Béla dostane na úroveň 4
    \{/tooltipmedium}
    \{tooltiplong}
-More powerful than \{ref H_hu_produkte.seml#_hu_archer} Archers,\{/ref} Crossbowmen are most effective when placed on a wall or when firing from the shelter of a \{ref H_general.seml#_transport} transporter.\{/ref}\\{br}
-They have a greater range and cause more damage than \{ref H_hu_produkte.seml#_hu_archer} Archers.\{/ref} Still, they don't really do much damage. Their major advantage lies in their range. Both the damage they do and the range at which they do it increase with each new level. If embroiled in close combat they defend themselves with a dagger which causes much less damage than their arrows. Crossbowmen are produced by the \{ref H_hu_gebaeude.seml#_hu_weapons_smith}Weapon smith.\{/ref}
+Střelci z kuše jsou silnější než \{ref H_hu_produkte.seml#_hu_archer} lučištníci.\{/ref} Největší účinek má jejich střelba z hradby nebo z \{ref H_general.seml#_transport} přepravní jednotky.\{/ref}\\{br}
+Mají větší dostřel a způsobí větší poškození než \{ref H_hu_produkte.seml#_hu_archer} lučištníci.\{/ref} Přesto poškození, které způsobí, není ve skutečnosti nijak velké. Jejich hlavní výhoda je dostřel. Poškození i dostřel se na každé nové úrovni zvýší. Zapletou-li se do boje zblízka, brání se dýkou, s kterou však nezpůsobí zdaleka tak velké poškození jako svými šípy. Vyrábí je \{ref H_hu_gebaeude.seml#_hu_weapons_smith}zbrojíř.\{/ref}
    \{/tooltiplong}
 \{/helpitem}
 
 
-\{chapter -name _animal_units Animal units}
-\{helpitem -name _hu_scout Scout}
+\{chapter -name _animal_units Zvířecí jednotky}
+
+\{helpitem -name _hu_scout Zvěd}
 \{img /bunit:hu_scout -ralign}
    \{tooltipshort}
 %/class:anml/vschtr:+/vsanml:+/vsvhcl:-/vsbldg:--%
    \{/tooltipshort}
    \{tooltipmedium}
-• Weak mounted unit
-\\{br}• Fast
-\\{br}• Excellent vision
+• Slabá jezdecká jednotka
+\\{br}• Je rychlý
+\\{br}• Má vynikající zrak
    \{/tooltipmedium}
    \{tooltiplong}
-Produced on the \{ref H_hu_gebaeude.seml#_hu_small_farm} Small animal farm,\{/ref} Scouts are best suited to exploring the terrain. \\{br}
-While relatively weak in combat they are fast and boast excellent vision, allowing them to see further than usual. The Scout is one of the weakest combat \{ref H_general.seml#_units}units.\{/ref}
+Zvědy vyrábí \{ref H_hu_gebaeude.seml#_hu_small_farm} malá zvířecí farma.\{/ref} Nejlépe se hodí na průzkum terénu. \\{br}
+Přestože jsou relativně slabí v boji, jsou rychlí a mají vynikající zrak, díky němuž vidí dál než jiné jednotky. Je to jedna z nejslabších bojových \{ref H_general.seml#_units}jednotek.\{/ref}
    \{/tooltiplong}
 \{/helpitem}
 
-\{helpitem -name _hu_chariot Chariot}
+
+
+
+
+
+
+\{helpitem -name _hu_chariot Válečný vůz}
 \{img /bunit:hu_chariot -ralign}
    \{tooltipshort}
 %/class:anml/vschtr:+/vsanml:+/vsvhcl:+/vsbldg:-%
    \{/tooltipshort}
    \{tooltipmedium}
-   • Weak mounted unit
-\\{br}• Fast
-\\{br}• May carry additional infantry unit
+   • Slabá jezdecká jednotka
+\\{br}• Je rychlý
+\\{br}• Uveze jednu pěší jednotku navíc
    \{/tooltipmedium}
    \{tooltiplong}
-While weak in combat, Chariots are among the fastest \{ref H_general.seml#_units}units\{/ref} available and are capable of carrying an additional infantry \{ref H_general.seml#_units}unit.\{/ref}
-With an \{ref H_hu_produkte.seml#_hu_archer} Archer\{/ref} aboard this \{ref H_general.seml#_units}unit\{/ref} is perfectly suited to hit and run tactics. When embroiled in close combat the stag uses his horns to defend himself. Chariots are produced on the \{ref H_hu_gebaeude.seml#_hu_small_farm} Small animal farm.\{/ref}
+V boji jsou válečné vozy slabé, avšak patří mezi nejrychlejší dostupné \{ref H_general.seml#_units}jednotky.\{/ref} Uveze také další pěší \{ref H_general.seml#_units}jednotku.\{/ref}
+S \{ref H_hu_produkte.seml#_hu_archer} lučištníkem\{/ref} na palubě se tato \{ref H_general.seml#_units}jednotka\{/ref} dokonale hodí k podnikání rychlých výpadů. V boji zblízka se jelen brání parožím. Vyrábí je \{ref H_hu_gebaeude.seml#_hu_small_farm} malá zvířecí farma.\{/ref}
    \{/tooltiplong}
 \{/helpitem}
 
-\{helpitem -name _hu_wild_boar Wild boar}
+
+\{helpitem -name _hu_wild_boar Divočák}
 \{img /bunit:hu_wild_boar -ralign}
    \{tooltipshort}
 %/class:anml/vschtr:+/vsanml:+/vsvhcl:+/vsbldg:--%
    \{/tooltipshort}
    \{tooltipmedium}
-• Strong mounted unit
+• Silná jezdecká jednotka
    \{/tooltipmedium}
    \{tooltiplong}
-Cheap and strong for its level, the Wild boar can be equipped with \{ref H_ui.seml#_hu_animal_blades} Tusk blades,\{/ref} which increase the damage it does considerably.
-Wild boar riders are produced on the \{ref H_hu_gebaeude.seml#_hu_small_farm} Small animal farm.\{/ref}
+Na svou úroveň je divočák levný a silný a lze ho vybavit \{ref H_ui.seml#_hu_animal_blades} čepelemi,\{/ref} které podstatně zvýší způsobené poškození.
+Vyrábí je \{ref H_hu_gebaeude.seml#_hu_small_farm} malá zvířecí farma.\{/ref}
    \{/tooltiplong}
 \{/helpitem}
 
-\{helpitem -name _hu_rhino Battle rhino}
+
+
+
+
+\{helpitem -name _hu_rhino Bitevní nosorožec}
 \{img /bunit:hu_rhino -ralign}
    \{tooltipshort}
 %/class:anml/vschtr:+/vsanml:++/vsvhcl:++/vsbldg:+%
    \{/tooltipshort}
    \{tooltipmedium}
-• Powerful mounted unit
+• Silná jezdecká jednotka
    \{/tooltipmedium}
    \{tooltiplong}
-Produced on the \{ref H_hu_gebaeude.seml#_hu_small_farm} Small animal farm,\{/ref} this powerful combat \{ref H_general.seml#_units}unit\{/ref} forms a good base upon which to build an army. \\{br}
-The development of \{ref H_ui.seml#_hu_animal_blades}blades \{/ref} and \{ref H_ui.seml#_hu_animal_armor} armor\{/ref} increases its power even more. Battle rhinos can also be outfitted with a \{ref H_ui.seml#_hu_pennant}Pennant, \{/ref} which raises nearby \{ref H_general.seml#_units}units'\{/ref} morale and fighting ability.
+Bitevní nosorožce vyrábí \{ref H_hu_gebaeude.seml#_hu_small_farm} malá zvířecí farma.\{/ref} Tato silná bojová \{ref H_general.seml#_units}jednotka\{/ref} představuje dobrý základ pro vybudování armády. \\{br}
+Vyvinutí \{ref H_ui.seml#_hu_animal_blades}čepelí \{/ref} a \{ref H_ui.seml#_hu_animal_armor} pancíře\{/ref} ještě zvýší její sílu. Lze na ni také připevnit \{ref H_ui.seml#_hu_pennant}zástavu, \{/ref} která zvýší morálku a bojové schopnosti \{ref H_general.seml#_units}jednotek\{/ref} v okolí.
    \{/tooltiplong}
 \{/helpitem}
 
-\{helpitem -name _hu_rhino_archer Rhino transporter}
+
+
+\{helpitem -name _hu_rhino_archer Přepravní nosorožec}
 \{img /bunit:hu_rhino_archer -ralign}
    \{tooltipshort}
 %/class:anml/vschtr:+/vsanml:+/vsvhcl:+/vsbldg:+%
    \{/tooltipshort}
    \{tooltipmedium}
-• Powerful mounted unit
-\\{br}• May transport up to 2 infantry units
+• Silná jezdecká jednotka
+\\{br}• Unese až 2 pěší jednotky
    \{/tooltipmedium}
    \{tooltiplong}
-Produced on the \{ref H_hu_gebaeude.seml#_hu_huge_farm}Large animal farm, \{/ref} this powerful combat \{ref H_general.seml#_units}unit\{/ref} becomes even more formidable when equipped with additional \{ref H_hu_produkte.seml#_hu_archer} Archers\{/ref} or \{ref H_hu_produkte.seml#_hu_spearman}Spearmen.\{/ref}
+Přepravní nosorožce vyrábí \{ref H_hu_gebaeude.seml#_hu_huge_farm}velká zvířecí farma. \{/ref} Tato silná bojová \{ref H_general.seml#_units}jednotka\{/ref} je ještě hrozivější, když nese \{ref H_hu_produkte.seml#_hu_archer} lučištníky\{/ref} nebo \{ref H_hu_produkte.seml#_hu_spearman}kopiníky.\{/ref}
    \{/tooltiplong}
 \{/helpitem}
 
-\{helpitem -name _hu_rhino_ballista Ballista rhino}
+
+
+
+
+\{helpitem -name _hu_rhino_ballista Nosorožec s balistou}
 \{img /bunit:hu_rhino_ballista -ralign}
    \{tooltipshort}
 %/class:anml/vschtr:+/vsanml:++/vsvhcl:+/vsbldg:+%
    \{/tooltipshort}
    \{tooltipmedium}
-• Powerful mounted unit
-\\{br}• Ranged weapon
+• Silná jezdecká jednotka
+\\{br}• Pro boj na dálku
    \{/tooltipmedium}
    \{tooltiplong}
-A Rhino armed with a ballista is capable of firing just as far as an \{ref H_hu_produkte.seml#_hu_archer} Archer\{/ref} of the same level but does about twice as much damage.
-They can also take a great deal more damage. Ballista rhinos are produced on the \{ref H_hu_gebaeude.seml#_hu_huge_farm}Large animal farm. \{/ref}
+Nosorožec s balistou dostřelí stejně daleko jako \{ref H_hu_produkte.seml#_hu_archer} lučištník\{/ref} stejné úrovně, ale způsobí dvakrát větší poškození.
+Mnohem větší poškození také sám snese. Vyrábí je \{ref H_hu_gebaeude.seml#_hu_huge_farm}velká zvířecí farma. \{/ref}
    \{/tooltiplong}
 \{/helpitem}
 
-\{helpitem -name _hu_mammoth Battle mammoth}
+
+
+\{helpitem -name _hu_mammoth Bitevní mamut}
 \{img /bunit:hu_mammoth -ralign}
    \{tooltipshort}
 %/class:anml/vschtr:++/vsanml:+/vsvhcl:+/vsbldg:+%
    \{/tooltipshort}
    \{tooltipmedium}
-• Very powerful mounted unit
+• Velmi silná jezdecká jednotka
    \{/tooltipmedium}
    \{tooltiplong}
-Produced on the \{ref H_hu_gebaeude.seml#_hu_huge_farm}Large animal farm, \{/ref} the Battle mammoth is even more powerful than the \{ref H_hu_produkte.seml#_hu_rhino} Rhino\{/ref} and also has more \{ref H_ui.seml#_iw_hitpoints}hit points. \{/ref} \\{br}
-The development of \{ref H_ui.seml#_hu_animal_blades}blades \{/ref} and \{ref H_ui.seml#_hu_animal_armor} armor\{/ref} increases its power even more.
+Bitevní mamuty vyrábí \{ref H_hu_gebaeude.seml#_hu_huge_farm}velká zvířecí farma. \{/ref} Je silnější než \{ref H_hu_produkte.seml#_hu_rhino} nosorožec\{/ref} a má také více \{ref H_ui.seml#_iw_hitpoints}zásahových bodů. \{/ref} \\{br}
+Vyvinutí \{ref H_ui.seml#_hu_animal_blades}čepelí \{/ref} a \{ref H_ui.seml#_hu_animal_armor} pancíře\{/ref} ještě zvýší jeho sílu.
    \{/tooltiplong}
 \{/helpitem}
 
-\{helpitem -name _hu_mammoth_lumber Mammoth harvester}
+
+
+
+
+
+
+
+\{helpitem -name _hu_mammoth_lumber Pracovní mamut}
 \{img /bunit:hu_mammoth_lumber -ralign}
    \{tooltipshort}
 %/class:anml/vschtr:+/vsanml:+/vsvhcl:+/vsbldg:+%
    \{/tooltipshort}
    \{tooltipmedium}
-• Powerful mounted unit
-\\{br}• May harvest stone and wood
+• Silná jezdecká jednotka
+\\{br}• Těží kámen a dřevo
    \{/tooltipmedium}
    \{tooltiplong}
-As strong as a normal \{ref H_hu_produkte.seml#_hu_mammoth}Mammoth (without upgrades) \{/ref} the Mammoth harvester can also harvest  \{ref H_general.seml#_resources}resources.\{/ref} \\{br}
-This makes them extremely useful when setting up outlying  \{ref H_general.seml#_resources}resource \{/ref} collection points. They are more effective at harvesting than a \{ref H_hu_produkte.seml#_hu_worker}Worker \{/ref} of the same level. Mammoth harvesters are produced on \{ref H_hu_gebaeude.seml#_hu_huge_farm}Large animal farm. \{/ref}
+Pracovní mamut je stejně silný jako normální \{ref H_hu_produkte.seml#_hu_mammoth}mamut (bez vylepšení). \{/ref} Jediný rozdíl spočívá v tom, že umí těžit  \{ref H_general.seml#_resources}suroviny.\{/ref} \\{br}
+Díky tomu je mimořádně užitečný při zakládání vzdálených sběrných budov pro  \{ref H_general.seml#_resources}suroviny \{/ref}, které těží efektivněji než \{ref H_hu_produkte.seml#_hu_worker}dělník \{/ref} na stejné úrovni. Vyrábí je \{ref H_hu_gebaeude.seml#_hu_huge_farm}velká zvířecí farma. \{/ref}
    \{/tooltiplong}
 \{/helpitem}
 
 
-\{helpitem -name _hu_mammoth_logcannon Log cannon}
+\{helpitem -name _hu_mammoth_logcannon Mamut s dělem}
 \{img /bunit:hu_mammoth_logcannon -ralign}
    \{tooltipshort}
 %/class:anml/vschtr:--/vsanml:--/vsvhcl:--/vsbldg:++%
    \{/tooltipshort}
    \{tooltipmedium}
-• Strong ranged unit
-\\{br}• Unable to fight in close combat
+• Silná střelecká jednotka
+\\{br}• Nebojuje zblízka
    \{/tooltipmedium}
    \{tooltiplong}
-Slow but powerful, a Mammoth armed with a Log cannon has a minimum attack range and must kneel to fire. \\{br}
-They are capable of firing further than they can see, but unable to defend themselves in close combat and should always be escorted. Log cannon mammoths are produced on the \{ref H_hu_gebaeude.seml#_hu_huge_farm}Large animal farm. \{/ref}
+Pomalý, ale silný mamut vyzbrojený dělem má minimální útočnou vzdálenost a před výstřelem si musí kleknout. \\{br}
+Dostřelí dál, než vidí, v boji zblízka se nedokáže bránit a měla by ho vždy doprovázet ochranka. Vyrábí je \{ref H_hu_gebaeude.seml#_hu_huge_farm}velká zvířecí farma. \{/ref}
    \{/tooltiplong}
 \{/helpitem}
 
-\{helpitem -name _hu_eusmilus Eusmilus rider}
+
+
+
+\{helpitem -name _hu_eusmilus Jezdec na šavlozubém tygru}
 \{img /bunit:hu_eusmilus -ralign}
    \{tooltipshort}
 %/class:anml/vschtr:+/vsanml:+/vsvhcl:+/vsbldg:-%
    \{/tooltipshort}
    \{tooltipmedium}
-• Fast cavalry unit
-\\{br}• Can only be produced if Stina has reached level 4
+• Rychlá jezdecká jednotka
+\\{br}• Lze ho vyrábět, až se Stina dostane na úroveň 4
    \{/tooltipmedium}
    \{tooltiplong}
-Produced on \{ref H_hu_gebaeude.seml#_hu_small_farm}Small animal farm, \{/ref} the Eusmilus rider is fast, cheap and effective. \\{br}
-Although defensively only marginally better than infantrymen, they pack a much more powerful punch.
+Jezdce na šavlozubém tygru vyrábí \{ref H_hu_gebaeude.seml#_hu_small_farm}malá zvířecí farma. \{/ref} Jsou rychlí, levní a efektivní. \\{br}
+Ačkoliv v obraně jsou jen o trochu lepší než pěšáci, dokáží zasadit mnohem silnější úder.
    \{/tooltiplong}
 \{/helpitem}
+
+
 
 \{helpitem -name _hu_kentrosaurus Kentrosaurus}
 \{img /bunit:hu_kentrosaurus -ralign}
@@ -325,182 +370,208 @@ Although defensively only marginally better than infantrymen, they pack a much m
 %/class:anml/vschtr:+/vsanml:+/vsvhcl:+/vsbldg:--%
    \{/tooltipshort}
    \{tooltipmedium}
-• Slow cavalry unit
-\\{br}• Damages opponents in close combat
+• Pomalá jezdecká jednotka
+\\{br}• Působí nepříteli poškození zblízka
    \{/tooltipmedium}
    \{tooltiplong}
-Although not particularly skilled as a fighter the Kentrosaurus is most effective against close combat \{ref H_general.seml#_units}units,\{/ref} who tend to injure themselves in an attempt to attack it.
-Kentrosaurus' are produced on the \{ref H_hu_gebaeude.seml#_hu_small_farm}Small animal farm. \{/ref}
+Přestože kentrosauři nejsou v boji nijak výrazně nadaní, jsou nejúčinnější v boji zblízka proti bojovým \{ref H_general.seml#_units}jednotkám,\{/ref} které se o ně při útoku poraní.
+Vyrábí je \{ref H_hu_gebaeude.seml#_hu_small_farm}malá zvířecí farma. \{/ref}
    \{/tooltiplong}
 \{/helpitem}
 
-\{helpitem -name _hu_triceratops Triceratops titan}
+
+
+
+
+
+
+\{helpitem -name _hu_triceratops Triceratops titán}
 \{img /bunit:hu_triceratops -ralign}
    \{tooltipshort}
 %/class:anml/vschtr:++/vsanml:++/vsvhcl:++/vsbldg:++%
    \{/tooltipshort}
    \{tooltipmedium}
-• Very strong cavalry unit
-\\{br}• May transport up to 4 infantry units
+• Velmi silná jezdecká jednotka
+\\{br}• Unese až 4 pěší jednotky
    \{/tooltipmedium}
    \{tooltiplong}
-Produced on \{ref H_hu_gebaeude.seml#_hu_huge_farm}Large animal farm, \{/ref} the Triceratops titan is the \{ref H_story.seml#_story_hu} Norsemen's\{/ref} most powerful \{ref H_general.seml#_units}unit.\{/ref} \\{br}
-This is even more true when equipped with the maximum of 4 additional ranged \{ref H_general.seml#_units}units.\{/ref} Able to take a lot of damage, the Triceratops titan can deal out even more. Their range is approximately that of an \{ref H_hu_produkte.seml#_hu_archer} Archer\{/ref} of the same level.
+Vyrábí je \{ref H_hu_gebaeude.seml#_hu_huge_farm}velká zvířecí farma. \{/ref} Je to nejsilnější \{ref H_general.seml#_units}jednotka\{/ref} \{ref H_story.seml#_story_hu} seveřanů.\{/ref} \\{br}
+Což je ještě pravdivější, nese-li až 4 střelecké \{ref H_general.seml#_units}jednotky.\{/ref} Titáni snesou velké poškození, ale způsobí ještě větší. Jejich dostřel se přibližně shoduje s dostřelem \{ref H_hu_produkte.seml#_hu_archer} lučištníka\{/ref} na stejné úrovni.
    \{/tooltiplong}
 \{/helpitem}
 
-\{helpitem -name _hu_kennel_eusmilus Kennel eusmilus}
+
+\{helpitem -name _hu_kennel_eusmilus Šavlozubý tygr}
 \{img /bunit:hu_kennel_eusmilus -ralign}
    \{tooltipshort}
  %/class:anml/vschtr:+/vsanml:+/vsvhcl:+/vsbldg:-%
    \{/tooltipshort}
    \{tooltipmedium}
-• Stays close to Kennel
-\\{br}• Attacks enemies on sight
-\\{br}• Can only be produced if Warden has reached level 4
+• Drží se u doupěte
+\\{br}• Útočí na nepřátele, jakmile je spatří
+\\{br}• Lze ho vyrábět, až se Warden dostane na úroveň 4
    \{/tooltipmedium}
    \{tooltiplong}
-The Eusmilus guard the area around their Kennel. \\{br}
-They attack enemies on sight. If one of the \{ref H_general.seml#_animals}animals  \{/ref} gets killed, another will be born, without draining any  \{ref H_general.seml#_resources}resources. \{/ref} Kennel Eusmilus do not appear within the \{ref H_ui.seml#_pyramid} Army controller.\{/ref}
+Šavlozubí tygři hlídají území kolem svého doupěte. \\{br}
+Na nepřátele útočí, jakmile je spatří. Pokud jeden z nich zahyne, narodí se úplně zdarma nový. Neobjevují se v okně \{ref H_ui.seml#_pyramid} Stav armády.\{/ref}
    \{/tooltiplong}
 \{/helpitem}
 
-\{chapter -name _vehicles Vehicles}
-\{helpitem -name _hu_steam_ram Battle ram}
+
+
+
+
+\{chapter -name _vehicles Vozidla}
+
+\{helpitem -name _hu_steam_ram Beranidlo}
 \{img /bunit:hu_steam_ram -ralign}
    \{tooltipshort}
 %/class:vhcl/vschtr:--/vsanml:--/vsvhcl:--/vsbldg:++%
    \{/tooltipshort}
    \{tooltipmedium}
-• Specialized in tearing down buildings
-\\{br}• Increased armor against arrows
+• Specializuje se na ničení budov
+\\{br}• Zvýšená obrana proti šípům
    \{/tooltipmedium}
    \{tooltiplong}
-Battle rams are slow. Very slow. \\{br}
-This makes them vulnerable to close attacks, against which they are practically defenseless. Battle rams should never be sent out without an adequate escort. Battle rams are built by the \{ref H_hu_gebaeude.seml#_hu_machine_maker}Machine shop. \{/ref}
+Beranidla jsou pomalá. Velmi pomalá. \\{br}
+Díky tomu jsou zranitelná útokem zblízka, proti kterému nemají prakticky žádnou obranu. Do boje by neměla nikdy vyjíždět bez odpovídající ochrany. Vyrábí je \{ref H_hu_gebaeude.seml#_hu_machine_maker}výrobna strojů. \{/ref}
    \{/tooltiplong}
 \{/helpitem}
 
-\{helpitem -name _hu_steam_tank Battle tank}
+
+\{helpitem -name _hu_steam_tank Parní tank}
 \{img /bunit:hu_steam_tank -ralign}
    \{tooltipshort}
 %/class:vhcl/vschtr:++/vsanml:++/vsvhcl:++/vsbldg:+%
    \{/tooltipshort}
    \{tooltipmedium}
-• Very strong vehicle
-\\{br}• Ranged weapon
-\\{br}• May transport up to 10 infantry units
+• Velmi silný vůz
+\\{br}• Pro boj na dálku
+\\{br}• Uveze až 10 pěších jednotek
    \{/tooltipmedium}
    \{tooltiplong}
-Produced by the \{ref H_hu_gebaeude.seml#_hu_machine_maker}Machine shop, \{/ref} the Battle tank is a powerful medium-ranged \{ref H_general.seml#_units}unit\{/ref} which is well armored against other ranged \{ref H_general.seml#_units}units.\{/ref}
-While infantry \{ref H_general.seml#_units}units\{/ref} are carried they are unable to use ranged weapons from inside the Tank.
+Parní tanky vyrábí \{ref H_hu_gebaeude.seml#_hu_machine_maker}výrobna strojů. \{/ref} Je to silná \{ref H_general.seml#_units}jednotka\{/ref} pro boj na střední vzdálenost, která je dobře chráněná proti zbraním jiných střeleckých \{ref H_general.seml#_units}jednotek.\{/ref}
+Převážené pěší \{ref H_general.seml#_units}jednotky\{/ref} nemohou z tanku střílet.
    \{/tooltiplong}
 \{/helpitem}
 
-\{helpitem -name _hu_cart Market wagon}
+
+
+
+\{helpitem -name _hu_cart Obchodní vozík}
 \{img /bunit:hu_cart -ralign}
    \{tooltipshort}
 %/class:vhcl%
    \{/tooltipshort}
    \{tooltipmedium}
-   • Gains resources through travelling between allied Marketplaces
-\\{br}• Unable to fight
+   • Získává suroviny cestováním mezi spřátelenými tržišti
+\\{br}• Nebojuje
    \{/tooltipmedium}
    \{tooltiplong}
-Market wagons travel back and forth between two \{ref H_hu_gebaeude.seml#_hu_marketplace}Marketplaces \{/ref} transporting needed  \{ref H_general.seml#_resources}resources. \{/ref} \\{br}
-The greater the distance between the two \{ref H_hu_gebaeude.seml#_hu_marketplace}Marketplaces \{/ref} involved, the higher the profit. Market wagons are incapable of defending themselves. If attacked and destroyed during the trip all  \{ref H_general.seml#_resources}resources \{/ref} carried are lost. Market wagons are produced in the \{ref H_hu_gebaeude.seml#_hu_marketplace}Marketplace. \{/ref}
+Obchodní vozíky cestují mezi \{ref H_hu_gebaeude.seml#_hu_marketplace}tržišti \{/ref} a převáží potřebné \{ref H_general.seml#_resources}suroviny. \{/ref} \\{br}
+Čím větší je mezi \{ref H_hu_gebaeude.seml#_hu_marketplace}tržišti \{/ref} vzdálenost, tím větší je zisk. Obchodní vozíky se nedokáží bránit. Pokud jsou během cesty zničeny, všechny převážené \{ref H_general.seml#_resources}suroviny \{/ref} jsou ztraceny. Vyrábí je \{ref H_hu_gebaeude.seml#_hu_marketplace}tržiště. \{/ref}
    \{/tooltiplong}
 \{/helpitem}
 
-\{helpitem -name _hu_mobile_suit Exo enforcer}
+
+
+\{helpitem -name _hu_mobile_suit Exoskelet}
 \{img /bunit:hu_mobile_suit -ralign}
    \{tooltipshort}
 %/class:vhcl/vschtr:++/vsanml:+/vsvhcl:+/vsbldg:+%
    \{/tooltipshort}
    \{tooltipmedium}
-• Strong machine unit
-\\{br}• Suited to close combat
-\\{br}• Can only be produced if Babbit has reached level 4
+• Silná strojová jednotka
+\\{br}• Vhodný pro boj zblízka
+\\{br}• Lze ho vyrábět, až se Babbit dostane na úroveň 4
    \{/tooltipmedium}
    \{tooltiplong}
-The Exo enforcer is a \{ref H_story.seml#_story_seas}SEAS \{/ref} \{ref H_general.seml#_units}unit\{/ref} which can be built by the \{ref H_hu_gebaeude.seml#_hu_machine_maker}Machine shop. \{/ref} \\{br}
-Effective against all \{ref H_general.seml#_units}units.\{/ref}
+Exoskelet je \{ref H_general.seml#_units}jednotka\{/ref} \{ref H_story.seml#_story_seas}SEAS \{/ref}, kterou vyrábí \{ref H_hu_gebaeude.seml#_hu_machine_maker}výrobna strojů. \{/ref} \\{br}
+Je účinný proti všem \{ref H_general.seml#_units}jednotkám.\{/ref}
    \{/tooltiplong}
 \{/helpitem}
 
 
-\{chapter -name _ships Ships}
-\{helpitem -name _hu_transport_ship Transport ship}
+
+\{chapter -name _ships Lodě}
+
+\{helpitem -name _hu_transport_ship Přepravní loď}
 \{img /bunit:hu_transport_ship -ralign}
    \{tooltipshort}
 %/class:vhcl/vschtr:/vsanml:/vsvhcl:/vsbldg:%
    \{/tooltipshort}
    \{tooltipmedium}
-• Unable to fight
-\\{br}• May transport up to 10 units
+• Nebojuje
+\\{br}• Uveze až 10 jednotek
    \{/tooltipmedium}
    \{tooltiplong}
-Built in the Harbor, Transport ships do just that: \{ref H_general.seml#_transport} transport.\{/ref} \\{br}
-They can carry anything except other ships. Ranged \{ref H_general.seml#_units}units\{/ref} cannot fire from a Transport ship. The unit limit cannot be avoided by trying to load \{ref H_general.seml#_units}units\{/ref} already carrying other combat \{ref H_general.seml#_units}units.\{/ref}
+Vyrábí je přístav a slouží k \{ref H_general.seml#_transport} přepravě.\{/ref} \\{br}
+Kromě další lodě uvezou každou jednotku. Střelecké \{ref H_general.seml#_units}jednotky\{/ref} nemohou z přepravních lodí střílet. Limit \{ref H_general.seml#_units} jednotek\{/ref} nelze obejít naložením přepravních \{ref H_general.seml#_units} jednotek\{/ref}, které již nesou jiné bojové \{ref H_general.seml#_units} jednotky\{/ref}, na další přepravní jednotky.
    \{/tooltiplong}
 \{/helpitem}
 
-\{helpitem -name _hu_fishing_boat Fishing boat}
+
+\{helpitem -name _hu_fishing_boat Rybářská loď}
 \{img /bunit:hu_fishing_boat -ralign}
    \{tooltipshort}
 %/class:vhcl/vschtr:/vsanml:/vsvhcl:/vsbldg:%
    \{/tooltipshort}
    \{tooltipmedium}
-• Unable to fight
-\\{br}• Harvests fish
-\\{br}• Requires Harbor as collection point
+• Nebojuje
+\\{br}• Loví ryby
+\\{br}• Potřebuje přístav jako sběrné místo
    \{/tooltipmedium}
    \{tooltiplong}
-Built in the \{ref H_hu_gebaeude.seml#_hu_harbour} Harbor.\{/ref} \\{br}
-Fishing boats are used to harvest \{ref H_world.seml#_fish} fish\{/ref} as a \{ref H_ui.seml#_tb_food}food source. \{/ref} Once a particular fishing ground has been exhausted the boat will automatically move on to another fishing ground within sight.
+Vyrábí je \{ref H_hu_gebaeude.seml#_hu_harbour} přístav.\{/ref} \\{br}
+Používají se k lovu \{ref H_world.seml#_fish} ryb\{/ref}, které slouží jako zdroj \{ref H_ui.seml#_tb_food}jídla. \{/ref} Po vyčerpání loviště se loď automaticky přesune na další loviště v dohledu.
    \{/tooltiplong}
 \{/helpitem}
 
-\{helpitem -name _hu_dragon_boat Dragon boat}
+
+
+
+\{helpitem -name _hu_dragon_boat Dračí loď}
 \{img /bunit:hu_dragon_boat -ralign}
    \{tooltipshort}
 %/class:vhcl/vschtr:+/vsanml:+/vsvhcl:+/vsbldg:--%
    \{/tooltipshort}
    \{tooltipmedium}
-• Cheap long range ship
+• Levná loď pro boj na dálku
    \{/tooltipmedium}
    \{tooltiplong}
-Built in the \{ref H_hu_gebaeude.seml#_hu_harbour} Harbor.\{/ref} \\{br}
-Dragon boats are the cheapest and weakest of all \{ref H_story.seml#_story_hu} Norsemen\{/ref} ships. However, as true \{ref H_story.seml#_story_hu} Norsemen\{/ref}ships their technology still outstrips that of the other tribes' ships.
+Vyrábí je \{ref H_hu_gebaeude.seml#_hu_harbour} přístav.\{/ref} \\{br}
+Je to nejlevnější a nejslabší loď \{ref H_story.seml#_story_hu} seveřanů\{/ref}. Pravou loď \{ref H_story.seml#_story_hu} seveřanů\{/ref} však v sobě nezapře, protože její technologie stále převyšuje lodě ostatních klanů.
    \{/tooltiplong}
 \{/helpitem}
 
-\{helpitem -name _hu_ram_ship Ram ship}
+
+\{helpitem -name _hu_ram_ship Útočná loď}
 \{img /bunit:hu_ram_ship -ralign}
    \{tooltipshort}
 %/class:vhcl/vschtr:+/vsanml:+/vsvhcl:++/vsbldg:+%
    \{/tooltipshort}
    \{tooltipmedium}
-• Close combat ship
-\\{br}• Attacks with ram
+• Loď pro boj zblízka
+\\{br}• Útočí bodcem
    \{/tooltipmedium}
    \{tooltiplong}
-Built in the \{ref H_hu_gebaeude.seml#_hu_harbour} Harbor.\{/ref} \\{br}
-Ram ships do a lot of damage, but have to get close to do so. They are not equipped with ranged weapons.
+Vyrábí je \{ref H_hu_gebaeude.seml#_hu_harbour} přístav.\{/ref} \\{br}
+Působí velké poškození, ale musí se dostat blízko. Nejsou vybaveny střelnými zbraněmi.
    \{/tooltiplong}
 \{/helpitem}
 
-\{helpitem -name _hu_steam_boat Battleship}
+
+\{helpitem -name _hu_steam_boat Bitevní loď}
 \{img /bunit:hu_steam_boat -ralign}
    \{tooltipshort}
 %/class:vhcl/vschtr:-/vsanml:-/vsvhcl:-/vsbldg:++%
    \{/tooltipshort}
    \{tooltipmedium}
-• Strong ship
-\\{br}• Powerful long-range weapon
+• Silná loď
+\\{br}• Vynikající zbraň pro boj na dálku
    \{/tooltipmedium}
    \{tooltiplong}
-The Battleship is the most powerful ship afloat, far outstripping the others when it comes to long range attacks. \\{br}
-In close combat, however, it doesn't stand that much of a chance.
+Bitevní lodě jsou nejsilnějšími loděmi na moři, které dalece převyšují ostatní, když dojde na střelecký souboj na velkou vzdálenost. \\{br}
+V boji zblízka však moc šancí nemají.
    \{/tooltiplong}
 \{/helpitem}

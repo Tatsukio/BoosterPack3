@@ -1,99 +1,99 @@
 ﻿"Suit Localization File";"cz UTF8"
-"Tutorial";"Mission 0: Tutorial"
-"_MN_SP_00_DESC";"On a remote Northland island, the SEAS have established a training camp in order to prepare new recruits for the strange new world. This is an ideal place to learn all about the basic controls under the Ada's watchful eyes."
-"Single 01";"Mission 1: Stranded"
-"_MN_SP_01_DESC";"After the storm, Cole finds himself stranded at the Northland coast - alone and without any indication as to where his friends might be. If Cole wants to survive, he needs to explore his strange surroundings. Perhaps he will find out what happened to Stina, Ada, and Béla..."
-"Single 02";"Mission 2: Druid Island"
-"_MN_SP_02_DESC";"The highest Norsemen Druid lives on a remote island which is home to the most important cult objects of the Norsemen – an ancient stone circle, the Holy Cove, and the mighty mammoths. The island sits majestically in the ocean waves. A snow-capped mountain range, surrounded by autumnal forests, completes the idyllic picture."
-"Single 03";"Mission 3: Amazon Island"
-"_MN_SP_03_DESC";"The journey South leads to a desert island. Water and wood are scarce and hungry dinosaurs make survival a real challenge. But the desert has more to offer than it seems."
-"Single 04";"Mission 4: The Dustriders"
-"_MN_SP_04_DESC";"The Druid’s prophecy leads our heroes and some Dustriders further down South. They are looking for the man who can help them find their way home. Alas, many a surprise lurks in the barren Savannah."
-"Single 05";"Mission 5: The Holy City"
-"_MN_SP_05_DESC";"The Holy City is the cultural and religious center of this world. This is where our Heroes might be able to finally find answers to all their burning questions – if the High Council is prepared to see them. The Council resides in an impressive temple above the city."
-"Single 06";"Mission 6: Pirates and Hostages"
-"_MN_SP_06_DESC";"After a wild chase, our Heroes are very close to the pirate hideout: The Pirates have established their headquarters in a bay on this jungle island. It is time to teach them some manners and free the hostages!"
-"Single 07";"Mission 7: The Water Temple"
-"_MN_SP_07_DESC";"To take water to the desert - is that just a metaphor or can such a miracle really happen? It is up to the Heroes to distinguish between reality and wishful thinking if they want to turn the impossible into a possibility. But first, they need to escape their old enemies."
-"Single 08";"Mission 8: Valley of the Gods"
-"_MN_SP_08_DESC";"From the desert to the ice wastes: The difference could hardly be greater! The passage to one of the remotest parts of this world is up there on its "roof." One thing is clear right from the start: This place cannot be reached without a struggle. "
-"Single 09";"Mission 9: Perilous Path"
-"_MN_SP_09_DESC";"From the icy peaks of Valhalla, the path leads down to the jungle and the bridge to the temple ruins. The destination is oh so close, and as the Heroes drove the Pirates out of the jungle ages ago, nothing should be able to stop them now."
-"Single 10";"Mission 10: The Prophet"
-"_MN_SP_10_DESC";"Barely alive, the Heroes find themselves without their plane and thus without any means to get back. But they are busy trying to find the missing Prophet and the old temple complex. They soon discover that they might already be expected in the depths of the jungle."
-"Single 11";"Mission 11: Arena"
-"_MN_SP_11_DESC";"God’s Judgment is to decide who is lying and who is telling the truth. Only the Heroes’ tactical abilities and general skills can determine the outcome of this battle. A good opportunity to prove who the real Chosen Ones are!"
-"Single 12";"Mission 12: Sea Battles"
-"_MN_SP_12_DESC";"Finally, there are some definite clues as to how the parameters for the gates can be calculated: Their emerging and disappearing is influenced by the stars. Somewhere on this island, there appears to be a telescope tower which enables Béla to conduct the necessary calculations. But Leighton certainly hasn’t been idle since his escape."
-"Single 13";"Mission 13: The Rush"
-"_MN_SP_13_DESC";"A huge SEAS army prepares to occupy the Holy City. Babbit seems to be determined to do anything in his power to stop the Heroes. The Holy City must not fall! The fate of the world will be decided at its gates."
-"Single 14";"Mission 14: Prisoners"
-"_MN_SP_14_DESC";"Following Leighton’s trail, our Heroes arrive at the strange Valley of Ashes which even the local tribes avoid at all cost. Toxic gases permeate the atmosphere, and lava emerges from countless craters. Such inhospitable surroundings are the perfect way to keep prisoners at bay, as escape seems completely impossible. Unless, of course, there is help from the outside..."
-"Single 15";"Mission 15: New World Order "
-"_MN_SP_15_DESC";"The foot of the volcano is the setting for the final battle against the SEAS. Only if the Heroes succeed in storming the Headquarters can they put paid to Babbit’s plans and perhaps even find their way home."
-"Single 16";"Mission 16: Showdown!"
-"_MN_SP_16_DESC";"Showdown! The core of the crater is the actual heart of the SEAS Headquarters. As long as Babbit is in control, it might all still end in a disaster. The Heroes must stop him and destroy his dangerous machine. A difficult and dangerous mission..."
-"_MN_MP_2_BOOMERANG";"Boomerang"
-"_MN_MP_2_BOOMERANG_DESC";"A winding path connects the enemy factions on this remote jungle island. Old temple ruins hide many secrets and should certainly be explored."
+"Tutorial";"Mise 0: Výuka"	
+"_MN_SP_00_DESC";"Na odlehlém severním ostrově vybudovaly jednotky SEAS výcvikový tábor pro přípravu nových rekrutů do cizího, nového světa. Je to ideální místo k seznámení se základním ovládáním pod ostražitým dohledem Ady.
+"Single 01";"Mise 1: Ztraceni"
+"_MN_SP_01_DESC";"Po bouři Cole uvízl na severním pobřeží - sám a bez jediného náznaku, kde mohou být jeho přátelé. Jestli chce přežít, musí prozkoumat své nezvyklé okolí. Snad zjistí, co se stalo se Stinou, Adou a Bélou...
+"Single 02";"Mise 2: Ostrov druidů"	
+"_MN_SP_02_DESC";"Nejvyšší druid seveřanů žije na vzdáleném ostrově, kde se nachází nejdůležitější předměty jejich víry – starobylý kamenný kruh, svatá jeskyně a mocní mamuti. Ostrov majestátně sedí ve vlnách oceánu. Idylický obrázek dokresluje zasněžené pohoří obklopené podzimními lesy.
+"Single 03";"Mise 3: Ostrov Amazonek"
+"_MN_SP_03_DESC";"Cesta na jih vede na pouštní ostrov. Voda a dřevo jsou zde vzácné a přežít vedle hladových dinosaurů je opravdová výzva. Poušť ale nabízí víc, než se zdá.
+"Single 04";"Mise 4: Pouštní jezdci"
+"_MN_SP_04_DESC";"Druidovo proroctví vede naše hrdiny a několik Pouštních jezdců dál na jih. Hledají muže, který jim dokáže pomoci najít cestu domů. V pusté savaně přesto číhá mnoho překvapení.
+"Single 05";"Mise 5: Svaté město"
+"_MN_SP_05_DESC";"Svaté město je kulturní a náboženské centrum tohoto světa. Tady naši hrdinové možná konečně naleznou odpovědi na všechny své palčivé otázky – pokud je nejvyšší rada bude připravena přijmout ve svém sídle, velkolepém chrámu nad městem.
+"Single 06";"Mise 6: Piráti a rukojmí"
+"_MN_SP_06_DESC";"Po divokém honu se naši hrdinové dostali na dosah úkrytu pirátů: jejich hlavní sídlo leží v zálivu tohoto ostrova zarostlého džunglí. Je čas udělit jim lekci slušného chování a osvobodit rukojmí!
+"Single 07";"Mise 7: Vodní chrám"
+"_MN_SP_07_DESC";"Udělat z pouště oceán - je to jen metafora, nebo se takový zázrak může doopravdy stát? Naši hrdinové musí rozpoznat, co je realita a co jen zbožné přání, chtějí-li učinit nemožné možným. Nejdříve se ale musí dostat z dosahu svých starých nepřátel.
+"Single 08";"Mise 8: Údolí bohů"	
+"_MN_SP_08_DESC";"Z pouště na ledové pláně: jen stěží se dá najít větší rozdíl! Cesta do nejvzdálenějších částí tohoto světa vede přes jeho střechu.  Jedna věc je jistá hned od začátku: Bez boje to nepůjde. 
+"Single 09";"Mise 9: Nebezpečná cesta"	
+"_MN_SP_09_DESC";"Z mrazivých vrcholků Valhaly vede cesta dolů do džungle a k mostu ke zřícenině chrámu. Cíl je tak blízko, a protože hrdinové vyhnali piráty z džungle před dlouhou dobou, nic by jim teď nemělo stát v cestě.
+"Single 10";"Mise 10: Prorok"
+"_MN_SP_10_DESC";"Stěží naživu zůstali hrdinové bez letadla a bez jakéhokoli prostředku na návrat. Snaží se však nalézt ztraceného proroka a starý chrámový komplex. Brzy zjistí, že na ně v hlubinách džungle již čekají.
+"Single 11";"Mise 11: Aréna"
+"_MN_SP_11_DESC";"Kdo lže a kdo mluví pravdu, to posoudí Bůh. Výsledek této bitvy rozhodnou taktické schopnosti a dovednosti hrdinů. Je to skvělá příležitost dokázat, kdo  jsou ti skuteční Vyvolení!
+"Single 12";"Mise 12: Námořní boje"	
+"_MN_SP_12_DESC";"Konečně se objevilo několik jasných stop, jak vypočítat nastavení bran: Jejich objevování a mizení ovlivňují hvězdy. Vypadá to, že někde tady na ostrově se nachází hvězdárna, s jejíž pomocí Béla dokáže provést nezbytné výpočty. Ale Leighton od svého útěku dozajista také nezahálel. 
+"Single 13";"Mise 13: Přepad"	
+"_MN_SP_13_DESC";"Ohromná armáda jednotek SEAS se chystá k obsazení svatého města. Zdá se, že Babbit je pevně rozhodnutý udělat cokoliv, co je v jeho silách, aby hrdiny zastavil. Svaté město nesmí padnout! Osud tohoto světa se rozhodne u jeho bran.
+"Single 14";"Mise 14: Vězni"	
+"_MN_SP_14_DESC";"Leightonovi v patách naši hrdinové dorazili do podivného Popelavého údolí, kterému se i místní kmeny vyhýbají za každou cenu. Jedovaté plyny se šíří ovzduším a z nesčetných děr vytéká láva. Takové nehostinné prostředí se skvěle hodí k udržení vězňů pod kontrolou, protože únik se zdá být naprosto nemožný. Pokud samozřejmě nepřijde pomoc zvenku...
+"Single 15";"Mise 15: Nový řád světa "	
+"_MN_SP_15_DESC";"Na úpatí sopky se odehraje poslední bitva proti jednotkám SEAS. Pokud se hrdinům podaří dostat do velitelství, dokáží překazit Babbitovy plány a možná dokonce najít i cestu domů.
+"Single 16";"Mise 16: Zúčtování!"	
+"_MN_SP_16_DESC";"Poslední bitva! Skutečným srdcem velitelství SEAS je střed kráteru. Dokud je Babbit u moci, může vše stále skončit katastrofou. Hrdinové ho musí zastavit a zničit jeho nebezpečný stroj. Je to těžký a nebezpečný úkol...
+"_MN_MP_2_BOOMERANG";"Bumerang"
+"_MN_MP_2_BOOMERANG_DESC";"Klikatá cesta spojuje nepřátelské strany tohoto odlehlého, džunglí zarostlého ostrova. Staré chrámové ruiny v sobě ukrývají mnoho tajemství a je třeba je prozkoumat.
 "_MN_MP_2_PIRATES";"Tortuga"
-"_MN_MP_2_PIRATES_DESC";"The ruins of old Pirate headquarters on these two tropical islands are a testament to the bloody battles between rival pirate groups. Today, these islands are home to new enemies. Conquering the rough seas will clearly mean military advantages."
-"_MN_MP_2_THE_ROCK";"Rocky Shore"
-"_MN_MP_2_THE_ROCK_DESC";"Two nordic plateaus are the setting for this fight for an old castle ruin in this region. Great spoils await the victor. But the beach area with its natural resources is of strategic importance, too."
-"_MN_MP_3_TRIPLE";"Triple Threat"
-"_MN_MP_2_TRIPLE_DESC";"On a former SEAS supply island, a usurper occupies a base with valuable resources. Outside the old base, a brutal fight ensues, but traveling across the ocean also offers many chances of finding and capturing important treasures."
-"_MN_MP_3_PINCER";"Pincer"
-"_MN_MP_3_PINCER_DESC";"A wide mountainous landscape is the backdrop for an unequal battle between a defender and two aggressors who can combine forces to storm the enemy fortress. Will the defender’s limited resources suffice?"
-"_MN_MP_3_SAVANNAH";"Savannah"
-"_MN_MP_3_SAVANNAH_DESC";"A small archipelago south of the Amazon island is the location of old Dustrider ruins which are there for the taking. The mainland provides resources and space for settlements, but the true treasures can be found on the smaller surrounding islands."
-"_MN_MP_4_MALICE";"Malice"
-"_MN_MP_4_MALICE_DESC";"The settlements of a number of clans are located at the foot of the ancient temple mountain to the west of Valhalla. The switches for the gates of the snow-covered temple can only be used by the bravest of warriors. But whoever opens the gates of the temple also opens the way for the enemy..."
-"_MN_MP_4_SHAMROCK";"Shamrock"
-"_MN_MP_4_SHAMROCK_DESC";"The opponents face each other like the leaves of a shamrock on this tropical island, but huge primeval giants stand in the way. Who will dare to confront them head-on, and who will try to find alternative ways?"
-"_MN_MP_4_TREASURE";"Ancient Treasures"
-"_MN_MP_4_TREASURE_DESC";"An overgrown jungle is home to old temple ruins with legendary treasures which are guarded by the animals of the forest. Who will follow in the footsteps of the greatest explorer and conquerors? Be aware that seafarers can capture treasures and find fame and glory, too."
-"_MN_MP_4_RESERVOIR";"The Reservoir"
-"_MN_MP_4_RESERVOIR_DESC";"Four opponents live along a winding river. The river can only be crossed at a few shallow places. Hungry carnivores lie in wait for unwary scouts and feast on the victims of battle." 
-"_MN_MP_4_ANCIENT";"Ancient Fortress"
-"_MN_MP_4_ANCIENT_DESC";"A new clan has settled on a high plateau, a former Amazon settlement. But the clans living on the surrounding peninsulas have forged an alliance against the owner of the fortress – he will need to defend more than just the entrance."
-"_MN_MP_5_BLOOD";"Blood Island"
-"_MN_MP_5_BLOOD_DESC";"East of the Holy City, a bloody clan battle for a strategically important island erupts: One sole defender in a strong fortress on a desert island is forced to fight four attackers who approach from islands nearby."
-"_MN_MP_6_FROZEN";"Frozen River"
-"_MN_MP_6_FROZEN_DESC";"An icy river parts the lands south of Valhalla and creates a natural barrier between two enemy clans. A handful of fords are at the center of the conflict. It’s best to play in two teams."
-"_MN_MP_6_GREAT";"Great Sea"
-"_MN_MP_6_GREAT_DESC";"Various clans have arrived on six islands around the Erebus volcano in order to gain access to the volcano treasures and seize supremacy in this part of the world. There is no access by land so they need to face the perilous sea."
-"_MN_MP_6_TANGLED";"Tangled"
-"_MN_MP_6_TANGLED_DESC";"Seven islands lie close to each other in the tropical sea. The long stretches of beach are difficult to defend, and there are rumors that the very brave can wade through the shallow waters to the central treasure island in order to attack from there – but they have to face many carnivorous animals in order to succeed."
-"_MN_MP_6_MARAUDER";"Marauder"
-"_MN_MP_6_MARAUDER_DESC";"Dry desert winds drive the clans down from the mountain areas to the cooler ravines where prehistoric hunters block the way to the rich spoils of the temple complex in the middle. The sparse flora has a strategic impact which shouldn’t be underestimated."
+"_MN_MP_2_PIRATES_DESC";"Zbytky starých pirátských sídel na těchto dvou tropických ostrovech jsou odkazem krvavých bitev mezi soupeřícími pirátskými skupinami. Dnes jsou ostrovy domovem nových nepřátel. Ovládnutí bouřlivých moří přinese jasnou vojenskou výhodu.
+"_MN_MP_2_THE_ROCK";"Skalnaté břehy"	
+"_MN_MP_2_THE_ROCK_DESC";"Dvě severské náhorní plošiny jsou dějištěm boje o starou zříceninu hradu. Na vítěze čeká velká kořist. Svůj strategický význam má však také pláž.
+"_MN_MP_3_TRIPLE";"Trojí hrozba"
+"_MN_MP_2_TRIPLE_DESC";"Na bývalém zásobovacím ostrově SEAS zabral nepřítel základnu s cennými surovinami. Před starou budovou vypukne nelítostný boj, cesta po moři však také nabízí velkou šanci na nalezení důležitých pokladů.
+"_MN_MP_3_PINCER";"V kleštích"
+"_MN_MP_3_PINCER_DESC";"Na pozadí rozlehlého hornatého kraje se odehraje nerovný zápas mezi obráncem a dvěma útočníky, kteří mohou k dobytí nepřátelské pevnosti spojit své síly. Budou omezené zdroje obránce stačit? 
+"_MN_MP_3_SAVANNAH";"Savana"
+"_MN_MP_3_SAVANNAH_DESC";"V malém souostroví jižně od ostrova Amazonek se nachází ruiny základny Pouštních jezdců, které jen čekají na zabrání. Hlavní ostrov nabízí dostatek surovin a prostoru pro osídlení, ale pravé poklady se skrývají na ostrůvcích okolo.
+"_MN_MP_4_MALICE";"Zlomyslnost"
+"_MN_MP_4_MALICE_DESC";"Na úpatí starobylé chrámové hory západně od Valhaly leží osady mnoha kmenů. Otevřít brány zasněženého chrámu může pouze nejstatečnější válečník. Avšak kdo tak učiní, otevře cestu také nepříteli...
+"_MN_MP_4_SHAMROCK";"Šafrán"
+"_MN_MP_4_SHAMROCK_DESC";"Protivníků je na tomto tropickém ostrově jako šafránu, v cestě však stojí pravěcí obři. Kdo se jim odváží postavit tváří v tvář a kdo se pokusí najít jinou cestu?
+"_MN_MP_4_TREASURE";"Staré poklady"
+"_MN_MP_4_TREASURE_DESC";"Neprostupná džungle ukrývá starou zříceninu chrámu s legendárním pokladem, který střeží její obyvatelé. Kdo se pustí po stopách největších průzkumníků a dobyvatelů? Nezapomeň, že i mořeplavci mohou najít poklad a slávu.
+"_MN_MP_4_RESERVOIR";"Rezervoár"
+"_MN_MP_4_RESERVOIR_DESC";"Čtyři nepřátelé žijí na březích řeky, kterou lze překročit pouze v několika mělkých místech. Hladoví masožravci čekají na neopatrné zvědy a hodují na obětech bojů. 
+"_MN_MP_4_ANCIENT";"Starobylá pevnost"
+"_MN_MP_4_ANCIENT_DESC";"V bývalém sídle Amazonek na planině se usadil nový klan. Avšak klany z okolních poloostrovů se proti novým obyvatelům spojily dohromady – bude třeba bránit mnohem víc než jen vstup do pevnosti.
+"_MN_MP_5_BLOOD";"Krvavý ostrov"
+"_MN_MP_5_BLOOD_DESC";"Na východ od svatého města vypukla krvavá bitva klanů o strategicky důležitý ostrov: Jeden osamělý obránce v pevnosti na pouštním ostrově se musí bránit čtyřem útočníkům, kteří se blíží z nedalekých ostrovů.
+"_MN_MP_6_FROZEN";"Zamrzlá řeka"	
+"_MN_MP_6_FROZEN_DESC";"Ledová řeka rozděluje země na jih od Valhaly a tvoří přírodní překážku mezi dvěma nepřátelskými klany. Středem konfliktu je několik brodů. Nejlepší je hrát ve dvou týmech.
+"_MN_MP_6_GREAT";"Velké moře"	
+"_MN_MP_6_GREAT_DESC";"Různé klany se usídlily na šesti ostrovech okolo sopky Erebus, aby získaly přístup k pokladům uvnitř vulkánu a vydobyly si nadvládu nad touto částí světa. Protože přístupová cesta po souši neexistuje, budou se muset postavit nebezpečnému moři.
+"_MN_MP_6_TANGLED";"Zámotek"
+"_MN_MP_6_TANGLED_DESC";"V tropickém moři leží blízko sebe sedm ostrovů. Dlouhé pláže se špatně brání a říká se, že velmi stateční válečníci dokáží přebrodit mělké vody k hlavnímu ostrovu s pokladem a odtud zaútočit – v cestě za úspěchem jim však bude stát mnoho masožravců.
+"_MN_MP_6_MARAUDER";"Nájezdníci"
+"_MN_MP_6_MARAUDER_DESC";"Suché pouštní větry vyhnaly klany dolů z hor do chladnějších míst, kde prehistoričtí lovci blokují cestu za bohatou kořistí ukrývající se v chrámu uprostřed. Řídká vegetace má strategický význam, který není radno podceňovat.
 "_MN_MP_6_PINORECK";"Pinoreck"
-"_MN_MP_6_PINORECK_DESC";"Lowlands, plateaus, lakes, and a dormant volcano are the varied backdrop for the war of the clans. He who can quickly find his way and collect the artifacts first will gain supremacy."
-"_MN_MP_2_MONKEY";"Ape Island"
-"_MN_MP_2_MONKEY_DESC";"This densely overgrown island is situated at a remote location in the ocean. Two clans have landed on the shores nearby and are planning to establish settlements and exploit the resources of this wild land. Many a path leads to the destination, but you might not be on the straightest one."
-"_MN_MP_4_FALLEN";"Fallen Tribes"
-"_MN_MP_4_FALLEN_DESC";"A group of islands in the icy polar seas is home to the ruins of long forgotten mighty kingdoms. One of the islands with particularly rich resources has always been coveted by various factions and is bound to instill greed in the new rulers too."
-"_MN_MP_8_AJUBA";"Ajuba City"
-"_MN_MP_8_AJUBA_DESC";"A sea of sand surrounds the Ajuba Oasis. Its life-giving spring is at the center of a city which many clans would like to call their own. They all lurk in the surrounding ruins. A deceptive peace fills the streets of Ajuba, but the storm is imminent."
-"_MN_MP_8_ELEMENT";"Elements"
-"_MN_MP_8_ELEMENT_DESC";"Eight tribes reside in an old crater at the shores of the Crater Lake. They all fight for supremacy over the island in its center. Each tribe must face its two neighbors, and they can only be reached over the water..."
-"_MN_MP_8_ELEMENTS";"Elements"
-"_MN_MP_8_ELEMENTS_DESC";"In the rough seas of the Ashvalley lies a large archipelago. Individual islands are connected by fords, but not all of the paths are without perils. Some areas are covered in huge thorns which injure anybody who ventures forth."
+"_MN_MP_6_PINORECK_DESC";"Nížiny, náhorní plošiny, jezera a nečinná sopka, různorodé pozadí, na němž se odehrává válka klanů. Nadvládu získá ten, kdo jako první najde cestu ke všem artefaktům.
+"_MN_MP_2_MONKEY";"Opičí ostrov"
+"_MN_MP_2_MONKEY_DESC";"Tento hustě zarostlý ostrov se nachází na odlehlém místě v oceánu. Dva klany přistály na jeho březích nedaleko sebe a chystají se vybudovat osídlení a těžit zdroje této nezkrocené země. K cíli vede nejedna cesta, nemusí to však být ta nejkratší.
+"_MN_MP_4_FALLEN";"Padlé kmeny"
+"_MN_MP_4_FALLEN_DESC";"Několik ostrovů v ledových polárních mořích ukrývá ruiny dávno zapomenutých mocných království. O jeden z ostrovů s obzvlášť bohatými přírodními zdroji vždy usilovaly různé frakce. Toto bohatství zaseje chtíč i do srdcí nových vládců.
+"_MN_MP_8_AJUBA";"Město Ajuba"	
+"_MN_MP_8_AJUBA_DESC";"Moře písku obklopuje oázu Ajuba. Uprostřed města leží životodárný pramen, který by mnoho klanů rádo vlastnilo. Všichni číhají v okolních ruinách. Ulice Ajuby plní falešný klid, ale bouře je už blízko.
+"_MN_MP_8_ELEMENT";"Části celku"	
+"_MN_MP_8_ELEMENT_DESC";"Osm kmenů sídlí ve starém kráteru na březích jezera. Bojují mezi sebou o nadvládu nad středem ostrova. Každý kmen stojí proti svým dvěma sousedům, k nimž se může dostat pouze po vodě...
+"_MN_MP_8_ELEMENTS";"Elementy"
+"_MN_MP_8_ELEMENTS_DESC";"V drsných mořích Popelavého údolí se nachází rozsáhlé souostroví. Jednotlivé ostrovy spojují brody, ne každá cesta je však bez nebezpečí. Některé oblasti pokrývají ohromné trny, které poraní každého, kdo tudy zkusí projít.
 "_MN_MP_X_SACRED";"Yggdrasil"
-"_MN_MP_2_SACRED_DESC";"Treasure hunters have discovered the holy path to Valhalla! A fierce battle for the treasures of the Gods commences. The father of all Gods, Odin, will hand them over to the bravest and most courageous warrior."
-"_MN_MP_2_AUTUMN";"Autumn Battlefield"
-"_MN_MP_2_AUTUMN_DESC";"Two opponents continue their age-old conflict on an autumnal island. Their bases can easily be made into fortresses from which they can march to battle."
-"_MN_MP_2_CATACLYSM";"Cataclysm"
-"_MN_MP_2_CATACLYSM_DESC";"Separated by a fiery chasm that proved to be the doom of countless warriors and creatures, two once peaceful neighbours now battle for supremacy over a gigantic volcanic crater. Those who act blindfolded will pay a high price for their deeds."
-"_MN_MP_2_SUNNY";"Sunny Side Up"
-"_MN_MP_2_SUNNY_DESC";"During a war an ancient city was destroyed completely. People moved away and rebuilt the city somewhere else. For many years, the decaying ruins lay forgotten. But a few people still know about the hidden treasures and return, driven by the desire for untold riches."
-"_MN_MP_2_SANDSTORM";"Sandstorm"
-"_MN_MP_2_SANDSTORM_DESC";"Two tribes clash as each tries to use its enemy as a blood sacrifice to the Sand God Pesak. Deep canyons full of dangerous predators line the path to the Holy Temple, where only the mightiest of warriors have a chance of survival."
-"_MN_MP_3_MELTDOWN";"Meltdown"
-"_MN_MP_3_MELTDOWN_DESC";"The SEAS recovered an ancient artifact capable of opening the path to Valhalla from deep in the pack ice here. Now this abandoned archaeological site serves as a refuge for plunderers fighting for the SEAS' leftovers."
-"_MN_MP_4_ASHES";"Ashes to Ashes"
-"_MN_MP_4_ASHES_DESC";"Each player has his own island, but safety is not for long. To take the lead you have to spread toward the crater island in the middle."
-"_MN_MP_2_COLDBLOOD";"Cold-blooded"
-"_MN_MP_2_COLDBLOOD_DESC";"Cut off. Temperatures far below zero. The enemy but a stone's throw away. No place to run. Truly a cold day in Hell..."
-"_MN_MP_4_SHAMROCK_T";"Shamrock (Team)"
-"_MN_MP_4_SHAMROCK_T_DESC";"The opponents face each other in pairs like the leaves of a shamrock on this tropical island, but huge primeval giants stand in the way. Who will dare to confront them head-on, and who will try to find alternative ways?"
-"_MN_MP_2_ARENA";"Arena"
-"_MN_MP_2_ARENA_DESC";"Two tribes are going to battle in the arena. They will get down to business instantly, no building, no running away. May the better one win!
+"_MN_MP_2_SACRED_DESC";"Lovci pokladů objevili svatou cestu do Valhaly! Zuřivý boj o poklady bohů začíná. Otec všech bohů, Odin, je vydá nejstatečnějšímu a nejodvážnějšímu válečníkovi.
+"_MN_MP_2_AUTUMN";"Podzimní bojiště"	
+"_MN_MP_2_AUTUMN_DESC";"Dva nepřátelé pokračují ve svém dlouholetém sporu na podzimním ostrově. Jejich základny lze velmi snadno změnit v pevnosti, z nichž vyrazí do boje.
+"_MN_MP_2_CATACLYSM";"Pohroma"
+"_MN_MP_2_CATACLYSM_DESC";"Odděleni žhnoucí propastí, jež se stala zkázou nespočtu válečníků a tvorů, dva kdysi mírumilovní sousedé nyní válčí o nadvládu nad gigantickým sopečným kráterem. Ti, kteří jednají slepě a bez rozvahy, za své činy zaplatí vysokou cenu.
+"_MN_MP_2_SUNNY";"Slunečná strana"	
+"_MN_MP_2_SUNNY_DESC";"Během války bylo starobylé město zcela zničeno. Lidé se odstěhovali a vystavěli je na jiném místě. Po mnoho let ležely rozpadající se trosky zapomenuty. Ale několik lidí stále ví o ukrytých pokladech a vrací se zpět, hnáni touhou po nevýslovném bohatství.
+"_MN_MP_2_SANDSTORM";"Písečná bouře"	
+"_MN_MP_2_SANDSTORM_DESC";"Dva kmeny spolu válčí, aby svého nepřítele použily jako krvavou oběť písečnému bohu Pesakovi. Hluboké kaňony plné nebezpečných predátorů lemují cestu do svatého chrámu, kde mohou přežít pouze nejmocnější válečníci.
+"_MN_MP_3_MELTDOWN";"Roztavení"
+"_MN_MP_3_MELTDOWN_DESC";"Jednotky SEAS nalezly starobylý artefakt schopný otevřít cestu do Valhaly odsud z hlubiny ledového vrchu. Nyní toto opuštěné archeologické naleziště slouží jako útočiště těm, co se snaží utrhnout kus ze zbytků, které zde zůstaly.
+"_MN_MP_4_ASHES";"Popel"
+"_MN_MP_4_ASHES_DESC";"Každý hráč má svůj vlastní ostrov, ale bezpečí netrvá věčně. Aby ses dostal do vedení, musíš se vydat k ostrovu s kráterem uprostřed.
+"_MN_MP_2_COLDBLOOD";"Chladnokrevně"	
+"_MN_MP_2_COLDBLOOD_DESC";"Odříznut. Teplota hodně nízko pod nulou. Nepřítel co by kamenem dohodil. Utéct není kam. Vážně chladný den v pekle...
+"_MN_MP_4_SHAMROCK_T";"Šafrán (Tým)"
+"_MN_MP_4_SHAMROCK_T_DESC";"Nepřátelé na tomto tropickém ostrově proti sobě stojí ve dvojicích, cestu však blokují ohromní pravěcí obři. Kdo se jim postaví tváří v tvář a kdo najde jinou cestu?
+"_MN_MP_2_ARENA";"Aréna"
+"_MN_MP_2_ARENA_DESC";"V aréně se proti sobě postaví dva kmeny. Boj bude okamžitý, žádné budovy, žádné místo pro útěk. Nechť zvítězí lepší!

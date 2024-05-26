@@ -4,326 +4,327 @@
 \{comment $Author: claudia.krueger $}
 \{comment $Revision: #4 $}
 
-\{chapter -name _economy_buildings Economy buildings}
-\{helpitem -name seas_headquarters Headquarters}
+\{chapter -name _economy_buildings Ekonomické budovy}
+
+\{helpitem -name seas_headquarters Velitelství}
 \{img /bunit:seas_headquarters -ralign}
    \{tooltipshort}
 %/class:bldg%
    \{/tooltipshort}
    \{tooltipmedium}
-• Produces Workers
-\\{br}• Begins Epochs
-\\{br}• Resource collection point
-\\{br}• Increases storage
-\\{br}• Increases unit limit
+• Vyrábí dělníky
+\\{br}• Začíná epochy
+\\{br}• Slouží jako sběrné místo pro suroviny
+\\{br}• Zvyšuje skladovací kapacitu
+\\{br}• Zvyšuje limit jednotek
    \{/tooltipmedium}
    \{tooltiplong}
-This is the \{ref H_story.seml#_story_seas} SEAS\{/ref} base \{ref H_general.seml#_building} building,\{/ref} and is needed to produce \{ref H_seas_produkte.seml#_seas_worker} Workers\{/ref} and begin new \{ref H_general.seml#_techtree} Epochs.\{/ref}
-Once begun, these \{ref H_general.seml#_techtree} Epochs\{/ref} cannot be rescinded. Inventions in progress are lost if the \{ref H_general.seml#_building} building\{/ref} is destroyed.
+Velitelství je u \{ref H_story.seml#_story_seas} SEAS\{/ref} základní \{ref H_general.seml#_building} budova\{/ref} a je nezbytné pro výrobu \{ref H_seas_produkte.seml#_seas_worker} dělníků\{/ref} a zahájení nových \{ref H_general.seml#_techtree} epoch.\{/ref}
+Jakmile je nová \{ref H_general.seml#_techtree} epocha\{/ref} zahájena, nelze ji zrušit. Při zničení \{ref H_general.seml#_building} budovy\{/ref} budou všechny rozpracované vynálezy ztraceny.
    \{/tooltiplong}
 \{/helpitem}
 
-\{helpitem -name _seas_headquarters_1 -redirect seas_headquarters -nodisplay Headquarters Epoch 1}
+\{helpitem -name _seas_headquarters_1 -redirect seas_headquarters -nodisplay Velitelství epocha 1}
 \{img /bunit:seas_headquarters_1 -ralign}
   \{tooltipshort}
 %/class:bldg%
    \{/tooltipshort}
    \{tooltipmedium}
-• Produces Workers
-\\{br}• Begins Epochs
-\\{br}• Resource collection point
-\\{br}• Increases storage
-\\{br}• Increases unit limit
+• Vyrábí dělníky
+\\{br}• Začíná epochy
+\\{br}• Slouží jako sběrné místo pro suroviny
+\\{br}• Zvyšuje skladovací kapacitu
+\\{br}• Zvyšuje limit jednotek
    \{/tooltipmedium}
    \{tooltiplong}
-This is the \{ref H_story.seml#_story_seas} SEAS\{/ref} base \{ref H_general.seml#_building} building,\{/ref} and is needed to produce \{ref H_seas_produkte.seml#_seas_worker} Workers\{/ref} and begin new \{ref H_general.seml#_techtree} Epochs.\{/ref}
-Once begun, these \{ref H_general.seml#_techtree} Epochs\{/ref} cannot be rescinded. Inventions in progress are lost if the \{ref H_general.seml#_building} building\{/ref} is destroyed.
+Velitelství je u \{ref H_story.seml#_story_seas} SEAS\{/ref} základní \{ref H_general.seml#_building} budova\{/ref} a je nezbytné pro výrobu \{ref H_seas_produkte.seml#_seas_worker} dělníků\{/ref} a zahájení nových \{ref H_general.seml#_techtree} epoch.\{/ref}
+Jakmile je nová \{ref H_general.seml#_techtree} epocha\{/ref} zahájena, nelze ji zrušit. Při zničení \{ref H_general.seml#_building} budovy\{/ref} budou všechny rozpracované vynálezy ztraceny.
    \{/tooltiplong}
 \{/helpitem}
 
-\{helpitem -name _seas_headquarters_2 -redirect seas_headquarters -nodisplay Headquarters Epoch 2}
+\{helpitem -name _seas_headquarters_2 -redirect seas_headquarters -nodisplay Velitelství epocha 2}
 \{img /bunit:seas_headquarters_2 -ralign}
   \{tooltipshort}
 %/class:bldg%
    \{/tooltipshort}
    \{tooltipmedium}
-• Produces Workers
-\\{br}• Begins Epochs
-\\{br}• Resource collection point
-\\{br}• Increases storage
-\\{br}• Increases unit limit
+• Vyrábí dělníky
+\\{br}• Začíná epochy
+\\{br}• Slouží jako sběrné místo pro suroviny
+\\{br}• Zvyšuje skladovací kapacitu
+\\{br}• Zvyšuje limit jednotek
    \{/tooltipmedium}
    \{tooltiplong}
-This is the \{ref H_story.seml#_story_seas} SEAS\{/ref} base \{ref H_general.seml#_building} building,\{/ref} and is needed to produce \{ref H_seas_produkte.seml#_seas_worker} Workers\{/ref} and begin new \{ref H_general.seml#_techtree} Epochs.\{/ref}\\{br}
-Once begun, these \{ref H_general.seml#_techtree} Epochs\{/ref} cannot be rescinded. Inventions in progress are lost if the \{ref H_general.seml#_building} building\{/ref} is destroyed.
+Velitelství je u \{ref H_story.seml#_story_seas} SEAS\{/ref} základní \{ref H_general.seml#_building} budova\{/ref} a je nezbytné pro výrobu \{ref H_seas_produkte.seml#_seas_worker} dělníků\{/ref} a zahájení nových \{ref H_general.seml#_techtree} epoch.\{/ref}
+Jakmile je nová \{ref H_general.seml#_techtree} epocha\{/ref} zahájena, nelze ji zrušit. Při zničení \{ref H_general.seml#_building} budovy\{/ref} budou všechny rozpracované vynálezy ztraceny.
    \{/tooltiplong}
 \{/helpitem}
 
-\{helpitem -name _seas_headquarters_3 -redirect seas_headquarters -nodisplay Headquarters Epoch 3}
+\{helpitem -name _seas_headquarters_3 -redirect seas_headquarters -nodisplay Velitelství epocha 3}
 \{img /bunit:seas_headquarters_3 -ralign}
   \{tooltipshort}
 %/class:bldg%
    \{/tooltipshort}
    \{tooltipmedium}
-• Produces Workers
-\\{br}• Begins Epochs
-\\{br}• Resource collection point
-\\{br}• Increases storage
-\\{br}• Increases unit limit
+• Vyrábí dělníky
+\\{br}• Začíná epochy
+\\{br}• Slouží jako sběrné místo pro suroviny
+\\{br}• Zvyšuje skladovací kapacitu
+\\{br}• Zvyšuje limit jednotek
    \{/tooltipmedium}
    \{tooltiplong}
-This is the \{ref H_story.seml#_story_seas} SEAS\{/ref} base \{ref H_general.seml#_building} building,\{/ref} and is needed to produce \{ref H_seas_produkte.seml#_seas_worker} Workers\{/ref} and begin new \{ref H_general.seml#_techtree} Epochs.\{/ref}\\{br}
-Once begun, these \{ref H_general.seml#_techtree} Epochs\{/ref} cannot be rescinded. Inventions in progress are lost if the \{ref H_general.seml#_building} building\{/ref} is destroyed.
+Velitelství je u \{ref H_story.seml#_story_seas} SEAS\{/ref} základní \{ref H_general.seml#_building} budova\{/ref} a je nezbytné pro výrobu \{ref H_seas_produkte.seml#_seas_worker} dělníků\{/ref} a zahájení nových \{ref H_general.seml#_techtree} epoch.\{/ref}
+Jakmile je nová \{ref H_general.seml#_techtree} epocha\{/ref} zahájena, nelze ji zrušit. Při zničení \{ref H_general.seml#_building} budovy\{/ref} budou všechny rozpracované vynálezy ztraceny.
    \{/tooltiplong}
 \{/helpitem}
 
-\{helpitem -name _seas_headquarters_4 -redirect seas_headquarters -nodisplay Headquarters Epoch 4}
+\{helpitem -name _seas_headquarters_4 -redirect seas_headquarters -nodisplay Velitelství epocha 4}
 \{img /bunit:seas_headquarters_4 -ralign}
    \{tooltipshort}
 %/class:bldg%
    \{/tooltipshort}
    \{tooltipmedium}
-• Produces workers
-\\{br}• Begins Epochs
-\\{br}• Resource collection point
-\\{br}• Increases storage
-\\{br}• Increases unit limit
+• Vyrábí dělníky
+\\{br}• Začíná epochy
+\\{br}• Slouží jako sběrné místo pro suroviny
+\\{br}• Zvyšuje skladovací kapacitu
+\\{br}• Zvyšuje limit jednotek
    \{/tooltipmedium}
    \{tooltiplong}
-This is the \{ref H_story.seml#_story_seas} SEAS\{/ref} base \{ref H_general.seml#_building} building,\{/ref} and is needed to produce \{ref H_seas_produkte.seml#_seas_worker} Workers\{/ref} and begin new \{ref H_general.seml#_techtree} Epochs.\{/ref}\\{br}
-Once begun, these \{ref H_general.seml#_techtree} Epochs\{/ref} cannot be rescinded. Inventions in progress are lost if the \{ref H_general.seml#_building} building\{/ref} is destroyed.
+Velitelství je u \{ref H_story.seml#_story_seas} SEAS\{/ref} základní \{ref H_general.seml#_building} budova\{/ref} a je nezbytné pro výrobu \{ref H_seas_produkte.seml#_seas_worker} dělníků\{/ref} a zahájení nových \{ref H_general.seml#_techtree} epoch.\{/ref}
+Jakmile je nová \{ref H_general.seml#_techtree} epocha\{/ref} zahájena, nelze ji zrušit. Při zničení \{ref H_general.seml#_building} budovy\{/ref} budou všechny rozpracované vynálezy ztraceny.
    \{/tooltiplong}
 \{/helpitem}
 
-\{helpitem -name _seas_headquarters_5 -redirect seas_headquarters -nodisplay Headquarters Epoch 5}
+\{helpitem -name _seas_headquarters_5 -redirect seas_headquarters -nodisplay Velitelství epocha 5}
 \{img /bunit:seas_headquarters_5 -ralign}
    \{tooltipshort}
 %/class:bldg%
    \{/tooltipshort}
    \{tooltipmedium}
-• Produces Workers
-\\{br}• Begins Epochs
-\\{br}• Resource collection point
-\\{br}• Increases storage
-\\{br}• Increases unit limit
+• Vyrábí dělníky
+\\{br}• Začíná epochy
+\\{br}• Slouží jako sběrné místo pro suroviny
+\\{br}• Zvyšuje skladovací kapacitu
+\\{br}• Zvyšuje limit jednotek
    \{/tooltipmedium}
    \{tooltiplong}
-This is the \{ref H_story.seml#_story_seas} SEAS\{/ref} base \{ref H_general.seml#_building} building,\{/ref} and is needed to produce \{ref H_seas_produkte.seml#_seas_worker} Workers\{/ref} and begin new \{ref H_general.seml#_techtree} Epochs.\{/ref}\\{br}
-Once begun, these \{ref H_general.seml#_techtree} Epochs\{/ref} cannot be rescinded. Inventions in progress are lost if the \{ref H_general.seml#_building} building\{/ref} is destroyed.
+Velitelství je u \{ref H_story.seml#_story_seas} SEAS\{/ref} základní \{ref H_general.seml#_building} budova\{/ref} a je nezbytné pro výrobu \{ref H_seas_produkte.seml#_seas_worker} dělníků\{/ref} a zahájení nových \{ref H_general.seml#_techtree} epoch.\{/ref}
+Jakmile je nová \{ref H_general.seml#_techtree} epocha\{/ref} zahájena, nelze ji zrušit. Při zničení \{ref H_general.seml#_building} budovy\{/ref} budou všechny rozpracované vynálezy ztraceny.
    \{/tooltiplong}
 \{/helpitem}
 
-\{helpitem -name _seas_steelwork Steelwork}
+\{helpitem -name _seas_steelwork Ocelárna}
 \{img /bunit:seas_steelwork -ralign}
    \{tooltipshort}
 %/class:bldg%
    \{/tooltipshort}
    \{tooltipmedium}
-• Collection point for all resources
-\\{br}• Increases storage capacity
+• Sběrné místo pro všechny suroviny
+\\{br}• Zvyšuje skladovací kapacitu
    \{/tooltipmedium}
    \{tooltiplong}
-The Steelwork represents the main \{ref H_story.seml#_story_seas} SEAS\{/ref} \{ref H_general.seml#_resources}resource \{/ref} collection point. \\{br}
-As opposed to the other nations the \{ref H_story.seml#_story_seas} SEAS\{/ref} do not \{ref H_general.seml#_trading} trade\{/ref} for \{ref H_general.seml#_resources}resources \{/ref} - they simply take what they need without paying for it.
+Ocelárna je u \{ref H_story.seml#_story_seas} SEAS\{/ref} \{ref H_general.seml#_resources} hlavní \{/ref} sběrné místo surovin. \\{br}
+Oproti jiným národům \{ref H_story.seml#_story_seas} SEAS\{/ref} nemají zájem o \{ref H_general.seml#_trading} obchod\{/ref} se \{ref H_general.seml#_resources}surovinami \{/ref} - jednoduše si vše potřebné vezmou bez placení.
    \{/tooltiplong}
 \{/helpitem}
 
-\{helpitem -name _seas_greenhouse Greenhouse}
+\{helpitem -name _seas_greenhouse Skleník}
 \{img /bunit:seas_greenhouse -ralign}
    \{tooltipshort}
    %/class:bldg%
    \{/tooltipshort}
    \{tooltipmedium}
-• Produces food
-\\{br}• Employs up to 4 Workers
+• Vyrábí jídlo
+\\{br}• Zaměstná až 4 dělníky
       \{/tooltipmedium}
    \{tooltiplong}
-Greenhouses require no upkeep and continually produce \{ref H_ui.seml#_tb_food} food\{/ref} when farmed by at least 1  \{ref H_seas_produkte.seml#_seas_worker} Worker.\{/ref} They are the most efficient means of producing \{ref H_ui.seml#_tb_food} food.\{/ref}
+Skleník nepotřebuje údržbu a nepřetržitě vyrábí \{ref H_ui.seml#_tb_food} jídlo,\{/ref} pracuje-li v něm alespoň 1 \{ref H_seas_produkte.seml#_seas_worker} dělník.\{/ref} Je to nejvýkonnější způsob výroby \{ref H_ui.seml#_tb_food} jídla.\{/ref}
    \{/tooltiplong}
 \{/helpitem}
 
-\{chapter -name _combat_buildings Combat buildings}
-\{helpitem -name _seas_barracks Barracks}
+\{chapter -name _combat_buildings Vojenské budovy}
+\{helpitem -name _seas_barracks Kasárna}
 \{img /bunit:seas_barracks -ralign}
    \{tooltipshort}
 %/class:bldg%
    \{/tooltipshort}
    \{tooltipmedium}
-• Produces infantry
-\\{br}• Increases unit limit
+• Vyrábí pěší jednotky
+\\{br}• Zvyšuje limit jednotek
    \{/tooltipmedium}
    \{tooltiplong}
-The Barracks are the source of the \{ref H_story.seml#_story_seas} SEAS'\{/ref} infantry \{ref H_general.seml#_units} units.\{/ref}
+Kasárna jsou hlavním zdrojem pěších \{ref H_general.seml#_units} jednotek \{/ref} \{ref H_story.seml#_story_seas} SEAS.\{/ref}
    \{/tooltiplong}
 \{/helpitem}
 
-\{helpitem -name _seas_carrier Carrier}
+\{helpitem -name _seas_carrier Transportér}
 \{img /bunit:seas_carrier -ralign}
    \{tooltipshort}
 %/class:bldg%
    \{/tooltipshort}
    \{tooltipmedium}
-• Produces ships and amphibian units
-\\{br}• Harvests fish
+• Vyrábí lodě a obojživelné jednotky
+\\{br}• Loví ryby
    \{/tooltipmedium}
    \{tooltiplong}
-The Carrier is essential for leaving islands or crossing open water as only transport ships may \{ref H_general.seml#_transport}transport \{/ref} \{ref H_general.seml#_units} units\{/ref} over deep water. A flat, sandy beach is required to build the Carrier before launching it. \\{br}
-It can move slowly through the water, and is capable of producing ships and amphibious units on the open sea. The Carrier must first sail over to a school of \{ref H_world.seml#_fish} fish\{/ref} before it begins \{ref H_world.seml#_fish}fishing. \{/ref} Also, a right-click moves it to a new location. It occupies a slot in the \{ref H_general.seml#_pyramid}Army controller. \{/ref}
+Transportér je nezbytný k opuštění ostrova nebo překročení otevřené vody, protože pouze přepravní lodě mohou \{ref H_general.seml#_transport}přepravit \{/ref} \{ref H_general.seml#_units} jednotky\{/ref} přes hlubokou vodu. Před vypuštěním na vodu je nutné ho postavit na rovné písečné pláži. \\{br}
+Pohybuje se pomalu a dokáže vyrábět lodě a obojživelné jednotky na otevřeném moři. Když narazí na hejno \{ref H_world.seml#_fish} ryb,\{/ref} zvládá bez obtíží i \{ref H_world.seml#_fish}rybolov. \{/ref} Pravým tlačítkem myši mu určíš místo, kam se má přesunout. Zabírá jeden slot v okně \{ref H_general.seml#_pyramid}Stav armády. \{/ref}
    \{/tooltiplong}
 \{/helpitem}
 
-\{helpitem -name _seas_garage Garage}
+\{helpitem -name _seas_garage Garáž}
 \{img /bunit:seas_garage -ralign}
    \{tooltipshort}
 %/class:bldg%
    \{/tooltipshort}
    \{tooltipmedium}
-• Produces animal and vehicle units
+• Vyrábí vozidla a zvířecí jednotky
    \{/tooltipmedium}
    \{tooltiplong}
-Garages produce all \{ref H_story.seml#_story_seas} SEAS\{/ref} mounted \{ref H_general.seml#_units} units\{/ref} and vehicles, all of which are big, nasty and dangerous.
+Garáž vyrábí všechny \{ref H_story.seml#_story_seas} SEAS\{/ref} jezdecké \{ref H_general.seml#_units} jednotky\{/ref} a vozidla. Každá z těchto jednotek je velká, ošklivá a nebezpečná.
    \{/tooltiplong}
 \{/helpitem}
 
-\{chapter -name _defense_buildings Defense buildings}
-\{helpitem -name _seas_fence Fence}
+\{chapter -name _defense_buildings Obranné budovy}
+\{helpitem -name _seas_fence Oplocení}
 \{img /bunit:seas_fence -ralign}
    \{tooltipshort}
 %/class:bldg%
    \{/tooltipshort}
    \{tooltipmedium}
-• Non-mountable wall
+• Nepřekonatelná hradba
    \{/tooltipmedium}
    \{tooltiplong}
-Fences form a non-mountable fortification. \\{br}
-This means \{ref H_general.seml#_units} units\{/ref} cannot man them during an attack. A straight, even stretch of wall three sections long is needed to insert a Gate. Fences keep enemies and \{ref H_general.seml#_animals} wild animals\{/ref} out.
+Oplocení nemá ochoz. \\{br}
+To znamená, že \{ref H_general.seml#_units} jednotky\{/ref} jej nemohou během boje obsadit. Pro vestavění brány je potřeba rovný, tři sekce dlouhý úsek. Oplocení udržuje nepřátele i divoká \{ref H_general.seml#_animals} zvířata\{/ref} mimo základnu.
    \{/tooltiplong}
 \{/helpitem}
 
-\{helpitem -name _seas_gate Gate}
+\{helpitem -name _seas_gate Brána}
 \{img /bunit:seas_gate -ralign}
    \{tooltipshort}
 %/class:bldg%
    \{/tooltipshort}
    \{tooltipmedium}
-• Opens for SEAS units only
-\\{br}• Must be inserted into wall
+• Otevírá se pouze jednotkám SEAS 
+\\{br}• Musí být vestavěna do již stojící hradby
    \{/tooltipmedium}
    \{tooltiplong}
-These Gates only open for the \{ref H_story.seml#_story_seas} SEAS\{/ref} and their allied \{ref H_general.seml#_units} units\{/ref} automatically while remaining closed to all others. \\{br}
-Gates can only be place in an existing straight, even section of Fence three fields in width. An icon will indicate possible gate locations during Fence construction and whenever the "Gate" icon has been selected.
+Tyto brány se automaticky otevírají výhradně \{ref H_story.seml#_story_seas} SEAS\{/ref} a jejich spojeneckým \{ref H_general.seml#_units} jednotkám,\{/ref} zatímco pro všechny ostatní zůstanou zavřené. \\{br}
+Je možné je umístit pouze do již stojící rovné sekce oplocení o šířce tří polí. Během stavby oplocení ikona ukáže možné umístění bran i místa, kam byly brány vybrány.
    \{/tooltiplong}
 \{/helpitem}
 
-\{helpitem -name _seas_turret_tower Tower}
+\{helpitem -name _seas_turret_tower Věž}
 \{img /bunit:seas_turret_tower -ralign}
    \{tooltipshort}
 %/class:bldg%
    \{/tooltipshort}
    \{tooltipmedium}
-• Attacks on sight
-\\{br}• Stands alone or as part of a wall
+• Útočí, jakmile spatří nepřítele
+\\{br}• Může stát samostatně nebo jako součást hradby
    \{/tooltipmedium}
    \{tooltiplong}
-Towers fire automatically and do not need to be manned by infantrymen. \\{br}
-They can be placed on the wall grid, allowing them to be integrated into a wall at a later point in time.
+Věže útočí automaticky a nepotřebují žádnou obsluhu. \\{br}
+Je možné je postavit samostatně a později je začlenit do hradby.
    \{/tooltiplong}
 \{/helpitem}
 
-\{helpitem -name _seas_hq_bunker Bunker}
+\{helpitem -name _seas_hq_bunker Bunkr}
 \{img /bunit:seas_hq_bunker -ralign}
    \{tooltipshort}
 %/class:bldg%
    \{/tooltipshort}
    \{tooltipmedium}
-• Spawns SEAS units
+• Vyrábí jednotky
    \{/tooltipmedium}
    \{tooltiplong}
-The Bunker remains a threat for as long as it exists. \\{br}
-It continuously spawns new \{ref H_story.seml#_story_seas} SEAS\{/ref} \{ref H_general.seml#_units} units,\{/ref} ready to attack.
+Dokud bunkr existuje, zůstává neustálou hrozbou. \\{br}
+Nepřetržitě vyrábí nové \{ref H_general.seml#_units} jednotky\{/ref} okamžitě připravené k útoku.
    \{/tooltiplong}
 \{/helpitem}
 
-\{helpitem -name _seas_mg_nest MG nest}
+\{helpitem -name _seas_mg_nest Kulometné hnízdo}
 \{img /bunit:seas_mg_nest -ralign}
    \{tooltipshort}
 %/class:bldg%
    \{/tooltipshort}
    \{tooltipmedium}
-• Attacks on sight
+• Útočí, jakmile spatří nepřítele
    \{/tooltipmedium}
    \{tooltiplong}
-The MG nest automatically attacks enemy \{ref H_general.seml#_units} units.\{/ref} \\{br}
-Less powerful than the tower, a single MG nest poses no big threat, although a number of them can prove to be dangerous.
+Kulometné hnízdo automaticky útočí na nepřátelské \{ref H_general.seml#_units} jednotky.\{/ref} \\{br}
+Není tak silné jako věž. Jedno hnízdo samo o sobě nepředstavuje velkou hrozbu, je-li jich však pohromadě více, situace je zcela opačná.
    \{/tooltiplong}
 \{/helpitem}
 
-\{helpitem -name _seas_small_cannon Small cannon}
+\{helpitem -name _seas_small_cannon Malé dělo}
 \{img /bunit:seas_small_cannon -ralign}
    \{tooltipshort}
 %/class:bldg%
    \{/tooltipshort}
    \{tooltipmedium}
-• Attacks on sight
+• Útočí, jakmile spatří nepřítele
    \{/tooltipmedium}
    \{tooltiplong}
-Small cannons automatically attack enemy \{ref H_general.seml#_units} units.\{/ref} \\{br}
-Less powerful than the tower, a single Small cannon poses no big threat, although a number of them can prove to be dangerous.
+Malé dělo automaticky útočí na nepřátelské \{ref H_general.seml#_units} jednotky.\{/ref} \\{br}
+Není tak silné jako věž. Jedno dělo samo o sobě nepředstavuje velkou hrozbu, je-li jich však pohromadě více, situace je zcela opačná.
    \{/tooltiplong}
 \{/helpitem}
 
-\{helpitem -name _seas_big_cannon Big cannon}
+\{helpitem -name _seas_big_cannon Velké dělo}
 \{img /bunit:seas_big_cannon -ralign}
    \{tooltipshort}
 %/class:bldg%
    \{/tooltipshort}
    \{tooltipmedium}
-• Attacks on sight
+• Útočí, jakmile spatří nepřítele
    \{/tooltipmedium}
    \{tooltiplong}
-The Big cannon causes immense damage.
+Velké dělo působí poškození ohromujícího rozsahu.
    \{/tooltiplong}
 \{/helpitem}
 
-\{helpitem -name _seas_small_tent Small tent}
+\{helpitem -name _seas_small_tent Malý stan}
 \{img /bunit:seas_small_tent -ralign}
    \{tooltipshort}
 %/class:bldg%
    \{/tooltipshort}
    \{tooltipmedium}
-• Stores materials
+• Slouží ke skladování materiálů
    \{/tooltipmedium}
    \{tooltiplong}
-Basic tent used for storing materials. \\{br}
-It has no further functions and can safely be ignored.
+Základní stan používaný ke skladování materiálů. \\{br}
+Nemá žádnou další funkci a lze ho bezpečně ignorovat.
    \{/tooltiplong}
 \{/helpitem}
 
-\{helpitem -name _seas_big_tent Big tent}
+\{helpitem -name _seas_big_tent Velký stan}
 \{img /bunit:seas_big_tent -ralign}
    \{tooltipshort}
 %/class:bldg%
    \{/tooltipshort}
    \{tooltipmedium}
-• Military tent
+• Vojenský stan
 \{/tooltipmedium}
    \{tooltiplong}
-A big military tent used for storing materials or other functions. \\{br}
-It may be a kitchen tent, for example, but you should not expect any culinary wonders here.
+Velký vojenský stan používaný ke skladování materiálů a mnoha dalším věcem. \\{br}
+Poslouží například také jako kuchyňský stan, nelze však od něj čekat nějaké kulinářské zázraky.
    \{/tooltiplong}
 \{/helpitem}
 
 
-\{helpitem -name _seas_scorpion_station Scorpion control station}
+\{helpitem -name _seas_scorpion_station Řídicí stanice škorpiona}
 \{img /bunit:seas_scorpion_station -ralign}
    \{tooltipshort}
 %/class:bldg%
    \{/tooltipshort}
    \{tooltipmedium}
-• Must be destroyed to weaken the Scorpion
+• Její zničení oslabí škorpiona 
    \{/tooltipmedium}
    \{tooltiplong}
-Energy and control consoles used to move and control the Scorpion. \\{br}
-Powered by steam from the crater, these consoles are protected by thick iron casings. \{ref H_heros.seml#_tesla}Taslow \{/ref} has to break through these casings before he can work on the consoles. Each console controls a different part of the Scorpion. This means they have to be shut down one after another in order to limit the Scorpions movement and finally shut it down completely.
+Energetické a řídicí konzoly sloužící k ovládání škorpiona. \\{br}
+Chrání je tlustá kovová pouzdra a pohání je pára z kráteru. \{ref H_heros.seml#_tesla}Taslow \{/ref} musí do pouzder proniknout, aby mohl začít pracovat na konzolách. Každá konzola řídí jinou část škorpiona. To znamená, že jejich postupným vyřazením z činnosti omezí jeho pohybové možnosti a nakonec ho úplně vypne.
    \{/tooltiplong}
 \{/helpitem}

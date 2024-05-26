@@ -4,154 +4,155 @@
 \{comment $Author: claudia.krueger $}
 \{comment $Revision: #4 $}
 
-\{chapter -name _infantry Infantry}
-\{helpitem -name _seas_worker Worker}
+\{chapter -name _infantry Pěší jednotky}
+
+\{helpitem -name _seas_worker Dělník}
 \{img /bunit:seas_worker -ralign}
    \{tooltipshort}
 %/class:chtr/vschtr:/vsanml:/vsvhcl:/vsbldg:%
    \{/tooltipshort}
    \{tooltipmedium}
-• Erects buildings
-\\{br}• Harvests resources
-\\{br}• Poor fighter
+• Staví budovy
+\\{br}• Těží suroviny
+\\{br}• Špatný v boji
    \{/tooltipmedium}
    \{tooltiplong}
-Produced in the \{ref H_seas_gebaeude.seml#_seas_headquarters} Headquarters,\{/ref} Workers perform all of the civilian work. \\{br}
-They harvest \{ref H_general.seml#_resources} resources\{/ref} and erect \{ref H_general.seml#_building} buildings.\{/ref} They can defend themselves when attacked but are no match for regular combat \{ref H_general.seml#_units} units.\{/ref} They are equipped with a sling for \{ref H_world.seml#_food}hunting \{/ref} and ranged defense.
+Dělníci se rekrutují\{ref H_seas_gebaeude.seml#_seas_headquarters} na velitelství\{/ref} a vykonávají všechny civilní práce. \\{br}
+Těží \{ref H_general.seml#_resources} suroviny\{/ref} a staví \{ref H_general.seml#_building} budovy.\{/ref} Při napadení se umí bránit, ale v žádném případě se nemohou měřit s běžnými bojovými \{ref H_general.seml#_units} jednotkami.\{/ref} Mají u sebe u prak, který jim slouží k \{ref H_world.seml#_food}lovu \{/ref} i vlastní obraně.
 \{/tooltiplong}
 \{/helpitem}
 
-\{helpitem -name _seas_warrior Guard}
+\{helpitem -name _seas_warrior Gardista}
 \{img /bunit:seas_warrior -ralign}
    \{tooltipshort}
 %/class:chtr/vschtr:+/vsanml:-/vsvhcl:+/vsbldg:+%
    \{/tooltipshort}
    \{tooltipmedium}
-• Infantry
-\\{br}• Melee fighter
+• Pěší jednotka
+\\{br}• Pro boj zblízka
    \{/tooltipmedium}
    \{tooltiplong}
-Like all infantry \{ref H_general.seml#_units} units,\{/ref} Guards are produced in the \{ref H_seas_gebaeude.seml#_seas_barracks}Barracks \{/ref}and are specialized in melee battle. They are the \{ref H_story.seml#_story_seas} SEAS'\{/ref} basic combat \{ref H_general.seml#_units} unit.\{/ref}
+Jako všechny pěší \{ref H_general.seml#_units} jednotky\{/ref} i gardisty cvičí \{ref H_seas_gebaeude.seml#_seas_barracks}v kasárnách. \{/ref} Specializují se na boj zblízka. Pro \{ref H_story.seml#_story_seas} SEAS\{/ref} je to základní bojová \{ref H_general.seml#_units} jednotka.\{/ref}
    \{/tooltiplong}
 \{/helpitem}
 
-\{helpitem -name _seas_marksman Marksman}
+\{helpitem -name _seas_marksman Střelec}
 \{img /bunit:seas_marksman -ralign}
    \{tooltipshort}
 %/class:chtr/vschtr:+/vsanml:+/vsvhcl:+/vsbldg:-%
    \{/tooltipshort}
    \{tooltipmedium}
-• Infantry
-\\{br}• Ranged unit
-\\{br}• Ineffective in melee
+• Pěší jednotka
+\\{br}• Pro boj na dálku
+\\{br}• Neefektivní v boji zblízka
    \{/tooltipmedium}
    \{tooltiplong}
-Like all infantry \{ref H_general.seml#_units} units,\{/ref} Marksmen are produced in the \{ref H_seas_gebaeude.seml#_seas_barracks}Barracks  \{/ref} and are the \{ref H_story.seml#_story_seas} SEAS'\{/ref} basic ranged fighter. While effective over a distance they are poorly suited to close combat.
+Jako všechny pěší \{ref H_general.seml#_units} jednotky\{/ref} i střelce cvičí \{ref H_seas_gebaeude.seml#_seas_barracks} v kasárnách \{/ref} a u \{ref H_story.seml#_story_seas} SEAS\{/ref} slouží jako základní jednotka pro boj na dálku. Zatímco na větší vzdálenosti jsou velmi užiteční, pro boj zblízka se vůbec nehodí.
    \{/tooltiplong}
 \{/helpitem}
 
-\{helpitem -name _seas_gunner Gunner}
+\{helpitem -name _seas_gunner Kulometčík}
 \{img /bunit:seas_gunner -ralign}
    \{tooltipshort}
 %/class:chtr/vschtr:+/vsanml:+/vsvhcl:-/vsbldg:-%
    \{/tooltipshort}
    \{tooltipmedium}
-• Infantry
-\\{br}• Ranged unit
+• Pěší jednotka
+\\{br}• Pro boj na dálku
    \{/tooltipmedium}
    \{tooltiplong}
-Ranged fighters like the \{ref H_seas_produkte.seml#_seas_marksmen} Marksmen,\{/ref} Gunners are much more powerful. \\{br}
-They, too, are produced in the \{ref H_seas_gebaeude.seml#_seas_barracks}Barracks  \{/ref} and greatly outstrip the other tribes' Archers performance. When embroiled in close combat they defend themselves with a dagger, which does far less damage.
+Kulometčíci jsou stejně jako \{ref H_seas_produkte.seml#_seas_marksmen} střelci\{/ref} specialisté v boji na dálku, avšak mnohem silnější. \\{br}
+Cvičí je \{ref H_seas_gebaeude.seml#_seas_barracks}v kasárnách  \{/ref} a dostřelí mnohem dál než lučištníci ostatních klanů. V boji zblízka se brání dýkou, která působí mnohem menší poškození.
    \{/tooltiplong}
 \{/helpitem}
 
-\{helpitem -name _seas_rocketman Rocket launcher}
+\{helpitem -name _seas_rocketman Raketometčík}
 \{img /bunit:seas_rocketman -ralign}
    \{tooltipshort}
 %/class:chtr/vschtr:-/vsanml:-/vsvhcl:+/vsbldg:++%
    \{/tooltipshort}
    \{tooltipmedium}
-• Infantry
-\\{br}• Ranged unit
-\\{br}• Fires rockets
+• Pěší jednotka
+\\{br}• Pro boj na dálku
+\\{br}• Střílí rakety
    \{/tooltipmedium}
    \{tooltiplong}
-Produced in the \{ref H_seas_gebaeude.seml#_seas_barracks}Barracks, \{/ref} Rocket Launchers are ranged troops armed with rockets.\\{br}
-They can see slightly farther than their rockets are capable of travelling. When embroiled in close combat they defend themselves with a dagger, which does far less damage.
+Raketometčíky cvičí \{ref H_seas_gebaeude.seml#_seas_barracks}v kasárnách. \{/ref} Je to jednotka pro boj na dálku vyzbrojená raketami.\\{br}
+Vidí o něco dál, než je dolet jejich raket. V boji zblízka se brání dýkou, která působí mnohem menší poškození.
    \{/tooltiplong}
 \{/helpitem}
 
-\{helpitem -name _seas_flamethrower Flamethrower}
+\{helpitem -name _seas_flamethrower Plamenometčík}
 \{img /bunit:seas_flamethrower -ralign}
    \{tooltipshort}
  %/class:chtr/vschtr:++/vsanml:+/vsvhcl:-/vsbldg:-%
    \{/tooltipshort}
    \{tooltipmedium}
-• Infantry
-\\{br}• Damages enemy and neutral units
+• Pěší jednotka
+\\{br}• Způsobí poškození nepřátelským i neutrální jednotkám
    \{/tooltipmedium}
    \{tooltiplong}
-The Flamethrower is most effective when used against infantry. \\{br}
-Flamethrowers can see slightly farther than they can fire, but still have a long range. All enemy and neutral \{ref H_general.seml#_units} units\{/ref} in the line of fire are damaged. As they are infantry \{ref H_general.seml#_units} units,\{/ref} Flamethrowers are produced in the \{ref H_seas_gebaeude.seml#_seas_barracks}Barracks. \{/ref}
+Plamenometčík je nejúčinnější proti pěchotě. \\{br}
+Plamenometčíci vidí dál, než dosáhne jejich plamen, avšak jeho dosah je přesto velký. Všechny nepřátelské i neutrální \{ref H_general.seml#_units} jednotky\{/ref} v palebném poli utrpí poškození. Jako pěší \{ref H_general.seml#_units} jednotky\{/ref} je cvičí \{ref H_seas_gebaeude.seml#_seas_barracks}v kasárnách. \{/ref}
    \{/tooltiplong}
 \{/helpitem}
 
-\{helpitem -name _seas_medic Medic}
+\{helpitem -name _seas_medic Zdravotník}
 \{img /bunit:seas_medic -ralign}
    \{tooltipshort}
 %/class:chtr/vschtr:/vsanml:/vsvhcl:/vsbldg:%
    \{/tooltipshort}
    \{tooltipmedium}
-• Infantry
-\\{br}• Healer
-\\{br}• Detects traps and hidden units
+• Pěší jednotka
+\\{br}• Léčí
+\\{br}• Odhaluje pasti a ukryté jednotky
    \{/tooltipmedium}
    \{tooltiplong}
-Produced in the \{ref H_seas_gebaeude.seml#_seas_barracks}Barracks  \{/ref} like any other infantry \{ref H_general.seml#_units} unit,\{/ref} Medics do not fight at all but rather heal their comrades. They are also capable of detecting traps and hidden enemy \{ref H_general.seml#_units} units.\{/ref}
+Zdravotníky cvičí \{ref H_seas_gebaeude.seml#_seas_barracks}v kasárnách  \{/ref} stejně jako ostatní pěší \{ref H_general.seml#_units} jednotky.\{/ref} Nejsou však určeni primárně k boji, nýbrž k léčení svých spolubojovníků. Dokáží také najít pasti a ukryté nepřátelské \{ref H_general.seml#_units} jednotky.\{/ref}
    \{/tooltiplong}
 \{/helpitem}
 
-\{chapter -name _robots Robots}
-\{helpitem -name _seas_mechanical_walker Sentinel}
+\{chapter -name _robots Roboti}
+\{helpitem -name _seas_mechanical_walker Stráž}
 \{img /bunit:seas_mechanical_walker -ralign}
    \{tooltipshort}
 %/class:vhcl/vschtr:+/vsanml:-/vsvhcl:-/vsbldg:-%
    \{/tooltipshort}
    \{tooltipmedium}
 • Robot
-\\{br}• Close combat
+\\{br}• Pro boj zblízka
    \{/tooltipmedium}
    \{tooltiplong}
-The Sentinel is a two-legged robot resembling a dinosaur. It is designed for close combat and produced in the \{ref H_seas_gebaeude.seml#_seas_garage}Garage. \{/ref}
+Stráž je dvounohý robot podobný dinosaurovi. Je určen pro boj zblízka a vyrábí ho \{ref H_seas_gebaeude.seml#_seas_garage}garáž. \{/ref}
    \{/tooltiplong}
 \{/helpitem}
 
-\{helpitem -name _seas_mobile_suit Exo enforcer}
+\{helpitem -name _seas_mobile_suit Exoskelet}
 \{img /bunit:seas_mobile_suit -ralign}
    \{tooltipshort}
 %/class:vhcl/vschtr:++/vsanml:+/vsvhcl:+/vsbldg:-%
    \{/tooltipshort}
    \{tooltipmedium}
-• Powerful robot
-\\{br}• Close combat
+• Silný robot
+\\{br}• Pro boj zblízka
    \{/tooltipmedium}
    \{tooltiplong}
-Designed for close combat, the Exo enforcer is a two-legged robot produced in the \{ref H_seas_gebaeude.seml#_seas_garage}Garage. \{/ref} It attacks enemies using punches and kicks.
+Exoskelet je dvounohý robot určený pro boj zblízka. Vyrábí ho \{ref H_seas_gebaeude.seml#_seas_garage}garáž. \{/ref} Nepřátele napadá pěstmi a kopy.
    \{/tooltiplong}
 \{/helpitem}
 
-\{helpitem -name _seas_mobile_suit_flamethrower Exo flamethrower}
+\{helpitem -name _seas_mobile_suit_flamethrower Exoskelet s plamenometem}
 \{img /bunit:seas_mobile_suit_flamethrower -ralign}
    \{tooltipshort}
 %/class:vhcl/vschtr:++/vsanml:+/vsvhcl:-/vsbldg:-%
    \{/tooltipshort}
    \{tooltipmedium}
-• Robot armed with flamethrower
-\\{br}• Damages enemy and neutral units
+• Robot vyzbrojený plamenometem
+\\{br}• Způsobí poškození nepřátelským i neutrálním jednotkám
    \{/tooltipmedium}
    \{tooltiplong}
-This \{ref H_general.seml#_units} unit\{/ref} is armed with a medium-range flamethrower used for both close and ranged combat. \\{br}
-It damages all neutral and enemy \{ref H_general.seml#_units} units\{/ref} in the line of fire. The Exo flamethrower is produced in the \{ref H_seas_gebaeude.seml#_seas_garage}Garage. \{/ref}
+Tato \{ref H_general.seml#_units} jednotka\{/ref} je vyzbrojena středním plamenometem vhodným pro boj zblízka i na větší vzdálenost. \\{br}
+Poškození způsobí všem neutrálním i nepřátelským \{ref H_general.seml#_units} jednotkám\{/ref} v palebném poli. Exoskelet s plamenometem vyrábí \{ref H_seas_gebaeude.seml#_seas_garage}garáž. \{/ref}
    \{/tooltiplong}
 \{/helpitem}
 
@@ -161,11 +162,11 @@ It damages all neutral and enemy \{ref H_general.seml#_units} units\{/ref} in th
 %/class:anml/vschtr:++/vsanml:+/vsvhcl:+/vsbldg:++%
    \{/tooltipshort}
    \{tooltipmedium}
-• Very strong cavalry unit
+• Velmi silná jezdecká jednotka
    \{/tooltipmedium}
    \{tooltiplong}
-The CBT-500 is produced in the \{ref H_seas_gebaeude.seml#_seas_garage}Garage. \{/ref} \\{br}
-A very strong cavalry \{ref H_general.seml#_units} unit,\{/ref} it presents a huge threat in close combat by its sheer mass alone.
+CBT-500 vyrábí \{ref H_seas_gebaeude.seml#_seas_garage}garáž. \{/ref} \\{br}
+Tato velmi silná jezdecká \{ref H_general.seml#_units} jednotka\{/ref} představuje velkou hrozbu v boji zblízka už jen svou velikostí.
    \{/tooltiplong}
 \{/helpitem}
 
@@ -175,114 +176,114 @@ A very strong cavalry \{ref H_general.seml#_units} unit,\{/ref} it presents a hu
 %/class:anml/vschtr:++/vsanml:+/vsvhcl:+/vsbldg:++%
    \{/tooltipshort}
    \{tooltipmedium}
-• Very strong cavalry unit
-\\{br}• May transport up to 3 infantry units
+• Velmi silná jezdecká jednotka
+\\{br}• Unese až 3 pěší jednotky
    \{/tooltipmedium}
    \{tooltiplong}
-Large and powerful, the CBT-T1000 is even more dangerous when carrying \{ref H_seas_produkte.seml#_seas_marksman} Marksmen\{/ref} or \{ref H_seas_produkte.seml#_saes_gunner} Gunners.\{/ref} It is produced in the \{ref H_seas_gebaeude.seml#_seas_garage}Garage. \{/ref}
+Velká a silná jednotka CBT-T1000 je ještě nebezpečnější, nese-li \{ref H_seas_produkte.seml#_seas_marksman} střelce\{/ref} nebo \{ref H_seas_produkte.seml#_saes_gunner} kulometčíky.\{/ref} Vyrábí ji \{ref H_seas_gebaeude.seml#_seas_garage}garáž. \{/ref}
    \{/tooltiplong}
 \{/helpitem}
 
-\{helpitem -name _seas_wehrspinne Black widow}
+\{helpitem -name _seas_wehrspinne Černá vdova}
 \{img /bunit:seas_wehrspinne -ralign}
    \{tooltipshort}
 %/class:vhcl/vschtr:-/vsanml:-/vsvhcl:-/vsbldg:++%
    \{/tooltipshort}
    \{tooltipmedium}
 • Robot
-\\{br}• Ranged weapon
+\\{br}• Pro boj na dálku
    \{/tooltipmedium}
    \{tooltiplong}
-Large, powerful and as dangerous as its namesake: the Black widow. \\{br}
-It is the only heavy catapult with a vision equal to its range. The Black widow is produced in the \{ref H_seas_gebaeude.seml#_seas_garage}Garage. \{/ref}
+Velká jednotka, silná a stejně nebezpečná jako její jmenovkyně… Černá vdova. \\{br}
+Je to jediný katapult, který vidí na vzdálenost rovnou svému dostřelu. Černou vdovu vyrábí \{ref H_seas_gebaeude.seml#_seas_garage}garáž. \{/ref}
    \{/tooltiplong}
 \{/helpitem}
 
-\{helpitem -name _seas_lumberjack Executioner}
+\{helpitem -name _seas_lumberjack Kat}
 \{img /bunit:seas_lumberjack -ralign}
    \{tooltipshort}
 %/class:vhcl/vschtr:+/vsanml:++/vsvhcl:++/vsbldg:++%
    \{/tooltipshort}
    \{tooltipmedium}
 • Robot
-\\{br}• Powerful in close combat
-\\{br}• Harvests wood
+\\{br}• Velmi silný v boji zblízka
+\\{br}• Těží dřevo
    \{/tooltipmedium}
    \{tooltiplong}
-The Executioner is capable of harvesting entire trees and bringing them back to the collection point in a single trip. \\{br}
-Its sheer power makes the rather slow and ponderous robot a formidable opponent in close combat. It is produced in the \{ref H_seas_gebaeude.seml#_seas_garage}Garage. \{/ref}
+Kat dokáže pokácet celé stromy a dopravit je na sběrné místo na jednu cestu. \\{br}
+Pouhá síla dělá z tohoto spíše pomalého a těžkopádného robota v boji zblízka hrozivého protivníka. Vyrábí ho \{ref H_seas_gebaeude.seml#_seas_garage}garáž. \{/ref}
    \{/tooltiplong}
 \{/helpitem}
 
-\{helpitem -name _seas_lumberjack_minigun Executioner MKII}
+\{helpitem -name _seas_lumberjack_minigun Kat MKII}
 \{img /bunit:seas_lumberjack_minigun -ralign}
    \{tooltipshort}
 %/class:vhcl/vschtr:++/vsanml:++/vsvhcl:+/vsbldg:+%
    \{/tooltipshort}
    \{tooltipmedium}
 • Robot
-\\{br}• Ranged weapon
+\\{br}• Pro boj na dálku
    \{/tooltipmedium}
    \{tooltiplong}
-Produced in the \{ref H_seas_gebaeude.seml#_seas_garage}Garage,\{/ref} this version of the \{ref H_seas_produkte.seml#_seas_lumberjack} Executioner,\{/ref} the Executioner MKII, is armed with a minigun, a deadly ranged weapon.
+Vyrábí ho \{ref H_seas_gebaeude.seml#_seas_garage}garáž.\{/ref} Tato verze \{ref H_seas_produkte.seml#_seas_lumberjack} Kata,\{/ref} Kat MKII, je vyzbrojena kulometem, smrtonosnou střelnou zbraní.
    \{/tooltiplong}
 \{/helpitem}
 
-\{helpitem -name _scorpion Scorpion}
+\{helpitem -name _scorpion Škorpion}
 \{img /bunit:scorpion -ralign}
    \{tooltipshort}
    \{/tooltipshort}
    \{tooltipmedium}
-• Huge robot
-\\{br}• Close combat and flamethrower attacks
+• Obrovský robot
+\\{br}• Určen pro boj zblízka, je vyzbrojen také plamenometem
    \{/tooltipmedium}
    \{tooltiplong}
-This huge robot is both a construction machine used to build the huge jet and the \{ref H_story.seml#_story_seas} SEAS'\{/ref} last line of defense.
-Its sheer size makes it a dangerous opponent. \\{br}
-Its powerful claws and built-in flamethrower turn it from a dangerous opponent into a deadly one. As mobile as it may seem it cannot leave the room in which it is found.
+Pomocí tohoto robota \{ref H_story.seml#_story_seas} SEAS\{/ref} vyrobili svůj vulkanický motor. Teď slouží jako jejich poslední obranná linie.
+Díky své velikosti je to nebezpečný protivník. \\{br}
+Silná klepeta a vestavěný plamenomet však mění nebezpečného protivníka na smrtonosného. Vypadá velmi pohyblivě, ale nemůže opustit místnost, ve které se nachází.
    \{/tooltiplong}
 \{/helpitem}
 
-\{chapter -name _ships Ships and stinger}
-\{helpitem -name _seas_hovercraft Hovercraft}
+\{chapter -name _ships Lodě a helikoptéra}
+\{helpitem -name _seas_hovercraft Vznášedlo}
 \{img /bunit:seas_hovercraft -ralign}
    \{tooltipshort}
 %/class:vhcl/vschtr:/vsanml:/vsvhcl:/vsbldg:%
    \{/tooltipshort}
    \{tooltipmedium}
-• Transport unit
-\\{br}• Travels over land or water
+• Přepravní jednotka
+\\{br}• Cestuje po souši i po vodě
    \{/tooltipmedium}
    \{tooltiplong}
-As versatile as the Hovercraft is when it comes to \{ref H_general.seml#_transport}transport, \{/ref} it has one major weakness - it is completely defenseless. This mechanized \{ref H_general.seml#_units} unit\{/ref} is produced on the \{ref H_seas_gebaeude.seml#_seas_carrier}Carrier. \{/ref}
+Jakkoliv je vznášedlo univerzální, co se týče \{ref H_general.seml#_transport}přepravy, \{/ref} má jednu velkou slabinu - je zcela bezbranné. Tuto mechanizovanou \{ref H_general.seml#_units} jednotku\{/ref} vyrábí \{ref H_seas_gebaeude.seml#_seas_carrier}transportér. \{/ref}
    \{/tooltiplong}
 \{/helpitem}
 
-\{helpitem -name _seas_submarine Submarine}
+\{helpitem -name _seas_submarine Ponorka}
 \{img /bunit:seas_submarine -ralign}
    \{tooltipshort}
 %/class:vhcl/vschtr:-/vsanml:-/vsvhcl:++/vsbldg:-%
    \{/tooltipshort}
    \{tooltipmedium}
-• Strong ship
+• Silná loď
    \{/tooltipmedium}
    \{tooltiplong}
-While not particularly powerful, the Submarine is still a very effective \{ref H_general.seml#_units} unit.\{/ref}\\{br}
-It only surfaces to attack. This mechanized \{ref H_general.seml#_units} unit\{/ref} is produced on the \{ref H_seas_gebaeude.seml#_seas_carrier}Carrier. \{/ref}
+Přestože není ponorka nijak výrazně silná, stále je to velmi užitečná \{ref H_general.seml#_units} jednotka.\{/ref}\\{br}
+Vynoří se pouze při útoku. Tuto mechanizovanou \{ref H_general.seml#_units} jednotku\{/ref} vyrábí \{ref H_seas_gebaeude.seml#_seas_carrier}transportér. \{/ref}
    \{/tooltiplong}
 \{/helpitem}
 
-\{helpitem -name _seas_helicopter Stinger}
+\{helpitem -name _seas_helicopter Helikoptéra}
 \{img /bunit:seas_helicopter -ralign}
    \{tooltipshort}
 %/class:vhcl/vschtr:++/vsanml:+/vsvhcl:-/vsbldg:-%
    \{/tooltipshort}
    \{tooltipmedium}
-• Fast airborne unit
+• Rychlá vzdušná jednotka
    \{/tooltipmedium}
    \{tooltiplong}
-The Stinger is a powerful airborne \{ref H_general.seml#_units} unit.\{/ref}\\{br}
-It flies at extremely low altitudes. This helicopter is produced on the \{ref H_seas_gebaeude.seml#_seas_carrier}Carrier. \{/ref}
+Helikoptéra je silná vzdušná \{ref H_general.seml#_units} jednotka.\{/ref}\\{br}
+Létá v mimořádně nízkých výškách. Vyrábí ji \{ref H_seas_gebaeude.seml#_seas_carrier}transportér. \{/ref}
    \{/tooltiplong}
 \{/helpitem}
 
