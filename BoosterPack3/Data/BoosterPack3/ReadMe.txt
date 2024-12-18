@@ -7,10 +7,10 @@ BoosterPack 3.0
 ------------------
 
 General:
- - UK, RU, CZ, FR, HU, IT, PL, ZH text (and audio if exist) added
+ - UK, RU, CZ, FR, HU, IT, PL, ZH text (and audio if exists) added
  - RU subtitles added
- - all_flying_reptiles texure redefinition fixed
+ - all_flying_reptiles texture redefinition fixed
 
 Norsemen:
  - Undead warrior missing sounds added
- - Fixed wrong norsemen flamethrower model in tt
+ - Fixed wrong flamethrower model in tt
