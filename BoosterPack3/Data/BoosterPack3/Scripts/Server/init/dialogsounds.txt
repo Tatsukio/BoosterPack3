@@ -286,6 +286,13 @@ Root {
 			volume = '100'
 		}
 	}
+	ds_1000_JOURNAL_ENTRY_(EMPTY)_00 {
+		global = '1'
+		sound_1 {
+			wav = '../Music/04_plain_northland_1.mp3'
+			volume = '100'
+		}
+	}
 	ds_1070_JOURNAL_ENTRY_(COLE)_01 {
 		global = '1'
 		sound_1 {
@@ -395,6 +402,27 @@ Root {
 		global = '1'
 		sound_1 {
 			wav = '../SeqSounds/Journal_Entry/8090_JOURNAL_ENTRY_(STINA)_01.mp3'
+			volume = '100'
+		}
+	}
+	ds_4101_JOURNAL_ENTRY_(LEIGHTON)_01 {
+		global = '1'
+		sound_1 {
+			wav = '../Music/44_var_plain_northland_1.mp3'
+			volume = '100'
+		}
+	}
+	ds_4201_JOURNAL_ENTRY_(LEIGHTON)_02 {
+		global = '1'
+		sound_1 {
+			wav = '../Music/13_plain_icewaste.mp3'
+			volume = '100'
+		}
+	}
+	ds_4301_JOURNAL_ENTRY_(KLEEMAN)_01 {
+		global = '1'
+		sound_1 {
+			wav = '../Music/11_plain_jungle_1.mp3'
 			volume = '100'
 		}
 	}
